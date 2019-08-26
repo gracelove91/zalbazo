@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@Log4j
+@Slf4j
 public class BasicController {
 
     @RequestMapping(value = "/welcome", produces = "application/json;charset=UTF-8;")

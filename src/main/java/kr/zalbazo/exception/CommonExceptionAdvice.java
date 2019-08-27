@@ -14,5 +14,4 @@ public class CommonExceptionAdvice {
         log.error(e.getMessage());
         return "custom404";
     }
-
 }

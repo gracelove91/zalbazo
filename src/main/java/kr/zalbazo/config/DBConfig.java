@@ -46,6 +46,5 @@ public class DBConfig {
         sqlSessionFactory.setDataSource(dataSource());
 
         return sqlSessionFactory.getObject();
-
     }
 }

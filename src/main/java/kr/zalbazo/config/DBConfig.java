@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 import javax.sql.DataSource;
 
 @Configuration
-@PropertySource("classpath:application-dev.properties")
+@PropertySource("classpath:application-prod.properties")
 public class DBConfig {
 
     @Value("${jdbc.driver-class}")

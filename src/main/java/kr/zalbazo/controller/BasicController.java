@@ -1,14 +1,13 @@
 package kr.zalbazo.controller;
 
 import lombok.extern.log4j.Log4j;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@Slf4j
+@Log4j
 public class BasicController {
 
     @RequestMapping(value = "/welcome", produces = "application/json;charset=UTF-8;")

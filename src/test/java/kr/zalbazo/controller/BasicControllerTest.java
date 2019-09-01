@@ -38,10 +38,17 @@ public class BasicControllerTest {
     }
 
     @Test
-    public void testController() throws Exception {
+    public void testHome() throws Exception {
         this.mockMvc.perform(get("/home"))
                 .andDo(print())
                 .andExpect(view().name("home"));
+    }
+
+    @Test
+    public void testWelcome() throws Exception{
+        this.mockMvc.perform(get("/welcome"))
+                .andDo(print())
+                .andExpect(content().string(containsString("웰컴이다")));
     }
 
 }

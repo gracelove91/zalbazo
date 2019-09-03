@@ -32,7 +32,7 @@
         <![CDATA[
             select *
             from CONTENT
-            where ID > 0 AND CATEGORY_ID = 2
+            where ID > 0
         ]]>
     </select>
 </mapper>

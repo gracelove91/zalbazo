@@ -14,7 +14,6 @@
             BODY         = #{body},
             UPDATED_DATE = sysdate
         where ID = #{id}
-
     </update>
 
     <delete id="delete">

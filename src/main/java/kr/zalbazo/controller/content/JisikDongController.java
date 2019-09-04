@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping({"/jisikdong/*"})
 public class JisikDongController {
 
-    private static final Long JISIKDONG_CATEGORY_NUM = 2L;
+    private  static final Long JISIKDONG_CATEGORY_NUM = 2L;
 
     @Autowired
     private ContentService service;

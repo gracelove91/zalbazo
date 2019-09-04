@@ -8,7 +8,7 @@
 부트스트랩과 제이쿼리를 사용하기 위해 html에 코드를 추가합니다.
 ````html
 <head>
-  <link href="webjars/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   
@@ -16,5 +16,5 @@
 
 </body>
 <script src="webjars/jquery/3.4.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 ````

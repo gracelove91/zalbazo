@@ -9,6 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -56,5 +58,11 @@ public class ContentMapperTest {
         mapper.insert(content);
 
         log.info(content);
+    }
+
+    @Test
+    public void tesGetList(){
+        List<Content> list  = mapper.getList(2L);
+        list.stream().forEach(content -> log.info(content));
     }
 }

@@ -23,7 +23,7 @@ public class ContentServiceTest {
 
     @Test
     public void testExist(){
-      log.info(service.getList());
+      log.info(service.getList(2L));
     }
 
     @Transactional
@@ -32,7 +32,8 @@ public class ContentServiceTest {
         Content content = new Content();
         content.setTitle("서비스테스트제목.");
         content.setBody("서비스테스트바디");
-        content.setUserEmail("govlmo91");
+        content.setUserEmail("gracelove91@gmail.com");
+        content.setCategoryId(1L);
 
         service.register(content);
     }

@@ -35,7 +35,7 @@ public class ContentServiceImpl implements ContentService {
     }
 
     @Override
-    public List<Content> getList() {
-        return mapper.getList();
+    public List<Content> getList(Long categoryId) {
+        return mapper.getList(categoryId);
     }
 }

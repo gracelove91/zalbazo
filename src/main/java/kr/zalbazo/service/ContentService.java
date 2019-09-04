@@ -9,5 +9,5 @@ public interface ContentService {
     Content get(Long id);
     boolean modify(Content content);
     boolean remove(Long id);
-    List<Content> getList();
+    List<Content> getList(Long categoryId);
 }

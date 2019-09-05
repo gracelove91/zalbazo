@@ -52,7 +52,7 @@ public class ContentMapperTest {
     @Transactional
     public void testInsert(){
         Content content = new Content();
-        content.setUserEmail("govlmo91");
+        content.setUserEmail("govlmo91"); // 여기에 내가 db에서 만든 유저 이메일 넣어야 함
         content.setTitle("매퍼테스트제목");
         content.setBody("매퍼테스트내용");
         content.setCategoryId(2L);

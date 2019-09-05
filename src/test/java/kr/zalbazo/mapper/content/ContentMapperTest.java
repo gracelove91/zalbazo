@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -49,16 +50,16 @@ public class ContentMapperTest {
     }
 
     @Test
-    @Transactional
     public void testInsert(){
-        Content content = new Content();
-        content.setUserEmail("govlmo91");
-        content.setTitle("매퍼테스트제목");
-        content.setBody("매퍼테스트내용");
-        content.setCategoryId(2L);
-        mapper.insert(content);
-
-        log.info(content);
+        //지식동 가짜 게시물 저장.
+        IntStream.rangeClosed(1, 100).forEach(num -> {
+            Content content = new Content();
+            content.setUserEmail("govlmo91");
+            content.setTitle("매퍼테스트제목지식동"+num);
+            content.setBody("매퍼테스트내용지식동"+num);
+            content.setCategoryId(2L);
+            mapper.insert(content);
+        });
     }
 
     @Test

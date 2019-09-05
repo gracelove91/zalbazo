@@ -16,9 +16,9 @@
     <div class="row d-flex d-md-block flex-nowrap wrapper">
         <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
             <div class="page-header mt-3">
-                <h2>지식動</h2>
+                <h2>커뮤니티</h2>
             </div>
-            <p class="lead">반려동물에 대해 궁금한 것을 묻고 답해보세요</p>
+            <p class="lead">회원들과 소통하세요.</p>
             <hr>
             <table class="table table-striped" style="max-width: 1080px;">
                 <thead>
@@ -42,7 +42,7 @@
                 </tbody>
             </table>
             <div style="max-width: 1080px;">
-                <a href="/jisikdong/register" class="btn btn-primary float-right">글쓰기</a>
+                <a href="/community/register" class="btn btn-primary float-right">글쓰기</a>
             </div>
             <ul class="pagination">
                 <li class="page-item disabled">

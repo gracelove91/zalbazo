@@ -2,7 +2,7 @@ package kr.zalbazo.model.content;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @NoArgsConstructor
@@ -16,8 +16,8 @@ public class Content {
     private String title;
     private String body;
     private String userEmail;
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
+    private Date createdDate;
+    private Date updatedDate;
     private Long categoryId;
 
 }

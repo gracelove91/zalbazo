@@ -54,10 +54,20 @@ public class ContentMapperTest {
         //지식동 가짜 게시물 저장.
         IntStream.rangeClosed(1, 100).forEach(num -> {
             Content content = new Content();
-            content.setUserEmail("govlmo91");
+            content.setUserEmail("dummy@gmail.com");
             content.setTitle("매퍼테스트제목지식동"+num);
             content.setBody("매퍼테스트내용지식동"+num);
             content.setCategoryId(2L);
+            mapper.insert(content);
+        });
+
+        //커뮤니티 가짜 게시물 저장.
+        IntStream.rangeClosed(1, 100).forEach(num -> {
+            Content content = new Content();
+            content.setUserEmail("dummy@gmail.com");
+            content.setTitle("매퍼테스트제목커뮤니티"+num);
+            content.setBody("매퍼테스트내용커뮤니티"+num);
+            content.setCategoryId(1L);
             mapper.insert(content);
         });
     }

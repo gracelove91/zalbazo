@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 

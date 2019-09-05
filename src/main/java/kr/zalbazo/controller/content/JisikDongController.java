@@ -12,10 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 @Controller
 @Log4j
 @RequestMapping({"/jisikdong/*"})
 public class JisikDongController {
+
+    private static final Long JISIKDONG_CATEGORY_NUM = 2L;
 
     @Autowired
     private ContentService service;
@@ -27,8 +31,8 @@ public class JisikDongController {
 
     @PostMapping("/register")
     public String register(Content content, RedirectAttributes rttr){
-        content.setCategoryId(2L);
-        log.info(content);
+        content.setCategoryId(JISIKDONG_CATEGORY_NUM);
+
         service.register(content);
         rttr.addFlashAttribute("result", content.getId());
 
@@ -37,7 +41,9 @@ public class JisikDongController {
 
     @GetMapping("/list")
     public void list(Model model){
-        model.addAttribute("list", service.getList());
+
+        model.addAttribute("contentList", service.getList(JISIKDONG_CATEGORY_NUM));
+        service.getList(JISIKDONG_CATEGORY_NUM ).stream().forEach(System.out::println);
     }
 
     @GetMapping("/get")
@@ -47,9 +53,9 @@ public class JisikDongController {
 
     @PostMapping("/modify")
     public String modify(Content content, RedirectAttributes rttr){
-        service.modify(content);
-        rttr.addFlashAttribute("result", content.getId());
-
+        if(service.modify(content)){
+            rttr.addFlashAttribute("result", content.getId());
+        }
         return "redirect:/jisikdong/list";
     }
 

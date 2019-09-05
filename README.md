@@ -63,7 +63,9 @@ insert into label (code, name) values( 4, 'rare');
 
 ### src / main  / java / kr / zalbazo / config / **DBConfig.java**
 위 설정파일을 적용하기 위해 `SqlSessionFactory()`메서드 내에 다음과 같은 코드를 삽입한다.
-`        Resource configLocation =  new PathMatchingResourcePatternResolver().getResource("classpath:mybatis-config.xml");`
+
+
+`Resource configLocation =  new PathMatchingResourcePatternResolver().getResource("classpath:mybatis-config.xml");`
 
 ```java
     @Bean

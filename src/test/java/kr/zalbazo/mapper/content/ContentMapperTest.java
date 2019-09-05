@@ -54,7 +54,7 @@ public class ContentMapperTest {
         //지식동 가짜 게시물 저장.
         IntStream.rangeClosed(1, 100).forEach(num -> {
             Content content = new Content();
-            content.setUserEmail("govlmo91");
+            content.setUserEmail("scienceos");
             content.setTitle("매퍼테스트제목지식동"+num);
             content.setBody("매퍼테스트내용지식동"+num);
             content.setCategoryId(2L);

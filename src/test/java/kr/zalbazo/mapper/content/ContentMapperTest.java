@@ -52,7 +52,7 @@ public class ContentMapperTest {
     @Test
     public void testInsert(){
         //지식동 가짜 게시물 저장.
-        IntStream.rangeClosed(1, 100).forEach(num -> {
+        IntStream.rangeClosed(1, 100).forEach(num -> { // new Content 100개 생성
             Content content = new Content();
             content.setUserEmail("govlmo91");
             content.setTitle("매퍼테스트제목지식동"+num);

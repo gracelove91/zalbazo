@@ -49,6 +49,7 @@ public class ContentMapperTest {
     }
 
     @Test
+    @Transactional
     public void testInsert(){
         Content content = new Content();
         content.setUserEmail("govlmo91");

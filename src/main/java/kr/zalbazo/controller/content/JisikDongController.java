@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 @Controller
 @Log4j
 @RequestMapping({"/jisikdong/*"})
 public class JisikDongController {
 
-    private  static final Long JISIKDONG_CATEGORY_NUM = 2L;
+    private static final Long JISIKDONG_CATEGORY_NUM = 2L;
 
     @Autowired
     private ContentService service;
@@ -39,7 +41,9 @@ public class JisikDongController {
 
     @GetMapping("/list")
     public void list(Model model){
-        model.addAttribute("list", service.getList(2L));
+
+        model.addAttribute("jisikList", service.getList(JISIKDONG_CATEGORY_NUM));
+        service.getList(JISIKDONG_CATEGORY_NUM ).stream().forEach(System.out::println);
     }
 
     @GetMapping("/get")

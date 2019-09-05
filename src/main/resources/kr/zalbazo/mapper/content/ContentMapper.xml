@@ -27,11 +27,12 @@
         where ID = #{id}
     </select>
 
-    <select id="getList" resultType="kr.zalbazo.model.content.Content">
-        <![CDATA[
-            select *
+    <select id="getList" resultType="kr.zalbazo.model.content.Content"><![CDATA[
+
+            select ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE,
+                   CATEGORY_ID, USER_EMAIL
             from CONTENT
             where ID > 0 AND CATEGORY_ID = #{categoryId}
-        ]]>
-    </select>
+
+    ]]></select>
 </mapper>

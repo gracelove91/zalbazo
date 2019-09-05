@@ -1,22 +1,23 @@
 package kr.zalbazo.model.content;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
+@ToString
+@AllArgsConstructor
 @Getter
 @Setter
 public class Content {
 
     private Long id;
-    private String contentTitle;
-    private Long userId;
+    private String title;
+    private String body;
+    private String userEmail;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
+    private Long categoryId;
 
 }

@@ -21,4 +21,9 @@ public class BasicController {
         log.info("로그에 찍혀야한단 말이야");
         return "home";
     }
+
+    @GetMapping("/test-bootstrap-jquery")
+    public String bootStrapJquery(){
+        return "bootstrap_jquery_basic";
+    }
 }

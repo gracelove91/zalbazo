@@ -3,24 +3,16 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-        <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
-        <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"/>
-        <property name="username" value="zalbazo"/>
-        <property name="password" value="zalbazo"/>
-    </bean>
-
-    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
-        <constructor-arg ref="hikariConfig"/>
-    </bean>
-
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
 
     <context:component-scan base-package="kr.zalbazo"/>
     <mvc:annotation-driven/>

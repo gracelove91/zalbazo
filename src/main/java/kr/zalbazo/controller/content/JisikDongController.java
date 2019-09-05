@@ -42,7 +42,7 @@ public class JisikDongController {
     @GetMapping("/list")
     public void list(Model model){
 
-        model.addAttribute("jisikList", service.getList(JISIKDONG_CATEGORY_NUM));
+        model.addAttribute("contentList", service.getList(JISIKDONG_CATEGORY_NUM));
         service.getList(JISIKDONG_CATEGORY_NUM ).stream().forEach(System.out::println);
     }
 

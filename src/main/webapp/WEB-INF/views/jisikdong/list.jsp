@@ -31,18 +31,18 @@
                 </thead>
                 <tbody>
 
-                <c:forEach items="${jisikList}" var="content">
+                <c:forEach items="${contentList}" var="content">
                 <tr>
                     <th scope="row" class="mobile" style="text-align:center;"><c:out value="${content.id}"/></th>
                     <td><a href="./boardView.html" style="color: #000000;"><c:out value="${content.title}"/></a></td>
                     <td class="mobile" style="text-align:center;"><c:out value="${content.userEmail}"/></td>
-                    <td class="mobile" style="text-align:center;"><c:out value="${content.createdDate}"/></td>
+                    <td class="mobile" style="text-align:center;"><fmt:formatDate value="${content.createdDate}" pattern="yyyy-MM-dd"/> </td>
                 </tr>
                 </c:forEach>
                 </tbody>
             </table>
             <div style="max-width: 1080px;">
-                <a href="./boardWrite.html" class="btn btn-primary float-right">글쓰기</a>
+                <a href="/jisikdong/register" class="btn btn-primary float-right">글쓰기</a>
             </div>
             <ul class="pagination">
                 <li class="page-item disabled">

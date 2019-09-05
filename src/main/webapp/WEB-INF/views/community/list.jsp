@@ -16,9 +16,9 @@
     <div class="row d-flex d-md-block flex-nowrap wrapper">
         <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
             <div class="page-header mt-3">
-                <h2>지식動</h2>
+                <h2>커뮤니티</h2>
             </div>
-            <p class="lead">반려동물에 대해 궁금한 것을 묻고 답해보세요</p>
+            <p class="lead">회원들과 소통하세요.</p>
             <hr>
             <table class="table table-striped" style="max-width: 1080px;">
                 <thead>
@@ -36,13 +36,13 @@
                     <th scope="row" class="mobile" style="text-align:center;"><c:out value="${content.id}"/></th>
                     <td><a href="./boardView.html" style="color: #000000;"><c:out value="${content.title}"/></a></td>
                     <td class="mobile" style="text-align:center;"><c:out value="${content.userEmail}"/></td>
-                    <td class="mobile" style="text-align:center;"><c:out value="${content.createdDate}"/></td>
+                    <td class="mobile" style="text-align:center;"><fmt:formatDate value="${content.createdDate}" pattern="yyyy-MM-dd"/> </td>
                 </tr>
                 </c:forEach>
                 </tbody>
             </table>
             <div style="max-width: 1080px;">
-                <a href="./boardWrite.html" class="btn btn-primary float-right">글쓰기</a>
+                <a href="/community/register" class="btn btn-primary float-right">글쓰기</a>
             </div>
             <ul class="pagination">
                 <li class="page-item disabled">

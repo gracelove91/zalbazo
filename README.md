@@ -43,3 +43,35 @@ insert into label (code, name) values( 2, 'beauty');
 insert into label (code, name) values( 3, 'parking');
 insert into label (code, name) values( 4, 'rare');
 ```
+
+## 0905
+---
+### src / main / resources / **mybatis-config.xml**
+자바빈의 네이밍규칙인 카멜케이스와, 데이터베이스의 테이블 네이밍규칙인 언더스코어케이스를 서로 매핑시켜주기 위해 다음과 같은 설정파일 추가함.
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+</configuration>
+```
+
+### src / main  / java / kr / zalbazo / config / **DBConfig.java**
+위 설정파일을 적용하기 위해 `SqlSessionFactory()`메서드 내에 굵은 이탤릭체로 표시된 코드를 삽입한다.
+
+```java
+    @Bean
+    public SqlSessionFactory sqlSessionFactory() throws Exception {
+        SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
+        sqlSessionFactory.setDataSource(dataSource());
+        *** Resource configLocation =  new PathMatchingResourcePatternResolver().getResource("classpath:mybatis-config.xml"); ***
+        sqlSessionFactory.setConfigLocation(configLocation);
+
+        return sqlSessionFactory.getObject();
+    }
+```

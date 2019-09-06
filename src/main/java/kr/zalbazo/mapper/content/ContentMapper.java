@@ -6,11 +6,14 @@ import java.util.List;
 
 public interface ContentMapper {
 	
+	List<Content> getList(Long CategoryId);
+	
     void insert(Content content);
-    Content read(Long contentId);
-    List<Content> getList(Long CategoryId);
-    int delete(Long contentId);
-    int update(Content content);
     
+    Content read(Long contentId);
+    
+    int delete(Long contentId);
+    
+    int update(Content content);
     
 }

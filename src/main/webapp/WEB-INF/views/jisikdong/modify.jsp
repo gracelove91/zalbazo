@@ -59,17 +59,23 @@
           <hr>
 		  <form role="form" action="/jisikdong/modify" method="post">
 		  
+		    <div class="form-group">
+              <input type="hidden" class="form-control" id="id" name="id" value="${content.id}" readonly="readonly">
+            </div>
+            <div class="form-group">
+              <input type="hidden" class="form-control" id="categoryId" name="categoryId" value="${content.categoryId}" readonly="readonly">
+            </div>
             <div class="form-group">
               <label>EMAIL</label>
-              <input type="text" class="form-control" id="userEmail" name="userEmail" value="${board.userEmail}" readonly="readonly">
+              <input type="text" class="form-control" id="userEmail" name="userEmail" value="${content.userEmail}" readonly="readonly">
             </div>
             <div class="form-group">
               <label>제목</label>
-              <input type="text" class="form-control" id="title" name="title" value="${board.title}">
+              <input type="text" class="form-control" id="title" name="title" value="${content.title}">
             </div>
             <div class="form-group">
               <label>내용</label>
-              <textarea class="form-control" style="height: 320px" id="body" name="body">${board.body}</textarea>
+              <textarea class="form-control" style="height: 320px" id="body" name="body">${content.body}</textarea>
             </div>
             
             <button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
@@ -96,14 +102,14 @@
     			
     			e.preventDefault();
     			
-    			var oper = $(this).data("oper");
+    			var operation = $(this).data("oper");
     			
-    			console.log(oper);
+    			console.log(operation);
     			
-    			if(oper === 'remove') {
+    			if(operation === 'remove') {
 
     				formObj.attr("action", "/jisikdong/remove");
-    			}else if(oper === 'list'){
+    			}else if(operation === 'list'){
 					
     				formObj.attr("action", "/jisikdong/list").attr("method", "get");
 					formObj.empty();

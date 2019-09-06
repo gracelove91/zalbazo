@@ -6,12 +6,12 @@
     <insert id="insert" parameterType="kr.zalbazo.model.content.Content">
         INSERT into content(ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE,
                             CATEGORY_ID, USER_EMAIL)
-        values (CONTENT_SEQ.nextval, #{title}, #{body}, sysdate, sysdate, #{categoryId},#{userEmail})
+        values (CONTENT_SEQ.nextval, #{title}, #{body}, sysdate, sysdate, #{categoryId}, #{userEmail})
     </insert>
 
     <update id="update">
         update CONTENT
-        set TITLE= #{title}, BODY = #{body}, UPDATED_DATE = sysdate
+        set TITLE= #{title}, BODY = #{body}, UPDATED_DATE = sysdate, USER_EMAIL=#{userEmail}, CATEGORY_ID=#{categoryId}
         where ID = #{id}
     </update>
 

@@ -50,20 +50,21 @@ public class JisikDongController {
     @GetMapping({"/get", "/modify"})
     public void boardView(@RequestParam("id") Long id, Model model){
     	
-        model.addAttribute("board", service.get(id));
+        model.addAttribute("content", service.get(id));
     }
 
     @PostMapping("/modify")
     public String modify(Content content, RedirectAttributes rttr){
     	
         if(service.modify(content)){
-            rttr.addFlashAttribute("result", content.getId());
+            rttr.addFlashAttribute("result", "success");
         }
         return "redirect:/jisikdong/list";
     }
 
     @PostMapping("/remove")
     public String remove(@RequestParam("id") Long id, RedirectAttributes rttr){
+    	
         if(service.remove(id)){
             rttr.addFlashAttribute("result", "success");
         }

@@ -108,13 +108,55 @@
 				<textarea class="form-control" style="height: 320px" id="body"
 					name="body">${content.body}</textarea>
 
-			</div>
+          </div>
+
+        </nav>
+
+        <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
+
+          <div class="page-header mt-3">
+
+              <h2>지식동 글 보기</h2>
+
+          </div>
+
+          <p class="lead">지식동 get</p>
+
+          <hr>
+
+ 
+
+            <div class="form-group">
+
+              <label>EMAIL</label>
+              <input type="text" class="form-control" id="userEmail" name="userEmail" value="${content.userEmail}">
+
+            </div>
+
+            <div class="form-group">
+
+              <label>제목</label>
+              <input type="text" class="form-control" id="title" name="title" value="${content.title}">
+
+            </div>
+
+            <div class="form-group">
+
+              <label>내용</label>
+              <textarea class="form-control" style="height: 320px" id="body" name="body">${content.body}</textarea>
+
+            </div>
 
 			<%-- onclick="location.href='/jisikdong/modify?id=<c:out value="${board.id}"/>'"
 			 onclick="location.href='/jisikdong/list'" --%>
 
-			<button data-oper='modify' class="btn btn-default">Modify</button>
-			<button data-oper='list' class="btn btn-info">list</button>
+
+			<form id='operForm' action="/jisikdong/modify" method="get">
+			  <input type='hidden' id='id' name='id' value='<c:out value="${content.id}"/>'>
+			  <input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+			  <input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+			</form>
+
 
 			<form id='operForm' action="/jisikdong/modify" method="get">
 				<input type='hidden' id='id' name='id' value='<c:out value="${content.id}"/>'> 
@@ -122,11 +164,10 @@
 				<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
 			</form>
 
+
 			<footer class="text-center" style="max-width: 920px;">
 
-				<p>
-					Copyright ⓒ 2018 <b>잘바조</b> All Rights Reserved.
-				</p>
+            <p>Copyright ⓒ 2019 <b>잘바조</b> All Rights Reserved.</p>
 
 			</footer> </main>
 

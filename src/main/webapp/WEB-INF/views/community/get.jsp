@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%
 	String ctx = request.getContextPath();
 	pageContext.setAttribute("ctx", ctx);
@@ -7,11 +7,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<img alt="" src="${ctx}/resources/img/pika.gif">
-	<h2>¿©±â´Â Ä¿¹Â´ÏÆ¼ get</h2>
+	<h2>ì—¬ê¸°ëŠ” ì»¤ë®¤ë‹ˆí‹° get</h2>
 </body>
 </html>

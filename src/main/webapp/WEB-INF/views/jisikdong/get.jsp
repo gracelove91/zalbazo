@@ -68,53 +68,29 @@
               <a href="userEdit.html" class="list-group-item" data-parent="#sidebar">회원정보수정</a>
 
               <a href="userLogout.html" class="list-group-item" data-parent="#sidebar">로그아웃</a>
-
             </div>
-
             <a href="board.html" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-
               <img style="width: 20px;" src="/resources/img/board.svg"><span class="d-none d-md-inline ml-1">자유 게시판</span>
-
             </a>
-
             <a href="qna.html" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-
               <img style="width: 20px;" src="/resources/img/message.svg"><span class="d-none d-md-inline ml-1">Q & A</span>
-
             </a>
-
             <a href="#search" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
-
              data-parent="#sidebar" aria-expanded="false">
-
               <img style="width: 20px;" src="/resources/img/search.svg"><span class="d-none d-md-inline ml-1">검색</span>
-
             </a>
-
             <div class="collapse" id="search">
-
               <div class="input-group p-2" style="background-color: #1c1c1c;">
-
                 <input type="text" class="form-control" placeholder="내용을 입력하세요.">
-
               </div>
-
             </div>
-
           </div>
-
         </nav>
-
         <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
-
           <div class="page-header mt-3">
-
               <h2>지식동 글 보기</h2>
-
           </div>
-
           <p class="lead">지식동 get</p>
-
           <hr>
 
  

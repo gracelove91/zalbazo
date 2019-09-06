@@ -5,7 +5,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>커뮤니티 웹 사이트</title>
+    <title>커뮤 글 쓰기</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- 부트스트랩 CSS 추가하기 -->
@@ -30,7 +30,7 @@
               <a href="userLogout.html" class="list-group-item" data-parent="#sidebar">로그아웃</a>
             </div>
             <a href="board.html" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-              <img style="width: 20px;" src="/resources/img/board.svg"><span class="d-none d-md-inline ml-1">커뮤니티 게시판</span>
+              <img style="width: 20px;" src="/resources/img/board.svg"><span class="d-none d-md-inline ml-1">자유 게시판</span>
             </a>
             <a href="qna.html" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
               <img style="width: 20px;" src="/resources/img/message.svg"><span class="d-none d-md-inline ml-1">Q & A</span>
@@ -48,20 +48,24 @@
         </nav>
         <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
           <div class="page-header mt-3">
-              <h2>커뮤니티 글 쓰기</h2>
+              <h2>커뮤 글 쓰기</h2>
           </div>
           <p class="lead">게시글을 작성합니다.</p>
           <hr>
           <form class="pt-3 md-3" style="max-width: 920px" action="/community/register" method="post">
+			<div class="form-group">
+              <label>EMAIL</label>
+              <input type="text" class="form-control" name="userEmail" placeholder="이메일을 입력하시오" value="dummy@gmail.com">
+            </div>
             <div class="form-group">
               <label>제목</label>
-              <input type="text" class="form-control" placeholder="제목을 입력하세요.">
+              <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요.">
             </div>
             <div class="form-group">
               <label>내용</label>
-              <textarea class="form-control" placeholder="내용을 입력하세요." style="height: 320px;"></textarea>
+              <textarea class="form-control" id="body" name="body" placeholder="내용을 입력하세요." style="height: 320px;"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">글 쓰기</button>
+            <button type="submit" class="btn btn-primary" id="regBtn" name="regBtn">글 쓰기</button>
           </form>
           <footer class="text-center" style="max-width: 920px;">
             <p>Copyright ⓒ 2018 <b>잘바조</b> All Rights Reserved.</p>

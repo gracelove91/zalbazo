@@ -37,12 +37,12 @@ public class CommunityController {
         return "redirect:/community/list";
     }
 
-    @GetMapping("/list")
-    public void list(Model model){
-
-        model.addAttribute("contentList", service.getList(COMMUNITY_CATEGORY_NUM));
-        service.getList(COMMUNITY_CATEGORY_NUM ).stream().forEach(System.out::println);
-    }
+//    @GetMapping("/list")
+//    public void list(Model model){
+//
+//        model.addAttribute("contentList", service.getList(COMMUNITY_CATEGORY_NUM));
+//        service.getList(COMMUNITY_CATEGORY_NUM ).stream().forEach(System.out::println);
+//    }
 
     @GetMapping("/get")
     public void detail(@RequestParam("id") Long id, Model model){

@@ -80,7 +80,7 @@
             </form>
 
           <footer class="text-center" style="max-width: 920px;">
-            <p>Copyright ⓒ 2018 <b>잘바조</b> All Rights Reserved.</p>
+            <p>Copyright ⓒ 2019 <b>잘바조</b> All Rights Reserved.</p>
           </footer>
         </main>
       </div>

@@ -50,7 +50,7 @@ public class JisikDongController {
     @GetMapping({"/get", "/modify"})
     public void boardView(@RequestParam("id") Long id, Model model){
     	
-        model.addAttribute("board", service.get(id));
+        model.addAttribute("content", service.get(id));
     }
 
     @PostMapping("/modify")

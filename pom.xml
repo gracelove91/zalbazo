@@ -118,11 +118,8 @@
             <scope>test</scope>
         </dependency>
 
-<<<<<<< HEAD
         <!-- 디비관련 -->
 
-=======
->>>>>>> upstream/master
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc6</artifactId>

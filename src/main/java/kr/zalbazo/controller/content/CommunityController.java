@@ -1,6 +1,8 @@
 package kr.zalbazo.controller.content;
 
 import kr.zalbazo.model.content.Content;
+import kr.zalbazo.model.content.Criteria;
+import kr.zalbazo.model.content.PageDTO;
 import kr.zalbazo.service.ContentService;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +40,13 @@ public class CommunityController {
     }
 
     @GetMapping("/list")
-    public void list(Model model){
-
-        model.addAttribute("contentList", service.getList(COMMUNITY_CATEGORY_NUM));
-        service.getList(COMMUNITY_CATEGORY_NUM ).stream().forEach(System.out::println);
+    public void list(Criteria cri, Model model){
+        cri.setCategory(COMMUNITY_CATEGORY_NUM);
+        model.addAttribute("contentList", service.getList(cri));
+        service.getList(cri).stream().forEach(System.out::println);
+        int total = service.getTotal(cri);
+        log.info("list : " + cri);
+        model.addAttribute("pageMaker", new PageDTO(cri, total));
     }
 
     @GetMapping("/get")

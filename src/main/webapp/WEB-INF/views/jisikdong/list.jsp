@@ -64,28 +64,25 @@
             <div style="max-width: 1080px;">
                 <a href="/jisikdong/register" id='regBtn' type="button" class="btn btn-primary float-right">글쓰기</a>
             </div>
-            
-            
-            
             <!-- Paging 처리 -->
             <div class='pull-right'>
               <ul class="pagination">
                 
                 <c:if test="${pageMaker.prev}">
                   <li class="paginate_button previous">
-                    <a href="${pageMaker.startPage -1}">Previous</a>
+                    <a class="page-link" href="${pageMaker.startPage -1}">Previous</a>
                   </li>
                 </c:if>
                 
                 <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-                  <li class="paginate_button ${pageMaker.cri.pageNum == num ? "active" : "" }">
-                    <a href="${num}">${num}</a>
+                  <li class="page-item ${pageMaker.cri.pageNum == num ? "active" : "" }">
+                    <a class="page-link mobile" href="${num}">${num}</a>
                   </li>
                 </c:forEach>
                 
                 <c:if test="${pageMaker.next}">
                   <li class="paginate_button next">
-                    <a href="${pageMaker.endPage+1 }">Next</a>
+                    <a class="page-link" href="${pageMaker.endPage+1 }">Next</a>
                   </li>
                 </c:if>
               
@@ -117,7 +114,7 @@
   
   	var actionForm = $("#actionForm");
 	
-	$(".paginate_button a").on("click", function(e){
+	$(".page-item a").on("click", function(e){
 		e.preventDefault();
 		console.log('click');
 		actionForm.find("input[name='pageNum']").val($(this).attr("href"));

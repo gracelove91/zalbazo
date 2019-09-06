@@ -98,21 +98,21 @@
             <div class="form-group">
 
               <label>EMAIL</label>
-              <input type="text" class="form-control" id="userEmail" name="userEmail" value="${content.userEmail}">
+              <input type="text" class="form-control" id="userEmail" name="userEmail" value="${content.userEmail}" readonly="readonly">
 
             </div>
 
             <div class="form-group">
 
               <label>제목</label>
-              <input type="text" class="form-control" id="title" name="title" value="${content.title}">
+              <input type="text" class="form-control" id="title" name="title" value="${content.title}" readonly="readonly">
 
             </div>
 
             <div class="form-group">
 
               <label>내용</label>
-              <textarea class="form-control" style="height: 320px" id="body" name="body">${content.body}</textarea>
+              <textarea class="form-control" style="height: 320px" id="body" name="body" readonly="readonly">${content.body}</textarea>
 
             </div>
 

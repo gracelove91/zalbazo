@@ -59,6 +59,12 @@
           <hr>
 		  <form role="form" action="/jisikdong/modify" method="post">
 		  
+		    <div class="form-group">
+              <input type="hidden" class="form-control" id="id" name="id" value="${content.id}" readonly="readonly">
+            </div>
+            <div class="form-group">
+              <input type="hidden" class="form-control" id="categoryId" name="categoryId" value="${content.categoryId}" readonly="readonly">
+            </div>
             <div class="form-group">
               <label>EMAIL</label>
               <input type="text" class="form-control" id="userEmail" name="userEmail" value="${content.userEmail}" readonly="readonly">
@@ -96,14 +102,14 @@
     			
     			e.preventDefault();
     			
-    			var oper = $(this).data("oper");
+    			var operation = $(this).data("oper");
     			
-    			console.log(oper);
+    			console.log(operation);
     			
-    			if(oper === 'remove') {
+    			if(operation === 'remove') {
 
     				formObj.attr("action", "/jisikdong/remove");
-    			}else if(oper === 'list'){
+    			}else if(operation === 'list'){
 					
     				formObj.attr("action", "/jisikdong/list").attr("method", "get");
 					formObj.empty();

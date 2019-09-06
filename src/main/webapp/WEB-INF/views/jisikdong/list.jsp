@@ -34,13 +34,16 @@
                 <c:forEach items="${contentList}" var="content">
                 <tr>
                     <th scope="row" class="mobile" style="text-align:center;"><c:out value="${content.id}"/></th>
+
                     <td><a style="color: #000000;" href='/jisikdong/get?id=<c:out value="${content.id}"/>'><c:out value="${content.title}"/></a></td>
+
                     <td class="mobile" style="text-align:center;"><c:out value="${content.userEmail}"/></td>
                     <td class="mobile" style="text-align:center;"><fmt:formatDate value="${content.createdDate}" pattern="yyyy-MM-dd"/> </td>
                 </tr>
                 </c:forEach>
                 </tbody>
             </table>
+
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel" aria-hidden="true">
             	<div class="modal-dialog">
@@ -57,39 +60,78 @@
             		</div>
             	</div>
             </div>
+
             <div style="max-width: 1080px;">
                 <a href="/jisikdong/register" id='regBtn' type="button" class="btn btn-primary float-right">글쓰기</a>
             </div>
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <span class="page-link">&laquo;</span>
-                </li>
-                <li class="page-item"><a class="page-link mobile" href="#">1</a></li>
-                <li class="page-item active"><span class="page-link mobile">2</span></li>
-                <li class="page-item"><a class="page-link mobile" href="#">3</a></li>
-                <li class="page-item"><a class="page-link mobile" href="#">4</a></li>
-                <li class="page-item"><a class="page-link mobile" href="#">5</a></li>
-                <li class="page-item"><a class="page-link mobile" href="#">6</a></li>
-                <li class="page-item"><a class="page-link mobile" href="#">7</a></li>
-                <li class="page-item"><a class="page-link mobile" href="#">8</a></li>
-                <li class="page-item"><a class="page-link mobile" href="#">9</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">&raquo;</a>
-                </li>
-            </ul>
+            
+            
+            
+            <!-- Paging 처리 -->
+            <div class='pull-right'>
+              <ul class="pagination">
+                
+                <c:if test="${pageMaker.prev}">
+                  <li class="paginate_button previous">
+                    <a href="${pageMaker.startPage -1}">Previous</a>
+                  </li>
+                </c:if>
+                
+                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                  <li class="paginate_button ${pageMaker.cri.pageNum == num ? "active" : "" }">
+                    <a href="${num}">${num}</a>
+                  </li>
+                </c:forEach>
+                
+                <c:if test="${pageMaker.next}">
+                  <li class="paginate_button next">
+                    <a href="${pageMaker.endPage+1 }">Next</a>
+                  </li>
+                </c:if>
+              
+              </ul>
+            </div>
+            
+            
+            
+            <form id='actionForm' action="/jisikdong/list" method='get'>
+              <input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+              <input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+            </form>
+            
             <footer class="text-center" style="max-width: 1080px;">
                 <p>Copyright ⓒ 2019 <b>zalbazo</b> All Rights Reserved.</p>
             </footer>
         </main>
     </div>
 </div>
+
 <!-- 제이쿼리 자바스크립트 추가하기 -->
 
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+
 	$('document').ready(function(){
+  
+  	var actionForm = $("#actionForm");
+	
+	$(".paginate_button a").on("click", function(e){
+		e.preventDefault();
+		console.log('click');
+		actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+		actionForm.submit();
+	});
+	
+	$(".move").on("click", function(e){
+		e.preventDefault();
+		actionForm.append("<input type='hidden' name='id' value='"+$(this).attr("href")+"'>");
+		actionForm.attr("action", "/jisikdong/get");
+		actionForm.submit();
+	});
+  
+  
 		
 		var result = '<c:out value="${result}" />';
 		
@@ -114,6 +156,7 @@
 			self.location = "/jisikdong/register";
 		});
 	});
+
 </script>
 </body>
 </html>

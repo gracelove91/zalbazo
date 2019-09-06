@@ -34,8 +34,9 @@ public class JisikDongController {
         content.setCategoryId(JISIKDONG_CATEGORY_NUM);
 
         service.register(content);
-        rttr.addFlashAttribute("result", content.getId());
-
+        
+        rttr.addFlashAttribute("result", content);
+        
         return "redirect:/jisikdong/list";
     }
 
@@ -46,13 +47,15 @@ public class JisikDongController {
         service.getList(JISIKDONG_CATEGORY_NUM ).stream().forEach(System.out::println);
     }
 
-    @GetMapping("/get")
-    public void detail(@RequestParam("id") Long id, Model model){
-        model.addAttribute("content", service.get(id));
+    @GetMapping({"/get", "/modify"})
+    public void boardView(@RequestParam("id") Long id, Model model){
+    	
+        model.addAttribute("board", service.get(id));
     }
 
     @PostMapping("/modify")
     public String modify(Content content, RedirectAttributes rttr){
+    	
         if(service.modify(content)){
             rttr.addFlashAttribute("result", content.getId());
         }

@@ -54,8 +54,7 @@
             			</div>
             			<div class="modal-body">처리가 완료되었습니다</div>
             			<div class="modal-footer">
-            				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            				<button type="button" class="btn btn-primary">Save Changes</button>
+            				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
             			</div>
             		</div>
             	</div>
@@ -69,7 +68,7 @@
               <ul class="pagination">
                 
                 <c:if test="${pageMaker.prev}">
-                  <li class="paginate_button previous">
+                  <li class="page-item previous">
                     <a class="page-link" href="${pageMaker.startPage -1}">Previous</a>
                   </li>
                 </c:if>
@@ -81,7 +80,7 @@
                 </c:forEach>
                 
                 <c:if test="${pageMaker.next}">
-                  <li class="paginate_button next">
+                  <li class="page-item next">
                     <a class="page-link" href="${pageMaker.endPage+1 }">Next</a>
                   </li>
                 </c:if>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
 <mapper namespace="kr.zalbazo.mapper.content.ContentMapper">
+
 
 	<insert id="insert"
 		parameterType="kr.zalbazo.model.content.Content">
@@ -59,5 +61,6 @@
 	<select id="getTotalCount" resultType="int">
 	  select count(*) from content where id > 0 and CATEGORY_ID = #{category}
 	</select>
+
 
 </mapper>

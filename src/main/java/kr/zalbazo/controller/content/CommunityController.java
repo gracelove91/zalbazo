@@ -64,5 +64,12 @@ public class CommunityController {
         }
         return "redirect:/community/list";
     }
+    
+    @GetMapping("/boardView")
+    public String boardView(Model model) {
+    	System.out.println("커뮤니티");
+    	
+    	return "community/boardView";
+    }
 
 }

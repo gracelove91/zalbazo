@@ -34,16 +34,35 @@
                 <c:forEach items="${contentList}" var="content">
                 <tr>
                     <th scope="row" class="mobile" style="text-align:center;"><c:out value="${content.id}"/></th>
-                    <td><a class='move' href='<c:out value="${content.id}"/>'><c:out value="${content.title}"/></a></td> 
+
+                    <td><a style="color: #000000;" href='/jisikdong/get?id=<c:out value="${content.id}"/>'><c:out value="${content.title}"/></a></td>
+
                     <td class="mobile" style="text-align:center;"><c:out value="${content.userEmail}"/></td>
                     <td class="mobile" style="text-align:center;"><fmt:formatDate value="${content.createdDate}" pattern="yyyy-MM-dd"/> </td>
                 </tr>
                 </c:forEach>
                 </tbody>
             </table>
-            
+
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true">
+            	<div class="modal-dialog">
+            		<div class="modal-content">
+            			<div class="modal-header">
+            				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            				<h4 class="modal-title" id="myModalLabel">Modal Title</h4>
+            			</div>
+            			<div class="modal-body">처리가 완료되었습니다</div>
+            			<div class="modal-footer">
+            				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            				<button type="button" class="btn btn-primary">Save Changes</button>
+            			</div>
+            		</div>
+            	</div>
+            </div>
+
             <div style="max-width: 1080px;">
-                <a href="/jisikdong/register" class="btn btn-primary float-right">글쓰기</a>
+                <a href="/jisikdong/register" id='regBtn' type="button" class="btn btn-primary float-right">글쓰기</a>
             </div>
             
             
@@ -88,12 +107,15 @@
 </div>
 
 <!-- 제이쿼리 자바스크립트 추가하기 -->
+
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function(){
-	var actionForm = $("#actionForm");
+
+	$('document').ready(function(){
+  
+  	var actionForm = $("#actionForm");
 	
 	$(".paginate_button a").on("click", function(e){
 		e.preventDefault();
@@ -108,8 +130,33 @@ $(document).ready(function(){
 		actionForm.attr("action", "/jisikdong/get");
 		actionForm.submit();
 	});
-	
-});
+  
+  
+		
+		var result = '<c:out value="${result}" />';
+		
+		checkModal(result);
+		
+		history.replaceState({}, null, null);
+		
+		function checkModal(result) {
+			
+			if(result === '' || history.state) {
+				return;
+			}
+			
+			if(parseInt(result) > 0) {
+				$(".modal-body").html("게시글 " + parseInt(result) + "번이 등록되었습니다.");
+			}
+			
+			$("#myModal").modal("show");
+		}
+		
+		$("#regBtn").on("click", function(){
+			self.location = "/jisikdong/register";
+		});
+	});
+
 </script>
 </body>
 </html>

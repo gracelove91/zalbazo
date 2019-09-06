@@ -1,17 +1,12 @@
-
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-
 <%
 	String ctx = request.getContextPath();
 	pageContext.setAttribute("ctx", ctx);
 %>
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
     <title>커뮤니티 글 보기</title>
     <meta charset="utf-8">
@@ -19,7 +14,10 @@
     <!-- 부트스트랩 CSS 추가하기 -->
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
   </head>
-  <div class="container-fluid">
+  <body>
+  	<img alt="" src="${ctx}/resources/img/pika.gif">
+	<h2>여기는 커뮤니티modify</h2>
+    <div class="container-fluid">
       <div class="row d-flex d-md-block flex-nowrap wrapper">
         <nav class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
           <div class="list-group border-0 card text-center text-md-left">
@@ -55,14 +53,15 @@
         </nav>
         <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
           <div class="page-header mt-3">
-              <h2>커뮤니티 글 보기</h2>
+              <h2>커뮤니티 글 수정하기</h2>
           </div>
-          <p class="lead">커뮤니티 get</p>
+          <p class="lead">커뮤니티 modify</p>
           <hr>
-
+		  <form role="form" action="/community/modify" method="post">
+		  
             <div class="form-group">
               <label>EMAIL</label>
-              <input type="text" class="form-control" id="userEmail" name="userEmail" value="${content.userEmail}">
+              <input type="text" class="form-control" id="userEmail" name="userEmail" value="${content.userEmail}" readonly="readonly">
             </div>
             <div class="form-group">
               <label>제목</label>
@@ -72,13 +71,12 @@
               <label>내용</label>
               <textarea class="form-control" style="height: 320px" id="body" name="body">${content.body}</textarea>
             </div>
-            <button data-oper='modify' class="btn btn-default">Modify</button>
-            <button data-oper='list' class="btn btn-info">list</button>
             
-            <form id='operForm' action="/community/modify" method="get">
-            	<input type='hidden' id='id' name='id' value='<c:out value="${content.id}"/>'>
-            </form>
-
+            <button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
+            <button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
+            <button type="submit" data-oper='list' class="btn btn-info">List</button>
+            
+		  </form>
           <footer class="text-center" style="max-width: 920px;">
             <p>Copyright ⓒ 2018 <b>잘바조</b> All Rights Reserved.</p>
           </footer>
@@ -92,21 +90,27 @@
     <script type="text/javascript">
     	$(document).ready(function(){
     		
-    		var operForm = $("#operForm");
+    		var formObj = $("form");
     		
-    		$("button[data-oper='modify']").on("click", function(e){
-    			operForm.attr("action", "/community/modify").submit();
-    		});
-    		
-    		$("button[data-oper='list']").on("click", function(e){
+    		$('button').on("click", function(e){
     			
-    			operForm.find("#id").remove();
-    			operForm.attr("action", "/community/list");
-    			operForm.submit();
+    			e.preventDefault();
+    			
+    			var oper = $(this).data("oper");
+    			
+    			console.log(oper);
+    			
+    			if(oper === 'remove') {
+
+    				formObj.attr("action", "/community/remove");
+    			}else if(oper === 'list'){
+					
+    				formObj.attr("action", "/community/list").attr("method", "get");
+					formObj.empty();
+    			}
+    			formObj.submit();
     		});
     	});
-    
     </script>
   </body>
-
 </html>

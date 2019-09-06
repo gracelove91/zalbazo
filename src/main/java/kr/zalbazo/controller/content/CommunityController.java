@@ -34,7 +34,8 @@ public class CommunityController {
         content.setCategoryId(COMMUNITY_CATEGORY_NUM);
 
         service.register(content);
-        rttr.addFlashAttribute("result", content.getId());
+        
+        rttr.addFlashAttribute("result", content);
 
         return "redirect:/community/list";
     }
@@ -49,14 +50,16 @@ public class CommunityController {
         model.addAttribute("pageMaker", new PageDTO(cri, total));
     }
 
-    @GetMapping("/get")
-    public void detail(@RequestParam("id") Long id, Model model){
+    @GetMapping({"/get", "/modify"})
+    public void boardView(@RequestParam("id") Long id, Model model){
+    	
         model.addAttribute("content", service.get(id));
     }
-
+    
     @PostMapping("/modify")
     public String modify(Content content, RedirectAttributes rttr){
-        if(service.modify(content)){
+       
+    	if(service.modify(content)){
             rttr.addFlashAttribute("result", content.getId());
         }
         return "redirect:/community/list";
@@ -68,13 +71,6 @@ public class CommunityController {
             rttr.addFlashAttribute("result", "success");
         }
         return "redirect:/community/list";
-    }
-    
-    @GetMapping("/boardView")
-    public String boardView(Model model) {
-    	System.out.println("커뮤니티");
-    	
-    	return "community/boardView";
     }
 
 }

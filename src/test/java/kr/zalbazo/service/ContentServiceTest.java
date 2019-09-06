@@ -1,6 +1,7 @@
 package kr.zalbazo.service;
 
 import kr.zalbazo.model.content.Content;
+import kr.zalbazo.model.content.Criteria;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,9 +22,14 @@ public class ContentServiceTest {
     @Autowired
     ContentService service;
 
+//    @Test
+//    public void testExist(){
+//      log.info(service.getList(2L));
+//    }
+    
     @Test
-    public void testExist(){
-      log.info(service.getList(2L));
+    public void testGetList() {
+    	service.getList(new Criteria(2L)).forEach(content -> log.info(content));
     }
 
     @Transactional

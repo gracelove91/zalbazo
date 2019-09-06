@@ -11,14 +11,23 @@ public class Criteria {
 	
 	private int pageNum;
 	private int amount;
+	private Long category;
 	
 	public Criteria() {
-		this(1,10);
+		this.pageNum = 1;
+		this.amount = 10;
 	}
 	
-	public Criteria(int pageNum, int amount) {
+	public Criteria(Long category) {
+		this.pageNum = 1;
+		this.amount = 10;
+		this.category = category;
+	}
+	
+	public Criteria(int pageNum, int amount, Long category) {
 		this.pageNum = pageNum;
 		this.amount = amount;
+		this.category = category;
 	}
 
 }

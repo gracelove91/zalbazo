@@ -33,10 +33,6 @@
 
   <body>
 
-  	<img alt="" src="${ctx}/resources/img/rocket3.gif">
-
-	<h2>여기는 커뮤get</h2>
-
     <div class="container-fluid">
 
       <div class="row d-flex d-md-block flex-nowrap wrapper">
@@ -98,21 +94,21 @@
             <div class="form-group">
 
               <label>EMAIL</label>
-              <input type="text" class="form-control" id="userEmail" name="userEmail" value="${content.userEmail}">
+              <input type="text" class="form-control" id="userEmail" name="userEmail" value="${content.userEmail}" readonly="readonly">
 
             </div>
 
             <div class="form-group">
 
               <label>제목</label>
-              <input type="text" class="form-control" id="title" name="title" value="${content.title}">
+              <input type="text" class="form-control" id="title" name="title" value="${content.title}" readonly="readonly">
 
             </div>
 
             <div class="form-group">
 
               <label>내용</label>
-              <textarea class="form-control" style="height: 320px" id="body" name="body">${content.body}</textarea>
+              <textarea class="form-control" style="height: 320px" id="body" name="body" readonly="readonly">${content.body}</textarea>
 
             </div>
 

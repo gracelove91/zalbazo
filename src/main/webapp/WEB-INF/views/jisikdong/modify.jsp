@@ -15,8 +15,6 @@
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
   </head>
   <body>
-  	<img alt="" src="${ctx}/resources/img/pika.gif">
-	<h2>여기는 지식동modify</h2>
     <div class="container-fluid">
       <div class="row d-flex d-md-block flex-nowrap wrapper">
         <nav class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">

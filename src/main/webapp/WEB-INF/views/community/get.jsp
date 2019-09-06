@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	String ctx = request.getContextPath();
 	pageContext.setAttribute("ctx", ctx);
@@ -7,10 +9,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ä¿¹Â´ÏÆ¼ ±Û º¸±â</title>
+    <title>ì»¤ë®¤ë‹ˆí‹° ê¸€ ë³´ê¸°</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- ºÎÆ®½ºÆ®·¦ CSS Ãß°¡ÇÏ±â -->
+    <!-- ë¶€íŠ¸ìŠ¤íŠ¸ë© CSS ì¶”ê°€í•˜ê¸° -->
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
   </head>
   <div class="container-fluid">
@@ -18,40 +20,40 @@
         <nav class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
           <div class="list-group border-0 card text-center text-md-left">
             <a href="./index.html" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-              <img style="width: 20px;" src="/resources/img/home.svg"><span class="d-none d-md-inline ml-1">¸ŞÀÎ</span>
+              <img style="width: 20px;" src="/resources/img/home.svg"><span class="d-none d-md-inline ml-1">ë©”ì¸</span>
             </a>
             <a href="#usermenu" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
              data-parent="#sidebar" aria-expanded="false">
-              <img style="width: 20px;" src="/resources/img/user.svg"><span class="d-none d-md-inline ml-1">È¸¿ø °ü¸®</span>
+              <img style="width: 20px;" src="/resources/img/user.svg"><span class="d-none d-md-inline ml-1">íšŒì› ê´€ë¦¬</span>
             </a>
             <div class="collapse" id="usermenu">
-              <a href="userJoin.html" class="list-group-item" data-parent="#sidebar">È¸¿ø°¡ÀÔ</a>
-              <a href="userLogin.html" class="list-group-item" data-parent="#sidebar">·Î±×ÀÎ</a>
-              <a href="userEdit.html" class="list-group-item" data-parent="#sidebar">È¸¿øÁ¤º¸¼öÁ¤</a>
-              <a href="userLogout.html" class="list-group-item" data-parent="#sidebar">·Î±×¾Æ¿ô</a>
+              <a href="userJoin.html" class="list-group-item" data-parent="#sidebar">íšŒì›ê°€ì…</a>
+              <a href="userLogin.html" class="list-group-item" data-parent="#sidebar">ë¡œê·¸ì¸</a>
+              <a href="userEdit.html" class="list-group-item" data-parent="#sidebar">íšŒì›ì •ë³´ìˆ˜ì •</a>
+              <a href="userLogout.html" class="list-group-item" data-parent="#sidebar">ë¡œê·¸ì•„ì›ƒ</a>
             </div>
             <a href="board.html" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-              <img style="width: 20px;" src="/resources/img/board.svg"><span class="d-none d-md-inline ml-1">ÀÚÀ¯ °Ô½ÃÆÇ</span>
+              <img style="width: 20px;" src="/resources/img/board.svg"><span class="d-none d-md-inline ml-1">ììœ  ê²Œì‹œíŒ</span>
             </a>
             <a href="qna.html" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
               <img style="width: 20px;" src="/resources/img/message.svg"><span class="d-none d-md-inline ml-1">Q & A</span>
             </a>
             <a href="#search" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
              data-parent="#sidebar" aria-expanded="false">
-              <img style="width: 20px;" src="/resources/img/search.svg"><span class="d-none d-md-inline ml-1">°Ë»ö</span>
+              <img style="width: 20px;" src="/resources/img/search.svg"><span class="d-none d-md-inline ml-1">ê²€ìƒ‰</span>
             </a>
             <div class="collapse" id="search">
               <div class="input-group p-2" style="background-color: #1c1c1c;">
-                <input type="text" class="form-control" placeholder="³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.">
+                <input type="text" class="form-control" placeholder="ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.">
               </div>
             </div>
           </div>
         </nav>
         <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
           <div class="page-header mt-3">
-              <h2>Ä¿¹Â´ÏÆ¼ ±Û º¸±â</h2>
+              <h2>ì»¤ë®¤ë‹ˆí‹° ê¸€ ë³´ê¸°</h2>
           </div>
-          <p class="lead">Ä¿¹Â´ÏÆ¼ get</p>
+          <p class="lead">ì»¤ë®¤ë‹ˆí‹° get</p>
           <hr>
 
             <div class="form-group">
@@ -59,11 +61,11 @@
               <input type="text" class="form-control" id="userEmail" name="userEmail" value="${content.userEmail}">
             </div>
             <div class="form-group">
-              <label>Á¦¸ñ</label>
+              <label>ì œëª©</label>
               <input type="text" class="form-control" id="title" name="title" value="${content.title}">
             </div>
             <div class="form-group">
-              <label>³»¿ë</label>
+              <label>ë‚´ìš©</label>
               <textarea class="form-control" style="height: 320px" id="body" name="body">${content.body}</textarea>
             </div>
             <button data-oper='modify' class="btn btn-default">Modify</button>
@@ -74,14 +76,14 @@
             </form>
 
           <footer class="text-center" style="max-width: 920px;">
-            <p>Copyright ¨Ï 2018 <b>Àß¹ÙÁ¶</b> All Rights Reserved.</p>
+            <p>Copyright â“’ 2018 <b>ì˜ë°”ì¡°</b> All Rights Reserved.</p>
           </footer>
         </main>
       </div>
     </div>
-    <!-- Á¦ÀÌÄõ¸® ÀÚ¹Ù½ºÅ©¸³Æ® Ãß°¡ÇÏ±â -->
+    <!-- ì œì´ì¿¼ë¦¬ ìë°”ìŠ¤í¬ë¦½íŠ¸ ì¶”ê°€í•˜ê¸° -->
     <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
-    <!-- ºÎÆ®½ºÆ®·¦ ÀÚ¹Ù½ºÅ©¸³Æ® Ãß°¡ÇÏ±â -->
+    <!-- ë¶€íŠ¸ìŠ¤íŠ¸ë© ìë°”ìŠ¤í¬ë¦½íŠ¸ ì¶”ê°€í•˜ê¸° -->
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript">
     	$(document).ready(function(){
@@ -89,7 +91,7 @@
     		var operForm = $("#operForm");
     		
     		$("button[data-oper='modify']").on("click", function(e){
-    			operForm.attr("action", "/jisikdong/modify").submit();
+    			operForm.attr("action", "/community/modify").submit();
     		});
     		
     		$("button[data-oper='list']").on("click", function(e){

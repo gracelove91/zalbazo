@@ -122,24 +122,21 @@
             <div class="form-group">
 
               <label>EMAIL</label>
-
-              <input type="text" class="form-control" id="userEmail" name="userEmail" value="${board.userEmail}">
+              <input type="text" class="form-control" id="userEmail" name="userEmail" value="${content.userEmail}">
 
             </div>
 
             <div class="form-group">
 
               <label>제목</label>
-
-              <input type="text" class="form-control" id="title" name="title" value="${board.title}">
+              <input type="text" class="form-control" id="title" name="title" value="${content.title}">
 
             </div>
 
             <div class="form-group">
 
               <label>내용</label>
-
-              <textarea class="form-control" style="height: 320px" id="body" name="body">${board.body}</textarea>
+              <textarea class="form-control" style="height: 320px" id="body" name="body">${content.body}</textarea>
 
             </div>
 
@@ -149,15 +146,16 @@
             <button data-oper='modify' class="btn btn-default">Modify</button>
             <button data-oper='list' class="btn btn-info">list</button>
 
+
 			<form id='operForm' action="/jisikdong/modify" method="get">
 			  <input type='hidden' id='id' name='id' value='<c:out value="${content.id}"/>'>
 			  <input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
 			  <input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
-			</form> 
+			</form>
 
           <footer class="text-center" style="max-width: 920px;">
 
-            <p>Copyright ⓒ 2018 <b>잘바조</b> All Rights Reserved.</p>
+            <p>Copyright ⓒ 2019 <b>잘바조</b> All Rights Reserved.</p>
 
           </footer>
 

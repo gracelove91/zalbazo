@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ContentMapper {
 
+
     void insert(Content content);
 
     Content read(Long contentId);
@@ -20,5 +21,6 @@ public interface ContentMapper {
     List<Content> getListWithPaging(Criteria cri);
 
     int getTotalCount(Criteria cri);
+
 }
 

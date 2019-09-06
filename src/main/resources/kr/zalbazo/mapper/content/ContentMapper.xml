@@ -3,7 +3,6 @@
 
 <mapper namespace="kr.zalbazo.mapper.content.ContentMapper">
 
-
 	<insert id="insert"
 		parameterType="kr.zalbazo.model.content.Content">
 		INSERT into content(ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE,
@@ -13,11 +12,9 @@
 	</insert>
 
 	<update id="update">
-		update CONTENT
-		set TITLE = #{title},
-		BODY = #{body},
-		UPDATED_DATE = sysdate
-		where ID = #{id}
+        update CONTENT
+        set TITLE= #{title}, BODY = #{body}, UPDATED_DATE = sysdate, USER_EMAIL=#{userEmail}, CATEGORY_ID=#{categoryId}
+        where ID = #{id}
 	</update>
 
 	<delete id="delete">

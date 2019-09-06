@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,22 +52,22 @@ public class CommunityController {
     }
 
     @GetMapping({"/get", "/modify"})
-    public void boardView(@RequestParam("id") Long id, Model model){
-    	
+    public void detail(@RequestParam("id") Long id, Model model, @ModelAttribute("cri") Criteria cri){
         model.addAttribute("content", service.get(id));
     }
     
     @PostMapping("/modify")
-    public String modify(Content content, RedirectAttributes rttr){
-       
-    	if(service.modify(content)){
-            rttr.addFlashAttribute("result", content.getId());
+    public String modify(Content content, RedirectAttributes rttr, @ModelAttribute("cri") Criteria cri){
+
+        if(service.modify(content)){
+            rttr.addFlashAttribute("result", "success");
         }
         return "redirect:/community/list";
     }
 
     @PostMapping("/remove")
     public String remove(@RequestParam("id") Long id, RedirectAttributes rttr){
+    	
         if(service.remove(id)){
             rttr.addFlashAttribute("result", "success");
         }

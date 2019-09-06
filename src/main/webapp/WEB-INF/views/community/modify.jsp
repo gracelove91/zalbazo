@@ -8,7 +8,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>커뮤니티 글 보기</title>
+    <title>커뮤 글 보기</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- 부트스트랩 CSS 추가하기 -->
@@ -16,7 +16,7 @@
   </head>
   <body>
   	<img alt="" src="${ctx}/resources/img/pika.gif">
-	<h2>여기는 커뮤니티modify</h2>
+	<h2>여기는 커뮤modify</h2>
     <div class="container-fluid">
       <div class="row d-flex d-md-block flex-nowrap wrapper">
         <nav class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
@@ -53,12 +53,18 @@
         </nav>
         <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
           <div class="page-header mt-3">
-              <h2>커뮤니티 글 수정하기</h2>
+              <h2>커뮤 글 수정하기</h2>
           </div>
-          <p class="lead">커뮤니티 modify</p>
+          <p class="lead">커뮤 modify</p>
           <hr>
 		  <form role="form" action="/community/modify" method="post">
 		  
+		    <div class="form-group">
+              <input type="hidden" class="form-control" id="id" name="id" value="${content.id}" readonly="readonly">
+            </div>
+            <div class="form-group">
+              <input type="hidden" class="form-control" id="categoryId" name="categoryId" value="${content.categoryId}" readonly="readonly">
+            </div>
             <div class="form-group">
               <label>EMAIL</label>
               <input type="text" class="form-control" id="userEmail" name="userEmail" value="${content.userEmail}" readonly="readonly">
@@ -96,14 +102,14 @@
     			
     			e.preventDefault();
     			
-    			var oper = $(this).data("oper");
+    			var operation = $(this).data("oper");
     			
-    			console.log(oper);
+    			console.log(operation);
     			
-    			if(oper === 'remove') {
+    			if(operation === 'remove') {
 
     				formObj.attr("action", "/community/remove");
-    			}else if(oper === 'list'){
+    			}else if(operation === 'list'){
 					
     				formObj.attr("action", "/community/list").attr("method", "get");
 					formObj.empty();

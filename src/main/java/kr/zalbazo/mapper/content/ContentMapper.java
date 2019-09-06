@@ -23,5 +23,5 @@ public interface ContentMapper {
     int getTotalCount(Criteria cri);
 }
 
-}
+
 

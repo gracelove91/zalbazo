@@ -59,6 +59,10 @@
           <hr>
 		  <form role="form" action="/jisikdong/modify" method="post">
 		  
+		  	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+		  	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+
+		  
 		    <div class="form-group">
               <input type="hidden" class="form-control" id="id" name="id" value="${content.id}" readonly="readonly">
             </div>
@@ -93,6 +97,7 @@
     <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
     <!-- 부트스트랩 자바스크립트 추가하기 -->
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
     <script type="text/javascript">
     	$(document).ready(function(){
     		
@@ -107,12 +112,16 @@
     			console.log(operation);
     			
     			if(operation === 'remove') {
-
     				formObj.attr("action", "/jisikdong/remove");
-    			}else if(operation === 'list'){
-					
+    				
+    			} else if(operation === 'list') {
     				formObj.attr("action", "/jisikdong/list").attr("method", "get");
+    				var pageNumTag = $("input[name='pageNum']").clone();
+    				var amountTag = $("input[name='amount']").clone();
+    				
 					formObj.empty();
+					formObj.append(pageNumTag);
+					formObj.append(amountTag);
     			}
     			formObj.submit();
     		});

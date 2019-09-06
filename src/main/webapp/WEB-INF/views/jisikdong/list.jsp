@@ -36,8 +36,9 @@
                     <tr>
                         <th scope="row" class="mobile" style="text-align:center;"><c:out value="${content.id}"/></th>
 
-                        <td><a style="color: #000000;" href='/jisikdong/get?id=<c:out value="${content.id}"/>'><c:out
-                                value="${content.title}"/></a></td>
+                        <td>
+                          <a class='move' style="color: #000000;" href='<c:out value="${content.id}"/>'><c:out value="${content.title}"/></a>
+                        </td>
 
                         <td class="mobile" style="text-align:center;"><c:out value="${content.userEmail}"/></td>
                         <td class="mobile" style="text-align:center;"><fmt:formatDate value="${content.createdDate}"
@@ -127,6 +128,7 @@
             actionForm.attr("action", "/jisikdong/get");
             actionForm.submit();
         });
+        
         var result = '<c:out value="${result}" />';
 
         checkModal(result);

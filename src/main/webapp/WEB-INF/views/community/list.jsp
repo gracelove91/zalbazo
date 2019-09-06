@@ -34,7 +34,7 @@
                 <c:forEach items="${contentList}" var="content">
                 <tr>
                     <th scope="row" class="mobile" style="text-align:center;"><c:out value="${content.id}"/></th>
-                    <td><a href="./boardView.html" style="color: #000000;"><c:out value="${content.title}"/></a></td>
+                    <td><a href="/community/get" style="color: #000000;"><c:out value="${content.title}"/></a></td>
                     <td class="mobile" style="text-align:center;"><c:out value="${content.userEmail}"/></td>
                     <td class="mobile" style="text-align:center;"><fmt:formatDate value="${content.createdDate}" pattern="yyyy-MM-dd"/> </td>
                 </tr>

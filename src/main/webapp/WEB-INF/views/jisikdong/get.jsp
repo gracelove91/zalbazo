@@ -87,11 +87,13 @@
 				<textarea class="form-control" style="height: 320px" id="body" name="body" readonly="readonly">${content.body}</textarea>
 			</div>
 
+
 			<%-- onclick="location.href='/jisikdong/modify?id=<c:out value="${board.id}"/>'"
 			 onclick="location.href='/jisikdong/list'" --%>
 
 			<button data-oper='modify' class="btn btn-default">Modify</button>
 			<button data-oper='list' class="btn btn-info">list</button>
+
 
 			<form id='operForm' action="/jisikdong/modify" method="get">
 				<input type='hidden' id='id' name='id' value='<c:out value="${content.id}"/>'> 

@@ -5,7 +5,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>지식동 글 쓰기</title>
+    <title>지식동 글작성</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- 부트스트랩 CSS 추가하기 -->

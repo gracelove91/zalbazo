@@ -16,7 +16,8 @@ public interface ContentMapper {
 
     int delete(Long contentId);
 
-    int update(Content content);
+    int update(Content content);    
+
 
     List<Content> getListWithPaging(Criteria cri);
 

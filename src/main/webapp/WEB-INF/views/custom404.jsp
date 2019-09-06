@@ -6,11 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+	String ctx = request.getContextPath();
+	pageContext.setAttribute("ctx", ctx);
+%>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-없는 페이지입니다! 에러코드 404다 이말이야
+
+<h1>돌아가,, 404야,,,,,</h1>
+<img src="${ctx}/resources/img/quokka.gif">
+
 </body>
 </html>

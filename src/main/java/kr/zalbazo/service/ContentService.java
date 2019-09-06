@@ -6,6 +6,7 @@ import kr.zalbazo.model.content.Criteria;
 import java.util.List;
 
 public interface ContentService {
+	
     void register(Content content);
     Content get(Long id);
     boolean modify(Content content);

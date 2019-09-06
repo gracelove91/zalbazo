@@ -118,15 +118,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- 디비관련 -->
-        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
-<!--         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.199</version>
-            <scope>test</scope>
-        </dependency>
- -->
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc6</artifactId>
@@ -161,7 +152,6 @@
             <artifactId>bootstrap</artifactId>
             <version>4.3.1</version>
         </dependency>
-
 
         <!-- https://mvnrepository.com/artifact/org.webjars/jquery -->
         <dependency>

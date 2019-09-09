@@ -70,8 +70,6 @@
             resultType="kr.zalbazo.model.content.Content">
       <![CDATA[
         select ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, USER_EMAIL
-<<<<<<< HEAD
-<<<<<<< HEAD
         from 
         	(
         	select /*+ INDEX_DESC(content content_pk) */
@@ -97,9 +95,6 @@
 	  <include refid="criteria"></include>
 	  
 	  id > 0 and CATEGORY_ID = #{category}
-=======
-=======
->>>>>>> da5f34eaef2f75b277fc593aa83c590627d8d203
         from (
                  select /*+ INDEX_DESC(content content_pk) */
                      rownum RN,
@@ -116,10 +111,7 @@
              )
         where rn > (#{pageNum} - 1) * #{amount}
         ]]>
-<<<<<<< HEAD
->>>>>>> da5f34eaef2f75b277fc593aa83c590627d8d203
-=======
->>>>>>> da5f34eaef2f75b277fc593aa83c590627d8d203
+
 	</select>
 
     <select id="getTotalCount" resultType="int">

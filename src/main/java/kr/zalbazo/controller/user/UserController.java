@@ -35,6 +35,7 @@ public class UserController {
     public String join(@Valid @ModelAttribute User user, BindingResult bindingResult, RedirectAttributes rttr) {
         validator(user, bindingResult);
 
+
         if(bindingResult.hasErrors()){
             return "user/userjoin";
         }

@@ -19,10 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({
-        "file:src/main/webapp/WEB-INF/root-context.xml",
-        "file:src/main/webapp/WEB-INF/servlet-context.xml"
-})
+@ContextConfiguration(value = "file:src/main/webapp/WEB-INF/servlet-context.xml", classes = kr.zalbazo.config.AppConfig.class)
 @WebAppConfiguration
 @Log4j
 public class BasicControllerTest {

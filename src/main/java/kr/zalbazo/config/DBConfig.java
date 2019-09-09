@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -13,6 +14,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
+@Configuration
 @PropertySource("classpath:application-prod.properties")
 public class DBConfig {
 
@@ -30,6 +32,7 @@ public class DBConfig {
 
     @Bean
     public DataSource dataSource() {
+
         HikariConfig config = new HikariConfig();
         config.setDriverClassName(this.driverClass);
         config.setJdbcUrl(this.jdbcUrl);

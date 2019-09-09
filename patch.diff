@@ -1,0 +1,133 @@
+From c728f14bf1afe095f0bb8b776ec9c24baa36da7c Mon Sep 17 00:00:00 2001
+From: gracelove <govlmo91@gmail.com>
+Date: Mon, 9 Sep 2019 13:12:26 +0900
+Subject: [PATCH] =?UTF-8?q?log4j=20properties=20=EB=B3=80=EA=B2=BD?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ .../controller/user/UserController.java       |  1 -
+ src/main/java/kr/zalbazo/model/user/User.java |  5 ++-
+ src/main/resources/log4j.properties           | 32 +++++++++++++++++++
+ src/main/resources/log4j.xml                  | 26 ---------------
+ .../webapp/WEB-INF/views/user/userjoin.jsp    |  1 +
+ 5 files changed, 37 insertions(+), 28 deletions(-)
+ create mode 100644 src/main/resources/log4j.properties
+ delete mode 100644 src/main/resources/log4j.xml
+
+diff --git a/src/main/java/kr/zalbazo/controller/user/UserController.java b/src/main/java/kr/zalbazo/controller/user/UserController.java
+index 6ddc891..995a8f2 100644
+--- a/src/main/java/kr/zalbazo/controller/user/UserController.java
++++ b/src/main/java/kr/zalbazo/controller/user/UserController.java
+@@ -35,7 +35,6 @@ public class UserController {
+     public String join(@Valid @ModelAttribute User user, BindingResult bindingResult, RedirectAttributes rttr) {
+         validator(user, bindingResult);
+ 
+-
+         if(bindingResult.hasErrors()){
+             return "user/userjoin";
+         }
+diff --git a/src/main/java/kr/zalbazo/model/user/User.java b/src/main/java/kr/zalbazo/model/user/User.java
+index f8b063d..d1cbc3f 100644
+--- a/src/main/java/kr/zalbazo/model/user/User.java
++++ b/src/main/java/kr/zalbazo/model/user/User.java
+@@ -24,7 +24,10 @@ public class User {
+     private String password2;
+ 
+     private String role;
+-    private Long tel;
++
++    @Pattern(regexp = "(^[0-9]*$)", message = " '-' 를 제외한 숫자만 적어주세요.")
++    private String tel;
++    
+     private String address;
+     private String name;
+     private Date joinDate;
+diff --git a/src/main/resources/log4j.properties b/src/main/resources/log4j.properties
+new file mode 100644
+index 0000000..5acba0f
+--- /dev/null
++++ b/src/main/resources/log4j.properties
+@@ -0,0 +1,32 @@
++
++# Root Logging
++log4j.rootLogger=INFO, stdout, logfile
++
++# stdout Appender
++log4j.appender.stdout=org.apache.log4j.ConsoleAppender
++log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
++log4j.appender.stdout.encoding=UTF-8
++log4j.appender.stdout.layout.ConversionPattern=%d %-5p %c(%M:%L) - %m%n
++
++# File Appender
++log4j.appender.logfile=org.apache.log4j.DailyRollingFileAppender
++log4j.appender.Threshold=DEBUG
++log4j.appender.logfile.File=/logs/test.log
++log4j.appender.logfile.DatePattern='.'yyyy-MM-dd
++log4j.appender.logfile.BufferSize=8192
++log4j.appender.logfile.Append=true
++log4j.appender.logfile.Encoding=UTF-8
++log4j.appender.logfile.layout=org.apache.log4j.PatternLayout
++log4j.appender.logfile.layout.ConversionPattern=%d %-5p %c(%M:%L) - %m%n
++
++
++# SQL Logging
++#log4j.logger.com.ibatis=DEBUG
++#log4j.logger.com.ibatis.common.jdbc.SimpleDataSource=DEBUG
++#log4j.logger.com.ibatis.common.jdbc.ScriptRunner=DEBUG
++#log4j.logger.com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate=DEBUG
++log4j.logger.java.sql.Connection=DEBUG
++log4j.logger.java.sql.Statement=DEBUG
++log4j.logger.java.sql.PreparedStatement=DEBUG
++log4j.logger.java.sql.CallableStatement=DEBUG
++#log4j.logger.java.sql.ResultSet=DEBUG
+\ No newline at end of file
+diff --git a/src/main/resources/log4j.xml b/src/main/resources/log4j.xml
+deleted file mode 100644
+index cc38fc1..0000000
+--- a/src/main/resources/log4j.xml
++++ /dev/null
+@@ -1,26 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8" ?>
+-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+-
+-<log4j:configuration>
+-    
+-
+-    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+-        <param name="Target" value="System.out"/>
+-        <param name="Encoding" value="UTF-8"/>
+-        <layout class="org.apache.log4j.PatternLayout">
+-            <param name="ConversionPattern" value="[%d{ISO8601}] %-5p %c %m %n"/>
+-        </layout>
+-    </appender>
+-    
+-    <logger name="org.springframework" additivity="false">
+-        <level value="INFO"/>
+-        <appender-ref ref="STDOUT"/>
+-    </logger>
+-
+-
+-    <root>
+-        <level value="INFO"/>
+-        <appender-ref ref="STDOUT"/>
+-    </root>
+-
+-</log4j:configuration>
+\ No newline at end of file
+diff --git a/src/main/webapp/WEB-INF/views/user/userjoin.jsp b/src/main/webapp/WEB-INF/views/user/userjoin.jsp
+index 5d28b0a..155c439 100644
+--- a/src/main/webapp/WEB-INF/views/user/userjoin.jsp
++++ b/src/main/webapp/WEB-INF/views/user/userjoin.jsp
+@@ -65,6 +65,7 @@
+                         <form:label path="tel">전화번호</form:label>
+                         <form:input path="tel" type="tel" required="required" class="form-control" id="tel" name="tel"
+                                     placeholder="전화번호를 입력하세요."/>
++                        <form:errors path="tel" cssClass="text-danger"/>
+                     </fieldset>
+                 </div>
+                 <div class="form-group">
+-- 
+2.20.1
+

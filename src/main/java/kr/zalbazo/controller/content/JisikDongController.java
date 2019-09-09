@@ -13,13 +13,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.Criteria;
 import kr.zalbazo.model.content.PageDTO;
-import kr.zalbazo.service.ContentService;
+import kr.zalbazo.service.content.ContentService;
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
 @RequestMapping({ "/jisikdong/*" })
-
 public class JisikDongController {
 	
 	private static final Long JISIKDONG_CATEGORY_NUM = 2L;
@@ -61,10 +60,12 @@ public class JisikDongController {
 		if (service.modify(content)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		rttr.addAttribute("pageNum", cri.getPageNum());
-		rttr.addAttribute("amount", cri.getAmount());
+//		rttr.addAttribute("pageNum", cri.getPageNum());
+//		rttr.addAttribute("amount", cri.getAmount());
+//		rttr.addAttribute("type", cri.getType());
+//		rttr.addAttribute("keyword", cri.getKeyword());
 
-		return "redirect:/jisikdong/list";
+		return "redirect:/jisikdong/list" + cri.getListLink();
 	}
 
 	@PostMapping("/remove")
@@ -72,10 +73,12 @@ public class JisikDongController {
 		if (service.remove(id)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		rttr.addAttribute("pageNum", cri.getPageNum());
-		rttr.addAttribute("amount", cri.getAmount());
+//		rttr.addAttribute("pageNum", cri.getPageNum());
+//		rttr.addAttribute("amount", cri.getAmount());
+//		rttr.addAttribute("type", cri.getType());
+//		rttr.addAttribute("keyword", cri.getKeyword());
 
-		return "redirect:/jisikdong/list";
+		return "redirect:/jisikdong/list" + cri.getListLink();
 	}
 
 }

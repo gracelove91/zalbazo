@@ -44,8 +44,8 @@
                 </a>
                 <a href="#search" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
                    data-parent="#sidebar" aria-expanded="false">
-                    <img style="width: 20px;" src="/resources/img/search.svg"><span
-                        class="d-none d-md-inline ml-1">검색</span>
+                    <img style="width: 20px;" src="/resources/img/search.svg">
+                    <span class="d-none d-md-inline ml-1">검색</span>
                 </a>
                 <div class="collapse" id="search">
                     <div class="input-group p-2" style="background-color: #1c1c1c;">
@@ -65,7 +65,8 @@
 		  
 		  	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
 		  	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
-
+		  	<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
+		  	<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
 		  
 		    <div class="form-group">
               <input type="hidden" class="form-control" id="id" name="id" value="${content.id}" readonly="readonly">
@@ -80,7 +81,7 @@
             <div class="form-group">
               <label>제목</label>
               <input type="text" class="form-control" id="title" name="title" value="${content.title}">
-
+			</div>
             <div class="form-group">
                 <label>내용</label>
                 <textarea class="form-control" style="height: 320px" id="body" name="body">${content.body}</textarea>
@@ -93,7 +94,7 @@
         </form>
        
         <footer class="text-center" style="max-width: 920px;">
-            <p>Copyright ⓒ 2018 <b>잘바조</b> All Rights Reserved.</p>
+            <p>Copyright ⓒ 2019 <b>잘바조</b> All Rights Reserved.</p>
         </footer>
         </main>
     </div>
@@ -123,10 +124,14 @@
     				formObj.attr("action", "/jisikdong/list").attr("method", "get");
     				var pageNumTag = $("input[name='pageNum']").clone();
     				var amountTag = $("input[name='amount']").clone();
+    				var keywordTag = $("input[name='keyword']").clone();
+    				var typeTag = $("input[name='type']").clone();
     				
 					formObj.empty();
 					formObj.append(pageNumTag);
 					formObj.append(amountTag);
+					formObj.append(keywordTag);
+					formObj.append(typeTag);
     			}
     			formObj.submit();
     		});

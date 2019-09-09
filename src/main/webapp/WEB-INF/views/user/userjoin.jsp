@@ -65,6 +65,7 @@
                         <form:label path="tel">전화번호</form:label>
                         <form:input path="tel" type="tel" required="required" class="form-control" id="tel" name="tel"
                                     placeholder="전화번호를 입력하세요."/>
+                        <form:errors path="tel" cssClass="text-danger"/>
                     </fieldset>
                 </div>
                 <div class="form-group">

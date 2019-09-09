@@ -3,61 +3,78 @@
 
 <mapper namespace="kr.zalbazo.mapper.content.ContentMapper">
 
-	<insert id="insert"
-		parameterType="kr.zalbazo.model.content.Content">
-		INSERT into content(ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE,
-		CATEGORY_ID, USER_EMAIL)
-		values (CONTENT_SEQ.nextval, #{title}, #{body}, sysdate, sysdate,
-		#{categoryId},#{userEmail})
-	</insert>
+    <insert id="insert"
+            parameterType="kr.zalbazo.model.content.Content">
+        INSERT into content(ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE,
+                            CATEGORY_ID, USER_EMAIL)
+        values (CONTENT_SEQ.nextval, #{title}, #{body}, sysdate, sysdate,
+                #{categoryId}, #{userEmail})
+    </insert>
 
-	<update id="update">
+    <update id="update">
         update CONTENT
-        set TITLE= #{title}, BODY = #{body}, UPDATED_DATE = sysdate, USER_EMAIL=#{userEmail}, CATEGORY_ID=#{categoryId}
+        set TITLE= #{title},
+            BODY = #{body},
+            UPDATED_DATE = sysdate,
+            USER_EMAIL=#{userEmail},
+            CATEGORY_ID=#{categoryId}
         where ID = #{id}
-	</update>
+    </update>
 
-	<delete id="delete">
-		delete CONTENT
-		where ID = #{id}
-	</delete>
+    <delete id="delete">
+        delete CONTENT
+        where ID = #{id}
+    </delete>
 
-	<select id="read" resultType="kr.zalbazo.model.content.Content">
-		select *
-		from CONTENT
-		where ID = #{id}
-	</select>
+    <select id="read" resultType="kr.zalbazo.model.content.Content">
+        select *
+        from CONTENT
+        where ID = #{id}
+    </select>
 
-	<select id="getList"
-		resultType="kr.zalbazo.model.content.Content"><![CDATA[
+    <select id="getList"
+            resultType="kr.zalbazo.model.content.Content"><![CDATA[
+        select ID,
+               TITLE,
+               BODY,
+               CREATED_DATE,
+               UPDATED_DATE,
+               CATEGORY_ID,
+               USER_EMAIL
+        from CONTENT
+        where ID > 0
+          AND CATEGORY_ID = #{categoryId}
+        ]]></select>
 
-            select ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE,
-                   CATEGORY_ID, USER_EMAIL
-            from CONTENT
-            where ID > 0 AND CATEGORY_ID = #{categoryId}
 
-    ]]></select>
-
-
-	<select id="getListWithPaging"
-		resultType="kr.zalbazo.model.content.Content">
+    <select id="getListWithPaging"
+            resultType="kr.zalbazo.model.content.Content">
       <![CDATA[
         select ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, USER_EMAIL
-        from 
-        	(
-        	select /*+ INDEX_DESC(content content_pk) */
-        	  rownum RN, ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, CATEGORY_ID, USER_EMAIL
-        	from 
-        	  content
-        	where CATEGORY_ID = #{category} and rownum <= #{pageNum} * #{amount}
-        	)
-        where rn > (#{pageNum} -1) * #{amount}
-      ]]>
+        from (
+                 select /*+ INDEX_DESC(content content_pk) */
+                     rownum RN,
+                     ID,
+                     TITLE,
+                     BODY,
+                     CREATED_DATE,
+                     UPDATED_DATE,
+                     CATEGORY_ID,
+                     USER_EMAIL
+                 from content
+                 where CATEGORY_ID = #{category}
+                   and rownum <= #{pageNum} * #{amount}
+             )
+        where rn > (#{pageNum} - 1) * #{amount}
+        ]]>
 	</select>
-	
-	<select id="getTotalCount" resultType="int">
-	  select count(*) from content where id > 0 and CATEGORY_ID = #{category}
-	</select>
+
+    <select id="getTotalCount" resultType="int">
+        select count(*)
+        from content
+        where id > 0
+          and CATEGORY_ID = #{category}
+    </select>
 
 
 </mapper>

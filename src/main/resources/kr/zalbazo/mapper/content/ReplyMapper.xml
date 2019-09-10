@@ -9,15 +9,15 @@
 	</insert>
 
 	<select id="read" resultType="kr.zalbazo.model.content.ReplyVO">
-		SELECT * FROM REPLY WHERE REPLY_ID = #{replyId}
+		SELECT * FROM REPLY WHERE REPLY_ID = #{replyid}
 	</select>
 	
 	<delete id="delete">
-		DELETE FROM REPLY WHERE REPLY_ID = #{replyId}
+		DELETE FROM REPLY WHERE REPLY_ID = #{replyid}
 	</delete>
 	
 	<update id="update">
-		UPDATE REPLY SET BODY = #{body}, UPDATED_DATE = sysdate WHERE REPLY_ID = #{replyId}
+		UPDATE REPLY SET BODY = #{body}, UPDATED_DATE = sysdate WHERE REPLY_ID = #{replyid}
 	</update>
 	
 	<select id="getListWithPaging" resultType="kr.zalbazo.model.content.ReplyVO">
@@ -33,7 +33,7 @@
 		]]>
 	</select>
 	
-	<select id="getCountById" resultType="int">
+	<select id="getCountByContentId" resultType="int">
 		<![CDATA[
 		SELECT COUNT(REPLY_ID) FROM REPLY WHERE CONTENT_ID = #{contentId}
 		]]>

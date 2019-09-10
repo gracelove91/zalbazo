@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class ReplyVO {
 
-	private Long replyId; // 게시판 댓글id
+	private Long replyid; // 게시판 댓글id, replyId아닙니다!!!
 	private Long contentId; // 게시판 원글id
 	
 	private String body; // 댓글내용

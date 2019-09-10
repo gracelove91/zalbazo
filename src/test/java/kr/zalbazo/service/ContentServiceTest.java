@@ -26,22 +26,22 @@ public class ContentServiceTest {
 //    public void testExist(){
 //      log.info(service.getList(2L));
 //    }
-    
-    @Test
-    public void testGetList() {
-    	service.getList(new Criteria(2L)).forEach(content -> log.info(content));
-    }
-
-    @Transactional
-    @Test
-    public void testReg(){
-        Content content = new Content();
-        content.setTitle("서비스테스트제목.");
-        content.setBody("서비스테스트바디");
-        content.setUserEmail("gracelove91@gmail.com");
-        content.setCategoryId(1L);
-
-        service.register(content);
-    }
+//    
+//    @Test
+//    public void testGetList() {
+//    	service.getList(new Criteria(2L)).forEach(content -> log.info(content));
+//    }
+//
+//    @Transactional
+//    @Test
+//    public void testReg(){
+//        Content content = new Content();
+//        content.setTitle("서비스테스트제목.");
+//        content.setBody("서비스테스트바디");
+//        content.setUserEmail("gracelove91@gmail.com");
+//        content.setCategoryId(1L);
+//
+//        service.register(content);
+//    }
 
 }

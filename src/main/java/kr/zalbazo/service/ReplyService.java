@@ -10,11 +10,11 @@ public interface ReplyService {
 	
 	public int register(ReplyVO vo);
 	
-	public ReplyVO get(Long replyId);
+	public ReplyVO get(Long replyid);
 	
 	public int modify(ReplyVO vo);
 	
-	public int remove(Long replyId);
+	public int remove(Long replyid);
 	
 	public List<ReplyVO> getList(Criteria cri, Long contentId);
 	

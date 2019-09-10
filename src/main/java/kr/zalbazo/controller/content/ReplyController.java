@@ -51,30 +51,30 @@ public class ReplyController {
 		return new ResponseEntity<>(service.getListPage(cri, contentId), HttpStatus.OK);
 	}
 
-	@GetMapping(value = "/{replyId}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<ReplyVO> get(@PathVariable("replyId") Long replyId) {
-		log.info("get : " + replyId);
+	@GetMapping(value = "/{replyid}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity<ReplyVO> get(@PathVariable("replyid") Long replyid) {
+		log.info("get : " + replyid);
 
-		return new ResponseEntity<>(service.get(replyId), HttpStatus.OK);
+		return new ResponseEntity<>(service.get(replyid), HttpStatus.OK);
 	}
 
-	@DeleteMapping(value = "/{replyId}", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> remove(@PathVariable("replyId") Long replyId) {
-		log.info("remove : "+replyId);
+	@DeleteMapping(value = "/{replyid}", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> remove(@PathVariable("replyid") Long replyid) {
+		log.info("remove : "+replyid);
 
-		return service.remove(replyId) == 1
+		return service.remove(replyid) == 1
 				? new ResponseEntity<>("success", HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@RequestMapping(method = { RequestMethod.PUT, RequestMethod.PATCH },
-			value = "/{replyId}",
+			value = "/{replyid}",
 			consumes = "application/json",
 			produces = {MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> modify(@RequestBody ReplyVO vo, @PathVariable("replyId") Long replyId) {
+	public ResponseEntity<String> modify(@RequestBody ReplyVO vo, @PathVariable("replyid") Long replyid) {
 
-		vo.setReplyId(replyId);
-		log.info("replyid : " + replyId);
+		vo.setReplyid(replyid);
+		log.info("replyid : " + replyid);
 		log.info("modify : " + vo);
 		
 		return service.modify(vo) == 1

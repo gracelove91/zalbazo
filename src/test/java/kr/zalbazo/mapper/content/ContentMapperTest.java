@@ -20,8 +20,8 @@ import static org.junit.Assert.assertThat;
 @Log4j
 public class ContentMapperTest {
 
-//	@Autowired
-//	private ContentMapper mapper;
+	@Autowired
+	private ContentMapper mapper;
 //
 //	@Test
 //	public void testRead() {

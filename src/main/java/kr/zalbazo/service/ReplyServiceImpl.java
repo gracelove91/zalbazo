@@ -26,10 +26,10 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
-	public ReplyVO get(Long replyId) {
+	public ReplyVO get(Long replyid) {
 		log.info("get");
 		
-		return mapper.read(replyId);
+		return mapper.read(replyid);
 	}
 
 	@Override
@@ -40,10 +40,10 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
-	public int remove(Long replyId) {
+	public int remove(Long replyid) {
 		log.info("remove");
 		
-		return mapper.delete(replyId);
+		return mapper.delete(replyid);
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class ReplyServiceImpl implements ReplyService{
 	@Override
 	public ReplyPageDTO getListPage(Criteria cri, Long contentId) {
 		return new ReplyPageDTO(
-				mapper.getCountById(contentId),
+				mapper.getCountByContentId(contentId),
 				mapper.getListWithPaging(cri, contentId));
 	}
 

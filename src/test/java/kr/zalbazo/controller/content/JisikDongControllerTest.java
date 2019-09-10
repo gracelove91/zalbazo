@@ -46,18 +46,18 @@ public class JisikDongControllerTest {
         log.info(mockMvc);
     }
 
-    @Test
-    public void testModify() throws Exception {
-    	String resultPage = mockMvc
-    			.perform(MockMvcRequestBuilders.post("/jisikdong/modify")
-    				.param("id", "1")
-    				.param("title", "수정수정")
-    				.param("body", "수정수정")
-    				.param("userEmail", "dummy@gmail.com")
-    				.param("categoryId", "2"))
-    			.andReturn().getModelAndView().getViewName();
-    	
-    	log.info(resultPage);
-    }
+//    @Test
+//    public void testModify() throws Exception {
+//    	String resultPage = mockMvc
+//    			.perform(MockMvcRequestBuilders.post("/jisikdong/modify")
+//    				.param("id", "1")
+//    				.param("title", "수정수정")
+//    				.param("body", "수정수정")
+//    				.param("userEmail", "dummy@gmail.com")
+//    				.param("categoryId", "2"))
+//    			.andReturn().getModelAndView().getViewName();
+//    	
+//    	log.info(resultPage);
+//    }
 
 }

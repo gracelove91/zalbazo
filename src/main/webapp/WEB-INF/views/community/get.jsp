@@ -104,7 +104,7 @@
 							</span>
 						<div class="panel-body">
 						  	<ul class="list-group list-group-flush">
-						  		<li class="list-group-item" data-replyId='12'>
+						  		<li class="list-group-item" data-replyid='12'>
 									<div>
 										<div class="header">
 											<strong class="primary-font">user00</strong>
@@ -203,15 +203,14 @@ $(document).ready(function() {
 			}
 			
 			var str = "";
+			
 			if(list == null || list.length == 0){
-				
-				/* bodyUL.html(""); */
 				return;
 			}
 			
 			for(var i = 0, len = list.length || 0; i < len; i++) {
-				str += "<li class='list-group-item' data-replyId='"+list[i].replyId+"'>";
-				str += "	<div><div class='header'><strong class='primary-font'>["+list[i].replyId+"]"+list[i].userEmail+"</strong>";
+				str += "<li class='list-group-item' data-replyid='"+list[i].replyid+"'>";
+				str += "	<div><div class='header'><strong class='primary-font'>["+list[i].replyid+"]"+list[i].userEmail+"</strong>";
 				str += "		<small class='pull-right text-muted'>"+replyService.displayTime(list[i].createdDate)+"</small></div>";
 				str += "			<p>"+list[i].body+"</p></div></li>";
 			}
@@ -249,7 +248,6 @@ $(document).ready(function() {
       }
       
        
-      
       for(var i = startNum ; i <= endNum; i++){
         
         var active = pageNum == i? "active":"";
@@ -270,8 +268,7 @@ $(document).ready(function() {
     
     replyPageFooter.on("click","li a", function(e){
         e.preventDefault();
-        console.log("page click");
-        
+
         var targetPageNum = $(this).attr("href");
         
         console.log("targetPageNum: " + targetPageNum);
@@ -322,14 +319,14 @@ $(document).ready(function() {
 	
 	$(".list-group-flush").on("click", "li", function(e) {
 		
-		var replyId = $(this).data("replyId");
+		var replyid = $(this).data("replyid");
 		
-		replyService.get(replyId, function(body) {
+		replyService.get(replyid, function(body) {
 			
 			modalInputBody.val(body.body);
 			modalInputUserEmail.val(body.userEmail); // 이것도 readonly처리 해야할까?
 			modalInputCreatedDate.val(replyService.displayTime(body.createdDate)).attr("readonly", "readonly");
-			modal.data("replyId", body.replyId);
+			modal.data("replyid", body.replyid);
 			
 			modal.find("button[id != 'modalCloseBtn']").hide();
 			modalModBtn.show();
@@ -338,12 +335,12 @@ $(document).ready(function() {
 			$(".modal").modal("show");
 		});
 		
-		console.log(replyId);
+		console.log(replyid);
 	});
 	
 	modalModBtn.on("click", function(e) {
 		
-		var body = {replyId : modal.data("replyId"), body : modalInputBody.val()};
+		var body = {replyid : modal.data("replyid"), body : modalInputBody.val()};
 		
 		replyService.update(body, function(result) {
 			
@@ -355,9 +352,9 @@ $(document).ready(function() {
 	
 	modalRemoveBtn.on("click", function(e) {
 		
-		var replyId = modal.data("replyId");
+		var replyid = modal.data("replyid");
 		
-		replyService.remove(replyId, function(result) {
+		replyService.remove(replyid, function(result) {
 			
 			alert(result);
 			modal.modal("hide");
@@ -400,7 +397,7 @@ replyService.remove(182, function(count) {
 
 /* // 150번 댓글 수정
 replyService.update({
-	replyId : 150,
+	replyid : 150,
 	id : contentIdValue,
 	body : "150번댓글수정!",
 }, function(result) {

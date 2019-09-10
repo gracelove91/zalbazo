@@ -34,7 +34,11 @@ public class JisikDongController {
     @PostMapping("/register")
     public String register(Content content, RedirectAttributes rttr){
         content.setCategoryId(JISIKDONG_CATEGORY_NUM);
-
+        
+        if(content.getAttachList() != null) {
+        	content.getAttachList().forEach(attach -> log.info(attach));
+        }
+        
         service.register(content);
         rttr.addFlashAttribute("result", content);
         

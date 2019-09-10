@@ -22,7 +22,6 @@ var replyService = (function() {
 	}
 
 	function getList(param, callback, error) {
-		console.log("getList");
 		
 		var contentId = param.contentId;
 		var page = param.page || 1;
@@ -39,12 +38,12 @@ var replyService = (function() {
 		});
 	}
 	
-	function remove(replyId, callback, error) {
-		console.log("remove : "+body.replyId);
+	function remove(replyid, callback, error) {
+		console.log("remove : "+body.replyid);
 		
 		$.ajax({
 			type : 'delete',
-			url : '/replies/' + replyId,
+			url : '/replies/' + replyid,
 			success : function(deleteresult, status, xhr) {
 				if (callback) {
 					callback(deleteresult);
@@ -59,11 +58,11 @@ var replyService = (function() {
 	}
 	
 	function update(body, callback, error) {
-		console.log("replyId : "+body.replyId);
+		console.log("replyid : "+body.replyid);
 		
 		$.ajax({
 			type : 'put',
-			url : '/replies/' + body.replyId,
+			url : '/replies/' + body.replyid,
 			data : JSON.stringify(body),
 			contentType : "application/json; charset=utf-8",
 			success : function(result, status, xhr) {
@@ -79,10 +78,10 @@ var replyService = (function() {
 		});
 	}
 	
-	function get(replyId, callback, error) {
-		console.log("get");
+	function get(replyid, callback, error) {
+		console.log("get : "+replyid);
 		
-		$.get("/replies/" + replyId + ".json", function(result) {
+		$.get("/replies/" + replyid + ".json", function(result) {
 			
 			if(callback) {
 				callback(result);
@@ -95,7 +94,6 @@ var replyService = (function() {
 	}
 	
 	function displayTime(timeValue) {
-		console.log("displayTime")
 		
 		var today = new Date();
 		

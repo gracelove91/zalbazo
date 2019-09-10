@@ -11,9 +11,9 @@ public interface ReplyMapper {
 	
 	public int insert(ReplyVO vo);
 	
-	public ReplyVO read(Long replyId);
+	public ReplyVO read(Long replyid);
 
-	public int delete(Long replyId);
+	public int delete(Long replyid);
 	
 	public int update(ReplyVO userEmail);
 	
@@ -21,5 +21,5 @@ public interface ReplyMapper {
 			@Param("cri") Criteria cri,
 			@Param("contentId") Long contentId);
 	
-	public int getCountById(Long contentId);
+	public int getCountByContentId(Long contentId);
 }

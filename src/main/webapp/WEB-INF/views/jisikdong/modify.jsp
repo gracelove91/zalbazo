@@ -58,7 +58,7 @@
 		  <form role="form" action="/jisikdong/modify" method="post">
 		  
 		    <div class="form-group">
-              <input type="hidden" class="form-control" id="id" name="id" value="${content.id}" readonly="readonly">
+              <input type="hidden" class="form-control" id="contentId" name="contentId" value="${content.contentId}" readonly="readonly">
             </div>
             <div class="form-group">
               <input type="hidden" class="form-control" id="categoryId" name="categoryId" value="${content.categoryId}" readonly="readonly">
@@ -76,13 +76,13 @@
               <textarea class="form-control" style="height: 320px" id="body" name="body">${content.body}</textarea>
             </div>
             
-            <button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
+            <button type="submit" data-oper='modify' class="btn btn-outline-primary">Modify</button>
             <button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
-            <button type="submit" data-oper='list' class="btn btn-info">List</button>
+            <button type="submit" data-oper='list' class="btn btn-primary">List</button>
             
 		  </form>
           <footer class="text-center" style="max-width: 920px;">
-            <p>Copyright ⓒ 2018 <b>잘바조</b> All Rights Reserved.</p>
+            <p>Copyright ⓒ 2019 <b>잘바조</b> All Rights Reserved.</p>
           </footer>
         </main>
       </div>

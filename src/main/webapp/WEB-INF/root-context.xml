@@ -15,7 +15,9 @@
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 
     <context:component-scan base-package="kr.zalbazo"/>
+	
     <mvc:annotation-driven/>
 
     <mybatis-spring:scan base-package="kr.zalbazo.mapper"/>
+	
 </beans>

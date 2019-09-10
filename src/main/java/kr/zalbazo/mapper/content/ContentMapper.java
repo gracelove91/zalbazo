@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface ContentMapper {
 
-
     void insert(Content content);
 
     Content read(Long contentId);

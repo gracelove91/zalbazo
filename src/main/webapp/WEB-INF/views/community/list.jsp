@@ -14,6 +14,29 @@
 </head>
 
 <body>
+
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="${ctx}/home">
+      <img src="${ctx}/resources/img/baba.png" width="30" height="30" class="d-inline-block align-top" alt=""> Zalbazo
+    </a>
+
+ 	<ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           	 게시판
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="${ctx}/jisikdong/list">지식動</a>
+            <a class="dropdown-item" href="${ctx}/community/list">커뮤니티</a>
+          </div>
+        </li>
+    </ul>
+    <form class="form-inline">
+    	<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    	<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+  	</form>
+  </nav>
+  
     <div class="container-fluid">
         <div class="row d-flex d-md-block flex-nowrap wrapper">
             <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
@@ -25,7 +48,7 @@
                 <table class="table table-striped" style="max-width: 1080px;">
                     <thead>
                         <tr>
-                            <th scope="col" class="mobile" style="width:55px; text-align:center;">번호</th>
+                            <th scope="col" class="mobile" style="width:60px; text-align:center;">번호</th>
                             <th scope="col" class="mobile" style="text-align:center;">제목</th>
                             <th scope="col" class="mobile" style="width:80px; text-align:center;">작성자</th>
                             <th scope="col" class="mobile" style="width:120px; text-align:center;">날짜</th>
@@ -36,11 +59,11 @@
                         <c:forEach items="${contentList}" var="content">
                             <tr>
                                 <th scope="row" class="mobile" style="text-align:center;">
-                                    <c:out value="${content.id}" />
+                                    <c:out value="${content.contentId}" />
                                 </th>
 
 								<td>
-                                	<a class='move' style="color : #000000;" href='<c:out value="${content.id}"/>'><c:out value="${content.title}"/></a>
+                                	<a class='move' style="color : #000000;" href='<c:out value="${content.contentId}"/>'><c:out value="${content.title}"/></a>
                                 </td>
 
                                 <td class="mobile" style="text-align:center;">
@@ -73,8 +96,31 @@
                 </div>
 
                 <div style="max-width: 1080px;">
-                    <a href="/community/register" id='regBtn' type="button" class="btn btn-primary float-right">글쓰기</a>
+          			<button id='regBtn' type="button" type="button" class="btn btn-primary float-right" data-dismiss="modal" href="/jisikdong/register">글쓰기</button>
+        		</div>
+                
+                <div class='row'>
+                	<div class="col-lg-12">
+                		
+                		<form id='searchForm' action="/community/list" method='get'>
+                			<select name='type'>
+                				<option value=""<c:out value="${pageMaker.cri.type == null ? 'selected' : '' }"/>>--</option>
+                					<option value="T"<c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : '' }"/>>제목</option>
+                					<option value="B"<c:out value="${pageMaker.cri.type eq 'B' ? 'selected' : '' }"/>>내용</option>
+                					<option value="U"<c:out value="${pageMaker.cri.type eq 'U' ? 'selected' : '' }"/>>작성자</option>
+                					<option value="TB"<c:out value="${pageMaker.cri.type eq 'TB' ? 'selected' : '' }"/>>제목 or 내용</option>
+                					<option value="TU"<c:out value="${pageMaker.cri.type eq 'TU' ? 'selected' : '' }"/>>제목 or 작성자</option>
+                					<option value="TUB"<c:out value="${pageMaker.cri.type eq 'TUB' ? 'selected' : '' }"/>>제목 or 내용 or 작성자</option>
+                			</select>
+                			<input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'/>
+                			<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>'>
+                			<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>'>
+                			<button class='btn btn-primary'>Search</button>
+                		</form>
+                		
+                	</div>
                 </div>
+                <br>
                 <!-- Paging 처리 -->
                 <div class='pull-right'>
 
@@ -104,6 +150,8 @@
                 <form id='actionForm' action="/community/list" method='get'>
                     <input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
                     <input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+                    <input type='hidden' name='type' value='${pageMaker.cri.type}'>
+                    <input type='hidden' name='keyword' value='${pageMaker.cri.keyword}'>
                 </form>
 
                 <footer class="text-center" style="max-width: 1080px;">
@@ -121,6 +169,27 @@
     <script type="text/javascript">
 
         $('document').ready(function () {
+        	
+        	var searchForm = $("#searchForm");
+        	
+        	$("#searchForm button").on("click", function(e){
+        		
+        		if(!searchForm.find("option:selected").val()){
+        			alert("검색종류를 입력하세요");
+        			return false;
+        		}
+        		
+        		if(!searchForm.find("input[name='keyword']").val()){
+        			alert("키워드를 입력하세요");
+        			return false;
+        		}
+        		
+        		searchForm.find("input[name='pageNum']").val("1");
+        		e.preventDefault();
+        		
+        		searchForm.submit();
+        		
+        	});
 
             var actionForm = $("#actionForm");
 
@@ -133,7 +202,7 @@
 
             $(".move").on("click", function (e) {
                 e.preventDefault();
-                actionForm.append("<input type='hidden' name='id' value='" + $(this).attr("href") + "'>");
+                actionForm.append("<input type='hidden' name='contentId' value='" + $(this).attr("href") + "'>");
                 actionForm.attr("action", "/community/get");
                 actionForm.submit();
             });

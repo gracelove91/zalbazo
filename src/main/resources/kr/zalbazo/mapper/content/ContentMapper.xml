@@ -5,59 +5,85 @@
 
 	<insert id="insert"
 		parameterType="kr.zalbazo.model.content.Content">
-		INSERT into content(ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE,
+		INSERT into content(CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE,
 		CATEGORY_ID, USER_EMAIL)
-		values (CONTENT_SEQ.nextval, #{title}, #{body}, sysdate, sysdate,
-		#{categoryId},#{userEmail})
+		values (CONTENT_SEQ.nextval, #{title}, #{body}, sysdate, sysdate, #{categoryId},#{userEmail})
 	</insert>
 
 	<update id="update">
         update CONTENT
         set TITLE= #{title}, BODY = #{body}, UPDATED_DATE = sysdate, USER_EMAIL=#{userEmail}, CATEGORY_ID=#{categoryId}
-        where ID = #{id}
+        where CONTENT_ID = #{contentId}
 	</update>
 
 	<delete id="delete">
 		delete CONTENT
-		where ID = #{id}
+		where CONTENT_ID = #{contentId}
 	</delete>
 
 	<select id="read" resultType="kr.zalbazo.model.content.Content">
 		select *
 		from CONTENT
-		where ID = #{id}
+		where CONTENT_ID = #{contentId}
 	</select>
 
 	<select id="getList"
-		resultType="kr.zalbazo.model.content.Content"><![CDATA[
-
-            select ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE,
+		resultType="kr.zalbazo.model.content.Content">
+		<![CDATA[
+            select CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE,
                    CATEGORY_ID, USER_EMAIL
             from CONTENT
-            where ID > 0 AND CATEGORY_ID = #{categoryId}
+            where CONTENT_ID > 0 AND CATEGORY_ID = #{categoryId}
+    	]]>
+    </select>
+    
+    <sql id="criteria">
+    	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+    		<foreach item='type' collection="typeArr">
+    			<trim prefix="OR">
+    				<choose>
+    					<when test="type == 'T'.toString()">
+    						title like '%' || #{keyword} || '%'
+    					</when>
+    					<when test="type == 'B'.toString()">
+    						body like '%' || #{keyword} || '%'
+    					</when>
+    					<when test="type == 'U'.toString()">
+    						USER_EMAIL like '%' || #{keyword} || '%'
+    					</when>
+    				</choose>
+    			</trim>
+    		</foreach>
+    	</trim>
+    </sql>
 
-    ]]></select>
-
-
-	<select id="getListWithPaging"
-		resultType="kr.zalbazo.model.content.Content">
+	<select id="getListWithPaging" resultType="kr.zalbazo.model.content.Content">
       <![CDATA[
-        select ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, USER_EMAIL
+        select CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, USER_EMAIL
         from 
         	(
         	select /*+ INDEX_DESC(content content_pk) */
-        	  rownum RN, ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, CATEGORY_ID, USER_EMAIL
+        	  rownum RN, CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, CATEGORY_ID, USER_EMAIL
         	from 
         	  content
-        	where CATEGORY_ID = #{category} and rownum <= #{pageNum} * #{amount}
+        	where
+      ]]>
+      <include refid="criteria"></include>
+      
+      <![CDATA[  	
+        	CATEGORY_ID = #{category} and rownum <= #{pageNum} * #{amount}
         	)
         where rn > (#{pageNum} -1) * #{amount}
       ]]>
 	</select>
 	
 	<select id="getTotalCount" resultType="int">
-	  select count(*) from content where id > 0 and CATEGORY_ID = #{category}
+	  select count(*) from content
+	  where
+	  
+	  <include refid="criteria"></include>
+	  
+	  CONTENT_ID > 0 and CATEGORY_ID = #{category}
 	</select>
-
 
 </mapper>

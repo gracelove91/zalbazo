@@ -6,11 +6,16 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+	String ctx = request.getContextPath();
+	pageContext.setAttribute("ctx", ctx);
+%>
 <html>
 <head>
     <title>H O M E</title>
 </head>
 <body>
-안녕하세요로로로롱
+<h1>피카츄가 세상을 지배한다</h1>
+<img src="${ctx}/resources/img/pika.gif">
 </body>
 </html>

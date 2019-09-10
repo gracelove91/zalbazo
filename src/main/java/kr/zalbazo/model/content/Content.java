@@ -9,9 +9,10 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Content {
-
-	private Long id;
+public class Content { //BoardVO
+	
+	// 게시판 글
+	private Long contentId;
 	private String title;
 	private String body;
 	private String userEmail;

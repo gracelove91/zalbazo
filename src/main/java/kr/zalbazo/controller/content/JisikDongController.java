@@ -36,7 +36,6 @@ public class JisikDongController {
         content.setCategoryId(JISIKDONG_CATEGORY_NUM);
 
         service.register(content);
-        
         rttr.addFlashAttribute("result", content);
         
         return "redirect:/jisikdong/list";
@@ -54,11 +53,9 @@ public class JisikDongController {
     	model.addAttribute("pageMaker", new PageDTO(cri, total));
     }
 
-
-
     @GetMapping({"/get", "/modify"})
-    public void detail(@RequestParam("id") Long id, Model model, @ModelAttribute("cri") Criteria cri){
-        model.addAttribute("content", service.get(id));
+    public void detail(@RequestParam("contentId") Long contentId, Model model, @ModelAttribute("cri") Criteria cri){
+        model.addAttribute("content", service.get(contentId));
     }
 
     @PostMapping("/modify")
@@ -67,15 +64,17 @@ public class JisikDongController {
         if(service.modify(content)){
             rttr.addFlashAttribute("result", "success");
         }
-        return "redirect:/jisikdong/list";
+        
+        return "redirect:/jisikdong/list" + cri.getListLink();
     }
 
     @PostMapping("/remove")
-    public String remove(@RequestParam("id") Long id, RedirectAttributes rttr){
+    public String remove(@RequestParam("contentId") Long contentId, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr){
     	
-        if(service.remove(id)){
+        if(service.remove(contentId)){
             rttr.addFlashAttribute("result", "success");
         }
-        return "redirect:/jisikdong/list";
+        
+        return "redirect:/jisikdong/list" + cri.getListLink();
     }
 }

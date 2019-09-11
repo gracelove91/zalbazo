@@ -120,5 +120,4 @@
         content_id > 0 and CATEGORY_ID = #{category}
     </select>
 
-
 </mapper>

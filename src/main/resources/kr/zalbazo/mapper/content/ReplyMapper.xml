@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.zalbazo.mapper.content.ReplyMapper">
+
+	<insert id="insert">
+		INSERT INTO REPLY(REPLY_ID, CONTENT_ID, BODY, USER_EMAIL, CREATED_DATE, UPDATED_DATE)
+		VALUES(REPLY_SEQ.nextval, #{contentId}, #{body}, #{userEmail}, sysdate, sysdate)
+	</insert>
+
+	<select id="read" resultType="kr.zalbazo.model.content.ReplyVO">
+		SELECT * FROM REPLY WHERE REPLY_ID = #{replyid}
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM REPLY WHERE REPLY_ID = #{replyid}
+	</delete>
+	
+	<update id="update">
+		UPDATE REPLY SET BODY = #{body}, UPDATED_DATE = sysdate WHERE REPLY_ID = #{replyid}
+	</update>
+	
+	<select id="getListWithPaging" resultType="kr.zalbazo.model.content.ReplyVO">
+		<![CDATA[
+		SELECT REPLY_ID, CONTENT_ID, BODY, USER_EMAIL, CREATED_DATE, UPDATED_DATE
+		FROM
+		(SELECT ROWNUM RN, REPLY_ID, CONTENT_ID, BODY, USER_EMAIL, CREATED_DATE, UPDATED_DATE
+		 FROM REPLY
+		 WHERE CONTENT_ID = #{contentId}
+		 AND REPLY_ID > 0
+		 AND ROWNUM <= #{cri.pageNum} * #{cri.amount}
+		) WHERE RN > (#{cri.pageNum} -1) * #{cri.amount}
+		]]>
+	</select>
+	
+	<select id="getCountByContentId" resultType="int">
+		<![CDATA[
+		SELECT COUNT(REPLY_ID) FROM REPLY WHERE CONTENT_ID = #{contentId}
+		]]>
+	</select>
+</mapper>

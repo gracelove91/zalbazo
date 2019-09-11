@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.zalbazo.mapper.content.ContentMapper;
 import kr.zalbazo.model.content.Content;
@@ -17,9 +18,15 @@ public class ContentServiceImpl implements ContentService {
     @Autowired
     private ContentMapper mapper;
 
+
     @Override
     public void register(Content content) {
+
+        log.info("register : " + content);
+
         mapper.insert(content);
+
+
     }
 
     @Override
@@ -37,21 +44,17 @@ public class ContentServiceImpl implements ContentService {
         return mapper.delete(contentId) == 1;
     }
 
-//    @Override
-//    public List<Content> getList(Long categoryId) {
-//        return mapper.getList(categoryId);
-//    }
-    
+
     @Override
-    public List<Content> getList(Criteria cri){
-    	log.info("get List with criteria : " + cri);
-    	return mapper.getListWithPaging(cri);
+    public List<Content> getList(Criteria cri) {
+        log.info("get List with criteria : " + cri);
+        return mapper.getListWithPaging(cri);
     }
 
-	@Override
-	public int getTotal(Criteria cri) {
-		return mapper.getTotalCount(cri);
-	}
-    
-   
+    @Override
+    public int getTotal(Criteria cri) {
+        return mapper.getTotalCount(cri);
+    }
+
+
 }

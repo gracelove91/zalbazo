@@ -14,8 +14,8 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-@Configuration
 @PropertySource("classpath:application-prod.properties")
+@Configuration
 public class DBConfig {
 
     @Value("${jdbc.driver-class}")
@@ -32,7 +32,6 @@ public class DBConfig {
 
     @Bean
     public DataSource dataSource() {
-
         HikariConfig config = new HikariConfig();
         config.setDriverClassName(this.driverClass);
         config.setJdbcUrl(this.jdbcUrl);

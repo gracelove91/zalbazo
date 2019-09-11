@@ -35,7 +35,6 @@ public class UserController {
     public String join(@Valid @ModelAttribute User user, BindingResult bindingResult, RedirectAttributes rttr) {
         validator(user, bindingResult);
 
-
         if(bindingResult.hasErrors()){
             return "user/userjoin";
         }
@@ -59,5 +58,4 @@ public class UserController {
             bindingResult.addError(new FieldError("user", "password2", "비밀번호를 다시 확인해주세요."));
         }
     }
-
 }

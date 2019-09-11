@@ -42,10 +42,11 @@ public class CommunityController {
     @GetMapping("/list")
     public void list(Criteria cri, Model model){
         cri.setCategory(COMMUNITY_CATEGORY_NUM);
-    	model.addAttribute("contentList", service.getList(cri));
-    	int total = service.getTotal(cri);
-    	log.info("list : " + cri);
-    	model.addAttribute("pageMaker", new PageDTO(cri, total));
+        model.addAttribute("contentList", service.getList(cri));
+        service.getList(cri).stream().forEach(System.out::println);
+        int total = service.getTotal(cri);
+        log.info("list : " + cri);
+        model.addAttribute("pageMaker", new PageDTO(cri, total));
     }
 
     @GetMapping({"/get", "/modify"})

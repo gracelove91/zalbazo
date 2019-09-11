@@ -12,10 +12,5 @@
 		select * from hospital_label
 		where hospital_id = #{id}
 	</select>
-	
-	<select id="pictureList" resultType="kr.zalbazo.model.content.Picture">
-		select * from hospital_picture
-		where id = #{id}
-	</select> 
 
 </mapper>

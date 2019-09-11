@@ -13,11 +13,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- 부트스트랩 CSS 추가하기 -->
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
   <body>
     <div class="container-fluid">
       <div class="row d-flex d-md-block flex-nowrap wrapper">
+</head>
+<body>
+<img alt="" src="${ctx}/resources/img/pika.gif">
+<h2>여기는 지식동modify</h2>
+<div class="container-fluid">
+    <div class="row d-flex d-md-block flex-nowrap wrapper">
 
         <nav class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
             <div class="list-group border-0 card text-center text-md-left">
@@ -86,6 +93,7 @@
                 <label>내용</label>
                 <textarea class="form-control" style="height: 320px" id="body" name="body">${content.body}</textarea>
             </div>
+
             
             <button type="submit" data-oper='modify' class="btn btn-outline-primary">Modify</button>
             <button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
@@ -95,6 +103,17 @@
           <footer class="text-center" style="max-width: 920px;">
             <p>Copyright ⓒ 2019 <b>잘바조</b> All Rights Reserved.</p>
           </footer>
+
+            <button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
+            <button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
+            <button type="submit" data-oper='list' class="btn btn-info">List</button>
+
+        </form>
+       
+        <footer class="text-center" style="max-width: 920px;">
+            <p>Copyright ⓒ 2019 <b>잘바조</b> All Rights Reserved.</p>
+        </footer>
+
         </main>
     </div>
 

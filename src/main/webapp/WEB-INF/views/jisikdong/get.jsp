@@ -3,8 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
-	String ctx = request.getContextPath();
-	pageContext.setAttribute("ctx", ctx);
+    String ctx = request.getContextPath();
+    pageContext.setAttribute("ctx", ctx);
 %>
 <!doctype html>
 <html>

@@ -15,12 +15,11 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<mvc:resources mapping="/resources/**"
-		location="/static-resources/" />
-	<mvc:resources mapping="/webjars/**" location="/webjars/" />     <!-- 부트스트랩과 제이쿼리 처리 -->
-
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
 	</bean>
+
+    <mvc:resources mapping="/resources/**" location="/static-resources/"/>
+    <mvc:resources mapping="/webjars/**" location="/webjars/"/>     <!-- 부트스트랩과 제이쿼리 처리 -->
 
 </beans>

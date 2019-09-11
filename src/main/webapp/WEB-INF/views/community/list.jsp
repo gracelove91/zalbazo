@@ -5,7 +5,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>커뮤니티 웹 사이트</title>
+    <title>커뮤니티</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- 부트스트랩 CSS 추가하기 -->
@@ -193,6 +193,7 @@
 
         var actionForm = $("#actionForm");
 
+
             $(".page-item a").on("click", function (e) {
                 e.preventDefault();
                 console.log('click');
@@ -200,15 +201,16 @@
                 actionForm.submit();
             });
 
+
             $(".move").on("click", function (e) {
                 e.preventDefault();
                 actionForm.append("<input type='hidden' name='contentId' value='" + $(this).attr("href") + "'>");
                 actionForm.attr("action", "/community/get");
                 actionForm.submit();
             });
-            var result = '<c:out value="${result}" />';
 
         var result = '<c:out value="${result}" />';
+
 
         checkModal(result);
 

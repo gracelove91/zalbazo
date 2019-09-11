@@ -25,7 +25,4 @@ public class Content { //BoardVO
 	private Date updatedDate;
 	private Long categoryId;
 
-//	private int replyCnt;
-	
-	private List<ContentAttachVO> attachList;
 }

@@ -34,12 +34,9 @@ public class CommunityController {
     public String register(Content content, RedirectAttributes rttr){
         content.setCategoryId(COMMUNITY_CATEGORY_NUM);
         service.register(content);
-<<<<<<< HEAD
+
         rttr.addFlashAttribute("result", content.getContentId());
 
-=======
-        rttr.addFlashAttribute("result", content);
->>>>>>> master
         return "redirect:/community/list";
     }
 
@@ -65,35 +62,22 @@ public class CommunityController {
         if(service.modify(content)){
             rttr.addFlashAttribute("result", "success");
         }
-<<<<<<< HEAD
-        
+
+
         return "redirect:/community/list" + cri.getListLink();
     }
 
     @PostMapping("/remove")
     public String remove(@RequestParam("contentId") Long contentId, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr){
-=======
-        rttr.addAttribute("pageNum", cri.getPageNum());
-        rttr.addAttribute("amount", cri.getAmount());
-        
-        return "redirect:/community/list";
-    }
 
-    @PostMapping("/remove")
-    public String remove(@RequestParam("id") Long id, RedirectAttributes rttr, @ModelAttribute("cri") Criteria cri){
->>>>>>> master
-    	
+
         if(service.remove(contentId)){
             rttr.addFlashAttribute("result", "success");
         }
-<<<<<<< HEAD
-        
-        return "redirect:/community/list" + cri.getListLink();
-=======
+
         rttr.addAttribute("pageNum", cri.getPageNum());
         rttr.addAttribute("amount", cri.getAmount());
         return "redirect:/community/list";
->>>>>>> master
     }
 
 }

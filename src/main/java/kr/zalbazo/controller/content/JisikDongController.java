@@ -20,71 +20,6 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping({ "/jisikdong/*" })
 public class JisikDongController {
-<<<<<<< HEAD
-
-    private static final Long JISIKDONG_CATEGORY_NUM = 2L;
-
-    @Autowired
-    private ContentService service;
-
-    @GetMapping("/register")
-    public String register(){
-        return "/jisikdong/register"; //WEB-INF/views/register.jsp
-    }
-
-    @PostMapping("/register")
-    public String register(Content content, RedirectAttributes rttr){
-        content.setCategoryId(JISIKDONG_CATEGORY_NUM);
-        
-        if(content.getAttachList() != null) {
-        	content.getAttachList().forEach(attach -> log.info(attach));
-        }
-        
-        service.register(content);
-        rttr.addFlashAttribute("result", content);
-        
-        return "redirect:/jisikdong/list";
-    }
-
-    @GetMapping("/list")
-    public void list(Criteria cri, Model model, Content content){
-
-//      model.addAttribute("contentList", service.getList(JISIKDONG_CATEGORY_NUM));
-//      service.getList(JISIKDONG_CATEGORY_NUM ).stream().forEach(System.out::println);
-    	cri.setCategory(JISIKDONG_CATEGORY_NUM);
-    	model.addAttribute("contentList", service.getList(cri));
-    	int total = service.getTotal(cri);
-    	log.info("list : " + cri);
-    	model.addAttribute("pageMaker", new PageDTO(cri, total));
-    }
-
-    @GetMapping({"/get", "/modify"})
-    public void detail(@RequestParam("contentId") Long contentId, Model model, @ModelAttribute("cri") Criteria cri){
-        model.addAttribute("content", service.get(contentId));
-    }
-
-    @PostMapping("/modify")
-    public String modify(Content content, RedirectAttributes rttr, @ModelAttribute("cri") Criteria cri){
-
-        if(service.modify(content)){
-            rttr.addFlashAttribute("result", "success");
-        }
-        
-        return "redirect:/jisikdong/list" + cri.getListLink();
-    }
-
-    @PostMapping("/remove")
-    public String remove(@RequestParam("contentId") Long contentId, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr){
-    	
-        if(service.remove(contentId)){
-            rttr.addFlashAttribute("result", "success");
-        }
-        
-        return "redirect:/jisikdong/list" + cri.getListLink();
-    }
-}
-=======
-	
 	private static final Long JISIKDONG_CATEGORY_NUM = 2L;
 	
 	@Autowired
@@ -92,7 +27,7 @@ public class JisikDongController {
 	
 	@GetMapping("/register")
 	public String register() {
-		return "/jisikdong/register"; // WEB-INF/views/register.jsp
+		return "jisikdong/register"; // WEB-INF/views/register.jsp
 	}
 
 	@PostMapping("/register")
@@ -146,4 +81,3 @@ public class JisikDongController {
 	}
 
 }
->>>>>>> master

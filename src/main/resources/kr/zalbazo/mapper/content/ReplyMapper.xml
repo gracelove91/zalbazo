@@ -5,7 +5,7 @@
 
 	<insert id="insert">
 		INSERT INTO REPLY(REPLY_ID, CONTENT_ID, BODY, USER_EMAIL, CREATED_DATE, UPDATED_DATE)
-		VALUES(REPLY_SEQ.NEXTVAL, #{contentId}, #{body}, #{userEmail}, sysdate, sysdate)
+		VALUES(REPLY_SEQ.nextval, #{contentId}, #{body}, #{userEmail}, sysdate, sysdate)
 	</insert>
 
 	<select id="read" resultType="kr.zalbazo.model.content.ReplyVO">

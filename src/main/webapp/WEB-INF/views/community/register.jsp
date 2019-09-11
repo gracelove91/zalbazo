@@ -107,7 +107,7 @@
           </div>
           <p class="lead">게시글을 작성합니다.</p>
           <hr>
-          <form class="pt-3 md-3" role='form' style="max-width: 920px" action="/jisikdong/register" method="post">
+          <form class="pt-3 md-3" role='form' style="max-width: 920px" action="/community/register" method="post">
 			<div class="form-group">
               <label>EMAIL</label>
               <input type="text" class="form-control" name="userEmail" placeholder="이메일을 입력하시오" value="dummy@gmail.com">

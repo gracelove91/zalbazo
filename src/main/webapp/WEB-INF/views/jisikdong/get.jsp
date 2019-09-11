@@ -195,6 +195,8 @@ $(document).ready(function() {
 	
 	function showList(page) {
 		
+		console.log("!!!!"+page);
+		
 		replyService.getList({contentId:contentIdValue, page:page||1}, function(replyCnt, list){
 			
 			if(page == -1) {
@@ -248,8 +250,6 @@ $(document).ready(function() {
         str+= "<li class='page-item'><a class='page-link' href='"+(startNum -1)+"'>Previous</a></li>";
       }
       
-       
-      
       for(var i = startNum ; i <= endNum; i++){
         
         var active = pageNum == i? "active":"";
@@ -263,18 +263,18 @@ $(document).ready(function() {
       
       str += "</ul></div>";
       
-      console.log(str);
+     // console.log(str);
       
       replyPageFooter.html(str);
     }
     
     replyPageFooter.on("click","li a", function(e){
+    	
         e.preventDefault();
-        console.log("page click");
         
         var targetPageNum = $(this).attr("href");
         
-        console.log("targetPageNum: " + targetPageNum);
+        //console.log("targetPageNum: " + targetPageNum);
         
         pageNum = targetPageNum;
         
@@ -373,19 +373,21 @@ console.log("JS TEST");
 
 var contentIdValue = '<c:out value="${content.contentId}"/>';
 
-/* replyService.add(
-		{body:"JS Test", userEmail:"dummy@gmail.com", id:idValue}
+/* 
+replyService.add(
+		{body:"JS Test", userEmail:"dummy@gmail.com", contentId:contentIdValue}
 		,
 		function(result){
 			alert("RESULT : " + result);
 		}); */
 		
+/* 		
 replyService.getList({contentId:contentIdValue, page:1}, function(list){
 
 	for(var i = 0, len = list.length||0; i<len; i++){
 		console.log(list[i]);
 	}
-});
+}); */
 
 /* // 2번 댓글 삭제
 replyService.remove(2, function(count) {
@@ -416,8 +418,6 @@ replyService.update({
 
 <script type="text/javascript">
 $(document).ready(function(){
-	
-	console.log(replyService);
 	
 	var operForm = $("#operForm");
 	

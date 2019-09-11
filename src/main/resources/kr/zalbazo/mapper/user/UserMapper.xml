@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kr.zalbazo.mapper.user.UserMapper">
+
+    <insert id="insert" parameterType="kr.zalbazo.model.user.User">
+        insert into ZALBAZO_USER (EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN)
+        values (#{email}, #{password}, #{role}, #{tel}, #{address}, #{name}, sysdate, null)
+    </insert>
+
+    <update id="update">
+        update ZALBAZO_USER
+        SET PASSWORD = #{password},
+            TEL      = #{tel},
+            address  = #{address},
+            name     = #{name}
+        where EMAIL = #{email}
+    </update>
+
+    <delete id="delete">
+        delete ZALBAZO_USER
+        where EMAIL = #{email}
+
+    </delete>
+
+
+    <select id="read" resultType="kr.zalbazo.model.user.User">
+        SELECT *
+        FROM ZALBAZO_USER
+        WHERE EMAIL = #{email}
+    </select>
+
+
+    <select id="getList" resultType="kr.zalbazo.model.user.User">
+        <![CDATA[
+        SELECT *
+        FROM ZALBAZO_USER
+        ]]>
+    </select>
+
+</mapper>

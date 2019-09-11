@@ -1,4 +1,4 @@
-package kr.zalbazo.service;
+package kr.zalbazo.service.content;
 
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.Criteria;

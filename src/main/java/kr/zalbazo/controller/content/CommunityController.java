@@ -3,7 +3,7 @@ package kr.zalbazo.controller.content;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.Criteria;
 import kr.zalbazo.model.content.PageDTO;
-import kr.zalbazo.service.ContentService;
+import kr.zalbazo.service.content.ContentService;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,13 +33,11 @@ public class CommunityController {
     @PostMapping("/register")
     public String register(Content content, RedirectAttributes rttr){
         content.setCategoryId(COMMUNITY_CATEGORY_NUM);
-
         service.register(content);
-        
         rttr.addFlashAttribute("result", content);
-
         return "redirect:/community/list";
     }
+
 
     @GetMapping("/list")
     public void list(Criteria cri, Model model){
@@ -61,16 +59,18 @@ public class CommunityController {
         if(service.modify(content)){
             rttr.addFlashAttribute("result", "success");
         }
-        return "redirect:/community/list";
+        
+        return "redirect:/community/list" + cri.getListLink();
     }
 
     @PostMapping("/remove")
-    public String remove(@RequestParam("contentId") Long contentId, RedirectAttributes rttr){
-    	
+    public String remove(@RequestParam("contentId") Long contentId, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr){
+
         if(service.remove(contentId)){
             rttr.addFlashAttribute("result", "success");
         }
-        return "redirect:/community/list";
+
+        return "redirect:/community/list" + cri.getListLink();
     }
 
 }

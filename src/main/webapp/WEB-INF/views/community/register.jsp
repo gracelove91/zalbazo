@@ -4,12 +4,67 @@
 
 <!doctype html>
 <html>
-  <head>
+ <head>
+ 
+ <style>
+.uploadResult {
+	width: 100%;
+	background-color: Thistle;
+}
+
+.uploadresult ul {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.uploadResult ul li {
+	list-style: none;
+	padding: 10px;
+	align-content: center;
+	text-align: center;
+}
+
+.uploadResult ul li img {
+	width: 50px;
+}
+
+.uploadResult ul li span {
+	color: purple;
+}
+
+.bigPictureWrapper {
+	position: absolute;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	top: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: linen;
+	z-index: 100;
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.bigPicture {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.bigPicture img {
+	width: 600px;
+}
+</style>
+
     <title>커뮤 글 쓰기</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- 부트스트랩 CSS 추가하기 -->
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
   <body>
     <div class="container-fluid">
@@ -52,7 +107,7 @@
           </div>
           <p class="lead">게시글을 작성합니다.</p>
           <hr>
-          <form class="pt-3 md-3" style="max-width: 920px" action="/community/register" method="post">
+          <form class="pt-3 md-3" role='form' style="max-width: 920px" action="/community/register" method="post">
 			<div class="form-group">
               <label>EMAIL</label>
               <input type="text" class="form-control" name="userEmail" placeholder="이메일을 입력하시오" value="dummy@gmail.com">
@@ -67,8 +122,29 @@
             </div>
             <button type="submit" class="btn btn-primary" id="regBtn" name="regBtn">글 쓰기</button>
           </form>
+          
+<!--           첨부파일관련
+          <hr>
+          <div class="row">
+          	<div class="col-lg-12">
+          		<div class="panel panel-default">
+          			<div class="panel-heading">파일첨부</div>
+          			<div class="panel-body">
+          				<div class="form-group uploadDiv">
+          					<input type="file" name='uploadFile' multiple>
+          				</div>
+          				<div class='uploadResult'>
+          					<ul>
+          					</ul>
+          				</div>
+          			</div>
+          		</div>
+          	</div>
+          </div>
+          첨부파일관련 끝 -->
+          
           <footer class="text-center" style="max-width: 920px;">
-            <p>Copyright ⓒ 2018 <b>잘바조</b> All Rights Reserved.</p>
+            <p>Copyright ⓒ 2019 <b>잘바조</b> All Rights Reserved.</p>
           </footer>
         </main>
       </div>
@@ -77,5 +153,151 @@
     <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
     <!-- 부트스트랩 자바스크립트 추가하기 -->
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <script>
+    $(document).ready(function(e) {
+    		var formObj = $("form[role='form']");
+    		
+    		 $("button[type='submit']").on("click", function(e){
+    		    console.log(formObj);
+    		    e.preventDefault();
+   			    
+    			console.log("submit clicked");
+    		    
+    		    var str = "";
+    		    
+   			    $(".uploadResult ul li").each(function(i, obj){
+   			      
+   			      var jobj = $(obj);
+    			      
+    			  console.dir(jobj);
+    			     
+    			     str += "<input type='hidden' name='attachList["+i+"].fileName' value='"+jobj.data("filename")+"'>";
+    			     str += "<input type='hidden' name='attachList["+i+"].uuid' value='"+jobj.data("uuid")+"'>";
+    			     str += "<input type='hidden' name='attachList["+i+"].uploadPath' value='"+jobj.data("path")+"'>";
+    			     str += "<input type='hidden' name='attachList["+i+"].fileType' value='"+ jobj.data("type")+"'>";
+    			});
+    			    
+    			formObj.append(str).submit();
+    		});
+    		
+    		var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+			var maxSize = 5242880; // 5MB
+
+			function checkExtension(fileName, fileSize) {
+
+				if (fileSize >= maxSize) {
+					alert("파일 사이즈 초과");
+					return false;
+				}
+
+				if (regex.test(fileName)) {
+					alert("해당 확장자 파일은 업로드 ㄴㄴ");
+					return false;
+				}
+				return true;
+			}
+			
+			function showUploadResult(uploadResultArr) {
+				
+				if(!uploadResultArr || uploadResultArr.length == 0) {return; }
+				
+				var uploadUL = $(".uploadResult ul");
+
+				var str = "";
+				
+				$(uploadResultArr).each(function(i, obj) {
+						
+					if(obj.image){
+						
+						var fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.uuid +"_"+obj.fileName);
+						
+						str += "<li data-path='"+obj.uploadPath+"'";
+						str += " data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'"
+						str +" ><div>";
+						str += "<span> "+ obj.fileName+"</span>";
+						str += "<button type='button' data-file=\'"+fileCallPath+"\' "
+						str += "data-type='image' class='btn btn-warning btn-circle btn-sm'>x</button><br>";
+						str += "<img src='/display?fileName="+fileCallPath+"'>";
+						str += "</div>";
+						str +"</li>";
+						
+					}else{
+						
+						var fileCallPath =  encodeURIComponent( obj.uploadPath+"/"+ obj.uuid +"_"+obj.fileName);			      
+					    var fileLink = fileCallPath.replace(new RegExp(/\\/g),"/");
+					      
+						str += "<li "
+						str += "data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"' ><div>";
+						str += "<span> "+ obj.fileName+"</span>";
+						str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='file' " 
+						str += "class='btn btn-warning btn-circle btn-sm'>x</button><br>";
+						str += "<img src='/resources/img/attach.png'></a>";
+						str += "</div>";
+						str +"</li>";
+					}
+
+			});
+				
+				uploadUL.append(str);
+			}
+			
+			$("input[type='file']").change(function(e) {
+				
+				var formData = new FormData();
+
+				var inputFile = $("input[name='uploadFile']");
+
+				var files = inputFile[0].files;
+				
+				for (var i = 0; i < files.length; i++) {
+
+					if (!checkExtension(files[i].name, files[i].size)) {
+						return false;
+					}
+
+					formData.append("uploadFile", files[i]);
+				}
+				
+				$(".uploadResult").on("click", "button", function(e) {
+					console.log("delete");
+					
+					var targetFile = $(this).data("file");
+					var type = $(this).data("type");
+					
+					var targetLi = $(this).closest("li");
+					
+					$.ajax({
+						url : '/deleteFile',
+						data : {fileName:targetFile, type:type},
+						dataType : 'text',
+						type : 'POST',
+							success : function(result) {
+								alert(result);
+								targetLi.remove();
+							}
+					}); // ajax
+				})
+				
+				$.ajax({
+					url : '/uploadAjaxAction',
+					processData : false,
+					contentType : false,
+					data : formData,
+					type : 'POST',
+					dataType : 'json',
+					success : function(result) {
+						console.log(result);
+						showUploadResult(result);
+					}
+				}); // $.ajax
+				
+			});
+    		
+			
+    	
+    		
+    	}); // document function ready
+    </script>
   </body>
 </html>

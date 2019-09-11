@@ -28,14 +28,10 @@
     <!-- 부트스트랩 CSS 추가하기 -->
 
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
 
   <body>
-
-  	<img alt="" src="${ctx}/resources/img/pika.gif">
-	<h2>여기는 커뮤modify</h2>
-
     <div class="container-fluid">
 
       <div class="row d-flex d-md-block flex-nowrap wrapper">
@@ -119,6 +115,11 @@
 
 		  <form role="form" action="/community/modify" method="post">
 
+		  <input type="hidden" name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+			<input type="hidden" name='amount' value='<c:out value="${cri.amount}"/>'>
+			<input type="hidden" name='type' value='<c:out value="${cri.type}"/>'>
+			<input type="hidden" name='keyword' value='<c:out value="${cri.keyword}"/>'>
+			
 
 		    <div class="form-group">
               <input type="hidden" class="form-control" id="contentId" name="contentId" value="${content.contentId}" readonly="readonly">
@@ -151,22 +152,15 @@
 
             </div>
 
-            
-
-            <button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
-
+            <button type="submit" data-oper='modify' class="btn btn-outline-primary">Modify</button>
             <button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
-
-            <button type="submit" data-oper='list' class="btn btn-info">List</button>
-
+            <button type="submit" data-oper='list' class="btn btn-primary">List</button>
             
 
 		  </form>
 
           <footer class="text-center" style="max-width: 920px;">
-
             <p>Copyright ⓒ 2019 <b>잘바조</b> All Rights Reserved.</p>
-
           </footer>
 
         </main>
@@ -205,14 +199,22 @@
     			console.log(operation);
     			
     			if(operation === 'remove') {
-
     				formObj.attr("action", "/community/remove");
+    				
     			}else if(operation === 'list'){
-					
-
     				formObj.attr("action", "/community/list").attr("method", "get");
-
+    				
+    				var pageNumTag = $("input[name='pageNum']").clone();
+    				var amountTag = $("input[name='amount']").clone();
+    				var keywordTag = $("input[name='keyword']").clone();
+    				var typeTag = $("input[name='type']").clone();
+    				
 					formObj.empty();
+					
+					formObj.append(pageNumTag);
+					formObj.append(amountTag);
+					formObj.append(keywordTag);
+					formObj.append(typeTag);
 
     			}
 

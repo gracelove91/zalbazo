@@ -13,12 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- 부트스트랩 CSS 추가하기 -->
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-<body>
-<img alt="" src="${ctx}/resources/img/pika.gif">
-<h2>여기는 지식동modify</h2>
-<div class="container-fluid">
-    <div class="row d-flex d-md-block flex-nowrap wrapper">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row d-flex d-md-block flex-nowrap wrapper">
+
         <nav class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
             <div class="list-group border-0 card text-center text-md-left">
                 <a href="./index.html" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
@@ -44,8 +44,8 @@
                 </a>
                 <a href="#search" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
                    data-parent="#sidebar" aria-expanded="false">
-                    <img style="width: 20px;" src="/resources/img/search.svg"><span
-                        class="d-none d-md-inline ml-1">검색</span>
+                    <img style="width: 20px;" src="/resources/img/search.svg">
+                    <span class="d-none d-md-inline ml-1">검색</span>
                 </a>
                 <div class="collapse" id="search">
                     <div class="input-group p-2" style="background-color: #1c1c1c;">
@@ -63,6 +63,11 @@
           <hr>
 		  <form role="form" action="/jisikdong/modify" method="post">
 		  
+		  	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+		  	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+		  	<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
+		  	<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
+		  
 		    <div class="form-group">
               <input type="hidden" class="form-control" id="contentId" name="contentId" value="${content.contentId}" readonly="readonly">
             </div>
@@ -76,52 +81,61 @@
             <div class="form-group">
               <label>제목</label>
               <input type="text" class="form-control" id="title" name="title" value="${content.title}">
-            </div>
+			</div>
             <div class="form-group">
-              <label>내용</label>
-              <textarea class="form-control" style="height: 320px" id="body" name="body">${content.body}</textarea>
+                <label>내용</label>
+                <textarea class="form-control" style="height: 320px" id="body" name="body">${content.body}</textarea>
             </div>
             
-            <button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
+            <button type="submit" data-oper='modify' class="btn btn-outline-primary">Modify</button>
             <button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
-            <button type="submit" data-oper='list' class="btn btn-info">List</button>
+            <button type="submit" data-oper='list' class="btn btn-primary">List</button>
             
 		  </form>
           <footer class="text-center" style="max-width: 920px;">
             <p>Copyright ⓒ 2019 <b>잘바조</b> All Rights Reserved.</p>
           </footer>
-
         </main>
     </div>
-</div>
-<!-- 제이쿼리 자바스크립트 추가하기 -->
-<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
-<!-- 부트스트랩 자바스크립트 추가하기 -->
-<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
 
-        var formObj = $("form");
+    <!-- 제이쿼리 자바스크립트 추가하기 -->
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <!-- 부트스트랩 자바스크립트 추가하기 -->
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		
+    		var formObj = $("form");
+    		
+    		$('button').on("click", function(e){
+    			
+    			e.preventDefault();
+    			
+    			var operation = $(this).data("oper");
+    			
+    			console.log(operation);
+    			
+    			if(operation === 'remove') {
+    				formObj.attr("action", "/jisikdong/remove");
+    				
+    			} else if(operation === 'list') {
+    				formObj.attr("action", "/jisikdong/list").attr("method", "get");
+    				var pageNumTag = $("input[name='pageNum']").clone();
+    				var amountTag = $("input[name='amount']").clone();
+    				var keywordTag = $("input[name='keyword']").clone();
+    				var typeTag = $("input[name='type']").clone();
+    				
+					formObj.empty();
+					formObj.append(pageNumTag);
+					formObj.append(amountTag);
+					formObj.append(keywordTag);
+					formObj.append(typeTag);
+    			}
+    			formObj.submit();
+    		});
+    	});
+    </script>
+  </body>
 
-        $('button').on("click", function (e) {
-
-            e.preventDefault();
-
-            var operation = $(this).data("oper");
-
-            console.log(operation);
-
-            if (operation === 'remove') {
-
-                formObj.attr("action", "/jisikdong/remove");
-            } else if (operation === 'list') {
-
-                formObj.attr("action", "/jisikdong/list").attr("method", "get");
-                formObj.empty();
-            }
-            formObj.submit();
-        });
-    });
-</script>
-</body>
 </html>

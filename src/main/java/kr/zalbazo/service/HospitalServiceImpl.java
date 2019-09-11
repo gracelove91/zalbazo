@@ -4,16 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import kr.zalbazo.mapper.content.HospitalMapper;
-import kr.zalbazo.model.content.Criteria;
-import kr.zalbazo.model.content.Hospital;
-import kr.zalbazo.model.content.Label;
-import kr.zalbazo.mapper.hospital.HospitalMapper;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.Hospital;
-import kr.zalbazo.model.content.HospitalLabel;
-import kr.zalbazo.model.content.HospitalPicture;
 import kr.zalbazo.model.content.HospitalQna;
+import kr.zalbazo.model.content.Label;
 import kr.zalbazo.model.content.PicLib;
 import lombok.extern.log4j.Log4j;
 

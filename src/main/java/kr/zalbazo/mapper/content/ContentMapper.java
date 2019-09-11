@@ -18,9 +18,10 @@ public interface ContentMapper {
 
     int update(Content content);    
 
-
     List<Content> getListWithPaging(Criteria cri);
 
     int getTotalCount(Criteria cri);
 }
+
+
 

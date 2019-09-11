@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.zalbazo.mapper.hospital.HospitalMapper">
+
+	<select id="read" resultType="kr.zalbazo.model.content.Hospital">
+		select * from hospital
+		where ID = #{id}
+	</select>
+	
+	<select id="labelList" resultType="kr.zalbazo.model.content.Label">
+		select * from hospital_label
+		where hospital_id = #{id}
+	</select>
+	
+	<select id="pictureList" resultType="kr.zalbazo.model.content.Picture">
+		select * from hospital_picture
+		where id = #{id}
+	</select> 
+
+</mapper>

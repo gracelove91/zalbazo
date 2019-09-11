@@ -14,6 +14,7 @@
 </head>
 
 <body>
+
     <div class="container-fluid">
         <div class="row d-flex d-md-block flex-nowrap wrapper">
             <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
@@ -39,8 +40,9 @@
                                     <c:out value="${content.id}" />
                                 </th>
 
-                                <td><a style="color: #000000;" href='/jisikdong/get?id=<c:out value="${content.id}"/>'>
-                                        <c:out value="${content.title}" /></a></td>
+                                <td>
+                                  <a class='move' style="color: #000000;" href='<c:out value="${content.id}"/>'><c:out value="${content.title}" /></a>
+                                </td>
 
                                 <td class="mobile" style="text-align:center;">
                                     <c:out value="${content.userEmail}" />
@@ -50,9 +52,44 @@
                                 </td>
                             </tr>
                         </c:forEach>
+                        
                     </tbody>
                 </table>
+                
+                
+                <!-- 검색 조건 처리 -->
+                <div class='row'>
+                  <div class="col-lg-12">
+                  
+                  <form id='searchForm' action="/jisikdong/list" method='get'>
+                    <select name='type'>
+                      <option value=""
+                        <c:out value="${pageMaker.cri.type == null? 'selected':''}"/>>--</option>
+                        <option value="T"
+                          <c:out value="${pageMaker.cri.type eq 'T' ? 'selected':''}"/>>제목</option>
+                        <option value="B"
+                          <c:out value="${pageMaker.cri.type eq 'B' ? 'selected':''}"/>>내용</option>
+                        <option value="U"
+                          <c:out value="${pageMaker.cri.type eq 'U' ? 'selected':''}"/>>작성자</option>
+                        <option value="TB"
+                          <c:out value="${pageMaker.cri.type eq 'TB' ? 'selected':''}"/>>제목 or 내용</option>
+                        <option value="TU"
+                          <c:out value="${pageMaker.cri.type eq 'TU' ? 'selected':''}"/>>제목 or 작성자</option>
+                        <option value="TBU"
+                          <c:out value="${pageMaker.cri.type eq 'TBU' ? 'selected':''}"/>>제목 or 내용 or 작성자</option>
+                    </select>
+                    
+                    <input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>' />
+                    <input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>' />
+                    <input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>' />
+                    <button class='btn btn-primary'>Search</button>
+                  </form>
+                  </div>
+                  </div>
 
+
+
+				<!-- Modal 처리 -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
@@ -71,14 +108,15 @@
 
                 </div>
 
+
                 <div style="max-width: 1080px;">
                     <a href="/jisikdong/register" id='regBtn' type="button" class="btn btn-primary float-right">글쓰기</a>
                 </div>
+                
                 <!-- Paging 처리 -->
                 <div class='pull-right'>
-
                     <ul class="pagination">
-
+                    
                         <c:if test="${pageMaker.prev}">
                             <li class="page-item previous">
                                 <a class="page-link" href="${pageMaker.startPage -1}">Previous</a>
@@ -96,13 +134,16 @@
                                 <a class="page-link" href="${pageMaker.endPage+1 }">Next</a>
                             </li>
                         </c:if>
+                        
                     </ul>
                 </div>
 
 
-                <form id='actionForm' action="/jisikdong/list" method='get'>
+                <form id='actionForm' action="/jisikdong/list" method="get">
                     <input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
                     <input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+                    <input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>
+                    <input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
                 </form>
 
                 <footer class="text-center" style="max-width: 1080px;">
@@ -111,6 +152,7 @@
             </main>
         </div>
     </div>
+
 
     <!-- 제이쿼리 자바스크립트 추가하기 -->
 
@@ -158,9 +200,30 @@
             $("#regBtn").on("click", function () {
                 self.location = "/jisikdong/register";
             });
+            
+            var searchForm = $("#searchForm");
+            $("#searchForm button").on("click", function(e){
+            	
+            	if(!searchForm.find("option:selected").val()) {
+            		alert("검색종류를 선택하세요.");
+            		return false;
+            	}
+            	
+            	if(!searchForm.find("input[name='keyword']").val()){
+            		alert("키워드를 입력하세요");
+            		return false;
+            	}
+            	
+            	searchForm.find("input[name='pageNum']").val("1");
+            	e.preventDefault();
+            	
+            	searchForm.submit();
+            });
+            
         });
 
     </script>
+
 </body>
 
 </html>

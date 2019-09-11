@@ -44,8 +44,8 @@
                 </a>
                 <a href="#search" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
                    data-parent="#sidebar" aria-expanded="false">
-                    <img style="width: 20px;" src="/resources/img/search.svg"><span
-                        class="d-none d-md-inline ml-1">검색</span>
+                    <img style="width: 20px;" src="/resources/img/search.svg">
+                    <span class="d-none d-md-inline ml-1">검색</span>
                 </a>
                 <div class="collapse" id="search">
                     <div class="input-group p-2" style="background-color: #1c1c1c;">
@@ -55,75 +55,88 @@
             </div>
         </nav>
         <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
-            <div class="page-header mt-3">
-                <h2>지식동 글 수정하기</h2>
+
+          <div class="page-header mt-3">
+              <h2>지식동 글 수정하기</h2>
+          </div>
+          <p class="lead">지식동 modify</p>
+          <hr>
+		  <form role="form" action="/jisikdong/modify" method="post">
+		  
+		  	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+		  	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+		  	<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
+		  	<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
+		  
+		    <div class="form-group">
+              <input type="hidden" class="form-control" id="id" name="id" value="${content.id}" readonly="readonly">
             </div>
-            <p class="lead">지식동 modify</p>
-            <hr>
-            <form role="form" action="/jisikdong/modify" method="post">
+            <div class="form-group">
+              <input type="hidden" class="form-control" id="categoryId" name="categoryId" value="${content.categoryId}" readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label>EMAIL</label>
+              <input type="text" class="form-control" id="userEmail" name="userEmail" value="${content.userEmail}" readonly="readonly">
+            </div>
+            <div class="form-group">
+              <label>제목</label>
+              <input type="text" class="form-control" id="title" name="title" value="${content.title}">
+			</div>
+            <div class="form-group">
+                <label>내용</label>
+                <textarea class="form-control" style="height: 320px" id="body" name="body">${content.body}</textarea>
+            </div>
 
-                <div class="form-group">
-                    <input type="hidden" class="form-control" id="id" name="id" value="${content.id}"
-                           readonly="readonly">
-                </div>
-                <div class="form-group">
-                    <input type="hidden" class="form-control" id="categoryId" name="categoryId"
-                           value="${content.categoryId}" readonly="readonly">
-                </div>
-                <div class="form-group">
-                    <label>EMAIL</label>
-                    <input type="text" class="form-control" id="userEmail" name="userEmail" value="${content.userEmail}"
-                           readonly="readonly">
-                </div>
-                <div class="form-group">
-                    <label>제목</label>
-                    <input type="text" class="form-control" id="title" name="title" value="${content.title}">
-                </div>
-                <div class="form-group">
-                    <label>내용</label>
-                    <textarea class="form-control" style="height: 320px" id="body"
-                              name="body">${content.body}</textarea>
-                </div>
+            <button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
+            <button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
+            <button type="submit" data-oper='list' class="btn btn-info">List</button>
 
-                <button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
-                <button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
-                <button type="submit" data-oper='list' class="btn btn-info">List</button>
-
-            </form>
-            <footer class="text-center" style="max-width: 920px;">
-                <p>Copyright ⓒ 2018 <b>잘바조</b> All Rights Reserved.</p>
-            </footer>
+        </form>
+       
+        <footer class="text-center" style="max-width: 920px;">
+            <p>Copyright ⓒ 2019 <b>잘바조</b> All Rights Reserved.</p>
+        </footer>
         </main>
     </div>
-</div>
-<!-- 제이쿼리 자바스크립트 추가하기 -->
-<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
-<!-- 부트스트랩 자바스크립트 추가하기 -->
-<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
 
-        var formObj = $("form");
+    <!-- 제이쿼리 자바스크립트 추가하기 -->
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <!-- 부트스트랩 자바스크립트 추가하기 -->
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		
+    		var formObj = $("form");
+    		
+    		$('button').on("click", function(e){
+    			
+    			e.preventDefault();
+    			
+    			var operation = $(this).data("oper");
+    			
+    			console.log(operation);
+    			
+    			if(operation === 'remove') {
+    				formObj.attr("action", "/jisikdong/remove");
+    				
+    			} else if(operation === 'list') {
+    				formObj.attr("action", "/jisikdong/list").attr("method", "get");
+    				var pageNumTag = $("input[name='pageNum']").clone();
+    				var amountTag = $("input[name='amount']").clone();
+    				var keywordTag = $("input[name='keyword']").clone();
+    				var typeTag = $("input[name='type']").clone();
+    				
+					formObj.empty();
+					formObj.append(pageNumTag);
+					formObj.append(amountTag);
+					formObj.append(keywordTag);
+					formObj.append(typeTag);
+    			}
+    			formObj.submit();
+    		});
+    	});
+    </script>
+  </body>
 
-        $('button').on("click", function (e) {
-
-            e.preventDefault();
-
-            var operation = $(this).data("oper");
-
-            console.log(operation);
-
-            if (operation === 'remove') {
-
-                formObj.attr("action", "/jisikdong/remove");
-            } else if (operation === 'list') {
-
-                formObj.attr("action", "/jisikdong/list").attr("method", "get");
-                formObj.empty();
-            }
-            formObj.submit();
-        });
-    });
-</script>
-</body>
 </html>

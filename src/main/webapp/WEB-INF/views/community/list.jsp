@@ -4,7 +4,6 @@
 
 <!doctype html>
 <html>
-
 <head>
     <title>커뮤니티 웹 사이트</title>
     <meta charset="utf-8">
@@ -20,6 +19,7 @@
             <div class="page-header mt-3">
                 <h2>커뮤니티</h2>
             </div>
+            
             <p class="lead">커뮤니티게시판</p>
             <hr>
             <table class="table table-striped" style="max-width: 1080px;">
@@ -39,8 +39,9 @@
                             <c:out value="${content.id}"/>
                         </th>
 
-                        <td><a style="color: #000000;" href='/community/get?id=<c:out value="${content.id}"/>'>
-                            <c:out value="${content.title}"/></a></td>
+                        <td>
+                          <a class='move' style="color: #000000;" href='<c:out value="${content.id}"/>'><c:out value="${content.title}"/></a>
+                        </td>
 
                         <td class="mobile" style="text-align:center;">
                             <c:out value="${content.userEmail}"/>
@@ -53,14 +54,11 @@
                 </tbody>
             </table>
 
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                 aria-hidden="true">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"
-                                    aria-hidden="true">&times;
-                            </button>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title" id="myModalLabel">커뮤니티</h4>
                         </div>
                         <div class="modal-body">처리가 완료되었습니다</div>
@@ -69,7 +67,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div style="max-width: 1080px;">
@@ -79,7 +76,6 @@
             <div class='pull-right'>
 
                 <ul class="pagination">
-
                     <c:if test="${pageMaker.prev}">
                         <li class="page-item previous">
                             <a class="page-link" href="${pageMaker.startPage -1}">Previous</a>

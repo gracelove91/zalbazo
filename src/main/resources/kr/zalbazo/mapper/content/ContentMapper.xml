@@ -84,32 +84,6 @@
         where rn > (#{pageNum} -1) * #{amount}
       ]]>
 	</select>
-	
-<!-- 	<select id="getTotalCount" resultType="int">
-	  select count(*) from content 
-	  where 
-	  
-	  <include refid="criteria"></include>
-	  
-	  id > 0 and CATEGORY_ID = #{category}
-        from (
-                 select /*+ INDEX_DESC(content content_pk) */
-                     rownum RN,
-                     ID,
-                     TITLE,
-                     BODY,
-                     CREATED_DATE,
-                     UPDATED_DATE,
-                     CATEGORY_ID,
-                     USER_EMAIL
-                 from content
-                 where CATEGORY_ID = #{category}
-                   and rownum <= #{pageNum} * #{amount}
-             )
-        where rn > (#{pageNum} - 1) * #{amount}
-        ]]>
-
-	</select> -->
 
     <select id="getTotalCount" resultType="int">
         select count(*) from content

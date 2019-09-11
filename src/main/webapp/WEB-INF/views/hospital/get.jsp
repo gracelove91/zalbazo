@@ -21,22 +21,23 @@
 </head>
 
 <body>
-
-<br />
-  <!-- Page Content -->
   <div class="container">
+   
+  <!-- Page Content -->
     <!-- Portfolio Item Heading -->
     <p class="h1" style="text-align: center"> ${hospital.name} </p>
     
-    <br>
+    <br><br><br>
     <!-- Portfolio Item Row -->
     <div class="row">
 
       <div class="col-md-7">
-          <p class="h3"><i class="material-icons">call</i> ${hospital.tel} </p>
-          <p class="h3"><i class="material-icons">my_location</i> ${hospital.address} </p>
-          <p class="h3"><i class="material-icons">alarm</i> ${hospital.treatStart} </p>
-          <p class="h3"><i class="material-icons">alarm_off</i> ${hospital.treatEnd} </p>
+      	  <br>
+          <p class="h4"><i class="material-icons">call</i> ${hospital.tel} </p>
+          <p class="h5"><i class="material-icons">my_location</i> ${hospital.address} </p>
+          <p class="h4"><i class="material-icons">alarm</i> ${hospital.treatStart} </p>
+          <p class="h4"><i class="material-icons">alarm_off</i> ${hospital.treatEnd} </p>
+          <br>
           
           <c:forEach items="${labelList}" var="label">
           	<c:if test="${label.labelCode == 1}">
@@ -55,17 +56,57 @@
           
           <br />
           <br />
-          <p class="h4"> ${hospital.info} </p>
+          <p class="h5"> ${hospital.info} </p>
 
       </div>
 
       <div class="col-md-5">
-        <c:forEach items="${hPictureList}" var="pic">
-	        <img class="img-fluid" src='${ctx}/resources/img/${pic.fileName}' alt="" width="350" height="300">
-        </c:forEach>
-        <br><br>
+      
+        <%-- <c:forEach items="${hPictureList}" var="pic">
+	        <img class="img-fluid" src='${ctx}/resources/img/${pic.fileName}' width="350" height="300">
+	        <br>
+        </c:forEach> --%>
         
-        <p class="h4">
+ 	  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="width: 380px; margin: 0 auto">
+	    <div class="carousel-inner">
+	    
+	  <c:choose>
+	     <c:when test="${picCount eq 0}">
+	     </c:when>
+	    	
+	     <c:when test="${picCount eq 1}">
+	       <div class="carousel-item active">
+	       	 <img src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg" width="380" height="300">
+	       </div>
+	     </c:when>
+	    	
+	     <c:otherwise>
+	       <div class="carousel-item active">
+	       	 <img src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg" width="380" height="300">
+	       </div>
+	         
+	       <c:forEach var="i" begin="2" end="${picCount}">
+	  	  	  <div class="carousel-item">
+	      	    <img src="${ctx}/resources/img/${hospital.hospitalId}-${i}.jpg" width="380" height="300">
+	       	  </div>
+	  	   </c:forEach>
+	     </c:otherwise>
+	   </c:choose>
+	  
+	    </div>
+	    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+	      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	      <span class="sr-only">Previous</span>
+	    </a>
+	    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+	      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	      <span class="sr-only">Next</span>
+	    </a>
+	  </div>
+	          
+        <br>
+        
+        <p class="h5" style="text-align: center">
           <i class="material-icons">event</i>예약하기
           <i class="material-icons">favorite_border</i>즐겨찾기
         </p>
@@ -77,22 +118,34 @@
 		<!-- Related Projects Row -->
     <br>
     <br>
-    <h3 class="my-4">이 아래로 지도 후기 문의</h3>
-    <div class="tabbable">
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab1" data-toggle="tab">지도</a></li>
-        <li><a href="#tab2" data-toggle="tab">후기</a></li>
-        <li><a href="#tab3" data-toggle="tab">문의</a></li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="tab1">
-          <h1>지도</h1>
-          <img
-            src="https://map0.daumcdn.net/map_2d/1906plw/L3/1996/892.png">
-        </div>
-        <div class="tab-pane" id="tab2">
-          <h1>후기</h1>
-          <table class="table table-striped">
+	<br>
+	
+	<div class="container">
+	  <!-- Nav tabs -->
+	  <ul class="nav nav-tabs" role="tablist">
+	    <li class="nav-item">
+	      <a class="nav-link active" data-toggle="tab" href="#home">Map</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" data-toggle="tab" href="#menu1">Review</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" data-toggle="tab" href="#menu2">Q&A</a>
+	    </li>
+	  </ul>
+	
+	  <!-- Tab panes -->
+	  <div class="tab-content">
+	    <div id="home" class="container tab-pane active"><br>
+	      <h3>map</h3>
+	      <img src="https://map0.daumcdn.net/map_2d/1906plw/L3/1996/892.png">
+	      <br>
+    	  <br>
+	 	  <br>
+	    </div>
+	    <div id="menu1" class="container tab-pane fade"><br>
+	      <h3>review</h3>
+	      <table class="table table-striped">
             <thead>
               <tr>
                 <th>유저ID</th>
@@ -122,13 +175,51 @@
               </tr>
             </tbody>
           </table>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnDMjbII6RBPdO0QJgzkcr0RgCKgmILIVHDM_9OFgx7MPUqjyw3A"
-            width="400" height="400">
-        </div>
-        <div class="tab-pane" id="tab3">
-          <h1>문의</h1>
-          <table class="table table-striped">
+          <br>
+    	  <br>
+		  <br>
+	    </div>
+	    
+	    
+	    <div id="menu2" class="container tab-pane fade"><br>
+	      
+	      <div class="container">
+	      
+  		    <form id='actionForm' action="/hospital/get" method="post">
+              <input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com">
+              <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
+              <%-- <input type='hidden' class="form-control" name="contentId" value="${content.contentId}"> --%>
+              
+              <div class="form-group">
+                <label for="comment">궁금한 점을 질문하세요</label>
+                <textarea class="form-control" rows="5" id="body" name="body"></textarea>
+    	      </div>
+	    	  
+	    	  <button type="submit" class="btn btn-secondary" id="regBtn" name="regBtn">Submit</button>
+  		    </form>
+  		    
+		  </div>
+		  
+		  <br><br>
+		  
+		  <table class="table table-striped">
+			<tr>
+				<th>글 내용</th>
+				<th>작성자</th>
+				<th>DATE</th>
+			</tr>
+
+			<c:forEach items="${qnaList}" var="qna">
+				<tr>
+					<td>${qna.body}</td>
+					<td>${qna.userEmail}</td>
+					<td>${qna.createdDate}</td>
+				</tr>
+			</c:forEach>
+		  </table>
+		  
+	      
+<%-- 	      <table class="table table-striped">
             <thead>
               <tr>
                 <th>글 내용</th>
@@ -136,41 +227,44 @@
                 <th>DATE</th>
               </tr>
             </thead>
-            <tbody>
+
+		<c:forEach items="${qna}" var="qna">
+			<tr>
+				<th scope="row" class="mobile" style="text-align: center;">
+					<c:out value="${content.contentId}" />
+				</th>
+
+				<td><a class='move' style="color: #000000;"
+					href='<c:out value="${content.contentId}"/>'><c:out
+							value="${content.title}" /></a></td>
+
+				<td class="mobile" style="text-align: center;"><c:out
+						value="${content.userEmail}" /></td>
+				<td class="mobile" style="text-align: center;"><fmt:formatDate
+						value="${content.createdDate}" pattern="yyyy-MM-dd" /></td>
+			</tr>
+		   <tbody>
               <tr>
-                <td>John</td>
-                <td>왕관앵무 진료 가능?</td>
-                <td>2019-09-02</td>
-              </tr>
-              <tr>
-                <td>아프리카동물병원</td>
-                <td>ㄴ넹~</td>
-                <td>2019-09-02</td>
-              </tr>
-              <tr>
-                <td>sally</td>
-                <td>일요일도 진료 가능?</td>
-                <td>2019-09-02</td>
-              </tr>
-              <tr>
-                <td>아프리카동물병원</td>
-                <td>ㄴno.......</td>
-                <td>2019-09-03</td>
+                <td>${qna.body}</td>
+                <td>${qna.userEmail}</td>
+                <td>${qna.createdDate}</td>
               </tr>
             </tbody>
-          </table>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnDMjbII6RBPdO0QJgzkcr0RgCKgmILIVHDM_9OFgx7MPUqjyw3A"
-            width="400" height="400">
-        </div>
+		</c:forEach>
 
-      </div>
-    </div>
-
-  </div>
-  <!-- /.container -->
-  
-
+		 
+          </table> --%>
+          
+          <br>
+    	  <br>
+		  <br>
+	    </div>
+	  </div>
+	</div>
+	</div>
+	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <!-- 부트스트랩 자바스크립트 추가하기 -->
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>

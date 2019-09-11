@@ -11,10 +11,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Picture {
+public class HospitalQna {
 	
-	private Long id;
-	private String fileName;
-	private Long picId;
+	private Long hospitalQnaId;
+	private Long hospitalId;
+	private Long contentId;
 
 }

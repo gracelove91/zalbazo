@@ -5,12 +5,40 @@
 
 	<select id="read" resultType="kr.zalbazo.model.content.Hospital">
 		select * from hospital
-		where ID = #{id}
+		where hospital_id = #{hospitalId}
 	</select>
 	
-	<select id="labelList" resultType="kr.zalbazo.model.content.Label">
+	<select id="labelList" resultType="kr.zalbazo.model.content.HospitalLabel">
 		select * from hospital_label
-		where hospital_id = #{id}
+		where hospital_id = #{hospitalId}
+	</select>
+	
+	<select id="pictureList" resultType="kr.zalbazo.model.content.PicLib" >
+		select a.uuid, upload_path, file_name from pic_lib a, pic_lib_rel_hospital b
+		where a.uuid = b.uuid and hospital_id = #{hospitalId}
+	</select> 
+	
+	<select id="hPictureCount" resultType="int">
+        select count(*) from pic_lib_rel_hospital
+		where hospital_id = #{hospitalId}
+    </select>
+    
+    <insert id="hContentInsert" parameterType="kr.zalbazo.model.content.Content">
+    	INSERT into content(CONTENT_ID, BODY, CREATED_DATE, UPDATED_DATE, CATEGORY_ID, USER_EMAIL)
+		values (CONTENT_SEQ.nextval, #{body}, sysdate, sysdate, 4, #{userEmail})
+    </insert>
+    
+    <insert id="hQnaInsert" parameterType="kr.zalbazo.model.content.HospitalQna">
+        insert into hospital_qna(hospital_qna_id, hospital_id, content_id)
+		values (HOSPITAL_QNA_SEQ.nextval, #{hospitalId}, CONTENT_SEQ.currval)
+	</insert>
+	
+	<select id="hospitalQnaList" resultType="kr.zalbazo.model.content.Content">
+		select a.content_id, body, created_date, updated_date, user_email 
+		from content a, hospital_qna b
+		where a.content_id = b.content_id
+		and hospital_id = #{hospitalId} 
 	</select>
 
 </mapper>
+

@@ -11,14 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Hospital {
-	
+public class PicLibRelHospital {
+	private String uuid;
 	private Long hospitalId;
-	private String name;
-	private String address;
-	private String treatStart;
-	private String treatEnd;
-	private String tel;
-	private String info;
-	
 }

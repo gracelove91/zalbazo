@@ -384,48 +384,6 @@
 
 			var contentIdValue = '<c:out value="${content.contentId}"/>';
 
-			/*
-			replyService.add(
-					{body:"JS Test", userEmail:"dummy@gmail.com", contentId:contentIdValue}
-					,
-					function(result){
-						alert("RESULT : " + result);
-					}); */
-
-			/*
-			replyService.getList({contentId:contentIdValue, page:1}, function(list){
-			
-				for(var i = 0, len = list.length||0; i<len; i++){
-					console.log(list[i]);
-				}
-			}); */
-
-			/* // 2번 댓글 삭제
-			replyService.remove(2, function(count) {
-			
-				console.log(count);
-			
-				if(count === "success") {
-					alert("삭제완료");
-				}
-			}, function(err) {
-				alert('remove error');
-			}); */
-
-			/* // 4번 댓글 수정
-			replyService.update({
-				replyid : 4,
-				id : idValue,
-				body : "4번댓글수정!",
-			}, function(result) {
-				alert("수정완료");
-			}); */
-
-			/* replyService.get(10, function(data){
-				console.log(data);
-			}); */
-
-		</script>
 
 		$(document).ready(function(){
 

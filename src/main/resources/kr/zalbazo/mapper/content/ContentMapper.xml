@@ -3,12 +3,9 @@
 
 <mapper namespace="kr.zalbazo.mapper.content.ContentMapper">
 
-    <insert id="insert"
-            parameterType="kr.zalbazo.model.content.Content">
-        INSERT into content(ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE,
-                            CATEGORY_ID, USER_EMAIL)
-        values (CONTENT_SEQ.nextval, #{title}, #{body}, sysdate, sysdate,
-                #{categoryId}, #{userEmail})
+    <insert id="insert" parameterType="kr.zalbazo.model.content.Content">
+        INSERT into content(CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, CATEGORY_ID, USER_EMAIL)
+        values (CONTENT_SEQ.nextval, #{title}, #{body}, sysdate, sysdate, #{categoryId}, #{userEmail})
     </insert>
 
     <update id="update">
@@ -18,23 +15,24 @@
             UPDATED_DATE = sysdate,
             USER_EMAIL=#{userEmail},
             CATEGORY_ID=#{categoryId}
-        where ID = #{id}
+        where CONTENT_ID = #{contentId}
     </update>
 
     <delete id="delete">
         delete CONTENT
-        where ID = #{id}
+        where content_id = #{contentId}
     </delete>
 
     <select id="read" resultType="kr.zalbazo.model.content.Content">
         select *
         from CONTENT
-        where ID = #{id}
+        where content_id = #{contentId}
     </select>
 
-    <select id="getList"
-            resultType="kr.zalbazo.model.content.Content"><![CDATA[
-        select ID,
+    <select id="getList" resultType="kr.zalbazo.model.content.Content">
+    
+    	<![CDATA[
+        select CONTENT_ID,
                TITLE,
                BODY,
                CREATED_DATE,
@@ -42,7 +40,7 @@
                CATEGORY_ID,
                USER_EMAIL
         from CONTENT
-        where ID > 0
+        where CONTENT_ID > 0
           AND CATEGORY_ID = #{categoryId}
         ]]></select>
 
@@ -67,7 +65,7 @@
 </sql>
 
     <select id="getListWithPaging" resultType="kr.zalbazo.model.content.Content">
-        <![CDATA[
+      <![CDATA[
         select CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, USER_EMAIL
         from 
         	(
@@ -76,7 +74,7 @@
         	from 
         	  content
         	where 
-        ]]>
+        	]]>
         	
         	<include refid="criteria"></include>
         	
@@ -84,11 +82,10 @@
         	CATEGORY_ID = #{category} and rownum <= #{pageNum} * #{amount}
         	)
         where rn > (#{pageNum} -1) * #{amount}
-          ]]>
+      ]]>
 	</select>
 	
-	<select id="getTotalCount" resultType="int">
-
+<!-- 	<select id="getTotalCount" resultType="int">
 	  select count(*) from content 
 	  where 
 	  
@@ -112,13 +109,15 @@
         where rn > (#{pageNum} - 1) * #{amount}
         ]]>
 
-	</select>
+	</select> -->
 
     <select id="getTotalCount" resultType="int">
-        select count(*)
-        from content
-        where id > 0
-          and CATEGORY_ID = #{category}
+        select count(*) from content
+        where 
+        
+        <include refid="criteria"></include>
+        
+        content_id > 0 and CATEGORY_ID = #{category}
     </select>
 
 </mapper>

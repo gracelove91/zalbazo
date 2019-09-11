@@ -35,7 +35,7 @@ public class ContentMapperTest {
 		Content content = new Content();
 		content.setTitle("수정타이틀");
 		content.setBody("수정내용");
-		content.setId(2L);
+		content.setContentId(2L);
 
 		int result = mapper.update(content);
 		assertThat(result, is(1));

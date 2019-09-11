@@ -6,7 +6,7 @@
 <html>
 
 <head>
-    <title>커뮤니티 웹 사이트</title>
+    <title>커뮤니티</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- 부트스트랩 CSS 추가하기 -->
@@ -20,12 +20,12 @@
                 <div class="page-header mt-3">
                     <h2>커뮤니티</h2>
                 </div>
-                <p class="lead">커뮤니티게시판</p>
+                <p class="lead">자유롭게 이야기를 나누세요</p>
                 <hr>
                 <table class="table table-striped" style="max-width: 1080px;">
                     <thead>
                         <tr>
-                            <th scope="col" class="mobile" style="width:55px; text-align:center;">번호</th>
+                            <th scope="col" class="mobile" style="width:60px; text-align:center;">번호</th>
                             <th scope="col" class="mobile" style="text-align:center;">제목</th>
                             <th scope="col" class="mobile" style="width:80px; text-align:center;">작성자</th>
                             <th scope="col" class="mobile" style="width:120px; text-align:center;">날짜</th>
@@ -34,12 +34,13 @@
                     <tbody>
 
                         <c:forEach items="${contentList}" var="content">
+                        
                             <tr>
                                 <th scope="row" class="mobile" style="text-align:center;">
-                                    <c:out value="${content.id}" />
+                                    <c:out value="${content.contentId}" />
                                 </th>
 
-                                <td><a style="color: #000000;" href='/community/get?id=<c:out value="${content.id}"/>'>
+                                <td><a style="color: #000000;" href='/community/get?contentId=<c:out value="${content.contentId}"/>'>
                                         <c:out value="${content.title}" /></a></td>
 
                                 <td class="mobile" style="text-align:center;">
@@ -132,7 +133,7 @@
 
             $(".move").on("click", function (e) {
                 e.preventDefault();
-                actionForm.append("<input type='hidden' name='id' value='" + $(this).attr("href") + "'>");
+                actionForm.append("<input type='hidden' name='contentId' value='" + $(this).attr("href") + "'>");
                 actionForm.attr("action", "/community/get");
                 actionForm.submit();
             });

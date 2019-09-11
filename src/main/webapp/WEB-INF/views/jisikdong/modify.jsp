@@ -60,7 +60,7 @@
 		  <form role="form" action="/jisikdong/modify" method="post">
 		  
 		    <div class="form-group">
-              <input type="hidden" class="form-control" id="id" name="id" value="${content.id}" readonly="readonly">
+              <input type="hidden" class="form-control" id="contentId" name="contentId" value="${content.contentId}" readonly="readonly">
             </div>
             <div class="form-group">
               <input type="hidden" class="form-control" id="categoryId" name="categoryId" value="${content.categoryId}" readonly="readonly">
@@ -84,7 +84,7 @@
             
 		  </form>
           <footer class="text-center" style="max-width: 920px;">
-            <p>Copyright ⓒ 2018 <b>잘바조</b> All Rights Reserved.</p>
+            <p>Copyright ⓒ 2019 <b>잘바조</b> All Rights Reserved.</p>
           </footer>
         </main>
       </div>

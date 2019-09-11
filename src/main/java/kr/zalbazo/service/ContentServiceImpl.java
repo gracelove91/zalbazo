@@ -23,8 +23,8 @@ public class ContentServiceImpl implements ContentService {
     }
 
     @Override
-    public Content get(Long id) {
-        return mapper.read(id);
+    public Content get(Long contentId) {
+        return mapper.read(contentId);
     }
 
     @Override
@@ -33,8 +33,8 @@ public class ContentServiceImpl implements ContentService {
     }
 
     @Override
-    public boolean remove(Long id) {
-        return mapper.delete(id) == 1;
+    public boolean remove(Long contentId) {
+        return mapper.delete(contentId) == 1;
     }
 
 //    @Override

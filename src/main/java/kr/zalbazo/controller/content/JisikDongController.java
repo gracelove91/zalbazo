@@ -57,8 +57,8 @@ public class JisikDongController {
 
 
     @GetMapping({"/get", "/modify"})
-    public void detail(@RequestParam("id") Long id, Model model, @ModelAttribute("cri") Criteria cri){
-        model.addAttribute("content", service.get(id));
+    public void detail(@RequestParam("contentId") Long contentId, Model model, @ModelAttribute("cri") Criteria cri){
+        model.addAttribute("content", service.get(contentId));
     }
 
     @PostMapping("/modify")
@@ -71,9 +71,9 @@ public class JisikDongController {
     }
 
     @PostMapping("/remove")
-    public String remove(@RequestParam("id") Long id, RedirectAttributes rttr){
+    public String remove(@RequestParam("contentId") Long contentId, RedirectAttributes rttr){
     	
-        if(service.remove(id)){
+        if(service.remove(contentId)){
             rttr.addFlashAttribute("result", "success");
         }
         return "redirect:/jisikdong/list";

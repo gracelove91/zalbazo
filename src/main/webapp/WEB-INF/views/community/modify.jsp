@@ -121,7 +121,7 @@
 
 
 		    <div class="form-group">
-              <input type="hidden" class="form-control" id="id" name="id" value="${content.id}" readonly="readonly">
+              <input type="hidden" class="form-control" id="contentId" name="contentId" value="${content.contentId}" readonly="readonly">
             </div>
             <div class="form-group">
               <input type="hidden" class="form-control" id="categoryId" name="categoryId" value="${content.categoryId}" readonly="readonly">

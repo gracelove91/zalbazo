@@ -10,4 +10,11 @@
 
     <mvc:resources mapping="/resources/**" location="/static-resources/"/>
     <mvc:resources mapping="/webjars/**" location="/webjars/"/>     <!-- 부트스트랩과 제이쿼리 처리 -->
+
+<!-- <context:component-scan base-package="kr.zalbazo.controller.content" /> -->
+
+<!-- <beans:bean id="multipartResolver"
+class="org.springframework.web.multipart.support.
+StandardServletMultipartResolver"></beans:bean> -->
+
 </beans>

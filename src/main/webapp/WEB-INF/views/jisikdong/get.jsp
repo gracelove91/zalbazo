@@ -132,7 +132,7 @@
             <button data-oper='list' class="btn btn-info">list</button>
 
 			<form id='operForm' action="/jisikdong/modify" method="get">
-			  <input type='hidden' id='id' name='id' value='<c:out value="${content.id}"/>'>
+			  <input type='hidden' id='contentId' name='contentId' value='<c:out value="${content.contentId}"/>'>
 			  <input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
 			  <input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
 			</form>
@@ -165,7 +165,7 @@ $(document).ready(function(){
 	});
 	
 	$("button[data-oper='list']").on("click", function(e){
-		operForm.find("#id").remove();
+		operForm.find("#contentId").remove();
 		operForm.attr("action", "/jisikdong/list");
 		operForm.submit();
 	});

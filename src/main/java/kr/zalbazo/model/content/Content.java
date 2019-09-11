@@ -11,7 +11,7 @@ import java.util.Date;
 @Setter
 public class Content {
 
-	private Long id;
+	private Long contentId;
 	private String title;
 	private String body;
 	private String userEmail;

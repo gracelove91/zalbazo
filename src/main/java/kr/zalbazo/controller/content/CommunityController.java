@@ -50,8 +50,8 @@ public class CommunityController {
     }
 
     @GetMapping({"/get", "/modify"})
-    public void detail(@RequestParam("id") Long id, Model model, @ModelAttribute("cri") Criteria cri){
-        model.addAttribute("content", service.get(id));
+    public void detail(@RequestParam("contentId") Long contentId, Model model, @ModelAttribute("cri") Criteria cri){
+        model.addAttribute("content", service.get(contentId));
     }
     
     @PostMapping("/modify")
@@ -67,9 +67,9 @@ public class CommunityController {
     }
 
     @PostMapping("/remove")
-    public String remove(@RequestParam("id") Long id, RedirectAttributes rttr, @ModelAttribute("cri") Criteria cri){
+    public String remove(@RequestParam("contentId") Long contentId, RedirectAttributes rttr, @ModelAttribute("cri") Criteria cri){
     	
-        if(service.remove(id)){
+        if(service.remove(contentId)){
             rttr.addFlashAttribute("result", "success");
         }
         rttr.addAttribute("pageNum", cri.getPageNum());

@@ -36,11 +36,11 @@
                 <c:forEach items="${contentList}" var="content">
                     <tr>
                         <th scope="row" class="mobile" style="text-align:center;">
-                            <c:out value="${content.id}"/>
+                            <c:out value="${content.contentId}"/>
                         </th>
 
                         <td>
-                          <a class='move' style="color: #000000;" href='<c:out value="${content.id}"/>'><c:out value="${content.title}"/></a>
+                          <a class='move' style="color: #000000;" href='<c:out value="${content.contentId}"/>'><c:out value="${content.title}"/></a>
                         </td>
 
                         <td class="mobile" style="text-align:center;">
@@ -129,7 +129,7 @@
 
         $(".move").on("click", function (e) {
             e.preventDefault();
-            actionForm.append("<input type='hidden' name='id' value='" + $(this).attr("href") + "'>");
+            actionForm.append("<input type='hidden' name='contentId' value='" + $(this).attr("href") + "'>");
             actionForm.attr("action", "/community/get");
             actionForm.submit();
         });

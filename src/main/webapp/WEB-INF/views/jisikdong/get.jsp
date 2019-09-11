@@ -96,7 +96,7 @@
 
 
 			<form id='operForm' action="/jisikdong/modify" method="get">
-				<input type='hidden' id='id' name='id' value='<c:out value="${content.id}"/>'> 
+				<input type='hidden' id='contentId' name='contentId' value='<c:out value="${content.contentId}"/>'> 
 				<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'> 
 				<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
 				<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>

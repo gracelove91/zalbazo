@@ -8,9 +8,9 @@ import java.util.List;
 public interface ContentService {
 	
     void register(Content content);
-    Content get(Long id);
+    Content get(Long contentId);
     boolean modify(Content content);
-    boolean remove(Long id);
+    boolean remove(Long contentId);
     //List<Content> getList(Long categoryId);
     List<Content> getList(Criteria cri);
 	int getTotal(Criteria cri);

@@ -11,14 +11,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Hospital {
+public class PicLib {
 	
-	private Long hospitalId;
-	private String name;
-	private String address;
-	private String treatStart;
-	private String treatEnd;
-	private String tel;
-	private String info;
-	
+	private String uuid;
+	private String uploadPath;
+	private String fileName;
+
 }

@@ -11,9 +11,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Label {
+public class HospitalLabel {
 	
-	private Long hId;
+	private Long hospitalId;
 	private int labelCode;
 
 }

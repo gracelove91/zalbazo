@@ -65,6 +65,7 @@ public class JisikDongController {
 
 	@PostMapping("/remove")
 	public String remove(@RequestParam("contentId") Long contentId, RedirectAttributes rttr, @ModelAttribute("cri") Criteria cri) {
+
 		if (service.remove(contentId)) {
 			rttr.addFlashAttribute("result", "success");
 		}

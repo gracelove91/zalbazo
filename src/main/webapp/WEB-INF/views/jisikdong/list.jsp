@@ -1,12 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%
 	String ctx = request.getContextPath();
 	pageContext.setAttribute("ctx", ctx);
 %>
+
 <!doctype html>
+
 <html>
+
+ 
 
 <head>
   <title>지식동 웹 사이트</title>
@@ -211,6 +218,9 @@
         });
 
     </script>
+
 </body>
+
+ 
 
 </html>

@@ -17,17 +17,15 @@ public class ContentServiceImpl implements ContentService {
 
     @Autowired
     private ContentMapper mapper;
-    
 
 
-    @Transactional
     @Override
     public void register(Content content) {
-    	
-    	log.info("register : "+content);
-    	
+
+        log.info("register : " + content);
+
         mapper.insert(content);
-        
+
 
     }
 
@@ -46,17 +44,17 @@ public class ContentServiceImpl implements ContentService {
         return mapper.delete(contentId) == 1;
     }
 
-    
+
     @Override
-    public List<Content> getList(Criteria cri){
-    	log.info("get List with criteria : " + cri);
-    	return mapper.getListWithPaging(cri);
+    public List<Content> getList(Criteria cri) {
+        log.info("get List with criteria : " + cri);
+        return mapper.getListWithPaging(cri);
     }
 
-	@Override
-	public int getTotal(Criteria cri) {
-		return mapper.getTotalCount(cri);
-	}
-    
-   
+    @Override
+    public int getTotal(Criteria cri) {
+        return mapper.getTotalCount(cri);
+    }
+
+
 }

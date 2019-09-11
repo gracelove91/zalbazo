@@ -3,6 +3,7 @@
 
 <mapper namespace="kr.zalbazo.mapper.content.ContentMapper">
 
+<<<<<<< HEAD
 	<insert id="insert"
 		parameterType="kr.zalbazo.model.content.Content">
 		INSERT into content(CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE,
@@ -58,6 +59,73 @@
     </sql>
 
 	<select id="getListWithPaging" resultType="kr.zalbazo.model.content.Content">
+=======
+    <insert id="insert"
+            parameterType="kr.zalbazo.model.content.Content">
+        INSERT into content(ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE,
+                            CATEGORY_ID, USER_EMAIL)
+        values (CONTENT_SEQ.nextval, #{title}, #{body}, sysdate, sysdate,
+                #{categoryId}, #{userEmail})
+    </insert>
+
+    <update id="update">
+        update CONTENT
+        set TITLE= #{title},
+            BODY = #{body},
+            UPDATED_DATE = sysdate,
+            USER_EMAIL=#{userEmail},
+            CATEGORY_ID=#{categoryId}
+        where ID = #{id}
+    </update>
+
+    <delete id="delete">
+        delete CONTENT
+        where ID = #{id}
+    </delete>
+
+    <select id="read" resultType="kr.zalbazo.model.content.Content">
+        select *
+        from CONTENT
+        where ID = #{id}
+    </select>
+
+    <select id="getList"
+            resultType="kr.zalbazo.model.content.Content"><![CDATA[
+        select ID,
+               TITLE,
+               BODY,
+               CREATED_DATE,
+               UPDATED_DATE,
+               CATEGORY_ID,
+               USER_EMAIL
+        from CONTENT
+        where ID > 0
+          AND CATEGORY_ID = #{categoryId}
+        ]]></select>
+
+<sql id="criteria">
+	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+		<foreach item='type' collection="typeArr">
+			<trim prefix="OR">
+				<choose>
+					<when test="type == 'T'.toString()">
+						title like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'B'.toString()">
+						body like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'U'.toString()">
+						user_email like '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</trim>
+		</foreach>
+	</trim>
+</sql>
+
+    <select id="getListWithPaging"
+            resultType="kr.zalbazo.model.content.Content">
+>>>>>>> master
       <![CDATA[
         select CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, USER_EMAIL
         from 
@@ -66,11 +134,20 @@
         	  rownum RN, CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, CATEGORY_ID, USER_EMAIL
         	from 
         	  content
+<<<<<<< HEAD
         	where
       ]]>
       <include refid="criteria"></include>
       
       <![CDATA[  	
+=======
+        	where 
+        	]]>
+        	
+        	<include refid="criteria"></include>
+        	
+        	<![CDATA[
+>>>>>>> master
         	CATEGORY_ID = #{category} and rownum <= #{pageNum} * #{amount}
         	)
         where rn > (#{pageNum} -1) * #{amount}
@@ -78,6 +155,7 @@
 	</select>
 	
 	<select id="getTotalCount" resultType="int">
+<<<<<<< HEAD
 	  select count(*) from content
 	  where
 	  
@@ -86,4 +164,39 @@
 	  CONTENT_ID > 0 and CATEGORY_ID = #{category}
 	</select>
 
+=======
+	  select count(*) from content 
+	  where 
+	  
+	  <include refid="criteria"></include>
+	  
+	  id > 0 and CATEGORY_ID = #{category}
+        from (
+                 select /*+ INDEX_DESC(content content_pk) */
+                     rownum RN,
+                     ID,
+                     TITLE,
+                     BODY,
+                     CREATED_DATE,
+                     UPDATED_DATE,
+                     CATEGORY_ID,
+                     USER_EMAIL
+                 from content
+                 where CATEGORY_ID = #{category}
+                   and rownum <= #{pageNum} * #{amount}
+             )
+        where rn > (#{pageNum} - 1) * #{amount}
+        ]]>
+
+	</select>
+
+    <select id="getTotalCount" resultType="int">
+        select count(*)
+        from content
+        where id > 0
+          and CATEGORY_ID = #{category}
+    </select>
+
+
+>>>>>>> master
 </mapper>

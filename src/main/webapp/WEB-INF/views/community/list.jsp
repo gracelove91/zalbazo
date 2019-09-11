@@ -14,10 +14,10 @@
 </head>
 
 <body>
-<<<<<<< HEAD
+
 
   <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="${ctx}/home">
+    <a class="navbar-brand" href="/">
       <img src="${ctx}/resources/img/baba.png" width="30" height="30" class="d-inline-block align-top" alt=""> Zalbazo
     </a>
 
@@ -91,7 +91,6 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                             </div>
-=======
 <div class="container-fluid">
     <div class="row d-flex d-md-block flex-nowrap wrapper">
         <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
@@ -143,11 +142,12 @@
                         <div class="modal-body">처리가 완료되었습니다</div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
->>>>>>> master
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
+                        </div>
+                    </div>
+                </div>
 
                 <div style="max-width: 1080px;">
           			<button id='regBtn' type="button" type="button" class="btn btn-primary float-right" data-dismiss="modal" href="/jisikdong/register">글쓰기</button>
@@ -213,7 +213,6 @@
                 </footer>
             </main>
         </div>
-=======
             </div>
 
             <div style="max-width: 1080px;">
@@ -253,7 +252,7 @@
                 <p>Copyright ⓒ 2019 <b>zalbazo</b> All Rights Reserved.</p>
             </footer>
         </main>
->>>>>>> master
+
     </div>
 </div>
 
@@ -264,7 +263,7 @@
 
 <script type="text/javascript">
 
-<<<<<<< HEAD
+
         $('document').ready(function () {
         	
         	var searchForm = $("#searchForm");
@@ -287,13 +286,13 @@
         		searchForm.submit();
         		
         	});
-=======
     $('document').ready(function () {
->>>>>>> master
 
         var actionForm = $("#actionForm");
 
-<<<<<<< HEAD
+
+        var actionForm = $("#actionForm");
+
             $(".page-item a").on("click", function (e) {
                 e.preventDefault();
                 console.log('click');
@@ -308,21 +307,20 @@
                 actionForm.submit();
             });
             var result = '<c:out value="${result}" />';
-=======
         $(".page-item a").on("click", function (e) {
             e.preventDefault();
             console.log('click');
             actionForm.find("input[name='pageNum']").val($(this).attr("href"));
             actionForm.submit();
         });
->>>>>>> master
 
-        $(".move").on("click", function (e) {
-            e.preventDefault();
-            actionForm.append("<input type='hidden' name='id' value='" + $(this).attr("href") + "'>");
-            actionForm.attr("action", "/community/get");
-            actionForm.submit();
-        });
+            $(".move").on("click", function (e) {
+                e.preventDefault();
+                actionForm.append("<input type='hidden' name='id' value='" + $(this).attr("href") + "'>");
+                actionForm.attr("action", "/community/get");
+                actionForm.submit();
+            });
+            
         var result = '<c:out value="${result}" />';
 
         checkModal(result);
@@ -349,5 +347,4 @@
 
 </script>
 </body>
-
 </html>

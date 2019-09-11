@@ -6,7 +6,6 @@
 	pageContext.setAttribute("ctx", ctx);
 %>
 
-<<<<<<< HEAD
 <!doctype html>
 <html>
 <head>
@@ -138,8 +137,6 @@
         </footer>
 
       </main>
-
-=======
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -280,12 +277,13 @@
           </footer>
         </main>
       </div>
->>>>>>> master
     </div>
 </div>
 
-<<<<<<< HEAD
-  </div>
+    </div>
+</div>
+
+</div>
 
 <!-- 댓글 모달 시작 -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -574,7 +572,6 @@ $(document).ready(function () {
 	});
 });
 </script>
-=======
     <!-- 제이쿼리 자바스크립트 추가하기 -->
     <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
     <!-- 부트스트랩 자바스크립트 추가하기 -->
@@ -603,7 +600,7 @@ $(document).ready(function () {
     });
 </script>
 </body>
->>>>>>> master
+
 
 </body>
 </html>

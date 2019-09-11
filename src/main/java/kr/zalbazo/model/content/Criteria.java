@@ -1,5 +1,6 @@
 package kr.zalbazo.model.content;
 
+import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import lombok.Getter;
@@ -48,6 +49,5 @@ public class Criteria {
 		
 		return builder.toUriString();
 	}
-
 
 }

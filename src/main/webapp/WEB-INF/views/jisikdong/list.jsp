@@ -19,7 +19,7 @@
 
 <body>
 
-<<<<<<< HEAD
+
   <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="${ctx}/home">
       <img src="${ctx}/resources/img/baba.png" width="30" height="30" class="d-inline-block align-top" alt=""> Zalbazo
@@ -97,8 +97,6 @@
               </div>
             </div>
           </div>
-
-=======
     <div class="container-fluid">
         <div class="row d-flex d-md-block flex-nowrap wrapper">
             <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
@@ -234,7 +232,7 @@
                     <p>Copyright ⓒ 2019 <b>zalbazo</b> All Rights Reserved.</p>
                 </footer>
             </main>
->>>>>>> master
+
         </div>
 
         <div style="max-width: 1080px;">
@@ -282,13 +280,9 @@
     </div>
   </div>
 
-<<<<<<< HEAD
-  <!-- 제이쿼리 자바스크립트 추가하기 -->
-=======
+
 
     <!-- 제이쿼리 자바스크립트 추가하기 -->
->>>>>>> master
-
   <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
   <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
@@ -330,14 +324,7 @@
         $("#myModal").modal("show");
       }
 
-<<<<<<< HEAD
-      $("#regBtn").on("click", function () {
-        self.location = "/jisikdong/register";
-      });
-    });
 
-  </script>
-=======
             $("#regBtn").on("click", function () {
                 self.location = "/jisikdong/register";
             });
@@ -364,8 +351,6 @@
         });
 
     </script>
-
->>>>>>> master
 </body>
 
 </html>

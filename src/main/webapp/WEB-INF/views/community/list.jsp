@@ -4,7 +4,6 @@
 
 <!doctype html>
 <html>
-
 <head>
     <title>커뮤니티 웹 사이트</title>
     <meta charset="utf-8">
@@ -93,7 +92,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <div style="max-width: 1080px;">
@@ -161,13 +159,14 @@
             </main>
         </div>
     </div>
+</div>
 
-    <!-- 제이쿼리 자바스크립트 추가하기 -->
+<!-- 제이쿼리 자바스크립트 추가하기 -->
 
-    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
 
         $('document').ready(function () {
         	
@@ -192,7 +191,9 @@
         		
         	});
 
-            var actionForm = $("#actionForm");
+    $('document').ready(function () {
+
+        var actionForm = $("#actionForm");
 
             $(".page-item a").on("click", function (e) {
                 e.preventDefault();
@@ -209,29 +210,37 @@
             });
             var result = '<c:out value="${result}" />';
 
-            checkModal(result);
+            $(".move").on("click", function (e) {
+                e.preventDefault();
+                actionForm.append("<input type='hidden' name='id' value='" + $(this).attr("href") + "'>");
+                actionForm.attr("action", "/community/get");
+                actionForm.submit();
+            });
+            
+        var result = '<c:out value="${result}" />';
 
-            history.replaceState({}, null, null);
+        checkModal(result);
 
-            function checkModal(result) {
+        history.replaceState({}, null, null);
 
-                if (result === '' || history.state) {
-                    return;
-                }
+        function checkModal(result) {
 
-                if (parseInt(result) > 0) {
-                    $(".modal-body").html("게시글 " + parseInt(result) + "번이 등록되었습니다.");
-                }
-
-                $("#myModal").modal("show");
+            if (result === '' || history.state) {
+                return;
             }
 
-            $("#regBtn").on("click", function () {
-                self.location = "/community/register";
-            });
+            if (parseInt(result) > 0) {
+                $(".modal-body").html("게시글 " + parseInt(result) + "번이 등록되었습니다.");
+            }
+
+            $("#myModal").modal("show");
+        }
+
+        $("#regBtn").on("click", function () {
+            self.location = "/community/register";
         });
+    });
 
-    </script>
+</script>
 </body>
-
 </html>

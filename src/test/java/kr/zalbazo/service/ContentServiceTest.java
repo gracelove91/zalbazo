@@ -2,6 +2,7 @@ package kr.zalbazo.service;
 
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.Criteria;
+import kr.zalbazo.service.content.ContentService;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -96,7 +96,6 @@
               </div>
             </div>
           </div>
-
         </div>
 
         <div style="max-width: 1080px;">
@@ -144,8 +143,7 @@
     </div>
   </div>
 
-  <!-- 제이쿼리 자바스크립트 추가하기 -->
-
+<!-- 제이쿼리 자바스크립트 추가하기 -->
   <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
   <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
@@ -187,12 +185,32 @@
         $("#myModal").modal("show");
       }
 
-      $("#regBtn").on("click", function () {
-        self.location = "/jisikdong/register";
-      });
-    });
+            $("#regBtn").on("click", function () {
+                self.location = "/jisikdong/register";
+            });
+            
+            var searchForm = $("#searchForm");
+            $("#searchForm button").on("click", function(e){
+            	
+            	if(!searchForm.find("option:selected").val()) {
+            		alert("검색종류를 선택하세요.");
+            		return false;
+            	}
+            	
+            	if(!searchForm.find("input[name='keyword']").val()){
+            		alert("키워드를 입력하세요");
+            		return false;
+            	}
+            	
+            	searchForm.find("input[name='pageNum']").val("1");
+            	e.preventDefault();
+            	
+            	searchForm.submit();
+            });
+            
+        });
 
-  </script>
+    </script>
 </body>
 
 </html>

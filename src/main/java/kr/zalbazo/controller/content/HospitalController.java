@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.zalbazo.model.content.Content;
-import kr.zalbazo.model.content.Hospital;
 import kr.zalbazo.model.content.HospitalQna;
 import kr.zalbazo.service.HospitalService;
 import lombok.extern.log4j.Log4j;
@@ -21,38 +20,9 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping({ "/hospital/*" })
 public class HospitalController {
-	// private static final Long HOSPITAL_CATEGORY_NUM = 1L;
-
-	@Autowired
-	private HospitalService service;
-
-
-	@GetMapping("/list")
-	public void list(Model model, Long hospitalId) {
-		
-		List<Hospital> hospitalList = service.getList();
-		
-		/*
-		 * hospitalList.forEach(hospital -> {
-		 * hospital.setLabel(service.getLabelList(hospital.getId())); });
-		 */
-		
-		/*
-		 * for(Hospital hospital : hospitalList) {
-		 * hospital.setLabel(service.getLabelList(hospital.getId())); }
-		 */
-		
-		for(int i =0; i < hospitalList.size(); i++) {
-			Hospital hospital = hospitalList.get(i);
-			hospital.setLabel(service.getLabelList(hospital.getHospitalId()));
-		}
-		model.addAttribute("hospitalList", hospitalList);
 	
-//		log.info(service.getList());
-//		model.addAttribute("labelList", service.getLabelList(id));
-//		log.info(service.getLabelList(id));
-
-	}
+	@Autowired
+	private HospitalService hospitalService;
 	
 	@GetMapping("/get")
 	public void get(@RequestParam("hospitalId") Long hospitalId, Content content, Model model) {
@@ -75,7 +45,6 @@ public class HospitalController {
 		//rttr.addFlashAttribute("qna", hospitalService.getHospitalQnaList());
 		//log.info(hospitalService.getHospitalQnaList());
 		return "/hospital/write";
-
 	}
 
 }

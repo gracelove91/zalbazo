@@ -3,8 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
-	String ctx = request.getContextPath();
-	pageContext.setAttribute("ctx", ctx);
+    String ctx = request.getContextPath();
+    pageContext.setAttribute("ctx", ctx);
 %>
 <!doctype html>
 <html>
@@ -135,12 +135,13 @@
 					</div>
 					<!-- 댓글 끝 -->
 
-					<form id='operForm' action="/jisikdong/modify" method="get">
-						<input type='hidden' id='contentId' name='contentId'
-							value='<c:out value="${content.contentId}"/>'>
-						<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
-						<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
-					</form>
+			        <form id='operForm' action="/jisikdong/modify" method="get">
+			          <input type='hidden' id='contentId' name='contentId' value='<c:out value="${content.contentId}"/>'>
+			          <input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+			          <input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+			          <input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
+			          <input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
+			        </form>
 
 					<footer class="text-center" style="max-width: 920px;">
 

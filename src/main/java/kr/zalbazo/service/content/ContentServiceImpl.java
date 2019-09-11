@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.zalbazo.mapper.content.ContentAttachMapper;
 import kr.zalbazo.mapper.content.ContentMapper;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.Criteria;
@@ -18,26 +17,10 @@ public class ContentServiceImpl implements ContentService {
 
     @Autowired
     private ContentMapper mapper;
-    
-    @Autowired
-    private ContentAttachMapper attachMapper;
 
-    @Transactional
     @Override
     public void register(Content content) {
-    	
-    	log.info("register : "+content);
-    	
-        mapper.insert(content);
-        
-        if(content.getAttachList() == null || content.getAttachList().size() <=0 ) {
-        	return;
-        }
-        
-        content.getAttachList().forEach(attach -> {
-        	attach.setContentId(content.getContentId());
-        	attachMapper.insert(attach);
-        });
+    	mapper.insert(content);
     }
 
     @Override

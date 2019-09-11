@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -30,7 +31,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.zalbazo.model.content.AttachFileDTO;
 import lombok.extern.log4j.Log4j;
-import net.coobird.thumbnailator.Thumbnailator;
 
 @Controller
 @Log4j

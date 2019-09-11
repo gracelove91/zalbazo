@@ -20,7 +20,6 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping({ "/jisikdong/*" })
 public class JisikDongController {
-
 	private static final Long JISIKDONG_CATEGORY_NUM = 2L;
 	
 	@Autowired
@@ -28,7 +27,7 @@ public class JisikDongController {
 	
 	@GetMapping("/register")
 	public String register() {
-		return "/jisikdong/register"; // WEB-INF/views/register.jsp
+		return "jisikdong/register"; // WEB-INF/views/register.jsp
 	}
 
 	@PostMapping("/register")

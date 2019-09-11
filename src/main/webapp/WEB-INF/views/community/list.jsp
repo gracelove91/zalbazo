@@ -41,7 +41,7 @@
         <div class="row d-flex d-md-block flex-nowrap wrapper">
             <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
                 <div class="page-header mt-3">
-                    <h2>커뮤니티</h2>
+                    <h2><a href="${ctx}/community/list">커뮤니티</a></h2>
                 </div>
                 <p class="lead">커뮤니티게시판</p>
                 <hr>
@@ -237,6 +237,27 @@
         $("#regBtn").on("click", function () {
             self.location = "/community/register";
         });
+        
+        
+        var searchForm = $("#searchForm");
+        $("#searchForm button").on("click", function(e){
+        	
+        	if(!searchForm.find("option:selected").val()) {
+        		alert("검색종류를 선택하세요.");
+        		return false;
+        	}
+        	
+        	if(!searchForm.find("input[name='keyword']").val()){
+        		alert("키워드를 입력하세요");
+        		return false;
+        	}
+        	
+        	searchForm.find("input[name='pageNum']").val("1");
+        	e.preventDefault();
+        	
+        	searchForm.submit();
+        });
+        
     });
 
 </script>

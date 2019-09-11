@@ -18,7 +18,7 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping({ "/jisikdong/*" })
+@RequestMapping({ "/jisikdong/**" })
 public class JisikDongController {
 	private static final Long JISIKDONG_CATEGORY_NUM = 2L;
 	
@@ -40,8 +40,7 @@ public class JisikDongController {
 
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model, Content content) {
-//      model.addAttribute("contentList", service.getList(JISIKDONG_CATEGORY_NUM));
-//      service.getList(JISIKDONG_CATEGORY_NUM ).stream().forEach(System.out::println);
+
 		cri.setCategory(JISIKDONG_CATEGORY_NUM);
 		model.addAttribute("contentList", service.getList(cri));
 		int total = service.getTotal(cri);
@@ -59,10 +58,7 @@ public class JisikDongController {
 		if (service.modify(content)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-//		rttr.addAttribute("pageNum", cri.getPageNum());
-//		rttr.addAttribute("amount", cri.getAmount());
-//		rttr.addAttribute("type", cri.getType());
-//		rttr.addAttribute("keyword", cri.getKeyword());
+
 
 		return "redirect:/jisikdong/list" + cri.getListLink();
 	}
@@ -72,10 +68,7 @@ public class JisikDongController {
 		if (service.remove(contentId)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-//		rttr.addAttribute("pageNum", cri.getPageNum());
-//		rttr.addAttribute("amount", cri.getAmount());
-//		rttr.addAttribute("type", cri.getType());
-//		rttr.addAttribute("keyword", cri.getKeyword());
+
 
 		return "redirect:/jisikdong/list" + cri.getListLink();
 	}

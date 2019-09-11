@@ -38,21 +38,17 @@ public class ContentServiceImpl implements ContentService {
         return mapper.delete(contentId) == 1;
     }
 
-//    @Override
-//    public List<Content> getList(Long categoryId) {
-//        return mapper.getList(categoryId);
-//    }
-    
+
     @Override
-    public List<Content> getList(Criteria cri){
-    	log.info("get List with criteria : " + cri);
-    	return mapper.getListWithPaging(cri);
+    public List<Content> getList(Criteria cri) {
+        log.info("get List with criteria : " + cri);
+        return mapper.getListWithPaging(cri);
     }
 
-	@Override
-	public int getTotal(Criteria cri) {
-		return mapper.getTotalCount(cri);
-	}
-    
-   
+    @Override
+    public int getTotal(Criteria cri) {
+        return mapper.getTotalCount(cri);
+    }
+
+
 }

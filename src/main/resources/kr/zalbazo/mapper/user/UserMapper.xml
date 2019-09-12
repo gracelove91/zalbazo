@@ -19,7 +19,8 @@
 
     <update id="updateEnabled">
         update ZALBAZO_USER
-        set ENABLED = "ENABLED"
+        set ENABLED = #{enabled},
+            EMAIL_AUTH_KEY = #{emailAuthKey}
         where EMAIL = #{email}
     </update>
 

@@ -11,4 +11,6 @@ public interface UserService {
     boolean modify(User user);
     boolean remove(String email);
     List<User> getList();
+
+    boolean updateEnabled(String email);
 }

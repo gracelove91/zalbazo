@@ -41,13 +41,13 @@ public class UserServiceImpl implements UserService {
 
     private void sendEmail(User user) throws MessagingException, UnsupportedEncodingException {
         MailHandler sendMail = new MailHandler(mailSender);
+        sendMail.setSubject("잘바조 회원가입 인증 메일입니다.");
         sendMail.setText(
-                new StringBuffer()
-                        .append("<h1>메일인증</h1>")
-                        .append("<a href='http://localhost:8080/user/emailConfirm?userEmail=")
-                        .append(user.getEmail())
-                        .append("&memberAuthKey=").append(user.getEmailAuthKey())
-                        .append("' target='_blank'>이메일 인증 확인</a>").toString()
+                "<h1>아래의 링크를 클릭해주세요</h1>" +
+                        "<a href='http://localhost:8080/user/emailConfirm?userEmail=" +
+                        user.getEmail() +
+                        "&emailAuthKey=" + user.getEmailAuthKey() +
+                        "' target='_blank'>이메일 인증 확인</a>"
         );
 
         sendMail.setFrom("zalbazo125@gmail.com", "zalbazo");
@@ -73,6 +73,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getList() {
         return userMapper.getList();
+    }
+
+    @Override
+    public boolean updateEnabled(String email) {
+        User user = get(email);
+        user.setEmailAuthKey("");
+        user.setEnabled("enabled");
+
+        return userMapper.updateEnabled(user) == 1;
     }
 
 }

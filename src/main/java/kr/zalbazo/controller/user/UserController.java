@@ -4,14 +4,13 @@ import kr.zalbazo.model.user.User;
 import kr.zalbazo.service.user.UserService;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -43,6 +42,27 @@ public class UserController {
         rttr.addFlashAttribute("email", user.getEmail());
 
         return "redirect:/index";
+    }
+
+    //http://localhost:8080/user/emailConfirm?userEmail=asdf&emailAuthKey=xcxz
+    @GetMapping("/emailConfirm")
+    public String emailConfirm(@RequestParam String userEmail, @RequestParam String emailAuthKey, RedirectAttributes rttr) {
+        log.info(userEmail);
+        log.info(emailAuthKey);
+
+        boolean enabled = service.updateEnabled(userEmail);
+
+        if(enabled){
+            rttr.addFlashAttribute("email", userEmail);
+            return "redirect:login";
+        }else {
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "user/login";
     }
 
 

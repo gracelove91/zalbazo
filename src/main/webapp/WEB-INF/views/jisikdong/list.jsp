@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
@@ -11,9 +9,7 @@
 
 <!doctype html>
 
-<html>
-
- 
+<html> 
 
 <head>
   <title>지식동 웹 사이트</title>
@@ -108,6 +104,27 @@
         <div style="max-width: 1080px;">
           <button id='regBtn' type="button" type="button" class="btn btn-primary float-right" data-dismiss="modal" href="/jisikdong/register">글쓰기</button>
         </div>
+        
+      <div class='row'>
+       	<div class="col-lg-12">
+       		
+       		<form id='searchForm' action="/jisikdong/list" method='get'>
+       			<select name='type'>
+       				<option value=""<c:out value="${pageMaker.cri.type == null ? 'selected' : '' }"/>>--</option>
+       					<option value="T"<c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : '' }"/>>제목</option>
+       					<option value="B"<c:out value="${pageMaker.cri.type eq 'B' ? 'selected' : '' }"/>>내용</option>
+       					<option value="U"<c:out value="${pageMaker.cri.type eq 'U' ? 'selected' : '' }"/>>작성자</option>
+       					<option value="TB"<c:out value="${pageMaker.cri.type eq 'TB' ? 'selected' : '' }"/>>제목 or 내용</option>
+       					<option value="TU"<c:out value="${pageMaker.cri.type eq 'TU' ? 'selected' : '' }"/>>제목 or 작성자</option>
+       					<option value="TUB"<c:out value="${pageMaker.cri.type eq 'TUB' ? 'selected' : '' }"/>>제목 or 내용 or 작성자</option>
+       			</select>
+       			<input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'/>
+       			<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>'>
+       			<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>'>
+       			<button class='btn btn-primary'>Search</button>
+       		</form>
+       	</div>
+       </div>
 
         <br>
         <!-- Paging 처리 -->
@@ -139,6 +156,8 @@
         <form id='actionForm' action="/jisikdong/list" method='get'>
           <input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
           <input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+          <input type='hidden' name='type' value='${pageMaker.cri.type}'>
+          <input type='hidden' name='keyword' value='${pageMaker.cri.keyword}'>
         </form>
 
 
@@ -157,6 +176,7 @@
   <script type="text/javascript">
 
     $('document').ready(function () {
+    	
 
       var actionForm = $("#actionForm");
 

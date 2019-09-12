@@ -7,11 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	contentId : ${content.contentId}
-	<br> contentBody : ${content.body}
-	<br> hospitalId : ${hospitalQna.hospitalId}
-	<br> contentId : ${hospitalQna.contentId}
-	<br> hospitalQnaId : ${hospitalQna.hospitalQnaId}
 
 	<table class="table table-striped">
 			<tr>
@@ -28,8 +23,6 @@
 				</tr>
 		</c:forEach> --%>
 	</table>
-
-
 
 </body>
 </html>

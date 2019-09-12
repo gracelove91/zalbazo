@@ -17,7 +17,6 @@ public class ContentServiceImpl implements ContentService {
     @Autowired
     private ContentMapper mapper;
 
-
     @Override
     public void register(Content content) {
 
@@ -54,6 +53,5 @@ public class ContentServiceImpl implements ContentService {
     public int getTotal(Criteria cri) {
         return mapper.getTotalCount(cri);
     }
-
 
 }

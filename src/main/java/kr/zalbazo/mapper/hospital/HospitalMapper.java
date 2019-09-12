@@ -3,10 +3,10 @@ package kr.zalbazo.mapper.hospital;
 import java.util.List;
 
 import kr.zalbazo.model.content.Content;
-import kr.zalbazo.model.content.Hospital;
-import kr.zalbazo.model.content.HospitalLabel;
-import kr.zalbazo.model.content.HospitalQna;
 import kr.zalbazo.model.content.PicLib;
+import kr.zalbazo.model.hospital.Hospital;
+import kr.zalbazo.model.hospital.HospitalLabel;
+import kr.zalbazo.model.hospital.HospitalQna;
 
 public interface HospitalMapper {
 	

@@ -1,4 +1,4 @@
-package kr.zalbazo.controller.content;
+package kr.zalbazo.controller.hospital;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.zalbazo.model.content.Content;
-import kr.zalbazo.model.content.HospitalQna;
+import kr.zalbazo.model.hospital.HospitalQna;
 import kr.zalbazo.service.HospitalService;
 import lombok.extern.log4j.Log4j;
 
@@ -29,20 +29,28 @@ public class HospitalController {
 		model.addAttribute("hPictureList", hospitalService.getPictureList(hospitalId));
 		model.addAttribute("picCount", hospitalService.getPictureCount(hospitalId));
 		model.addAttribute("content", content);
-		
 		model.addAttribute("qnaList", hospitalService.getHospitalQnaList(hospitalId));
 	}
 	
-	@PostMapping("/write")
-	public String writeQna(Content content, HospitalQna hospitalQna, RedirectAttributes rttr) {
+	@PostMapping("/get")
+	public String get(HospitalQna hospitalQna, Content content, RedirectAttributes rttr) {
 		hospitalService.hContentRegister(content);
 		hospitalService.hQnaRegister(hospitalQna);
+		rttr.addFlashAttribute("hospitalId", hospitalQna.getHospitalId());
 		
-		rttr.addAttribute("content", content);
-		rttr.addAttribute("hospitalQna", hospitalQna);
-		//rttr.addFlashAttribute("qna", hospitalService.getHospitalQnaList());
-		//log.info(hospitalService.getHospitalQnaList());
-		return "/hospital/write";
+		return "redirect:/hospital/get"; 
 	}
+	
+//	@PostMapping("/write")
+//	public String writeQna(@RequestParam("hospitalId") Long hospitalId, Content content) {
+//		hospitalService.hContentRegister(content);
+//		hospitalService.hQnaRegister(hospitalId);
+//		
+//		//rttr.addAttribute("content", content);
+//		//rttr.addAttribute("hospitalQna", hospitalQna);
+//		//rttr.addFlashAttribute("qna", hospitalService.getHospitalQnaList());
+//		//log.info(hospitalService.getHospitalQnaList());
+//		return "/hospital/write";
+//	}
 
 }

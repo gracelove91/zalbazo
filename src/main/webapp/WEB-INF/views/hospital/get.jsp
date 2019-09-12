@@ -185,10 +185,9 @@
 	      
 	      <div class="container">
 	      
-  		    <form id='actionForm' action="/hospital/get" method="post">
+  		    <form id='actionForm' action="/hospital/get?hospitalId=${hospital.hospitalId}" method="post">
               <input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com">
               <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
-              <%-- <input type='hidden' class="form-control" name="contentId" value="${content.contentId}"> --%>
               
               <div class="form-group">
                 <label for="comment">궁금한 점을 질문하세요</label>

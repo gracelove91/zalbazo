@@ -14,8 +14,8 @@
 	</select>
 	
 	<select id="pictureList" resultType="kr.zalbazo.model.content.PicLib" >
-		select a.uuid, upload_path, file_name from pic_lib a, pic_lib_rel_hospital b
-		where a.uuid = b.uuid and hospital_id = #{hospitalId}
+		select a.PIC_LIB_ID, upload_path, file_name from pic_lib a, pic_lib_rel_hospital b
+		where a.PIC_LIB_ID = b.PIC_LIB_ID and hospital_id = #{hospitalId}
 	</select> 
 	
 	<select id="hPictureCount" resultType="int">

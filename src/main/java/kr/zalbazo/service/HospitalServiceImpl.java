@@ -2,6 +2,10 @@ package kr.zalbazo.service;
 
 import kr.zalbazo.mapper.hospital.HospitalMapper;
 import kr.zalbazo.model.content.*;
+import kr.zalbazo.model.hospital.Hospital;
+import kr.zalbazo.model.hospital.HospitalLabel;
+import kr.zalbazo.model.hospital.HospitalQna;
+import kr.zalbazo.model.pic.PicLib;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

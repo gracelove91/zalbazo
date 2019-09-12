@@ -1,4 +1,4 @@
-package kr.zalbazo.model.content;
+package kr.zalbazo.model.pic;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,10 +11,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-public class HospitalPicture {
+public class PicLib {
 	
-	private Long hospitalPictureId;
+	private String uuid;
+	private String uploadPath;
 	private String fileName;
-	private Long hospitalId;
 
 }

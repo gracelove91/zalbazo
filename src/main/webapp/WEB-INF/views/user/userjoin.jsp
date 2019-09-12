@@ -95,31 +95,5 @@
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <!-- 부트스트랩 자바스크립트 추가하기 -->
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<%--<script>--%>
-<%--    $("#email_duplicate").on('click', function () {--%>
-<%--        let userEmail = $("#email").val();--%>
-<%--        $.ajax({--%>
-<%--            url: '/user/emailChk?userEmail=' + userEmail,--%>
-<%--            type: 'get',--%>
-<%--            success: function(data){--%>
-<%--                let re = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;--%>
-
-<%--                if( !re.test(userEmail) ){--%>
-<%--                    console.log("1");--%>
-<%--                    $("#id_check").text('이메일형식 아님 띠띠').addClass('text-danger').removeClass('text-primary');--%>
-<%--                    $("#join").attr('disabled', true);--%>
-<%--                }else if(data){--%>
-<%--                    console.log("2");--%>
-<%--                    $("#id_check").text('사용하셔도 좋습니다.').addClass('text-primary').removeClass('text-danger');--%>
-<%--                    $("#join").attr('disabled', false);--%>
-<%--                }else{--%>
-<%--                    console.log("3");--%>
-<%--                    $("#id_check").text('중복된 이메일입니다.').addClass('text-danger').removeClass('text-primary');--%>
-<%--                    $("#join").attr('disabled', true);--%>
-<%--                }--%>
-<%--            }--%>
-<%--        });--%>
-<%--    });--%>
-<%--</script>--%>
 </body>
 </html>

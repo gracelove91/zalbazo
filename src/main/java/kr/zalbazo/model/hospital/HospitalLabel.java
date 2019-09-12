@@ -1,4 +1,4 @@
-package kr.zalbazo.model.content;
+package kr.zalbazo.model.hospital;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,10 +11,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-public class HospitalQna {
+public class HospitalLabel {
 	
-	private Long hospitalQnaId;
 	private Long hospitalId;
-	private Long contentId;
+	private int labelCode;
 
 }
+

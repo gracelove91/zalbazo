@@ -1,4 +1,4 @@
-package kr.zalbazo.model.content;
+package kr.zalbazo.model.hospital;
 
 import java.util.List;
 

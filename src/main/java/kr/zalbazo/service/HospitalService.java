@@ -11,6 +11,7 @@ import kr.zalbazo.model.content.PicLib;
 public interface HospitalService {
 	
 	Hospital get(Long hospitalId);
+	
 	List<HospitalLabel> getLabelList(Long hospitalId);
 	
 	void hContentRegister(Content content);
@@ -20,4 +21,9 @@ public interface HospitalService {
 	int getPictureCount(Long hospitalId);
 
 	List<Content> getHospitalQnaList(Long hospitalId);
+	
+
+    List<Hospital> getList();
+//
+//	List<Label> getLabelList(Long hospitalId);
 }

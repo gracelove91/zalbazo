@@ -1,5 +1,7 @@
 package kr.zalbazo.model.content;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,5 +22,6 @@ public class Hospital {
 	private String treatEnd;
 	private String tel;
 	private String info;
+	private List<HospitalLabel> label;
 	
 }

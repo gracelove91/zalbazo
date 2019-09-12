@@ -13,6 +13,20 @@
 		where hospital_id = #{hospitalId}
 	</select>
 	
+	<!--  -->
+	<select id="getList"
+		resultType="kr.zalbazo.model.content.Hospital">
+		<![CDATA[
+			select HOSPITAL_ID, NAME, TREAT_START, TREAT_END, ADDRESS, TEL, INFO 
+            from HOSPITAL
+    ]]>
+	</select>
+
+	<select id="getLabelList" resultType="kr.zalbazo.model.content.Label"> 
+		select * from HOSPITAL_LABEL where HOSPITAL_ID = #{hospitalId} 
+	</select>
+	<!--  -->
+	
 	<select id="pictureList" resultType="kr.zalbazo.model.content.PicLib" >
 		select a.uuid, upload_path, file_name from pic_lib a, pic_lib_rel_hospital b
 		where a.uuid = b.uuid and hospital_id = #{hospitalId}

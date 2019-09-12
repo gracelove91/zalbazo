@@ -3,8 +3,9 @@
 <mapper namespace="kr.zalbazo.mapper.user.UserMapper">
 
     <insert id="insert" parameterType="kr.zalbazo.model.user.User">
-        insert into ZALBAZO_USER (EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN)
-        values (#{email}, #{password}, #{role}, #{tel}, #{address}, #{name}, sysdate, null)
+        insert into ZALBAZO_USER (EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, EMAIL_AUTH_KEY,
+                                  ENABLED)
+        values (#{email}, #{password}, #{role}, #{tel}, #{address}, #{name}, sysdate, null, #{emailAuthKey}, null)
     </insert>
 
     <update id="update">
@@ -13,6 +14,12 @@
             TEL      = #{tel},
             address  = #{address},
             name     = #{name}
+        where EMAIL = #{email}
+    </update>
+
+    <update id="updateEnabled">
+        update ZALBAZO_USER
+        set ENABLED = "ENABLED"
         where EMAIL = #{email}
     </update>
 

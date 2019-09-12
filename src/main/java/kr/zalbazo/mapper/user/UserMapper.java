@@ -10,4 +10,6 @@ public interface UserMapper {
     List<User> getList();
     int delete(String email);
     int update(User user);
+
+    int updateEnabled(User user);
 }

@@ -39,10 +39,12 @@ public class UserController {
             return "user/userjoin";
         }
         service.register(user);
+        rttr.addFlashAttribute("msg", "가입시 사용한 이메일로 인증해주세요.");
         rttr.addFlashAttribute("email", user.getEmail());
 
         return "redirect:/index";
     }
+
 
     private void validator(@ModelAttribute @Valid User user, BindingResult bindingResult) {
         AtomicBoolean duplicateEmail = new AtomicBoolean(false);

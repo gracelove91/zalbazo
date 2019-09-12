@@ -6,7 +6,6 @@ import org.springframework.validation.BindingResult;
 import java.util.List;
 
 public interface UserService {
-
     void register(User user);
     User get(String email);
     boolean modify(User user);

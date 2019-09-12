@@ -1,14 +1,14 @@
 package kr.zalbazo.service.content;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import kr.zalbazo.mapper.content.ContentMapper;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.Criteria;
 import lombok.extern.log4j.Log4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Log4j
 @Service
@@ -19,12 +19,7 @@ public class ContentServiceImpl implements ContentService {
 
     @Override
     public void register(Content content) {
-
-        log.info("register : " + content);
-
-        mapper.insert(content);
-
-
+    	mapper.insert(content);
     }
 
     @Override

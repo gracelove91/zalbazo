@@ -74,4 +74,5 @@ public class JisikDongController {
 		return "redirect:/jisikdong/list" + cri.getListLink();
 	}
 
+
 }

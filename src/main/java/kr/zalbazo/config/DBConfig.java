@@ -15,7 +15,6 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @PropertySource("classpath:application-prod.properties")
-@Configuration
 public class DBConfig {
 
     @Value("${jdbc.driver-class}")

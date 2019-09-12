@@ -1,12 +1,18 @@
 package kr.zalbazo.service.user;
 
+import kr.zalbazo.config.MailHandler;
 import kr.zalbazo.mapper.user.UserMapper;
 import kr.zalbazo.model.user.User;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.mail.MessagingException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Log4j
@@ -15,9 +21,38 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Transactional
     @Override
     public void register(User user) {
+        String uuid = UUID.randomUUID().toString();
+        user.setEmailAuthKey(uuid);
+
+        try {
+            sendEmail(user);
+        } catch (MessagingException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
         userMapper.insert(user);
+    }
+
+    private void sendEmail(User user) throws MessagingException, UnsupportedEncodingException {
+        MailHandler sendMail = new MailHandler(mailSender);
+        sendMail.setText(
+                new StringBuffer()
+                        .append("<h1>메일인증</h1>")
+                        .append("<a href='http://localhost:8080/user/emailConfirm?userEmail=")
+                        .append(user.getEmail())
+                        .append("&memberAuthKey=").append(user.getEmailAuthKey())
+                        .append("' target='_blank'>이메일 인증 확인</a>").toString()
+        );
+
+        sendMail.setFrom("zalbazo125@gmail.com", "zalbazo");
+        sendMail.setTo(user.getEmail());
+        sendMail.send();
     }
 
     @Override

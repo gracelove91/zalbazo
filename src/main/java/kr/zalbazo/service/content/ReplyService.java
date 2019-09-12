@@ -1,4 +1,4 @@
-package kr.zalbazo.service;
+package kr.zalbazo.service.content;
 
 import java.util.List;
 

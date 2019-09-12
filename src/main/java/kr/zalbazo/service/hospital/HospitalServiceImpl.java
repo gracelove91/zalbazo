@@ -1,4 +1,4 @@
-package kr.zalbazo.service;
+package kr.zalbazo.service.hospital;
 
 import kr.zalbazo.mapper.hospital.HospitalMapper;
 import kr.zalbazo.model.content.*;

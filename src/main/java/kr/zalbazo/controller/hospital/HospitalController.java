@@ -2,7 +2,7 @@ package kr.zalbazo.controller.hospital;
 
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.hospital.HospitalQna;
-import kr.zalbazo.service.HospitalService;
+import kr.zalbazo.service.hospital.HospitalService;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

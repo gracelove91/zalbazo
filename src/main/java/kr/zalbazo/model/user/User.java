@@ -27,11 +27,13 @@ public class User {
 
     @Pattern(regexp = "(^[0-9]*$)", message = " '-' 를 제외한 숫자만 적어주세요.")
     private String tel;
-    
+
     private String address;
     private String name;
     private Date joinDate;
     private Date lastLogin;
 
+    private String emailAuthKey;
+    private String enabled;
 
 }

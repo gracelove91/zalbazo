@@ -1,4 +1,4 @@
-package kr.zalbazo.model.content;
+package kr.zalbazo.model.pic;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -8,12 +8,10 @@
 		where hospital_id = #{hospitalId}
 	</select>
 	
-	
 	<select id="labelList" resultType="kr.zalbazo.model.hospital.HospitalLabel">
 		select * from hospital_label
 		where hospital_id = #{hospitalId}
 	</select>
-	
 	
 	<select id="pictureList" resultType="kr.zalbazo.model.content.PicLib" >
 		select a.pic_lib_id, upload_path, file_name 

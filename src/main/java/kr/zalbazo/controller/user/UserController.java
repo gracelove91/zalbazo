@@ -68,4 +68,10 @@ public class UserController {
         return "user/login";
     }
 
+    @RequestMapping("/jusoPopup")
+    public String popup(@RequestParam(required = false) String roadFullAddr){
+        System.out.println(roadFullAddr);
+        return "user/jusoPopup";
+    }
+
 }

@@ -1,5 +1,7 @@
 package kr.zalbazo.controller.content;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kr.zalbazo.model.content.Criteria;
 import kr.zalbazo.model.content.ReplyPageDTO;
 import kr.zalbazo.model.content.ReplyVO;
-import kr.zalbazo.service.content.ReplyService;
+import kr.zalbazo.service.ReplyService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 

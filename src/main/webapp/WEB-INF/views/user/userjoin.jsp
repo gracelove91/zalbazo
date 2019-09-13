@@ -96,8 +96,6 @@
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <!-- 부트스트랩 자바스크립트 추가하기 -->
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
-=======
 <script>
     function goPopup(){
         var pop = window.open("jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes");
@@ -107,6 +105,5 @@
         $("#address").val(roadFullAddr);
     }
 </script>
->>>>>>> juso
 </body>
 </html>

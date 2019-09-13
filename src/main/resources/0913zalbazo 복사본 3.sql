@@ -1,5 +1,5 @@
 -- 생성자 Oracle SQL Developer Data Modeler 19.1.0.081.0911
---   위치:        2019-09-13 17:50:35 KST
+--   위치:        2019-09-14 02:02:51 KST
 --   사이트:      Oracle Database 11g
 --   유형:      Oracle Database 11g
 
@@ -37,8 +37,48 @@ DROP TABLE zalbazo.review CASCADE CONSTRAINTS;
 
 DROP TABLE zalbazo.zalbazo_user CASCADE CONSTRAINTS;
 
+DROP SEQUENCE zalbazo.animal_seq;
+
+DROP SEQUENCE zalbazo.care_animal_seq;
+
+DROP SEQUENCE zalbazo.category_seq;
+
+DROP SEQUENCE zalbazo.content_seq;
+
+DROP SEQUENCE zalbazo.hospital_qna_seq;
+
+DROP SEQUENCE zalbazo.hospital_seq;
+
+DROP SEQUENCE zalbazo.pic_lib_seq;
+
+DROP SEQUENCE zalbazo.reply_seq;
+
+DROP SEQUENCE zalbazo.reserve_seq;
+
+DROP SEQUENCE zalbazo.review_seq;
+
 CREATE user zalbazo identified by account unlock 
 ;
+
+CREATE SEQUENCE zalbazo.animal_seq INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
+
+CREATE SEQUENCE zalbazo.care_animal_seq INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
+
+CREATE SEQUENCE zalbazo.category_seq INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
+
+CREATE SEQUENCE zalbazo.content_seq INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
+
+CREATE SEQUENCE zalbazo.hospital_qna_seq INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
+
+CREATE SEQUENCE zalbazo.hospital_seq INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
+
+CREATE SEQUENCE zalbazo.pic_lib_seq INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
+
+CREATE SEQUENCE zalbazo.reply_seq INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
+
+CREATE SEQUENCE zalbazo.reserve_seq INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
+
+CREATE SEQUENCE zalbazo.review_seq INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
 
 CREATE TABLE zalbazo.animal (
     animal_id         NUMBER NOT NULL,
@@ -576,7 +616,7 @@ ALTER TABLE zalbazo.review
 -- CREATE DISK GROUP                        0
 -- CREATE ROLE                              0
 -- CREATE ROLLBACK SEGMENT                  0
--- CREATE SEQUENCE                          0
+-- CREATE SEQUENCE                         10
 -- CREATE MATERIALIZED VIEW                 0
 -- CREATE MATERIALIZED VIEW LOG             0
 -- CREATE SYNONYM                           0
@@ -602,11 +642,11 @@ Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (3,'review');
 Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (4,'hqna');
 
 Insert into ZALBAZO.ZALBAZO_USER (EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN) Values('dummy@gmail.com', '1234', 'user', '01033499440', '서울시 서초구', '홍길동', sysdate, null);
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,UPDATED_DATE,CATEGORY_ID,USER_EMAIL) values (1,'매퍼테스트제목지식동1','매퍼테스트내용지식동1',to_date('19/09/05','RR/MM/DD'),to_date('19/09/05','RR/MM/DD'),2,'dummy@gmail.com');
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,UPDATED_DATE,CATEGORY_ID,USER_EMAIL) values (CONTENT_SEQ.nextval,'매퍼테스트제목지식동1','매퍼테스트내용지식동1',to_date('19/09/05','RR/MM/DD'),to_date('19/09/05','RR/MM/DD'),2,'dummy@gmail.com');
 
 
-Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) values (1,'돌봄 동물병원','서울특별시 강동구 암사동 414-18 롯데캐슬상가 2층','08:00','21:00',24262775,'가족을 돌보는 마음으로 반려동물을 진료하는 돌봄 동물병원입니다.');
-Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) values (2,'고덕24시동물병원','서울특별시 강동구 암사동 414-18 롯데캐슬상가 2층','00:00','24:00',262278275,'고덕동/명일동에 위치한 24시간 동물병원입니다.
+Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) values (HOSPITAL_SEQ.nextval,'돌봄 동물병원','서울특별시 강동구 암사동 414-18 롯데캐슬상가 2층','08:00','21:00',24262775,'가족을 돌보는 마음으로 반려동물을 진료하는 돌봄 동물병원입니다.');
+Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) values (HOSPITAL_SEQ.nextval,'고덕24시동물병원','서울특별시 강동구 암사동 414-18 롯데캐슬상가 2층','00:00','24:00',262278275,'고덕동/명일동에 위치한 24시간 동물병원입니다.
 
 언제 발생할지 모르는 응급한 아이들을 위한 응급진료.
 대부분의 외과수술이 가능한 호흡마취기, 환자감시기, 수술장비.
@@ -620,7 +660,7 @@ Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL
 이 있으며 캣타워와 캣로드로 고양이를 위한 공간을 할애했습니다.
 
 많은 관심 바랍니다.');
-Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) values (3,'스마트동물병원 강동암사점','서울특별시 강동구 암사동 452-31 서원빌딩 1층','10:00','21:00','24428875','원훈 :: 우리집 아이처럼 같이 기뻐하고 같이 고민하는 스마트 가족이 되자
+Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) values (HOSPITAL_SEQ.nextval,'스마트동물병원 강동암사점','서울특별시 강동구 암사동 452-31 서원빌딩 1층','10:00','21:00','24428875','원훈 :: 우리집 아이처럼 같이 기뻐하고 같이 고민하는 스마트 가족이 되자
 안녕하세요 스마트동물병원 강동암사지점입니다~!
 강남 신사본원, 강남 대치지점, 울산지점, 동탄지점, 강동구지점 총 5 개의 지점에
 총 36 명의 수의사가 심도깊은 협진으로 가장 안전하고 완벽을 추구하는 의료환경을 추구합니다
@@ -640,52 +680,5 @@ Insert into ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,2);
 Insert into ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (4,2);
 Insert into ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (1,3);
 Insert into ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,3);
-
-
-
-
-CREATE SEQUENCE zalbazo.ANIMAL_SEQ
-START WITH 1
-INCREMENT BY 1;
-
-CREATE SEQUENCE zalbazo.CARE_ANIMAL_SEQ
-START WITH 1
-INCREMENT BY 1;
-
-CREATE SEQUENCE zalbazo.CATEGORY_SEQ
-START WITH 1
-INCREMENT BY 1;
-
-CREATE SEQUENCE zalbazo.CONTENT_SEQ
-START WITH 1
-INCREMENT BY 1;
-
-
-CREATE SEQUENCE zalbazo.HOSPITAL_SEQ
-START WITH 1
-INCREMENT BY 1;
-
-
-CREATE SEQUENCE zalbazo.HOSPITAL_QNA_SEQ
-START WITH 1
-INCREMENT BY 1;
-
-CREATE SEQUENCE zalbazo.REPLY_SEQ
-START WITH 1
-INCREMENT BY 1;
-
-CREATE SEQUENCE zalbazo.RESERVE_SEQ
-START WITH 1
-INCREMENT BY 1;
-
-CREATE SEQUENCE zalbazo.REVIEW_SEQ
-START WITH 1
-INCREMENT BY 1;
-
-
-CREATE SEQUENCE zalbazo.PIC_LIB_SEQ
-START WITH 1
-INCREMENT BY 1;
-
 
 commit;

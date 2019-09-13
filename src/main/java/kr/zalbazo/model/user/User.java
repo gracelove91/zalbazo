@@ -2,8 +2,10 @@ package kr.zalbazo.model.user;
 
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -30,7 +32,10 @@ public class User {
 
     private String address;
     private String name;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date joinDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date lastLogin;
 
     private String emailAuthKey;

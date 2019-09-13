@@ -44,7 +44,7 @@
 
 </head>
 
-<body background="/resources/img/index_baba.png">
+<body background="${ctx}/resources/img/index_baba2.png">
 
 	<nav class="navbar navbar-expand navbar-light bg-light static-top">
 
@@ -146,6 +146,8 @@
 				</br>
 				</br>
 				</br>
+	
+			
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 					<form>
 						<div class="form-row">

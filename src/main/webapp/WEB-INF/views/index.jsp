@@ -8,6 +8,7 @@
 <html>
 <body>
 <h2>Hello <c:out value="${email}"/>!</h2>
+<h3>${msg}</h3>
 <h3>피카츄가 세상을 지배한다</h3>
 <img src="${ctx}/resources/img/pika.gif">
 </body>

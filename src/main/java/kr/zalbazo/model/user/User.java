@@ -5,7 +5,6 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -40,5 +39,6 @@ public class User {
 
     private String emailAuthKey;
     private String enabled;
+
 
 }

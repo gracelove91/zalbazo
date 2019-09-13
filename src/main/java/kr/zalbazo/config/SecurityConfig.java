@@ -12,6 +12,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .mvcMatchers("/user/**").permitAll()
                 .mvcMatchers("/resources/**").permitAll()
                 .mvcMatchers("/webjars/**").permitAll()
                 .mvcMatchers("/", "/index").permitAll()
@@ -21,11 +22,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic();
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                    .withUser("test").password("{noop}1234").roles("user")
-                .and()
-                    .withUser("admin").password("{noop}!@#$").roles("admin");
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                    .withUser("test").password("{noop}1234").roles("user")
+//                .and()
+//                    .withUser("admin").password("{noop}!@#$").roles("admin");
+//    }
 }

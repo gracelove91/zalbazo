@@ -40,6 +40,7 @@ public class UserController {
         if(bindingResult.hasErrors()){
             return "user/userjoin";
         }
+        user.setPassword("{noop}"+user.getPassword());
         service.register(user);
         rttr.addFlashAttribute("msg", "가입시 사용한 이메일로 인증해주세요.");
         rttr.addFlashAttribute("email", user.getEmail());

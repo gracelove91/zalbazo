@@ -641,7 +641,7 @@ Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (2,'jisik');
 Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (3,'review');
 Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (4,'hqna');
 
-Insert into ZALBAZO.ZALBAZO_USER (EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN) Values('dummy@gmail.com', '1234', 'user', '01033499440', '서울시 서초구', '홍길동', sysdate, null);
+Insert into ZALBAZO.ZALBAZO_USER (EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN) Values('dummy@gmail.com', '{noop}1234', 'user', '01033499440', '서울시 서초구', '홍길동', sysdate, null);
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,UPDATED_DATE,CATEGORY_ID,USER_EMAIL) values (CONTENT_SEQ.nextval,'매퍼테스트제목지식동1','매퍼테스트내용지식동1',to_date('19/09/05','RR/MM/DD'),to_date('19/09/05','RR/MM/DD'),2,'dummy@gmail.com');
 
 

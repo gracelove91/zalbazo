@@ -1,7 +1,5 @@
 package kr.zalbazo.controller.content;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

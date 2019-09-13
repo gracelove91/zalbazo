@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.hospital.Hospital;
 import kr.zalbazo.model.hospital.HospitalQna;
-import kr.zalbazo.service.hospital.HospitalService;
+import kr.zalbazo.service.HospitalService;
 import lombok.extern.log4j.Log4j;
 
 

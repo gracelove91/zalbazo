@@ -73,7 +73,8 @@
                         <form:label path="address">주소</form:label>
                         <form:input path="address" required="required" type="text" class="form-control" name="address"
                                     id="address"
-                                    placeholder="주소를 입력하세요."/>
+                                    placeholder="주소찾기 버튼을 눌러주세요." readonly="true"/>
+                        <input type="button" onClick="goPopup();" value="주소찾기"/>
                     </fieldset>
                 </div>
                 <div class="form-group">
@@ -95,5 +96,17 @@
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <!-- 부트스트랩 자바스크립트 추가하기 -->
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
+=======
+<script>
+    function goPopup(){
+        var pop = window.open("jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+    }
+
+    function jusoCallBack(roadFullAddr){
+        $("#address").val(roadFullAddr);
+    }
+</script>
+>>>>>>> juso
 </body>
 </html>

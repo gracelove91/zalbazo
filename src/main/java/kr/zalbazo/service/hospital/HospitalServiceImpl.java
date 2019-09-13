@@ -54,4 +54,9 @@ public class HospitalServiceImpl implements HospitalService{
 		mapper.hQnaInsert(hospitalQna);
 	}
 
+	@Override
+	public List<Hospital> getList() {
+		return mapper.getList();
+	}
+
 }

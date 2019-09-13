@@ -20,4 +20,6 @@ public interface HospitalService {
 	int getPictureCount(Long hospitalId);
 
 	List<Content> getHospitalQnaList(Long hospitalId);
+
+	List<Hospital> getList();
 }

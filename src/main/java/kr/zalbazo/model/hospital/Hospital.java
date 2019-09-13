@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor
@@ -20,5 +22,6 @@ public class Hospital {
 	private String treatEnd;
 	private String tel;
 	private String info;
+	private List<HospitalLabel> label;
 	
 }

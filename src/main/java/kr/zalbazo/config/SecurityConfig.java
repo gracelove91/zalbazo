@@ -16,15 +16,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+
         http.authorizeRequests()
+                .mvcMatchers("/resources/**").permitAll()
+                .mvcMatchers("/webjars/**").permitAll()
                 .mvcMatchers("/user/**").permitAll()
-                .mvcMatchers("juso.go.kr/**").permitAll()
-//                .mvcMatchers("/resources/**").permitAll()
-//                .mvcMatchers("/webjars/**").permitAll()
                 .mvcMatchers("/", "/index").permitAll()
                 .mvcMatchers("/jisikdong/**", "/community/**", "/hospital/**").hasAnyRole("user","admin")
                 .mvcMatchers("/admin/**").hasRole("admin")
-                .anyRequest().permitAll();
+                .anyRequest().authenticated();
+
+
         http.formLogin();
         http.httpBasic();
     }

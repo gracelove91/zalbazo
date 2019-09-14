@@ -18,16 +18,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .mvcMatchers("/user/**").permitAll()
-                .mvcMatchers("/resources/**").permitAll()
-                .mvcMatchers("/webjars/**").permitAll()
-                .mvcMatchers("/", "/index").permitAll()
-                .mvcMatchers("/jisikdong/*", "/community/*", "/hospital/*").hasAnyRole("user","admin")
-                .anyRequest().authenticated();
-//                .mvcMatchers("/addrlink/**").permitAll()
-//                .mvcMatchers("/user/**").permitAll()
+                .mvcMatchers("juso.go.kr/**").permitAll()
 //                .mvcMatchers("/resources/**").permitAll()
 //                .mvcMatchers("/webjars/**").permitAll()
-//                .mvcMatchers("/", "/index").permitAll()
+                .mvcMatchers("/", "/index").permitAll()
                 .mvcMatchers("/jisikdong/**", "/community/**", "/hospital/**").hasAnyRole("user","admin")
                 .mvcMatchers("/admin/**").hasRole("admin")
                 .anyRequest().permitAll();

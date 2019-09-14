@@ -20,6 +20,8 @@ import lombok.extern.log4j.Log4j;
 
 import java.util.List;
 
+import java.util.List;
+
 @Controller
 @Log4j
 @RequestMapping({ "/hospital/*" })
@@ -59,6 +61,21 @@ public class HospitalController {
 //		//log.info(hospitalService.getHospitalQnaList());
 //		return "/hospital/write";
 //	}
+
+	@GetMapping("/list")
+	public void list(Model model, Long hospitalId) {
+
+		List<Hospital> hospitalList = hospitalService.getList();
+
+
+
+		for(int i =0; i < hospitalList.size(); i++) {
+			Hospital hospital = hospitalList.get(i);
+			hospital.setLabel(hospitalService.getLabelList(hospital.getHospitalId()));
+		}
+		model.addAttribute("hospitalList", hospitalList);
+
+	}
 
 	@GetMapping("/list")
 	public void list(Model model, Long hospitalId) {

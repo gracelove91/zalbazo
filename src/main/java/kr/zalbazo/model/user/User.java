@@ -2,6 +2,8 @@ package kr.zalbazo.model.user;
 
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.validation.constraints.*;
 import java.util.Date;
@@ -27,11 +29,21 @@ public class User {
 
     @Pattern(regexp = "(^[0-9]*$)", message = " '-' 를 제외한 숫자만 적어주세요.")
     private String tel;
-    
+
     private String address;
     private String name;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date joinDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date lastLogin;
 
+    private String emailAuthKey;
+    private String enabled;
+
+
+    public void encodePassword(PasswordEncoder encoder){
+        this.password = encoder.encode(this.password);
+    }
 
 }

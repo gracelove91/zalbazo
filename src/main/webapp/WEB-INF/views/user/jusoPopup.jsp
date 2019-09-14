@@ -22,6 +22,7 @@
 
 function init(){
 	var url = location.href;
+	console.log(url);
 	var confmKey = "devU01TX0FVVEgyMDE5MDkwMTA4NTkwNzEwODk5MzM=";
 	var resultType = "4"; // 도로명주소 검색결과 화면 출력내용, 1 : 도로명, 2 : 도로명+지번, 3 : 도로명+상세건물명, 4 : 도로명+지번+상세건물명
 	var inputYn= "<%=inputYn%>";
@@ -33,6 +34,7 @@ function init(){
 		//document.form.action="http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do"; //모바일 웹인 경우, 인터넷망
 		document.form.submit();
 	}else{
+		console.log(opener);
 		opener.jusoCallBack("<%=roadFullAddr%>");
 		window.close();
 		}

@@ -3,6 +3,7 @@ package kr.zalbazo.model.user;
 
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.validation.constraints.*;
 import java.time.LocalDateTime;
@@ -40,5 +41,10 @@ public class User {
 
     private String emailAuthKey;
     private String enabled;
+
+
+    public void encodePassword(PasswordEncoder encoder){
+        this.password = encoder.encode(this.password);
+    }
 
 }

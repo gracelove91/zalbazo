@@ -6,6 +6,10 @@ import kr.zalbazo.model.user.User;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,13 +20,16 @@ import java.util.UUID;
 
 @Service
 @Log4j
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Autowired
     private UserMapper userMapper;
 
     @Autowired
     private JavaMailSender mailSender;
+
+    @Autowired
+    private PasswordEncoder encoder;
 
     @Transactional
     @Override
@@ -35,6 +42,9 @@ public class UserServiceImpl implements UserService {
         } catch (MessagingException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+
+        user.encodePassword(encoder);
+
 
         userMapper.insert(user);
     }
@@ -84,4 +94,17 @@ public class UserServiceImpl implements UserService {
         return userMapper.updateEnabled(user) == 1;
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
+        User user = userMapper.read(userEmail);
+        if(user == null){
+            throw new UsernameNotFoundException(userEmail);
+        }
+
+        return org.springframework.security.core.userdetails.User.builder()
+                .username(user.getEmail())
+                .password(user.getPassword())
+                .roles(user.getRole())
+                .build();
+    }
 }

@@ -23,7 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/webjars/**").permitAll()
                 .mvcMatchers("/user/**").permitAll()
                 .mvcMatchers("/", "/index").permitAll()
-                .mvcMatchers("/jisikdong/**", "/community/**", "/hospital/**").hasAnyRole("user","admin")
+//                .mvcMatchers("/jisikdong/**", "/community/**", "/hospital/**").hasAnyRole("user","admin")
+                .mvcMatchers("/jisikdong/**", "/community/**", "/hospital/**").permitAll()
                 .mvcMatchers("/admin/**").hasRole("admin")
                 .anyRequest().authenticated();
 

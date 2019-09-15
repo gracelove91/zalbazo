@@ -19,14 +19,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
-                .mvcMatchers("/resources/**").permitAll()
-                .mvcMatchers("/webjars/**").permitAll()
-                .mvcMatchers("/user/**").permitAll()
-                .mvcMatchers("/", "/index").permitAll()
+//                .mvcMatchers("/resources/**").permitAll()
+//                .mvcMatchers("/webjars/**").permitAll()
+//                .mvcMatchers("/user/**").permitAll()
+//                .mvcMatchers("/", "/index").permitAll()
 //                .mvcMatchers("/jisikdong/**", "/community/**", "/hospital/**").hasAnyRole("user","admin")
-                .mvcMatchers("/jisikdong/**", "/community/**", "/hospital/**").permitAll()
                 .mvcMatchers("/admin/**").hasRole("admin")
-                .anyRequest().authenticated();
+                .anyRequest().permitAll();
 
 
         http.formLogin();

@@ -27,29 +27,52 @@ public class QnaController {
 	
 	private HospitalQnaService qnaService;
 	
-	@PostMapping(value = "/new", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> create(@RequestBody Content content, @RequestBody HospitalQna hospitalQna){
+//	@PostMapping(value = "/new", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
+//	public ResponseEntity<String> create(@RequestBody Content content, @RequestBody HospitalQna hospitalQna){
+//		int insertContent = qnaService.registerContent(content);
+//		int insertQna = qnaService.registerQna(hospitalQna);
+//		
+//		return insertContent == 1 && insertQna == 1 
+//			? new ResponseEntity<>("success", HttpStatus.OK)
+//			: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);	
+//	}
+	
+	@PostMapping(value = "/newCon", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> createCon(@RequestBody Content content){
 		int insertContent = qnaService.registerContent(content);
-		int insertQna = qnaService.registerQna(hospitalQna);
 		
-		return insertContent == 1 && insertQna == 1 
+		return insertContent == 1 
 			? new ResponseEntity<>("success", HttpStatus.OK)
 			: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);	
 	}
 	
+	@PostMapping(value = "/newQna", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> createQna(@RequestBody HospitalQna hospitalQna){
+		int insertQna = qnaService.registerQna(hospitalQna);
+		
+		return insertQna == 1 
+			? new ResponseEntity<>("success", HttpStatus.OK)
+			: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);	
+	}
 	
-	@GetMapping(value = "/pages/{hospitalId}", produces = { 
+	@DeleteMapping(value="/delQna/{contentId}", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> removeQna(@PathVariable("contentId") Long contentId) {
+		return qnaService.removeQna(contentId) == 1
+		? new ResponseEntity<>("success", HttpStatus.OK)
+		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@DeleteMapping(value="/delCon/{contentId}", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> removeCon(@PathVariable("contentId") Long contentId) {
+		return qnaService.removeContent(contentId) == 1
+		? new ResponseEntity<>("success", HttpStatus.OK)
+		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@GetMapping(value = "/list/{hospitalId}", produces = { 
 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
 	public ResponseEntity<List<Content>> getList(@PathVariable("hospitalId") Long hospitalId) {
 		return new ResponseEntity<>(qnaService.getList(hospitalId), HttpStatus.OK);
 	}
 	
-	
-	@DeleteMapping(value="/{contentId}", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> remove(@PathVariable("contentId") Long contentId) {
-		return qnaService.removeQna(contentId) == 1 && qnaService.removeContent(contentId) == 1
-		? new ResponseEntity<>("success", HttpStatus.OK)
-		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-	}
-
 }

@@ -105,27 +105,6 @@
           <button id='regBtn' type="button" type="button" class="btn btn-primary float-right" data-dismiss="modal" href="/jisikdong/register">글쓰기</button>
         </div>
         
-      <div class='row'>
-       	<div class="col-lg-12">
-       		
-       		<form id='searchForm' action="/jisikdong/list" method='get'>
-       			<select name='type'>
-       				<option value=""<c:out value="${pageMaker.cri.type == null ? 'selected' : '' }"/>>--</option>
-       					<option value="T"<c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : '' }"/>>제목</option>
-       					<option value="B"<c:out value="${pageMaker.cri.type eq 'B' ? 'selected' : '' }"/>>내용</option>
-       					<option value="U"<c:out value="${pageMaker.cri.type eq 'U' ? 'selected' : '' }"/>>작성자</option>
-       					<option value="TB"<c:out value="${pageMaker.cri.type eq 'TB' ? 'selected' : '' }"/>>제목 or 내용</option>
-       					<option value="TU"<c:out value="${pageMaker.cri.type eq 'TU' ? 'selected' : '' }"/>>제목 or 작성자</option>
-       					<option value="TUB"<c:out value="${pageMaker.cri.type eq 'TUB' ? 'selected' : '' }"/>>제목 or 내용 or 작성자</option>
-       			</select>
-       			<input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'/>
-       			<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>'>
-       			<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>'>
-       			<button class='btn btn-primary'>Search</button>
-       		</form>
-       	</div>
-       </div>
-
 		<!-- 검색 -->
         <div class='row'>
         	<div class="col-lg-12">

@@ -18,6 +18,7 @@
   <!-- 부트스트랩 CSS 추가하기 -->
   <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/yourcode.js"></script>
 </head>
 
 <body>
@@ -201,58 +202,36 @@
 		  
 		  <br><br>
 		  
-		  <table class="table table-striped">
-			<tr>
-				<th>글 내용</th>
-				<th>작성자</th>
-				<th>DATE</th>
-			</tr>
-
-			<c:forEach items="${qnaList}" var="qna">
-				<tr>
-					<td>${qna.body}</td>
-					<td>${qna.userEmail}</td>
-					<td>${qna.createdDate}</td>
-				</tr>
-			</c:forEach>
-		  </table>
+	<!-- 댓글 창 -->
+<div class='row'>
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+    
+      <div class="panel-heading">
+		Q&A
+      </div>  
+      
+      <div class="panel-body">
+      
+        <ul class="chat">
+          <li class="left clearfix" data-rno='12'>
+            <div>
+              <div class="header">
+                <strong class="primary-font">user00</strong>
+                <small class="float-right text-muted">2019-09-14 10:01</small>
+              </div>
+              <p>Good Job!</p>
+            </div>
+          </li>
+        </ul>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
 		  
 	      
-<%-- 	      <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>글 내용</th>
-                <th>작성자</th>
-                <th>DATE</th>
-              </tr>
-            </thead>
-
-		<c:forEach items="${qna}" var="qna">
-			<tr>
-				<th scope="row" class="mobile" style="text-align: center;">
-					<c:out value="${content.contentId}" />
-				</th>
-
-				<td><a class='move' style="color: #000000;"
-					href='<c:out value="${content.contentId}"/>'><c:out
-							value="${content.title}" /></a></td>
-
-				<td class="mobile" style="text-align: center;"><c:out
-						value="${content.userEmail}" /></td>
-				<td class="mobile" style="text-align: center;"><fmt:formatDate
-						value="${content.createdDate}" pattern="yyyy-MM-dd" /></td>
-			</tr>
-		   <tbody>
-              <tr>
-                <td>${qna.body}</td>
-                <td>${qna.userEmail}</td>
-                <td>${qna.createdDate}</td>
-              </tr>
-            </tbody>
-		</c:forEach>
-
-		 
-          </table> --%>
           
           <br>
     	  <br>
@@ -261,9 +240,11 @@
 	  </div>
 	</div>
 	</div>
-	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
-    <!-- 부트스트랩 자바스크립트 추가하기 -->
-    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
+	
+<script type="text/javascript" src="/static-resources/js/hospital/qna.js"></script>
+	
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+</body>
 </html>

@@ -1,9 +1,9 @@
 package kr.zalbazo.service.content;
 
+import java.util.List;
+
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.Criteria;
-
-import java.util.List;
 
 public interface ContentService {
 	

@@ -1,4 +1,4 @@
-package kr.zalbazo.service.hospital;
+package kr.zalbazo.service;
 
 import java.util.List;
 
@@ -59,5 +59,4 @@ public class HospitalServiceImpl implements HospitalService{
 	public List<Hospital> getList() {
 		return mapper.getList();
 	}
-
 }

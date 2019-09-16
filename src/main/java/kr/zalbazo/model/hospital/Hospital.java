@@ -1,6 +1,7 @@
 package kr.zalbazo.model.hospital;
 
 import lombok.*;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

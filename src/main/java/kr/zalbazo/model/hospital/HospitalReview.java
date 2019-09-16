@@ -16,6 +16,6 @@ public class HospitalReview {
 	private Long reviewId;
 	private Long hospitalId;
 	private Long contentId;
-	private Long startPoint;
+	private Long starPoint;
 
 }

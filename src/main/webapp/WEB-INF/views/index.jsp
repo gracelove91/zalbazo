@@ -14,7 +14,7 @@
 	<meta name="author" content="">
 
 	<title>홈</title>
-
+ejejej
 	<!-- Bootstrap core CSS -->
 	<!-- Custom fonts for this template-->
 	<link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

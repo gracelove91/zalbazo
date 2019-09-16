@@ -98,6 +98,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
         User user = userMapper.read(userEmail);
 
+
+
+
         if(user == null){
             throw new UsernameNotFoundException(userEmail);
         }

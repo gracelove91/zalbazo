@@ -28,14 +28,18 @@
 	<!--  -->
 	
 	<select id="pictureList" resultType="kr.zalbazo.model.pic.PicLib" >
-		select a.PIC_LIB_ID, upload_path, file_name from pic_lib a, pic_lib_rel_hospital b
-		where a.PIC_LIB_ID = b.PIC_LIB_ID and hospital_id = #{hospitalId}
+		select a.pic_lib_id, upload_path, file_name 
+		from pic_lib a, pic_lib_rel_hospital b
+		where a.pic_lib_id = b.pic_lib_id 
+			and hospital_id = #{hospitalId}
 	</select> 
+	
 	
 	<select id="hPictureCount" resultType="int">
         select count(*) from pic_lib_rel_hospital
 		where hospital_id = #{hospitalId}
     </select>
+    
     
     <insert id="hContentInsert" parameterType="kr.zalbazo.model.content.Content">
     	INSERT into content(CONTENT_ID, BODY, CREATED_DATE, UPDATED_DATE, CATEGORY_ID, USER_EMAIL)
@@ -46,6 +50,7 @@
         insert into hospital_qna(hospital_qna_id, hospital_id, content_id)
 		values (HOSPITAL_QNA_SEQ.nextval, #{hospitalId}, CONTENT_SEQ.currval)
 	</insert>
+	
 	
 	<select id="hospitalQnaList" resultType="kr.zalbazo.model.content.Content">
 		select a.content_id, body, created_date, updated_date, user_email 

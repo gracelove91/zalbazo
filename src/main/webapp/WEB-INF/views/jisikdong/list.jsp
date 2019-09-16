@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
@@ -11,9 +9,7 @@
 
 <!doctype html>
 
-<html>
-
- 
+<html> 
 
 <head>
   <title>지식동 웹 사이트</title>
@@ -108,7 +104,7 @@
         <div style="max-width: 1080px;">
           <button id='regBtn' type="button" type="button" class="btn btn-primary float-right" data-dismiss="modal" href="/jisikdong/register">글쓰기</button>
         </div>
-
+        
 		<!-- 검색 -->
         <div class='row'>
         	<div class="col-lg-12">
@@ -157,11 +153,11 @@
         </div>
 
 
-        <form id='actionForm' action="/community/list" method='get'>
-            <input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
-            <input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
-            <input type='hidden' name='type' value='${pageMaker.cri.type}'>
-            <input type='hidden' name='keyword' value='${pageMaker.cri.keyword}'>
+        <form id='actionForm' action="/jisikdong/list" method='get'>
+          <input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+          <input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+          <input type='hidden' name='type' value='${pageMaker.cri.type}'>
+          <input type='hidden' name='keyword' value='${pageMaker.cri.keyword}'>
         </form>
 
 
@@ -180,6 +176,7 @@
   <script type="text/javascript">
 
     $('document').ready(function () {
+    	
 
       var actionForm = $("#actionForm");
 

@@ -49,5 +49,4 @@ public class ContentServiceImpl implements ContentService {
         return mapper.getTotalCount(cri);
     }
 
-
 }

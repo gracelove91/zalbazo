@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.zalbazo.mapper.hospital.HospitalQnaMapper">
+
+	<insert id="insertContent">
+	  insert into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
+	  values (CONTENT_SEQ.nextval, #{body}, sysdate, 4, #{userEmail})
+	</insert>
+	
+	<insert id="insertQna">
+      insert into hospital_qna (HOSPITAL_QNA_ID, HOSPITAL_ID, CONTENT_ID, QNA_TYPE, C_GROUP)
+	  values (HOSPITAL_QNA_SEQ.nextval, #{hospitalId}, CONTENT_SEQ.currval, #{qnaType}, CONTENT_SEQ.currval)
+	</insert>
+	
+	
+	<delete id="deleteQna">
+	  delete from hospital_qna where content_id = #{contentId}
+	</delete>
+	
+	<delete id="deleteContent">
+	  delete from content where content_id = #{contentId}
+	</delete>
+	
+	<select id="getList" resultType="kr.zalbazo.model.content.Content">
+	  select a.content_id, body, created_date, user_email from content a, hospital_qna b
+	  where a.content_id = b.content_id
+	  and hospital_id = #{hospitalId}
+	</select>
+
+</mapper>

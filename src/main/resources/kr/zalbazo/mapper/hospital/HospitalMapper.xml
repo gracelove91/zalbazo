@@ -14,8 +14,7 @@
 	</select>
 
 	<!--  -->
-	<select id="getList"
-		resultType="kr.zalbazo.model.hospital.Hospital">
+	<select id="getList" resultType="kr.zalbazo.model.hospital.Hospital">
 		<![CDATA[
 			select HOSPITAL_ID, NAME, TREAT_START, TREAT_END, ADDRESS, TEL, INFO 
             from HOSPITAL

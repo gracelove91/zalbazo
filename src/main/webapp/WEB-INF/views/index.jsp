@@ -41,10 +41,18 @@
 
 <!-- Custom styles for this template -->
 <link href="/resources/css/landing-page.min.css" rel="stylesheet">
-
+<style>
+html { 
+  background: url(${ctx}/resources/img/index_baba3.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
 </head>
 
-<body background="${ctx}/resources/img/index_baba2.png">
+<body background="${ctx}/resources/img/index_baba3.png">
 
 	<nav class="navbar navbar-expand navbar-light bg-light static-top">
 
@@ -135,7 +143,6 @@
 
 	<!-- Masthead -->
 	<header class="masthead text-white text-center">
-		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-9 mx-auto">

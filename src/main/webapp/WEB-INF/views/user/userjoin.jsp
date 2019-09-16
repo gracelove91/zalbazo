@@ -73,7 +73,8 @@
                         <form:label path="address">주소</form:label>
                         <form:input path="address" required="required" type="text" class="form-control" name="address"
                                     id="address"
-                                    placeholder="주소를 입력하세요."/>
+                                    placeholder="주소찾기 버튼을 눌러주세요." readonly="true"/>
+                        <input type="button" onClick="goPopup();" value="주소찾기"/>
                     </fieldset>
                 </div>
                 <div class="form-group">
@@ -95,31 +96,14 @@
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <!-- 부트스트랩 자바스크립트 추가하기 -->
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<%--<script>--%>
-<%--    $("#email_duplicate").on('click', function () {--%>
-<%--        let userEmail = $("#email").val();--%>
-<%--        $.ajax({--%>
-<%--            url: '/user/emailChk?userEmail=' + userEmail,--%>
-<%--            type: 'get',--%>
-<%--            success: function(data){--%>
-<%--                let re = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;--%>
+<script>
+    function goPopup(){
+        var pop = window.open("jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+    }
 
-<%--                if( !re.test(userEmail) ){--%>
-<%--                    console.log("1");--%>
-<%--                    $("#id_check").text('이메일형식 아님 띠띠').addClass('text-danger').removeClass('text-primary');--%>
-<%--                    $("#join").attr('disabled', true);--%>
-<%--                }else if(data){--%>
-<%--                    console.log("2");--%>
-<%--                    $("#id_check").text('사용하셔도 좋습니다.').addClass('text-primary').removeClass('text-danger');--%>
-<%--                    $("#join").attr('disabled', false);--%>
-<%--                }else{--%>
-<%--                    console.log("3");--%>
-<%--                    $("#id_check").text('중복된 이메일입니다.').addClass('text-danger').removeClass('text-primary');--%>
-<%--                    $("#join").attr('disabled', true);--%>
-<%--                }--%>
-<%--            }--%>
-<%--        });--%>
-<%--    });--%>
-<%--</script>--%>
+    function jusoCallBack(roadFullAddr){
+        $("#address").val(roadFullAddr);
+    }
+</script>
 </body>
 </html>

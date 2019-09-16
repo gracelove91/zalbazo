@@ -263,14 +263,14 @@ $(document).ready(function(){
 
 	submitBtn.on("click", function(e){
 		
-		var con = 
+		/* var con = 
 			{body : qnaBody.val(),
 			 userEmail : user.val()
 			};
 		
 		var qna = 
 			{hospitalId : hospitalId.val()
-			};
+			}; */
 		
 		qnaService.addCon(
 			{body : qnaBody.val(),
@@ -280,7 +280,8 @@ $(document).ready(function(){
 				console.log(result);
 				
 				qnaService.addQna(
-					{hospitalId : hospitalId.val()
+					{hospitalId : hospitalId.val(),
+					 qnaType: "Q"
 					}, 
 					function(result) {
 						alert("등록되었습니다.");

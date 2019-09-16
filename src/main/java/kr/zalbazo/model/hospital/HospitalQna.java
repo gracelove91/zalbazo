@@ -16,5 +16,7 @@ public class HospitalQna {
 	private Long hospitalQnaId;
 	private Long hospitalId;
 	private Long contentId;
+	private String qnaType;
+	private Long cGroup;
 
 }

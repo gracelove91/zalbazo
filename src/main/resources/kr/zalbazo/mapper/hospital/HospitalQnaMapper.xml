@@ -4,23 +4,15 @@
 <mapper namespace="kr.zalbazo.mapper.hospital.HospitalQnaMapper">
 
 	<insert id="insertContent">
-	
-	  <selectKey keyProperty="contentId" order="BEFORE" resultType="long">
-	    select CONTENT_SEQ.nextval from dual 
-	  </selectKey>
-	  
 	  insert into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
-	  values (#{contentId}, #{body}, sysdate, 4, #{userEmail})
+	  values (CONTENT_SEQ.nextval, #{body}, sysdate, 4, #{userEmail})
 	</insert>
 	
 	<insert id="insertQna">
-	
-	  <selectKey keyProperty="contentId" order="BEFORE" resultType="long">
-	    select CONTENT_SEQ.currval from dual 
-	  </selectKey>
-      insert into hospital_qna (HOSPITAL_QNA_ID, HOSPITAL_ID, CONTENT_ID)
-	  values (HOSPITAL_QNA_SEQ.nextval, #{hospitalId}, #{contentId})
+      insert into hospital_qna (HOSPITAL_QNA_ID, HOSPITAL_ID, CONTENT_ID, QNA_TYPE, C_GROUP)
+	  values (HOSPITAL_QNA_SEQ.nextval, #{hospitalId}, CONTENT_SEQ.currval, #{qnaType}, CONTENT_SEQ.currval)
 	</insert>
+	
 	
 	<delete id="deleteQna">
 	  delete from hospital_qna where content_id = #{contentId}

@@ -26,9 +26,4 @@ public interface HospitalMapper {
 
 	List<HospitalLabel> getLabelList(Long hospitalId);
 	
-	List<Hospital> getList();
-
-
-    List<Label> getLabelList(Long hospitalId);
-	
 }

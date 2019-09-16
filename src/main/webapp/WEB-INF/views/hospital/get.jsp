@@ -112,6 +112,7 @@
 				class="sr-only">Next</span>
 			</a>
 		</div><br>
+		<!-- 병원사진 슬라이드 쇼 끝 -->
 		
 		<p class="h5" style="text-align: center">
 			<i class="material-icons">event</i>예약하기 <i class="material-icons">favorite_border</i>즐겨찾기
@@ -148,33 +149,18 @@
 		</div>
 		
 		<div id="menu1" class="container tab-pane fade"><br>
-			<h3>review</h3>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>유저ID</th>
-						<th>별점</th>
-						<th>글 내용</th>
-						<th>DATE</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>John</td>
-						<td>★★★★</td>
-						<td>좋아요~</td>
-						<td>2019-09-02</td>
-					</tr>
-					<tr>
-						<td>김길동</td>
-						<td>★</td>
-						<td>싫어요~</td>
-						<td>2019-09-02</td>
-					</tr>
-				</tbody>
-			</table><br><br><br>
+		<div class="container mt-3">
+		
+			<div class="media border p-3">
+		    	<img src="/resources/img/baba.png" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+		    	<div class="media-body">
+		      		<h4> <c:out value="${content.userEmail}" /> <small><i><c:out value="${content.createdDate}" /></i></small></h4>
+		      		<p><c:out value="${content.body}" /></p>      
+		    	</div>
+		  	</div>
+		
 		</div>
-
+		</div>
 
 		<div id="menu2" class="container tab-pane fade"><br>
 
@@ -190,7 +176,7 @@
 					<button type="submit" class="btn btn-secondary" id="regBtn" name="regBtn">Submit</button>
 			</div> <br><br>
 
-			<!-- 댓글 창 -->
+			<!-- QNA -->
 			<div class='row'>
 				<div class="col-lg-12">
 					<div class="panel panel-default">
@@ -226,8 +212,27 @@
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
 
-<script>
+<script> // 병원Review
+console.log("==========");
+console.log("JS TEST");
+
+$(document).ready(function(){
+	
+	var hospitalId = '<c:out value="${hospital.hospitalId}" />';
+	
+	reviewService.getReviewList({hospitalId : hospitalId}, function(list){
+		for(var i=0, len=list.length||0; i<len; i++) {
+			console.log(list[i]);
+		}
+	});
+	
+});
+</script>
+
+
+<script> //병원 QNA
 $(document).ready(function(){
 	var qnaUL = $(".qna");
 	

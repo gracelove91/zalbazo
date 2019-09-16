@@ -12,7 +12,15 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
+<style>
+html { 
+  background: url(${ctx}/resources/img/index_baba3.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
 <title>홈</title>
 
 <!-- Bootstrap core CSS -->
@@ -44,7 +52,7 @@
 
 </head>
 
-<body background="${ctx}/resources/img/index_baba2.png">
+<body background="${ctx}/resources/img/index_baba3.png">
 
 	<nav class="navbar navbar-expand navbar-light bg-light static-top">
 

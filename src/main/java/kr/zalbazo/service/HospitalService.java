@@ -1,4 +1,4 @@
-package kr.zalbazo.service.hospital;
+package kr.zalbazo.service;
 
 import java.util.List;
 
@@ -11,6 +11,7 @@ import kr.zalbazo.model.pic.PicLib;
 public interface HospitalService {
 	
 	Hospital get(Long hospitalId);
+	
 	List<HospitalLabel> getLabelList(Long hospitalId);
 	
 	void hContentRegister(Content content);

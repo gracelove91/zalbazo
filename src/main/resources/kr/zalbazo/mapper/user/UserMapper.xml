@@ -15,6 +15,12 @@
             name     = #{name}
         where EMAIL = #{email}
     </update>
+    <update id="updateEnabled">
+        update ZALBAZO_USER
+        set ENABLED = #{enabled},
+            EMAIL_AUTH_KEY = #{emailAuthKey}
+        where EMAIL = #{email}
+    </update>
 
     <delete id="delete">
         delete ZALBAZO_USER

@@ -148,19 +148,32 @@
 			<img src="https://map0.daumcdn.net/map_2d/1906plw/L3/1996/892.png"><br><br><br>
 		</div>
 		
-		<div id="menu1" class="container tab-pane fade"><br>
-		<div class="container mt-3">
 		
-			<div class="media border p-3">
-		    	<img src="/resources/img/baba.png" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-		    	<div class="media-body">
-		      		<h4> <c:out value="${content.userEmail}" /> <small><i><c:out value="${content.createdDate}" /></i></small></h4>
-		      		<p><c:out value="${content.body}" /></p>      
-		    	</div>
-		  	</div>
-		
+<!-- 리뷰 -->
+<div id="menu1" class="container tab-pane fade"><br>
+
+	<div class='row'>
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+
+				<div class="panel-heading" style="padding-left: 20px; font-size: x-large;"><strong>Review</strong></div>
+
+				<div class="panel-body">
+
+					<ul class="qna list-group list-group-flush">
+						<li class="left clearfix" data-rno='12'>
+
+						</li>
+					</ul>
+
+				</div>
+
+			</div>
 		</div>
-		</div>
+	</div> <br><br><br>
+			
+</div>
+
 
 		<div id="menu2" class="container tab-pane fade"><br>
 
@@ -175,25 +188,47 @@
 
 					<button type="submit" class="btn btn-secondary" id="regBtn" name="regBtn">Submit</button>
 			</div> <br><br>
+			
+<div class="container">
 
-			<!-- QNA -->
+<div id="accordion"> 
+   <div class="card-header">
+      <a class="card-link" data-toggle="collapse" href="#collapseOne"> Q&A #1 </a>
+   </div>
+   <div id="collapseOne" class="collapse show" data-parent="#accordion">
+      <div class="card-body"> A: 답변답변답변 </div>
+   </div>
+</div>
+    
+<div>
+   <div class="card-header">
+      <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo"> Q&A #2 </a>
+   </div>
+   <div id="collapseTwo" class="collapse" data-parent="#accordion">
+      <div class="card-body"> A: 답변답변답변 </div>
+   </div>
+</div>
+ 
+</div>
+<br><br>
+			<!-- Q&A list -->
 			<div class='row'>
 				<div class="col-lg-12">
 					<div class="panel panel-default">
 
-						<div class="panel-heading" style="padding-left: 20px; font-size: x-large;">Q&A</div>
+						<div class="panel-heading" style="padding-left: 20px; font-size: x-large;"><strong>Q&A</strong></div>
 
 						<div class="panel-body">
 
 							<ul class="qna list-group list-group-flush">
 								<li class="left clearfix" data-rno='12'>
-									<div>
+									<!-- <div>
 										<div class="header">
-											<strong class="primary-font">user00</strong> <small
+											<strong class="primary-font">user00</strong> <small>
 												class="float-right text-muted">2019-09-14 10:01</small>
 										</div>
 										<p>Good Job!</p>
-									</div>
+									</div> -->
 								</li>
 							</ul>
 
@@ -204,6 +239,8 @@
 			</div> <br><br><br>
 			
 		</div>
+		<!-- Q&A 끝 -->
+		
 	</div>
 </div>
 </div>
@@ -214,10 +251,7 @@
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
 
-<script> // 병원Review
-console.log("==========");
-console.log("JS TEST");
-
+<script>
 $(document).ready(function(){
 	
 	var hospitalId = '<c:out value="${hospital.hospitalId}" />';
@@ -242,25 +276,25 @@ $(document).ready(function(){
 	var qnaBody = info.find("textarea[name='body']");
 	
 	
-	showList(1);
+	showQnaList(1);
 	
-	function showList(page) {
-		qnaService.getList({hospitalId:hospitalId.val()}, function(list){
-			var str = "";
-			if(list == null || list.length == 0) {
-				qnaUL.html("");
-				return;
-			}
-			for(var i=0, len = list.length || 0; i<len; i++) {
-				str += "<li class='left clearfix list-group-item'>";
-				str += "  <div><div class='header'><small class='primary-font'>"+list[i].userEmail+"</small>";
-				str += "     <div class='del float-right' data-contentId='"+list[i].contentId+"'> X </div></div>";
-				str += "     <p>"+list[i].body+"<small class='float-right text-muted'>"+qnaService.displayTime(list[i].createdDate)+"</small></p></div></li>";
-			}
-			
-			qnaUL.html(str);
-		});
-	}
+function showQnaList(page) {
+	qnaService.getList({hospitalId:hospitalId.val()}, function(list){
+		var str = "";
+		if(list == null || list.length == 0) {
+			qnaUL.html("");
+			return;
+		}
+		for(var i=0, len = list.length || 0; i<len; i++) {
+			str += "<li class='left clearfix list-group-item'>";
+			str += "  <div><div class='header'><small class='primary-font'>"+list[i].userEmail+"</small>";
+			str += "     <div class='del float-right' data-contentId='"+list[i].contentId+"'> X </div></div>";
+			str += "     <p>"+list[i].body+"<small class='float-right text-muted'>"+qnaService.displayTime(list[i].createdDate)+"</small></p></div></li>";
+		}
+		
+		qnaUL.html(str);
+	});
+}
 	
 	
 	/* Q&A 등록  */
@@ -292,7 +326,7 @@ $(document).ready(function(){
 						alert("등록되었습니다.");
 						
 						// DB에 insert 후 글 목록 리셋
-						showList(1);
+						showQnaList(1);
 						// textarea 리셋
 						$(".txt").val('');
 					}
@@ -315,7 +349,7 @@ $(document).ready(function(){
 					
 					if(count === "success") {
 						alert("처리되었습니다");
-						showList(1);
+						showQnaList(1);
 					}
 				}, function(err){
 					alert('Con ERROR...');

@@ -11,11 +11,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-public class HospitalReview { // VO
+public class HospitalReview {
 	
-	private Long reviewId; // 리뷰DB번호
-	private Long hospitalId; // 병원번호
-	private Long contentId; // 글번호
-	private Long starPoint; // 별점
+	private Long reviewId;
+	private Long hospitalId;
+	private Long contentId;
+	private Long starPoint;
 
 }

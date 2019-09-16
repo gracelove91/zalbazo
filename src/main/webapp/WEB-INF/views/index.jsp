@@ -18,6 +18,11 @@
 <!-- Bootstrap core CSS -->
   <!-- Custom fonts for this template-->
   <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<title>홈</title>
+feat/test111
+	<!-- Bootstrap core CSS -->
+	<!-- Custom fonts for this template-->
+	<link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
   <!-- Page level plugin CSS-->
   <link href="/resources/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">

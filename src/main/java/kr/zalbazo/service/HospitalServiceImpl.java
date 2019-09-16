@@ -1,4 +1,4 @@
-package kr.zalbazo.service.hospital;
+package kr.zalbazo.service;
 
 import kr.zalbazo.mapper.hospital.HospitalMapper;
 import kr.zalbazo.model.content.*;
@@ -58,5 +58,4 @@ public class HospitalServiceImpl implements HospitalService{
 	public List<Hospital> getList() {
 		return mapper.getList();
 	}
-
 }

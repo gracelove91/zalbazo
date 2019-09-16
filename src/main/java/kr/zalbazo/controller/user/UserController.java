@@ -40,7 +40,7 @@ public class UserController {
         if(bindingResult.hasErrors()){
             return "user/userjoin";
         }
-        user.setPassword("{noop}"+user.getPassword());
+
         service.register(user);
         rttr.addFlashAttribute("msg", "가입시 사용한 이메일로 인증해주세요.");
         rttr.addFlashAttribute("email", user.getEmail());
@@ -58,7 +58,7 @@ public class UserController {
 
         if(enabled){
             rttr.addFlashAttribute("email", userEmail);
-            return "redirect:login";
+            return "redirect:/login";
         }else {
             throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
         }

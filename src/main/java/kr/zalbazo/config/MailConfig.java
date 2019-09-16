@@ -1,13 +1,12 @@
 package kr.zalbazo.config;
 
+import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-
-import java.util.Properties;
 
 @PropertySource("classpath:mail.properties")
 public class MailConfig {

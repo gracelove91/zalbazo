@@ -38,6 +38,7 @@ public class UserController {
         if(bindingResult.hasErrors()){
             return "user/userjoin";
         }
+        user.setPassword("{noop}"+user.getPassword());
         service.register(user);
         rttr.addFlashAttribute("email", user.getEmail());
 

@@ -21,6 +21,10 @@ public interface HospitalMapper {
 	int hPictureCount(Long hospitalId);
 	
 	List<Content> hospitalQnaList(Long hospitalId);
+
+	List<Hospital> getList();
+
+	List<HospitalLabel> getLabelList(Long hospitalId);
 	
 	List<Hospital> getList();
 

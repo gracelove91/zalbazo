@@ -2,6 +2,12 @@ package kr.zalbazo.controller.hospital;
 
 import java.util.List;
 
+import kr.zalbazo.model.content.Content;
+import kr.zalbazo.model.hospital.Hospital;
+import kr.zalbazo.model.hospital.HospitalQna;
+import kr.zalbazo.service.hospital.HospitalService;
+import lombok.extern.log4j.Log4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +22,9 @@ import kr.zalbazo.model.hospital.HospitalQna;
 import kr.zalbazo.service.HospitalService;
 import lombok.extern.log4j.Log4j;
 
+import java.util.List;
 
+@Controller
 @Log4j
 @RequestMapping({ "/hospital/*" })
 public class HospitalController {
@@ -70,6 +78,21 @@ public class HospitalController {
 //		log.info(service.getList());
 //		model.addAttribute("labelList", service.getLabelList(id));
 //		log.info(service.getLabelList(id));
+	}
+
+	@GetMapping("/list")
+	public void list(Model model, Long hospitalId) {
+
+		List<Hospital> hospitalList = hospitalService.getList();
+
+
+
+		for(int i =0; i < hospitalList.size(); i++) {
+			Hospital hospital = hospitalList.get(i);
+			hospital.setLabel(hospitalService.getLabelList(hospital.getHospitalId()));
+		}
+		model.addAttribute("hospitalList", hospitalList);
+
 	}
 
 }

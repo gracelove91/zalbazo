@@ -1,10 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <%
 	String ctx = request.getContextPath();
 	pageContext.setAttribute("ctx", ctx);
 %>
+
 <html>
 <head>
 <meta charset="utf-8">
@@ -25,7 +27,6 @@
 <!-- Custom fonts for this template-->
 <link href="/resources/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
-
 <!-- Page level plugin CSS-->
 <link href="/resources/vendor/datatables/dataTables.bootstrap4.css"
 	rel="stylesheet">
@@ -34,21 +35,35 @@
 <link href="/resources/css/sb-admin.css" rel="stylesheet">
 <!--  -->
 
+<!-- Custom styles for this template-->
+<link href="/resources/css/sb-admin.css" rel="stylesheet">
 <link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-
 <!-- Custom fonts for this template -->
+
 <link href="/resources/vendor/fontawesome-free/css/all.min.css"
+
 	rel="stylesheet">
+
 <link
+
 	href="/resources/vendor/simple-line-icons/css/simple-line-icons.css"
+
 	rel="stylesheet" type="text/css">
+
 <link
+
 	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
+
 	rel="stylesheet" type="text/css">
+
+ 
 
 <!-- Custom styles for this template -->
+
 <link href="/resources/css/landing-page.min.css" rel="stylesheet">
+
+ 
 
 </head>
 
@@ -178,11 +193,60 @@
 		</div>
 	</div>
 
+ 
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="/resources/vendor/jquery/jquery.min.js"></script>
+	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+		<div class="row">
+
+			<div class="col-xl-9 mx-auto">
+
+				<!-- 					<h1 class="mb-5" style="color: gray; font-weight: bold">
+
+					잘바조</h1> -->
+
+			</div>
+
+ 
+
+			<div class="babalogo" id="babalogo">
+
+				<img src="${ctx}/resources/img/c_baba_logo2.png">
+
+			</div>
+
+ 
+
+			</br> </br>
+
+			<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+
+				<form>
+
+					<div class="form-row">
+
+						<div class="col-12 col-md-9 mb-2 mb-md-0">
+
+							<input type="email" class="form-control form-control-lg"
+
+								placeholder="검색어를 입력해주세요.">
+
+						</div>
+
+						<div class="col-12 col-md-3">
+							<button type="submit" class="btn btn-block btn-lg btn-primary">검색하기</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="/resources/vendor/jquery/jquery.min.js"></script>
 	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 </html>

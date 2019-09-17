@@ -218,3 +218,5 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 # End of https://www.gitignore.io/api/java,macos,eclipse,intellij,maven
+src/main/webapp/WEB-INF/views/index.jsp
+src/main/webapp/static-resources/img/c_baba_logo2.png

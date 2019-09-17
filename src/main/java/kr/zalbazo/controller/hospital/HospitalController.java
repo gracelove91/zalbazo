@@ -41,45 +41,8 @@ public class HospitalController {
 		hospitalService.hQnaRegister(hospitalQna);
 		rttr.addFlashAttribute("hospitalId", hospitalQna.getHospitalId());
 		
-		return "redirect:/hospital/get"; 
-
+		return "redirect:/hospital/get";
 	}
-	
-//	@PostMapping("/write")
-//	public String writeQna(@RequestParam("hospitalId") Long hospitalId, Content content) {
-//		hospitalService.hContentRegister(content);
-//		hospitalService.hQnaRegister(hospitalId);
-//		
-//		//rttr.addAttribute("content", content);
-//		//rttr.addAttribute("hospitalQna", hospitalQna);
-//		//rttr.addFlashAttribute("qna", hospitalService.getHospitalQnaList());
-//		//log.info(hospitalService.getHospitalQnaList());
-//		return "/hospital/write";
-//	}
-
-	/*
-	 * @GetMapping("/list") public void list(Model model, Long hospitalId) {
-	 * 
-	 * List<Hospital> hospitalList = hospitalService.getList();
-	 * 
-	 * 
-	 * hospitalList.forEach(hospital -> {
-	 * hospital.setLabel(service.getLabelList(hospital.getId())); });
-	 * 
-	 * 
-	 * 
-	 * for(Hospital hospital : hospitalList) {
-	 * hospital.setLabel(service.getLabelList(hospital.getId())); }
-	 * 
-	 * 
-	 * for(int i =0; i < hospitalList.size(); i++) { Hospital hospital =
-	 * hospitalList.get(i);
-	 * hospital.setLabel(hospitalService.getLabelList(hospital.getHospitalId())); }
-	 * model.addAttribute("hospitalList", hospitalList);
-	 * 
-	 * // log.info(service.getList()); // model.addAttribute("labelList",
-	 * service.getLabelList(id)); // log.info(service.getLabelList(id)); }
-	 */
 
 	@GetMapping("/list")
 	public void list(Model model, Long hospitalId) {

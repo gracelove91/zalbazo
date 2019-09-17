@@ -27,16 +27,6 @@ public class QnaController {
 	
 	private HospitalQnaService qnaService;
 	
-//	@PostMapping(value = "/new", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-//	public ResponseEntity<String> create(@RequestBody Content content, @RequestBody HospitalQna hospitalQna){
-//		int insertContent = qnaService.registerContent(content);
-//		int insertQna = qnaService.registerQna(hospitalQna);
-//		
-//		return insertContent == 1 && insertQna == 1 
-//			? new ResponseEntity<>("success", HttpStatus.OK)
-//			: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);	
-//	}
-	
 	@PostMapping(value = "/newCon", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<String> createCon(@RequestBody Content content){
 		int insertContent = qnaService.registerContent(content);

@@ -22,7 +22,7 @@
     ]]>
 	</select>
 
-	<select id="getLabelList" resultType="kr.zalbazo.model.content.Label"> 
+	<select id="getLabelList" resultType="kr.zalbazo.model.hospital.HospitalLabel">
 		select * from HOSPITAL_LABEL where HOSPITAL_ID = #{hospitalId} 
 	</select>
 	<!--  -->

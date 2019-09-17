@@ -1,10 +1,3 @@
--- 생성자 Oracle SQL Developer Data Modeler 19.1.0.081.0911
---   위치:        2019-09-14 02:02:51 KST
---   사이트:      Oracle Database 11g
---   유형:      Oracle Database 11g
-
-
-
 DROP TABLE zalbazo.animal CASCADE CONSTRAINTS;
 
 DROP TABLE zalbazo.care_animal CASCADE CONSTRAINTS;
@@ -57,7 +50,7 @@ DROP SEQUENCE zalbazo.reserve_seq;
 
 DROP SEQUENCE zalbazo.review_seq;
 
-CREATE user zalbazo identified by account unlock 
+CREATE user zalbazo identified by account unlock
 ;
 
 CREATE SEQUENCE zalbazo.animal_seq INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
@@ -81,19 +74,19 @@ CREATE SEQUENCE zalbazo.reserve_seq INCREMENT BY 1 MAXVALUE 99999999999999999999
 CREATE SEQUENCE zalbazo.review_seq INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
 
 CREATE TABLE zalbazo.animal (
-    animal_id         NUMBER NOT NULL,
-    type              VARCHAR2(500 BYTE),
-    sex               VARCHAR2(100 BYTE),
-    weight            NUMBER,
-    age               NUMBER,
-    name              VARCHAR2(300 BYTE),
-    note              VARCHAR2(3000 BYTE),
-    last_treat_date   DATE,
-    created_date      DATE,
-    updated_date      DATE,
-    user_email        VARCHAR2(1000 BYTE) NOT NULL
+                                animal_id         NUMBER NOT NULL,
+                                type              VARCHAR2(500 BYTE),
+                                sex               VARCHAR2(100 BYTE),
+                                weight            NUMBER,
+                                age               NUMBER,
+                                name              VARCHAR2(300 BYTE),
+                                note              VARCHAR2(3000 BYTE),
+                                last_treat_date   DATE,
+                                created_date      DATE,
+                                updated_date      DATE,
+                                user_email        VARCHAR2(1000 BYTE) NOT NULL
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
@@ -126,70 +119,70 @@ COMMENT ON COLUMN zalbazo.animal.updated_date IS
 
 CREATE UNIQUE INDEX zalbazo.animal_pk ON
     zalbazo.animal (
-        animal_id
-    ASC )
-        TABLESPACE system PCTFREE 10
-            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
-            DEFAULT )
-        LOGGING;
+                    animal_id
+                    ASC )
+    TABLESPACE system PCTFREE 10
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+    LOGGING;
 
 ALTER TABLE zalbazo.animal
     ADD CONSTRAINT animal_pk PRIMARY KEY ( animal_id )
         USING INDEX zalbazo.animal_pk;
 
 CREATE TABLE zalbazo.care_animal (
-    care_animal_id   NUMBER NOT NULL,
-    hospital_id      NUMBER NOT NULL,
-    animal_id        NUMBER NOT NULL
+                                     care_animal_id   NUMBER NOT NULL,
+                                     hospital_id      NUMBER NOT NULL,
+                                     animal_id        NUMBER NOT NULL
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
 CREATE UNIQUE INDEX zalbazo.care_animal_pk ON
     zalbazo.care_animal (
-        care_animal_id
-    ASC )
-        TABLESPACE system PCTFREE 10
-            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
-            DEFAULT )
-        LOGGING;
+                         care_animal_id
+                         ASC )
+    TABLESPACE system PCTFREE 10
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+    LOGGING;
 
 ALTER TABLE zalbazo.care_animal
     ADD CONSTRAINT care_animal_pk PRIMARY KEY ( care_animal_id )
         USING INDEX zalbazo.care_animal_pk;
 
 CREATE TABLE zalbazo.category (
-    category_id   NUMBER NOT NULL,
-    name          VARCHAR2(100 BYTE)
+                                  category_id   NUMBER NOT NULL,
+                                  name          VARCHAR2(100 BYTE)
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
 CREATE UNIQUE INDEX zalbazo.category_pk ON
     zalbazo.category (
-        category_id
-    ASC )
-        TABLESPACE system PCTFREE 10
-            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
-            DEFAULT )
-        LOGGING;
+                      category_id
+                      ASC )
+    TABLESPACE system PCTFREE 10
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+    LOGGING;
 
 ALTER TABLE zalbazo.category
     ADD CONSTRAINT category_pk PRIMARY KEY ( category_id )
         USING INDEX zalbazo.category_pk;
 
 CREATE TABLE zalbazo.content (
-    content_id     NUMBER NOT NULL,
-    title          VARCHAR2(1000 BYTE),
-    body           VARCHAR2(4000 BYTE),
-    created_date   DATE,
-    updated_date   DATE,
-    category_id    NUMBER NOT NULL,
-    user_email     VARCHAR2(1000 BYTE) NOT NULL
+                                 content_id     NUMBER NOT NULL,
+                                 title          VARCHAR2(1000 BYTE),
+                                 body           VARCHAR2(4000 BYTE),
+                                 created_date   DATE,
+                                 updated_date   DATE,
+                                 category_id    NUMBER NOT NULL,
+                                 user_email     VARCHAR2(1000 BYTE) NOT NULL
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
@@ -201,48 +194,48 @@ COMMENT ON COLUMN zalbazo.content.body IS
 
 CREATE UNIQUE INDEX zalbazo.content_pk ON
     zalbazo.content (
-        content_id
-    ASC )
-        TABLESPACE system PCTFREE 10
-            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
-            DEFAULT )
-        LOGGING;
+                     content_id
+                     ASC )
+    TABLESPACE system PCTFREE 10
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+    LOGGING;
 
 ALTER TABLE zalbazo.content
     ADD CONSTRAINT content_pk PRIMARY KEY ( content_id )
         USING INDEX zalbazo.content_pk;
 
 CREATE TABLE zalbazo.favorite_hospital (
-    user_email    VARCHAR2(1000 BYTE) NOT NULL,
-    hospital_id   NUMBER NOT NULL
+                                           user_email    VARCHAR2(1000 BYTE) NOT NULL,
+                                           hospital_id   NUMBER NOT NULL
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
 CREATE UNIQUE INDEX zalbazo.favorite_hospital_pk ON
     zalbazo.favorite_hospital (
-        user_email
-    ASC )
-        TABLESPACE system PCTFREE 10
-            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
-            DEFAULT )
-        LOGGING;
+                               user_email
+                               ASC )
+    TABLESPACE system PCTFREE 10
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+    LOGGING;
 
 ALTER TABLE zalbazo.favorite_hospital
     ADD CONSTRAINT favorite_hospital_pk PRIMARY KEY ( user_email )
         USING INDEX zalbazo.favorite_hospital_pk;
 
 CREATE TABLE zalbazo.hospital (
-    hospital_id   NUMBER NOT NULL,
-    name          VARCHAR2(1000 BYTE),
-    address       VARCHAR2(3000 BYTE),
-    treat_start   VARCHAR2(20 BYTE),
-    treat_end     VARCHAR2(20 BYTE),
-    tel           VARCHAR2(20 BYTE),
-    info          VARCHAR2(4000 BYTE)
+                                  hospital_id   NUMBER NOT NULL,
+                                  name          VARCHAR2(1000 BYTE),
+                                  address       VARCHAR2(3000 BYTE),
+                                  treat_start   VARCHAR2(20 BYTE),
+                                  treat_end     VARCHAR2(20 BYTE),
+                                  tel           VARCHAR2(20 BYTE),
+                                  info          VARCHAR2(4000 BYTE)
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
@@ -266,140 +259,143 @@ COMMENT ON COLUMN zalbazo.hospital.info IS
 
 CREATE UNIQUE INDEX zalbazo.hospital_pk ON
     zalbazo.hospital (
-        hospital_id
-    ASC )
-        TABLESPACE system PCTFREE 10
-            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
-            DEFAULT )
-        LOGGING;
+                      hospital_id
+                      ASC )
+    TABLESPACE system PCTFREE 10
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+    LOGGING;
 
 ALTER TABLE zalbazo.hospital
     ADD CONSTRAINT hospital_pk PRIMARY KEY ( hospital_id )
         USING INDEX zalbazo.hospital_pk;
 
 CREATE TABLE zalbazo.hospital_label (
-    label_code    NUMBER NOT NULL,
-    hospital_id   NUMBER NOT NULL
+                                        label_code    NUMBER NOT NULL,
+                                        hospital_id   NUMBER NOT NULL
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
 CREATE TABLE zalbazo.hospital_qna (
-    hospital_qna_id   NUMBER NOT NULL,
-    hospital_id       NUMBER NOT NULL,
-    content_id        NUMBER NOT NULL
+                                      hospital_qna_id   NUMBER NOT NULL,
+                                      hospital_id       NUMBER NOT NULL,
+                                      content_id        NUMBER NOT NULL
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
 CREATE UNIQUE INDEX zalbazo.hospital_qna_pk ON
     zalbazo.hospital_qna (
-        hospital_qna_id
-    ASC )
-        TABLESPACE system PCTFREE 10
-            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
-            DEFAULT )
-        LOGGING;
+                          hospital_qna_id
+                          ASC )
+    TABLESPACE system PCTFREE 10
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+    LOGGING;
 
 ALTER TABLE zalbazo.hospital_qna
     ADD CONSTRAINT hospital_qna_pk PRIMARY KEY ( hospital_qna_id )
         USING INDEX zalbazo.hospital_qna_pk;
 
+alter table hospital_qna add(qna_type VARCHAR2(10));
+alter table hospital_qna add(c_group NUMBER);
+
 CREATE TABLE zalbazo.label (
-    code   NUMBER NOT NULL,
-    name   VARCHAR2(100 BYTE)
+                               code   NUMBER NOT NULL,
+                               name   VARCHAR2(100 BYTE)
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
 CREATE UNIQUE INDEX zalbazo.label_pk ON
     zalbazo.label (
-        code
-    ASC )
-        TABLESPACE system PCTFREE 10
-            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
-            DEFAULT )
-        LOGGING;
+                   code
+                   ASC )
+    TABLESPACE system PCTFREE 10
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+    LOGGING;
 
 ALTER TABLE zalbazo.label
     ADD CONSTRAINT label_pk PRIMARY KEY ( code )
         USING INDEX zalbazo.label_pk;
 
 CREATE TABLE zalbazo.pic_lib (
-    pic_lib_id    NUMBER NOT NULL,
-    upload_path   VARCHAR2(200 BYTE) NOT NULL,
-    file_name     VARCHAR2(100 BYTE) NOT NULL
+                                 pic_lib_id    NUMBER NOT NULL,
+                                 upload_path   VARCHAR2(200 BYTE) NOT NULL,
+                                 file_name     VARCHAR2(100 BYTE) NOT NULL
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
 CREATE UNIQUE INDEX zalbazo.pic_lib_pk ON
     zalbazo.pic_lib (
-        pic_lib_id
-    ASC )
-        TABLESPACE system PCTFREE 10
-            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
-            DEFAULT )
-        LOGGING;
+                     pic_lib_id
+                     ASC )
+    TABLESPACE system PCTFREE 10
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+    LOGGING;
 
 ALTER TABLE zalbazo.pic_lib
     ADD CONSTRAINT pic_lib_pk PRIMARY KEY ( pic_lib_id )
         USING INDEX zalbazo.pic_lib_pk;
 
 CREATE TABLE zalbazo.pic_lib_rel_content (
-    pic_lib_id   NUMBER NOT NULL,
-    content_id   NUMBER NOT NULL
+                                             pic_lib_id   NUMBER NOT NULL,
+                                             content_id   NUMBER NOT NULL
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
 CREATE TABLE zalbazo.pic_lib_rel_hospital (
-    pic_lib_id    NUMBER NOT NULL,
-    hospital_id   NUMBER NOT NULL
+                                              pic_lib_id    NUMBER NOT NULL,
+                                              hospital_id   NUMBER NOT NULL
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
 CREATE TABLE zalbazo.reply (
-    reply_id       NUMBER NOT NULL,
-    body           VARCHAR2(3000 BYTE),
-    created_date   DATE,
-    updated_date   DATE,
-    user_email     VARCHAR2(1000 BYTE) NOT NULL,
-    content_id     NUMBER NOT NULL
+                               reply_id       NUMBER NOT NULL,
+                               body           VARCHAR2(3000 BYTE),
+                               created_date   DATE,
+                               updated_date   DATE,
+                               user_email     VARCHAR2(1000 BYTE) NOT NULL,
+                               content_id     NUMBER NOT NULL
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
 CREATE UNIQUE INDEX zalbazo.reply_pk ON
     zalbazo.reply (
-        reply_id
-    ASC )
-        TABLESPACE system PCTFREE 10
-            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
-            DEFAULT )
-        LOGGING;
+                   reply_id
+                   ASC )
+    TABLESPACE system PCTFREE 10
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+    LOGGING;
 
 ALTER TABLE zalbazo.reply
     ADD CONSTRAINT reply_pk PRIMARY KEY ( reply_id )
         USING INDEX zalbazo.reply_pk;
 
 CREATE TABLE zalbazo.reserve (
-    reserve_id    NUMBER NOT NULL,
-    note          VARCHAR2(4000 BYTE),
-    "DATE"        DATE,
-    animal_id     NUMBER NOT NULL,
-    hospital_id   NUMBER NOT NULL,
-    status        VARCHAR2(100 BYTE)
+                                 reserve_id    NUMBER NOT NULL,
+                                 note          VARCHAR2(4000 BYTE),
+                                 "DATE"        DATE,
+                                 animal_id     NUMBER NOT NULL,
+                                 hospital_id   NUMBER NOT NULL,
+                                 status        VARCHAR2(100 BYTE)
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
@@ -408,55 +404,55 @@ COMMENT ON COLUMN zalbazo.reserve.note IS
 
 CREATE UNIQUE INDEX zalbazo.reserve_pk ON
     zalbazo.reserve (
-        reserve_id
-    ASC )
-        TABLESPACE system PCTFREE 10
-            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
-            DEFAULT )
-        LOGGING;
+                     reserve_id
+                     ASC )
+    TABLESPACE system PCTFREE 10
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+    LOGGING;
 
 ALTER TABLE zalbazo.reserve
     ADD CONSTRAINT reserve_pk PRIMARY KEY ( reserve_id )
         USING INDEX zalbazo.reserve_pk;
 
 CREATE TABLE zalbazo.review (
-    review_id     NUMBER NOT NULL,
-    hospital_id   NUMBER NOT NULL,
-    content_id    NUMBER NOT NULL,
-    star_point    NUMBER
+                                review_id     NUMBER NOT NULL,
+                                hospital_id   NUMBER NOT NULL,
+                                content_id    NUMBER NOT NULL,
+                                star_point    NUMBER
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
 CREATE UNIQUE INDEX zalbazo.review_pk ON
     zalbazo.review (
-        review_id
-    ASC )
-        TABLESPACE system PCTFREE 10
-            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
-            DEFAULT )
-        LOGGING;
+                    review_id
+                    ASC )
+    TABLESPACE system PCTFREE 10
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+    LOGGING;
 
 ALTER TABLE zalbazo.review
     ADD CONSTRAINT review_pk PRIMARY KEY ( review_id )
         USING INDEX zalbazo.review_pk;
 
 CREATE TABLE zalbazo.zalbazo_user (
-    email            VARCHAR2(1000 BYTE)
-        CONSTRAINT nnc_zalbazo_user_email NOT NULL,
-    password         VARCHAR2(500 BYTE)
-        CONSTRAINT nnc_zalbazo_user_password NOT NULL,
-    role             VARCHAR2(100 BYTE),
-    tel              VARCHAR2(20 BYTE),
-    address          VARCHAR2(1000 BYTE),
-    name             VARCHAR2(500 BYTE),
-    join_date        DATE,
-    last_login       DATE,
-    enabled          VARCHAR2(20 BYTE),
-    email_auth_key   VARCHAR2(50 BYTE)
+                                      email            VARCHAR2(1000 BYTE)
+                                          CONSTRAINT nnc_zalbazo_user_email NOT NULL,
+                                      password         VARCHAR2(500 BYTE)
+                                          CONSTRAINT nnc_zalbazo_user_password NOT NULL,
+                                      role             VARCHAR2(100 BYTE),
+                                      tel              VARCHAR2(20 BYTE),
+                                      address          VARCHAR2(1000 BYTE),
+                                      name             VARCHAR2(500 BYTE),
+                                      join_date        DATE,
+                                      last_login       DATE,
+                                      enabled          VARCHAR2(20 BYTE),
+                                      email_auth_key   VARCHAR2(50 BYTE)
 )
-PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
+    PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
@@ -474,12 +470,12 @@ COMMENT ON COLUMN zalbazo.zalbazo_user.tel IS
 
 CREATE UNIQUE INDEX zalbazo.zalbazo_user_pk ON
     zalbazo.zalbazo_user (
-        email
-    ASC )
-        TABLESPACE system PCTFREE 10
-            STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
-            DEFAULT )
-        LOGGING;
+                          email
+                          ASC )
+    TABLESPACE system PCTFREE 10
+    STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
+    DEFAULT )
+    LOGGING;
 
 ALTER TABLE zalbazo.zalbazo_user
     ADD CONSTRAINT zalbazo_user_pk PRIMARY KEY ( email )
@@ -488,112 +484,112 @@ ALTER TABLE zalbazo.zalbazo_user
 ALTER TABLE zalbazo.animal
     ADD CONSTRAINT animal_user_fk FOREIGN KEY ( user_email )
         REFERENCES zalbazo.zalbazo_user ( email )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.care_animal
     ADD CONSTRAINT care_animal_animal_fk FOREIGN KEY ( animal_id )
         REFERENCES zalbazo.animal ( animal_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.care_animal
     ADD CONSTRAINT care_animal_hospital_fk FOREIGN KEY ( hospital_id )
         REFERENCES zalbazo.hospital ( hospital_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.content
     ADD CONSTRAINT content_category_fk FOREIGN KEY ( category_id )
         REFERENCES zalbazo.category ( category_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.content
     ADD CONSTRAINT content_user_fk FOREIGN KEY ( user_email )
         REFERENCES zalbazo.zalbazo_user ( email )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.favorite_hospital
     ADD CONSTRAINT favorite_hospital_hospital_fk FOREIGN KEY ( hospital_id )
         REFERENCES zalbazo.hospital ( hospital_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.favorite_hospital
     ADD CONSTRAINT favorite_hospital_user_fk FOREIGN KEY ( user_email )
         REFERENCES zalbazo.zalbazo_user ( email )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.hospital_label
     ADD CONSTRAINT hospital_label_hospital_fk FOREIGN KEY ( hospital_id )
         REFERENCES zalbazo.hospital ( hospital_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.hospital_label
     ADD CONSTRAINT hospital_label_label_fk FOREIGN KEY ( label_code )
         REFERENCES zalbazo.label ( code )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.hospital_qna
     ADD CONSTRAINT hospital_qna_content_fk FOREIGN KEY ( content_id )
         REFERENCES zalbazo.content ( content_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.hospital_qna
     ADD CONSTRAINT hospital_qna_hospital_fk FOREIGN KEY ( hospital_id )
         REFERENCES zalbazo.hospital ( hospital_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.pic_lib_rel_content
     ADD CONSTRAINT pic_lib_rel_content_fk FOREIGN KEY ( content_id )
         REFERENCES zalbazo.content ( content_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.pic_lib_rel_hospital
     ADD CONSTRAINT pic_lib_rel_hospital_fk FOREIGN KEY ( hospital_id )
         REFERENCES zalbazo.hospital ( hospital_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.pic_lib_rel_content
     ADD CONSTRAINT pic_rel_content_pic_fk FOREIGN KEY ( pic_lib_id )
         REFERENCES zalbazo.pic_lib ( pic_lib_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.pic_lib_rel_hospital
     ADD CONSTRAINT pic_rel_hospital_pic_fk FOREIGN KEY ( pic_lib_id )
         REFERENCES zalbazo.pic_lib ( pic_lib_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.reply
     ADD CONSTRAINT reply_content_fk FOREIGN KEY ( content_id )
         REFERENCES zalbazo.content ( content_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.reply
     ADD CONSTRAINT reply_user_fk FOREIGN KEY ( user_email )
         REFERENCES zalbazo.zalbazo_user ( email )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.reserve
     ADD CONSTRAINT reserve_animal_fk FOREIGN KEY ( animal_id )
         REFERENCES zalbazo.animal ( animal_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.reserve
     ADD CONSTRAINT reserve_hospital_fk FOREIGN KEY ( hospital_id )
         REFERENCES zalbazo.hospital ( hospital_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.review
     ADD CONSTRAINT review_content_fk FOREIGN KEY ( content_id )
         REFERENCES zalbazo.content ( content_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.review
     ADD CONSTRAINT review_hospital_fk FOREIGN KEY ( hospital_id )
         REFERENCES zalbazo.hospital ( hospital_id )
-    NOT DEFERRABLE;
+            NOT DEFERRABLE;
 
 
 
--- Oracle SQL Developer Data Modeler 요약 보고서: 
--- 
+-- Oracle SQL Developer Data Modeler 요약 보고서:
+--
 -- CREATE TABLE                            16
 -- CREATE INDEX                            13
 -- ALTER TABLE                             34
@@ -622,16 +618,16 @@ ALTER TABLE zalbazo.review
 -- CREATE SYNONYM                           0
 -- CREATE TABLESPACE                        0
 -- CREATE USER                              1
--- 
+--
 -- DROP TABLESPACE                          0
 -- DROP DATABASE                            0
--- 
+--
 -- REDACTION POLICY                         0
--- 
+--
 -- ORDS DROP SCHEMA                         0
 -- ORDS ENABLE SCHEMA                       0
 -- ORDS ENABLE OBJECT                       0
--- 
+--
 -- ERRORS                                   0
 -- WARNINGS                                 0
 
@@ -645,8 +641,8 @@ Insert into ZALBAZO.ZALBAZO_USER (EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOI
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,UPDATED_DATE,CATEGORY_ID,USER_EMAIL) values (CONTENT_SEQ.nextval,'매퍼테스트제목지식동1','매퍼테스트내용지식동1',to_date('19/09/05','RR/MM/DD'),to_date('19/09/05','RR/MM/DD'),2,'dummy@gmail.com');
 
 
-Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) values (HOSPITAL_SEQ.nextval,'돌봄 동물병원','서울특별시 강동구 암사동 414-18 롯데캐슬상가 2층','08:00','21:00',24262775,'가족을 돌보는 마음으로 반려동물을 진료하는 돌봄 동물병원입니다.');
-Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) values (HOSPITAL_SEQ.nextval,'고덕24시동물병원','서울특별시 강동구 암사동 414-18 롯데캐슬상가 2층','00:00','24:00',262278275,'고덕동/명일동에 위치한 24시간 동물병원입니다.
+Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) values (HOSPITAL_SEQ.nextval,'돌봄 동물병원','서울특별시 강동구 암사동 414-18 롯데캐슬상가 2층','08:00','21:00','024262775','가족을 돌보는 마음으로 반려동물을 진료하는 돌봄 동물병원입니다.');
+Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) values (HOSPITAL_SEQ.nextval,'고덕24시동물병원','서울특별시 강동구 암사동 414-18 롯데캐슬상가 2층','00:00','24:00','0262278275','고덕동/명일동에 위치한 24시간 동물병원입니다.
 
 언제 발생할지 모르는 응급한 아이들을 위한 응급진료.
 대부분의 외과수술이 가능한 호흡마취기, 환자감시기, 수술장비.
@@ -660,7 +656,7 @@ Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL
 이 있으며 캣타워와 캣로드로 고양이를 위한 공간을 할애했습니다.
 
 많은 관심 바랍니다.');
-Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) values (HOSPITAL_SEQ.nextval,'스마트동물병원 강동암사점','서울특별시 강동구 암사동 452-31 서원빌딩 1층','10:00','21:00','24428875','원훈 :: 우리집 아이처럼 같이 기뻐하고 같이 고민하는 스마트 가족이 되자
+Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) values (HOSPITAL_SEQ.nextval,'스마트동물병원 강동암사점','서울특별시 강동구 암사동 452-31 서원빌딩 1층','10:00','21:00','024428875','원훈 :: 우리집 아이처럼 같이 기뻐하고 같이 고민하는 스마트 가족이 되자
 안녕하세요 스마트동물병원 강동암사지점입니다~!
 강남 신사본원, 강남 대치지점, 울산지점, 동탄지점, 강동구지점 총 5 개의 지점에
 총 36 명의 수의사가 심도깊은 협진으로 가장 안전하고 완벽을 추구하는 의료환경을 추구합니다
@@ -680,5 +676,33 @@ Insert into ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,2);
 Insert into ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (4,2);
 Insert into ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (1,3);
 Insert into ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,3);
+
+
+insert into pic_lib (pic_lib_id, upload_path, file_name)
+values (pic_lib_seq.nextval, 'resources/img', '1-1.jpg');
+insert into pic_lib (pic_lib_id, upload_path, file_name)
+values (pic_lib_seq.nextval, 'resources/img', '1-2.jpg');
+insert into pic_lib (pic_lib_id, upload_path, file_name)
+values (pic_lib_seq.nextval, 'resources/img', '1-3.jpg');
+insert into pic_lib (pic_lib_id, upload_path, file_name)
+values (pic_lib_seq.nextval, 'resources/img', '1-4.jpg');
+insert into pic_lib (pic_lib_id, upload_path, file_name)
+values (pic_lib_seq.nextval, 'resources/img', '2-1.jpg');
+insert into pic_lib (pic_lib_id, upload_path, file_name)
+values (pic_lib_seq.nextval, 'resources/img', '3-1.jpg');
+
+insert into pic_lib_rel_hospital (pic_lib_id, hospital_id)
+values (pic_lib_seq.currval, 1);
+insert into pic_lib_rel_hospital (pic_lib_id, hospital_id)
+values (pic_lib_seq.currval, 1);
+insert into pic_lib_rel_hospital (pic_lib_id, hospital_id)
+values (pic_lib_seq.currval, 1);
+insert into pic_lib_rel_hospital (pic_lib_id, hospital_id)
+values (pic_lib_seq.currval, 1);
+insert into pic_lib_rel_hospital (pic_lib_id, hospital_id)
+values (pic_lib_seq.currval, 2);
+insert into pic_lib_rel_hospital (pic_lib_id, hospital_id)
+values (pic_lib_seq.currval, 3);
+
 
 commit;

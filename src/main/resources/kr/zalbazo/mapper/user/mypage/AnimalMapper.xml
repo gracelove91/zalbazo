@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.zalbazo.mapper.user.mypage.AnimalMapper">
+
+	<insert id="insert"
+		parameterType="kr.zalbazo.model.animal.Animal">
+		INSERT into animal(ANIMAL_ID, TYPE, SEX, WEIGHT, AGE,
+		NAME,NOTE,LAST_TREAT_DATE,CREATED_DATE,UPDATED_DATE,USER_EMAIL)
+		values (ANIMAL_SEQ.nextval, #{type}, #{sex},#{weight},#{age},#{name},#{note},'',sysdate,sysdate,#{userEmail})
+	</insert>
+
+	<update id="update">
+        update ANIMAL
+        set TYPE= #{type}, SEX = #{sex}, WEIGHT = #{weight}, AGE = #{age}, NAME=#{name}, NOTE= #{note} ,UPDATED_DATE= sysdate
+        where ANIMAL_ID = #{animalId}
+	</update>
+
+	<delete id="delete">
+		delete from ANIMAL
+		where ANIMAL_ID = #{animalId}
+	</delete>
+
+	<select id="read" resultType="kr.zalbazo.model.animal.Animal">
+		select *
+		from ANIMAL
+		where ANIMAL_ID = #{animalId}
+	</select>
+
+	<select id="getList"
+		resultType="kr.zalbazo.model.animal.Animal">
+
+            select *
+            from ANIMAL
+            order by 1 desc
+            
+   </select>
+
+
+	
+	
+
+
+</mapper>

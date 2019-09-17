@@ -163,7 +163,7 @@
 			
 		
 			<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-				<form name="form1" method="Post" action="/hospital/searchedlist">
+				<form name="form1" method="Get" action="/hospital/searchedlist">
 					<div class="form-row">
 		
 							<select name="searchOption">

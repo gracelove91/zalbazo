@@ -158,7 +158,7 @@
 			</div>
 
 			<div class="babalogo" id="babalogo">
-				<img src="${ctx}/resources/img/zalbazo_logo2.png">
+				<img src="${ctx}/resources/img/c_baba_logo.png">
 			</div>
 
 			</br> </br>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.zalbazo.mapper.hospital.HospitalReviewMapper;
 import kr.zalbazo.model.content.Content;
+import kr.zalbazo.model.hospital.HospitalReviewVO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
@@ -18,7 +19,7 @@ public class HospitalReviewServiceImpl implements HospitalReviewService {
 	private HospitalReviewMapper reviewMapper;
 
 	@Override
-	public List<Content> getReviewList(Long hospitalId) {
+	public List<HospitalReviewVO> getReviewList(Long hospitalId) {
 		return reviewMapper.getReviewList(hospitalId);
 	}
 

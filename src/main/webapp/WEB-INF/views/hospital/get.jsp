@@ -112,7 +112,6 @@
 				class="sr-only">Next</span>
 			</a>
 		</div><br>
-		<!-- 병원사진 슬라이드 쇼 끝 -->
 		
 		<p class="h5" style="text-align: center">
 			<i class="material-icons">event</i>예약하기 <i class="material-icons">favorite_border</i>즐겨찾기
@@ -147,35 +146,52 @@
 			<h3>map</h3>
 			<img src="https://map0.daumcdn.net/map_2d/1906plw/L3/1996/892.png"><br><br><br>
 		</div>
-		
-		
-<!-- 리뷰 -->
-<div id="menu1" class="container tab-pane fade"><br>
 
-	<div class='row'>
-		<div class="col-lg-12">
-			<div class="panel panel-default">
 
-				<div class="panel-heading" style="padding-left: 20px; font-size: x-large;"><strong>Review</strong></div>
 
-				<div class="panel-body">
+		<div id="menu1" class="container tab-pane fade">
+			<br>
 
-					<ul class="qna list-group list-group-flush">
-						<li class="left clearfix" data-rno='12'>
+			<!-- 리뷰List -->
+			<div class='row'>
+				<div class="col-lg-12">
+					<div class="panel panel-default">
 
-						</li>
-					</ul>
+						<div class="panel-heading" style="padding-left: 20px; font-size: x-large;">
+							<strong>${hospital.name}</strong> 리뷰
+						</div>
+						<div class="panel-body">
 
+							<ul class="review" style="list-style-type:none;">
+							<li class="left clearfix" data-rno='12'>
+								<div class="container mt-3">
+									<div class="media border p-3">
+										<img src="/resources/img/baba.png" class="mr-3 mt-3 rounded-circle" style="width: 50px">
+										<div class="media-body">
+											<h4><i style="color:gold;font-weight:bold">
+												<i class='material-icons'>star_border</i>
+												<i class='material-icons'>star_border</i>
+												<i class='material-icons'>star_border</i>
+												<i class='material-icons'>star_border</i>
+												<i class='material-icons'>star_border</i></i>
+											</h4>
+											<small><i style="font-weight:bold">baba</i>&nbsp;&nbsp;&nbsp;<i>0000/00/00</i></small>
+											<p>아직 리뷰가 존재하지 않습니다</p>   
+										</div>
+									</div>
+								</div>
+							</li>	
+							</ul>
+						</div>
+					</div>
 				</div>
-
 			</div>
 		</div>
-	</div> <br><br><br>
-			
-</div>
 
 
-		<div id="menu2" class="container tab-pane fade"><br>
+
+
+			<div id="menu2" class="container tab-pane fade"><br>
 
 			<div class="info container">
 					<input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com"> 
@@ -189,25 +205,39 @@
 					<button type="submit" class="btn btn-secondary" id="regBtn" name="regBtn">Submit</button>
 			</div> <br><br>
 			
-<div class="container">
+<div class="container basket">
 
-<div id="accordion"> 
-   <div class="card-header">
-      <a class="card-link" data-toggle="collapse" href="#collapseOne"> Q&A #1 </a>
+		<c:forEach var="i" begin="1" end="3">
+		   <div id="accordion">
+		      <div class="card-header">
+		         <a class="card-link" data-toggle="collapse" href="#collapse"+i> Q&A i </a>
+		      </div>
+		      <div id="collapse"+i class="collapse show" data-parent="#accordion">
+		         <div class="card-body"> A: 답변답변답변 </div>
+		      </div>
+		   </div>
+		</c:forEach>
+		
+		<br><br><br>
+
+
+   <div id="accordion">
+      <div class="card-header">
+         <a class="card-link" data-toggle="collapse" href="#collapseOne"> Q&A #1 </a>
+      </div>
+      <div id="collapseOne" class="collapse show" data-parent="#accordion">
+         <div class="card-body"> A: 답변답변답변 </div>
+      </div>
    </div>
-   <div id="collapseOne" class="collapse show" data-parent="#accordion">
-      <div class="card-body"> A: 답변답변답변 </div>
+
+   <div>
+      <div class="card-header">
+         <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo"> Q&A #2 </a>
+      </div>
+      <div id="collapseTwo" class="collapse" data-parent="#accordion">
+         <div class="card-body"> A: 답변답변답변 </div>
+      </div>
    </div>
-</div>
-    
-<div>
-   <div class="card-header">
-      <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo"> Q&A #2 </a>
-   </div>
-   <div id="collapseTwo" class="collapse" data-parent="#accordion">
-      <div class="card-body"> A: 답변답변답변 </div>
-   </div>
-</div>
  
 </div>
 <br><br>
@@ -251,22 +281,107 @@
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
 
+
 <script>
+console.log("=============");
+console.log("JS TEST");
+
 $(document).ready(function(){
 	
 	var hospitalId = '<c:out value="${hospital.hospitalId}" />';
+	var reviewUL = $(".review");
 	
-	reviewService.getReviewList({hospitalId : hospitalId}, function(list){
-		for(var i=0, len=list.length||0; i<len; i++) {
-			console.log(list[i]);
+	//showList(1);
+	
+	reviewService.getReviewList({hospitalId:hospitalId}, function(list){
+		var str = "";
+		
+		if(list == null || list.length == 0) {
+			//reviewUL.html("");
+			return;
 		}
+		
+		for(var i=0, len = list.length || 0; i<len; i++) {
+			
+			//여기서 반복문 or 스위치 or 조건문 만들고 
+			var star = "";
+			
+			var starPoint = list[i].starPoint;
+			
+			if(starPoint == 1) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+			} else if(starPoint == 1.5) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_half</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+			} else if(starPoint == 2) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+			} else if(starPoint == 2.5) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_half</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+			} else if(starPoint == 3) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+			} else if(starPoint == 3.5) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_half</i>";
+				star += "<i class='material-icons'>star_border</i>";
+			} else if(starPoint == 4) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_border</i>";
+			} else if(starPoint == 4.5) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_half</i>";
+			} else if(starPoint == 5) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+			}
+			
+			
+			str += "<li class='left clearfix' data-rno='12'><div class='container mt-3'>";
+			str += "  <div class='media border p-3'>";
+			str += "	<img src='/resources/img/baba.png' class='mr-3 mt-3 rounded-circle' style='width:50px'>";
+			str += "		<div class='media-body'>";
+			str += "			<h4><i style='color:gold; font-weight:bold'>"+star+"</i>"+' '+list[i].starPoint+"</h4>";
+			str += "				<small><i style='font-weight:bold'>"+list[i].userEmail+"</i>&nbsp;&nbsp;<i>"+reviewService.displayTime(list[i].createdDate)+"</i></small>"; 		
+			str += "     				<p>"+list[i].body+"</p></div></li>";
+		}
+		
+		reviewUL.html(str);
 	});
-	
-});
+
+}); // ready
+
 </script>
 
-
-<script> //병원 QNA
+<script>
 $(document).ready(function(){
 	var qnaUL = $(".qna");
 	

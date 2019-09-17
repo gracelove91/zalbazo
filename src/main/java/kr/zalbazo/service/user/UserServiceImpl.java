@@ -44,6 +44,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
 
         user.encodePassword(encoder);
+
+
         userMapper.insert(user);
     }
 

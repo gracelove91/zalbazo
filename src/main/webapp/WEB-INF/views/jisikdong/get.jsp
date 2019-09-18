@@ -20,6 +20,7 @@
 	</head>
 
 	<body>
+	<%@include file="../includes/header.jsp" %>
 		<div class="container-fluid">
 
 			<div class="row d-flex d-md-block flex-nowrap wrapper">

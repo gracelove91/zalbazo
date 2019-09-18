@@ -13,13 +13,13 @@
 		where hospital_id = #{hospitalId}
 	</select>
 
-	<!--  -->
-	<select id="getList"
-		resultType="kr.zalbazo.model.hospital.Hospital">
+
+	<select id="getList" resultType="kr.zalbazo.model.hospital.Hospital">
+
 		<![CDATA[
 			select HOSPITAL_ID, NAME, TREAT_START, TREAT_END, ADDRESS, TEL, INFO 
             from HOSPITAL
-    ]]>
+   		]]>
 	</select>
 
 	<select id="getLabelList" resultType="kr.zalbazo.model.hospital.HospitalLabel">
@@ -46,18 +46,18 @@
 		values (CONTENT_SEQ.nextval, #{body}, sysdate, sysdate, 4, #{userEmail})
     </insert>
     
-    <insert id="hQnaInsert" parameterType="kr.zalbazo.model.hospital.HospitalQna">
+    <insert id="hQnaInsert" parameterType="kr.zalbazo.model.hospital.HospitalQnaVO">
         insert into hospital_qna(hospital_qna_id, hospital_id, content_id)
 		values (HOSPITAL_QNA_SEQ.nextval, #{hospitalId}, CONTENT_SEQ.currval)
 	</insert>
 	
 	
-	<select id="hospitalQnaList" resultType="kr.zalbazo.model.content.Content">
+	<!-- <select id="hospitalQnaList" resultType="kr.zalbazo.model.content.Content">
 		select a.content_id, body, created_date, updated_date, user_email 
 		from content a, hospital_qna b
 		where a.content_id = b.content_id
 		and hospital_id = #{hospitalId} 
-	</select>
+	</select> -->
 
 
 	

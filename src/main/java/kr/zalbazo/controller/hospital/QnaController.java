@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.zalbazo.model.content.Content;
-import kr.zalbazo.model.hospital.HospitalQna;
+import kr.zalbazo.model.hospital.HospitalQnaVO;
 import kr.zalbazo.service.hospital.HospitalQnaService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -26,7 +26,10 @@ import lombok.extern.log4j.Log4j;
 public class QnaController {
 	
 	private HospitalQnaService qnaService;
+
+
 	
+
 	@PostMapping(value = "/newCon", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<String> createCon(@RequestBody Content content){
 		int insertContent = qnaService.registerContent(content);
@@ -37,8 +40,8 @@ public class QnaController {
 	}
 	
 	@PostMapping(value = "/newQna", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> createQna(@RequestBody HospitalQna hospitalQna){
-		int insertQna = qnaService.registerQna(hospitalQna);
+	public ResponseEntity<String> createQna(@RequestBody HospitalQnaVO hospitalQnaVO){
+		int insertQna = qnaService.registerQna(hospitalQnaVO);
 		
 		return insertQna == 1 
 			? new ResponseEntity<>("success", HttpStatus.OK)
@@ -61,8 +64,8 @@ public class QnaController {
 
 	@GetMapping(value = "/list/{hospitalId}", produces = { 
 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<List<Content>> getList(@PathVariable("hospitalId") Long hospitalId) {
-		return new ResponseEntity<>(qnaService.getList(hospitalId), HttpStatus.OK);
+	public ResponseEntity<List<HospitalQnaVO>> getList(@PathVariable("hospitalId") Long hospitalId) {
+		return new ResponseEntity<>(qnaService.getQnaList(hospitalId), HttpStatus.OK);
 	}
 	
 }

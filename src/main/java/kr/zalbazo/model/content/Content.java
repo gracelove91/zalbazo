@@ -1,15 +1,14 @@
 package kr.zalbazo.model.content;
 
-import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @NoArgsConstructor
 @ToString

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.zalbazo.mapper.hospital.HospitalQnaMapper;
 import kr.zalbazo.model.content.Content;
-import kr.zalbazo.model.hospital.HospitalQna;
+import kr.zalbazo.model.hospital.HospitalQnaVO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
@@ -24,8 +24,8 @@ public class HospitalQnaServiceImpl implements HospitalQnaService {
 	}
 
 	@Override
-	public int registerQna(HospitalQna hospitalQna) {
-		return qnaMapper.insertQna(hospitalQna);
+	public int registerQna(HospitalQnaVO hospitalQnaVO) {
+		return qnaMapper.insertQna(hospitalQnaVO);
 	}
 
 	@Override
@@ -39,8 +39,8 @@ public class HospitalQnaServiceImpl implements HospitalQnaService {
 	}
 
 	@Override
-	public List<Content> getList(Long hospitalId) {
-		return qnaMapper.getList(hospitalId);
+	public List<HospitalQnaVO> getQnaList(Long hospitalId) {
+		return qnaMapper.getQnaList(hospitalId);
 	}
 
 }

@@ -23,4 +23,9 @@ public class HospitalReviewServiceImpl implements HospitalReviewService {
 		return reviewMapper.getReviewList(hospitalId);
 	}
 
+	@Override
+	public double get(Long hospitalId) {
+		return reviewMapper.get(hospitalId);
+	}
+
 }

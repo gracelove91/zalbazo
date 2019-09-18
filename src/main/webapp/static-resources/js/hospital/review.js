@@ -2,6 +2,21 @@
 	
 	var reviewService = (function(){
 		
+		function get(hospitalId, callback, error) {
+			
+			$.get("/reviews/" + hospitalId + ".json", function(result) {
+				
+				if(callback) {
+					callback(result);
+				}
+				
+			}).fail(function(xhr, status, err) {
+				if(error) {
+					error();
+				}
+			});
+		}
+		
 		function getReviewList(param, callback, error) {
 			
 			var hospitalId = param.hospitalId;
@@ -43,6 +58,7 @@
 		}
 		
 		return {
+			get : get,
 			getReviewList : getReviewList,
 			displayTime : displayTime
 		};

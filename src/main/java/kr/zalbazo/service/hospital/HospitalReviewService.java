@@ -9,5 +9,7 @@ import kr.zalbazo.model.hospital.HospitalReviewVO;
 public interface HospitalReviewService {
 	
 	public List<HospitalReviewVO> getReviewList(@Param("hospitalId") Long hospitalId);
+	
+	public double get(@Param("hospitalId") Long hospitalId);
 
 }

@@ -29,5 +29,11 @@ public class ReviewController {
 		return new ResponseEntity<>(reviewService.getReviewList(hospitalId), HttpStatus.OK);
 	}
 	
+	@GetMapping(value= "/{hospitalId}", produces = {
+			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity <Double> get(@PathVariable("hospitalId") Long hospitalId) {
+		return new ResponseEntity<>(reviewService.get(hospitalId), HttpStatus.OK);
+	}
+	
 
 }

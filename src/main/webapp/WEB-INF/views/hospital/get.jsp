@@ -161,6 +161,27 @@
 							<strong>${hospital.name}</strong> 리뷰
 						</div>
 						<div class="panel-body">
+							
+							<ul style="list-style-type:none;">
+							<li class="left clearfix">
+								<div class="container mt-3">
+									<div class="media border p-3" style="background-color:LightCyan; border-style: solid; border-width: 5px;">
+									<img src="/resources/img/baba.png" class="mr-3 mt-3 rounded-circle" style="width: 80px">
+										<div class="media-body rate">
+											<div style="font-weight:bold;font-size: x-large;">
+											<h1 class="material-icons" style="color:gold; font-weight:bold;font-size: x-large;">star</h1>
+											<h1 class="material-icons" style="color:gold; font-weight:bold;font-size: x-large;">star</h1>
+											<h1 class="material-icons" style="color:gold; font-weight:bold;font-size: x-large;">star</h1>
+											<h1 class="material-icons" style="color:gold; font-weight:bold;font-size: x-large;">star</h1>
+											<h1 class="material-icons" style="color:gold; font-weight:bold;font-size: x-large;">star</h1>
+											&nbsp;5.0
+											</div>
+											<p>4.1 average based on 254 reviews.</p>
+										</div>
+									</div>
+								</div>
+							</li>	
+							</ul>
 
 							<ul class="review" style="list-style-type:none;">
 							<li class="left clearfix" data-rno='12'>
@@ -182,6 +203,7 @@
 								</div>
 							</li>	
 							</ul>
+							
 						</div>
 					</div>
 				</div>
@@ -287,9 +309,80 @@ $(document).ready(function(){
 	
 	var hospitalId = '<c:out value="${hospital.hospitalId}" />';
 	var reviewUL = $(".review");
+	var rateUL = $(".rate");
 	
 	//showList(1);
 	
+	reviewService.get(hospitalId, function(data) {
+		console.log("평균 : "+data);
+		
+		var str = "";
+		
+		var star = "";
+		
+		if(data == 1) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+		} else if(data < 2) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+		} else if(data == 2) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+		} else if(data < 3) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+		} else if(data == 3) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+		} else if(data < 4) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+		} else if(data == 4) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+		} else if(data < 5) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
+		} else if(data == 5) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+		}
+		
+		str += "<span class='heading'><p style='font-weight:bold'>User Rating &nbsp;&nbsp;";
+		str += "	<span style='color:gold;font-weight:bold'>"+star+"</span>&nbsp;&nbsp;"+data+"</p></span>";
+		str += "		<p>평균평균</p>";
+		
+		rateUL.html(str);
+	});
+
 	reviewService.getReviewList({hospitalId:hospitalId}, function(list){
 		var str = "";
 		
@@ -299,8 +392,7 @@ $(document).ready(function(){
 		}
 		
 		for(var i=0, len = list.length || 0; i<len; i++) {
-			
-			//여기서 반복문 or 스위치 or 조건문 만들고 
+			 
 			var star = "";
 			
 			var starPoint = list[i].starPoint;

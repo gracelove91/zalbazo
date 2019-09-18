@@ -16,47 +16,7 @@
           rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-light bg-light">
-
-    <a class="navbar-brand" href="${ctx}/home">
-
-        <img src="${ctx}/resources/img/baba.png" width="30" height="30" class="d-inline-block align-top" alt=""> Zalbazo
-
-    </a>
-
-
-
-    <ul class="navbar-nav">
-
-        <li class="nav-item dropdown">
-
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                게시판
-
-            </a>
-
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                <a class="dropdown-item" href="${ctx}/jisikdong/list">지식動</a>
-
-                <a class="dropdown-item" href="${ctx}/community/list">커뮤니티</a>
-
-            </div>
-
-        </li>
-
-    </ul>
-
-    <form class="form-inline">
-
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-
-    </form>
-
-</nav>
+<%@include file="../includes/header.jsp" %>
 
 <div class="container-fluid">
     <div class="row d-flex d-md-block flex-nowrap wrapper">

@@ -1,4 +1,4 @@
-package kr.zalbazo.model.content;
+package kr.zalbazo.model.hospital;
 
 import java.util.Date;
 
@@ -15,17 +15,17 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Content { //BoardVO
+public class HospitalReviewVO {
 	
-	// 게시판 글
+	private Long reviewId;
+	private Long hospitalId;
 	private Long contentId;
-	private String title;
+	private double starPoint;
+	
 	private String body;
 	private String userEmail;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	private Date createdDate;
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-	private Date updatedDate;
 	private Long categoryId;
 
 }

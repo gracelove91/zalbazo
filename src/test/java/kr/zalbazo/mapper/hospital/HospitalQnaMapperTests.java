@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import kr.zalbazo.model.content.Content;
-import kr.zalbazo.model.hospital.HospitalQna;
+import kr.zalbazo.model.hospital.HospitalQnaVO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
@@ -34,7 +34,7 @@ public class HospitalQnaMapperTests {
 		IntStream.rangeClosed(1, 3).forEach(i -> {
 			
 			Content content = new Content();
-			HospitalQna hospitalQna = new HospitalQna();
+			HospitalQnaVO hospitalQna = new HospitalQnaVO();
 			
 			content.setBody("h댓글 테스트 ");
 			hospitalQna.setHospitalId(hospitalArr[i%3]);
@@ -55,7 +55,7 @@ public class HospitalQnaMapperTests {
 	
 	@Test
 	public void testList() {
-		List<Content> qna = qnaMapper.getList(1l);
+		List<HospitalQnaVO> qna = qnaMapper.getQnaList(11L);
 		
 		qna.forEach(body -> log.info(body));
 	}

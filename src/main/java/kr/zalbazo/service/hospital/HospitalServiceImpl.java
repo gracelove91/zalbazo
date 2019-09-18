@@ -9,7 +9,7 @@ import kr.zalbazo.mapper.hospital.HospitalMapper;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.hospital.Hospital;
 import kr.zalbazo.model.hospital.HospitalLabel;
-import kr.zalbazo.model.hospital.HospitalQna;
+import kr.zalbazo.model.hospital.HospitalQnaVO;
 import kr.zalbazo.model.pic.PicLib;
 import lombok.extern.log4j.Log4j;
 
@@ -30,10 +30,10 @@ public class HospitalServiceImpl implements HospitalService{
 		return mapper.labelList(hospitalId);
 	}
 
-	@Override
-	public List<Content> getHospitalQnaList(Long hospitalId) {
-		return mapper.hospitalQnaList(hospitalId);
-	}
+//	@Override
+//	public List<Content> getHospitalQnaList(Long hospitalId) {
+//		return mapper.hospitalQnaList(hospitalId);
+//	}
 
 	@Override
 	public List<PicLib> getPictureList(Long hospitalId) {
@@ -51,8 +51,8 @@ public class HospitalServiceImpl implements HospitalService{
 	}
 
 	@Override
-	public void hQnaRegister(HospitalQna hospitalQna) {
-		mapper.hQnaInsert(hospitalQna);
+	public void hQnaRegister(HospitalQnaVO hospitalQnaVO) {
+		mapper.hQnaInsert(hospitalQnaVO);
 	}
 
 	@Override

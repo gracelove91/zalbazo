@@ -28,8 +28,7 @@
 	   from content a, hospital_qna b
 	   where a.content_id = b.content_id
 	   and hospital_id = #{hospitalId}
-	   order by c_group desc, content_id asc
-
+	   order by c_group desc, hospital_qna_id asc
 	</select>
 
 </mapper>

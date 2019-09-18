@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
   <body>
+  <%@include file="../includes/header.jsp" %>
     <div class="container-fluid">
       <div class="row d-flex d-md-block flex-nowrap wrapper">
         <nav class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">

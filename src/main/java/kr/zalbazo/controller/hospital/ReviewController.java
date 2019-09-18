@@ -7,9 +7,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.hospital.HospitalReviewVO;
 import kr.zalbazo.service.hospital.HospitalReviewService;
 import lombok.AllArgsConstructor;
@@ -23,16 +26,23 @@ public class ReviewController {
 	
 	private HospitalReviewService reviewService;
 	
+	// 병원별 리뷰 리스트
 	@GetMapping(value = "/list/{hospitalId}", produces = { 
 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
 	public ResponseEntity<List<HospitalReviewVO>> getReviewList(@PathVariable("hospitalId") Long hospitalId) {
 		return new ResponseEntity<>(reviewService.getReviewList(hospitalId), HttpStatus.OK);
 	}
 	
+	// 병원별 리뷰 평점
 	@GetMapping(value= "/{hospitalId}", produces = {
 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
 	public ResponseEntity <Double> get(@PathVariable("hospitalId") Long hospitalId) {
 		return new ResponseEntity<>(reviewService.get(hospitalId), HttpStatus.OK);
+	}
+	
+	@PostMapping(value="/newcon", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<Double> create(@RequestBody Content content) {
+		return null;
 	}
 	
 

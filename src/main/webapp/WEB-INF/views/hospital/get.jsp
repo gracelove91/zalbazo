@@ -93,25 +93,23 @@
 
 						<c:forEach var="i" begin="2" end="${picCount}">
 							<div class="carousel-item">
-								<img
-									src="${ctx}/resources/img/${hospital.hospitalId}-${i}.jpg"
+								<img src="${ctx}/resources/img/${hospital.hospitalId}-${i}.jpg"
 									width="380" height="300">
 							</div>
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>
 
-			</div>
-			<a class="carousel-control-prev" href="#carouselExampleControls"
-				role="button" data-slide="prev"> <span
-				class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="sr-only">Previous</span>
-			</a> <a class="carousel-control-next" href="#carouselExampleControls"
-				role="button" data-slide="next"> <span
-				class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="sr-only">Next</span>
+		</div>
+			<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> 
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span> 
+				<span class="sr-only">Previous</span>
+			</a> 
+			<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> 
+				<span class="carousel-control-next-icon" aria-hidden="true"></span> 
+				<span class="sr-only">Next</span>
 			</a>
-		</div><br>
+	</div><br>
 		
 		<p class="h5" style="text-align: center">
 			<i class="material-icons">event</i>예약하기 <i class="material-icons">favorite_border</i>즐겨찾기
@@ -146,102 +144,68 @@
 			<h3>map</h3>
 			<img src="https://map0.daumcdn.net/map_2d/1906plw/L3/1996/892.png"><br><br><br>
 		</div>
-		
-		
-<!-- 리뷰 -->
-<div id="menu1" class="container tab-pane fade"><br>
-
-	<div class='row'>
-		<div class="col-lg-12">
-			<div class="panel panel-default">
-
-				<div class="panel-heading" style="padding-left: 20px; font-size: x-large;"><strong>Review</strong></div>
-
-				<div class="panel-body">
-
-					<ul class="qna list-group list-group-flush">
-						<li class="left clearfix" data-rno='12'>
-
-						</li>
-					</ul>
-
-				</div>
-
-			</div>
-		</div>
-	</div> <br><br><br>
-			
-</div>
 
 
-		<div id="menu2" class="container tab-pane fade"><br>
+		<div id="menu1" class="container tab-pane fade"><br>
 
-			<div class="info container">
-					<input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com"> 
-					<input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
-
-					<div class="form-group">
-						<label for="comment">궁금한 점을 질문하세요</label>
-						<textarea class="form-control txt" rows="5" id="body" name="body"></textarea>
-					</div>
-
-					<button type="submit" class="btn btn-secondary" id="regBtn" name="regBtn">Submit</button>
-			</div> <br><br>
-			
-<div class="container">
-
-<div id="accordion"> 
-   <div class="card-header">
-      <a class="card-link" data-toggle="collapse" href="#collapseOne"> Q&A #1 </a>
-   </div>
-   <div id="collapseOne" class="collapse show" data-parent="#accordion">
-      <div class="card-body"> A: 답변답변답변 </div>
-   </div>
-</div>
-    
-<div>
-   <div class="card-header">
-      <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo"> Q&A #2 </a>
-   </div>
-   <div id="collapseTwo" class="collapse" data-parent="#accordion">
-      <div class="card-body"> A: 답변답변답변 </div>
-   </div>
-</div>
- 
-</div>
-<br><br>
-			<!-- Q&A list -->
+			<!-- 리뷰List -->
 			<div class='row'>
 				<div class="col-lg-12">
 					<div class="panel panel-default">
 
-						<div class="panel-heading" style="padding-left: 20px; font-size: x-large;"><strong>Q&A</strong></div>
-
+						<div class="panel-heading" style="padding-left: 20px; font-size: x-large;">
+							<strong>${hospital.name}</strong> 리뷰
+						</div>
 						<div class="panel-body">
 
-							<ul class="qna list-group list-group-flush">
-								<li class="left clearfix" data-rno='12'>
-									<!-- <div>
-										<div class="header">
-											<strong class="primary-font">user00</strong> <small>
-												class="float-right text-muted">2019-09-14 10:01</small>
-										</div>
-										<p>Good Job!</p>
-									</div> -->
-								</li>
+							<ul class="review list-group list-group-flush">
+
+
 							</ul>
-
 						</div>
-
 					</div>
 				</div>
-			</div> <br><br><br>
+			</div>
+		</div>
+
+
+<div id="menu2" class="container tab-pane fade"><br>
+
+	<div class="info container">
+		<input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com"> 
+		<input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
+
+		<div class="form-group">
+			<label for="comment">궁금한 점을 질문하세요</label>
+			<textarea class="form-control txt" rows="5" id="body" name="body"></textarea>
+		</div>
+
+		<button type="submit" class="btn btn-secondary" id="regBtn" name="regBtn">Submit</button>
+	</div> <br><br>
+
+
+	<!-- Q&A list -->
+	<div class='row'>
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+
+				<div class="panel-heading" style="padding-left: 20px; font-size: x-large;">
+					<strong>Q&A</strong>
+				</div><br>
+
+				<div class="qnaqna">
+					<div class="card-body primary-font"> 아직 등록된 글이 없습니다. </div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div> <br><br><br>
+<!-- Q&A 끝 -->
 			
 		</div>
-		<!-- Q&A 끝 -->
 		
 	</div>
-</div>
 </div>
 
 
@@ -252,22 +216,6 @@
 
 <script>
 $(document).ready(function(){
-	
-	var hospitalId = '<c:out value="${hospital.hospitalId}" />';
-	
-	reviewService.getReviewList({hospitalId : hospitalId}, function(list){
-		for(var i=0, len=list.length||0; i<len; i++) {
-			console.log(list[i]);
-		}
-	});
-	
-});
-
-</script>
-
-
-<script>
-$(document).ready(function(){
 	var qnaUL = $(".qna");
 	
 	var info = $(".info");
@@ -275,24 +223,43 @@ $(document).ready(function(){
 	var user = info.find("input[name='userEmail']");
 	var qnaBody = info.find("textarea[name='body']");
 	
+	var qna = $(".qnaqna");
 	
 	showQnaList(1);
 	
+	
 function showQnaList(page) {
-	qnaService.getList({hospitalId:hospitalId.val()}, function(list){
+	qnaService.getList({hospitalId:hospitalId.val()}, function(list) {
 		var str = "";
-		if(list == null || list.length == 0) {
-			qnaUL.html("");
-			return;
-		}
-		for(var i=0, len = list.length || 0; i<len; i++) {
-			str += "<li class='left clearfix list-group-item'>";
-			str += "  <div><div class='header'><small class='primary-font'>"+list[i].userEmail+"</small>";
-			str += "     <div class='del float-right' data-contentId='"+list[i].contentId+"'> X </div></div>";
-			str += "     <p>"+list[i].body+"<small class='float-right text-muted'>"+qnaService.displayTime(list[i].createdDate)+"</small></p></div></li>";
+		if(list == null || list.length == 0) return;
+		
+		qna.html("");
+		
+		for(let i=0, len = list.length || 0; i<len; i++) {
+			let type = list[i].qnaType;
+			let group = list[i].cGroup;
+			
+			// A타입이라면 그냥 탈출 (어차피 Q 타입일 때 해당하는 A타입도 같이 출력되기 때문에)
+			if(type === 'A') continue;
+			else {
+				// Q 출력 태그 
+				str += "<div class='card-header primary-font'> Q. "+list[i].body+"";
+				str += "<div class='del float-right' data-no=> X </div>";
+				str += "<p><small class='float-right text-muted'>"+qnaService.displayTime(list[i].createdDate)+"</small></p>";
+				str += "<small class='primary-font'>"+list[i].userEmail+"</small></div>";
+			}
+			for(let j=0, len = list.length || 0; j<len; j++) {
+				// 같은 그룹의 A가 있다면 A 출력 태그
+				if(list[j].qnaType === 'A' && list[j].cGroup === group) {
+					str += "<div class='card-body'> &nbsp;&nbsp;&nbsp; A: "+list[j].body+"";
+					str += "<p><small class='float-right text-muted'>"+qnaService.displayTime(list[i].createdDate)+"</small></p> ";
+					str += "<small class='primary-font'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 관리자</small> ";
+					str += "</div>";
+				}
+			}
 		}
 		
-		qnaUL.html(str);
+		qna.html(str);
 	});
 }
 	

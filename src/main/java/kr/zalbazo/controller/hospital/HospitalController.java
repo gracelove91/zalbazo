@@ -13,10 +13,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.hospital.Hospital;
-import kr.zalbazo.model.hospital.HospitalQna;
-
+import kr.zalbazo.model.hospital.HospitalQnaVO;
 import kr.zalbazo.service.hospital.HospitalService;
-
 import lombok.extern.log4j.Log4j;
 
 @Controller
@@ -34,30 +32,9 @@ public class HospitalController {
 		model.addAttribute("hPictureList", hospitalService.getPictureList(hospitalId));
 		model.addAttribute("picCount", hospitalService.getPictureCount(hospitalId));
 		model.addAttribute("content", content);
-		model.addAttribute("qnaList", hospitalService.getHospitalQnaList(hospitalId));
+		//model.addAttribute("qnaList", hospitalService.getHospitalQnaList(hospitalId));
 	}
 	
-	@PostMapping("/get")
-	public String get(HospitalQna hospitalQna, Content content, RedirectAttributes rttr) {
-		hospitalService.hContentRegister(content);
-		hospitalService.hQnaRegister(hospitalQna);
-		rttr.addFlashAttribute("hospitalId", hospitalQna.getHospitalId());
-		
-		return "redirect:/hospital/get"; 
-
-	}
-	
-//	@PostMapping("/write")
-//	public String writeQna(@RequestParam("hospitalId") Long hospitalId, Content content) {
-//		hospitalService.hContentRegister(content);
-//		hospitalService.hQnaRegister(hospitalId);
-//		
-//		//rttr.addAttribute("content", content);
-//		//rttr.addAttribute("hospitalQna", hospitalQna);
-//		//rttr.addFlashAttribute("qna", hospitalService.getHospitalQnaList());
-//		//log.info(hospitalService.getHospitalQnaList());
-//		return "/hospital/write";
-//	}
 
 	/*
 	 * @GetMapping("/list") public void list(Model model, Long hospitalId) {

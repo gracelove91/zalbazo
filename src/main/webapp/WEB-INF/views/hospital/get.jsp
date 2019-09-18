@@ -146,6 +146,7 @@
 		</div>
 
 
+
 		<div id="menu1" class="container tab-pane fade"><br>
 
 			<!-- 리뷰List -->
@@ -162,6 +163,7 @@
 
 
 							</ul>
+
 						</div>
 					</div>
 				</div>
@@ -169,7 +171,10 @@
 		</div>
 
 
+
+
 <div id="menu2" class="container tab-pane fade"><br>
+
 
 	<div class="info container">
 		<input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com"> 
@@ -179,6 +184,7 @@
 			<label for="comment">궁금한 점을 질문하세요</label>
 			<textarea class="form-control txt" rows="5" id="body" name="body"></textarea>
 		</div>
+
 
 		<button type="submit" class="btn btn-secondary" id="regBtn" name="regBtn">Submit</button>
 	</div> <br><br>
@@ -214,8 +220,10 @@
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
 
+
 <script>
 $(document).ready(function(){
+
 	var qnaUL = $(".qna");
 	
 	var info = $(".info");

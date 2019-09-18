@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.zalbazo.model.content.Content;
+import kr.zalbazo.model.hospital.HospitalReviewVO;
 import kr.zalbazo.service.hospital.HospitalReviewService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -25,10 +25,15 @@ public class ReviewController {
 	
 	@GetMapping(value = "/list/{hospitalId}", produces = { 
 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<List<Content>> getReviewList(@PathVariable("hospitalId") Long hospitalId) {
+	public ResponseEntity<List<HospitalReviewVO>> getReviewList(@PathVariable("hospitalId") Long hospitalId) {
 		return new ResponseEntity<>(reviewService.getReviewList(hospitalId), HttpStatus.OK);
 	}
 	
+	@GetMapping(value= "/{hospitalId}", produces = {
+			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity <Double> get(@PathVariable("hospitalId") Long hospitalId) {
+		return new ResponseEntity<>(reviewService.get(hospitalId), HttpStatus.OK);
+	}
 	
 
 }

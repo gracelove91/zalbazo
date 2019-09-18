@@ -13,14 +13,16 @@
 		where hospital_id = #{hospitalId}
 	</select>
 
+
 	<select id="getList" resultType="kr.zalbazo.model.hospital.Hospital">
+
 		<![CDATA[
 			select HOSPITAL_ID, NAME, TREAT_START, TREAT_END, ADDRESS, TEL, INFO 
             from HOSPITAL
    		]]>
 	</select>
 
-	<select id="getLabelList" resultType="kr.zalbazo.model.content.Label"> 
+	<select id="getLabelList" resultType="kr.zalbazo.model.hospital.HospitalLabel">
 		select * from HOSPITAL_LABEL where HOSPITAL_ID = #{hospitalId} 
 	</select>
 	<!--  -->
@@ -56,6 +58,9 @@
 		where a.content_id = b.content_id
 		and hospital_id = #{hospitalId} 
 	</select> -->
+
+
+	
 
 </mapper>
 

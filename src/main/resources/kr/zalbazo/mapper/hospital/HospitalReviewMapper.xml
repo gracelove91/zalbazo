@@ -3,11 +3,16 @@
 
 <mapper namespace="kr.zalbazo.mapper.hospital.HospitalReviewMapper">
 
-<select id="getReviewList" resultType="kr.zalbazo.model.content.Content">
+<select id="getReviewList" resultType="kr.zalbazo.model.hospital.HospitalReviewVO">
 select * from content a, review b
 where a.content_id = b.content_id
 and hospital_id = #{hospitalId}
 </select>
 
+<select id="get" resultType="double">
+select avg(b.star_point) from content a, review b
+where a.content_id = b.content_id
+and hospital_id = #{hospitalId}
+</select>
 
 </mapper>

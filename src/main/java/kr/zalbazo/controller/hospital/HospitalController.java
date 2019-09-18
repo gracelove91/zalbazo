@@ -13,7 +13,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.hospital.Hospital;
+
 import kr.zalbazo.model.hospital.HospitalQnaVO;
+
 import kr.zalbazo.service.hospital.HospitalService;
 import lombok.extern.log4j.Log4j;
 
@@ -32,33 +34,10 @@ public class HospitalController {
 		model.addAttribute("hPictureList", hospitalService.getPictureList(hospitalId));
 		model.addAttribute("picCount", hospitalService.getPictureCount(hospitalId));
 		model.addAttribute("content", content);
-		//model.addAttribute("qnaList", hospitalService.getHospitalQnaList(hospitalId));
+
+		model.addAttribute("qnaList", hospitalService.getHospitalQnaList(hospitalId));
 	}
 	
-
-	/*
-	 * @GetMapping("/list") public void list(Model model, Long hospitalId) {
-	 * 
-	 * List<Hospital> hospitalList = hospitalService.getList();
-	 * 
-	 * 
-	 * hospitalList.forEach(hospital -> {
-	 * hospital.setLabel(service.getLabelList(hospital.getId())); });
-	 * 
-	 * 
-	 * 
-	 * for(Hospital hospital : hospitalList) {
-	 * hospital.setLabel(service.getLabelList(hospital.getId())); }
-	 * 
-	 * 
-	 * for(int i =0; i < hospitalList.size(); i++) { Hospital hospital =
-	 * hospitalList.get(i);
-	 * hospital.setLabel(hospitalService.getLabelList(hospital.getHospitalId())); }
-	 * model.addAttribute("hospitalList", hospitalList);
-	 * 
-	 * // log.info(service.getList()); // model.addAttribute("labelList",
-	 * service.getLabelList(id)); // log.info(service.getLabelList(id)); }
-	 */
 
 	@GetMapping("/list")
 	public void list(Model model, Long hospitalId) {

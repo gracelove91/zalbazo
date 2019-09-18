@@ -27,9 +27,6 @@ public class QnaController {
 	
 	private HospitalQnaService qnaService;
 
-
-	
-
 	@PostMapping(value = "/newCon", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<String> createCon(@RequestBody Content content){
 		int insertContent = qnaService.registerContent(content);

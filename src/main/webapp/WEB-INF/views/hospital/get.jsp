@@ -22,6 +22,7 @@
 </head>
 
 <body>
+<%@include file="../includes/header.jsp" %>
 <div class="container">
 
     <!-- Portfolio Item Heading -->
@@ -153,29 +154,17 @@
 
 
                 <!-- 리뷰List -->
-
                 <div class='row'>
-
                     <div class="col-lg-12">
-
                         <div class="panel panel-default">
-
-
                             <div class="panel-heading" style="padding-left: 20px; font-size: x-large;">
-
                                 <strong>${hospital.name}</strong> 리뷰
-
                             </div>
 
                             <div class="panel-body">
-
-
                                 <ul style="list-style-type:none;">
-
                                     <li class="left clearfix">
-
                                         <div class="container mt-3">
-
                                             <div class="media border p-3"
                                                  style="background-color:LightCyan; border-style: solid; border-width: 5px;">
 
@@ -185,100 +174,66 @@
                                                 <div class="media-body rate">
 
                                                     <div style="font-weight:bold;font-size: x-large;">
-
                                                         <h1 class="material-icons"
                                                             style="color:gold; font-weight:bold;font-size: x-large;">
                                                             star</h1>
-
                                                         <h1 class="material-icons"
                                                             style="color:gold; font-weight:bold;font-size: x-large;">
                                                             star</h1>
-
                                                         <h1 class="material-icons"
                                                             style="color:gold; font-weight:bold;font-size: x-large;">
                                                             star</h1>
-
                                                         <h1 class="material-icons"
                                                             style="color:gold; font-weight:bold;font-size: x-large;">
                                                             star</h1>
-
                                                         <h1 class="material-icons"
                                                             style="color:gold; font-weight:bold;font-size: x-large;">
                                                             star</h1>
-
                                                         &nbsp;5.0
-
                                                     </div>
-
                                                     <p>4.1 average based on 254 reviews.</p>
 
                                                 </div>
 
                                             </div>
-
                                         </div>
-
                                     </li>
-
                                 </ul>
 
 
                                 <ul class="review" style="list-style-type:none;">
-
                                     <li class="left clearfix" data-rno='12'>
-
                                         <div class="container mt-3">
-
                                             <div class="media border p-3">
-
                                                 <img src="/resources/img/baba.png" class="mr-3 mt-3 rounded-circle"
                                                      style="width: 50px">
-
                                                 <div class="media-body">
 
                                                     <h4><i style="color:gold;font-weight:bold">
-
                                                         <i class='material-icons'>star_border</i>
-
                                                         <i class='material-icons'>star_border</i>
-
                                                         <i class='material-icons'>star_border</i>
-
                                                         <i class='material-icons'>star_border</i>
-
                                                         <i class='material-icons'>star_border</i></i>
-
                                                     </h4>
 
                                                     <small><i style="font-weight:bold">baba</i>&nbsp;&nbsp;&nbsp;<i>0000/00/00</i></small>
-
                                                     <p>아직 리뷰가 존재하지 않습니다</p>
 
                                                 </div>
 
                                             </div>
-
                                         </div>
-
                                     </li>
-
                                 </ul>
-
-
+                                
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
 
-
             <div id="menu2" class="container tab-pane fade"><br>
-
-
                 <div class="info container">
                     <input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com">
                     <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
@@ -287,7 +242,6 @@
                         <label for="comment">궁금한 점을 질문하세요</label>
                         <textarea class="form-control txt" rows="5" id="body" name="body"></textarea>
                     </div>
-
 
                     <button type="submit" class="btn btn-secondary" id="regBtn" name="regBtn">Submit</button>
                 </div>
@@ -331,331 +285,169 @@
 
 	$(document).ready(function(){
 
-
-
 		var hospitalId = '<c:out value="${hospital.hospitalId}" />';
-
 		var reviewUL = $(".review");
-
 		var rateUL = $(".rate");
-
-
 
 		//showList(1);
 
-
-
 		reviewService.get(hospitalId, function(data) {
-
 			console.log("평균 : "+data);
-
-
-
+			
 			var str = "";
-
-
-
 			var star = "";
 
-
-
 			if(data == 1) {
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 			} else if(data < 2) {
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 			} else if(data == 2) {
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 			} else if(data < 3) {
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 			} else if(data == 3) {
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 			} else if(data < 4) {
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 			} else if(data == 4) {
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-
 			} else if(data < 5) {
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
-
 			} else if(data == 5) {
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-
 			}
 
-
-
 			str += "<span class='heading'><p style='font-weight:bold'>User Rating &nbsp;&nbsp;";
-
 			str += "	<span style='color:gold;font-weight:bold'>"+star+"</span>&nbsp;&nbsp;"+data+"</p></span>";
-
 			str += "		<p>평균평균</p>";
 
-
-
 			rateUL.html(str);
-
 		});
-
 
 
 		reviewService.getReviewList({hospitalId:hospitalId}, function(list){
 
 			var str = "";
 
-
-
 			if(list == null || list.length == 0) {
-
 				//reviewUL.html("");
-
 				return;
-
 			}
-
-
 
 			for(var i=0, len = list.length || 0; i<len; i++) {
 
-
-
 				var star = "";
-
-
-
 				var starPoint = list[i].starPoint;
 
-
-
 				if(starPoint == 1) {
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 				} else if(starPoint == 1.5) {
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star_half</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 				} else if(starPoint == 2) {
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 				} else if(starPoint == 2.5) {
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star_half</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 				} else if(starPoint == 3) {
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 				} else if(starPoint == 3.5) {
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star_half</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 				} else if(starPoint == 4) {
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star_border</i>";
-
 				} else if(starPoint == 4.5) {
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star_half</i>";
-
 				} else if(starPoint == 5) {
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 					star += "<i class='material-icons'>star</i>";
-
 				}
 
 
-
-
-
 				str += "<li class='left clearfix' data-rno='12'><div class='container mt-3'>";
-
 				str += "  <div class='media border p-3'>";
-
 				str += "	<img src='/resources/img/baba.png' class='mr-3 mt-3 rounded-circle' style='width:50px'>";
-
 				str += "		<div class='media-body'>";
-
 				str += "			<h4><i style='color:gold; font-weight:bold'>"+star+"</i>"+' '+list[i].starPoint+"</h4>";
-
 				str += "				<small><i style='font-weight:bold'>"+list[i].userEmail+"</i>&nbsp;&nbsp;<i>"+reviewService.displayTime(list[i].createdDate)+"</i></small>";
-
 				str += "     				<p>"+list[i].body+"</p></div></li>";
 
 			}
 
-
-
 			reviewUL.html(str);
-
 		});
-
-
-
+		
 	}); // ready
-
-
-
 </script>
+
 <script>
     $(document).ready(function () {
 

@@ -67,6 +67,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
   <body>
+  <%@include file="../includes/header.jsp" %>
     <div class="container-fluid">
       <div class="row d-flex d-md-block flex-nowrap wrapper">
         <nav class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
@@ -110,7 +111,7 @@
           <form class="pt-3 md-3" role='form' style="max-width: 920px" action="/jisikdong/register" method="post">
 			<div class="form-group">
               <label>EMAIL</label>
-              <input type="text" class="form-control" name="userEmail" placeholder="이메일을 입력하시오" value="dummy@gmail.com">
+              <input type="text" class="form-control" name="userEmail" placeholder="이메일을 입력하시오">
             </div>
             <div class="form-group">
               <label>제목</label>
@@ -121,27 +122,6 @@
               <textarea class="form-control" id="body" name="body" placeholder="내용을 입력하세요." style="height: 320px;"></textarea>
             </div>
             <button type="submit" class="btn btn-primary" id="regBtn" name="regBtn">글 쓰기</button>
-          
-          
-<!--           첨부파일관련
-          <hr>
-          <div class="row">
-          	<div class="col-lg-12">
-          		<div class="panel panel-default">
-          			<div class="panel-heading">파일첨부</div>
-          			<div class="panel-body">
-          				<div class="form-group uploadDiv">
-          					<input type="file" name='uploadFile' multiple>
-          				</div>
-          				<div class='uploadResult'>
-          					<ul>
-          					</ul>
-          				</div>
-          			</div>
-          		</div>
-          	</div>
-          </div>
-          첨부파일관련 끝 -->
           
           </form>
           
@@ -155,151 +135,6 @@
     <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
     <!-- 부트스트랩 자바스크립트 추가하기 -->
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    
-    <script>
-    $(document).ready(function(e) {
-    		var formObj = $("form[role='form']");
-    		
-    		 $("button[type='submit']").on("click", function(e){
-    		    console.log(formObj);
-    		    e.preventDefault();
-   			    
-    			console.log("submit clicked");
-    		    
-    		    var str = "";
-    		    
-   			    $(".uploadResult ul li").each(function(i, obj){
-   			      
-   			      var jobj = $(obj);
-    			      
-    			  console.dir(jobj);
-    			     
-    			     str += "<input type='hidden' name='attachList["+i+"].fileName' value='"+jobj.data("filename")+"'>";
-    			     str += "<input type='hidden' name='attachList["+i+"].uuid' value='"+jobj.data("uuid")+"'>";
-    			     str += "<input type='hidden' name='attachList["+i+"].uploadPath' value='"+jobj.data("path")+"'>";
-    			     str += "<input type='hidden' name='attachList["+i+"].fileType' value='"+ jobj.data("type")+"'>";
-    			});
-    			    
-    			formObj.append(str).submit();
-    		});
-    		
-    		var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
-			var maxSize = 5242880; // 5MB
 
-			function checkExtension(fileName, fileSize) {
-
-				if (fileSize >= maxSize) {
-					alert("파일 사이즈 초과");
-					return false;
-				}
-
-				if (regex.test(fileName)) {
-					alert("해당 확장자 파일은 업로드 ㄴㄴ");
-					return false;
-				}
-				return true;
-			}
-			
-			function showUploadResult(uploadResultArr) {
-				
-				if(!uploadResultArr || uploadResultArr.length == 0) {return; }
-				
-				var uploadUL = $(".uploadResult ul");
-
-				var str = "";
-				
-				$(uploadResultArr).each(function(i, obj) {
-						
-					if(obj.image){
-						
-						var fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.uuid +"_"+obj.fileName);
-						
-						str += "<li data-path='"+obj.uploadPath+"'";
-						str += " data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'"
-						str +" ><div>";
-						str += "<span> "+ obj.fileName+"</span>";
-						str += "<button type='button' data-file=\'"+fileCallPath+"\' "
-						str += "data-type='image' class='btn btn-warning btn-circle btn-sm'>x</button><br>";
-						str += "<img src='/display?fileName="+fileCallPath+"'>";
-						str += "</div>";
-						str +"</li>";
-						
-					}else{
-						
-						var fileCallPath =  encodeURIComponent( obj.uploadPath+"/"+ obj.uuid +"_"+obj.fileName);			      
-					    var fileLink = fileCallPath.replace(new RegExp(/\\/g),"/");
-					      
-						str += "<li "
-						str += "data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"' ><div>";
-						str += "<span> "+ obj.fileName+"</span>";
-						str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='file' " 
-						str += "class='btn btn-warning btn-circle btn-sm'>x</button><br>";
-						str += "<img src='/resources/img/attach.png'></a>";
-						str += "</div>";
-						str +"</li>";
-					}
-
-			});
-				
-				uploadUL.append(str);
-			}
-			
-			$("input[type='file']").change(function(e) {
-				
-				var formData = new FormData();
-
-				var inputFile = $("input[name='uploadFile']");
-
-				var files = inputFile[0].files;
-				
-				for (var i = 0; i < files.length; i++) {
-
-					if (!checkExtension(files[i].name, files[i].size)) {
-						return false;
-					}
-
-					formData.append("uploadFile", files[i]);
-				}
-				
-				$(".uploadResult").on("click", "button", function(e) {
-					console.log("delete");
-					
-					var targetFile = $(this).data("file");
-					var type = $(this).data("type");
-					
-					var targetLi = $(this).closest("li");
-					
-					$.ajax({
-						url : '/deleteFile',
-						data : {fileName:targetFile, type:type},
-						dataType : 'text',
-						type : 'POST',
-							success : function(result) {
-								alert(result);
-								targetLi.remove();
-							}
-					}); // ajax
-				})
-				
-				$.ajax({
-					url : '/uploadAjaxAction',
-					processData : false,
-					contentType : false,
-					data : formData,
-					type : 'POST',
-					dataType : 'json',
-					success : function(result) {
-						console.log(result);
-						showUploadResult(result);
-					}
-				}); // $.ajax
-				
-			});
-    		
-			
-    	
-    		
-    	}); // document function ready
-    </script>
   </body>
 </html>

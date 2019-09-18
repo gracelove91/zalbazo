@@ -55,13 +55,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         sendMail.setText(
                 "<h1>아래의 링크를 클릭해주세요</h1>" +
                         "<a href='http://localhost:8080/user/emailConfirm?userEmail=" +
-                        user.getEmail() +
+                        user.getUserEmail() +
                         "&emailAuthKey=" + user.getEmailAuthKey() +
                         "' target='_blank'>이메일 인증 확인</a>"
         );
 
         sendMail.setFrom("zalbazo125@gmail.com", "zalbazo");
-        sendMail.setTo(user.getEmail());
+        sendMail.setTo(user.getUserEmail());
         sendMail.send();
     }
 
@@ -98,15 +98,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
         User user = userMapper.read(userEmail);
 
-
-
-
         if(user == null){
             throw new UsernameNotFoundException(userEmail);
         }
 
         return org.springframework.security.core.userdetails.User.builder()
-                .username(user.getEmail())
+                .username(user.getUserEmail())
                 .password(user.getPassword())
                 .roles(user.getRole())
                 .build();

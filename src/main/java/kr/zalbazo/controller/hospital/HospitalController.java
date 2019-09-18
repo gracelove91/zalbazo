@@ -35,7 +35,7 @@ public class HospitalController {
 		model.addAttribute("picCount", hospitalService.getPictureCount(hospitalId));
 		model.addAttribute("content", content);
 
-		model.addAttribute("qnaList", hospitalService.getHospitalQnaList(hospitalId));
+//		model.addAttribute("qnaList", hospitalService.getHospitalQnaList(hospitalId));
 	}
 	
 

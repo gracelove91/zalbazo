@@ -4,13 +4,17 @@
 <mapper
 	namespace="kr.zalbazo.mapper.user.mypage.FavoriteHospitalMapper">
 
-	<!-- <insert id="insert" parameterType="kr.zalbazo.model.animal.Animal"> 
-		INSERT into animal(ANIMAL_ID, TYPE, SEX, WEIGHT, AGE, NAME,NOTE,LAST_TREAT_DATE,CREATED_DATE,UPDATED_DATE,USER_EMAIL) 
-		values (ANIMAL_SEQ.nextval, #{type}, #{sex},#{weight},#{age},#{name},#{note},'',sysdate,sysdate,#{userEmail}) 
-		</insert> -->
+	<insert id="insert"
+		parameterType="kr.zalbazo.model.hospital.Hospital">
+		insert into zalbazo.favorite_hospital (user_email, hospital_id,
+		f_hospital_id)
+		values (#{userEmail}, #{hospitalId}, f_hospital_seq.NEXTVAL);
+	</insert>
 
-	<!-- <delete id="delete"> delete from FAVORITE_HOSPITAL where HOSPTIAL_ID 
-		= #{hospitalId} </delete> -->
+	<delete id="delete">
+		delete from FAVORITE_HOSPITAL
+		where HOSPITAL_ID = #{hospitalId}
+	</delete>
 
 	<select id="getList"
 		resultType="kr.zalbazo.model.hospital.Hospital">
@@ -19,9 +23,15 @@
 		from favorite_hospital, hospital
 		where
 		favorite_hospital.hospital_id = hospital.hospital_id
-		and user_email = #{userEmail}
+		and user_email =
+		#{userEmail}
 	</select>
 
+	<select id="getLabelList"
+		resultType="kr.zalbazo.model.hospital.HospitalLabel">
+		select * from HOSPITAL_LABEL where HOSPITAL_ID =
+		#{hospitalId}
+	</select>
 
 
 

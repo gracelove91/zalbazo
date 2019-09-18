@@ -4,15 +4,16 @@ import java.util.List;
 
 import kr.zalbazo.model.favorite_hospital.FavoriteHospital;
 import kr.zalbazo.model.hospital.Hospital;
+import kr.zalbazo.model.hospital.HospitalLabel;
 
 public interface FavoriteHospitalMapper {
 
-
-//    void insert(FavoriteHospital favoriteHospital);
-
     List<Hospital> getList(FavoriteHospital favoriteHospital);
 
-    int delete(Long hospitalId);  
+	List<HospitalLabel> getLabelList(Long hospitalId);
+	
+	int delete(Long hospitalId);
 
+	void insert(FavoriteHospital favoriteHospital);
 }
 

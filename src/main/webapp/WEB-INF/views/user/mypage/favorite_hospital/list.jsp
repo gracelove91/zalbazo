@@ -60,15 +60,14 @@
 				<h2>즐겨찾는 병원</h2>
 				</br>
 			</div>
-
 			<table class="table table-striped" style="width: 1150px;">
 
 				<thead>
 					<tr>
 						<th scope="col" class="mobile"
 							style="width: 150px; text-align: center;">No.</th>
-	<!-- 					<th scope="col" class="mobile"
-							style="width: 350px; text-align: center;"></th> -->
+						<th scope="col" class="mobile"
+							style="width: 350px; text-align: center;"></th>
 						<th scope="col" class="mobile"
 							style="width: 600px; text-align: center;">병원명</th>
 						<th scope="col" class="mobile"
@@ -78,7 +77,10 @@
 						<th scope="col" class="mobile"
 							style="width: 700px; text-align: center;">주소</th>
 						<th scope="col" class="mobile"
-							style="width: 400px; text-align: center;">전화번호</th>
+							style="width: 300px; text-align: center;">전화번호<br>
+						</th>
+						<th scope="col" class="mobile"
+							style="width: 350px; text-align: center;"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -89,16 +91,15 @@
 							<td class="mobile" style="text-align: center;"><c:out
 									value="${favoriteHospital.hospitalId}" /></td>
 
-							<%-- <td class="mobile" style="text-align: center;"><a href="#">
+							<td class="mobile" style="text-align: center;"><a href="#">
 									<img class="img-fluid rounded mb-3 mb-md-0"
-									src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg" alt="">
-							</a></td> --%>
-
+									src="${ctx}/resources/img/${favoriteHospital.hospitalId}-1.jpg" alt="">
+							</a></td>
 							<td><a style="color: #000000;"
-								href='/hospital/get?hospitalId=<c:out value="${hospital.hospitalId}"/>'>
-									${hospital.name}</a><br>
-							<br />
-	<%-- 						 <c:forEach items="${hospital.label}" var="label">
+								href='/hospital/get?hospitalId=<c:out value="${favoriteHospital.hospitalId}"/>'>
+									${favoriteHospital.name}</a><br> <br /> 
+
+									<c:forEach items="${favoriteHospital.label}" var="label">
 
 									<c:if test="${label.labelCode == 1 }">
 										<i class="material-icons"> local_convenience_store </i>
@@ -117,20 +118,24 @@
 									</c:if>
 
 
-								</c:forEach> --%>
-								</td>
+								</c:forEach></td>
 
 							<td class="mobile" style="text-align: center;"><c:out
-									value="${hospital.treatStart}" /></td>
+									value="${favoriteHospital.treatStart}" /></td>
 
 							<td class="mobile" style="text-align: center;"><c:out
-									value="${hospital.treatEnd}" /></td>
+									value="${favoriteHospital.treatEnd}" /></td>
 
 							<td class="mobile" style="text-align: center;"><c:out
-									value="${hospital.address}" /></td>
+									value="${favoriteHospital.address}" /></td>
 
 							<td class="mobile" style="text-align: center;"><c:out
-									value="${hospital.tel}" /></td>
+									value="${favoriteHospital.tel}" /></td>
+
+							<td class="mobile" style="text-align: center;">
+								<button
+									onclick="location.href='remove?id=${favoriteHospital.hospitalId}'">삭제</button>
+							</td>
 
 						</tr>
 

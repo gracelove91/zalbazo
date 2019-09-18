@@ -146,37 +146,74 @@
 			<h3>map</h3>
 			<img src="https://map0.daumcdn.net/map_2d/1906plw/L3/1996/892.png"><br><br><br>
 		</div>
-		
-		<div id="menu1" class="container tab-pane fade"><br>
-			<h3>review</h3>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>유저ID</th>
-						<th>별점</th>
-						<th>글 내용</th>
-						<th>DATE</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>John</td>
-						<td>★★★★</td>
-						<td>좋아요~</td>
-						<td>2019-09-02</td>
-					</tr>
-					<tr>
-						<td>김길동</td>
-						<td>★</td>
-						<td>싫어요~</td>
-						<td>2019-09-02</td>
-					</tr>
-				</tbody>
-			</table><br><br><br>
+
+
+
+		<div id="menu1" class="container tab-pane fade">
+			<br>
+
+			<!-- 리뷰List -->
+			<div class='row'>
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+
+						<div class="panel-heading" style="padding-left: 20px; font-size: x-large;">
+							<strong>${hospital.name}</strong> 리뷰
+						</div>
+						<div class="panel-body">
+							
+							<ul style="list-style-type:none;">
+							<li class="left clearfix">
+								<div class="container mt-3">
+									<div class="media border p-3" style="background-color:LightCyan; border-style: solid; border-width: 5px;">
+									<img src="/resources/img/baba.png" class="mr-3 mt-3 rounded-circle" style="width: 80px">
+										<div class="media-body rate">
+											<div style="font-weight:bold;font-size: x-large;">
+											<h1 class="material-icons" style="color:gold; font-weight:bold;font-size: x-large;">star</h1>
+											<h1 class="material-icons" style="color:gold; font-weight:bold;font-size: x-large;">star</h1>
+											<h1 class="material-icons" style="color:gold; font-weight:bold;font-size: x-large;">star</h1>
+											<h1 class="material-icons" style="color:gold; font-weight:bold;font-size: x-large;">star</h1>
+											<h1 class="material-icons" style="color:gold; font-weight:bold;font-size: x-large;">star</h1>
+											&nbsp;5.0
+											</div>
+											<p>4.1 average based on 254 reviews.</p>
+										</div>
+									</div>
+								</div>
+							</li>	
+							</ul>
+
+							<ul class="review" style="list-style-type:none;">
+							<li class="left clearfix" data-rno='12'>
+								<div class="container mt-3">
+									<div class="media border p-3">
+										<img src="/resources/img/baba.png" class="mr-3 mt-3 rounded-circle" style="width: 50px">
+										<div class="media-body">
+											<h4><i style="color:gold;font-weight:bold">
+												<i class='material-icons'>star_border</i>
+												<i class='material-icons'>star_border</i>
+												<i class='material-icons'>star_border</i>
+												<i class='material-icons'>star_border</i>
+												<i class='material-icons'>star_border</i></i>
+											</h4>
+											<small><i style="font-weight:bold">baba</i>&nbsp;&nbsp;&nbsp;<i>0000/00/00</i></small>
+											<p>아직 리뷰가 존재하지 않습니다</p>   
+										</div>
+									</div>
+								</div>
+							</li>	
+							</ul>
+							
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 
-		<div id="menu2" class="container tab-pane fade"><br>
+
+
+			<div id="menu2" class="container tab-pane fade"><br>
 
 			<div class="info container">
 					<input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com"> 
@@ -189,25 +226,61 @@
 
 					<button type="submit" class="btn btn-secondary" id="regBtn" name="regBtn">Submit</button>
 			</div> <br><br>
+			
+<div class="container basket">
 
-			<!-- 댓글 창 -->
+		<c:forEach var="i" begin="1" end="3">
+		   <div id="accordion">
+		      <div class="card-header">
+		         <a class="card-link" data-toggle="collapse" href="#collapse"+i> Q&A i </a>
+		      </div>
+		      <div id="collapse"+i class="collapse show" data-parent="#accordion">
+		         <div class="card-body"> A: 답변답변답변 </div>
+		      </div>
+		   </div>
+		</c:forEach>
+		
+		<br><br><br>
+
+
+   <div id="accordion">
+      <div class="card-header">
+         <a class="card-link" data-toggle="collapse" href="#collapseOne"> Q&A #1 </a>
+      </div>
+      <div id="collapseOne" class="collapse show" data-parent="#accordion">
+         <div class="card-body"> A: 답변답변답변 </div>
+      </div>
+   </div>
+
+   <div>
+      <div class="card-header">
+         <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo"> Q&A #2 </a>
+      </div>
+      <div id="collapseTwo" class="collapse" data-parent="#accordion">
+         <div class="card-body"> A: 답변답변답변 </div>
+      </div>
+   </div>
+ 
+</div>
+<br><br>
+			<!-- Q&A list -->
 			<div class='row'>
 				<div class="col-lg-12">
 					<div class="panel panel-default">
 
-						<div class="panel-heading" style="padding-left: 20px; font-size: x-large;">Q&A</div>
+						<div class="panel-heading" style="padding-left: 20px; font-size: x-large;"><strong>Q&A</strong></div>
 
 						<div class="panel-body">
 
 							<ul class="qna list-group list-group-flush">
 								<li class="left clearfix" data-rno='12'>
-									<div>
+									<!-- <div>
 										<div class="header">
-											<strong class="primary-font">user00</strong> <small
+											<strong class="primary-font">user00</strong> <small>
 												class="float-right text-muted">2019-09-14 10:01</small>
 										</div>
 										<p>Good Job!</p>
-									</div>
+									</div> -->
 								</li>
 							</ul>
 
@@ -218,6 +291,8 @@
 			</div> <br><br><br>
 			
 		</div>
+		<!-- Q&A 끝 -->
+		
 	</div>
 </div>
 </div>
@@ -226,6 +301,174 @@
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
+
+
+<script>
+$(document).ready(function(){
+	
+	var hospitalId = '<c:out value="${hospital.hospitalId}" />';
+	var reviewUL = $(".review");
+	var rateUL = $(".rate");
+	
+	//showList(1);
+	
+	reviewService.get(hospitalId, function(data) {
+		console.log("평균 : "+data);
+		
+		var str = "";
+		
+		var star = "";
+		
+		if(data == 1) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+		} else if(data < 2) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+		} else if(data == 2) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+		} else if(data < 3) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+		} else if(data == 3) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+		} else if(data < 4) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+		} else if(data == 4) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+		} else if(data < 5) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
+		} else if(data == 5) {
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+			star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+		}
+		
+		str += "<span class='heading'><p style='font-weight:bold'>User Rating &nbsp;&nbsp;";
+		str += "	<span style='color:gold;font-weight:bold'>"+star+"</span>&nbsp;&nbsp;"+data+"</p></span>";
+		str += "		<p>평균평균</p>";
+		
+		rateUL.html(str);
+	});
+
+	reviewService.getReviewList({hospitalId:hospitalId}, function(list){
+		var str = "";
+		
+		if(list == null || list.length == 0) {
+			//reviewUL.html("");
+			return;
+		}
+		
+		for(var i=0, len = list.length || 0; i<len; i++) {
+			 
+			var star = "";
+			
+			var starPoint = list[i].starPoint;
+			
+			if(starPoint == 1) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+			} else if(starPoint == 1.5) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_half</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+			} else if(starPoint == 2) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+			} else if(starPoint == 2.5) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_half</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+			} else if(starPoint == 3) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_border</i>";
+				star += "<i class='material-icons'>star_border</i>";
+			} else if(starPoint == 3.5) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_half</i>";
+				star += "<i class='material-icons'>star_border</i>";
+			} else if(starPoint == 4) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_border</i>";
+			} else if(starPoint == 4.5) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star_half</i>";
+			} else if(starPoint == 5) {
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+				star += "<i class='material-icons'>star</i>";
+			}
+			
+			
+			str += "<li class='left clearfix' data-rno='12'><div class='container mt-3'>";
+			str += "  <div class='media border p-3'>";
+			str += "	<img src='/resources/img/baba.png' class='mr-3 mt-3 rounded-circle' style='width:50px'>";
+			str += "		<div class='media-body'>";
+			str += "			<h4><i style='color:gold; font-weight:bold'>"+star+"</i>"+' '+list[i].starPoint+"</h4>";
+			str += "				<small><i style='font-weight:bold'>"+list[i].userEmail+"</i>&nbsp;&nbsp;<i>"+reviewService.displayTime(list[i].createdDate)+"</i></small>"; 		
+			str += "     				<p>"+list[i].body+"</p></div></li>";
+		}
+		
+		reviewUL.html(str);
+	});
+
+}); // ready
+
+</script>
 
 <script>
 $(document).ready(function(){
@@ -237,25 +480,25 @@ $(document).ready(function(){
 	var qnaBody = info.find("textarea[name='body']");
 	
 	
-	showList(1);
+	showQnaList(1);
 	
-	function showList(page) {
-		qnaService.getList({hospitalId:hospitalId.val()}, function(list){
-			var str = "";
-			if(list == null || list.length == 0) {
-				qnaUL.html("");
-				return;
-			}
-			for(var i=0, len = list.length || 0; i<len; i++) {
-				str += "<li class='left clearfix list-group-item'>";
-				str += "  <div><div class='header'><small class='primary-font'>"+list[i].userEmail+"</small>";
-				str += "     <div class='del float-right' data-contentId='"+list[i].contentId+"'> X </div></div>";
-				str += "     <p>"+list[i].body+"<small class='float-right text-muted'>"+qnaService.displayTime(list[i].createdDate)+"</small></p></div></li>";
-			}
-			
-			qnaUL.html(str);
-		});
-	}
+function showQnaList(page) {
+	qnaService.getList({hospitalId:hospitalId.val()}, function(list){
+		var str = "";
+		if(list == null || list.length == 0) {
+			qnaUL.html("");
+			return;
+		}
+		for(var i=0, len = list.length || 0; i<len; i++) {
+			str += "<li class='left clearfix list-group-item'>";
+			str += "  <div><div class='header'><small class='primary-font'>"+list[i].userEmail+"</small>";
+			str += "     <div class='del float-right' data-contentId='"+list[i].contentId+"'> X </div></div>";
+			str += "     <p>"+list[i].body+"<small class='float-right text-muted'>"+qnaService.displayTime(list[i].createdDate)+"</small></p></div></li>";
+		}
+		
+		qnaUL.html(str);
+	});
+}
 	
 	
 	/* Q&A 등록  */
@@ -287,7 +530,7 @@ $(document).ready(function(){
 						alert("등록되었습니다.");
 						
 						// DB에 insert 후 글 목록 리셋
-						showList(1);
+						showQnaList(1);
 						// textarea 리셋
 						$(".txt").val('');
 					}
@@ -310,7 +553,7 @@ $(document).ready(function(){
 					
 					if(count === "success") {
 						alert("처리되었습니다");
-						showList(1);
+						showQnaList(1);
 					}
 				}, function(err){
 					alert('Con ERROR...');

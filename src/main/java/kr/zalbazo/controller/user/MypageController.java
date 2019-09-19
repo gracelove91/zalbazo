@@ -1,5 +1,7 @@
 package kr.zalbazo.controller.user;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.zalbazo.model.animal.Animal;
+import kr.zalbazo.model.favorite_hospital.FavoriteHospital;
+import kr.zalbazo.model.hospital.Hospital;
+import kr.zalbazo.service.hospital.HospitalService;
 import kr.zalbazo.service.user.mypage.AnimalService;
+import kr.zalbazo.service.user.mypage.FavoriteHospitalService;
 import lombok.extern.log4j.Log4j;
 
 @Controller
@@ -20,6 +26,12 @@ public class MypageController {
 	
 	@Autowired
     private AnimalService service;
+	
+	@Autowired
+	private FavoriteHospitalService favoriteHospital_service;
+	
+	@Autowired
+	private HospitalService hospitalService;
 
     @PostMapping("/animal/register")
     public String register(Animal animal){
@@ -30,6 +42,7 @@ public class MypageController {
         
         return "redirect:/user/mypage/animal/list";
     }
+    
     @GetMapping("/animal/register")
     public String register(){
     	
@@ -74,4 +87,57 @@ public class MypageController {
        
         return "redirect:/user/mypage/animal/list";
     }
+    
+    @PostMapping("/favorite_hospital/register")
+    public String fh_register(FavoriteHospital favoriteHospital){
+      
+    	favoriteHospital_service.register(favoriteHospital);
+        
+       
+        
+        return "redirect:/user/mypage/favorite_hospital/list";
+    }
+    
+//    @GetMapping("/favorite_hospital/register")
+//    public String fh_register(){
+//    	
+//    
+//    	return "/user/mypage/favorite_hospital/register";
+//    }
+    
+    @RequestMapping("/favorite_hospital/remove")
+    public String fh_remove(@RequestParam("id") Long hospitalId, RedirectAttributes rttr, FavoriteHospital favoriteHospital){
+    	
+    	favoriteHospital_service.remove(hospitalId);
+    	rttr.addFlashAttribute("result", "success");
+    	
+    	return "redirect:/user/mypage/favorite_hospital/list";
+    }
+    
+    @RequestMapping("/favorite_hospital/list")
+    public String fh_list(Model model, Long hospitalId, FavoriteHospital favoriteHospital){
+    	
+    	favoriteHospital.setUserEmail("dummy@gmail.com");
+    	favoriteHospital.setHospitalId(1L);
+    	
+    	model.addAttribute("favoriteHospitalList", favoriteHospital_service.getList(favoriteHospital));
+    	
+    	model.addAttribute("userEmail", "dummy@gmail.com");
+    	
+    	List<Hospital> favoriteHospitalList = favoriteHospital_service.getList(favoriteHospital);
+    	for (int i = 0; i < favoriteHospitalList.size(); i++) {
+    		Hospital hospital = favoriteHospitalList.get(i);
+    		hospital.setLabel(favoriteHospital_service.getLabelList(hospital.getHospitalId()));
+		}
+    	
+		model.addAttribute("favoriteHospitalList", favoriteHospitalList);
+    	
+    	return "/user/mypage/favorite_hospital/list";
+    }
+    
+   
+    
+    
+    
+    
 }

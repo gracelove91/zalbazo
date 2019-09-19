@@ -11,7 +11,6 @@ import kr.zalbazo.model.pic.PicLib;
 public interface HospitalMapper {
 	
 	Hospital read(Long hospitalId);
-	List<HospitalLabel> labelList(Long hospitalId);
 	
 	void hContentInsert(Content content);
 	void hQnaInsert(HospitalQnaVO hospitalQnaVO);

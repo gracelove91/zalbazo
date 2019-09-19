@@ -29,12 +29,7 @@ public class HospitalReviewServiceImpl implements HospitalReviewService {
 	}
 
 	@Override
-	public double insertContent(Content content) {
-		return reviewMapper.insertContent(content);
-	}
-
-	@Override
-	public double insertReview(HospitalReviewVO hospitalReviewVO) {
+	public int insertReview(HospitalReviewVO hospitalReviewVO) {
 		return reviewMapper.insertReview(hospitalReviewVO);
 	}
 

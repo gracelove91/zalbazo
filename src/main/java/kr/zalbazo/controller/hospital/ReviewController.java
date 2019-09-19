@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.hospital.HospitalReviewVO;
 import kr.zalbazo.service.hospital.HospitalReviewService;
 import lombok.AllArgsConstructor;
@@ -40,9 +39,14 @@ public class ReviewController {
 		return new ResponseEntity<>(reviewService.get(hospitalId), HttpStatus.OK);
 	}
 	
-	@PostMapping(value="/newcon", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<Double> create(@RequestBody Content content) {
-		return null;
+	// 병원별 리뷰 등록
+	@PostMapping(value="/newre", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> createre(@RequestBody HospitalReviewVO hospitalReviewVO) {
+		int insertReview = reviewService.insertReview(hospitalReviewVO);
+		
+		return insertReview == 2
+		? new ResponseEntity<>("success", HttpStatus.OK)
+		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 

@@ -8,12 +8,8 @@
 		where hospital_id = #{hospitalId}
 	</select>
 	
-	<select id="labelList" resultType="kr.zalbazo.model.hospital.HospitalLabel">
-		select * from hospital_label
-		where hospital_id = #{hospitalId}
-	</select>
 
-
+	<!--  -->
 	<select id="getList" resultType="kr.zalbazo.model.hospital.Hospital">
 
 		<![CDATA[
@@ -61,6 +57,5 @@
 
 
 	
-
 </mapper>
 

@@ -29,10 +29,10 @@ public class QnaController {
 	@PostMapping(value = "/addQna", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<String> addHospitalQna(@RequestBody HospitalQnaVO hospitalQnaVO){
 		int insertHospitalQna = qnaService.insertHospitalQna(hospitalQnaVO);
-
-		return insertHospitalQna == 2 
-		? new ResponseEntity<>("success", HttpStatus.OK)
-		: new ResponseEntity<>(HttpStatus.BAD_REQUEST);	
+		System.out.println(insertHospitalQna);
+			return insertHospitalQna == 2 
+				? new ResponseEntity<>("success", HttpStatus.OK)
+				: new ResponseEntity<>(HttpStatus.BAD_REQUEST);	
 	}
 	
 	@DeleteMapping(value="/delQna/{contentId}", produces = { MediaType.TEXT_PLAIN_VALUE })

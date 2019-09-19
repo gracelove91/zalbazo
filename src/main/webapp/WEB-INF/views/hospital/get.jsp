@@ -256,7 +256,8 @@
                                 <strong>Q&A</strong>
                             </div>
                             <br>
-
+							
+							<!-- Q&A 리스트 출력 -->
                             <div class="qnaqna">
                                 <div class="card-body primary-font"> 아직 등록된 글이 없습니다.</div>
                             </div>
@@ -276,9 +277,9 @@
 
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/hospital/qnaFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
-
 
 <script>
 
@@ -443,128 +444,5 @@
 	}); // ready
 </script>
 
-<script>
-    $(document).ready(function () {
-
-        var qnaUL = $(".qna");
-
-        var info = $(".info");
-        var hospitalId = info.find("input[name='hospitalId']");
-        var user = info.find("input[name='userEmail']");
-        var qnaBody = info.find("textarea[name='body']");
-
-        var qna = $(".qnaqna");
-
-        showQnaList(1);
-
-
-        function showQnaList(page) {
-            qnaService.getList({hospitalId: hospitalId.val()}, function (list) {
-                var str = "";
-                if (list == null || list.length == 0) return;
-
-                qna.html("");
-
-                for (let i = 0, len = list.length || 0; i < len; i++) {
-                    let type = list[i].qnaType;
-                    let group = list[i].cgroup;
-                    
-                    // Q 타입이면 출력 
-                    if (type === 'Q') {
-                        // Q 출력 태그
-                        str += "<div class='card-header primary-font'> Q. " + list[i].body + "";
-                        str += "<div class='del float-right' data-no='"+list[i].contentId+"'> X </div>";
-                        str += "<p><small class='float-right text-muted'>" + qnaService.displayTime(list[i].createdDate) + "</small></p>";
-                        str += "<small class='primary-font'>" + list[i].userEmail + "</small></div>";
-                        
-                        for (let j = 0, len = list.length || 0; j < len; j++) {
-
-                            // 같은 그룹의 A가 있다면 A 출력 태그
-                            if (list[j].cgroup === group && list[j].qnaType === 'A') {
-                       
-                                str += "<div class='card-body'> &nbsp;&nbsp;&nbsp; A: " + list[j].body + "";
-                                str += "<p><small class='float-right text-muted'>" + qnaService.displayTime(list[j].createdDate) + "</small></p> ";
-                                str += "<small class='primary-font'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 관리자</small> ";
-                                str += "</div>";
-                            }
-                        }
-                        
-                    }
-                }
-
-                qna.html(str);
-            });
-        }
-
-
-        /* Q&A 등록  */
-        var submitBtn = $("#regBtn");
-
-        submitBtn.on("click", function (e) {
-
-            /* var con =
-                {body : qnaBody.val(),
-                 userEmail : user.val()
-                };
-
-            var qna =
-                {hospitalId : hospitalId.val()
-                }; */
-
-            qnaService.addCon(
-                {
-                    body: qnaBody.val(),
-                    userEmail: user.val()
-                },
-                function (result) {
-                    console.log(result);
-
-                    qnaService.addQna(
-                        {
-                            hospitalId: hospitalId.val(),
-                            qnaType: "Q"
-                        },
-                        function (result) {
-                            alert("등록되었습니다.");
-
-                            // DB에 insert 후 글 목록 리셋
-                            showQnaList(1);
-                            // textarea 리셋
-                            $(".txt").val('');
-                        }
-                    );
-                }
-            );
-
-        });
-
-
-        /* Q&A 삭제  */
-        qna.on("click", ".del", function (e) {
-
-            var contentId = $(this).attr("data-no");
-            //var contentId = $(this).data("contentId"); 이거 왜 안될까?
-
-            qnaService.removeQna(contentId, function (count) {
-                if (count === "success") {
-                    qnaService.removeCon(contentId, function (count) {
-
-                        if (count === "success") {
-                            alert("처리되었습니다");
-                            showQnaList(1);
-                        }
-                    }, function (err) {
-                        alert('Con ERROR...');
-                    });
-                }
-            }, function (err) {
-                alert('Qna ERROR...');
-            });
-
-        });
-
-
-    });
-</script>
 </body>
 </html>

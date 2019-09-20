@@ -14,7 +14,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-
 public class FavoriteHospital {
 
 	private String userEmail;

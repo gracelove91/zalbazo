@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
   <body>
+  <%@include file="../includes/header.jsp" %>
     <div class="container-fluid">
       <div class="row d-flex d-md-block flex-nowrap wrapper">
 
@@ -97,7 +98,7 @@
           </footer>
         </main>
     </div>
-
+</div>
     <!-- 제이쿼리 자바스크립트 추가하기 -->
     <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
     <!-- 부트스트랩 자바스크립트 추가하기 -->

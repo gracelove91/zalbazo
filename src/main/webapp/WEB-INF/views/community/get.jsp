@@ -1,11 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%
-    String ctx = request.getContextPath();
-    pageContext.setAttribute("ctx", ctx);
-%>
-
 <!doctype html>
 <html>
 <head>
@@ -19,6 +14,7 @@
 </head>
 
 <body>
+<%@include file="../includes/header.jsp" %>
 
 <div class="container-fluid">
 
@@ -209,6 +205,19 @@
                 var str = "";
 
                 if (list == null || list.length == 0) {
+                	
+                	
+                	str += "<li class='list-group-item' data-replyid='12'>";
+                    str += "	<div>";
+                    str += "    	<div class='header'>";
+                    str += " 			<strong class='primary-font'>user00</strong>";
+                    str += "       		<small class='pull-right text-muted'>2018-01-01 00:00</small>";
+                    str += "   		</div>";
+                    str += "		<p>첫번째 댓글을 달아보세요!</p>";
+                    str += "	</div>";
+                    str += "</li>";
+                    
+                	bodyUL.html(str);
                     return;
                 }
 

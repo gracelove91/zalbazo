@@ -28,4 +28,9 @@ public class HospitalReviewServiceImpl implements HospitalReviewService {
 		return reviewMapper.get(hospitalId);
 	}
 
+	@Override
+	public int insertReview(HospitalReviewVO hospitalReviewVO) {
+		return reviewMapper.insertReview(hospitalReviewVO);
+	}
+
 }

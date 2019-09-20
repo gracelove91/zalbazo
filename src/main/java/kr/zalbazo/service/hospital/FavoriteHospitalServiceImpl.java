@@ -19,8 +19,8 @@ public class FavoriteHospitalServiceImpl implements FavoriteHospitalService {
     private FavoriteHospitalMapper mapper;
 
     @Override
-    public void register(FavoriteHospital favoriteHospital) {
-        mapper.insert(favoriteHospital);
+    public int register(FavoriteHospital favoriteHospital) {
+		return mapper.insertFavorite(favoriteHospital);
     }
 
    

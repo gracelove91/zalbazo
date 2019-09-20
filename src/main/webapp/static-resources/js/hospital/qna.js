@@ -9,18 +9,15 @@
 
         showQnaList(1);
 
-
         function showQnaList(page) {
             qnaService.getList({hospitalId: hospitalId.val()}, function (list) {
                 var str = "";
+
                 if (list == null || list.length == 0) {
                 	
-                	str += "<div class='qnaqna'>";
                 	str += "<div class='card-body primary-font'> 아직 등록된 글이 없습니다.</div>";
-                	str += "</div>";
                 	
                 	qna.html(str);
-                	
                 	return;
                 }
 
@@ -30,8 +27,12 @@
                     let type = list[i].qnaType;
                     let group = list[i].cgroup;
                     
+                    // A가 있는지 없는지 체크
+                    let aCheck = true;
+                    
                     // Q 타입이면 출력 
                     if (type === 'Q') {
+                    	
                         // Q 출력 태그
                         str += "<div class='card-header primary-font'> Q. " + list[i].body + "";
                         str += "<div class='del float-right' data-qno='"+list[i].contentId+"' style='cursor:pointer'> X </div>";
@@ -47,7 +48,22 @@
                                 str += "<p><small class='float-right text-muted'>" + qnaService.displayTime(list[j].createdDate) + "</small></p> ";
                                 str += "<small class='primary-font'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 관리자</small> ";
                                 str += "</div>";
-                            }
+                                
+                                // A가 있는지 없는지 체크 
+                                aCheck = false;
+                            } 
+
+                        }
+                        
+                        // aCheck true이면 Q는 있지만 A는 없음 
+                        // 병원 측에서 A를 입력할 수 있는 textarea를 출력
+                        if(aCheck) {
+                        	str += "<br><div class='info container'>";
+                        	str += "<input type='hidden' class='form-control' name='userEmail' value='dummy@gmail.com'>";
+                        	str += "<input type='hidden' class='form-control' name='hospitalId' value='${hospital.hospitalId}'>";
+                        	str += "	<div class='form-group'>";
+                        	str += "    <textarea class='form-control "+list[i].contentId+"' rows='3' id='body' name='body'></textarea></div>";
+                        	str += "<button type='submit' class='answerBtn btn btn-secondary float-right' data-qno='"+list[i].contentId+"'>Submit</button></div><br><br><br>";
                         }
                         
                     }
@@ -58,7 +74,7 @@
         }
 
 
-        /* Q&A 등록  */
+        // Question Add
         var submitBtn = $("#regBtn");
 
         submitBtn.on("click", function (e) {
@@ -69,7 +85,7 @@
         		return;
         	}
         	
-        	qnaService.addHospitalQna(
+        	qnaService.addQuestion(
         			{
         				body: qnaBody.val(),
         				userEmail : user.val(),
@@ -87,6 +103,33 @@
         		});
 
         });
+        
+        
+        
+        // Answer Insert
+        qna.on("click", ".answerBtn", function(e){
+        	var qno = $(this).attr("data-qno");
+        	var body = $("."+qno).val();
+        	
+        	// 유효성 체크
+        	if(body.trim() === ""){
+        		alert("내용을 입력하세요!");
+        		return;
+        	}
+        	
+        	qnaService.addAnswer({
+        		body : body,
+        		userEmail : user.val(),
+        		hospitalId : hospitalId.val(),
+        		cgroup : qno
+        	},
+        	function(result){
+        		console.log(result);
+        		showQnaList(1);
+        		
+        	});
+        });
+        
 
 
         /* Q&A 삭제  */
@@ -133,8 +176,6 @@
                     }, function (err) {
                         alert('A Qna ERROR...');
                     });
-            		
-            		
             	}
             	
             	

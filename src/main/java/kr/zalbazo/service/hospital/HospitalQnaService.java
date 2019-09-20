@@ -10,6 +10,7 @@ import kr.zalbazo.model.hospital.HospitalQnaVO;
 public interface HospitalQnaService {
 
 	public int insertHospitalQna(HospitalQnaVO hospitalQnaVO);
+	public int insertAnswer(HospitalQnaVO hospitalQnaVO);
 	
 	public int removeQna(Long contentId);
 	public int removeContent(Long contentId);

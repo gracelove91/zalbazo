@@ -21,7 +21,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <script src="https://kit.fontawesome.com/yourcode.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5ea4ef47b16d9a398f9876fcc56c42fe"></script>
 </head>
 
 <body>
@@ -35,8 +34,6 @@
 
     <!-- Portfolio Item Row -->
     <div class="row">
-	<input type='hidden' class="form-control" name="addressX" value="${hospital.addressX}">
-	<input type='hidden' class="form-control" name="addressY" value="${hospital.addressY}">
 	
         <div class="col-md-7"><br>
             <p class="h4">
@@ -148,10 +145,7 @@
 
             <div id="home" class="container tab-pane active"><br>
                 <h3>map</h3>
-                <div id="map" style="width:500px;height:400px;"></div>
             </div>
-
-
 			
 			
 			<div id="menu1" class="container tab-pane fade">
@@ -318,31 +312,6 @@
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/reviewFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
-<script>
-var addressX = '<c:out value="${hospital.addressX}"/>';
-var addressY = '<c:out value="${hospital.addressY}"/>';
 
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(addressY, addressX), // 지도의 중심좌표
-        level: 1 // 지도의 확대 레벨
-    };
-
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-// 마커가 표시될 위치입니다 
-var markerPosition  = new kakao.maps.LatLng(addressY, addressX);
-
-// 마커를 생성합니다
-var marker = new kakao.maps.Marker({
-    position: markerPosition
-});
-
-// 마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
-
-// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-// marker.setMap(null);    
-</script>
 </body>
 </html>

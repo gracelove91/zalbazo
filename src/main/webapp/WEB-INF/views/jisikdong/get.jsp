@@ -222,7 +222,8 @@
 
 						var str = "";
 
-		                if (list == null || list.length == 0) {
+						if (list == null || list.length == 0) {
+		                	
 		                	
 		                	str += "<li class='list-group-item' data-replyid='12'>";
 		                    str += "	<div>";

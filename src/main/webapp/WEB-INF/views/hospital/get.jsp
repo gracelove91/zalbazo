@@ -21,7 +21,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <script src="https://kit.fontawesome.com/yourcode.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5ea4ef47b16d9a398f9876fcc56c42fe"></script>
 </head>
 
 <body>
@@ -35,8 +34,6 @@
 
     <!-- Portfolio Item Row -->
     <div class="row">
-	<input type='hidden' class="form-control" name="addressX" value="${hospital.addressX}">
-	<input type='hidden' class="form-control" name="addressY" value="${hospital.addressY}">
 	
         <div class="col-md-7"><br>
             <p class="h4">
@@ -117,9 +114,10 @@
             </div>
             <br>
 
-            <p class="h5" style="text-align: center">
-                <i class="material-icons">event</i>예약하기 <i class="material-icons">favorite_border</i>즐겨찾기
-            </p>
+			<p class="h5 insert" style="text-align: center">
+				<i class="material-icons" style="cursor: pointer;">event</i>예약하기
+				<i class="material-icons favorite" data-i="white" id=outlined style="cursor: pointer;">favorite_border</i>즐겨찾기
+			</p>
         </div>
 
     </div>
@@ -148,10 +146,8 @@
 
             <div id="home" class="container tab-pane active"><br>
                 <h3>map</h3>
-                <div id="map" style="width:500px;height:400px;"></div>
+                <img src="/resources/img/rocket3.gif">
             </div>
-
-
 			
 			
 			<div id="menu1" class="container tab-pane fade">
@@ -318,31 +314,51 @@
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/reviewFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/hospital/favorite.js"></script>
+
 <script>
-var addressX = '<c:out value="${hospital.addressX}"/>';
-var addressY = '<c:out value="${hospital.addressY}"/>';
+var h5 = $(".insert");
 
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(addressY, addressX), // 지도의 중심좌표
-        level: 1 // 지도의 확대 레벨
-    };
+h5.on("click", "i", function(e){
+	
+	var icon = $(this).attr("data-i");
+	/* 아이콘이 하트면.. 검정 하트로 바뀌기 */
+	if (icon=="white") {
+		
+		var str ="";
+		
+		str += "<i class='material-icons' style='cursor: pointer;'>event</i> 예약하기";	
+		str += "<i class='material-icons favorite' data-i='black' id=filled style='cursor: pointer;'>favorite</i> 즐겨찾기"
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		var info = $(".info");
+		var hospitalId = info.find("input[name='hospitalId']");
 
-// 마커가 표시될 위치입니다 
-var markerPosition  = new kakao.maps.LatLng(addressY, addressX);
+		favoriteService.addFavorite(
+				{userEmail:"dummy@gmail.com", hospitalId:hospitalId.val()}
+				,
+				function(result){
+					alert("즐겨찾는 병원으로 등록되었습니다.");
+				}
+			);
+	}
+	
+	/* 아이콘이 검정 하트면... 빈 하트로 바뀌기 and 삭제되기 */
+	
+	if (icon=="black") {
+		
+		var str ="";
+		
+		str += "<i class='material-icons' style='cursor: pointer;'>event</i> 예약하기";	
+		str += "<i class='material-icons favorite' data-i='white' id=filled style='cursor: pointer;'>favorite_border</i> 즐겨찾기"
 
-// 마커를 생성합니다
-var marker = new kakao.maps.Marker({
-    position: markerPosition
+	}
+	
+	h5.html(str);
+	
+
+
 });
-
-// 마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
-
-// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-// marker.setMap(null);    
 </script>
+
 </body>
 </html>

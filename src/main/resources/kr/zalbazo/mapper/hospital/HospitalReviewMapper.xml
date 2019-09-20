@@ -10,7 +10,7 @@
 	</select>
 
 	<select id="get" resultType="double">
-		select avg(b.star_point) from content a, review b
+		select round(avg(b.star_point),2) from content a, review b
 		where a.content_id = b.content_id
 		and hospital_id = #{hospitalId}
 	</select>

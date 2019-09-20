@@ -3,29 +3,36 @@ package kr.zalbazo.controller.hospital;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.zalbazo.model.content.Content;
+import kr.zalbazo.model.favorite_hospital.FavoriteHospital;
 import kr.zalbazo.model.hospital.Hospital;
-
-import kr.zalbazo.model.hospital.HospitalQnaVO;
-
 import kr.zalbazo.service.hospital.HospitalService;
+import kr.zalbazo.service.user.mypage.FavoriteHospitalService;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
+@RequestMapping({ "/hospital/*" })
 @Controller
 @Log4j
-@RequestMapping({ "/hospital/*" })
+@AllArgsConstructor
 public class HospitalController {
 
 	@Autowired
 	private HospitalService hospitalService;
+	
+	@Autowired
+	private FavoriteHospitalService favoriteHospital_service;
+
 
 	@GetMapping("/get")
 	public void get(@RequestParam("hospitalId") Long hospitalId, Content content, Model model) {
@@ -51,5 +58,36 @@ public class HospitalController {
 		model.addAttribute("hospitalList", hospitalList);
 
 	}
+	
+//    @PostMapping("/register")
+//    public String register(Model model, Long hospitalId, RedirectAttributes rttr, Hospital hospital, FavoriteHospital favoriteHospital){
+//   
+//    	favoriteHospital.setUserEmail("dummy@gmail.com");
+//    	
+//    	model.addAttribute("favoriteHospitalList", favoriteHospital_service.getList(favoriteHospital));
+//    	
+//    	model.addAttribute("userEmail", "dummy@gmail.com");
+//    	
+//    	List<Hospital> favoriteHospitalList = favoriteHospital_service.getList(favoriteHospital);
+//
+//		model.addAttribute("favoriteHospitalList", favoriteHospitalList);
+//		
+//    	favoriteHospital_service.favorite_register(favoriteHospital);
+//
+//    	return "redirect:/user/mypage/favorite_hospital/list";
+//    }
+//
+//	@GetMapping(value = "/register", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
+////	@ResponseBody
+//	public ResponseEntity<String> register(@RequestBody FavoriteHospital favoriteHospital){
+//		
+//		favoriteHospital_service.register(favoriteHospital);
+//		
+//		int insert = favoriteHospital_service.register(favoriteHospital);
+//		return insert == 1 
+//			? new ResponseEntity<>("success", HttpStatus.OK)
+//			: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);	
+//	}
+
 
 }

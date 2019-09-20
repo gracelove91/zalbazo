@@ -21,7 +21,6 @@
 	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-<script src="https://kit.fontawesome.com/yourcode.js"></script>
 </head>
 
 <body>
@@ -30,9 +29,7 @@
 		<!-- Portfolio Item Heading -->
 		<p class="h1" style="text-align: center">${hospital.name}</p>
 
-		<br>
-		<br>
-		<br>
+		<br> <br> <br>
 
 		<!-- Portfolio Item Row -->
 		<div class="row">
@@ -56,21 +53,20 @@
 				<!-- 해당 병원에 맞는 라벨 출력 -->
 				<c:forEach items="${labelList}" var="label">
 					<c:if test="${label.labelCode == 1}">
-						<i class="material-icons">nights_stay</i>
+						<i class="material-icons">local_convenience_store</i>
 					</c:if>
 					<c:if test="${label.labelCode == 2}">
-						<i class="material-icons">bathtub</i>
+						<i class="material-icons">spa</i>
 					</c:if>
 					<c:if test="${label.labelCode == 3}">
 						<i class="material-icons">local_parking</i>
 					</c:if>
 					<c:if test="${label.labelCode == 4}">
-						<i class="material-icons">emoji_nature</i>
+						<i class="material-icons">pets</i>
 					</c:if>
 				</c:forEach>
 
-				<br />
-				<br />
+				<br /> <br />
 				<p class="h5">${hospital.info}</p>
 
 			</div>
@@ -122,13 +118,18 @@
 				</div>
 				<br>
 				
-					<p class="h5" style="text-align: center">
-						<i class="material-icons">event</i>예약하기 
-
-						<a onclick="location.href='register?id=${hospital.hospitalId}'">
-							<i class="material-icons">favorite_border</i>
-						</a>즐겨찾기
-					</p>
+	<p class="h5 insert" style="text-align: center">
+				 <i class="material-icons" style="cursor: pointer;">event</i>
+				예약하기
+				
+				<i class="material-icons favorite" data-i="white"
+				 id=outlined style="cursor: pointer;">favorite_border</i>
+				 즐겨찾기
+	</p>
+					<!-- 						<i id=filled class="material-icons"> favorite </i> --> 
+	
+<!-- 
+<i class="material-icons"> favorite </i> -->
 
 			</div>
 
@@ -136,9 +137,7 @@
 
 
 		<!-- Related Projects Row -->
-		<br>
-		<br>
-		<br>
+		<br> <br> <br>
 
 		<div class="container">
 
@@ -159,8 +158,7 @@
 					<br>
 					<h3>map</h3>
 					<img src="https://map0.daumcdn.net/map_2d/1906plw/L3/1996/892.png"><br>
-					<br>
-					<br>
+					<br> <br>
 				</div>
 
 
@@ -309,8 +307,7 @@
 						<button type="submit" class="btn btn-secondary" id="regBtn"
 							name="regBtn">Submit</button>
 					</div>
-					<br>
-					<br>
+					<br> <br>
 
 
 					<!-- Q&A list -->
@@ -332,9 +329,7 @@
 						</div>
 					</div>
 				</div>
-				<br>
-				<br>
-				<br>
+				<br> <br> <br>
 				<!-- Q&A 끝 -->
 
 			</div>
@@ -349,6 +344,7 @@
 		src="${ctx}/resources/js/hospital/qna.js"></script>
 	<script type="text/javascript"
 		src="${ctx}/resources/js/hospital/review.js"></script>
+
 
 
 	<script>
@@ -800,5 +796,80 @@
 
     });
 </script>
+
+<script type="text/javascript"
+		src="${ctx}/resources/js/hospital/favorite.js"></script>
+
+<!-- <<script>
+
+var info = $(".info");
+var hospitalId = info.find("input[name='hospitalId']");
+
+favoriteService.addFavorite(
+		{userEmail:"dummy@gmail.com", hospitalId:hospitalId.val()}
+		,
+		function(result){
+			alert("RESULT: " + result);
+		}
+		);
+</script> -->
+
+<%-- 	onclick="location.href='register?hospitalId=${hospital.hospitalId}'"  --%>
+<!-- <script>
+function change() {
+	console.log("change...")
+	var outlined = document.getElementById("outlined");
+
+	outlined.src="{ctx}\resources\img\filled.png"
+
+}
+</script> -->
+
+<script>
+var h5 = $(".insert");
+
+h5.on("click", "i", function(e){
+	
+	var icon = $(this).attr("data-i");
+	/* 아이콘이 하트면.. 검정 하트로 바뀌기 */
+	if (icon=="white") {
+		
+		var str ="";
+		
+		str += "<i class='material-icons' style='cursor: pointer;'>event</i> 예약하기";	
+		str += "<i class='material-icons favorite' data-i='black' id=filled style='cursor: pointer;'>favorite</i> 즐겨찾기"
+
+		var info = $(".info");
+		var hospitalId = info.find("input[name='hospitalId']");
+
+		favoriteService.addFavorite(
+				{userEmail:"dummy@gmail.com", hospitalId:hospitalId.val()}
+				,
+				function(result){
+					alert("즐겨찾는 병원으로 등록되었습니다.");
+				}
+			);
+	}
+	
+	/* 아이콘이 검정 하트면... 빈 하트로 바뀌기 and 삭제되기 */
+	
+	if (icon=="black") {
+		
+		var str ="";
+		
+		str += "<i class='material-icons' style='cursor: pointer;'>event</i> 예약하기";	
+		str += "<i class='material-icons favorite' data-i='white' id=filled style='cursor: pointer;'>favorite_border</i> 즐겨찾기"
+
+	}
+	
+	h5.html(str);
+	
+
+
+});
+
+
+</script>
+
 </body>
 </html>

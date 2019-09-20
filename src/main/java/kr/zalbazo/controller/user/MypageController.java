@@ -87,24 +87,7 @@ public class MypageController {
        
         return "redirect:/user/mypage/animal/list";
     }
-    
-    @PostMapping("/favorite_hospital/register")
-    public String fh_register(FavoriteHospital favoriteHospital){
-      
-    	favoriteHospital_service.register(favoriteHospital);
-        
-       
-        
-        return "redirect:/user/mypage/favorite_hospital/list";
-    }
-    
-//    @GetMapping("/favorite_hospital/register")
-//    public String fh_register(){
-//    	
-//    
-//    	return "/user/mypage/favorite_hospital/register";
-//    }
-    
+ 
     @RequestMapping("/favorite_hospital/remove")
     public String fh_remove(@RequestParam("id") Long hospitalId, RedirectAttributes rttr, FavoriteHospital favoriteHospital){
     	

@@ -9,7 +9,7 @@ import kr.zalbazo.model.hospital.HospitalLabel;
 
 public interface FavoriteHospitalService {
 	
-    void register(FavoriteHospital favoriteHospital);
+    int register(FavoriteHospital favoriteHospital);
     
     boolean remove(Long hospitalId);
     

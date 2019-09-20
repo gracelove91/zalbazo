@@ -5,11 +5,32 @@
 
 	<!-- 01_01. 게시글 전체목록 조회 및 검색 조회까지 -->
 <select id="listAll"  resultType="kr.zalbazo.model.hospital.Hospital">
-    SELECT *
-    FROM hospital
-    <!-- WHERE절을 include 태그로 삽입 -->
+    SELECT hospital.hospital_id,hospital.name,hospital.treat_start,hospital.treat_end,hospital.address,hospital.tel
+
+     
+    FROM hospital    
+    
+    <!-- 라벨별검색을 할경우 -->
+    
+    <if test="length &gt; 0">
+    join hospital_label 
+	on hospital.hospital_id = hospital_label.hospital_id
+	where hospital_label.label_code in 
+	<foreach collection="label" item="item" index="index" separator="," open="(" close=")">
+    #{item}
+</foreach>
+	and
+	<include refid="search"></include>
+	group by hospital.hospital_id,hospital.name,hospital.treat_start,hospital.treat_end,hospital.address,hospital.tel
+    </if>
+    <if test="length &lt; 1">
+    where
     <include refid="search"></include>
-    ORDER BY hospital_id desc
+    </if>
+  
+    <!-- WHERE절을 include 태그로 삽입 -->
+   
+    ORDER BY hospital.hospital_id desc
 </select>
 
 <select id="list" resultType="kr.zalbazo.model.hospital.Hospital">
@@ -18,26 +39,19 @@
     ORDER BY hospital_id desc
 </select>
  
-<!-- 01_02. 게시글 레코드 갯수 -->
-<select id="countArticle" resultType="int">
-    SELECT COUNT(*) FROM hopital
-    <!-- WHERE절을 include 태그로 삽입 -->
-    <include refid="search"></include>
-</select>
- 
-<!-- sql code 조각 -->
-<!-- 반복되는 sql의 일부를 sql태그를 이용하여 따로 빼둘수 있다. -->
+
+<!-- 옵션별 키워드 검색 -->
 <sql id="search">
     <choose>
         <!-- 검색옵션이 전체 검색일 경우 -->
         <when test="searchOption == 'all'">
-            WHERE name like '%'||#{keyword}||'%'
+            (name like '%'||#{keyword}||'%'
             OR address like '%'||#{keyword}||'%'
-            OR info like '%'||#{keyword}||'%'
+            OR info like '%'||#{keyword}||'%')
         </when>
         <!-- 전체 검색이 아닐 경우 -->
         <otherwise>
-            WHERE ${searchOption} like '%'||#{keyword}||'%'
+             (${searchOption} like '%'||#{keyword}||'%')
         </otherwise>
     </choose>
 </sql>

@@ -2,13 +2,34 @@
 	
 	var qnaService = (function(){
 		
-		function addHospitalQna(qna, callback, error) {
-			console.log("add Hospital Qna.....");
+		function addQuestion(qna, callback, error) {
+			console.log("add question.....");
 			
 			$.ajax({
 				type : 'post',
-				url : '/qna/addQna',
+				url : '/qna/question',
 				data : JSON.stringify(qna),
+				contentType : "application/json; charset=utf-8",
+				success : function(result, status, xhr) {
+					if(callback){
+						callback(result);
+					}
+				},
+				error : function(xhr, status, er) {
+					if(error) {
+						error(er);
+					}
+				}
+			});
+		}
+		
+		function addAnswer(answer, callback, error) {
+			console.log("add Answer.....");
+			
+			$.ajax({
+				type : 'post',
+				url : '/qna/answer',
+				data : JSON.stringify(answer),
 				contentType : "application/json; charset=utf-8",
 				success : function(result, status, xhr) {
 					if(callback){
@@ -116,7 +137,8 @@
 		
 		
 		return {
-			addHospitalQna : addHospitalQna,
+			addAnswer : addAnswer,
+			addQuestion : addQuestion,
 			getList : getList,
 			removeQna : removeQna,
 			removeCon : removeCon,

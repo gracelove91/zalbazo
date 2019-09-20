@@ -42,4 +42,9 @@ public class HospitalQnaServiceImpl implements HospitalQnaService {
 		return qnaMapper.insertHospitalQna(hospitalQnaVO);
 	}
 
+	@Override
+	public int insertAnswer(HospitalQnaVO hospitalQnaVO) {
+		return qnaMapper.insertAnswer(hospitalQnaVO);
+	}
+
 }

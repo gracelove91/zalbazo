@@ -26,13 +26,22 @@ public class QnaController {
 	
 	private HospitalQnaService qnaService;
 	
-	@PostMapping(value = "/addQna", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> addHospitalQna(@RequestBody HospitalQnaVO hospitalQnaVO){
+	@PostMapping(value = "/question", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> addQuestion(@RequestBody HospitalQnaVO hospitalQnaVO){
 		int insertHospitalQna = qnaService.insertHospitalQna(hospitalQnaVO);
-		System.out.println(insertHospitalQna);
-			return insertHospitalQna == 2 
-				? new ResponseEntity<>("success", HttpStatus.OK)
-				: new ResponseEntity<>(HttpStatus.BAD_REQUEST);	
+
+		return insertHospitalQna == 2 
+		? new ResponseEntity<>("success", HttpStatus.OK)
+		: new ResponseEntity<>(HttpStatus.BAD_REQUEST);	
+	}
+
+	@PostMapping(value = "/answer", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> addAnswer(@RequestBody HospitalQnaVO hospitalQnaVO){
+		int insertAnswer = qnaService.insertAnswer(hospitalQnaVO);
+		
+		return insertAnswer == 2 
+		? new ResponseEntity<>("success", HttpStatus.OK)
+		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);	
 	}
 	
 	@DeleteMapping(value="/delQna/{contentId}", produces = { MediaType.TEXT_PLAIN_VALUE })

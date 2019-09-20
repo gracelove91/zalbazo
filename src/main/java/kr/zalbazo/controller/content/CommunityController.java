@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
+
 @Controller
 @Log4j
 @RequestMapping({"/community/*"})
@@ -26,7 +28,8 @@ public class CommunityController {
     private ContentService service;
 
     @GetMapping("/register")
-    public String register(){
+    public String register(Model model, Principal principal){
+        model.addAttribute("useremail", principal.getName());
         return "/community/register"; //WEB-INF/views/register.jsp
     }
 

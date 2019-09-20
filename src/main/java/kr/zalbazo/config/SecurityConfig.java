@@ -20,6 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
+                .mvcMatchers("/**/register").hasRole("user")
                 .mvcMatchers("/", "/jisikdong/**", "/community/**", "/hospital/**").permitAll()
                 .mvcMatchers("/admin/**").hasRole("admin")
                 .anyRequest().authenticated()

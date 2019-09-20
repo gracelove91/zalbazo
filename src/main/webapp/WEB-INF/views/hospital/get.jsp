@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <%
     String ctx = request.getContextPath();
     pageContext.setAttribute("ctx", ctx);
@@ -22,6 +21,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <script src="https://kit.fontawesome.com/yourcode.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5ea4ef47b16d9a398f9876fcc56c42fe"></script>
 </head>
 
 <body>
@@ -35,7 +35,9 @@
 
     <!-- Portfolio Item Row -->
     <div class="row">
-
+	<input type='hidden' class="form-control" name="addressX" value="${hospital.addressX}">
+	<input type='hidden' class="form-control" name="addressY" value="${hospital.addressY}">
+	
         <div class="col-md-7"><br>
             <p class="h4">
                 <i class="material-icons">call</i> <span>&nbsp;&nbsp;${hospital.tel}</span>
@@ -49,7 +51,6 @@
             <p class="h4">
                 <i class="material-icons">alarm_off</i> &nbsp;&nbsp;${hospital.treatEnd}
             </p><br>
-
             <!-- 해당 병원에 맞는 라벨 출력 -->
             <c:forEach items="${labelList}" var="label">
                 <c:if test="${label.labelCode == 1}">
@@ -147,7 +148,7 @@
 
             <div id="home" class="container tab-pane active"><br>
                 <h3>map</h3>
-                <img src="https://map0.daumcdn.net/map_2d/1906plw/L3/1996/892.png"><br><br><br>
+                <div id="map" style="width:500px;height:400px;"></div>
             </div>
 
 
@@ -317,6 +318,31 @@
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/reviewFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
+<script>
+var addressX = '<c:out value="${hospital.addressX}"/>';
+var addressY = '<c:out value="${hospital.addressY}"/>';
 
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(addressY, addressX), // 지도의 중심좌표
+        level: 1 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(addressY, addressX);
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+// marker.setMap(null);    
+</script>
 </body>
 </html>

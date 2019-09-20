@@ -20,7 +20,4 @@ public class Hospital {
 	private String info;
 	private List<HospitalLabel> label;
 	
-	private String addressX;
-	private String addressY;
-	
 }

@@ -24,7 +24,7 @@
 	<select id="read" resultType="kr.zalbazo.model.animal.Animal">
 		select *
 		from ANIMAL
-		where ANIMAL_ID = #{animalId}
+		where ANIMAL_ID = #{animalId}	
 	</select>
 
 	<select id="getList"

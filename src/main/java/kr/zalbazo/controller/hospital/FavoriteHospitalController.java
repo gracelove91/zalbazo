@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.zalbazo.model.favorite_hospital.FavoriteHospital;
 import kr.zalbazo.model.hospital.Hospital;
+import kr.zalbazo.service.hospital.FavoriteHospitalService;
 import kr.zalbazo.service.hospital.HospitalService;
-import kr.zalbazo.service.user.mypage.FavoriteHospitalService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 

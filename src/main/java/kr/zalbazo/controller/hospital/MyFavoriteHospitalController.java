@@ -16,21 +16,23 @@ import java.util.List;
 @Controller
 @Log4j
 @RequestMapping("/user/mypage")
-public class FavoriteHospital {
+public class MyFavoriteHospitalController {
 
     @Autowired
     private FavoriteHospitalService favoriteHospital_service;
 
-    @PostMapping("/favorite_hospital/register")
-    public String fh_register(kr.zalbazo.model.favorite_hospital.FavoriteHospital favoriteHospital){
-
-        favoriteHospital_service.register(favoriteHospital);
-
-
-
-        return "redirect:/user/mypage/favorite_hospital/list";
-    }
-
+	/*
+	 * @PostMapping("/favorite_hospital/register") public String
+	 * fh_register(kr.zalbazo.model.favorite_hospital.FavoriteHospital
+	 * favoriteHospital){
+	 * 
+	 * favoriteHospital_service.register(favoriteHospital);
+	 * 
+	 * 
+	 * 
+	 * return "redirect:/user/mypage/favorite_hospital/list"; }
+	 */
+    
 //    @GetMapping("/favorite_hospital/register")
 //    public String fh_register(){
 //

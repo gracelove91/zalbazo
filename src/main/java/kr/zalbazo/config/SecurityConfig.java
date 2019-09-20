@@ -20,13 +20,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
+                .mvcMatchers("/", "/jisikdong/**", "/community/**", "/hospital/**").permitAll()
                 .mvcMatchers("/admin/**").hasRole("admin")
                 .anyRequest().authenticated()
                 .expressionHandler(expressionHandler());
 
+        http.formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .usernameParameter("user-email");
 
-        http.formLogin();
+
         http.httpBasic();
+
     }
 
     private SecurityExpressionHandler<FilterInvocation> expressionHandler() {
@@ -41,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web)  {
         web.ignoring().mvcMatchers("/resources/**");
         web.ignoring().mvcMatchers("/webjars/**");
     }

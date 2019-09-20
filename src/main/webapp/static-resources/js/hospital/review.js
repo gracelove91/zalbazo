@@ -97,13 +97,12 @@
 				alert("별점이 없습니다");
 				return;
 			}
- 			alert("리뷰등록");
+ 			alert("리뷰가 등록되었습니다");
  			
  			reviewService.addReview(
 	 			{body:reviewBody.val(), userEmail:user.val(), starPoint:Number(starPoint), hospitalId:hospitalId.val()}
 	 			,
 	 			function(result) {
-	 				alert("Result : "+result);
 	 				// textarea 리셋
 	 	            $(".txt").val('');
 	 				

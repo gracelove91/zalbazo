@@ -1,4 +1,4 @@
-package kr.zalbazo.service.user.mypage;
+package kr.zalbazo.service.hospital;
 
 import java.util.List;
 

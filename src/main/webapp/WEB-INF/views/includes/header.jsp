@@ -14,6 +14,69 @@
 	margin: 0px auto;
 	margin-top: 100px;
 }
+
+
+
+.babalogo {
+	display: block;
+	margin: 0px auto;
+	margin-top: 100px;
+}
+
+<style>
+.babalogo {
+	display: block;
+	margin: 0px auto;
+	margin-top: 100px;
+}
+
+
+.dropdown dd {
+  position: relative;
+}
+
+#sel a,
+#sel:visited {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  font-size: 12px;
+}
+
+.dropdown dt a {
+  background-color: #4F6877;
+  display: block;
+  padding: 8px 20px 5px 10px;
+  min-height: 25px;
+  line-height: 10px;
+  overflow: hidden;
+  border: 0;
+  width: 272px;
+}
+
+.dropdown dt a span,
+.multiSel span {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 3px 2px 0;
+}
+
+.dropdown dd ul {
+  background-color: #4F6877;
+  border: 0;
+  color: #fff;
+  display: none;
+  left: 0px;
+  padding: 2px 15px 2px 5px;
+  position: absolute;
+  top: 2px;
+  width: 280px;
+  list-style: none;
+  height: 100px;
+  overflow: auto;
+}
+
+
 </style>
 
 <!-- Bootstrap core CSS -->

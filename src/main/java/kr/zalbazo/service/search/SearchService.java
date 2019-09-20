@@ -8,7 +8,7 @@ import kr.zalbazo.model.hospital.Hospital;
 public interface SearchService {
 
 	// 05. 게시글 전체 목록 ==> 검색옵션, 키워드 매개변수 추가
-	public List<Hospital> listAll(String searchOption, String keyword) throws Exception;
+	public List<Hospital> listAll(String searchOption, String keyword,String[] label,String length) throws Exception;
 	public List<Hospital> list() throws Exception;
 	
 	

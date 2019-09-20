@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.hospital.HospitalQnaVO;
 import kr.zalbazo.service.hospital.HospitalQnaService;
 import lombok.AllArgsConstructor;
@@ -26,23 +25,23 @@ import lombok.extern.log4j.Log4j;
 public class QnaController {
 	
 	private HospitalQnaService qnaService;
-
-	@PostMapping(value = "/newCon", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> createCon(@RequestBody Content content){
-		int insertContent = qnaService.registerContent(content);
-		
-		return insertContent == 1 
-			? new ResponseEntity<>("success", HttpStatus.OK)
-			: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);	
-	}
 	
-	@PostMapping(value = "/newQna", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> createQna(@RequestBody HospitalQnaVO hospitalQnaVO){
-		int insertQna = qnaService.registerQna(hospitalQnaVO);
+	@PostMapping(value = "/question", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> addQuestion(@RequestBody HospitalQnaVO hospitalQnaVO){
+		int insertHospitalQna = qnaService.insertHospitalQna(hospitalQnaVO);
+
+		return insertHospitalQna == 2 
+		? new ResponseEntity<>("success", HttpStatus.OK)
+		: new ResponseEntity<>(HttpStatus.BAD_REQUEST);	
+	}
+
+	@PostMapping(value = "/answer", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> addAnswer(@RequestBody HospitalQnaVO hospitalQnaVO){
+		int insertAnswer = qnaService.insertAnswer(hospitalQnaVO);
 		
-		return insertQna == 1 
-			? new ResponseEntity<>("success", HttpStatus.OK)
-			: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);	
+		return insertAnswer == 2 
+		? new ResponseEntity<>("success", HttpStatus.OK)
+		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);	
 	}
 	
 	@DeleteMapping(value="/delQna/{contentId}", produces = { MediaType.TEXT_PLAIN_VALUE })
@@ -63,6 +62,11 @@ public class QnaController {
 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
 	public ResponseEntity<List<HospitalQnaVO>> getList(@PathVariable("hospitalId") Long hospitalId) {
 		return new ResponseEntity<>(qnaService.getQnaList(hospitalId), HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/getANo/{contentId}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity<HospitalQnaVO> getANo(@PathVariable("contentId") Long contentId) {
+		return new ResponseEntity<>(qnaService.getANo(contentId), HttpStatus.OK);
 	}
 	
 }

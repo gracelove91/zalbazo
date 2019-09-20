@@ -223,8 +223,21 @@
 						var str = "";
 
 						if (list == null || list.length == 0) {
-							return;
-						}
+		                	
+		                	
+		                	str += "<li class='list-group-item' data-replyid='12'>";
+		                    str += "	<div>";
+		                    str += "    	<div class='header'>";
+		                    str += " 			<strong class='primary-font'>user00</strong>";
+		                    str += "       		<small class='pull-right text-muted'>2018-01-01 00:00</small>";
+		                    str += "   		</div>";
+		                    str += "		<p>첫번째 댓글을 달아보세요!</p>";
+		                    str += "	</div>";
+		                    str += "</li>";
+		                    
+		                	bodyUL.html(str);
+		                    return;
+		                }
 
 						for (var i = 0, len = list.length || 0; i < len; i++) {
 							str += "<li class='list-group-item' data-replyid='" + list[i].replyid + "'>";

@@ -39,8 +39,8 @@ public class HospitalQnaMapperTests {
 			content.setBody("h댓글 테스트 ");
 			hospitalQna.setHospitalId(hospitalArr[i%3]);
 			
-			qnaMapper.insertContent(content);
-			qnaMapper.insertQna(hospitalQna);
+			//qnaMapper.insertContent(content);
+			//qnaMapper.insertQna(hospitalQna);
 			
 		});
 	}

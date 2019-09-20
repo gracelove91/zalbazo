@@ -27,7 +27,7 @@ public class HospitalServiceImpl implements HospitalService{
 
 	@Override
 	public List<HospitalLabel> getLabelList(Long hospitalId) {
-		return mapper.labelList(hospitalId);
+		return mapper.getLabelList(hospitalId);
 	}
 
 //	@Override

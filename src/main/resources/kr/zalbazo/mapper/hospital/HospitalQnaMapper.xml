@@ -2,17 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="kr.zalbazo.mapper.hospital.HospitalQnaMapper">
-
-	<insert id="insertContent">
-	  insert into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
+	
+	<insert id="insertHospitalQna">
+	  insert all
+	  into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
 	  values (CONTENT_SEQ.nextval, #{body}, sysdate, 4, #{userEmail})
-	</insert>
-	
-	<insert id="insertQna">
-      insert into hospital_qna (HOSPITAL_QNA_ID, HOSPITAL_ID, CONTENT_ID, QNA_TYPE, C_GROUP)
+	  into hospital_qna (HOSPITAL_QNA_ID, HOSPITAL_ID, CONTENT_ID, QNA_TYPE, C_GROUP)
 	  values (HOSPITAL_QNA_SEQ.nextval, #{hospitalId}, CONTENT_SEQ.currval, #{qnaType}, CONTENT_SEQ.currval)
+	  select * from dual
 	</insert>
 	
+	<insert id="insertAnswer">
+	  insert all
+	  into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
+	  values (CONTENT_SEQ.nextval, #{body}, sysdate, 4, #{userEmail})
+	  into hospital_qna (HOSPITAL_QNA_ID, HOSPITAL_ID, CONTENT_ID, QNA_TYPE, C_GROUP)
+	  values (HOSPITAL_QNA_SEQ.nextval, #{hospitalId}, CONTENT_SEQ.currval, 'A', #{cGroup})
+	  select * from dual
+	</insert>
 	
 	<delete id="deleteQna">
 	  delete from hospital_qna where content_id = #{contentId}
@@ -28,8 +35,14 @@
 	   from content a, hospital_qna b
 	   where a.content_id = b.content_id
 	   and hospital_id = #{hospitalId}
-	   order by c_group desc, content_id asc
-
+	   order by c_group desc, hospital_qna_id asc
+	</select>
+	
+	<select id="getANo" resultType="kr.zalbazo.model.hospital.HospitalQnaVO">
+		select a.content_id
+		from content a, hospital_qna b
+		where a.content_id = b.content_id
+		and qna_type = 'A' and c_group = #{contentId}
 	</select>
 
 </mapper>

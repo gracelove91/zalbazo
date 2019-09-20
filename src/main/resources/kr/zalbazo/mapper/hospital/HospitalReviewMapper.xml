@@ -15,14 +15,13 @@
 		and hospital_id = #{hospitalId}
 	</select>
 	
-	<insert id="insertContent">
-		insert into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
-		values (CONTENT_SEQ.nextval, ${body}, sysdate, 3, ${userEmail});
-	</insert>
-	
 	<insert id="insertReview">
-		insert into review (review_id, hospital_id, content_id, star_point)
-		values(REVIEW_SEQ.NEXTVAL, ${hospitalId}, CONTENT_SEQ.currval, ${starPoint});
+		insert all
+		into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
+		values (CONTENT_SEQ.nextval, #{body}, sysdate, 3, #{userEmail})
+		into review (review_id, hospital_id, content_id, star_point)
+		values(REVIEW_SEQ.NEXTVAL, #{hospitalId}, CONTENT_SEQ.currval, #{starPoint})
+		select * from dual
 	</insert>
 
 </mapper>

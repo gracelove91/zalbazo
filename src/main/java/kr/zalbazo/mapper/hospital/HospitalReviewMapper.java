@@ -17,7 +17,6 @@ public interface HospitalReviewMapper {
 	public double get(@Param("hospitalId") Long hospitalId);
 	
 	// 병원리뷰 쓰기
-	public double insertContent(Content content);
-	public double insertReview(HospitalReviewVO hospitalReviewVO);
+	public int insertReview(HospitalReviewVO hospitalReviewVO);
 
 }

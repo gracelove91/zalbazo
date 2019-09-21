@@ -1,6 +1,6 @@
 package kr.zalbazo.service.user;
 
-import kr.zalbazo.config.MailHandler;
+import kr.zalbazo.common.MailHandler;
 import kr.zalbazo.mapper.user.UserMapper;
 import kr.zalbazo.model.user.User;
 import lombok.extern.log4j.Log4j;

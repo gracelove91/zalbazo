@@ -1,5 +1,6 @@
 package kr.zalbazo.config;
 
+import kr.zalbazo.service.user.UserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.access.expression.SecurityExpressionHandler;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
@@ -20,6 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
+                .mvcMatchers("/user/register").permitAll()
                 .mvcMatchers("/**/register").hasRole("user")
                 .mvcMatchers("/", "/jisikdong/**", "/community/**", "/hospital/**").permitAll()
                 .mvcMatchers("/admin/**").hasRole("admin")
@@ -30,7 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .permitAll()
                 .usernameParameter("user-email");
-
 
         http.httpBasic();
 

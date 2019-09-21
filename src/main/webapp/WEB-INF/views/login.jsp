@@ -28,7 +28,7 @@
                             <c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session"/> </c:if></div>
                         <div class="custom-control custom-checkbox mb-3">
                             <input type="checkbox" class="custom-control-input" id="customCheck1" name="remember-me">
-                            <label class="custom-control-label" for="customCheck1">비밀번호 저장</label>
+                            <label class="custom-control-label" for="customCheck1">로그인유지</label>
                         </div>
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">로그인</button>
                         <hr class="my-4">

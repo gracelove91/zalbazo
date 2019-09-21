@@ -1,6 +1,7 @@
 package kr.zalbazo.config;
 
 import kr.zalbazo.service.user.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.access.expression.SecurityExpressionHandler;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
@@ -8,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.FilterInvocation;
@@ -16,11 +18,15 @@ import org.springframework.security.web.access.expression.DefaultWebSecurityExpr
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private UserDetailsService userServiceImpl;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 //        http.csrf().ignoringAntMatchers("/user/jusoPopup/**");
 
         http.csrf().disable();
+
         http.authorizeRequests()
                 .mvcMatchers("/", "/login").permitAll()
                 .mvcMatchers("/user/register/**", "/user/jusoPopup").permitAll()
@@ -36,9 +42,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .permitAll()
                 .usernameParameter("user-email");
-
+        http.logout()
+                .logoutSuccessUrl("/");
         http.httpBasic();
 
+        http.rememberMe().key("remember-me-sample").userDetailsService(userServiceImpl);
     }
 
     private SecurityExpressionHandler<FilterInvocation> expressionHandler() {

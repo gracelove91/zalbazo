@@ -18,12 +18,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().ignoringAntMatchers("/user/jusoPopup/**");
+//        http.csrf().ignoringAntMatchers("/user/jusoPopup/**");
 
+        http.csrf().disable();
         http.authorizeRequests()
+                .mvcMatchers("/", "/login").permitAll()
                 .mvcMatchers("/user/register/**", "/user/jusoPopup").permitAll()
                 .mvcMatchers("/**/register").hasRole("user")
-                .mvcMatchers("/", "/jisikdong/**", "/community/**", "/hospital/**").permitAll()
+                .mvcMatchers("/jisikdong", "/jisikdong/list", "/jisikdong/get").permitAll()
+                .mvcMatchers("/community", "/community/list", "/community/get").permitAll()
+                .mvcMatchers("/hospital", "/hospital/list", "/hospital/get").permitAll()
                 .mvcMatchers("/admin/**").hasRole("admin")
                 .anyRequest().authenticated()
                 .expressionHandler(expressionHandler());

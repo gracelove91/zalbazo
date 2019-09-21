@@ -1,6 +1,5 @@
 package kr.zalbazo.config;
 
-import kr.zalbazo.service.user.UserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.access.expression.SecurityExpressionHandler;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
@@ -21,6 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        http.csrf().ignoringAntMatchers("/user/jusoPopup/**");
 
         http.csrf().disable();
+
         http.authorizeRequests()
                 .mvcMatchers("/", "/login").permitAll()
                 .mvcMatchers("/user/register/**", "/user/jusoPopup").permitAll()

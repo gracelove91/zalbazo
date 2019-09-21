@@ -13,6 +13,12 @@ public class CommonExceptionAdvice {
     @ExceptionHandler(NoHandlerFoundException.class)
     public String handle404(NoHandlerFoundException e){
         log.error(e.getMessage());
-        return "custom404";
+        return "exception/custom404";
+    }
+
+    @ExceptionHandler(EmailConfirmFirstException.class)
+    public String emailConfirmFirst(EmailConfirmFirstException e){
+        log.error(e.getMessage());
+        return "exception/emailConfirmFirst";
     }
 }

@@ -1,6 +1,7 @@
 package kr.zalbazo.service.user;
 
 import kr.zalbazo.common.MailHandler;
+import kr.zalbazo.exception.EmailConfirmFirstException;
 import kr.zalbazo.mapper.user.UserMapper;
 import kr.zalbazo.model.user.User;
 import lombok.extern.log4j.Log4j;
@@ -100,6 +101,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         if(user == null){
             throw new UsernameNotFoundException(userEmail);
+        }
+
+        if(user.getEnabled() == null){
+            throw new EmailConfirmFirstException(userEmail);
         }
 
         return org.springframework.security.core.userdetails.User.builder()

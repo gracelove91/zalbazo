@@ -114,9 +114,10 @@
             </div>
             <br>
 
-            <p class="h5" style="text-align: center">
-                <i class="material-icons">event</i>예약하기 <i class="material-icons">favorite_border</i>즐겨찾기
-            </p>
+			<p class="h5 insert" style="text-align: center">
+				<i class="material-icons" style="cursor: pointer;">event</i>예약하기
+				<i class="material-icons favorite" data-i="white" id=outlined style="cursor: pointer;">favorite_border</i>즐겨찾기
+			</p>
         </div>
 
     </div>
@@ -145,6 +146,7 @@
 
             <div id="home" class="container tab-pane active"><br>
                 <h3>map</h3>
+                <img src="/resources/img/rocket3.gif">
             </div>
 			
 			
@@ -312,6 +314,51 @@
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/reviewFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/hospital/favorite.js"></script>
+
+<script>
+var h5 = $(".insert");
+
+h5.on("click", "i", function(e){
+	
+	var icon = $(this).attr("data-i");
+	/* 아이콘이 하트면.. 검정 하트로 바뀌기 */
+	if (icon=="white") {
+		
+		var str ="";
+		
+		str += "<i class='material-icons' style='cursor: pointer;'>event</i> 예약하기";	
+		str += "<i class='material-icons favorite' data-i='black' id=filled style='cursor: pointer;'>favorite</i> 즐겨찾기"
+
+		var info = $(".info");
+		var hospitalId = info.find("input[name='hospitalId']");
+
+		favoriteService.addFavorite(
+				{userEmail:"dummy@gmail.com", hospitalId:hospitalId.val()}
+				,
+				function(result){
+					alert("즐겨찾는 병원으로 등록되었습니다.");
+				}
+			);
+	}
+	
+	/* 아이콘이 검정 하트면... 빈 하트로 바뀌기 and 삭제되기 */
+	
+	if (icon=="black") {
+		
+		var str ="";
+		
+		str += "<i class='material-icons' style='cursor: pointer;'>event</i> 예약하기";	
+		str += "<i class='material-icons favorite' data-i='white' id=filled style='cursor: pointer;'>favorite_border</i> 즐겨찾기"
+
+	}
+	
+	h5.html(str);
+	
+
+
+});
+</script>
 
 </body>
 </html>

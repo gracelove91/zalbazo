@@ -14,6 +14,6 @@ public interface FavoriteHospitalMapper {
 	
 	int delete(Long hospitalId);
 
-	void insert(FavoriteHospital favoriteHospital);
+	int insertFavorite(FavoriteHospital favoriteHospital);
 }
 

@@ -1,4 +1,4 @@
-package kr.zalbazo.config;
+package kr.zalbazo.common;
 
 import java.io.UnsupportedEncodingException;
 

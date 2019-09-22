@@ -4,11 +4,11 @@
 <mapper
 	namespace="kr.zalbazo.mapper.user.mypage.FavoriteHospitalMapper">
 
-	<insert id="insert"
+	<insert id="insertFavorite"
 		parameterType="kr.zalbazo.model.hospital.Hospital">
 		insert into zalbazo.favorite_hospital (user_email, hospital_id,
 		f_hospital_id)
-		values (#{userEmail}, #{hospitalId}, f_hospital_seq.NEXTVAL);
+		values (#{userEmail}, #{hospitalId}, f_hospital_seq.NEXTVAL)
 	</insert>
 
 	<delete id="delete">

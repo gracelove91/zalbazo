@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/community", "/community/list", "/community/get").permitAll()
                 .mvcMatchers("/hospital", "/hospital/list", "/hospital/get").permitAll()
                 .mvcMatchers("/admin/**").hasRole("admin")
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 .expressionHandler(expressionHandler());
 
         http.formLogin()

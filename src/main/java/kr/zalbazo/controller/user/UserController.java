@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 @RequestMapping({"/user/*"})
@@ -28,6 +30,11 @@ public class UserController {
         webDataBinder.setValidator(new UserValidator(this.service));
     }
 
+    @GetMapping("/mypage")
+    public String mypage(Principal principal, Model model) {
+    	model.addAttribute("useremail", principal.getName());
+    	return "user/mypage";
+    }
     @GetMapping("/register")
     public String join(Model model) {
         model.addAttribute("user",new User());

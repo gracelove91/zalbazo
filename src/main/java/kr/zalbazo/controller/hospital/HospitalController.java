@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.zalbazo.model.content.Content;
+import kr.zalbazo.model.favorite_hospital.FavoriteHospital;
 import kr.zalbazo.model.hospital.Hospital;
 import kr.zalbazo.service.hospital.FavoriteHospitalService;
 import kr.zalbazo.service.hospital.HospitalService;
@@ -30,13 +31,14 @@ public class HospitalController {
 
 
 	@GetMapping("/get")
-	public void get(@RequestParam("hospitalId") Long hospitalId, Content content, Model model) {
+	public void get(@RequestParam("hospitalId") Long hospitalId, Content content, Model model, FavoriteHospital favoriteHospital) {
 		model.addAttribute("hospital", hospitalService.get(hospitalId));
 		model.addAttribute("labelList", hospitalService.getLabelList(hospitalId));
 		model.addAttribute("hPictureList", hospitalService.getPictureList(hospitalId));
 		model.addAttribute("picCount", hospitalService.getPictureCount(hospitalId));
 		model.addAttribute("content", content);
 
+	    
 //		model.addAttribute("qnaList", hospitalService.getHospitalQnaList(hospitalId));
 	}
 	

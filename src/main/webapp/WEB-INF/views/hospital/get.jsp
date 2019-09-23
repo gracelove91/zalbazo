@@ -51,16 +51,16 @@
             <!-- 해당 병원에 맞는 라벨 출력 -->
             <c:forEach items="${labelList}" var="label">
                 <c:if test="${label.labelCode == 1}">
-                    <i class="material-icons">nights_stay</i>&nbsp;&nbsp;&nbsp;
+                    <i class="material-icons">local_convenience_store</i>&nbsp;&nbsp;&nbsp;
                 </c:if>
                 <c:if test="${label.labelCode == 2}">
-                    <i class="material-icons">bathtub</i>&nbsp;&nbsp;&nbsp;
+                    <i class="material-icons">spa</i>&nbsp;&nbsp;&nbsp;
                 </c:if>
                 <c:if test="${label.labelCode == 3}">
                     <i class="material-icons">local_parking</i>&nbsp;&nbsp;&nbsp;
                 </c:if>
                 <c:if test="${label.labelCode == 4}">
-                    <i class="material-icons">emoji_nature</i>&nbsp;&nbsp;&nbsp;
+                    <i class="material-icons">pets</i>&nbsp;&nbsp;&nbsp;
                 </c:if>
             </c:forEach>
 
@@ -113,11 +113,15 @@
                 </a>
             </div>
             <br>
+<!-- FavoriteHospitalList의 class가 fav여야함 -->
 
-			<p class="h5 insert" style="text-align: center">
+<%-- 	<c:forEach items="${favoriteHospitalList}" var="favoriteHospital"> --%>
+
+			<p class="h5 heart" style="text-align: center">
 				<i class="material-icons" style="cursor: pointer;">event</i>예약하기
 				<i class="material-icons favorite" data-i="white" id=outlined style="cursor: pointer;">favorite_border</i>즐겨찾기
 			</p>
+
         </div>
 
     </div>
@@ -314,51 +318,8 @@
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/reviewFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/hospital/favoriteFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/favorite.js"></script>
-
-<script>
-var h5 = $(".insert");
-
-h5.on("click", "i", function(e){
-	
-	var icon = $(this).attr("data-i");
-	/* 아이콘이 하트면.. 검정 하트로 바뀌기 */
-	if (icon=="white") {
-		
-		var str ="";
-		
-		str += "<i class='material-icons' style='cursor: pointer;'>event</i> 예약하기";	
-		str += "<i class='material-icons favorite' data-i='black' id=filled style='cursor: pointer;'>favorite</i> 즐겨찾기"
-
-		var info = $(".info");
-		var hospitalId = info.find("input[name='hospitalId']");
-
-		favoriteService.addFavorite(
-				{userEmail:"dummy@gmail.com", hospitalId:hospitalId.val()}
-				,
-				function(result){
-					alert("즐겨찾는 병원으로 등록되었습니다.");
-				}
-			);
-	}
-	
-	/* 아이콘이 검정 하트면... 빈 하트로 바뀌기 and 삭제되기 */
-	
-	if (icon=="black") {
-		
-		var str ="";
-		
-		str += "<i class='material-icons' style='cursor: pointer;'>event</i> 예약하기";	
-		str += "<i class='material-icons favorite' data-i='white' id=filled style='cursor: pointer;'>favorite_border</i> 즐겨찾기"
-
-	}
-	
-	h5.html(str);
-	
-
-
-});
-</script>
 
 </body>
 </html>

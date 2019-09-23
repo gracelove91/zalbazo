@@ -4,13 +4,11 @@
 
 <%@include file="includes/header.jsp"%>
 
-
-
-<div class="container">
+<title>ZALBAZO</title>
+<div class="container-fluid">
+  
 	<div class="row">
 		<div class="col-xl-9 mx-auto">
-			<!-- 					<h1 class="mb-5" style="color: gray; font-weight: bold">
-					잘바조</h1> -->
 		</div>
 
 		<div class="babalogo" id="babalogo">
@@ -23,11 +21,32 @@
 			<form name="form1" method="Get" action="/hospital/searchedlist">
 
 				<div class="form-row">
-
+					
+					<div class="dropdown">
+					
+					  <button class="btn btn-secondary dropdown-toggle hida" type="button" id="dropdownMenu1 sel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="width:150px">
+					    라벨검색
+					  </button>
+  
+					  <div class="dropdown-menu" aria-labelledby="dropdownMenu1" style="width:100px">
+					    <button class="dropdown-item" type="button" style="width:150px">24시간</button>
+					    <button class="dropdown-item" type="button" style="width:150px">미용</button>
+					    <button class="dropdown-item" type="button" style="width:150px">주차</button>
+					    <button class="dropdown-item" type="button" style="width:150px">특수동물</button>
+					  </div>
+  
+					</div>
+					
+					
+					
+					
+					
+					
+					<!-- 라벨검색 -->
 					<dl class="dropdown">
 						<dt>
-							<a id="sel"> <span class="hida">Select</span>
-								<p class="multiSel"></p>
+							<a id="sel"><span class="hida">Select</span>
+								<p class="multiSel" />
 							</a>
 						</dt>
 						<dd>
@@ -45,16 +64,19 @@
 							</div>
 						</dd>
 					</dl>
-					<input type="hidden" id="length" name="length" value=""> <select
-						name="searchOption">
+					
+					<!-- 상세검색 -->
+					<input type="hidden" id="length" name="length" value="">
+					<select name="searchOption">
 						<option value="all">전체검색</option>
 						<option value="name">병원이름</option>
 						<option value="address">주소</option>
 						<option value="info">내용</option>
 					</select>
+					
+					<!-- 검색창 -->
 					<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-						<input name="keyword" type="keyword"
-							class="form-control form-control-lg" placeholder="검색어를 입력해주세요.">
+						<input name="keyword" type="keyword" class="form-control form-control-lg" placeholder="검색어를 입력해주세요.">
 					</div>
 					<div class="col-12 col-md-3">
 						<button type="submit" class="btn btn-block btn-lg btn-primary">검색하기</button>

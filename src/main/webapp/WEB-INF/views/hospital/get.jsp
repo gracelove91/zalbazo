@@ -51,16 +51,16 @@
             <!-- 해당 병원에 맞는 라벨 출력 -->
             <c:forEach items="${labelList}" var="label">
                 <c:if test="${label.labelCode == 1}">
-                    <i class="material-icons">nights_stay</i>&nbsp;&nbsp;&nbsp;
+                    <i class="material-icons">nights_stay</i>24시간&nbsp;&nbsp;&nbsp;
                 </c:if>
                 <c:if test="${label.labelCode == 2}">
-                    <i class="material-icons">bathtub</i>&nbsp;&nbsp;&nbsp;
+                    <i class="material-icons">bathtub</i>미용&nbsp;&nbsp;&nbsp;
                 </c:if>
                 <c:if test="${label.labelCode == 3}">
-                    <i class="material-icons">local_parking</i>&nbsp;&nbsp;&nbsp;
+                    <i class="material-icons">local_parking</i>주차&nbsp;&nbsp;&nbsp;
                 </c:if>
                 <c:if test="${label.labelCode == 4}">
-                    <i class="material-icons">emoji_nature</i>&nbsp;&nbsp;&nbsp;
+                    <i class="material-icons">emoji_nature</i>특수동물&nbsp;&nbsp;&nbsp;
                 </c:if>
             </c:forEach>
 

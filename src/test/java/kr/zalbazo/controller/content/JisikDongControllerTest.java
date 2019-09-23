@@ -9,20 +9,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import kr.zalbazo.model.content.Content;
-import kr.zalbazo.model.content.Criteria;
-
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
 
-import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
-        "file:src/main/webapp/WEB-INF/root-context.xml",
+        "file:../../../../../../main/webapp/WEB-INF/views/exception/root-context.xml",
         "file:src/main/webapp/WEB-INF/servlet-context.xml"
 })
 @WebAppConfiguration

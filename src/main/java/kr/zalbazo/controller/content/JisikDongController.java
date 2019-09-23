@@ -16,6 +16,8 @@ import kr.zalbazo.model.content.PageDTO;
 import kr.zalbazo.service.content.ContentService;
 import lombok.extern.log4j.Log4j;
 
+import java.security.Principal;
+
 @Controller
 @Log4j
 @RequestMapping({ "/jisikdong/**" })
@@ -26,7 +28,8 @@ public class JisikDongController {
 	private ContentService service;
 	
 	@GetMapping("/register")
-	public String register() {
+	public String register(Principal principal, Model model) {
+		model.addAttribute("useremail", principal.getName());
 		return "jisikdong/register"; // WEB-INF/views/register.jsp
 	}
 

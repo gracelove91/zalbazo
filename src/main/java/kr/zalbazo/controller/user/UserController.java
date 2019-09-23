@@ -9,15 +9,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @RequestMapping({"/user/*"})
 @Controller
@@ -65,14 +62,10 @@ public class UserController {
 
         if(enabled){
             rttr.addFlashAttribute("email", userEmail);
-            return "redirect:login";
+            return "redirect:/login";
         }else {
             throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/login")
-    public String login(){
-        return "login";
-    }
 }

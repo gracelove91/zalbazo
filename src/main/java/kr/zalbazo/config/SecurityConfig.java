@@ -31,6 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/", "/login").permitAll()
                 .mvcMatchers("/user/register/**", "/user/jusoPopup").permitAll()
                 .mvcMatchers("/**/register").hasRole("user")
+                .mvcMatchers("/user/mypage").hasRole("user")
                 .mvcMatchers("/jisikdong", "/jisikdong/list", "/jisikdong/get").permitAll()
                 .mvcMatchers("/community", "/community/list", "/community/get").permitAll()
                 .mvcMatchers("/hospital", "/hospital/list", "/hospital/get").permitAll()

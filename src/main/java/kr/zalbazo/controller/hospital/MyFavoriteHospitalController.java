@@ -21,25 +21,6 @@ public class MyFavoriteHospitalController {
     @Autowired
     private FavoriteHospitalService favoriteHospital_service;
 
-	/*
-	 * @PostMapping("/favorite_hospital/register") public String
-	 * fh_register(kr.zalbazo.model.favorite_hospital.FavoriteHospital
-	 * favoriteHospital){
-	 * 
-	 * favoriteHospital_service.register(favoriteHospital);
-	 * 
-	 * 
-	 * 
-	 * return "redirect:/user/mypage/favorite_hospital/list"; }
-	 */
-    
-//    @GetMapping("/favorite_hospital/register")
-//    public String fh_register(){
-//
-//
-//    	return "/user/mypage/favorite_hospital/register";
-//    }
-
     @RequestMapping("/favorite_hospital/remove")
     public String fh_remove(@RequestParam("id") Long hospitalId, RedirectAttributes rttr, kr.zalbazo.model.favorite_hospital.FavoriteHospital favoriteHospital){
 

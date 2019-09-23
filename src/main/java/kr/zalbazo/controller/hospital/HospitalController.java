@@ -28,7 +28,6 @@ public class HospitalController {
 	@Autowired
 	private FavoriteHospitalService favoriteHospital_service;
 
-
 	@GetMapping("/get")
 	public void get(@RequestParam("hospitalId") Long hospitalId, Content content, Model model) {
 		model.addAttribute("hospital", hospitalService.get(hospitalId));

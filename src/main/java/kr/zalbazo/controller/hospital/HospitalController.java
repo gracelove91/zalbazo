@@ -55,36 +55,7 @@ public class HospitalController {
 		model.addAttribute("hospitalList", hospitalList);
 
 	}
-	
-//    @PostMapping("/register")
-//    public String register(Model model, Long hospitalId, RedirectAttributes rttr, Hospital hospital, FavoriteHospital favoriteHospital){
-//   
-//    	favoriteHospital.setUserEmail("dummy@gmail.com");
-//    	
-//    	model.addAttribute("favoriteHospitalList", favoriteHospital_service.getList(favoriteHospital));
-//    	
-//    	model.addAttribute("userEmail", "dummy@gmail.com");
-//    	
-//    	List<Hospital> favoriteHospitalList = favoriteHospital_service.getList(favoriteHospital);
-//
-//		model.addAttribute("favoriteHospitalList", favoriteHospitalList);
-//		
-//    	favoriteHospital_service.favorite_register(favoriteHospital);
-//
-//    	return "redirect:/user/mypage/favorite_hospital/list";
-//    }
-//
-//	@GetMapping(value = "/register", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-////	@ResponseBody
-//	public ResponseEntity<String> register(@RequestBody FavoriteHospital favoriteHospital){
-//		
-//		favoriteHospital_service.register(favoriteHospital);
-//		
-//		int insert = favoriteHospital_service.register(favoriteHospital);
-//		return insert == 1 
-//			? new ResponseEntity<>("success", HttpStatus.OK)
-//			: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);	
-//	}
+
 
 
 }

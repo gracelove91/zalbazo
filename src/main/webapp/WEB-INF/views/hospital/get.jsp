@@ -113,11 +113,15 @@
                 </a>
             </div>
             <br>
+<!-- FavoriteHospitalList의 class가 fav여야함 -->
 
-			<p class="h5 insert" style="text-align: center">
+<%-- 	<c:forEach items="${favoriteHospitalList}" var="favoriteHospital"> --%>
+
+			<p class="h5 heart" style="text-align: center">
 				<i class="material-icons" style="cursor: pointer;">event</i>예약하기
 				<i class="material-icons favorite" data-i="white" id=outlined style="cursor: pointer;">favorite_border</i>즐겨찾기
 			</p>
+
         </div>
 
     </div>
@@ -342,6 +346,7 @@
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/reviewFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/hospital/favoriteFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/favorite.js"></script>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5ea4ef47b16d9a398f9876fcc56c42fe&libraries=services"></script>

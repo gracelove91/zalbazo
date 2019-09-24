@@ -11,7 +11,7 @@ public interface FavoriteHospitalService {
 	
     int register(FavoriteHospital favoriteHospital);
     
-    boolean remove(Long hospitalId);
+    int remove(Long hospitalId);
     
     List<Hospital> getList(FavoriteHospital favoriteHospital);
     

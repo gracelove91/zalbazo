@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.zalbazo.model.content.Content;
+import kr.zalbazo.model.favorite_hospital.FavoriteHospital;
 import kr.zalbazo.model.hospital.Hospital;
 import kr.zalbazo.service.hospital.FavoriteHospitalService;
 import kr.zalbazo.service.hospital.HospitalService;
@@ -29,13 +30,14 @@ public class HospitalController {
 	private FavoriteHospitalService favoriteHospital_service;
 
 	@GetMapping("/get")
-	public void get(@RequestParam("hospitalId") Long hospitalId, Content content, Model model) {
+	public void get(@RequestParam("hospitalId") Long hospitalId, Content content, Model model, FavoriteHospital favoriteHospital) {
 		model.addAttribute("hospital", hospitalService.get(hospitalId));
 		model.addAttribute("labelList", hospitalService.getLabelList(hospitalId));
 		model.addAttribute("hPictureList", hospitalService.getPictureList(hospitalId));
 		model.addAttribute("picCount", hospitalService.getPictureCount(hospitalId));
 		model.addAttribute("content", content);
 
+	    
 //		model.addAttribute("qnaList", hospitalService.getHospitalQnaList(hospitalId));
 	}
 	
@@ -52,36 +54,7 @@ public class HospitalController {
 		model.addAttribute("hospitalList", hospitalList);
 
 	}
-	
-//    @PostMapping("/register")
-//    public String register(Model model, Long hospitalId, RedirectAttributes rttr, Hospital hospital, FavoriteHospital favoriteHospital){
-//   
-//    	favoriteHospital.setUserEmail("dummy@gmail.com");
-//    	
-//    	model.addAttribute("favoriteHospitalList", favoriteHospital_service.getList(favoriteHospital));
-//    	
-//    	model.addAttribute("userEmail", "dummy@gmail.com");
-//    	
-//    	List<Hospital> favoriteHospitalList = favoriteHospital_service.getList(favoriteHospital);
-//
-//		model.addAttribute("favoriteHospitalList", favoriteHospitalList);
-//		
-//    	favoriteHospital_service.favorite_register(favoriteHospital);
-//
-//    	return "redirect:/user/mypage/favorite_hospital/list";
-//    }
-//
-//	@GetMapping(value = "/register", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-////	@ResponseBody
-//	public ResponseEntity<String> register(@RequestBody FavoriteHospital favoriteHospital){
-//		
-//		favoriteHospital_service.register(favoriteHospital);
-//		
-//		int insert = favoriteHospital_service.register(favoriteHospital);
-//		return insert == 1 
-//			? new ResponseEntity<>("success", HttpStatus.OK)
-//			: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);	
-//	}
+
 
 
 }

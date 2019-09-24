@@ -15,7 +15,7 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/root-context.xml")
+@ContextConfiguration("file:../../../../../../main/webapp/WEB-INF/views/exception/root-context.xml")
 @Log4j
 public class HospitalQnaMapperTests {
 	

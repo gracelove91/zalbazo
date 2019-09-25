@@ -51,16 +51,16 @@
             <!-- 해당 병원에 맞는 라벨 출력 -->
             <c:forEach items="${labelList}" var="label">
                 <c:if test="${label.labelCode == 1}">
-                    <i class="material-icons">nights_stay</i>&nbsp;&nbsp;&nbsp;
+                    <i class="material-icons">nights_stay</i>24시간&nbsp;&nbsp;&nbsp;
                 </c:if>
                 <c:if test="${label.labelCode == 2}">
-                    <i class="material-icons">bathtub</i>&nbsp;&nbsp;&nbsp;
+                    <i class="material-icons">bathtub</i>미용&nbsp;&nbsp;&nbsp;
                 </c:if>
                 <c:if test="${label.labelCode == 3}">
-                    <i class="material-icons">local_parking</i>&nbsp;&nbsp;&nbsp;
+                    <i class="material-icons">local_parking</i>주차&nbsp;&nbsp;&nbsp;
                 </c:if>
                 <c:if test="${label.labelCode == 4}">
-                    <i class="material-icons">emoji_nature</i>&nbsp;&nbsp;&nbsp;
+                    <i class="material-icons">emoji_nature</i>특수동물&nbsp;&nbsp;&nbsp;
                 </c:if>
             </c:forEach>
 
@@ -113,11 +113,15 @@
                 </a>
             </div>
             <br>
+<!-- FavoriteHospitalList의 class가 fav여야함 -->
 
-			<p class="h5 insert" style="text-align: center">
+<%-- 	<c:forEach items="${favoriteHospitalList}" var="favoriteHospital"> --%>
+
+			<p class="h5 heart" style="text-align: center">
 				<i class="material-icons" style="cursor: pointer;">event</i>예약하기
 				<i class="material-icons favorite" data-i="white" id=outlined style="cursor: pointer;">favorite_border</i>즐겨찾기
 			</p>
+
         </div>
 
     </div>
@@ -145,8 +149,24 @@
         <div class="tab-content">
 
             <div id="home" class="container tab-pane active"><br>
-                <h3>map</h3>
-                <img src="/resources/img/rocket3.gif">
+            
+            	<div class='row'>
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="padding-left: 20px; font-size: x-large;">
+                                <strong>${hospital.name}</strong>은 어디에 있을까?
+                            </div>
+                            
+                             <div class="panel-body">
+                             	<div class="container mt-3">
+                            		<div id="map" style="width:100%;height:400px;"></div>
+                            	</div>
+                            </div>
+                            		
+                        </div>
+                     </div>
+            	</div>
+            	
             </div>
 			
 			
@@ -220,7 +240,7 @@
                                                             star</h1>
                                                         &nbsp;5.0
                                                     </div>
-                                                    <p>4.1 average based on 254 reviews.</p>
+                                                    <p>점수, 총 명수 이런 거 적으면 좋겠다고 생각하는 부분임</p>
 
                                                 </div>
 
@@ -267,17 +287,30 @@
 			
 
             <div id="menu2" class="container tab-pane fade"><br>
-                <div class="info container">
+            
+				<div class='row info'>
                     <input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com">
                     <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
-
-                    <div class="form-group">
-                        <label for="comment">궁금한 점을 질문하세요</label>
-                        <textarea class="form-control txt" rows="5" id="body" name="body"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-secondary float-right" id="regBtn" name="regBtn">Submit</button>
-                </div>
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="padding-left: 20px; font-size: x-large;">
+                                <strong>${hospital.name}</strong>에 궁금한 점을 질문하세요
+                            </div>
+                            
+                             <div class="panel-body">
+                             	<div class="container mt-3">
+                            		<div class="form-group">
+                            			<textarea class="form-control txt" rows="5" id="body" name="body"></textarea>
+                    				</div>
+                    				
+                    				<button type="submit" class="btn btn-secondary float-right" id="regBtn" name="regBtn">Submit</button>
+                    				
+                            	</div>
+                            </div>
+                            		
+                        </div>
+                     </div>
+            	</div>
                 <br><br>
 
                 <!-- Q&A list -->
@@ -307,14 +340,54 @@
     </div>
 </div>
 
-
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qnaFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/reviewFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/hospital/favoriteFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/favorite.js"></script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5ea4ef47b16d9a398f9876fcc56c42fe&libraries=services"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+mapOption = {
+    center: new kakao.maps.LatLng(37.5031073, 127.024465), // 지도의 중심좌표, 우리는 비트캠프로 했습니다
+    level: 1 // 지도의 확대 레벨
+};  
+
+//지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+//주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+//주소로 좌표를 검색합니다
+geocoder.addressSearch('${hospital.address}', function(result, status) {
+
+// 정상적으로 검색이 완료됐으면 
+ if (status === kakao.maps.services.Status.OK) {
+
+    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+    // 결과값으로 받은 위치를 마커로 표시합니다
+    var marker = new kakao.maps.Marker({
+        map: map,
+        position: coords
+    });
+
+    // 인포윈도우로 장소에 대한 설명을 표시합니다
+    var infowindow = new kakao.maps.InfoWindow({
+        content: '<div style="width:150px;text-align:center;padding:6px 0;">${hospital.name}</div>'
+    });
+    infowindow.open(map, marker);
+
+    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+    map.setCenter(coords);
+} 
+});   
+</script>
 
 <script>
 var h5 = $(".insert");

@@ -111,7 +111,7 @@
           <form class="pt-3 md-3" role='form' style="max-width: 920px" action="/community/register" method="post">
 			<div class="form-group">
               <label>EMAIL</label>
-              <input type="text" class="form-control" name="userEmail" placeholder="이메일을 입력하시오">
+              <input type="text" class="form-control" name="userEmail" readonly="readonly" value="${useremail}">
             </div>
             <div class="form-group">
               <label>제목</label>

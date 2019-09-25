@@ -25,8 +25,8 @@ public class FavoriteHospitalServiceImpl implements FavoriteHospitalService {
 
    
     @Override
-    public boolean remove(Long hospitalId) {
-        return mapper.delete(hospitalId) == 1;
+    public int remove(Long hospitalId) {
+        return mapper.delete(hospitalId);
     }
 
 	@Override

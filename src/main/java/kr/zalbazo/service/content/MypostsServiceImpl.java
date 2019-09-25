@@ -1,4 +1,4 @@
-package kr.zalbazo.service.user.mypage;
+package kr.zalbazo.service.content;
 
 import java.util.List;
 
@@ -16,8 +16,8 @@ public class MypostsServiceImpl implements MypostsService{
 	@Autowired
 	private MypostsMapper mapper;
 	
-	public List<Content> getList(Long categoryId){
+	public List<Content> getJisikdongList(Long categoryId){
 		
-		return mapper.getList(categoryId);
+		return mapper.getJisikdongList(categoryId);
 	}
 }

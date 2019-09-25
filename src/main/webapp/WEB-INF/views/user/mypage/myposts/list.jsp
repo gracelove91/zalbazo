@@ -14,6 +14,10 @@
 </head>
 
 <body>
+
+ <div style='display:inline;min-width:3000px;'>
+ <div style='display:inline;float:left;width:900px'>
+
     <div class="container-fluid">
         <div class="row d-flex d-md-block flex-nowrap wrapper">
             <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
@@ -56,17 +60,19 @@
               </main>
         </div>
     </div>
+    </div> <!--왼쪽-->
     
-    <br><br>
     
-    
+
+    <div style='display:inline;float:left;width:1000px'>
+
      <div class="container-fluid">
         <div class="row d-flex d-md-block flex-nowrap wrapper">
             <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
                 <div class="page-header mt-3">
                    
                 </div>
-                <p class="lead">내가 쓴 커뮤글~~</p>
+                <p class="lead">내가 쓴 지식동 글~~</p>
                 <hr>
                 <table class="table table-striped" style="max-width: 2000px;">
                     <thead>
@@ -107,8 +113,15 @@
                      </main>
        			 </div>
    			 </div>
+   			 
+   			 </div> <!--오른쪽 -->
+
+		</div> <!-- 테두리 끝 -->
     
        <br><br>
+    
+   <div style='display:inline;min-width:3000px;'>
+   <div style='display:inline;float:left;width:900px'> 
     
      <div class="container-fluid">
         <div class="row d-flex d-md-block flex-nowrap wrapper">
@@ -152,15 +165,15 @@
                  </main>
        		 </div>
     		</div>
-    
-       <br><br>
-    
+			</div>
+	
+	 <div style='display:inline;float:left;width:1000px'>		    
      <div class="container-fluid">
         <div class="row d-flex d-md-block flex-nowrap wrapper">
             <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
                 <div class="page-header mt-3">
                 </div>
-                <p class="lead">내가 쓴 지식동 글~~~</p>
+                <p class="lead">내가 쓴 커뮤니티 글~~~</p>
                 <hr>
                 <table class="table table-striped" style="max-width: 2000px;">
                     <thead>
@@ -197,8 +210,9 @@
                  </main>
         	</div>
    		 </div>
+   		 </div>
+   		 </div>
 
-		   <br><br>
 
   <div class="container-fluid">
         <div class="row d-flex d-md-block flex-nowrap wrapper">
@@ -206,7 +220,7 @@
                 <div class="page-header mt-3">
                 </div>
                 <p class="lead">내가 쓴 댓글~~~</p>
-				<table class="table table-striped" style="max-width: 2000px;">
+				<table class="table table-striped" style="max-width: 900px;">
                     <thead>
                         <tr>
                             <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>

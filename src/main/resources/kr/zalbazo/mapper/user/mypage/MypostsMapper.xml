@@ -3,7 +3,7 @@
 
 <mapper namespace="kr.zalbazo.mapper.user.mypage.MypostsMapper">
 
-<select id="getList" resultType="kr.zalbazo.model.content.Content">
+<select id="getJisikdongList" resultType="kr.zalbazo.model.content.Content">
 
 	<![CDATA[
         select CONTENT_ID,

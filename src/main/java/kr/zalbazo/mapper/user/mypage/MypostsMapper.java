@@ -6,6 +6,6 @@ import kr.zalbazo.model.content.Content;
 
 public interface MypostsMapper {
 
-	public List<Content> getList(Long categoryId);
+	public List<Content> getJisikdongList(Long categoryId);
 	
 }

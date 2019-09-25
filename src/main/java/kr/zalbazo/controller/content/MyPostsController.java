@@ -1,4 +1,4 @@
-package kr.zalbazo.controller.user;
+package kr.zalbazo.controller.content;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,14 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.zalbazo.model.content.Content;
-import kr.zalbazo.model.content.Criteria;
-import kr.zalbazo.service.user.mypage.MypostsService;
+import kr.zalbazo.service.content.MypostsService;
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
 @RequestMapping("/user/mypage")
-public class MypageController2 {
+public class MyPostsController {
 	
 	@Autowired
 	MypostsService service;
@@ -30,12 +29,16 @@ public class MypageController2 {
 
     	System.out.println(service);
 
-    	model.addAttribute("MypostsList", service.getList(categoryId));
+    	model.addAttribute("MypostsList", service.getJisikdongList(categoryId));
     	
     	return "/user/mypage/myposts/list";
     }
     
-//
+//    @RequestMapping("/myposts/list")
+//    public String list2() {
+//    	return "/user/mypage/myposts/list";
+//    }
+//    
 
 
     

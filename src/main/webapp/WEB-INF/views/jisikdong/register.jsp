@@ -5,7 +5,7 @@
 <!doctype html>
 <html>
  <head>
- 
+ <%@include file="../includes/header.jsp" %>
  <style>
 .uploadResult {
 	width: 100%;
@@ -59,56 +59,27 @@
 }
 </style>
 
-    <title>지식동 글 쓰기</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- 부트스트랩 CSS 추가하기 -->
-    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  </head>
-  <body>
-  <%@include file="../includes/header.jsp" %>
-    <div class="container-fluid">
-      <div class="row d-flex d-md-block flex-nowrap wrapper">
-        <nav class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
-          <div class="list-group border-0 card text-center text-md-left">
-            <a href="./index.html" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-              <img style="width: 20px;" src="/resources/img/home.svg"><span class="d-none d-md-inline ml-1">메인</span>
-            </a>
-            <a href="#usermenu" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
-             data-parent="#sidebar" aria-expanded="false">
-              <img style="width: 20px;" src="/resources/img/user.svg"><span class="d-none d-md-inline ml-1">회원 관리</span>
-            </a>
-            <div class="collapse" id="usermenu">
-              <a href="userJoin.html" class="list-group-item" data-parent="#sidebar">회원가입</a>
-              <a href="userLogin.html" class="list-group-item" data-parent="#sidebar">로그인</a>
-              <a href="userEdit.html" class="list-group-item" data-parent="#sidebar">회원정보수정</a>
-              <a href="userLogout.html" class="list-group-item" data-parent="#sidebar">로그아웃</a>
-            </div>
-            <a href="board.html" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-              <img style="width: 20px;" src="/resources/img/board.svg"><span class="d-none d-md-inline ml-1">자유 게시판</span>
-            </a>
-            <a href="qna.html" class="list-group-item d-inline-block collapsed" data-parent="#sidebar">
-              <img style="width: 20px;" src="/resources/img/message.svg"><span class="d-none d-md-inline ml-1">Q & A</span>
-            </a>
-            <a href="#search" class="list-group-item d-inline-block collapsed" data-toggle="collapse"
-             data-parent="#sidebar" aria-expanded="false">
-              <img style="width: 20px;" src="/resources/img/search.svg"><span class="d-none d-md-inline ml-1">검색</span>
-            </a>
-            <div class="collapse" id="search">
-              <div class="input-group p-2" style="background-color: #1c1c1c;">
-                <input type="text" class="form-control" placeholder="내용을 입력하세요.">
-              </div>
-            </div>
-          </div>
-        </nav>
-        <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
+<title>지식동 글 쓰기</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- 부트스트랩 CSS 추가하기 -->
+<link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container-fluid">
+   <div class="row">
+   
+      <div class="col-md-2"></div>
+       
+      <div id="main" class="col-md-8">
           <div class="page-header mt-3">
               <h2>지식동 글 쓰기</h2>
           </div>
           <p class="lead">게시글을 작성합니다.</p>
           <hr>
-          <form class="pt-3 md-3" role='form' style="max-width: 920px" action="/jisikdong/register" method="post">
+          <form class="pt-3 md-3" role='form' action="/jisikdong/register" method="post">
 			<div class="form-group">
               <label>EMAIL</label>
               <input type="text" class="form-control" name="userEmail" readonly="readonly" value="${useremail}">
@@ -121,20 +92,163 @@
               <label>내용</label>
               <textarea class="form-control" id="body" name="body" placeholder="내용을 입력하세요." style="height: 320px;"></textarea>
             </div>
+            
+
+            <!-- 파일 첨부 부분 -->
+            <div class="row">
+               <div class="col-lg-12">
+               
+                   <div class="form-group uploadDiv">
+                      <input type="file" name='uploadFile' multiple>
+                   </div>
+                   
+                   <div class='uploadResult'>
+                      <ul>
+                      </ul>
+                   </div>
+                        
+               </div>
+            </div>
+            
             <button type="submit" class="btn btn-primary" id="regBtn" name="regBtn">글 쓰기</button>
           
           </form>
+          <br/><br/><br/>
           
-          <footer class="text-center" style="max-width: 920px;">
+          <footer class="text-center">
             <p>Copyright ⓒ 2019 <b>잘바조</b> All Rights Reserved.</p>
           </footer>
-        </main>
       </div>
+      
+      <div class="col-md-2"></div>
+      
     </div>
-    <!-- 제이쿼리 자바스크립트 추가하기 -->
-    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
-    <!-- 부트스트랩 자바스크립트 추가하기 -->
-    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</div>
 
-  </body>
+<!-- 제이쿼리 자바스크립트 추가하기 -->
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<!-- 부트스트랩 자바스크립트 추가하기 -->
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(e){
+	var formObj = $("form[role='form']");
+	
+	$("button[type='submit']").on("click", function(e){
+		e.preventDefault();
+		console.log("submit clicked");
+		
+		var str ="";
+		
+		$(".uploadResult ul li").each(function(i, obj){
+			var jobj = $(obj);
+			
+			console.log(jobj);
+			
+			str += "<input type'hidden' name='attachList["+i+"].fileName' value='"+jobj.data("filename")+"'>";
+			str += "<input type'hidden' name='attachList["+i+"].uuid' value='"+jobj.data("uuid")+"'>";
+			str += "<input type'hidden' name='attachList["+i+"].uploadPath' value='"+jobj.data("path")+"'>";
+			
+		});
+		
+		formObj.append(str).submit();
+	});
+	
+	
+	var maxSize = 5242880; // 5MB
+	
+	// 유효성 체크 메서드
+	function checkExtension(fileName, fileSize) {
+		// 파일 사이즈 체크
+		if(fileSize >= maxSize) {
+			alert("파일 사이즈 초과");
+			return false;
+		}
+		
+		// 이미지 파일인지 체크
+		if(fileName != "") {
+			var ext = fileName.slice(fileName.lastIndexOf(".") +1).toLowerCase();
+			
+			if(!(ext == "gif" || ext == "jpg" || ext == "png" || ext == "jpeg" || ext == "bmp")) {
+				alert("이미지파일 (jpg, jpeg, png, gif, bmp)만 업로드 가능합니다.");
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	
+	$("input[type='file']").change(function(e) {
+		var formData = new FormData();
+		var inputFile = $("input[name='uploadFile']");
+		var files = inputFile[0].files;
+		
+		for(var i=0; i<files.length; i++){
+			if(!checkExtension(files[i].name, files[i].size)) {
+				return false;
+			}
+			formData.append("uploadFile", files[i]);
+		}
+		
+		$.ajax({
+			url : '/content/uploadAjaxAction',
+			processData : false,
+			contentType : false,
+			data : formData,
+			type : 'POST',
+			dataType : 'json',
+			success : function(result){
+				console.log(result);
+				showUploadResult(result); // 업로드 결과 처리 함수
+			}
+		});
+	});
+	
+	
+	// 첨부파일 등록 시 이미지와 함꼐 X가 보여짐
+	function showUploadResult(uploadResultArr) {
+		if(!uploadResultArr || uploadResultArr.length == 0) { return; }
+		
+		var uploadUL = $(".uploadResult ul");
+		
+		var str = "";
+		
+		$(uploadResultArr).each(function(i, obj) {
+			var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+			
+			str += "<li data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"'><div>";
+			str += "<span>" + obj.fileName + "</span>";
+			str += "<button type='button' data-file=\'"+fileCallPath+"\' class='btn btn-warning btn-circle'>";
+			str += "<i class='fa fa-times'></i></button><br>";
+			str += "<img src='/content/display?fileName="+fileCallPath+"'></div></li>";
+			
+		});
+		
+		uploadUL.append(str);
+	}
+	
+	
+	// 첨부파일 X 표시에 대한 이벤트(첨부파일 삭제)
+	$(".uploadResult").on("click", "button", function(e){
+		console.log("delete file...");
+		
+		var targetFile = $(this).data("file");
+		var targetLi = $(this).closest("li");
+		
+		$.ajax({
+			url : '/content/deleteFile',
+			data : {fileName : targetFile},
+			dataType : 'text',
+			type : 'POST',
+			success : function(result) {
+				alert(result);
+				targetLi.remove();
+			}
+		});
+		
+	});
+	
+	
+});
+</script>    
+</body>
 </html>

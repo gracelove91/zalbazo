@@ -2,6 +2,7 @@ package kr.zalbazo.service.content;
 
 import java.util.List;
 
+import kr.zalbazo.model.content.AttachFileDTO;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.Criteria;
 
@@ -14,4 +15,6 @@ public interface ContentService {
     //List<Content> getList(Long categoryId);
     List<Content> getList(Criteria cri);
 	int getTotal(Criteria cri);
+	public List<AttachFileDTO> getAttachList(Long contentId);
+	
 }

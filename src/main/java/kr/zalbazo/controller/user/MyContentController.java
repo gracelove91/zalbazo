@@ -7,11 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.ReplyVO;
+import kr.zalbazo.model.hospital.Hospital;
 import kr.zalbazo.model.hospital.HospitalQnaVO;
 import kr.zalbazo.model.hospital.HospitalReviewVO;
 import kr.zalbazo.service.user.MyContentService;
@@ -54,18 +57,15 @@ public class MyContentController {
 		return new ResponseEntity<>(myContentService.getQList(principal.getName()), HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/list/4/2", produces = {
-			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<List<HospitalQnaVO>> getAList(Long contentId) {
-		
-		return new ResponseEntity<>(myContentService.getAList(contentId), HttpStatus.OK);
-	}
-	
 	@GetMapping(value = "/list/5", produces = { 
 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
 	public ResponseEntity<List<ReplyVO>> getReplyList(Principal principal) {
 		
 		return new ResponseEntity<>(myContentService.getReplyList(principal.getName()), HttpStatus.OK);
 	}
-
+	
+	@GetMapping(value = "/6/{hospitalId}", produces= {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<Hospital> getName(@PathVariable("hospitalId") Long hospitalId) {
+		return new ResponseEntity<>(myContentService.getName(hospitalId), HttpStatus.OK);
+	}
 }

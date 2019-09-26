@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.zalbazo.mapper.user.mypage.MyContentMapper;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.ReplyVO;
+import kr.zalbazo.model.hospital.Hospital;
 import kr.zalbazo.model.hospital.HospitalQnaVO;
 import kr.zalbazo.model.hospital.HospitalReviewVO;
 import lombok.Setter;
@@ -41,13 +42,13 @@ public class MyContentServiceImpl implements MyContentService{
 	}
 
 	@Override
-	public List<HospitalQnaVO> getAList(Long contentId) {
-		return myContentMapper.getAList(contentId);
+	public List<ReplyVO> getReplyList(String userEmail) {
+		return myContentMapper.getReplyList(userEmail);
 	}
 
 	@Override
-	public List<ReplyVO> getReplyList(String userEmail) {
-		return myContentMapper.getReplyList(userEmail);
+	public Hospital getName(Long hospitalId) {
+		return myContentMapper.getName(hospitalId);
 	}
 
 }

@@ -23,6 +23,8 @@ public class HospitalQnaVO {
 	private String qnaType;
 	private Long cGroup;
 	
+	private String name;
+	
 	private String body;
 	private String userEmail;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)

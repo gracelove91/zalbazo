@@ -32,11 +32,6 @@
                     
                     // Q 타입이면 출력 
                     if (type === 'Q') {
-                    	
-//                        str += "<div class='card-header primary-font'> Q. " + list[i].body + "";
-//                        str += "<div class='del float-right' data-qno='"+list[i].contentId+"' style='cursor:pointer'> X </div>";
-//                        str += "<p><small class='float-right text-muted'>" + qnaService.displayTime(list[i].createdDate) + "</small></p>";
-//                        str += "<small class='primary-font'>" + list[i].userEmail + "</small></div>";
 
                     	// Q 출력 태그
                         str += "<div id='accordion'><div class='card-header primary-font'> Q.&nbsp; <a class='card-link collapsed' data-toggle='collapse' href='#collapse"+list[i].contentId+"' aria-expanded='false'>" + list[i].body + "";

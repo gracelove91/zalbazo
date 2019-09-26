@@ -18,7 +18,7 @@
 
 	<select id="getList"
 		resultType="kr.zalbazo.model.hospital.Hospital">
-		select favorite_hospital.hospital_id, name, address,
+		select distinct favorite_hospital.hospital_id, name, address,
 		treat_start, treat_end, tel
 		from favorite_hospital, hospital
 		where

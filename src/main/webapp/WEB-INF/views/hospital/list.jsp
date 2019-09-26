@@ -99,10 +99,7 @@
 
                         <td class="mobile" style="text-align: center;"><c:out
                                 value="${hospital.tel}" /></td>
-
-                            <%-- 							<td class="mobile" style="text-align: center;"><c:out
-                                                                value="${hospital.info}" /> </br></td>
-                             --%>
+                                
                     </tr>
 
                 </c:forEach>

@@ -1,5 +1,7 @@
 package kr.zalbazo.model.favorite_hospital;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import kr.zalbazo.model.hospital.HospitalLabel;

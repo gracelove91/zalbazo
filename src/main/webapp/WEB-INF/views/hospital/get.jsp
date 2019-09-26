@@ -116,10 +116,12 @@
             </div>
             <br>
 
-			<p class="h5 insert" style="text-align: center">
+			<p class="h5 heart" style="text-align: center">
 				<i class="material-icons" style="cursor: pointer;">event</i>예약하기
 				<i class="material-icons favorite" data-i="white" id=outlined style="cursor: pointer;">favorite_border</i>즐겨찾기
 			</p>
+			
+			
         </div>
         <div class="col-1"></div>
 
@@ -308,25 +310,17 @@
                     				</div>
                     				
                     				<button type="submit" class="btn btn-secondary float-right" id="regBtn" name="regBtn">Submit</button>
-                    				
                             	</div>
                             </div>
                             		
                         </div>
                      </div>
             	</div>
-                <br><br>
-
+				<hr>
                 <!-- Q&A list -->
                 <div class='row'>
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-
-                            <div class="panel-heading" style="padding-left: 20px; font-size: x-large;">
-                                <strong>Q&A</strong>
-                            </div>
-                            <br>
-							
 							<!-- Q&A 리스트 출력 -->
                             <div class="qnaqna">
                                 <div class="card-body primary-font"> 아직 등록된 글이 없습니다.</div>
@@ -351,6 +345,7 @@
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/reviewFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/hospital/favoriteFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/favorite.js"></script>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5ea4ef47b16d9a398f9876fcc56c42fe&libraries=services"></script>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.ReplyVO;
+import kr.zalbazo.model.hospital.Hospital;
 import kr.zalbazo.model.hospital.HospitalQnaVO;
 import kr.zalbazo.model.hospital.HospitalReviewVO;
 
@@ -21,10 +22,9 @@ public interface MyContentMapper {
 	// Q(4) List
 	public List<HospitalQnaVO> getQList(String userEmail);
 	
-	// A(4) List
-	public List<HospitalQnaVO> getAList(Long contentId);
-	
 	// 댓글 List
 	public List<ReplyVO> getReplyList(String userEmail);
-
+	
+	// Q(4) 병원Name 가져오기
+	public Hospital getName(Long hospitalId);
 }

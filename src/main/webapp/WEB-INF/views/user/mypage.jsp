@@ -43,12 +43,11 @@
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
 		      	<br>
 				
-		      	<div class="infoinfo col-10">
+		      	<div class="infoinfo">
 		      	</div>
 		      	
-		      	<span class="float-right col-3">
-					<button id="modify" class="btn btn-primary">Modify</button>
-				</span>
+				<button id="modify" class="btn btn-primary">Modify</button>
+				<br>
 		      </div> <!-- 개인정보 수정 -->
 		      
 		      <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">동물 관리</div>
@@ -152,9 +151,11 @@
 				  
 				  <div class="tab-pane fade" id="nav-d" role="tabpanel" aria-labelledby="nav-d-tab">
 				  
+				  	<br>
 					<div class="table4">
                     	<div class="card-body primary-font">등록된 Q&A가 없습니다</div> <!-- qna가 생기면 이 부분이 바뀜 -->
                     </div>
+                    <br>
                     				  
 				  </div> <!-- Q&A 끝 -->
 				  
@@ -196,6 +197,7 @@
 
 <script type="text/javascript" src="${ctx}/resources/js/user/mycontentFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/mycontent.js"></script>
+
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfoFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfo.js"></script>
 

@@ -182,11 +182,11 @@
 <!-- 부트스트랩 자바스크립트 추가하기 -->
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="${ctx}/resources/reply.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/content/replyFunction.js"></script>
 
 <script>
     $(document).ready(function () {
-
+		
         var contentIdValue = '<c:out value="${content.contentId}"/>';
         var bodyUL = $(".list-group-flush");
 
@@ -274,7 +274,7 @@
 
             str += "</ul></div>";
 
-            console.log(str);
+            //console.log(str);
 
             replyPageFooter.html(str);
         }
@@ -300,6 +300,7 @@
         var modalModBtn = $("#modalModBtn");
         var modalRemoveBtn = $("#modalRemoveBtn");
         var modalRegisterBtn = $("#modalRegisterBtn");
+        var modalCloseBtn = $("#modalCloseBtn");
 
         $("#addReplyBtn").on("click", function (e) {
 
@@ -374,54 +375,12 @@
                 showList(pageNum);
             });
         });
+        
+        modalCloseBtn.on("click", function(e) {
+        	modal.modal("hide");
+        });
 
     }); // $(document).ready(function()
-</script>
-
-<script>
-    console.log("JS TEST");
-
-    var contentIdValue = '<c:out value="${content.contentId}"/>';
-
-    /* 	replyService.add(
-            {body:"JS Test", userEmail:"dummy@gmail.com", id:contentIdValue}
-            ,
-            function(result){
-                alert("RESULT : " + result);
-            }); */
-
-    /* replyService.getList({id:contentIdValue, page:1}, function(list){
-        for(var i = 0, len = list.length||0; i<len; i++){
-            console.log(list[i]);
-        }
-    }); */
-
-    /* // 2번 댓글 삭제
-    replyService.remove(182, function(count) {
-
-        console.log(count);
-
-        if(count === "success") {
-            alert("삭제완료");
-        }
-    }, function(err) {
-        alert('remove error');
-    }); */
-
-    /* // 150번 댓글 수정
-    replyService.update({
-        replyid : 150,
-        id : contentIdValue,
-        body : "150번댓글수정!",
-    }, function(result) {
-        alert("수정완료");
-    }); */
-
-    /* replyService.get(150, function(data){
-        alert("!");
-        console.log(data);
-    });
-     */
 </script>
 
 <script type="text/javascript">

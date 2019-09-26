@@ -21,59 +21,61 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <script src="https://kit.fontawesome.com/yourcode.js"></script>
+<%@include file="../includes/header.jsp" %>
 </head>
 
 <body>
-<%@include file="../includes/header.jsp" %>
-<div class="container">
+<div class="container-fluid">
+    <br>
+    <h1 style="text-align:center">${hospital.name}</h1>
+    <br><br>
 
-    <!-- Portfolio Item Heading -->
-    <p class="h1" style="text-align: center">${hospital.name}</p>
-
-    <br><br><br>
-
-    <!-- Portfolio Item Row -->
     <div class="row">
-	
-        <div class="col-md-7"><br>
+		<div class="col-1"></div>
+        <div class="col-5"><br>
             <p class="h4">
-                <i class="material-icons">call</i> <span>&nbsp;&nbsp;${hospital.tel}</span>
-            </p>
-            <p class="h5">
-                <i class="material-icons">my_location</i> &nbsp;&nbsp;${hospital.address}
+                <i class="material-icons" style="font-weight:bold">call</i> <span>&nbsp;&nbsp;${hospital.tel}</span>
             </p>
             <p class="h4">
-                <i class="material-icons">alarm</i> &nbsp;&nbsp;${hospital.treatStart}
+                <i class="material-icons" style="font-weight:bold">my_location</i> <span class="h6">&nbsp;&nbsp;${hospital.address}</span>
             </p>
             <p class="h4">
-                <i class="material-icons">alarm_off</i> &nbsp;&nbsp;${hospital.treatEnd}
+                <i class="material-icons" style="font-weight:bold">alarm</i> <span>&nbsp;&nbsp;${hospital.treatStart}</span>
+            </p>
+            <p class="h4">
+                <i class="material-icons" style="font-weight:bold">alarm_off</i> <span>&nbsp;&nbsp;${hospital.treatEnd}</span>
             </p><br>
             <!-- 해당 병원에 맞는 라벨 출력 -->
             <c:forEach items="${labelList}" var="label">
-                <c:if test="${label.labelCode == 1}">
-                    <i class="material-icons">nights_stay</i>24시간&nbsp;&nbsp;&nbsp;
-                </c:if>
-                <c:if test="${label.labelCode == 2}">
-                    <i class="material-icons">bathtub</i>미용&nbsp;&nbsp;&nbsp;
-                </c:if>
-                <c:if test="${label.labelCode == 3}">
-                    <i class="material-icons">local_parking</i>주차&nbsp;&nbsp;&nbsp;
-                </c:if>
-                <c:if test="${label.labelCode == 4}">
-                    <i class="material-icons">emoji_nature</i>특수동물&nbsp;&nbsp;&nbsp;
-                </c:if>
+                 <c:if test="${label.labelCode == 1 }">
+                     <i class="material-icons"> local_convenience_store </i>24시간&nbsp;&nbsp;&nbsp;
+                 </c:if>
+
+                 <c:if test="${label.labelCode == 2 }">
+                     <i class="material-icons"> local_florist </i>미용&nbsp;&nbsp;&nbsp;
+                 </c:if>
+
+                 <c:if test="${label.labelCode == 3 }">
+                     <i class="material-icons"> local_parking </i>주차&nbsp;&nbsp;&nbsp;
+                 </c:if>
+
+                 <c:if test="${label.labelCode == 4 }">
+                     <i class="material-icons"> emoji_nature </i>특수동물&nbsp;&nbsp;&nbsp;
+                 </c:if>
+                 
+                 <c:if test="${label.labelCode == 5 }">
+                     <i class="material-icons"> check_circle </i>수술
+                 </c:if>
             </c:forEach>
 
-            <br/><br/>
+            <hr>
             <p class="h5">${hospital.info}</p>
 
         </div>
-
-
-        <div class="col-md-5">
+        <div class="col-5">
             <!-- 병원사진 슬라이드 쇼 -->
             <div id="carouselExampleControls" class="carousel slide"
-                 data-ride="carousel" style="width: 380px; margin: 0 auto">
+                 data-ride="carousel" style="width: 400px; margin: 0 auto">
                 <div class="carousel-inner">
 
                     <c:choose>
@@ -83,20 +85,20 @@
                         <c:when test="${picCount eq 1}">
                             <div class="carousel-item active">
                                 <img src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg"
-                                     width="380" height="300">
+                                     width="400px" height="400px">
                             </div>
                         </c:when>
 
                         <c:otherwise>
                             <div class="carousel-item active">
                                 <img src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg"
-                                     width="380" height="300">
+                                     width="400px" height="400px">
                             </div>
 
                             <c:forEach var="i" begin="2" end="${picCount}">
                                 <div class="carousel-item">
                                     <img src="${ctx}/resources/img/${hospital.hospitalId}-${i}.jpg"
-                                         width="380" height="300">
+                                         width="400px" height="400px">
                                 </div>
                             </c:forEach>
                         </c:otherwise>
@@ -119,16 +121,20 @@
 				<i class="material-icons favorite" data-i="white" id=outlined style="cursor: pointer;">favorite_border</i>즐겨찾기
 			</p>
         </div>
+        <div class="col-1"></div>
 
     </div>
-
+</div>
 
     <!-- Related Projects Row -->
-    <br><br><br>
+<br><br><br>
 
-    <div class="container">
+<div class="container-fluid">
+<div class="row">
 
-        <!-- Nav tabs -->
+<!-- Nav tabs -->
+<div class="col-1"></div>
+<div class="col-10">
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#home">Map</a>
@@ -141,9 +147,11 @@
             </li>
         </ul>
 
-        <!-- Tab panes -->
-        <div class="tab-content">
 
+        <!-- Tab panes -->
+        
+        <div class="tab-content">
+		
             <div id="home" class="container tab-pane active"><br>
             
             	<div class='row'>
@@ -252,6 +260,7 @@
                                             <div class="media border p-3">
                                                 <img src="/resources/img/baba.png" class="mr-3 mt-3 rounded-circle"
                                                      style="width: 50px">
+                                                
                                                 <div class="media-body">
 
                                                     <h4><i style="color:gold;font-weight:bold">
@@ -264,9 +273,8 @@
 
                                                     <small><i style="font-weight:bold">baba</i>&nbsp;&nbsp;&nbsp;<i>0000/00/00</i></small>
                                                     <p>아직 리뷰가 존재하지 않습니다</p>
-
                                                 </div>
-
+                                                
                                             </div>
                                         </div>
                                     </li>
@@ -332,9 +340,10 @@
             <!-- Q&A 끝 -->
 
         </div>
-
-    </div>
 </div>
+<div class="col-1"></div>
+    </div>
+</div>    
 
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -384,49 +393,6 @@ geocoder.addressSearch('${hospital.address}', function(result, status) {
 });   
 </script>
 
-<script>
-var h5 = $(".insert");
-
-h5.on("click", "i", function(e){
-	
-	var icon = $(this).attr("data-i");
-	/* 아이콘이 하트면.. 검정 하트로 바뀌기 */
-	if (icon=="white") {
-		
-		var str ="";
-		
-		str += "<i class='material-icons' style='cursor: pointer;'>event</i> 예약하기";	
-		str += "<i class='material-icons favorite' data-i='black' id=filled style='cursor: pointer;'>favorite</i> 즐겨찾기"
-
-		var info = $(".info");
-		var hospitalId = info.find("input[name='hospitalId']");
-
-		favoriteService.addFavorite(
-				{userEmail:"dummy@gmail.com", hospitalId:hospitalId.val()}
-				,
-				function(result){
-					alert("즐겨찾는 병원으로 등록되었습니다.");
-				}
-			);
-	}
-	
-	/* 아이콘이 검정 하트면... 빈 하트로 바뀌기 and 삭제되기 */
-	
-	if (icon=="black") {
-		
-		var str ="";
-		
-		str += "<i class='material-icons' style='cursor: pointer;'>event</i> 예약하기";	
-		str += "<i class='material-icons favorite' data-i='white' id=filled style='cursor: pointer;'>favorite_border</i> 즐겨찾기"
-
-	}
-	
-	h5.html(str);
-	
-
-
-});
-</script>
-
+<%@include file="../includes/footer.jsp" %>
 </body>
 </html>

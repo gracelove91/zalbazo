@@ -89,9 +89,6 @@
                 </div>
                 <button id="join" type="submit" class="btn btn-primary">회원가입</button>
             </form:form>
-            <footer class="text-center" style="max-width: 720px;">
-                <p>Copyright ⓒ 2018 <b>zalbazo</b> All Rights Reserved.</p>
-            </footer>
         </main>
     </div>
 </div>
@@ -107,6 +104,6 @@
         $("#address").val(roadFullAddr);
     }
 </script>
-
+<%@include file="/WEB-INF/views/includes/footer.jsp"%>
 </body>
 </html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.zalbazo.mapper.user.mypage.MyContentMapper">
+
+	<select id="getCommunityList" resultType="kr.zalbazo.model.content.Content">
+		select * from content
+		where category_id = 1
+		and user_email = #{userEmail}
+		order by updated_date desc
+	</select>
+	
+	<select id="getJisikdongList" resultType="kr.zalbazo.model.content.Content">
+		select * from content
+		where category_id = 2
+		and user_email = #{userEmail}
+		order by updated_date desc
+	</select>
+
+	<select id="getReviewList" resultType="kr.zalbazo.model.hospital.HospitalReviewVO">
+		select * from content a, review b
+		where a.content_id = b.content_id
+		and a.user_email = #{userEmail}
+	</select>
+	
+	<select id="getQList" resultType="kr.zalbazo.model.hospital.HospitalQnaVO">
+		select * from content a, hospital_qna b
+		where a.content_id = b.content_id
+		and a.user_email = #{userEmail}
+	</select>
+	
+	<select id="getAList" resultType="kr.zalbazo.model.hospital.HospitalQnaVO">
+		select *
+		from content a, hospital_qna b
+		where a.content_id = b.content_id
+		and qna_type = 'A' and c_group = #{contentId}
+	</select>
+
+	<select id="getReplyList" resultType="kr.zalbazo.model.content.ReplyVO">
+		select * from reply
+		where user_email = #{userEmail}
+	</select>		
+	
+</mapper>

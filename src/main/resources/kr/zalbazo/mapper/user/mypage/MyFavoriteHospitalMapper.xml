@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.zalbazo.mapper.user.mypage.MyFavoriteHospitalMapper">
+	
+	<select id="getList"
+		resultType="kr.zalbazo.model.hospital.Hospital">
+		select distinct favorite_hospital.hospital_id, name, address,
+		treat_start, treat_end, tel
+		from favorite_hospital, hospital
+		where
+		favorite_hospital.hospital_id = hospital.hospital_id
+		and user_email =
+		#{userEmail}
+	</select>
+	
+	<select id="getLabelList"
+		resultType="kr.zalbazo.model.hospital.HospitalLabel">
+		select * from HOSPITAL_LABEL where HOSPITAL_ID =
+		#{hospitalId}
+	</select>
+	
+</mapper>

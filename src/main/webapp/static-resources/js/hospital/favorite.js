@@ -19,9 +19,10 @@ h5.on("click", "i", function(e){
 
 		var info = $(".info");
 		var hospitalId = info.find("input[name='hospitalId']");
+		var userEmail = info.find("input[name='userEmail']");
 
 		favoriteService.addFavorite({
-			userEmail:"dummy@gmail.com", 
+			userEmail:userEmail.val(), 
 			hospitalId:hospitalId.val()}
 				,
 				function(result){

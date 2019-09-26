@@ -24,6 +24,8 @@
 				<h2>즐겨찾는 병원</h2>
 				</br>
 			</div>
+<!-- 즐겨찾는 병원 리스트  -->
+<div class="fav">
 			<table class="table table-striped" style="width: 1150px;">
 
 				<thead>
@@ -48,7 +50,6 @@
 					</tr>
 				</thead>
 				<tbody>
-
 					<c:forEach items="${favoriteHospitalList}" var="favoriteHospital">
 
 						<tr>
@@ -97,8 +98,8 @@
 									value="${favoriteHospital.tel}" /></td>
 
 							<td class="mobile" style="text-align: center;">
-								<button
-									onclick="location.href='remove?id=${favoriteHospital.hospitalId}'">삭제</button>
+								<button class="remove" data-bt="btn"
+									onclick="location.href='remove?hospitalId=${favoriteHospital.hospitalId}'">삭제</button>
 							</td>
 
 						</tr>
@@ -106,6 +107,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
+</div>
 
 
 			<footer class="text-center" style="max-width: 1080px;">
@@ -120,6 +122,9 @@
 
 	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="${ctx}/resources/js/hospital/favorite.js"></script>
+
 
 
 </body>

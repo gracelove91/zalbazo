@@ -1,8 +1,6 @@
 var replyService = (function() {
 
 	function add(body, callback, error) {
-		console.log("add reply");
-
 		$.ajax({
 			type : 'post',
 			url : '/replies/new',
@@ -22,7 +20,6 @@ var replyService = (function() {
 	}
 
 	function getList(param, callback, error) {
-		
 		var contentId = param.contentId;
 		var page = param.page || 1;
 
@@ -40,8 +37,6 @@ var replyService = (function() {
 	}
 	
 	function remove(replyid, callback, error) {
-		console.log("remove : "+body.replyid);
-		
 		$.ajax({
 			type : 'delete',
 			url : '/replies/' + replyid,
@@ -58,9 +53,7 @@ var replyService = (function() {
 		});
 	}
 	
-	function update(body, callback, error) {
-		console.log("replyid : "+body.replyid);
-		
+	function update(body, callback, error) {	
 		$.ajax({
 			type : 'put',
 			url : '/replies/' + body.replyid,
@@ -80,8 +73,6 @@ var replyService = (function() {
 	}
 	
 	function get(replyid, callback, error) {
-		console.log("get : "+replyid);
-		
 		$.get("/replies/" + replyid + ".json", function(result) {
 			
 			if(callback) {

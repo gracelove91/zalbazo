@@ -12,6 +12,7 @@
 <html> 
 
 <head>
+<%@include file="../includes/header.jsp" %>
   <title>지식동 웹 사이트</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,17 +22,20 @@
 </head>
 
 <body>
-<%@include file="../includes/header.jsp" %>
 
-  <div class="container-fluid">
-    <div class="row d-flex d-md-block flex-nowrap wrapper">
-      <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
+<div class="container-fluid">
+   <div class="row">
+       
+       <div class="col-md-2"></div>
+       
+       <div id="main" class="col-md-8">
+       
         <div class="page-header mt-3">
           <h2>지식動</h2>
         </div>
         <p class="lead">반려동물에 대해 궁금한 것을 묻고 답해보세요</p>
         <hr>
-        <table class="table table-striped" style="max-width: 1080px;">
+        <table class="table table-striped">
           <thead>
             <tr>
               <th scope="col" class="mobile" style="width:60px; text-align:center;">번호</th>
@@ -141,12 +145,16 @@
 
 
 
-        <footer class="text-center" style="max-width: 1080px;">
+        <footer class="text-center">
           <p>Copyright ⓒ 2019 <b>zalbazo</b> All Rights Reserved.</p>
         </footer>
-      </main>
+        
+      </div>
+      
+      <div class="col-md-2"></div>
+      
     </div>
-  </div>
+</div>
 
 <!-- 제이쿼리 자바스크립트 추가하기 -->
   <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>

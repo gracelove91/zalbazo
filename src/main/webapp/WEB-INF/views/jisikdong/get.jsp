@@ -162,7 +162,7 @@ ul{
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <!-- 부트스트랩 자바스크립트 추가하기 -->
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${ctx}/resources/reply.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/content/replyFunction.js"></script>
 
 <script>
 $(document).ready(function(){
@@ -399,6 +399,10 @@ $(document).ready(function(){
 				showList(pageNum);
 			});
 		});
+		
+		modalCloseBtn.on("click", function(e) {
+			modal.modal("hide");
+		})
 
 	}); // $(document).ready(function()
 </script>

@@ -390,16 +390,17 @@ $(document).ready(function(){
             });
         });
 
-		modalRemoveBtn.on("click", function (e) {
+        modalRemoveBtn.on("click", function (e) {
 
 			var replyid = modal.data("replyid");
 
 			replyService.remove(replyid, function (result) {
-                alert(result);
-                modal.modal("hide");
-                showList(pageNum);
-            });
-        });
+
+				alert(result);
+				modal.modal("hide");
+				showList(pageNum);
+			});
+		});
         
         modalCloseBtn.on("click", function(e) {
         	modal.modal("hide");

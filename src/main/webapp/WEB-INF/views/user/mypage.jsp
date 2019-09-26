@@ -43,10 +43,10 @@
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
 		      	<br>
 				
-		      	<div class="infoinfo">
+		      	<div class="infoinfo col-10">
 		      	</div>
 		      	
-		      	<span class="float-right col-7">
+		      	<span class="float-right col-3">
 					<button id="modify" class="btn btn-primary">Modify</button>
 				</span>
 		      </div> <!-- 개인정보 수정 -->
@@ -196,52 +196,17 @@
 
 <script type="text/javascript" src="${ctx}/resources/js/user/mycontentFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/mycontent.js"></script>
-
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfoFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myInfo.js"></script>
 
 <script>
-$(document).ready(function() {
-	
-	var userEmail = '<c:out value="${useremail}"/>';
-	
-	var info = $(".infoinfo");
-	
-	myInfoService.getInfoList(userEmail, function(list){
-		
-		var str = "";
-		
-		for(var i = 0, len = list.length||0; i<len; i++) {
-			
- 			str += "<div class='form-group'>";
-			str += "  <span>이메일</span>";
-			str += "  <input type='text' class='form-control col-6' id='email' value='" + list[i].userEmail + "' readonly>";
-			str += "</div>";
-			
- 			str += "<div class='form-group'>";
-			str += "  <span>이름</span>";
-			str += "  <input type='text' class='form-control col-6' id='email' value='" + list[i].name + "'>";
-			str += "</div>";
-			
- 			str += "<div class='form-group'>";
-			str += "  <span>전화번호</span>";
-			str += "  <input type='text' class='form-control col-6' id='email' value='" + list[i].tel + "'>";
-			str += "</div>";
+    function goPopup(){
+        var pop = window.open("jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+    }
 
- 			str += "<div class='form-group'>";
-			str += "  <span>주소</span>";
-			str += "  <input type='text' class='form-control col-6' id='email' value='" + list[i].address + "'>";
-			str += "</div>";
-
- 			str += "<div class='form-group'>";
-			str += "  <span>가입일</span>";
-			str += "  <input type='text' class='form-control col-6' id='email' value='" + myInfoService.displayTime(list[i].joinDate) + "'readonly>";
-			str += "</div>";
-
-		}
-		
-		info.html(str);
-	});
-});
+    function jusoCallBack(roadFullAddr){
+        $("#address").val(roadFullAddr);
+    }
 </script>
 <%@include file="/WEB-INF/views/includes/footer.jsp" %>
 </body>

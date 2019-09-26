@@ -20,77 +20,87 @@
     <!-- 부트스트랩 CSS 추가하기 -->
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-<body>
 <%@include file="/WEB-INF/views/includes/header.jsp"%>
-<div class="container">
-    <div class="row d-flex d-md-block flex-nowrap wrapper">
-        <main id="main" class="col-md-12 float-left col pl-md-5 pt-3 main">
-            <div class="page-header mt-3">
-                <h2>회원가입</h2>
+<body>
+<div class="container-fluid">
+<div class="row d-flex d-md-block flex-nowrap wrapper">
+<main id="main">
+	<div class="page-header row">
+		<div class="col-2"></div>
+   		<div class="col-8">
+   			<br>
+       		<h2>회원가입</h2>
+   			<p class="lead">사용자 정보를 입력해 회원가입을 수행합니다.</p>
+   			<hr>
+   		</div>
+   		<div class="col-2"></div>
+   </div>
+   
+	<div class="row">
+		<div class="col-2"></div>
+        <form:form class="col-8" action="/user/register" method="post"
+                   modelAttribute="user">
+            <input type="hidden" name="role" value="user"/>
+            <div class="form-group">
+                <fieldset>
+                    <form:label path="userEmail">이메일</form:label>
+                    <form:input path="userEmail" required="required" type="email" id="userEmail" class="form-control"
+                                name="userEmail"
+                                placeholder="이메일을 입력하세요."/>
+                    <form:errors path="userEmail" cssClass="text-danger"/>
+                    <div class="form-check" id="id_check"></div>
+                </fieldset>
             </div>
-            <p class="lead">사용자 정보를 입력해 회원가입을 수행합니다.</p>
-            <hr>
-            <form:form class="pt-3 md-3" cssStyle="max-width: 720px" action="/user/register" method="post"
-                       modelAttribute="user">
-                <input type="hidden" name="role" value="user"/>
-                <div class="form-group">
-                    <fieldset>
-                        <form:label path="userEmail">이메일</form:label>
-                        <form:input path="userEmail" required="required" type="email" id="userEmail" class="form-control"
-                                    name="userEmail"
-                                    placeholder="이메일을 입력하세요."/>
-                        <form:errors path="userEmail" cssClass="text-danger"/>
-                        <div class="form-check" id="id_check"></div>
-                    </fieldset>
-                </div>
-                <div class="form-group">
-                    <fieldset>
-                        <form:label path="password">비밀번호</form:label>
-                        <form:input path="password" required="required" type="password" id="password"
-                                    class="form-control" name="password"
-                                    placeholder="비밀번호를 입력하세요."/>
-                        <form:errors path="password" cssClass="text-danger"/>
-                    </fieldset>
-                </div>
-                <div class="form-group">
-                    <fieldset>
-                        <form:label path="password2">비밀번호 확인</form:label>
-                        <form:input path="password2" required="required" type="password" id="password2"
-                                    class="form-control"
-                                    name="password2"
-                                    placeholder="비밀번호 확인을 입력하세요."/>
-                        <form:errors path="password2" cssClass="text-danger"/>
-                    </fieldset>
-                </div>
-                <div class="form-group">
-                    <fieldset>
-                        <form:label path="tel">전화번호</form:label>
-                        <form:input path="tel" type="tel" required="required" class="form-control" id="tel" name="tel"
-                                    placeholder="전화번호를 입력하세요."/>
-                        <form:errors path="tel" cssClass="text-danger"/>
-                    </fieldset>
-                </div>
-                <div class="form-group">
-                    <fieldset>
-                        <form:label path="address">주소</form:label>
-                        <form:input path="address" required="required" type="text" class="form-control" name="address"
-                                    id="address"
-                                    placeholder="주소를 입력하세요." readonly="true"/>
-                        <input type="button" onClick="goPopup();" value="주소찾기"/>
-                    </fieldset>
-                </div>
-                <div class="form-group">
-                    <fieldset>
-                        <form:label path="name" >이름</form:label>
-                        <form:input path="name" type="text" required="required" id="name" class="form-control"
-                                    name="name"
-                                    placeholder="이름을 입력하세요."/>
-                    </fieldset>
-                </div>
-                <button id="join" type="submit" class="btn btn-primary">회원가입</button>
-            </form:form>
-        </main>
-    </div>
+            <div class="form-group">
+                <fieldset>
+                    <form:label path="password">비밀번호</form:label>
+                    <form:input path="password" required="required" type="password" id="password"
+                                class="form-control" name="password"
+                                placeholder="비밀번호를 입력하세요."/>
+                    <form:errors path="password" cssClass="text-danger"/>
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <fieldset>
+                    <form:label path="password2">비밀번호 확인</form:label>
+                    <form:input path="password2" required="required" type="password" id="password2"
+                                class="form-control"
+                                name="password2"
+                                placeholder="비밀번호 확인을 입력하세요."/>
+                    <form:errors path="password2" cssClass="text-danger"/>
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <fieldset>
+                    <form:label path="tel">전화번호</form:label>
+                    <form:input path="tel" type="tel" required="required" class="form-control" id="tel" name="tel"
+                                placeholder="전화번호를 입력하세요."/>
+                    <form:errors path="tel" cssClass="text-danger"/>
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <fieldset>
+                    <form:label path="address">주소</form:label>
+                    <form:input path="address" required="required" type="text" class="form-control" name="address"
+                                id="address"
+                                placeholder="주소를 입력하세요." readonly="true"/>
+                    <input type="button" onClick="goPopup();" value="주소찾기"/>
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <fieldset>
+                    <form:label path="name" >이름</form:label>
+                    <form:input path="name" type="text" required="required" id="name" class="form-control"
+                                name="name"
+                                placeholder="이름을 입력하세요."/>
+                </fieldset>
+            </div>
+            <button id="join" type="submit" class="btn btn-primary">회원가입</button>
+        </form:form>
+        <div class="col-2"></div>
+	</div>
+</main>
+</div>
 </div>
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <!-- 부트스트랩 자바스크립트 추가하기 -->

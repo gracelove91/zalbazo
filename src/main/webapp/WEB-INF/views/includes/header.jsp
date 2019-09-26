@@ -2,216 +2,83 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <style>
-        .babalogo {
-            display: block;
-            margin: 0px auto;
-            margin-top: 100px;
-        }
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <!-- Page Title -->
+    <title>Comport</title>
 
-        .babalogo {
-            display: block;
-            margin: 0px auto;
-            margin-top: 100px;
-        }
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/resources/img/logo/favicon.png" type="image/x-icon">
 
-        <
-        style >
-        .babalogo {
-            display: block;
-            margin: 0px auto;
-            margin-top: 100px;
-        }
-
-
-        .dropdown dd {
-            position: relative;
-        }
-
-        #sel a,
-        #sel:visited {
-            color: #fff;
-            text-decoration: none;
-            outline: none;
-            font-size: 12px;
-        }
-
-        .dropdown dt a {
-            background-color: #4F6877;
-            display: block;
-            padding: 8px 20px 5px 10px;
-            min-height: 25px;
-            line-height: 10px;
-            overflow: hidden;
-            border: 0;
-            width: 272px;
-        }
-
-        .dropdown dt a span,
-        .multiSel span {
-            cursor: pointer;
-            display: inline-block;
-            padding: 0 3px 2px 0;
-        }
-
-        .dropdown dd ul {
-            background-color: #4F6877;
-            border: 0;
-            color: #fff;
-            display: none;
-            left: 0px;
-            padding: 2px 15px 2px 5px;
-            position: absolute;
-            top: 2px;
-            width: 280px;
-            list-style: none;
-            height: 100px;
-            overflow: auto;
-        }
-
-
-    </style>
-
-    <!-- Bootstrap core CSS -->
-    <!-- Custom fonts for this template-->
-    <link href="/resources/vendor/fontawesome-free/css/all.min.css"
-          rel="stylesheet" type="text/css">
-
-    <!-- Page level plugin CSS-->
-    <link href="/resources/vendor/datatables/dataTables.bootstrap4.css"
-          rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="/resources/css/sb-admin.css" rel="stylesheet">
-    <!--  -->
-
-    <link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
-          rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="/resources/vendor/fontawesome-free/css/all.min.css"
-          rel="stylesheet">
-    <link
-            href="/resources/vendor/simple-line-icons/css/simple-line-icons.css"
-            rel="stylesheet" type="text/css">
-    <link
-            href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
-            rel="stylesheet" type="text/css">
-
-    <!-- Custom styles for this template -->
-    <link href="/resources/css/landing-page.min.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/resources/css/animate-3.7.0.css">
+    <link rel="stylesheet" href="/resources/css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" href="/resources/fonts/flat-icon/flaticon.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap-4.1.3.min.css">
+    <link rel="stylesheet" href="/resources/css/owl-carousel.min.css">
+    <link rel="stylesheet" href="/resources/css/nice-select.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
 
 </head>
 
 <body>
-<!-- Masthead -->
-<header class="babaheader" id="babaheader">
-    <%-- <body background="${ctx}/resources/img/index_baba3.png"> --%>
-    <nav class="navbar navbar-expand navbar-light bg-light static-top">
+<!-- Preloader Starts -->
+<div class="preloader">
+    <div class="spinner"></div>
+</div>
+<!-- Preloader End -->
 
-        <a class="navbar-brand" href="/index">
-            <img src="/resources/img/baba.png" width="30" height="30"
-                 class="d-inline-block align-top" alt=""> Zalbazo
-        </a>
-
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown"><a
-                    class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                    role="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"> 게시판 </a>
-
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/jisikdong/list">지식動</a>
-                    <a class="dropdown-item" href="/community/list">커뮤니티</a>
-                </div>
-            </li>
-        </ul>
-
-
-        <!-- Navbar Search -->
-        <form
-                class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"
-                action="/hospital/searchedlist">
-
-            <div class="input-group">
-                <input name="keyword" type="keyword" value="${map.keyword}" class="form-control"
-                       placeholder="검색어를 입력해주세요." aria-label="검색하기" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
+<!-- Header Area Starts -->
+<header class="header-area main-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2" style="text-align: center">
+                <div class="logo-area">
+                    <a href="index.html"><img src="/resources/img/logo.png" alt="logo" width="100px"
+                                              height="100px"></a>
                 </div>
             </div>
-        </form>
-
-        <!-- Navbar -->
-        <ul class="navbar-nav ml-auto ml-md-0">
-            <li class="nav-item dropdown no-arrow mx-1"><a
-                    class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
-                    role="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"> <i class="fas fa-bell fa-fw"></i> <span
-                    class="badge badge-danger">9+</span>
-            </a>
-                <div class="dropdown-menu dropdown-menu-right"
-                     aria-labelledby="alertsDropdown">
-                    <a class="dropdown-item" href="#">Action</a> <a
-                        class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+            <div class="col-lg-9" style="text-align: right">
+                <div class="main-menu">
+                    <ul>
+                        <li class="active"><a href="index.html">home</a></li>
+                        <li><a href="about.html">about us</a></li>
+                        <li><a href="job-category.html">category</a></li>
+                        <li><a href="#">blog</a>
+                            <ul class="sub-menu">
+                                <li><a href="blog-home.html">Blog Home</a></li>
+                                <li><a href="blog-details.html">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact-us.html">contact</a></li>
+                        <li><a href="#">pages</a>
+                            <ul class="sub-menu">
+                                <li><a href="job-search.html">Job Search</a></li>
+                                <li><a href="job-single.html">Job Single</a></li>
+                                <li><a href="pricing-plan.html">Pricing Plan</a></li>
+                                <li><a href="elements.html">Elements</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-btn">
+                            <sec:authorize access="isAnonymous()">
+                                <a href="#" class="login">log in</a>
+                                <a href="#" class="template-btn">sign up</a>
+                            </sec:authorize>
+                            <sec:authorize access="isAuthenticated()">
+                                <sec:authentication property="principal.username"/>
+                            </sec:authorize>
+                        </li>
+                    </ul>
                 </div>
-            </li>
-            <li class="nav-item dropdown no-arrow mx-1"><a
-                    class="nav-link dropdown-toggle" href="#" id="messagesDropdown"
-                    role="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false"> <i class="fas fa-envelope fa-fw"></i> <span
-                    class="badge badge-danger">7</span>
-            </a>
-                <div class="dropdown-menu dropdown-menu-right"
-                     aria-labelledby="messagesDropdown">
-                    <a class="dropdown-item" href="#">Action</a> <a
-                        class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown no-arrow"><a
-                    class="nav-link dropdown-toggle" href="#" id="userDropdown"
-                    role="button" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                <sec:authorize access="isAnonymous()">
-                   <i class="fas">회원가입/로그인</i>
-<%--                    <i class="fas fa-user-circle fa-fw"></i>--%>
-                </sec:authorize>
-                <sec:authorize access="isAuthenticated()">
-                    <sec:authentication property="principal.username"/>
-                </sec:authorize>
-            </a>
-                <div class="dropdown-menu dropdown-menu-right"
-                     aria-labelledby="userDropdown">
-
-                    <sec:authorize access="isAuthenticated()">
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/user/mypage">마이 페이지</a>
-                        <a class="dropdown-item" href="/logout">로그아웃</a>
-                    </sec:authorize>
-                    <sec:authorize access="isAnonymous()">
-                        <a class="dropdown-item" href="/user/register">회원가입</a>
-                        <a class="dropdown-item" href="/login">로그인</a>
-                    </sec:authorize>
-
-                    <%--                  <div class="dropdown-divider"></div>--%>
-                    <%--                  <a class="dropdown-item" href="#" data-toggle="modal"--%>
-                    <%--                     data-target="#logoutModal">로그아웃</a>--%>
-                </div>
-            </li>
-        </ul>
-    </nav>
+            </div>
+        </div>
+    </div>
 </header>
+<!-- Header Area End -->

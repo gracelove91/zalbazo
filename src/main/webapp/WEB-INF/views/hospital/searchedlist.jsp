@@ -19,16 +19,23 @@
 <%@include file="../includes/header.jsp" %>
 
 <div class="container-fluid">
-    <div class="row d-flex d-md-block flex-nowrap wrapper">
-        <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
-            <div class="page-header mt-3">
-                <h2>병원 검색 결과</h2>
-            </div>
-            <p class="lead">병원 리스트</p>
-
-            <table class="table table-striped" style="width: 1150px;">
-
-                <thead>
+<div class="row d-flex d-md-block flex-nowrap wrapper">
+<main id="main">
+<div class="page-header row">
+	<div class="col-1"></div>
+	<div class="col-10">
+		<br>
+    	<h2>병원 검색 결과</h2>
+		<p class="lead">병원 리스트</p>
+	</div>
+	<div class="col-1"></div>
+</div>
+<div class="row">
+	<div class="col-1"></div>
+	<div class="col-10">	
+        <table class="table table-striped">
+			
+			<thead>
                 <tr>
                     <th scope="col" class="mobile"
                         style="width: 150px; text-align: center;">No.</th>
@@ -44,11 +51,9 @@
                         style="width: 700px; text-align: center;">주소</th>
                     <th scope="col" class="mobile"
                         style="width: 400px; text-align: center;">전화번호</th>
-                    <!-- 						<th scope="col" class="mobile"
-                                                style="width: 1000px; text-align: center;">정보</th> -->
                 </tr>
-                </thead>
-                <tbody>
+            </thead>
+            <tbody>
 
                 <c:forEach items="${map.list}" var="hospital">
 
@@ -68,13 +73,12 @@
                                 ${hospital.name}</a><br><br/>
 
                             <c:forEach items="${hospital.label}" var="label">
-
                                 <c:if test="${label.labelCode == 1 }">
                                     <i class="material-icons"> local_convenience_store </i>
                                 </c:if>
 
                                 <c:if test="${label.labelCode == 2 }">
-                                    <i class="material-icons"> spa </i>
+                                    <i class="material-icons"> local_florist </i>
                                 </c:if>
 
                                 <c:if test="${label.labelCode == 3 }">
@@ -82,11 +86,14 @@
                                 </c:if>
 
                                 <c:if test="${label.labelCode == 4 }">
-                                    <i class="material-icons"> pets </i>
+                                    <i class="material-icons"> emoji_nature </i>
                                 </c:if>
-
-
-                            </c:forEach></td>
+                                
+                                <c:if test="${label.labelCode == 5 }">
+                                    <i class="material-icons"> check_circle </i>
+                                </c:if>
+                            </c:forEach>
+                        </td>
 
                         <td class="mobile" style="text-align: center;"><c:out
                                 value="${hospital.treatStart}" /></td>
@@ -100,23 +107,19 @@
                         <td class="mobile" style="text-align: center;"><c:out
                                 value="${hospital.tel}" /></td>
 
-                            <%-- 							<td class="mobile" style="text-align: center;"><c:out
-                                                                value="${hospital.info}" /> </br></td>
-                             --%>
                     </tr>
 
                 </c:forEach>
-                </tbody>
-            </table>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-1"></div>
+</div>            
+</main>
 
-
-            <footer class="text-center" style="max-width: 1080px;">
-                <p>
-                    Copyright ⓒ 2019 <b>zalbazo</b> All Rights Reserved.
-                </p>
-            </footer> </main>
-    </div>
 </div>
+</div>
+<%@include file="../includes/footer.jsp" %>
 
 <!-- 제이쿼리 자바스크립트 추가하기 -->
 

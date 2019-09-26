@@ -177,7 +177,35 @@
 		      </div><!-- 내가 쓴 글 -->
 		      
 		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">예약 내역</div>
-		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">즐겨찾는 병원</div>
+		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">즐겨찾는 병원
+		      <div class="fav">
+			<table class="table table-striped">
+
+				<thead>
+					<tr>
+						<th scope="col" class="mobile"
+							style="width: 150px; text-align: center;">No.</th>
+	
+						<th scope="col" class="mobile"
+							style="width: 600px; text-align: center;">병원명</th>
+						
+						<th scope="col" class="mobile"
+							style="width: 700px; text-align: center;">주소</th>
+						<th scope="col" class="mobile"
+							style="width: 300px; text-align: center;">전화번호<br>
+						</th>
+						<th scope="col" class="mobile"
+							style="width: 350px; text-align: center;"> </th>
+					</tr>
+				</thead>
+				<tbody class="fhlist">
+				
+
+				</tbody>
+			</table>
+			</div>
+		      
+		      </div>
 		      <div class="tab-pane" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">회원 탈퇴</div>
 		    </div>
 		  </div>
@@ -200,6 +228,8 @@
 
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfoFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfo.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospitalFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospital.js"></script>
 
 <script>
     function goPopup(){

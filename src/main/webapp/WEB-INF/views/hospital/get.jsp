@@ -115,6 +115,7 @@
                 </a>
             </div>
             <br>
+<!-- FavoriteHospitalList의 class가 fav여야함 -->
 
 			<p class="h5 heart" style="text-align: center">
 				<i class="material-icons" style="cursor: pointer;">event</i>예약하기

@@ -13,7 +13,6 @@
 
 		<div class="babalogo" id="babalogo">
 			<img src="/resources/img/c_baba_logo2.png"> </br> </br>
-
 		</div>
 
 

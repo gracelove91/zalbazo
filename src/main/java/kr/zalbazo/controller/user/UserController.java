@@ -32,6 +32,7 @@ public class UserController {
 
     @GetMapping("/mypage")
     public String mypage(Principal principal, Model model) {
+
     	model.addAttribute("useremail", principal.getName());
     	return "user/mypage";
     }

@@ -55,6 +55,38 @@
 				  <div class="tab-pane fade" id="nav-b" role="tabpanel" aria-labelledby="nav-b-tab">Q&A</div>
 				  <div class="tab-pane fade" id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab">커뮤니티</div>
 				  <div class="tab-pane fade" id="nav-d" role="tabpanel" aria-labelledby="nav-d-tab">지식동</div>
+				     <table class="table table-striped" style="max-width: 2000px;">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>
+                            <th scope="col" class="mobile" style="text-align:center;">제목</th>
+                            <th scope="col" class="mobile" style="width:120px; text-align:center;">날짜</th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <c:forEach items="${MypostsList}" var="content">
+                            <tr>
+                            
+                                <th scope="row" class="mobile" style="text-align:center;">
+                                    <c:out value="${content.contentId}" />
+                                </th>
+
+
+                                <td>
+                                	 <a class='move' style="color : #000000;" href='<c:out value="${content.contentId}"/>'>
+                    				<c:out value="${content.title}" /></a>
+                    			</td>
+                                
+                                <td class ="mobile" style="text-align:center;">
+                                	 <fmt:formatDate value="${content.createdDate}" pattern="yyyy-MM-dd" />
+                                </td>
+                                
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
 				  <div class="tab-pane fade" id="nav-e" role="tabpanel" aria-labelledby="nav-e-tab">댓글</div>
 				</div>
 				

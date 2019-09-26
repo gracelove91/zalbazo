@@ -19,7 +19,7 @@ public class MyPostsController {
 	
 	private static final Long JISIKDONG_CATEGORY_NUM = 2L;
 
-    @RequestMapping("/myposts/list")
+    @RequestMapping("/")
     public String list(Long categoryId, Model model, Content content){
     	    	    	
     	System.out.println("컨텐츠 ");
@@ -31,7 +31,7 @@ public class MyPostsController {
 
     	model.addAttribute("MypostsList", service.getJisikdongList(categoryId));
     	
-    	return "/user/mypage/myposts/list";
+    	return "/user/mypage";
     }
     
 //    @RequestMapping("/myposts/list")

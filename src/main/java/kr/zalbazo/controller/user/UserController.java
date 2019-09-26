@@ -36,6 +36,7 @@ public class UserController {
     	model.addAttribute("useremail", principal.getName());
     	return "user/mypage";
     }
+    
     @GetMapping("/register")
     public String join(Model model) {
         model.addAttribute("user",new User());

@@ -4,8 +4,11 @@
 <mapper namespace="kr.zalbazo.mapper.content.ContentMapper">
 
     <insert id="insert" parameterType="kr.zalbazo.model.content.Content">
+       <selectKey keyProperty="contentId" resultType="Long" order="BEFORE">
+          select content_seq.nextval from dual
+       </selectKey>
         INSERT into content(CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, CATEGORY_ID, USER_EMAIL)
-        values (CONTENT_SEQ.nextval, #{title}, #{body}, sysdate, sysdate, #{categoryId}, #{userEmail})
+        values (#{contentId}, #{title}, #{body}, sysdate, sysdate, #{categoryId}, #{userEmail})
     </insert>
 
     <update id="update">

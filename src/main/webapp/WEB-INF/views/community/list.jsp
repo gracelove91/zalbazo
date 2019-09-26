@@ -4,26 +4,33 @@
 <!doctype html>
 <html>
 <head>
-    <title>커뮤니티 웹 사이트</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- 부트스트랩 CSS 추가하기 -->
-    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<%@include file="../includes/header.jsp" %>
+<title>커뮤니티 웹 사이트</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- 부트스트랩 CSS 추가하기 -->
+<link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
 
 <body>
-<%@include file="../includes/header.jsp" %>
+
   
     <div class="container-fluid">
-        <div class="row d-flex d-md-block flex-nowrap wrapper">
-            <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
+    
+        <div class="row">
+        
+        	<div class="col-md-2"></div>
+        
+            <div id="main" class="col-md-8">
+                
                 <div class="page-header mt-3">
                     <h2>커뮤니티</h2>
                 </div>
                 <p class="lead">커뮤니티게시판</p>
                 <hr>
-                <table class="table table-striped" style="max-width: 1080px;">
+                
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col" class="mobile" style="width:60px; text-align:center;">번호</th>
@@ -72,7 +79,7 @@
                     </div>
                 </div>
 
-                <div style="max-width: 1080px;">
+                <div>
           			<button id='regBtn' type="button" type="button" class="btn btn-primary float-right" data-dismiss="modal" href="/jisikdong/register">글쓰기</button>
         		</div>
                 
@@ -130,13 +137,15 @@
                     <input type='hidden' name='keyword' value='${pageMaker.cri.keyword}'>
                 </form>
 
-                <footer class="text-center" style="max-width: 1080px;">
+                <footer class="text-center">
                     <p>Copyright ⓒ 2019 <b>zalbazo</b> All Rights Reserved.</p>
                 </footer>
-            </main>
+            </div>
         </div>
+        
+        <div class="col-md-2"></div>
+        
     </div>
-</div>
 
 <!-- 제이쿼리 자바스크립트 추가하기 -->
 

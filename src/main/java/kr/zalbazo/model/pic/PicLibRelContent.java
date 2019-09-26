@@ -11,10 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-public class PicLib {
-	
-	private String uuid ;
-	private String uploadPath;
-	private String fileName;
-
+public class PicLibRelContent {
+	private String uuid;
+	private Long hospitalId;
 }

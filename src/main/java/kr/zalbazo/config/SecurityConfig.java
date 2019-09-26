@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Override
-    public void configure(WebSecurity web)  { // 시큐리티 적용 제외 대상들 (필터를 안거침)
+    public void configure(WebSecurity web)  { // 시큐리티 관련 필터 적용 없이 바로 들어오는 게 가능한 애들
         web.ignoring().mvcMatchers("/resources/**");
         web.ignoring().mvcMatchers("/webjars/**");
     }

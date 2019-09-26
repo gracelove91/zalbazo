@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .mvcMatchers("/", "/login").permitAll()
                 .mvcMatchers("/user/register/**", "/user/jusoPopup").permitAll()
-                .mvcMatchers("/**/register").hasRole("user")
+                .mvcMatchers("/**/register").hasRole("user") // 이런 패턴들을 모두 허용 (권한을 가지면)
                 .mvcMatchers("/user/mypage").hasRole("user")
                 .mvcMatchers("/jisikdong", "/jisikdong/list", "/jisikdong/get").permitAll()
                 .mvcMatchers("/community", "/community/list", "/community/get").permitAll()
@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Override
-    public void configure(WebSecurity web)  {
+    public void configure(WebSecurity web)  { // 시큐리티 적용 제외 대상들 (필터를 안거침)
         web.ignoring().mvcMatchers("/resources/**");
         web.ignoring().mvcMatchers("/webjars/**");
     }

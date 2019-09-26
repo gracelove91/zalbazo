@@ -24,7 +24,9 @@ var favoriteService = (function(){
         });
         
     }
-    
+
+
+  
     
 	function removeFavorite(hospitalId, callback, error) {
 		console.log("remove favorite...");

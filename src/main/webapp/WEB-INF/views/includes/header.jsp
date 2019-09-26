@@ -15,22 +15,7 @@
             margin: 0px auto;
             margin-top: 100px;
         }
-
-
-        .babalogo {
-            display: block;
-            margin: 0px auto;
-            margin-top: 100px;
-        }
-
-        <
-        style >
-        .babalogo {
-            display: block;
-            margin: 0px auto;
-            margin-top: 100px;
-        }
-
+      
 
         .dropdown dd {
             position: relative;

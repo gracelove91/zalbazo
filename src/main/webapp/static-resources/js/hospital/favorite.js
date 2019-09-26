@@ -4,22 +4,6 @@ var hospitalId = info.find("input[name='hospitalId']");
 var fh = $(".fav");
 var bh = $(".favorite");
 
-/*function showFavoriteHospitalList(page) {
-	 favoriteService.getList({hospitalId: hospitalId.val()}, function (list) {
-        var str = "";
-
-        if (list == null || list.length == 0) {
-        	
-       	 alert("냉무");
-       	 
-        	fav.html(str);
-        	return;
-        }
-        
-fav.html("");
-	 }); 
-}  
-*/
 var h5 = $(".heart");
 
 h5.on("click", "i", function(e){

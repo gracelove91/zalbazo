@@ -1,9 +1,7 @@
 package kr.zalbazo.controller.hospital;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.security.Principal;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,14 +33,14 @@ public class MyFavoriteHospitalController {
 
 	
     @GetMapping("/favorite_hospital/list")
-    public String list(Model model, Long hospitalId, kr.zalbazo.model.favorite_hospital.FavoriteHospital favoriteHospital){
+    public String list(Model model, Long hospitalId, kr.zalbazo.model.favorite_hospital.FavoriteHospital favoriteHospital, Principal principal){
 
-        favoriteHospital.setUserEmail("dummy@gmail.com");
+        favoriteHospital.setUserEmail(principal.getName());
         favoriteHospital.setHospitalId(1L);
 
         model.addAttribute("favoriteHospitalList", favoriteHospital_service.getList(favoriteHospital));
 
-        model.addAttribute("userEmail", "dummy@gmail.com");
+        model.addAttribute("userEmail", principal.getName());
 
         List<Hospital> favoriteHospitalList = favoriteHospital_service.getList(favoriteHospital);
         for (int i = 0; i < favoriteHospitalList.size(); i++) {
@@ -54,18 +52,6 @@ public class MyFavoriteHospitalController {
 
         model.addAttribute("favoriteHospitalList", favoriteHospitalList);
         
-        for (int i = 0; i < favoriteHospitalList.size(); i++) {
-       	 for (int j = 0; j < favoriteHospitalList.size(); j++) {
-      			  Long MyhId = favoriteHospital.getHospitalId(); //내가 즐찾하려는 병원의 아이디
-      			  Long hId = favoriteHospitalList.get(i).getHospitalId(); // 이미 즐찾 등록이 된 병원들 중 한 병원의 아이디
-
-      			  if (MyhId==hId) {   				  
-      			  	} else if (favoriteHospitalList.get(j).equals(favoriteHospitalList.get(i))) {
-   					favoriteHospitalList.remove(j);
-    				  }
-      			  }
-       }
- 		  
         return "/user/mypage/favorite_hospital/list";
     }
 }

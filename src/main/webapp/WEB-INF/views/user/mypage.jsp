@@ -61,14 +61,99 @@
 		      </div><!-- 내가 쓴 글 -->
 		      
 		      <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">예약 내역</div>
-		      <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">즐겨찾는 병원</div>
+		      <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">즐겨찾는 병원
+		      <br>
+		      <div class="fav">
+			<table class="table table-striped">
+
+				<thead>
+					<tr>
+						<th scope="col" class="mobile"
+							style="width: 150px; text-align: center;">No.</th>
+						<th scope="col" class="mobile"
+							style="width: 350px; text-align: center;"></th>
+						<th scope="col" class="mobile"
+							style="width: 600px; text-align: center;">병원명</th>
+						<th scope="col" class="mobile"
+							style="width: 200px; text-align: center;">진료시작</th>
+						<th scope="col" class="mobile"
+							style="width: 200px; text-align: center;">진료마감</th>
+						<th scope="col" class="mobile"
+							style="width: 700px; text-align: center;">주소</th>
+						<th scope="col" class="mobile"
+							style="width: 300px; text-align: center;">전화번호<br>
+						</th>
+						<th scope="col" class="mobile"
+							style="width: 350px; text-align: center;"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${favoriteHospitalList}" var="favoriteHospital">
+
+						<tr>
+							<td class="mobile" style="text-align: center;"><c:out
+									value="${favoriteHospital.hospitalId}" /></td>
+
+							<td class="mobile" style="text-align: center;"><a href="#">
+									<img class="img-fluid rounded mb-3 mb-md-0"
+									src="${ctx}/resources/img/${favoriteHospital.hospitalId}-1.jpg" alt="">
+							</a></td>
+							<td><a style="color: #000000;"
+								href='/hospital/get?hospitalId=<c:out value="${favoriteHospital.hospitalId}"/>'>
+									${favoriteHospital.name}</a><br> <br /> 
+
+									<c:forEach items="${favoriteHospital.label}" var="label">
+
+									<c:if test="${label.labelCode == 1 }">
+										<i class="material-icons"> local_convenience_store </i>
+									</c:if>
+
+									<c:if test="${label.labelCode == 2 }">
+										<i class="material-icons"> spa </i>
+									</c:if>
+
+									<c:if test="${label.labelCode == 3 }">
+										<i class="material-icons"> local_parking </i>
+									</c:if>
+
+									<c:if test="${label.labelCode == 4 }">
+										<i class="material-icons"> pets </i>
+									</c:if>
+
+
+								</c:forEach></td>
+
+							<td class="mobile" style="text-align: center;"><c:out
+									value="${favoriteHospital.treatStart}" /></td>
+
+							<td class="mobile" style="text-align: center;"><c:out
+									value="${favoriteHospital.treatEnd}" /></td>
+
+							<td class="mobile" style="text-align: center;"><c:out
+									value="${favoriteHospital.address}" /></td>
+
+							<td class="mobile" style="text-align: center;"><c:out
+									value="${favoriteHospital.tel}" /></td>
+
+							<td class="mobile" style="text-align: center;">
+								<button class="remove" data-bt="btn"
+									onclick="location.href='remove?hospitalId=${favoriteHospital.hospitalId}'">삭제</button>
+							</td>
+
+						</tr>
+
+					</c:forEach>
+				</tbody>
+			</table>
+</div>
+
+		      
+		      </div>
 		      <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">회원 탈퇴</div>
 		    </div>
 		  </div>
   
 </div>
-
-
 
             <footer class="text-center" style="max-width: 1080px;">
                 <p>

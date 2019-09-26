@@ -9,24 +9,23 @@
 	</select>
 	
 
-	<!--  -->
 	<select id="getList" resultType="kr.zalbazo.model.hospital.Hospital">
-
 		<![CDATA[
 			select * 
             from HOSPITAL
    		]]>
 	</select>
 
+
 	<select id="getLabelList" resultType="kr.zalbazo.model.hospital.HospitalLabel">
 		select * from HOSPITAL_LABEL where HOSPITAL_ID = #{hospitalId} 
 	</select>
-	<!--  -->
 	
+
 	<select id="pictureList" resultType="kr.zalbazo.model.pic.PicLib" >
-		select a.pic_lib_id, upload_path, file_name 
+		select a.uuid, upload_path, file_name 
 		from pic_lib a, pic_lib_rel_hospital b
-		where a.pic_lib_id = b.pic_lib_id 
+		where a.uuid = b.uuid 
 			and hospital_id = #{hospitalId}
 	</select> 
 	

@@ -13,16 +13,8 @@
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 		<!-- 부트스트랩 자바스크립트 추가하기 -->
 		<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-		
-
-<link  rel='stylesheet'  href='resources/css/fullcalendar.css'  />  
-<link  rel='stylesheet'  href='resources/css/fullcalendar.min.css'  />  
- <script src='resources/js/moment.min.js'></script>  
-<script src='resources/js/fullcalendar.js'></script>
-<script src='resources/js/fullcalendar.min.js'></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 
 <style>
 
@@ -212,6 +204,11 @@ div.zabuto_calendar div.legend span.badge {
     cursur : pointer;
     }
     
+    td{
+   text-align:center
+    }
+    
+   
 </style>
 
 </head>
@@ -232,11 +229,80 @@ div.zabuto_calendar div.legend span.badge {
       <div class="row"> 
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
 <div id="my-calendar"></div>
-<div id="aa">예약시간</div>
-<div class="timetable">
+
+
+<br>
+<div id='reservedate'>예약날짜</div> 
+<div id='reservetime'> 예약시간</div>
+<br>
+
+<br>
+
+
+<div class="timetable">  
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col" colspan="4" style="text-align:center">예약시간</th>
+    </tr>
+  </thead>
+  <tbody id="tt">  <!-- 테이블작성 -->
+    <tr>
+      
+    </tr>
+   
+  </tbody>
+</table>
+<script>  		//예약시간 생성 
+var start = '${hos.treatStart}';
+var end = '${hos.treatEnd}';
+
+var sft = start.substr(0,2);
+
+var eft = end.substr(0,2);
+var eet = end.substr(3);
+var rowcount =0;
+var count=0;
+var set='00'
+var sset='30';
+sft = parseInt(sft); // start 앞넘버값
+
+eft = parseInt(eft); // end 앞넘버값
+
+
+
+for(sft,count,rowcount;sft<eft;sft++,count++){
+	var obj =$('#tt tr');
+	if(count<2){
+		obj.eq(rowcount).append('<td>'+sft+':'+set+'</td>')
+		obj.eq(rowcount).append('<td>'+sft+':'+sset+'</td>')
+	}
+	
+	
+	if(count==2){
+		$('#tt').append('<tr><td>'+sft+':'+set+'</td><td>'+sft+':'+sset+'</td></tr>')
+		rowcount++;
+		count = 0;
+		
+	}
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+</script>
 
 
 </div> <!-- 타임테이블 -->
+
         </div><!--(./col-lg-12 col-md-12 col-sm-12 col-xs-12"BELOW ROW:)-->
       </div><!--(./row)-->
     </div><!--(./COntainer")-->
@@ -782,10 +848,29 @@ $.fn.zabuto_calendar_language = function (lang) {
       }
     });
     
-    
-    
-    $('#my-calendar').on('mouseenter','.day',function(e){$('.day').css('cursor','pointer');})
-    $('#my-calendar').on('click','.day',function(e){$('#aa').html("예약시간:"+$(this).attr('id')); $('.day').css('background-color','white'); $(this).css('background-color','#CEECF5'); });
+    /* $('#tt').on('click','td',function(e){alert($('this').text())}) */
+  
+        $("#tt tr td").click(function(){
+            var txt = $(this).text();
+            var reservett = document.getElementById('reservetime').innerHTML;
+            var reservedt = document.getElementById('reservedate').innerHTML;
+            $('#tt tr td').css('background-color','white');
+            if(reservedt.length<5){
+            	alert('날짜먼저 선택해주세요');
+            	
+            }
+            else { document.getElementById('reservetime').innerHTML="예약시간 : "+txt;
+            $(this).css({"background-color": "#CEECF5"});	
+            
+            }
+            
+            
+        });
+	
+        $('#tt').on('mouseenter','td',function(e){$('td').css('cursor','pointer');}) //마우스커서 바꾸기
+    $('#my-calendar').on('mouseenter','.day',function(e){$('.day').css('cursor','pointer');}) //마우스커서 바꾸기
+    //날짜입력, 클릭시 색바꿈
+    $('#my-calendar').on('click','.day',function(e){$('#reservedate').html("예약날짜 :  "+$(this).attr('id')); $('.day').css('background-color','white'); $(this).css('background-color','#CEECF5'); });
    
    });
 

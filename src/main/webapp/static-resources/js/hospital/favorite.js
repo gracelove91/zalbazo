@@ -4,6 +4,7 @@ var hospitalId = info.find("input[name='hospitalId']");
 var fh = $(".fav");
 var bh = $(".favorite");
 
+
 /*function showFavoriteHospitalList(page) {
 	 favoriteService.getList({hospitalId: hospitalId.val()}, function (list) {
         var str = "";
@@ -20,7 +21,12 @@ fav.html("");
 	 }); 
 }  
 */
+
+
+
 var h5 = $(".heart");
+
+h5.on('click','#reserve',function(e){location="../calendar?hospitalId="+hospitalId.val();})  //예약하기 페이지전송
 
 h5.on("click", "i", function(e){
 	

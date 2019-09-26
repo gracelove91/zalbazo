@@ -38,7 +38,7 @@
 		      	<p> 주소 : </p>
 		      </div> <!-- 개인정보 수정 -->
 		      
-		      <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">동물 관리</div>
+		      <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">동물관리</div>
 		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
 		      
 				<nav>

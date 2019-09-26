@@ -17,30 +17,10 @@
 		</div>
 
 
-		<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+	
 			<form name="form1" method="Get" action="/hospital/searchedlist">
 
 				<div class="form-row">
-					
-					<div class="dropdown">
-					
-					  <button class="btn btn-secondary dropdown-toggle hida" type="button" id="dropdownMenu1 sel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="width:150px">
-					    라벨검색
-					  </button>
-  
-					  <div class="dropdown-menu" aria-labelledby="dropdownMenu1" style="width:100px">
-					    <button class="dropdown-item" type="button" style="width:150px">24시간</button>
-					    <button class="dropdown-item" type="button" style="width:150px">미용</button>
-					    <button class="dropdown-item" type="button" style="width:150px">주차</button>
-					    <button class="dropdown-item" type="button" style="width:150px">특수동물</button>
-					  </div>
-  
-					</div>
-					
-					
-					
-					
-					
 					
 					<!-- 라벨검색 -->
 					<dl class="dropdown">
@@ -85,7 +65,7 @@
 			</form>
 		</div>
 	</div>
-</div>
+
 
 
 <!-- Bootstrap core JavaScript -->

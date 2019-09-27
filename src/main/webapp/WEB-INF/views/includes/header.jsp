@@ -25,7 +25,9 @@
     <link rel="stylesheet" href="/resources/css/owl-carousel.min.css">
     <link rel="stylesheet" href="/resources/css/nice-select.css">
     <link rel="stylesheet" href="/resources/css/style.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -41,23 +43,18 @@
         <div class="row">
             <div class="col-lg-2" style="text-align: center">
                 <div class="logo-area">
-                    <a href="index.html"><img src="/resources/img/logo.png" alt="logo" width="100px"
+                    <a href="/index"><img src="/resources/img/logo.png" alt="logo" width="100px"
                                               height="100px"></a>
                 </div>
             </div>
             <div class="col-lg-9" style="text-align: right">
                 <div class="main-menu">
                     <ul>
-                        <li class="active"><a href="index.html">home</a></li>
+                        <li class="active"><a href="/index">home</a></li>
                         <li><a href="about.html">about us</a></li>
-                        <li><a href="job-category.html">category</a></li>
-                        <li><a href="#">blog</a>
-                            <ul class="sub-menu">
-                                <li><a href="blog-home.html">Blog Home</a></li>
-                                <li><a href="blog-details.html">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="contact-us.html">contact</a></li>
+                        <li><a href="/jisikdong/list">지식동</a></li>
+                        <li><a href="/community/list">커뮤니티</a></li>
+                        <li><a href="/hospital/list">병원찾기</a></li>
                         <li><a href="#">pages</a>
                             <ul class="sub-menu">
                                 <li><a href="job-search.html">Job Search</a></li>
@@ -68,11 +65,16 @@
                         </li>
                         <li class="menu-btn">
                             <sec:authorize access="isAnonymous()">
-                                <a href="#" class="login">log in</a>
-                                <a href="#" class="template-btn">sign up</a>
+                                <a href="/login" class="login">log in</a>
+                                <a href="/user/register" class="template-btn">sign up</a>
                             </sec:authorize>
+
                             <sec:authorize access="isAuthenticated()">
-                                <sec:authentication property="principal.username"/>
+                                <a href="#"><sec:authentication property="principal.username"/></a>
+                                <ul class="sub-menu">
+                                    <li><a href="/user/mypage">마이페이지</a></li>
+                                    <li><a href="/logout">로그아웃</a></li>
+                                </ul>
                             </sec:authorize>
                         </li>
                     </ul>

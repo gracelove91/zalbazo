@@ -4,7 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!-- Footer Area Starts -->
 <footer class="footer-area section-padding">
-    <div class="footer-widget">
+<%--    <div class="footer-widget">--%>
         <div class="container">
             <div class="row">
                 <div class="col-xl-2 col-lg-3">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+<%--        </div>--%>
     </div>
     <div class="footer-copyright">
         <div class="container">
@@ -78,10 +78,7 @@
 
 
 <!-- Javascript -->
-<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
-<%--<script src="/resources/js/vendor/jquery-2.2.4.min.js"></script>--%>
-<%--<script src="/resources/js/vendor/bootstrap-4.1.3.min.js"></script>--%>
+
 <script src="/resources/vendor/wow.min.js"></script>
 <script src="/resources/vendor/owl-carousel.min.js"></script>
 <script src="/resources/vendor/jquery.nice-select.min.js"></script>

@@ -16,8 +16,7 @@
 			<div class="col-lg-6 align-self-center">
 				<div class="banner-text">
 					<h1>내 반려동물을 <span>잘</span> 봐줄 </br><span>동물병원</span>을 찾아보세요!</h1>
-					<p class="py-7">Wherein herb beginning. Moved after gathering. Sea hi crate fowl man replenish
-						place divided likeness herb one two lnetn Winged moving saw, may over.</p>
+                    <p class="py-7">24시간운영 병원, 응급수술, 특이한 동물까지 다루는 병원을 찾아보세요.</p>
 					<a href="#" class="secondary-btn">병원목록 바로가기<span class="flaticon-next"></span></a>
 					</br></br>
 					<form action="#">
@@ -31,18 +30,7 @@
 		</div>
 	</div>
 </section>
-
 <!-- Banner Area End -->
-
-<!-- Search Area Starts -->
-<div class="search-area">
-	<div class="search-bg">
-		<div class="container">
-
-		</div>
-	</div>
-</div>
-<!-- Search Area End -->
 
 <!-- Feature Area Starts -->
 <section class="feature-area section-padding2">
@@ -59,14 +47,14 @@
 				<div class="single-feature mb-4 mb-lg-0">
 					<h4>커뮤니티게시판</h4>
 					<p class="py-3">자유롭게 소통해보세요.</p>
-					<a href="#" class="secondary-btn">바로가기<span class="flaticon-next"></span></a>
+					<a href="/community/list" class="secondary-btn">바로가기<span class="flaticon-next"></span></a>
 				</div>
 			</div>
 			<div class="col-lg-4">
 				<div class="single-feature">
 					<h4>지식동게시판</h4>
 					<p class="py-3">궁금한 것들을 질문해보세요.</p>
-					<a href="#" class="secondary-btn">바로가기<span class="flaticon-next"></span></a>
+					<a href="/jisikdong/list" class="secondary-btn">바로가기<span class="flaticon-next"></span></a>
 				</div>
 			</div>
 		</div>

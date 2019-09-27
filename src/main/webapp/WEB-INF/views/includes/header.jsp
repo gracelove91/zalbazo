@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="/resources/css/nice-select.css">
     <link rel="stylesheet" href="/resources/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 </head>

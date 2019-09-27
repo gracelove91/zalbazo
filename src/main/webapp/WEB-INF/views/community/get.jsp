@@ -1,12 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+    String ctx = request.getContextPath();
+    pageContext.setAttribute("ctx", ctx);
+%>
+
 <%@include file="../includes/header.jsp" %>
+<title>JisikDong</title>
 <body>
 <section class="feature-area">
     <div class="container">
         <div class="row">
-            <div id="main" class="col-md-8">
+            <div id="main" class="col-md-12">
                 <div class="page-header mt-3">
                     <h5>Community</h5>
                 </div>
@@ -78,11 +84,6 @@
                     </div>
                 </div>
                 <!-- 댓글 끝 -->
-
-                <footer class="text-center">
-                    <p>Copyright ⓒ 2019 <b>잘바조</b> All Rights Reserved.</p>
-                </footer>
-
             </div>
 
         </div>

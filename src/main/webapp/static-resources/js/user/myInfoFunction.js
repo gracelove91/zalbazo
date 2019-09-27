@@ -43,8 +43,30 @@ var myInfoService = (function() {
 		
 	} // getInfoList
 	
+	function update(modimodi, callback, error) {
+		
+		$.ajax({
+			type : 'put',
+			url : '/myinfo/modify',
+			data : JSON.stringify(modimodi),
+			contentType : "application/json; charset=utf-8",
+			success : function(result, status, xhr) {
+				if (callback) {
+					callback(result);
+				}
+			},
+			error : function(xhr, status, er) {
+				if(error) {
+					error(er);
+				}
+			}			
+		});
+		
+	} /// update
+	
 	return {
 		displayTime : displayTime,
-		getInfoList : getInfoList
+		getInfoList : getInfoList,
+		update : update
 	};
 })();

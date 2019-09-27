@@ -7,5 +7,7 @@ import kr.zalbazo.model.user.User;
 public interface MyInfoService {
 	
 	public List<User> getInfoList(String userEmail);
+	
+	public int modify(User user);
 
 }

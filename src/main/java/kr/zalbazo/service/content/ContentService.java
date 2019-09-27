@@ -12,7 +12,6 @@ public interface ContentService {
     Content get(Long contentId);
     boolean modify(Content content);
     boolean remove(Long contentId);
-    //List<Content> getList(Long categoryId);
     List<Content> getList(Criteria cri);
 	int getTotal(Criteria cri);
 	public List<AttachFileDTO> getAttachList(Long contentId);

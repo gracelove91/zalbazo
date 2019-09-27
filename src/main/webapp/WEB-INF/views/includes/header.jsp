@@ -11,9 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- Page Title -->
-    <title>Comport</title>
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="/resources/img/logo/favicon.png" type="image/x-icon">
 

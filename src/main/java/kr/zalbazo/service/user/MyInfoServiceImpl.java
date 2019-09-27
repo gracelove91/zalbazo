@@ -22,4 +22,9 @@ public class MyInfoServiceImpl implements MyInfoService{
 		return myInfoMapper.getInfoList(userEmail);
 	}
 
+	@Override
+	public int modify(User user) {
+		return myInfoMapper.modify(user);
+	}
+
 }

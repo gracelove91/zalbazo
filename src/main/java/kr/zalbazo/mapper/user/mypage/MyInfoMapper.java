@@ -8,4 +8,7 @@ public interface MyInfoMapper {
 
 	// 유저 인포 List
 	public List<User> getInfoList(String userEmail);
+	
+	// 유저 인포 수정
+	public int modify(User userEmail);
 }

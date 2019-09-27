@@ -5,7 +5,31 @@
     String ctx = request.getContextPath();
     pageContext.setAttribute("ctx", ctx);
 %>
+<style>
+    .bigPictureWrapper {
+        position: absolute;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        top: 0%;
+        width: 100%;
+        height: 100%;
+        background-color: linen;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.5);
+    }
 
+    .bigPicture {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bigPicture img {
+        width: 600px;
+    }
+</style>
 <%@include file="../includes/header.jsp" %>
 <title>JisikDong</title>
 <body>
@@ -391,4 +415,6 @@
 
     });
 </script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <%@ include file="../includes/footer.jsp" %>

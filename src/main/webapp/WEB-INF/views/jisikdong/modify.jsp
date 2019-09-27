@@ -2,11 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%@include file="../includes/header.jsp" %>
-<title>지식동 글 보기</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- 부트스트랩 CSS 추가하기 -->
 
 <style>
     .uploadResult {
@@ -60,6 +55,7 @@
         width: 600px;
     }
 </style>
+<%@include file="../includes/header.jsp" %>
 <body>
 <section class="feature-area">
     <div class="container">
@@ -260,7 +256,7 @@
             console.log(operation);
 
             if (operation === 'remove') {
-                formObj.attr("action", "/jisikdong/remove").attr("method","post");
+                formObj.attr("action", "/jisikdong/remove").attr("method", "post");
 
             } else if (operation === 'list') {
                 formObj.attr("action", "/jisikdong/list").attr("method", "get");
@@ -295,4 +291,4 @@
         });
     });
 </script>
-<%@include file="../includes/footer.jsp"%>
+<%@include file="../includes/footer.jsp" %>

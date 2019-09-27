@@ -55,13 +55,8 @@
         width: 600px;
     }
 </style>
-
-<title>지식동 글 쓰기</title>
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <%@include file="../includes/header.jsp" %>
-
+<title>지식동 글 쓰기</title>
 <body>
 <section class="feature-area">
     <div class="container">

@@ -1,28 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!doctype html>
-<html>
-<head>
+
 <%@include file="../includes/header.jsp" %>
-<title>커뮤니티 웹 사이트</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- 부트스트랩 CSS 추가하기 -->
-<link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-</head>
-
-<body>
-
-  
-    <div class="container-fluid">
-    
+<section class="feature-area">
+    <div class="container">
         <div class="row">
-        
-        	<div class="col-md-2"></div>
-        
-            <div id="main" class="col-md-8">
+            <div id="main" class="col-md-12">
                 
                 <div class="page-header mt-3">
                     <h2>커뮤니티</h2>
@@ -136,17 +120,10 @@
                     <input type='hidden' name='type' value='${pageMaker.cri.type}'>
                     <input type='hidden' name='keyword' value='${pageMaker.cri.keyword}'>
                 </form>
-
-                <footer class="text-center">
-                    <p>Copyright ⓒ 2019 <b>zalbazo</b> All Rights Reserved.</p>
-                </footer>
             </div>
         </div>
-        
-        <div class="col-md-2"></div>
-        
     </div>
-
+</section>
 <!-- 제이쿼리 자바스크립트 추가하기 -->
 
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
@@ -219,5 +196,4 @@
     });
 
 </script>
-</body>
-</html>
+<%@ include file="../includes/footer.jsp" %>

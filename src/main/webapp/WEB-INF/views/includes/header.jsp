@@ -10,23 +10,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- Favicon -->
     <link rel="shortcut icon" href="/resources/img/logo/favicon.png" type="image/x-icon">
 
     <!-- CSS Files -->
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/css/animate-3.7.0.css">
     <link rel="stylesheet" href="/resources/css/font-awesome-4.7.0.min.css">
     <link rel="stylesheet" href="/resources/fonts/flat-icon/flaticon.css">
-    <link rel="stylesheet" href="/resources/css/bootstrap-4.1.3.min.css">
     <link rel="stylesheet" href="/resources/css/owl-carousel.min.css">
     <link rel="stylesheet" href="/resources/css/nice-select.css">
     <link rel="stylesheet" href="/resources/css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
-    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+
+
 </head>
 
 <body>
@@ -43,7 +43,7 @@
             <div class="col-lg-2" style="text-align: center">
                 <div class="logo-area">
                     <a href="/index"><img src="/resources/img/logo.png" alt="logo" width="100px"
-                                              height="100px"></a>
+                                          height="100px"></a>
                 </div>
             </div>
             <div class="col-lg-9" style="text-align: right">

@@ -67,7 +67,7 @@
                 </div>
                 <p class="lead">지식동 modify</p>
                 <hr>
-                <form role="form" action="/jisikdong/modify" method="post">
+                <form role="form" action="/jisikdong/modify" method="post" class="form-modify">
 
                     <input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
                     <input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
@@ -245,7 +245,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        var formObj = $("form");
+        var formObj = $(".form-modify");
 
         $('button').on("click", function (e) {
 
@@ -270,6 +270,7 @@
                 formObj.append(amountTag);
                 formObj.append(keywordTag);
                 formObj.append(typeTag);
+                console.dir(formObj);
             } else if (operation === 'modify') {
 
                 console.log("submit clicked");

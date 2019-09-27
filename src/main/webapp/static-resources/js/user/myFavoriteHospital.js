@@ -1,9 +1,8 @@
 $(document).ready(function() {
-	console.log("mypage_myfavorite");
+	//console.log("mypage_myfavorite");
 	
 	var userEmail = '<c:out value="${useremail}"/>';
 	var fhlist = $(".fhlist");
-//	var fhlabel = $(".fhlabel");
 	
 	myFavoriteHospitalService.getList(userEmail, function(list) {
 		
@@ -15,7 +14,7 @@ $(document).ready(function() {
 		
 		for(var i = 0, len = list.length||0; i < len; i++) {
 						
-          console.log(list[i]);
+          //console.log(list[i]);
 			
 			str += "<tr>";
 			str += "	<th scope='row' class='mobile' style='width: 150px; text-align:center;'>" + list[i].hospitalId + "</th>";

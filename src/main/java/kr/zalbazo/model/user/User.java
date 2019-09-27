@@ -31,6 +31,8 @@ public class User {
     private String tel;
 
     private String address;
+    
+    @NotEmpty(message = "비어있습니다")
     private String name;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)

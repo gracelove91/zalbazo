@@ -154,7 +154,7 @@ $(document).ready(function() {
         }
 		
 		for (let i = 0, len = list.length || 0; i < len; i++) {
-			console.log(list[i]);
+			//console.log(list[i]);
 	   		let type = list[i].qnaType;
 	        let group = list[i].cgroup;
 	        

@@ -44,10 +44,30 @@
 		      	<br>
 				
 		      	<div class="infoinfo">
+		      		<div class='form-group a'>
+					  <span>이메일</span>
+					  <input type='text' class='form-control col-8' id='email' name='email' readonly>
+					</div>
+		      		<div class='form-group a'>
+					  <span>이름</span>
+					  <input type='text' class='form-control col-8' id='name' name='name' value=''>
+					</div>
+		      		<div class='form-group a'>
+					  <span>전화번호</span>
+					  <input type='text' class='form-control col-8' id='tel' name='tel' value=''>
+					</div>
+		      		<div class='form-group a'>
+					  <span>주소</span>
+					  <input type='text' class='form-control col-8' id='address' name='address' value='' readonly>
+					</div>
+		      		<div class='form-group a'>
+					  <span>가입일</span>
+					  <input type='text' class='form-control col-8' id='joinDate' name='joinDate' readonly>
+					</div>																		
 		      	</div>
 		      	
-				<button id="modify" class="btn btn-primary">Modify</button>
-				<br>
+				<button id="modifyBtn" class="btn btn-primary modifyBtn">Modify</button>
+				<br><br>
 		      </div> <!-- 개인정보 수정 -->
 		      
 		      <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">동물 관리</div>

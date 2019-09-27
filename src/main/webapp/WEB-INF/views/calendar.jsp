@@ -230,11 +230,17 @@ div.zabuto_calendar div.legend span.badge {
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
 <div id="my-calendar"></div>
 
-
+<form  action ='/calendar'onsubmit="return check()" method="post">
 <br>
+<input type="hidden" id='d' name='reservedate' value=''>   
+<input type="hidden" id='t' name='reservetime' value=''>
+<input type="hidden" id='animal' name='animalId' value=''>  
+<input type="hidden" id='hospital' name='hospitalId' value='${hos.hospitalId}'>  
+
 <div id='reservedate'>예약날짜</div> 
 <div id='reservetime'> 예약시간</div>
 <br>
+
 
 <br>
 
@@ -254,7 +260,35 @@ div.zabuto_calendar div.legend span.badge {
    
   </tbody>
 </table>
+<button type ="submit"" style='float: right')>예약하기</button>
+</form>
 <script>  		//예약시간 생성 
+
+function check() {
+
+	  if($('#d').val() == "") {
+
+	    alert("날짜를 입력해 주세요.");
+
+	    
+
+	    return false;
+
+	  }
+
+	  else if($('#t').val() == "") {
+
+	    alert("시간을 입력해 주세요.");
+
+	    return false;
+
+	  }
+
+	  else return "index";
+}
+
+
+
 var start = '${hos.treatStart}';
 var end = '${hos.treatEnd}';
 
@@ -860,6 +894,7 @@ $.fn.zabuto_calendar_language = function (lang) {
             	
             }
             else { document.getElementById('reservetime').innerHTML="예약시간 : "+txt;
+            $('#t').val(txt);
             $(this).css({"background-color": "#CEECF5"});	
             
             }
@@ -870,7 +905,8 @@ $.fn.zabuto_calendar_language = function (lang) {
         $('#tt').on('mouseenter','td',function(e){$('td').css('cursor','pointer');}) //마우스커서 바꾸기
     $('#my-calendar').on('mouseenter','.day',function(e){$('.day').css('cursor','pointer');}) //마우스커서 바꾸기
     //날짜입력, 클릭시 색바꿈
-    $('#my-calendar').on('click','.day',function(e){$('#reservedate').html("예약날짜 :  "+$(this).attr('id')); $('.day').css('background-color','white'); $(this).css('background-color','#CEECF5'); });
+    $('#my-calendar').on('click','.day',function(e){$('#reservedate').html("예약날짜 :  "+$(this).attr('id')); $('.day').css('background-color','white'); $(this).css('background-color','#CEECF5');
+    $('#d').val($(this).attr('id')) });
    
    });
 

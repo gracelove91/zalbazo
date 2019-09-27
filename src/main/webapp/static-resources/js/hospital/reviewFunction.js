@@ -1,4 +1,4 @@
-console.log("Hospital Review");
+console.log("병원리뷰!");
 
 var reviewService = (function() {
 	

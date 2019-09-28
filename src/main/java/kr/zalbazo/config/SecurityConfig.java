@@ -28,7 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
-                .mvcMatchers("/", "/login").anonymous()
+                .mvcMatchers("/").permitAll()
+                .mvcMatchers("/login").anonymous()
                 .mvcMatchers("/user/register/**", "/user/jusoPopup").permitAll()
                 .mvcMatchers("/**/register").hasRole("user")
                 .mvcMatchers("/user/mypage").hasRole("user")

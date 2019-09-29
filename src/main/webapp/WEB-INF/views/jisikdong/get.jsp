@@ -5,6 +5,7 @@
     String ctx = request.getContextPath();
     pageContext.setAttribute("ctx", ctx);
 %>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
     .bigPictureWrapper {
         position: absolute;
@@ -83,7 +84,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="far fa-comments"></i> Reply
+                                <i class="material-icons">forum</i> Reply
                                 <span class="float-right">
 								<button id='addReplyBtn' class='btn btn-primary btn-sm'>New Reply</button>
 							</span>

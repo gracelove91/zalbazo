@@ -53,7 +53,7 @@
 					  <input type='text' class='form-control col-8' id='name' name='name' value=''>
 					</div>
 		      		<div class='form-group a'>
-					  <span>전화번호</span><span style="font-size: smaller;">000-0000-0000형태로 입력해주세요</span>
+					  <span>전화번호</span>
 					  <input type='text' class='form-control col-8' id='tel' name='tel' value=''>
 					</div>
 		      		<div class='form-group a'>

@@ -1,10 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%
-    String ctx = request.getContextPath();
-    pageContext.setAttribute("ctx", ctx);
-%>
+
+
 <style>
     .uploadResult {
         width: 100%;
@@ -63,18 +61,18 @@
     <div class="container">
         <div class="row">
             <main id="main" class="col-md-12">
+
                 <div class="page-header mt-3">
-                    <h2>커뮤 글 수정하기</h2>
+                    <h2>커뮤니티 글 수정하기</h2>
                 </div>
-                <p class="lead">커뮤 modify</p>
+                <p class="lead">커뮤니티동 modify</p>
                 <hr>
-                <form role="form" action="/community/modify" method="post">
+                <form role="form" action="/community/modify" method="post" class="form-modify">
 
-                    <input type="hidden" name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
-                    <input type="hidden" name='amount' value='<c:out value="${cri.amount}"/>'>
-                    <input type="hidden" name='type' value='<c:out value="${cri.type}"/>'>
-                    <input type="hidden" name='keyword' value='<c:out value="${cri.keyword}"/>'>
-
+                    <input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+                    <input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+                    <input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
+                    <input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
 
                     <div class="form-group">
                         <input type="hidden" class="form-control" id="contentId" name="contentId"
@@ -87,8 +85,7 @@
                     <div class="form-group">
                         <label>EMAIL</label>
                         <input type="text" class="form-control" id="userEmail" name="userEmail"
-                               value="${content.userEmail}"
-                               readonly="readonly">
+                               value="${content.userEmail}" readonly="readonly">
                     </div>
                     <div class="form-group">
                         <label>제목</label>
@@ -99,7 +96,6 @@
                         <textarea class="form-control" style="height: 320px" id="body"
                                   name="body">${content.body}</textarea>
                     </div>
-
 
                     <!-- 파일 첨부 부분 -->
                     <div class="row">
@@ -121,11 +117,18 @@
                     <button type="submit" data-oper='modify' class="btn btn-outline-primary">Modify</button>
                     <button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
                     <button type="submit" data-oper='list' class="btn btn-primary">List</button>
+
                 </form>
             </main>
         </div>
     </div>
 </section>
+</body>
+<!-- 제이쿼리 자바스크립트 추가하기 -->
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<!-- 부트스트랩 자바스크립트 추가하기 -->
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 <script>
     $(document).ready(function () {
         (function () {
@@ -242,35 +245,32 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        var formObj = $("form");
+        var formObj = $(".form-modify");
 
         $('button').on("click", function (e) {
 
             e.preventDefault();
 
-            var contentId = '<c:out value="${content.contentId}"/>';
             var operation = $(this).data("oper");
 
             console.log(operation);
 
             if (operation === 'remove') {
-                formObj.attr("action", "/community/remove");
+                formObj.attr("action", "/community/remove").attr("method", "post");
 
             } else if (operation === 'list') {
                 formObj.attr("action", "/community/list").attr("method", "get");
-
                 var pageNumTag = $("input[name='pageNum']").clone();
                 var amountTag = $("input[name='amount']").clone();
                 var keywordTag = $("input[name='keyword']").clone();
                 var typeTag = $("input[name='type']").clone();
 
                 formObj.empty();
-
                 formObj.append(pageNumTag);
                 formObj.append(amountTag);
                 formObj.append(keywordTag);
                 formObj.append(typeTag);
-
+                console.dir(formObj);
             } else if (operation === 'modify') {
 
                 console.log("submit clicked");
@@ -292,4 +292,4 @@
         });
     });
 </script>
-<%@ include file="../includes/footer.jsp" %>
+<%@include file="../includes/footer.jsp" %>

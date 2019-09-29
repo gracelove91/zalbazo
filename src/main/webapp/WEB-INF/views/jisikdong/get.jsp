@@ -149,251 +149,252 @@
 <script type="text/javascript" src="${ctx}/resources/js/content/replyFunction.js"></script>
 
 <script>
-    $(document).ready(function () {
-        (function () {
-            var contentId = '<c:out value="${content.contentId}"/>';
+$(document).ready(function () {
 
-            $.getJSON("/jisikdong/getAttachList", {contentId: contentId}, function (arr) {
-                console.log(arr);
+    var contentIdValue = '<c:out value="${content.contentId}"/>';
+    console.log(contentIdValue);
+    var bodyUL = $(".list-group-flush");
 
-                var str = "";
+    showList(1);
 
-                $(arr).each(function (i, attach) {
-                    var fileCallPath = encodeURIComponent(attach.uploadPath + "/" + attach.uuid + "_" + attach.fileName);
+    function showList(page) {
 
-                    str += "<li data-path='" + attach.uploadPath + "' data-uuid='" + attach.uuid + "' data-filename='" + attach.fileName + "' ></div>";
-                    str += "<img width='410' src='/content/display?fileName=" + fileCallPath + "'></div></li><br>";
+        replyService.getList({contentId: contentIdValue, page: page || 1}, function (replyCnt, list) {
 
-                });
-                $(".uploadResult ul").html(str);
-            });
+            if (page == -1) {
+                pageNum = Math.ceil(replyCnt / 10.0);
+                showList(pageNum);
+                return;
+            }
 
-        })();
+            var str = "";
 
+            if (list == null || list.length == 0) {
 
-        // 사진 클릭하면 원본 이미지 뜸
-        $(".uploadResult").on("click", "li", function (e) {
-            console.log("view image");
-            var liObj = $(this);
-
-            var path = encodeURIComponent(liObj.data("path") + "/" + liObj.data("uuid") + "_" + liObj.data("filename"));
-
-            showImage(path.replace(new RegExp(/\\/g), "/"));
-        });
-
-
-        // 클릭하면 원본 이미지 보여주는 메서드
-        function showImage(fileCallPath) {
-            $(".bigPictureWrapper").css("display", "flex").show();
-
-            $(".bigPicture").html("<img src='/content/display?fileName=" + fileCallPath + "'>").animate({
-                width: '100%',
-                height: '100%'
-            }, 1000);
-        }
-
-
-        // 원본 이미지 클릭하면 사라지는 기능
-        $(".bigPictureWrapper").on("click", function (e) {
-            $(".bigPicture").animate({width: '0%', height: '0%'}, 1000);
-            setTimeout(function () {
-                $('.bigPictureWrapper').hide();
-            }, 1000);
-        });
-
-
-    });
-</script>
-<script>
-    $(document).ready(function () {
-
-        var contentIdValue = '<c:out value="${content.contentId}"/>';
-        var bodyUL = $(".list-group-flush");
-
-        showList(1);
-
-
-        function showList(page) {
-
-            console.log("!!!!" + page);
-
-            replyService.getList({contentId: contentIdValue, page: page || 1}, function (replyCnt, list) {
-
-                if (page == -1) {
-                    pageNum = Math.ceil(replyCnt / 10.0);
-                    showList(pageNum);
-                    return;
-                }
-
-                var str = "";
-
-                if (list == null || list.length == 0) {
-
-
-                    str += "<li class='list-group-item' data-replyid='12'>";
-                    str += "	<div>";
-                    str += "    	<div class='header'>";
-                    str += " 			<strong class='primary-font'>user00</strong>";
-                    str += "       		<small class='pull-right text-muted'>2018-01-01 00:00</small>";
-                    str += "   		</div>";
-                    str += "		<p>첫번째 댓글을 달아보세요!</p>";
-                    str += "	</div>";
-                    str += "</li>";
-
-                    bodyUL.html(str);
-                    return;
-                }
-
-                for (var i = 0, len = list.length || 0; i < len; i++) {
-                    str += "<li class='list-group-item' data-replyid='" + list[i].replyid + "'>";
-                    str += "	<div><div class='header'><strong class='primary-font'>[" + list[i].replyid + "]" + list[i].userEmail + "</strong>";
-                    str += "		<small class='pull-right text-muted'>" + replyService.displayTime(list[i].createdDate) + "</small></div>";
-                    str += "			<p>" + list[i].body + "</p></div></li>";
-                }
+                str += "<li class='list-group-item' data-replyid='12'>";
+                str += "	<div>";
+                str += "    	<div class='header'>";
+                str += " 			<strong class='primary-font'>user00</strong>";
+                str += "       		<small class='pull-right text-muted'>2018-01-01 00:00</small>";
+                str += "   		</div>";
+                str += "		<p>첫번째 댓글을 달아보세요!</p>";
+                str += "	</div>";
+                str += "</li>";
 
                 bodyUL.html(str);
-
-                showReplyPage(replyCnt);
-
-            }); // end list function
-        } // end showList function
-
-        var pageNum = 1;
-        var replyPageFooter = $(".panel-footer");
-
-        function showReplyPage(replyCnt) {
-
-            var endNum = Math.ceil(pageNum / 10.0) * 10;
-            var startNum = endNum - 9;
-
-            var prev = startNum != 1;
-            var next = false;
-
-            if (endNum * 10 >= replyCnt) {
-                endNum = Math.ceil(replyCnt / 10.0);
+                return;
             }
 
-            if (endNum * 10 < replyCnt) {
-                next = true;
+            for (var i = 0, len = list.length || 0; i < len; i++) {
+                str += "<li class='list-group-item' data-replyid='" + list[i].replyid + "'>";
+                str += "	<div><div class='header'><strong class='primary-font'>[" + list[i].replyid + "]" + list[i].userEmail + "</strong>";
+                str += "		<small class='pull-right text-muted'>" + replyService.displayTime(list[i].createdDate) + "</small></div>";
+                str += "			<p>" + list[i].body + "</p></div></li>";
             }
 
-            var str = "<ul class='pagination pull-right'>";
+            bodyUL.html(str);
 
-            if (prev) {
-                str += "<li class='page-item'><a class='page-link' href='" + (startNum - 1) + "'>Previous</a></li>";
-            }
+            showReplyPage(replyCnt);
 
-            for (var i = startNum; i <= endNum; i++) {
-                var active = pageNum == i ? "active" : "";
-                str += "<li class='page-item " + active + " '><a class='page-link' href='" + i + "'>" + i + "</a></li>";
-            }
+        }); // end list function
+    } // end showList function
 
-            if (next) {
-                str += "<li class='page-item'><a class='page-link' href='" + (endNum + 1) + "'>Next</a></li>";
-            }
-            str += "</ul></div>";
-            replyPageFooter.html(str);
+    var pageNum = 1;
+    var replyPageFooter = $(".panel-footer");
+
+    function showReplyPage(replyCnt) {
+
+        var endNum = Math.ceil(pageNum / 10.0) * 10;
+        var startNum = endNum - 9;
+
+        var prev = startNum != 1;
+        var next = false;
+
+        if (endNum * 10 >= replyCnt) {
+            endNum = Math.ceil(replyCnt / 10.0);
         }
 
-        replyPageFooter.on("click", "li a", function (e) {
-            e.preventDefault();
-            var targetPageNum = $(this).attr("href");
-            pageNum = targetPageNum;
-            showList(pageNum);
-        });
+        if (endNum * 10 < replyCnt) {
+            next = true;
+        }
+
+        var str = "<ul class='pagination pull-right'>";
+
+        if (prev) {
+            str += "<li class='page-item'><a class='page-link' href='" + (startNum - 1) + "'>Previous</a></li>";
+        }
 
 
-        var modal = $(".modal");
-        var modalInputBody = modal.find("input[name='body']");
-        var modalInputUserEmail = modal.find("input[name='userEmail']");
-        var modalInputCreatedDate = modal.find("input[name='createdDate']");
+        for (var i = startNum; i <= endNum; i++) {
+            var active = pageNum == i ? "active" : "";
+            str += "<li class='page-item " + active + " '><a class='page-link' href='" + i + "'>" + i + "</a></li>";
+        }
 
-        var modalModBtn = $("#modalModBtn");
-        var modalRemoveBtn = $("#modalRemoveBtn");
-        var modalRegisterBtn = $("#modalRegisterBtn");
-        var modalCloseBtn = $("#modalCloseBtn");
+        if (next) {
+            str += "<li class='page-item'><a class='page-link' href='" + (endNum + 1) + "'>Next</a></li>";
+        }
 
-        $("#addReplyBtn").on("click", function (e) {
+        str += "</ul></div>";
+
+        //console.log(str);
+
+        replyPageFooter.html(str);
+    }
+
+    replyPageFooter.on("click", "li a", function (e) {
+        e.preventDefault();
+        var targetPageNum = $(this).attr("href");
+        pageNum = targetPageNum;
+        showList(pageNum);
+    });
+
+
+    var modal = $(".modal");
+    var modalInputBody = modal.find("input[name='body']");
+    var modalInputUserEmail = modal.find("input[name='userEmail']");
+    var modalInputCreatedDate = modal.find("input[name='createdDate']");
+
+    var modalModBtn = $("#modalModBtn");
+    var modalRemoveBtn = $("#modalRemoveBtn");
+    var modalRegisterBtn = $("#modalRegisterBtn");
+    var modalCloseBtn = $("#modalCloseBtn");
+
+    $("#addReplyBtn").on("click", function (e) {
+
+        modal.find("input").val("");
+        modalInputCreatedDate.closest("div").hide();
+        modal.find("button[id != 'modalCloseBtn']").hide();
+
+        modalRegisterBtn.show();
+
+        $(".modal").modal("show");
+    });
+
+    modalRegisterBtn.on("click", function (e) {
+
+        var body = {
+            body: modalInputBody.val(),
+            userEmail: modalInputUserEmail.val(),
+            contentId: contentIdValue
+        };
+
+        replyService.add(body, function (result) {
+            alert(result);
 
             modal.find("input").val("");
-            modalInputCreatedDate.closest("div").hide();
-            modal.find("button[id != 'modalCloseBtn']").hide();
+            modal.modal("hide");
 
-            modalRegisterBtn.show();
+            showList(-1);
+        });
+    });
+
+    $(".list-group-flush").on("click", "li", function (e) {
+
+        var replyid = $(this).data("replyid");
+
+        replyService.get(replyid, function (body) {
+
+            modalInputBody.val(body.body);
+            modalInputUserEmail.val(body.userEmail); // 이것도 readonly처리 해야할까?
+            modalInputCreatedDate.val(replyService.displayTime(body.createdDate)).attr("readonly", "readonly");
+            modal.data("replyid", body.replyid);
+
+            modal.find("button[id != 'modalCloseBtn']").hide();
+            modalModBtn.show();
+            modalRemoveBtn.show();
 
             $(".modal").modal("show");
         });
 
-        modalRegisterBtn.on("click", function (e) {
+        console.log(replyid);
+    });
 
-            var body = {
-                body: modalInputBody.val(),
-                userEmail: modalInputUserEmail.val(),
-                contentId: contentIdValue
-            };
+    modalModBtn.on("click", function (e) {
 
-            replyService.add(body, function (result) {
-                alert(result);
+        var body = {replyid: modal.data("replyid"), body: modalInputBody.val()};
 
-                modal.find("input").val("");
-                modal.modal("hide");
+        replyService.update(body, function (result) {
 
-                showList(-1);
-            });
-        });
-
-        $(".list-group-flush").on("click", "li", function (e) {
-
-            var replyid = $(this).data("replyid");
-
-            replyService.get(replyid, function (body) {
-
-                modalInputBody.val(body.body);
-                modalInputUserEmail.val(body.userEmail); // 이것도 readonly처리 해야할까?
-                modalInputCreatedDate.val(replyService.displayTime(body.createdDate)).attr("readonly", "readonly");
-                modal.data("replyid", body.replyid);
-
-                modal.find("button[id != 'modalCloseBtn']").hide();
-                modalModBtn.show();
-                modalRemoveBtn.show();
-
-                $(".modal").modal("show");
-            });
-
-            console.log(replyid);
-        });
-
-        modalModBtn.on("click", function (e) {
-
-            var body = {replyid: modal.data("replyid"), body: modalInputBody.val()};
-
-            replyService.update(body, function (result) {
-
-                alert(result);
-                modal.modal("hide");
-                showList(pageNum);
-            });
-        });
-
-        modalRemoveBtn.on("click", function (e) {
-
-            var replyid = modal.data("replyid");
-
-            replyService.remove(replyid, function (result) {
-
-                alert(result);
-                modal.modal("hide");
-                showList(pageNum);
-            });
-        });
-
-        modalCloseBtn.on("click", function (e) {
+            alert(result);
             modal.modal("hide");
-        })
+            showList(pageNum);
+        });
+    });
 
-    }); // $(document).ready(function()
+    modalRemoveBtn.on("click", function (e) {
+
+        var replyid = modal.data("replyid");
+
+        replyService.remove(replyid, function (result) {
+
+            alert(result);
+            modal.modal("hide");
+            showList(pageNum);
+        });
+    });
+
+    modalCloseBtn.on("click", function (e) {
+        modal.modal("hide");
+    });
+
+}); // $(document).ready(function()
 </script>
+<script>
+$(document).ready(function () {
+    (function () {
+        var contentId = '<c:out value="${content.contentId}"/>';
 
+        $.getJSON("/jisikdong/getAttachList", {contentId: contentId}, function (arr) {
+            console.log(arr);
+
+            var str = "";
+
+            $(arr).each(function (i, attach) {
+                var fileCallPath = encodeURIComponent(attach.uploadPath + "/" + attach.uuid + "_" + attach.fileName);
+
+                str += "<li data-path='" + attach.uploadPath + "' data-uuid='" + attach.uuid + "' data-filename='" + attach.fileName + "' ></div>";
+                str += "<img width='410' src='/content/display?fileName=" + fileCallPath + "'></div></li><br>";
+
+            });
+            $(".uploadResult ul").html(str);
+        });
+
+    })();
+
+
+    // 사진 클릭하면 원본 이미지 뜸
+    $(".uploadResult").on("click", "li", function (e) {
+        console.log("view image");
+        var liObj = $(this);
+
+        var path = encodeURIComponent(liObj.data("path") + "/" + liObj.data("uuid") + "_" + liObj.data("filename"));
+
+        showImage(path.replace(new RegExp(/\\/g), "/"));
+    });
+
+
+    // 클릭하면 원본 이미지 보여주는 메서드
+    function showImage(fileCallPath) {
+        $(".bigPictureWrapper").css("display", "flex").show();
+
+        $(".bigPicture").html("<img src='/content/display?fileName=" + fileCallPath + "'>").animate({
+            width: '100%',
+            height: '100%'
+        }, 1000);
+    }
+
+
+    // 원본 이미지 클릭하면 사라지는 기능
+    $(".bigPictureWrapper").on("click", function (e) {
+        $(".bigPicture").animate({width: '0%', height: '0%'}, 1000);
+        setTimeout(function () {
+            $('.bigPictureWrapper').hide();
+        }, 1000);
+    });
+
+
+});
+</script>
 <script>
     console.log("JS TEST");
 

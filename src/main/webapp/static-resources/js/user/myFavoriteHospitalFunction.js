@@ -16,10 +16,9 @@ var myFavoriteHospitalService = (function() {
 			}
 		});
 		
-	} 
+	}
 	
 	return {
-	
 		getList : getList
 	};
 })();

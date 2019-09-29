@@ -183,7 +183,7 @@
                                         <div class="container mt-3">
                             
                                         	<!-- 리뷰 -->
-                                        	<div class="info container">
+                                        	<div class="info container" style="background-color:white;">
 							                    <input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com">
 							                    <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
 							

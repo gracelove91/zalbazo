@@ -4,6 +4,8 @@ $(document).ready(function() {
 	var userEmail = '<c:out value="${useremail}"/>';
 	var fhlist = $(".fhlist");
 	
+	var removeBtn = $(".remove");
+	
 	myFavoriteHospitalService.getList(userEmail, function(list) {
 		
 		var str = "";
@@ -32,59 +34,16 @@ $(document).ready(function() {
 			str += "</td>";
 			
 			str += "<td style='width: 350px; text-align: center;'>";
-			str += "  <a class='move' style='color : #000000;' >"+ 
-			"<button class='remove' data-bt='btn'"+" onclick='location.href='remove?hospitalId="
-			+list[i].hospitalId+"''>삭제</button>"+"</td></a>";
+			str += "  <a class='move' style='color : #000000;' >";
+			str += "  <button class='remove' id='"+ list[i].hospitalId +"'data-bt='btn'>삭제</button></a>";
 			str += "</td>";
 
 			str += "</tr>";
 		
 		} // for
 		
-		
-		
-		
-		
-		
-		
 		fhlist.html(str);
 	});
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	myFavoriteHospitalService.getLabelList(hospitalId, function(list) {
-//		
-//		var str = "";
-//		
-//		if(list == null || list.length == 0) {
-//			return;
-//		}
-//		
-//		for(var i = 0, len = list.length||0; i < len; i++) {
-//	
-//				str +=
-//				str +=
-//				str +=
-//				str +=
-//				str +=
-//				str +=		
-//		} 
-//		
-//		fhlabel.html(str);
-//	});
-	
-});
+}); // function end

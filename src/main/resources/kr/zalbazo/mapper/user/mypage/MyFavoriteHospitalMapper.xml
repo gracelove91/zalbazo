@@ -3,8 +3,7 @@
 
 <mapper namespace="kr.zalbazo.mapper.user.mypage.MyFavoriteHospitalMapper">
 	
-	<select id="getList"
-		resultType="kr.zalbazo.model.hospital.Hospital">
+	<select id="getList" resultType="kr.zalbazo.model.hospital.Hospital">
 		select distinct favorite_hospital.hospital_id, name, address,
 		treat_start, treat_end, tel
 		from favorite_hospital, hospital

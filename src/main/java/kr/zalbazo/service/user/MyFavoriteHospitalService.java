@@ -11,8 +11,6 @@ import kr.zalbazo.model.hospital.HospitalQnaVO;
 import kr.zalbazo.model.hospital.HospitalReviewVO;
 
 public interface MyFavoriteHospitalService {
-	
-    int remove(Long hospitalId);
     
     List<Hospital> getList(String userEmail);
     

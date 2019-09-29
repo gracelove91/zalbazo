@@ -9,13 +9,17 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.zalbazo.model.favorite_hospital.FavoriteHospital;
 import kr.zalbazo.model.hospital.Hospital;
+import kr.zalbazo.model.user.User;
 import kr.zalbazo.service.hospital.FavoriteHospitalService;
 import kr.zalbazo.service.user.MyFavoriteHospitalService;
 import lombok.AllArgsConstructor;
@@ -61,11 +65,13 @@ public class MyFavoriteHospitalController {
         
         return "/user/mypage/favorite_hospital/list";
     }
-    	@ResponseBody
-    	@GetMapping(value = "/favorite_list", produces = { 
-    			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
-    	public ResponseEntity<List<Hospital>> getList(Principal principal) {
-    		
-    		return new ResponseEntity<>(myFavoriteHospitalService.getList(principal.getName()), HttpStatus.OK);
-    	}
+    
+ 	@ResponseBody
+ 	@GetMapping(value = "/favorite_list", produces = { 
+ 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+ 	public ResponseEntity<List<Hospital>> getList(Principal principal) {
+ 		
+ 		return new ResponseEntity<>(myFavoriteHospitalService.getList(principal.getName()), HttpStatus.OK);
+ 	}
+ 	
 }

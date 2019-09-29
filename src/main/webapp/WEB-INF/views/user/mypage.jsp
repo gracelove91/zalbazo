@@ -53,7 +53,7 @@
 					  <input type='text' class='form-control col-8' id='name' name='name' value=''>
 					</div>
 		      		<div class='form-group a'>
-					  <span>전화번호</span>
+					  <span>전화번호</span><span style="font-size: smaller;">000-0000-0000형태로 입력해주세요</span>
 					  <input type='text' class='form-control col-8' id='tel' name='tel' value=''>
 					</div>
 		      		<div class='form-group a'>
@@ -220,6 +220,26 @@
 				</thead>
 				<tbody class="fhlist">
 				
+					<tr>
+					<th scope='row' class='mobile' style='width: 150px; text-align:center;'></th>
+					
+					<td style='width: 600px; text-align: center;'>
+					  <a class='move' style='color : #000000;' href='#'></a>
+					</td>
+					
+					<td style='width: 700px; text-align: center;'>
+					  <a class='move' style='color : #000000;'></a>
+					</td>
+					
+					<td style='width: 300px; text-align: center;'>
+					  <a class='move' style='color : #000000;'></a>
+					</td>
+					
+					<td style='width: 350px; text-align: center;'>
+					  <a class='move' style='color : #000000;' >
+					  <button class='remove' id='' data-bt='btn'>삭제</button></a>
+					</td>
+					</tr>			
 
 				</tbody>
 			</table>
@@ -240,12 +260,11 @@
 
 
 <!-- Bootstrap core JavaScript -->
-<script src="/resources/vendor/jquery/jquery.min.js"></script>
-<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="${ctx}/resources/js/user/mycontentFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/mycontent.js"></script>
-
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfoFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfo.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospitalFunction.js"></script>

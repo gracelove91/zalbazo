@@ -191,9 +191,10 @@ $(document).ready(function(e){
 
             console.log(jobj);
 
-            str += "<input type'hidden' name='attachList[" + i + "].fileName' value='" + jobj.data("filename") + "'>";
-            str += "<input type'hidden' name='attachList[" + i + "].uuid' value='" + jobj.data("uuid") + "'>";
-            str += "<input type'hidden' name='attachList[" + i + "].uploadPath' value='" + jobj.data("path") + "'>";
+            str += "<input type='hidden' name='attachList[" + i + "].fileName' value='" + jobj.data("filename") + "'>";
+            str += "<input type='hidden' name='attachList[" + i + "].uuid' value='" + jobj.data("uuid") + "'>";
+            str += "<input type='hidden' name='attachList[" + i + "].uploadPath' value='" + jobj.data("path") + "'>";
+            str += "<input type='hidden' name='attachList[" + i + "].ext' value='" + jobj.data("ext") + "'>";
 
         });
 
@@ -265,7 +266,7 @@ $(document).ready(function(e){
          $(uploadResultArr).each(function (i, obj) {
              var fileCallPath = encodeURIComponent(obj.uploadPath + obj.uuid + "_" + obj.fileName);
 
-             str += "<li data-path='" + obj.uploadPath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "'><div>";
+             str += "<li data-path='" + obj.uploadPath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "' data-ext='" +obj.ext+ "'><div>";
              str += "<span>" + obj.fileName + "</span>";
              str += "<button type='button' data-file=\'" + fileCallPath + "\' class='btn btn-secondary btn-sm'>";
              str += "<i class='fa fa-times'></i></button><br>";

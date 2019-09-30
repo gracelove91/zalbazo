@@ -43,15 +43,26 @@ public class UserController {
     }
     
     @GetMapping("/register")
-    public String join(Model model) {
+    public String join(@RequestParam String type, Model model) {
+
         model.addAttribute("user",new User());
-        return "user/userjoin";
+
+        if(type.equals("hospital")){
+            return "user/join/hospitaljoin";
+        }
+        return "user/join/userjoin";
     }
 
     @PostMapping("/register")
     public String join(@Valid @ModelAttribute User user, BindingResult bindingResult, RedirectAttributes rttr) {
+        String type = user.getRole();
+
         if(bindingResult.hasErrors()){
-            return "user/userjoin";
+            if(type.equals("hospital")){
+                return "user/join/hospitaljoin";
+            }
+
+            return "user/join/userjoin";
         }
 
         service.register(user);

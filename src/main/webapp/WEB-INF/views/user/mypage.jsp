@@ -9,9 +9,7 @@
     String ctx = request.getContextPath();
     pageContext.setAttribute("ctx", ctx);
 %>
-
 <title>마이페이지</title>
-
 <div class="container-fluid">
 <div class="row d-flex d-md-block flex-nowrap wrapper">
 <main id="main">

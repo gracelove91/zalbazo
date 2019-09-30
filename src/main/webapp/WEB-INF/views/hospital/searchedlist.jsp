@@ -5,15 +5,14 @@
 <!doctype html>
 <html>
 <head>
-    <title>병원 리스트</title>
+    <title>병원 LIST</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- 부트스트랩 CSS 추가하기 -->
     <link rel="stylesheet"
           href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
 </head>
 <body>
 <%@include file="../includes/header.jsp" %>
@@ -73,25 +72,25 @@
                                 ${hospital.name}</a><br><br/>
 
                             <c:forEach items="${hospital.label}" var="label">
-                                <c:if test="${label.labelCode == 1 }">
-                                    <i class="material-icons"> local_convenience_store </i>
-                                </c:if>
-
-                                <c:if test="${label.labelCode == 2 }">
-                                    <i class="material-icons"> local_florist </i>
-                                </c:if>
-
-                                <c:if test="${label.labelCode == 3 }">
-                                    <i class="material-icons"> local_parking </i>
-                                </c:if>
-
-                                <c:if test="${label.labelCode == 4 }">
-                                    <i class="material-icons"> emoji_nature </i>
-                                </c:if>
-                                
-                                <c:if test="${label.labelCode == 5 }">
-                                    <i class="material-icons"> check_circle </i>
-                                </c:if>
+								 <c:if test="${label.labelCode == 1 }">
+				                     <i class="material-icons"> local_convenience_store </i>
+				                 </c:if>
+				
+				                 <c:if test="${label.labelCode == 2 }">
+				                     <i class="material-icons"> local_florist </i>
+				                 </c:if>
+				
+				                 <c:if test="${label.labelCode == 3 }">
+				                     <i class="material-icons"> local_parking </i>
+				                 </c:if>
+				
+				                 <c:if test="${label.labelCode == 4 }">
+				                     <i class="material-icons"> emoji_nature </i>
+				                 </c:if>
+				                 
+				                 <c:if test="${label.labelCode == 5 }">
+				                     <i class="material-icons"> check_circle </i>
+				                 </c:if>
                             </c:forEach>
                         </td>
 

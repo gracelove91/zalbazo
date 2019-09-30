@@ -9,11 +9,11 @@
 <section class="banner-area">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-1 px-0"></div>
+			<div class="col-lg-2 px-0"></div>
 			<div class="col-lg-5 px-0">
 				<div class="banner-bg"></div>
 			</div>
-			<div class="col-lg-6 align-self-center">
+			<div class="col-lg-5 align-self-center">
 				<div class="banner-text">
 					<h1>내 반려동물을 <span>잘</span> 봐줄 </br><span>동물병원</span>을 찾아보세요!</h1>
                     <p class="py-7">24시간운영 병원, 응급수술, 특이한 동물까지.<br>

@@ -52,7 +52,11 @@ public class SearchController {
 	public ModelAndView in(@RequestParam(defaultValue = "") String keyword) throws Exception {
 		
 		List<Hospital> list = service.list(keyword); //라벨 문자열배열을 쿼리문으로 짜기 쉽게 리스트로 변환  
-	
+		for (int i = 0; i < list.size(); i++) {
+			Hospital hospital = list.get(i);
+			hospital.setLabel(hospitalService.getLabelList(hospital.getHospitalId()));
+		}
+		
 		ModelAndView mav = new ModelAndView();
 		
 		Map<String, Object> map = new HashMap<String, Object>();

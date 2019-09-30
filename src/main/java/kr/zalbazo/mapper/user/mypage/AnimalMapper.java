@@ -11,7 +11,7 @@ public interface AnimalMapper {
 
     Animal read(Long animalId);
 
-    List<Animal> getList();
+    List<Animal> getList(String userEmail);
 
     int delete(Long animalId);
 

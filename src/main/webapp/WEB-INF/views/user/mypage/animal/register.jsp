@@ -48,7 +48,7 @@
               <label>참고사항</label>
                <textarea class="form-control" id="note" name="note" placeholder="내용을 입력하세요." style="height: 320px;"></textarea>
             </div>
-             <input type="hidden" id="userEmail" name="userEmail" value="dummy@gmail.com">
+             <input type="hidden" id="userEmail" name="userEmail" value="${userEmail}">
             <button class="btn btn-primary" id="regBtn" name="regBtn" >글 쓰기</button>
           </form>
           <footer class="text-center" style="max-width: 920px;">

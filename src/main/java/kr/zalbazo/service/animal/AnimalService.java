@@ -12,5 +12,5 @@ public interface AnimalService {
     boolean modify(Animal animal);
     boolean remove(Long animalId);
     //List<Content> getList(Long categoryId);
-    List<Animal> getList();
+    List<Animal> getList(String userEmail);
 }

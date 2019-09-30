@@ -70,7 +70,33 @@
 				<br><br>
 		      </div> <!-- 개인정보 수정 -->
 		      
-		      <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">동물 관리</div>
+		      <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+		  
+		  	<div class="container">
+		  	<h1>동물관리</h1>
+		   	 <table class="table table-striped" style="max-width: 1080px;">
+					      <thead>
+					        <tr>
+					           <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>
+					           <th scope="col" class="mobile" style="text-align:center;">이름</th>
+					           <th scope="col" class="mobile" style="text-align:center;">타입</th>
+					           <th scope="col" class="mobile" style="text-align:center;">성별</th>
+					           <th scope="col" class="mobile" style="text-align:center;">몸무게</th>
+					           <th scope="col" class="mobile" style="text-align:center;">나이</th>
+					           <th scope="col" class="mobile" style="width:120px; text-align:center;">특이사항</th>
+					           <th scope="col" class="mobile" style="text-align:center;">삭제</th>
+					           
+					        </tr>
+					      </thead>
+					      <tbody id="animalt">
+					      
+					      </tbody>
+		   	
+		   	</table>  
+		   	
+		   	</div>
+		   	  <a href="/user/mypage/animal/register?userEmail=${useremail}" id='regBtn' type="button" class="btn btn-primary float-right">동물등록</a>
+		     </div>
 		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
 		      
 				<nav>
@@ -269,6 +295,8 @@
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfo.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospitalFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospital.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myAnimalFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myAnimal.js"></script>
 
 <script>
     function goPopup(){
@@ -278,6 +306,7 @@
     function jusoCallBack(roadFullAddr){
         $("#address").val(roadFullAddr);
     }
+    
 </script>
 <%@include file="/WEB-INF/views/includes/footer.jsp" %>
 </body>

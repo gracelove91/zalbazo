@@ -30,14 +30,14 @@ public class HomeController {
     public String index(){
         return "/index";
     }
-    @GetMapping("calendar")
+    @GetMapping("reserve")
     public String calendar(@RequestParam Long hospitalId, Model model){
     	
     	model.addAttribute("hos",hs.get(hospitalId));
     	   	
-    	return "/calendar";
+    	return "/reserve";
     }
-    @PostMapping("calendar")
+    @PostMapping("reserve")
     public String calendarpost(@RequestParam Long hospitalId,@RequestParam String reservedate,@RequestParam String reservetime,Reserve reserve) throws ParseException{
 
     	String datetext = reservedate+" "+reservetime;

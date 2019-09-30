@@ -191,6 +191,7 @@
                             </div>
 							
                             <div class="panel-body">
+                            
                                 <ul style="list-style-type:none;">
                                     <li class="left clearfix">
                                         <div class="container mt-3">
@@ -254,16 +255,18 @@
 
                                             </div>
                                         </div>
+                                        </div>
                                     </li>
                                 </ul>
 
-
+								<div class="container" style="background-color:white;">
                                 <ul class="review" style="list-style-type:none;">
                                     <li class="left clearfix" data-rno='12'>
                                         <div class="container mt-3">
+                                        
                                             <div class="media border p-3">
                                                 <img src="/resources/img/baba.png" class="mr-3 mt-3 rounded-circle"
-                                                     style="width: 50px">
+                                                     style="width: 80px">
                                                 
                                                 <div class="media-body">
 
@@ -280,11 +283,12 @@
                                                 </div>
                                                 
                                             </div>
+                                            
                                         </div>
                                     </li>
                                 </ul>
-                                
-                            </div>
+                            	</div>
+                            
                         </div>
                     </div>
                 </div>

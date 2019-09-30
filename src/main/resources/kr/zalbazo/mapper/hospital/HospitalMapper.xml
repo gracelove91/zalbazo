@@ -11,8 +11,13 @@
 
 	<select id="getList" resultType="kr.zalbazo.model.hospital.Hospital">
 		<![CDATA[
-			select * 
-            from HOSPITAL
+		select *
+		from hospital,
+    		(select pic_lib.uuid, pic_lib.upload_path, pic_lib.file_name, pic_lib.ext, pic_lib_rel_hospital.hospital_id
+     		from pic_lib, pic_lib_rel_hospital
+     		where pic_lib.uuid = pic_lib_rel_hospital.uuid) a
+		where #{hospitalId} = a.hospital_id
+		and a.file_name LIKE '%1.%'
    		]]>
 	</select>
 
@@ -26,7 +31,7 @@
 		select a.uuid, upload_path, file_name, ext
 		from pic_lib a, pic_lib_rel_hospital b
 		where a.uuid = b.uuid 
-			and hospital_id = #{hospitalId}
+		and hospital_id = #{hospitalId}
 	</select> 
 	
 	

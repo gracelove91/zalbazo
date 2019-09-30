@@ -53,6 +53,8 @@
                         <img class="img-fluid rounded mb-3 mb-md-0"
                              src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg"
                              alt="">
+                             
+                             
                     </a></td>
 
                     <td><a style="color: #000000;"

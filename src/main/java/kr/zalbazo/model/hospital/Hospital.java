@@ -4,6 +4,8 @@ import lombok.*;
 
 import java.util.List;
 
+import kr.zalbazo.model.pic.AttachFileDTO;
+
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor
@@ -19,5 +21,4 @@ public class Hospital {
 	private String tel;
 	private String info;
 	private List<HospitalLabel> label;
-	
 }

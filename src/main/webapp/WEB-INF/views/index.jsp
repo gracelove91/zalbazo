@@ -18,7 +18,7 @@
 					<h1>내 반려동물을 <span>잘</span> 봐줄 </br><span>동물병원</span>을 찾아보세요!</h1>
                     <p class="py-7">24시간운영 병원, 응급수술, 특이한 동물까지.<br>
 						당신의 반려동물에 딱 맞는 병원을 찾아보세요.</p>
-					<a href="#" class="secondary-btn">병원목록 바로가기<span class="flaticon-next"></span></a>
+					<a href="/hospital/list" class="secondary-btn">병원목록 바로가기<span class="flaticon-next"></span></a>
 					</br></br>
 					<form action="#">
 						<input type="text" placeholder="검색어를 입력하세요" onfocus="this.placeholder = ''"

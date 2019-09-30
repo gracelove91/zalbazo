@@ -87,14 +87,14 @@
                              <c:choose>
                                 <c:when test="${status.count == 1}">
   	                               <div class="carousel-item active">
-	                                   <img src="${ctx}/resources/img/hospital/${list.uuid}_1.jpg"
+	                                   <img src="${ctx}/resources/img/hospital/${list.uuid}_1.jpeg"
 	                                        width="400px" height="400px">
 	                               </div>
 	                            </c:when> 
 	                            
 	                            <c:otherwise>
 	                                <div class="carousel-item">
-	                                    <img src="${ctx}/resources/img/hospital/${list.uuid}_${status.count}.jpg"
+	                                    <img src="${ctx}/resources/img/hospital/${list.uuid}_${status.count}.jpeg"
 	                                         width="400px" height="400px">
 	                                </div>
 	                            </c:otherwise>
@@ -140,13 +140,13 @@
 <div class="col-10">
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#home">Map</a>
+                <a class="nav-link active" data-toggle="tab" href="#home">&nbsp;&nbsp;&nbsp;Map&nbsp;&nbsp;&nbsp;</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu1">Review</a>
+                <a class="nav-link" data-toggle="tab" href="#menu1">&nbsp;&nbsp;&nbsp;Review&nbsp;&nbsp;&nbsp;</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu2">Q&A</a>
+                <a class="nav-link" data-toggle="tab" href="#menu2">&nbsp;&nbsp;&nbsp;Q&A&nbsp;&nbsp;&nbsp;</a>
             </li>
         </ul>
 

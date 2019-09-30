@@ -844,7 +844,10 @@ keyframes sk-scaleout { 0%{
 }
 
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-	color: #25CCF7
+	color: #25CCF7;
+	border-style: solid;
+	border-color: #25ccf7;
+	border-width: 2px 2px 0px 2px;
 }
 
 .nav-tabs .nav-link {
@@ -857,6 +860,11 @@ keyframes sk-scaleout { 0%{
 	color: #222;
 	display: block;
 	padding: 0
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+	color: #fff;
+    background-color: #25CCF7;
 }
 
 .nav-tabs {

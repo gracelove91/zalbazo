@@ -5,7 +5,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>병원 LIST</title>
+    <title>병원 검색 리스트</title>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport"
@@ -17,21 +17,15 @@
 <body>
 <%@include file="../includes/header.jsp" %>
 
-<div class="container-fluid">
-<div class="row d-flex d-md-block flex-nowrap wrapper">
-<main id="main">
-<div class="page-header row">
-	<div class="col-1"></div>
-	<div class="col-10">
-		<br>
-    	<h2>병원 검색 결과</h2>
-		<p class="lead">병원 리스트</p>
-	</div>
-	<div class="col-1"></div>
-</div>
+<section class="feature-area">
+<div class="container">
 <div class="row">
-	<div class="col-1"></div>
-	<div class="col-10">	
+<main id="main" class="col-md-12 main">
+	<div class="page-header mt-3">
+		<h2>병원 검색 결과</h2>
+	</div>
+        <p class="lead">병원 리스트</p>
+        	
         <table class="table table-striped">
 			
 			<thead>
@@ -110,22 +104,16 @@
 
                 </c:forEach>
 			</tbody>
-		</table>
-	</div>
-	<div class="col-1"></div>
-</div>            
+	</table>
 </main>
-
 </div>
 </div>
+</section>
 <%@include file="../includes/footer.jsp" %>
 
 <!-- 제이쿼리 자바스크립트 추가하기 -->
 
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-
 </body>
-
 </html>

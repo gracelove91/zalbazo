@@ -6,7 +6,7 @@
 <style>
     .uploadResult {
         width: 100%;
-        background-color: Thistle;
+        background-color: #66e0ff;
     }
 
     .uploadresult ul {
@@ -272,6 +272,16 @@
                 formObj.append(typeTag);
                 console.dir(formObj);
             } else if (operation === 'modify') {
+            	
+				if($("input[id='title']").val().trim() == "" || $("input[id='title']").val().trim() == null) {
+					alert("제목을 입력하세요");
+					return;
+				}
+				
+				if($("textarea[id='body']").val().trim() == "" || $("textarea[id='body']").val().trim() == null) {
+					alert("내용을 입력하세요");
+					return;
+				}
 
                 console.log("submit clicked");
                 var str = "";

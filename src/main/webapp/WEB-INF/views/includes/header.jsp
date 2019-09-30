@@ -4,7 +4,6 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required Meta Tags -->
     <meta charset="UTF-8">
@@ -40,14 +39,14 @@
 <header class="header-area main-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-2" style="text-align: center">
+            <div class="col-lg-2" style="padding:0px;">
                 <div class="logo-area">
-                    <a href="/index"><img src="/resources/img/logo.png" alt="logo" width="100px"
-                                          height="100px"></a>
+                    <a href="/index"><img src="/resources/img/bbbaba.png" align="middle" alt="logo" width="280px" height="90px"></a>
                 </div>
             </div>
-            <div class="col-lg-9" style="text-align: right">
+            <div class="col-lg-9" style="padding:0px;">
                 <div class="main-menu">
+                <br><br>
                     <ul>
                         <li class="active"><a href="/index">home</a></li>
                         <li><a href="about.html">about us</a></li>
@@ -65,11 +64,11 @@
                         <li class="menu-btn">
                             <sec:authorize access="isAnonymous()">
                                 <a href="/login" class="login">log in</a>
-                                <a href="/user/register" class="template-btn">sign up</a>
+                                <a href="/user/register_select" class="template-btn" style="padding:0px;">sign up</a>
                             </sec:authorize>
 
                             <sec:authorize access="isAuthenticated()">
-                                <a href="#"><sec:authentication property="principal.username"/></a>
+                                <a href="#" style="padding:0px;"><sec:authentication property="principal.username"/></a>
                                 <ul class="sub-menu">
                                     <li><a href="/user/mypage">마이페이지</a></li>
                                     <li><a href="/logout">로그아웃</a></li>

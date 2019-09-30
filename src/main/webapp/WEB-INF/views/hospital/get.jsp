@@ -5,9 +5,8 @@
     String ctx = request.getContextPath();
     pageContext.setAttribute("ctx", ctx);
 %>
-
 <title>병원 상세 정보</title>
-<script src="https://kit.fontawesome.com/yourcode.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <%@include file="../includes/header.jsp" %>
 </head>
 
@@ -41,19 +40,19 @@
                  </c:if>
             
                  <c:if test="${label.labelCode == 2 }">
-                     <i class="material-icons"> local_florist </i>미용&nbsp;&nbsp;&nbsp;
+                     <i class="material-icons"> local_florist </i> 미용&nbsp;&nbsp;&nbsp;
                  </c:if>
 
                  <c:if test="${label.labelCode == 3 }">
-                     <i class="material-icons"> local_parking </i>주차&nbsp;&nbsp;&nbsp;
+                     <i class="material-icons"> local_parking </i> 주차&nbsp;&nbsp;&nbsp;
                  </c:if>
 
                  <c:if test="${label.labelCode == 4 }">
-                     <i class="material-icons"> emoji_nature </i>특수동물&nbsp;&nbsp;&nbsp;
+                     <i class="material-icons"> emoji_nature </i> 특수동물&nbsp;&nbsp;&nbsp;
                  </c:if>
                  
                  <c:if test="${label.labelCode == 5 }">
-                     <i class="material-icons"> check_circle </i>수술
+                     <i class="material-icons"> check_circle </i> 수술
                  </c:if>
             </c:forEach>
 
@@ -141,13 +140,13 @@
 <div class="col-10">
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#home">Map</a>
+                <a class="nav-link active" data-toggle="tab" href="#home">&nbsp;&nbsp;&nbsp;Map&nbsp;&nbsp;&nbsp;</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu1">Review</a>
+                <a class="nav-link" data-toggle="tab" href="#menu1">&nbsp;&nbsp;&nbsp;Review&nbsp;&nbsp;&nbsp;</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu2">Q&A</a>
+                <a class="nav-link" data-toggle="tab" href="#menu2">&nbsp;&nbsp;&nbsp;Q&A&nbsp;&nbsp;&nbsp;</a>
             </li>
         </ul>
 
@@ -192,12 +191,14 @@
                             </div>
 							
                             <div class="panel-body">
+                            
                                 <ul style="list-style-type:none;">
                                     <li class="left clearfix">
                                         <div class="container mt-3">
                             
                                         	<!-- 리뷰 -->
-                                        	<div class="info container">
+                                        	<div class="info container" style="background-color:white;">
+                                        	<div class="container">
 							                    <input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com">
 							                    <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
 							
@@ -254,16 +255,18 @@
 
                                             </div>
                                         </div>
+                                        </div>
                                     </li>
                                 </ul>
 
-
+								<div class="container" style="background-color:white;">
                                 <ul class="review" style="list-style-type:none;">
                                     <li class="left clearfix" data-rno='12'>
                                         <div class="container mt-3">
+                                        
                                             <div class="media border p-3">
                                                 <img src="/resources/img/baba.png" class="mr-3 mt-3 rounded-circle"
-                                                     style="width: 50px">
+                                                     style="width: 80px">
                                                 
                                                 <div class="media-body">
 
@@ -280,11 +283,12 @@
                                                 </div>
                                                 
                                             </div>
+                                            
                                         </div>
                                     </li>
                                 </ul>
-                                
-                            </div>
+                            	</div>
+                            
                         </div>
                     </div>
                 </div>
@@ -295,8 +299,7 @@
 			
 
             <div id="menu2" class="container tab-pane fade"><br>
-            
-				<div class='row info'>
+				<div class='row'>
                     <input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com">
                     <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
                     <div class="col-lg-12">

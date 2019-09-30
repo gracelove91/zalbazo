@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.zalbazo.mapper.user.mypage.MyContentMapper">
+
+	<select id="getCommunityList" resultType="kr.zalbazo.model.content.Content">
+		select * from content
+		where category_id = 1
+		and user_email = #{userEmail}
+		order by updated_date desc
+	</select>
+	
+	<select id="getJisikdongList" resultType="kr.zalbazo.model.content.Content">
+		select * from content
+		where category_id = 2
+		and user_email = #{userEmail}
+		order by updated_date desc
+	</select>
+
+	<select id="getReviewList" resultType="kr.zalbazo.model.hospital.HospitalReviewVO">
+		select * from content a, review b
+		where a.content_id = b.content_id
+		and a.user_email = #{userEmail}
+	</select>
+	
+	<select id="getQList" resultType="kr.zalbazo.model.hospital.HospitalQnaVO">
+		select *
+		from hospital c, (select a.CONTENT_ID CONTENT_ID,
+		a.TITLE TITLE,
+		a.BODY BODY,
+		a.CREATED_DATE CREATED_DATE,
+		a.UPDATED_DATE UPDATED_DATE,
+		a.CATEGORY_ID CATEGORY_ID,
+		a.USER_EMAIL USER_EMAIL,
+		b.HOSPITAL_QNA_ID HOSPITAL_QNA_ID,
+		b.HOSPITAL_ID HOSPITAL_ID,
+		b.CONTENT_ID CONTENT_ID_0,
+		b.QNA_TYPE QNA_TYPE,
+		b.C_GROUP C_GROUP from 
+		content a, hospital_qna b
+		where exists (
+		select a.content_id
+		from content a, hospital_qna b
+		where user_email = #{userEmail})
+		and a.content_id = b.content_id
+		order by c_group desc, hospital_qna_id asc) k
+		where c.hospital_id = k.hospital_id
+	</select>
+
+	<select id="getReplyList" resultType="kr.zalbazo.model.content.ReplyVO">
+		select * from reply
+		where user_email = #{userEmail}
+	</select>	
+	
+	<select id="getName" resultType="kr.zalbazo.model.hospital.Hospital">
+	   select name
+	   from hospital
+	   where hospital_id = #{hospitalId}
+	</select>	
+	
+</mapper>

@@ -6,7 +6,7 @@
 <style>
     .uploadResult {
         width: 100%;
-        background-color: Thistle;
+        background-color: #66e0ff;
     }
 
     .uploadresult ul {
@@ -103,7 +103,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" id="regBtn" name="regBtn">글 쓰기</button>
+                    <button type="submit" class="btn btn-primary float-right" id="regBtn" name="regBtn">글 쓰기</button>
 
                 </form>
                 <br/><br/><br/>
@@ -242,6 +242,23 @@
 
 
     });
+</script>
+<script>
+var regBtn = $("button[id='regBtn']");
+
+regBtn.on("click", function(e) {
+	
+	if($("input[id='title']").val().trim() === "" || $("input[id='title']").val().trim() == null) {
+		alert("제목을 입력하세요");
+		return;
+	}
+	
+	if($("textarea[id='body']").val().trim() == "" || $("textarea[id='body']").val().trim() == null) {
+		alert("내용을 입력하세요");
+		return;
+	}
+	
+}); // regBtn click
 </script>
 <%@ include file="../includes/footer.jsp"%>
 

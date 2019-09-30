@@ -3,6 +3,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@include file="../includes/header.jsp" %>
+<title>병원 리스트</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <section class="feature-area">
     <div class="container">
         <div class="row">
@@ -50,34 +53,34 @@
 
                             <td class="mobile" style="text-align: center;"><a href="#">
                                 <img class="img-fluid rounded mb-3 mb-md-0"
-                                     src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg"
+                                     src="${ctx}/resources/img/hospital/${hospital.uuid}_${hospital.fileName}"
                                      alt="">
                             </a></td>
 
                             <td><a style="color: #000000;"
                                    href='/hospital/get?hospitalId=<c:out value="${hospital.hospitalId}"/>'>
                                     ${hospital.name}</a><br><br/>
+                            <c:forEach items="${hospital.label}" var="label">
+                                <c:if test="${label.labelCode == 1 }">
+                                    <i class="material-icons"> local_convenience_store </i>
+                                </c:if>
 
-                                <c:forEach items="${hospital.label}" var="label">
+                                <c:if test="${label.labelCode == 2 }">
+                                    <i class="material-icons"> local_florist </i>
+                                </c:if>
 
-                                    <c:if test="${label.labelCode == 1 }">
-                                        <i class="material-icons"> local_convenience_store </i>
-                                    </c:if>
+                                <c:if test="${label.labelCode == 3 }">
+                                    <i class="material-icons"> local_parking </i>
+                                </c:if>
 
-                                    <c:if test="${label.labelCode == 2 }">
-                                        <i class="material-icons"> spa </i>
-                                    </c:if>
-
-                                    <c:if test="${label.labelCode == 3 }">
-                                        <i class="material-icons"> local_parking </i>
-                                    </c:if>
-
-                                    <c:if test="${label.labelCode == 4 }">
-                                        <i class="material-icons"> pets </i>
-                                    </c:if>
-
-
-                                </c:forEach></td>
+                                <c:if test="${label.labelCode == 4 }">
+                                    <i class="material-icons"> emoji_nature </i>
+                                </c:if>
+                                
+                                <c:if test="${label.labelCode == 5 }">
+                                    <i class="material-icons"> check_circle </i>
+                                </c:if>
+                            </c:forEach></td>
 
                             <td class="mobile" style="text-align: center;"><c:out
                                     value="${hospital.treatStart}"/></td>

@@ -9,21 +9,18 @@
     String ctx = request.getContextPath();
     pageContext.setAttribute("ctx", ctx);
 %>
-
 <title>마이페이지</title>
-
 <div class="container-fluid">
 <div class="row d-flex d-md-block flex-nowrap wrapper">
 <main id="main">
 
 <div class="page-header row">
 	<div class="col-1"></div>
-	<div class="col-10">
+	<div class="col-11">
 	<br>
     <h2>${useremail} 님의 마이페이지</h2>
     <p>방가방가링~★</p>
     </div>
-    <div class="col-1"></div>
 </div>
 
 <div class="row">
@@ -39,7 +36,7 @@
 		    </div>
 		  </div>
 		  
-		  <div class="col-8" style="border: 5px solid purple;">
+		  <div class="col-8" style="border: 2px solid #25ccf7;">
 		    <div class="tab-content" id="v-pills-tabContent">
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
 		      	<br>
@@ -72,9 +69,181 @@
 		      </div> <!-- 개인정보 수정 -->
 		      
 		      <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">동물 관리</div>
-		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">내가쓴글</div>
+		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+		      	<br>
+				<nav>
+				  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+				    <a class="nav-item nav-link active" id="nav-a-tab" data-toggle="tab" href="#nav-a" role="tab" aria-controls="nav-a" aria-selected="true">&nbsp;&nbsp;&nbsp;커뮤니티&nbsp;&nbsp;&nbsp;</a>
+				    <a class="nav-item nav-link" id="nav-b-tab" data-toggle="tab" href="#nav-b" role="tab" aria-controls="nav-b" aria-selected="false">&nbsp;&nbsp;&nbsp;지식동&nbsp;&nbsp;&nbsp;</a>
+				    <a class="nav-item nav-link" id="nav-c-tab" data-toggle="tab" href="#nav-c" role="tab" aria-controls="nav-c" aria-selected="false">&nbsp;&nbsp;&nbsp;병원 리뷰&nbsp;&nbsp;&nbsp;</a>
+				    <a class="nav-item nav-link" id="nav-d-tab" data-toggle="tab" href="#nav-d" role="tab" aria-controls="nav-d" aria-selected="false">&nbsp;&nbsp;&nbsp;Q&A&nbsp;&nbsp;&nbsp;</a>
+				    <a class="nav-item nav-link" id="nav-e-tab" data-toggle="tab" href="#nav-e" role="tab" aria-controls="nav-e" aria-selected="false">&nbsp;&nbsp;&nbsp;댓글&nbsp;&nbsp;&nbsp;</a>
+				  </div>
+				</nav>
+				
+				<div class="tab-content fade show active" id="nav-tabContent">
+				
+				  <div class="tab-pane fade show active" id="nav-a" role="tabpanel" aria-labelledby="nav-a-tab">
+				  
+				  	<div class="container">
+				  	<br>            
+					  <table class="table table-striped" style="max-width: 1080px;">
+				      	<thead>
+				        	<tr>
+				              <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>
+				              <th scope="col" class="mobile" style="text-align:center;">제목</th>
+				              <th scope="col" class="mobile" style="width:110px; text-align:center;">날짜</th>
+				            </tr>
+				        </thead>
+				        <tbody class="table1">
+				        	<tr>
+				            	<th scope="row" class="mobile" style="text-align:center;"></th>
+				                <td>
+				                  <a class='move' style="color : #000000;" href=#></a>
+				                </td>
+				                <td class="mobile" style="text-align:center;">
+				                </td>
+				        	</tr>
+				      	</tbody>
+				      </table>
+					</div>
+
+				  </div><!-- 커뮤니티 끝 -->
+				  
+				  <div class="tab-pane fade" id="nav-b" role="tabpanel" aria-labelledby="nav-b-tab">
+				  
+					<div class="container">
+					<br>            
+						 <table class="table table-striped" style="max-width: 1080px;">
+					      <thead>
+					        <tr>
+					           <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>
+					           <th scope="col" class="mobile" style="text-align:center;">제목</th>
+					           <th scope="col" class="mobile" style="width:110px; text-align:center;">날짜</th>
+					        </tr>
+					      </thead>
+					      <tbody class="table2">
+					        <tr>
+					           <th scope="row" class="mobile" style="text-align:center;"></th>
+					              <td>
+					                <a class='move' style="color : #000000;" href=#></a>
+					              </td>
+					              <td class="mobile" style="text-align:center;">
+					              </td>
+					        </tr>
+					      </tbody>
+					     </table>
+					</div>
+				  
+				  </div> <!-- 지식동 끝 -->
+				  
+				  <div class="tab-pane fade" id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab">
+				  
+                     <ul class="review table3" style="list-style-type:none;">
+                         <li class="left clearfix" data-rno='12'>
+                             <div class="container mt-3">
+                                 <div class="media border p-3">
+                                     <img src="/resources/img/baba.png" class="mr-3 mt-3 rounded-circle"
+                                          style="width: 50px">
+                                     
+                                     <div class="media-body">
+
+                                         <h4><i style="color:gold;font-weight:bold">
+                                             <i class='material-icons'>star_border</i>
+                                             <i class='material-icons'>star_border</i>
+                                             <i class='material-icons'>star_border</i>
+                                             <i class='material-icons'>star_border</i>
+                                             <i class='material-icons'>star_border</i></i>
+                                         </h4>
+
+                                         <small><i style="font-weight:bold">baba</i>&nbsp;&nbsp;&nbsp;<i>0000/00/00</i></small>
+                                         <p>아직 리뷰가 존재하지 않습니다</p>
+                                     </div>
+                                     
+                                 </div>
+                             </div>
+                         </li>
+                     </ul>
+                                				  
+				  </div> <!-- 병원리뷰 끝 -->
+				  
+				  <div class="tab-pane fade" id="nav-d" role="tabpanel" aria-labelledby="nav-d-tab">
+				  
+				  	<br>
+					<div class="table4">
+                    	<div class="card-body primary-font">등록된 Q&A가 없습니다</div> <!-- qna가 생기면 이 부분이 바뀜 -->
+                    </div>
+                    <br>
+                    				  
+				  </div> <!-- Q&A 끝 -->
+				  
+				  <div class="tab-pane" id="nav-e" role="tabpanel" aria-labelledby="nav-e-tab">
+				  
+				  	<ul class="list-group table5">
+				  	<br>
+                    	<li class="list-group-item">
+                            <div>
+                            	<div class="card-body primary-font">등록된 댓글이 없습니다</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <br>
+				  </div> <!-- 댓글 끝 -->
+				  
+				</div>
+				
+		      </div><!-- 내가 쓴 글 -->
+		      
 		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">예약 내역</div>
-		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">즐겨찾는 병원</div>
+		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">즐겨찾는 병원
+		      <div class="fav">
+			<table class="table table-striped">
+
+				<thead>
+					<tr>
+						<th scope="col" class="mobile"
+							style="width: 150px; text-align: center;">No.</th>
+	
+						<th scope="col" class="mobile"
+							style="width: 600px; text-align: center;">병원명</th>
+						
+						<th scope="col" class="mobile"
+							style="width: 700px; text-align: center;">주소</th>
+						<th scope="col" class="mobile"
+							style="width: 300px; text-align: center;">전화번호<br>
+						</th>
+						<th scope="col" class="mobile"
+							style="width: 350px; text-align: center;"> </th>
+					</tr>
+				</thead>
+				<tbody class="fhlist">
+				
+					<tr>
+					<th scope='row' class='mobile' style='width: 150px; text-align:center;'></th>
+					
+					<td style='width: 600px; text-align: center;'>
+					  <a class='move' style='color : #000000;' href='#'></a>
+					</td>
+					
+					<td style='width: 700px; text-align: center;'>
+					  <a class='move' style='color : #000000;'></a>
+					</td>
+					
+					<td style='width: 300px; text-align: center;'>
+					  <a class='move' style='color : #000000;'></a>
+					</td>
+					
+					<td style='width: 350px; text-align: center;'>
+					  <a class='move' style='color : #000000;' >
+					  <button class='remove' id='' data-bt='btn'>삭제</button></a>
+					</td>
+					</tr>			
+
+				</tbody>
+			</table>
+			</div>
+		      
+		      </div>
 		      <div class="tab-pane" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">회원 탈퇴</div>
 		    </div>
 		  </div>
@@ -89,11 +258,15 @@
 
 
 <!-- Bootstrap core JavaScript -->
-<script src="/resources/vendor/jquery/jquery.min.js"></script>
-<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+<script type="text/javascript" src="${ctx}/resources/js/user/mycontentFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/mycontent.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfoFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfo.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospitalFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospital.js"></script>
 
 <script>
     function goPopup(){

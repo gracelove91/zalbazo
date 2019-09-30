@@ -13,7 +13,7 @@ import lombok.ToString;
 @Setter
 public class PicLib {
 	
-	private String uuid ;
+	private String uuid;
 	private String uploadPath;
 	private String fileName;
 	private String ext;

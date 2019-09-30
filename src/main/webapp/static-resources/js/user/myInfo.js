@@ -9,6 +9,7 @@ $(document).ready(function() {
 	myInfoService.getInfoList(userEmail, function(data){
 		
 		var str = "";
+		//console.log(data[0]);
 			
  			str += "<div class='form-group a'>";
 			str += "  <span>이메일</span>";
@@ -42,10 +43,22 @@ $(document).ready(function() {
 	}); // getInfoList
 	
 	modifyBtn.on("click", function(e) {
-		console.log($("input[id='name']").val());
-		console.log($("input[id='tel']").val());
-		console.log($("input[id='address']").val());
+		//console.log($("input[id='name']").val());
+		//console.log($("input[id='tel']").val());
+		//console.log($("input[id='address']").val());
 		
+		var regex= /^\d{2,3}-\d{3,4}-\d{4}$/;
+		
+		if(!regex.test($("input[id='tel']").val())) {
+			alert("000-0000-0000형태로 입력해주세요");
+			return;
+		}
+		
+		if($("input[id='name']").val().trim() === "" || $("input[id='name']").val().trim() == null) {
+			alert("이름을 입력해주세요");
+			return;
+		}
+			
 		var modimodi = {
 				name : $("input[id='name']").val(),
 				tel : $("input[id='tel']").val(),
@@ -53,6 +66,7 @@ $(document).ready(function() {
 		};
 		
 		myInfoService.update(modimodi, function(result) {
+			console.log(result);
 			alert(result);
 		});
 		

@@ -42,20 +42,11 @@
             </thead>
             <tbody>
 
-            <c:forEach items="${hospitalList}" var="hospital">
-
-
-                <tr>
-                    <td class="mobile" style="text-align: center;"><c:out
-                            value="${hospital.hospitalId}"/></td>
-
-                    <td class="mobile" style="text-align: center;"><a href="#">
-                        <img class="img-fluid rounded mb-3 mb-md-0"
-                             src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg"
-                             alt="">
-                             
-                             
-                    </a></td>
+                            <td class="mobile" style="text-align: center;"><a href="#">
+                                <img class="img-fluid rounded mb-3 mb-md-0"
+                                     src="${ctx}/resources/img/hospital/${hospital.uuid}_${hospital.fileName}"
+                                     alt="">
+                            </a></td>
 
                     <td><a style="color: #000000;"
                            href='/hospital/get?hospitalId=<c:out value="${hospital.hospitalId}"/>'>

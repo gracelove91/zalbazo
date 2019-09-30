@@ -88,14 +88,14 @@
                              <c:choose>
                                 <c:when test="${status.count == 1}">
   	                               <div class="carousel-item active">
-	                                   <img src="${ctx}/resources/img/hospital/${list.uuid}_1.jpg"
+	                                   <img src="${ctx}/resources/img/hospital/${list.uuid}_1.${list.ext}"
 	                                        width="400px" height="400px">
 	                               </div>
 	                            </c:when> 
 	                            
 	                            <c:otherwise>
 	                                <div class="carousel-item">
-	                                    <img src="${ctx}/resources/img/hospital/${list.uuid}_${status.count}.jpg"
+	                                    <img src="${ctx}/resources/img/hospital/${list.uuid}_${status.count}.${list.ext}"
 	                                         width="400px" height="400px">
 	                                </div>
 	                            </c:otherwise>

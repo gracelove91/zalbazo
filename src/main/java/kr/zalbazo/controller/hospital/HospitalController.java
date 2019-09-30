@@ -1,6 +1,5 @@
 package kr.zalbazo.controller.hospital;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,7 @@ public class HospitalController {
 	public void get(@RequestParam("hospitalId") Long hospitalId, Content content, Model model, FavoriteHospital favoriteHospital) {
 		model.addAttribute("hospital", hospitalService.get(hospitalId));
 		model.addAttribute("labelList", hospitalService.getLabelList(hospitalId));
-		model.addAttribute("hPictureList", hospitalService.getPictureList(hospitalId));
+		model.addAttribute("picList", hospitalService.getPictureList(hospitalId));
 		model.addAttribute("picCount", hospitalService.getPictureCount(hospitalId));
 		model.addAttribute("content", content);
 

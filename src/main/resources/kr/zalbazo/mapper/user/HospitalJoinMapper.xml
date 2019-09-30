@@ -15,6 +15,15 @@
        Insert into HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) 
        values (#{labelCode}, #{hospitalId})
     </insert>
+    
+    <insert id="hospitalPicInsert">
+       INSERT ALL
+	   INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
+	   VALUES (#{uuid}, #{uploadPath}, #{fileName})
+	   INTO PIC_LIB_REL_HOSPITAL (UUID, HOSPITAL_ID)
+	   VALUES (#{uuid}, #{hospitalId})
+	   SELECT * FROM DUAL
+    </insert>
 
 
 </mapper>

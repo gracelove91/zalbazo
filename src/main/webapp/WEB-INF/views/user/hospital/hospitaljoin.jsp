@@ -27,7 +27,7 @@
           <hr>
           
           
-          <form class="pt-3 md-3" role='form' action="/hospital/register" method="post">
+          <form class="pt-3 md-3" role='form' action="/hospitalinfo/register" method="post" enctype="multipart/form-data">
           
             <input type="hidden" name="userEmail" value="${userEmail}"/>
             
@@ -40,7 +40,6 @@
             </div><br />
 
 
-
 			<div class="form-group">
 			   <fieldset>
                   <label class="font-weight-bold">전화번호</label>
@@ -49,7 +48,6 @@
             </div><br />
             
 
-            
 			<div class="form-group">
 			  <p class="font-weight-bold">제공하는 서비스를 체크해주세요</p>
 			  
@@ -144,8 +142,6 @@
             </div><br />
             
             
-
-            
             
             <!-- 파일 첨부 부분 -->
             <div class="row">
@@ -179,6 +175,132 @@
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <!-- 부트스트랩 자바스크립트 추가하기 -->
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(e){
+	
+    var formObj = $("form[role='form']");
+
+    $("button[type='submit']").on("click", function (e) {
+        e.preventDefault();
+        console.log("submit clicked");
+
+        var str = "";
+
+        $(".uploadResult ul li").each(function (i, obj) {
+            var jobj = $(obj);
+
+            console.log(jobj);
+
+            str += "<input type'hidden' name='attachList[" + i + "].fileName' value='" + jobj.data("filename") + "'>";
+            str += "<input type'hidden' name='attachList[" + i + "].uuid' value='" + jobj.data("uuid") + "'>";
+            str += "<input type'hidden' name='attachList[" + i + "].uploadPath' value='" + jobj.data("path") + "'>";
+
+        });
+
+        formObj.append(str).submit();
+    });
+	
+	
+	var maxSize = 5242880; // 5MB
+
+    // 유효성 체크 메서드
+    function checkExtension(fileName, fileSize) {
+        // 파일 사이즈 체크
+        if (fileSize >= maxSize) {
+            alert("파일 사이즈 초과");
+            return false;
+        }
+
+        // 이미지 파일인지 체크
+        if (fileName != "") {
+            var ext = fileName.slice(fileName.lastIndexOf(".") + 1).toLowerCase();
+
+            if (!(ext == "gif" || ext == "jpg" || ext == "png" || ext == "jpeg" || ext == "bmp")) {
+                alert("이미지파일 (jpg, jpeg, png, gif, bmp)만 업로드 가능합니다.");
+                return false;
+            }
+        return true;
+        }
+    }
+	
+	 $("input[type='file']").change(function (e) {
+         var formData = new FormData();
+         var inputFile = $("input[name='uploadFile']");
+		 console.log(inputFile);
+         var files = inputFile[0].files;
+
+         for (var i = 0; i < files.length; i++) {
+             if (!checkExtension(files[i].name, files[i].size)) {
+                 return false;
+             }
+             formData.append("uploadFile", files[i]);
+         }
+
+         $.ajax({
+             url: '/hospitalinfo/uploadAjaxAction',
+             processData: false,
+             contentType: false,
+             data: formData,
+             type: 'POST',
+             dataType: 'json',
+             success: function (result) {
+                 console.log(result);
+                 showUploadResult(result); // 업로드 결과 처리 함수
+             }
+         });
+     });
+	 
+	 
+	 
+	// 첨부파일 등록 시 이미지와 함꼐 X가 보여짐
+     function showUploadResult(uploadResultArr) {
+         if (!uploadResultArr || uploadResultArr.length == 0) {
+             return;
+         }
+
+         var uploadUL = $(".uploadResult ul");
+
+         var str = "";
+
+         $(uploadResultArr).each(function (i, obj) {
+             var fileCallPath = encodeURIComponent(obj.uploadPath + obj.uuid + "_" + obj.fileName);
+
+             str += "<li data-path='" + obj.uploadPath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "'><div>";
+             str += "<span>" + obj.fileName + "</span>";
+             str += "<button type='button' data-file=\'" + fileCallPath + "\' class='btn btn-secondary btn-sm'>";
+             str += "<i class='fa fa-times'></i></button><br>";
+             str += "<img style='width:80px' src='/hospitalinfo/display?fileName=" + fileCallPath + "'></div></li>";
+
+         });
+
+         uploadUL.append(str);
+     }
+	
+	
+     // 첨부파일 X 표시에 대한 이벤트(첨부파일 삭제)
+     $(".uploadResult").on("click", "button", function (e) {
+         console.log("delete file...");
+
+         var targetFile = $(this).data("file");
+         console.log(targetFile);
+         var targetLi = $(this).closest("li");
+
+         $.ajax({
+             url: '/hospitalinfo/deleteFile',
+             data: {fileName: targetFile},
+             dataType: 'text',
+             type: 'POST',
+             success: function (result) {
+                 alert(result);
+                 targetLi.remove();
+             }
+         });
+
+     });
+
+	 
+});
+</script>
 <script>
 function goPopup() {
 	var pop = window.open("jusoPopup", "pop",

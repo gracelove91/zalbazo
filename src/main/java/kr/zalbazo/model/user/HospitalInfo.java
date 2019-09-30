@@ -2,7 +2,7 @@ package kr.zalbazo.model.user;
 
 import java.util.List;
 
-import kr.zalbazo.model.hospital.HospitalLabel;
+import kr.zalbazo.model.pic.AttachFileDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,9 +28,7 @@ public class HospitalInfo {
 	
     private String userEmail;
     
-	private String uuid ;
-	private String uploadPath;
-	private String fileName;
+    private List<AttachFileDTO> attachList;
 	
 
 }

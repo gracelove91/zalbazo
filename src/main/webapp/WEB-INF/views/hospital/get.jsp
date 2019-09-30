@@ -281,8 +281,6 @@
 			
 
             <div id="menu2" class="container tab-pane fade"><br>
-            
-				<div class='row'>
 				<div class='row'>
                     <input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com">
                     <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">

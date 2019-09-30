@@ -8,6 +8,6 @@ import kr.zalbazo.model.hospital.Hospital;
 public interface SearchMapper {
 
 	List<Hospital> listAll(Map map);
-	List<Hospital> list();
+	List<Hospital> list(Map map);
 	
 }

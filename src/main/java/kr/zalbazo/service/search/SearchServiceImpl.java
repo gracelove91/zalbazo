@@ -38,9 +38,11 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public List<Hospital> list() throws Exception {
+	public List<Hospital> list(String keyword) throws Exception {
 		// TODO Auto-generated method stub
-
-		return mapper.list();
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("keyword", keyword);
+		
+		return mapper.list(map);
 	}
 }

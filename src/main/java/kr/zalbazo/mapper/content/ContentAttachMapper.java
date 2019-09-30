@@ -2,7 +2,7 @@ package kr.zalbazo.mapper.content;
 
 import java.util.List;
 
-import kr.zalbazo.model.content.AttachFileDTO;
+import kr.zalbazo.model.pic.AttachFileDTO;
 
 public interface ContentAttachMapper {
 	

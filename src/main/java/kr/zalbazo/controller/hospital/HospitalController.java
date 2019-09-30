@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.favorite_hospital.FavoriteHospital;
-import kr.zalbazo.model.hospital.Hospital;
+import kr.zalbazo.model.hospital.HospitalListVO;
+import kr.zalbazo.service.hospital.HospitalService;
 import kr.zalbazo.service.hospital.HospitalService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -24,6 +25,8 @@ public class HospitalController {
 
 	@Autowired
 	private HospitalService hospitalService;
+
+	
 	
 //	@Autowired
 //	private FavoriteHospitalService favoriteHospital_service;
@@ -44,13 +47,15 @@ public class HospitalController {
 	@GetMapping("/list")
 	public void list(Model model, Long hospitalId) {
 
-		List<Hospital> hospitalList = hospitalService.getList();
+		List<HospitalListVO> hospitalList = hospitalService.getList();
 
+		/* 라벨 처리 */
 		for (int i = 0; i < hospitalList.size(); i++) {
-			Hospital hospital = hospitalList.get(i);
+			HospitalListVO hospital = hospitalList.get(i);
 			hospital.setLabel(hospitalService.getLabelList(hospital.getHospitalId()));
 		}
-		model.addAttribute("hospitalList", hospitalList);
+		
+		model.addAttribute("hospitalService", hospitalList);
 
 	}
 

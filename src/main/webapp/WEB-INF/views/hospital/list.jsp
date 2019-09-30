@@ -48,16 +48,17 @@
                             <td class="mobile" style="text-align: center;"><c:out
                                     value="${hospital.hospitalId}"/></td>
 
+  <c:forEach items="${PicLib}" var="pic" varStatus="status">
                             <td class="mobile" style="text-align: center;"><a href="#">
                                 <img class="img-fluid rounded mb-3 mb-md-0"
-                                     src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg"
+                                     src="${ctx}/resources/img/hospital/${pic.uuid}_1.${pic.ext}"
                                      alt="">
                             </a></td>
 
+</c:forEach>
                             <td><a style="color: #000000;"
                                    href='/hospital/get?hospitalId=<c:out value="${hospital.hospitalId}"/>'>
                                     ${hospital.name}</a><br><br/>
-
                             <c:forEach items="${hospital.label}" var="label">
                                 <c:if test="${label.labelCode == 1 }">
                                     <i class="material-icons"> local_convenience_store </i>

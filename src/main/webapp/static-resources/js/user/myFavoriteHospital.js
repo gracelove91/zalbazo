@@ -63,13 +63,15 @@ $(document)
 //											.removeMyFavorite(
 //													userEmail,
 //													function(list) {
-														fhlist.on("click", ".fhremove", function(e){
+														fhlist.on("click", ".fhremove", function(list, e){
 															
-															alert("삭제버튼은 눌렸다리 "+hospitalId);
 															var hId = $(this).attr("data-id");
+															var info = $(".info");
+															var hospitalId = info.find("input[name='hospitalId']");
+															alert("삭제버튼은 눌렸다리 "+list[i].hospitalId);
 															
 															if (hId==hospitalId) {
-																alert("결과는 hId==" + hospitalId);
+																alert("결과는 hId==" + list[i].hospitalId);
 																
 																myFavoriteHospitalService.removeMyFavorite(hId,
 																		function(removeResult){

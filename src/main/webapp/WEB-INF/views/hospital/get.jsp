@@ -5,9 +5,8 @@
     String ctx = request.getContextPath();
     pageContext.setAttribute("ctx", ctx);
 %>
-
 <title>병원 상세 정보</title>
-<script src="https://kit.fontawesome.com/yourcode.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <%@include file="../includes/header.jsp" %>
 </head>
 
@@ -39,19 +38,19 @@
                  </c:if>
 
                  <c:if test="${label.labelCode == 2 }">
-                     <i class="material-icons"> local_florist </i>미용&nbsp;&nbsp;&nbsp;
+                     <i class="material-icons"> local_florist </i> 미용&nbsp;&nbsp;&nbsp;
                  </c:if>
 
                  <c:if test="${label.labelCode == 3 }">
-                     <i class="material-icons"> local_parking </i>주차&nbsp;&nbsp;&nbsp;
+                     <i class="material-icons"> local_parking </i> 주차&nbsp;&nbsp;&nbsp;
                  </c:if>
 
                  <c:if test="${label.labelCode == 4 }">
-                     <i class="material-icons"> emoji_nature </i>특수동물&nbsp;&nbsp;&nbsp;
+                     <i class="material-icons"> emoji_nature </i> 특수동물&nbsp;&nbsp;&nbsp;
                  </c:if>
                  
                  <c:if test="${label.labelCode == 5 }">
-                     <i class="material-icons"> check_circle </i>수술
+                     <i class="material-icons"> check_circle </i> 수술
                  </c:if>
             </c:forEach>
 

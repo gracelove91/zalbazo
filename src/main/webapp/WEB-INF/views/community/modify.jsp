@@ -6,7 +6,7 @@
 <style>
     .uploadResult {
         width: 100%;
-        background-color: #b3f0ff;
+        background-color: #66e0ff;
     }
 
     .uploadresult ul {

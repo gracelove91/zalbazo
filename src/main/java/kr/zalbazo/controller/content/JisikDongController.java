@@ -49,7 +49,7 @@ public class JisikDongController {
     		content.getAttachList().forEach(attach -> log.info(attach));
     	}
 		
-    	if(content.getTitle().isEmpty() == true || content.getBody().isEmpty() == true) {
+    	if(content.getTitle().trim().isEmpty() == true || content.getBody().trim().isEmpty() == true) {
     		return "redirect:/jisikdong/register";
     	}
     	

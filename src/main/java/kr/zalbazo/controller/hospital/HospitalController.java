@@ -26,13 +26,9 @@ public class HospitalController {
 	@Autowired
 	private HospitalService hospitalService;
 
-	
-	
-//	@Autowired
-//	private FavoriteHospitalService favoriteHospital_service;
 
 	@GetMapping("/get")
-	public void get(@RequestParam("hospitalId") Long hospitalId, Content content, Model model, FavoriteHospital favoriteHospital) {
+	public void get(@RequestParam("hospitalId") Long hospitalId, Content content, Model model) {
 		model.addAttribute("hospital", hospitalService.get(hospitalId));
 		model.addAttribute("labelList", hospitalService.getLabelList(hospitalId));
 		model.addAttribute("picList", hospitalService.getPictureList(hospitalId));
@@ -48,15 +44,14 @@ public class HospitalController {
 	public void list(Model model, Long hospitalId) {
 
 		List<HospitalListVO> hospitalList = hospitalService.getList();
+		model.addAttribute("hospitalList", hospitalList);
 
 		/* 라벨 처리 */
 		for (int i = 0; i < hospitalList.size(); i++) {
-			HospitalListVO hospital = hospitalList.get(i);
-			hospital.setLabel(hospitalService.getLabelList(hospital.getHospitalId()));
+			HospitalListVO hospitalListVO = hospitalList.get(i);
+			hospitalListVO.setLabel(hospitalService.getLabelList(hospitalListVO.getHospitalId()));
 		}
 		
-		model.addAttribute("hospitalService", hospitalList);
-
 	}
 
 

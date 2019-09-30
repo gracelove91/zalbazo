@@ -2,7 +2,6 @@ package kr.zalbazo.model.hospital;
 
 import java.util.List;
 
-import kr.zalbazo.model.pic.PicLib;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +22,10 @@ public class HospitalListVO {
 	private String treatEnd;
 	private String tel;
 	private List<HospitalLabel> label;
-	private PicLib pic;
+	private String uuid;
+	private String uploadPath;
+	private String fileName;
+	private String ext;
 	
 	
 

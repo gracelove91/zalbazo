@@ -29,7 +29,12 @@ public class UserController {
     public void validator(WebDataBinder webDataBinder){
         webDataBinder.setValidator(new UserValidator(this.service));
     }
-
+    
+    @GetMapping("/register_select")
+    public String register_select() {
+    	return "/register_select";
+    }
+    
     @GetMapping("/mypage")
     public String mypage(Principal principal, Model model) {
 

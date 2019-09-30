@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%
 	String ctx = request.getContextPath();
 	pageContext.setAttribute("ctx", ctx);
@@ -208,7 +209,24 @@ div.zabuto_calendar div.legend span.badge {
    text-align:center
     }
     
-   
+ul.animallist, ol.animallist {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+  
+    max-width: 900px;
+    width: 100%;
+}
+  
+ul.animallist li, ol.animallist li {
+	background-color: white; 
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid black;
+    font-size: 15px;
+    cursor: pointer;
+}
 </style>
 
 </head>
@@ -230,17 +248,28 @@ div.zabuto_calendar div.legend span.badge {
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
 <div id="my-calendar"></div>
 
-<form  action ='/calendar'onsubmit="return check()" method="post">
+<form  action ='/reserve'onsubmit="return check()" method="POST">
 <br>
 <input type="hidden" id='d' name='reservedate' value=''>   
 <input type="hidden" id='t' name='reservetime' value=''>
 <input type="hidden" id='animal' name='animalId' value=''>  
 <input type="hidden" id='hospital' name='hospitalId' value='${hos.hospitalId}'>  
+<input type="hidden" id='userEmail' name='userEmail' value=<sec:authentication property="principal.username"/>>
+<input type="hidden" id='animalId' name='animalId' value=''>
 
 <div id='reservedate'>예약날짜</div> 
 <div id='reservetime'> 예약시간</div>
 <br>
+<h3>동물선택</h3>
+<ul class="animallist">
+  
+<c:forEach items="${animal}" var="animallist">
 
+	<li id="${animallist.animalId}">${animallist.name}</li>
+
+</c:forEach>
+        
+    </ul>
 
 <br>
 
@@ -907,7 +936,8 @@ $.fn.zabuto_calendar_language = function (lang) {
     //날짜입력, 클릭시 색바꿈
     $('#my-calendar').on('click','.day',function(e){$('#reservedate').html("예약날짜 :  "+$(this).attr('id')); $('.day').css('background-color','white'); $(this).css('background-color','#CEECF5');
     $('#d').val($(this).attr('id')) });
-   
+   	$('.animallist').on('click','li',function(e){$('#animalId').val($(this).attr("id")); $('li').css('background-color','white'); $(this).css('background-color','#CEECF5');});
+        
    });
 
    

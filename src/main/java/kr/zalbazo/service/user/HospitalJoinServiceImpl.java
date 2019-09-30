@@ -24,9 +24,9 @@ public class HospitalJoinServiceImpl implements HospitalJoinService {
 		hospitalJoinMapper.hospitalInfoInsert(hospitalInfo);
 		
 		if(hospitalInfo.getAttachList() == null || hospitalInfo.getAttachList().size() <= 0) {
-			log.info("getAttachList is 00000000000");
 			return;
 		}
+		
 		System.out.println("hospitalId : " + hospitalInfo.getHospitalId());
 		hospitalInfo.getAttachList().forEach(attach ->{
 			attach.setHospitalId(hospitalInfo.getHospitalId());

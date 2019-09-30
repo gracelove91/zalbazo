@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -20,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,9 +56,14 @@ public class HospitalJoinController {
     
 
     @PostMapping("/register")
-    public String join(HospitalInfo hospitalInfo, HospitalLabel hospitalLabel, User user,
-    			RedirectAttributes rttr, HttpServletRequest request) {
+    public String join(@Valid HospitalInfo hospitalInfo, HospitalLabel hospitalLabel, User user,
+    			RedirectAttributes rttr, HttpServletRequest request, BindingResult bindingResult) {
 
+    	if(bindingResult.hasErrors()) {
+    		System.out.println("에러발생");
+    		return "/hospitalinfo/register";
+    	}
+    	
     	hJoinService.hospitalInfoRegister(hospitalInfo);
     	
     	// form에 있는 selectbox에서 라벨들의 값을 받아온다 
@@ -102,7 +109,7 @@ public class HospitalJoinController {
 			
 			uploadFileName = i +"."+ ext;
 			log.info("only file name : "+uploadFileName);
-			
+			attachDTO.setExt(ext);
 			attachDTO.setFileName(uploadFileName);
 			
 			UUID uuid = UUID.randomUUID();

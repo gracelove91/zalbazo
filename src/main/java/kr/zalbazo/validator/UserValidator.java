@@ -24,7 +24,7 @@ public class UserValidator implements Validator {
         User savedUser = service.get(newUser.getUserEmail());
 
         if (savedUser != null) {
-            errors.rejectValue("email", "duplicateEmail", "중복된 이메일입니다.");
+            errors.rejectValue("userEmail", "duplicateEmail", "중복된 이메일입니다.");
         }
 
         if (!newUser.getPassword().equals(newUser.getPassword2())) {

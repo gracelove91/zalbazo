@@ -109,7 +109,7 @@ public class HospitalJoinController {
 			
 			uploadFileName = i +"."+ ext;
 			log.info("only file name : "+uploadFileName);
-			attachDTO.setExt("."+ ext);
+			attachDTO.setExt(ext);
 			attachDTO.setFileName(uploadFileName);
 			
 			UUID uuid = UUID.randomUUID();

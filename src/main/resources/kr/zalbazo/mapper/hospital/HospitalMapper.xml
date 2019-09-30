@@ -22,12 +22,12 @@
 	</select>
 	
 
-	<select id="pictureList" resultType="kr.zalbazo.model.pic.PicLib" >
+	<select id="pictureList" resultType="kr.zalbazo.model.pic.PicLib">
 		select a.uuid, upload_path, file_name, ext
 		from pic_lib a, pic_lib_rel_hospital b
-		where a.uuid = b.uuid 
-			and hospital_id = #{hospitalId}
-	</select> 
+		where a.uuid = b.uuid
+		and hospital_id = #{hospitalId}
+	</select>
 	
 	
 	<select id="hPictureCount" resultType="int">

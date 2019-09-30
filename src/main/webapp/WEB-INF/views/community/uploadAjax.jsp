@@ -161,11 +161,6 @@ $(document).ready(function(){
 		});
 		
 	});
-	
-	
-	
-
-
 });
 
 </script>

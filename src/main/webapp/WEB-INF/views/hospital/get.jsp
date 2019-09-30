@@ -1,25 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     String ctx = request.getContextPath();
     pageContext.setAttribute("ctx", ctx);
 %>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
 <title>병원 상세 정보</title>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- 부트스트랩 CSS 추가하기 -->
-<link rel="stylesheet"
-	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
 <script src="https://kit.fontawesome.com/yourcode.js"></script>
 <%@include file="../includes/header.jsp" %>
 </head>
@@ -117,13 +104,12 @@
             <br>
 <!-- FavoriteHospitalList의 class가 fav여야함 -->
 
-<%-- 	<c:forEach items="${favoriteHospitalList}" var="favoriteHospital"> --%>
-
 			<p class="h5 heart" style="text-align: center">
 				<i class="material-icons" id="reserve" style="cursor: pointer;" href="index">event</i>예약하기
 				<i class="material-icons favorite" data-i="white" id=outlined style="cursor: pointer;">favorite_border</i>즐겨찾기
 			</p>
-
+			
+			
         </div>
         <div class="col-1"></div>
 
@@ -197,7 +183,8 @@
                                         <div class="container mt-3">
                             
                                         	<!-- 리뷰 -->
-                                        	<div class="info container">
+                                        	<div class="info container" style="background-color:white;">
+                                        	<div class="container">
 							                    <input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com">
 							                    <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
 							
@@ -297,6 +284,7 @@
             <div id="menu2" class="container tab-pane fade"><br>
             
 				<div class='row info'>
+				<div class='row'>
                     <input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com">
                     <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
                     <div class="col-lg-12">
@@ -312,25 +300,17 @@
                     				</div>
                     				
                     				<button type="submit" class="btn btn-secondary float-right" id="regBtn" name="regBtn">Submit</button>
-                    				
                             	</div>
                             </div>
                             		
                         </div>
                      </div>
             	</div>
-                <br><br>
-
+				<hr>
                 <!-- Q&A list -->
                 <div class='row'>
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-
-                            <div class="panel-heading" style="padding-left: 20px; font-size: x-large;">
-                                <strong>Q&A</strong>
-                            </div>
-                            <br>
-							
 							<!-- Q&A 리스트 출력 -->
                             <div class="qnaqna">
                                 <div class="card-body primary-font"> 아직 등록된 글이 없습니다.</div>
@@ -397,7 +377,4 @@ geocoder.addressSearch('${hospital.address}', function(result, status) {
 } 
 });   
 </script>
-
 <%@include file="../includes/footer.jsp" %>
-</body>
-</html>

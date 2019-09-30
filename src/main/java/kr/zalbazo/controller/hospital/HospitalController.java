@@ -1,6 +1,5 @@
 package kr.zalbazo.controller.hospital;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.favorite_hospital.FavoriteHospital;
 import kr.zalbazo.model.hospital.Hospital;
-import kr.zalbazo.service.hospital.FavoriteHospitalService;
 import kr.zalbazo.service.hospital.HospitalService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -27,8 +25,8 @@ public class HospitalController {
 	@Autowired
 	private HospitalService hospitalService;
 	
-	@Autowired
-	private FavoriteHospitalService favoriteHospital_service;
+//	@Autowired
+//	private FavoriteHospitalService favoriteHospital_service;
 
 	@GetMapping("/get")
 	public void get(@RequestParam("hospitalId") Long hospitalId, Content content, Model model, FavoriteHospital favoriteHospital) {
@@ -55,7 +53,6 @@ public class HospitalController {
 		model.addAttribute("hospitalList", hospitalList);
 
 	}
-
 
 
 }

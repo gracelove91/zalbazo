@@ -1,4 +1,4 @@
-console.log("Hospital Get Module.....");
+console.log("즐겨찾기!");
 	
 var favoriteService = (function(){
 
@@ -24,7 +24,9 @@ var favoriteService = (function(){
         });
         
     }
-    
+
+
+  
     
 	function removeFavorite(hospitalId, callback, error) {
 		console.log("remove favorite...");

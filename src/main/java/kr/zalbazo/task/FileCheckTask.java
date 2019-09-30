@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import kr.zalbazo.mapper.content.ContentAttachMapper;
-import kr.zalbazo.model.content.AttachFileDTO;
+import kr.zalbazo.model.pic.AttachFileDTO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 

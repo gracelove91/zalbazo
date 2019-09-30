@@ -1,16 +1,16 @@
-package kr.zalbazo.controller.pic;
+package kr.zalbazo.controller.hospital;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.file.Files;
-import java.text.SimpleDateFormat;
+import java.security.Principal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -18,65 +18,91 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.zalbazo.model.hospital.HospitalLabel;
 import kr.zalbazo.model.pic.AttachFileDTO;
-import kr.zalbazo.service.content.ContentService;
+import kr.zalbazo.model.user.HospitalInfo;
+import kr.zalbazo.model.user.User;
+import kr.zalbazo.service.user.HospitalJoinService;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
-import net.coobird.thumbnailator.Thumbnailator;
 
-@RequestMapping({ "/content/*" })
+@RequestMapping({ "/hospitalinfo/*" })
 @Controller
 @Log4j
-public class UploadController {
+@AllArgsConstructor
+public class HospitalJoinController {
 	
-	@GetMapping("/uploadAjax")
-	public void uploadAjax() {
-		log.info("upload ajax");
-	}
-	
-	
-	// 년월일 단위의 폴더를 생성하는 메서드
-	private String getFolder() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = new Date();
-		String str = sdf.format(date);
-		return str.replace("-", File.separator);
-	}
+	@Autowired
+	private HospitalJoinService hJoinService;
 	
 	
+    @GetMapping("/register")
+    public String join(Model model, Principal principal) {
+        model.addAttribute("userEmail", principal.getName());
+        return "user/hospital/hospitaljoin";
+    }
+    
+
+    @PostMapping("/register")
+    public String join(HospitalInfo hospitalInfo, HospitalLabel hospitalLabel, User user,
+    			RedirectAttributes rttr, HttpServletRequest request) {
+
+    	hJoinService.hospitalInfoRegister(hospitalInfo);
+    	
+    	// form에 있는 selectbox에서 라벨들의 값을 받아온다 
+    	String[] label = request.getParameterValues("label_info");
+    	
+    	// 반복문을 이용하여 HospitaLabel객체에 값을 넣어주고 메서드를 이용해서 디비에 insert
+    	for(int i=0; i<label.length; i++) {
+    		
+    		HospitalLabel hL = new HospitalLabel();
+    		hL.setLabelCode(Integer.parseInt(label[i]));
+    		hL.setHospitalId(hospitalInfo.getHospitalId());
+    		
+    		hJoinService.labelInsert(hL);
+    	}
+    	
+        rttr.addFlashAttribute("email", user.getUserEmail());
+
+        return "redirect:/index";
+    }
+    
+    
 	@ResponseBody
 	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<AttachFileDTO>> uploadAjaxPost(MultipartFile[] uploadFile) {
 		
 		List<AttachFileDTO> list = new ArrayList<>();
-		String uploadFolder = "C:\\upload";
+		String uploadFolder = "C:\\upload\\hospital\\";
 		
-		String uploadFolderPath = getFolder();
-		
-		// make folder
-		File uploadPath = new File(uploadFolder, uploadFolderPath);
-		
-		// 폴더가 존재하지 않는다면 
-		if(uploadPath.exists() == false) {
-			// mkdirs()를 이용해서 필요한 상위 폴더까지 한 번에 생성
-			uploadPath.mkdirs();
-		}
-		
+		int i = 1;
+				
 		for(MultipartFile multipartFile : uploadFile) {
 			
 			AttachFileDTO attachDTO = new AttachFileDTO();
 			
 			String uploadFileName = multipartFile.getOriginalFilename();
 			
+			//log.info("uploadFileName : "+uploadFileName);
+			
 			// IE has file path
 			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\")+1);
+			
+			String ext = uploadFileName.substring(uploadFileName.lastIndexOf(".") + 1).toLowerCase();
+			
+			uploadFileName = i +"."+ ext;
 			log.info("only file name : "+uploadFileName);
+			
 			attachDTO.setFileName(uploadFileName);
 			
 			UUID uuid = UUID.randomUUID();
@@ -84,24 +110,17 @@ public class UploadController {
 			attachDTO.setUuid(uuid.toString());
 			
 			try {
-				//File saveFile = new File(uploadFolder, uploadFileName);
-				File saveFile = new File(uploadPath, uploadFileName);
+				File saveFile = new File(uploadFolder, uploadFileName);
+				//File saveFile = new File(uploadPath, uploadFileName);
 				multipartFile.transferTo(saveFile);
 				
-				attachDTO.setUploadPath(uploadFolderPath);
-				System.out.println(uploadFileName);
-				
-				// check image type file
-				if(checkImageType(saveFile)) {
-					FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
-					
-					Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
-					
-					thumbnail.close();
-				}
+				attachDTO.setUploadPath(uploadFolder);
+				System.out.println("uploadFolder : " +uploadFolder);
+				System.out.println("uploadFileName :"  +uploadFileName);
 				
 				// add to List
 				list.add(attachDTO);
+				i++;
 				
 			} catch(Exception e) {
 				log.error(e.getMessage());
@@ -111,26 +130,13 @@ public class UploadController {
 	}
 	
 	
-	private boolean checkImageType(File file) {
-		
-		try {
-			String contentType = Files.probeContentType(file.toPath());
-			
-			return contentType.startsWith("image");
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-		
-		return false;
-	}
-	
-	
 	@ResponseBody
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> getFile(String fileName) {
 		log.info("fileName : " + fileName);
 		
-		File file = new File("c:\\upload\\" + fileName);
+		File file = new File(fileName);
+		
 		log.info("file : " + file);
 		
 		ResponseEntity<byte[]> result = null;
@@ -155,16 +161,7 @@ public class UploadController {
 		File file;
 		
 		try {
-			file = new File("c:\\upload\\"+ URLDecoder.decode(fileName, "UTF-8"));
-			
-			file.delete();
-			
-			String largeFileName = file.getAbsolutePath().replace("s_", "");
-			
-			log.info("largeFileName : " + largeFileName);
-			
-			file = new File(largeFileName);
-			
+			file = new File(URLDecoder.decode(fileName, "UTF-8"));
 			file.delete();
 			
 		} catch (UnsupportedEncodingException e) {
@@ -176,5 +173,12 @@ public class UploadController {
 		
 	} 
 
+    
+
+    @RequestMapping("/jusoPopup")
+    public String popup(@RequestParam(required = false) String roadFullAddr){
+        System.out.println(roadFullAddr);
+        return "user/jusoPopup";
+    }
 
 }

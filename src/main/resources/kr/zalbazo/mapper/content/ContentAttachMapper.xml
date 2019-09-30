@@ -20,13 +20,13 @@
 	  delete from pic_lib where uuid = #{uuid}
 	</delete>
 	
-	<select id="findByNo" resultType="kr.zalbazo.model.content.AttachFileDTO">
+	<select id="findByNo" resultType="kr.zalbazo.model.pic.AttachFileDTO">
 	  select * from pic_lib a, pic_lib_rel_content b
       where a.uuid = b.uuid
       and content_id = #{contentId}
 	</select>
 	
-	<select id="getOldFiles" resultType="kr.zalbazo.model.content.AttachFileDTO">
+	<select id="getOldFiles" resultType="kr.zalbazo.model.pic.AttachFileDTO">
 	   select * from pic_lib
 	   where upload_path = to_char(sysdate-1, 'yyyy\mm\dd')
 	</select>

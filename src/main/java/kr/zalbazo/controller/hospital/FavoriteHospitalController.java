@@ -61,7 +61,7 @@ public class FavoriteHospitalController {
     	
 		return favoriteHospital_service.remove(hospitalId) == 2
 		? new ResponseEntity<>("success", HttpStatus.OK)
-		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		: new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

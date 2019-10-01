@@ -48,7 +48,7 @@ public class MyFavoriteHospitalController {
  		System.out.println("myFavoriteHospitalService.removeMyFavorite(hospitalId):" + myFavoriteHospitalService.removeMyFavorite(hospitalId));
 		return myFavoriteHospitalService.removeMyFavorite(hospitalId) == 1
 		? new ResponseEntity<>("success", HttpStatus.OK)
-		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		: new ResponseEntity<>(HttpStatus.OK);
 	}
 
  	

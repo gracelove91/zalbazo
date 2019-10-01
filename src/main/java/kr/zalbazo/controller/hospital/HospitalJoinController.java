@@ -86,6 +86,8 @@ public class HospitalJoinController {
 		
 		String uploadFolder = httpServletRequest.getSession().getServletContext().getRealPath("/static-resources/img/hospital/");
 		
+		log.info("uploadFolder : " +uploadFolder);
+		
 		List<AttachFileDTO> list = new ArrayList<>();
 				
 		for(MultipartFile multipartFile : uploadFile) {

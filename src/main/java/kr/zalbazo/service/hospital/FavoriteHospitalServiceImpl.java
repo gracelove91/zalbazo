@@ -26,7 +26,7 @@ public class FavoriteHospitalServiceImpl implements FavoriteHospitalService {
    
     @Override
     public int remove(Long hospitalId) {
-        return mapper.delete(hospitalId);
+        return mapper.remove(hospitalId);
     }
 
 	@Override

@@ -48,10 +48,6 @@ public class JisikDongController {
     	if(content.getAttachList() != null) {
     		content.getAttachList().forEach(attach -> log.info(attach));
     	}
-		
-    	if(content.getTitle().trim().isEmpty() == true || content.getBody().trim().isEmpty() == true) {
-    		return "redirect:/jisikdong/register";
-    	}
     	
 		content.setCategoryId(JISIKDONG_CATEGORY_NUM);
 		service.register(content);

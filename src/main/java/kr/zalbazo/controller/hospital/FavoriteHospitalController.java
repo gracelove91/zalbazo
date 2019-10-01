@@ -54,11 +54,14 @@ public class FavoriteHospitalController {
 	}
 
 	@DeleteMapping(value="/remove/{hospitalId}", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> remove(@PathVariable("hospitalId") Long hospitalId) {
-		
+	public ResponseEntity<String> remove(@PathVariable("hospitalId") Long hospitalId, Model model, FavoriteHospital favoriteHospital, Principal principal) {
+	 
+		favoriteHospital.setUserEmail(principal.getName());
+	 	model.addAttribute("userEmail", principal.getName());
+    	
 		return favoriteHospital_service.remove(hospitalId) == 2
 		? new ResponseEntity<>("success", HttpStatus.OK)
-		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		: new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

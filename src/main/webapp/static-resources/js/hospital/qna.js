@@ -58,7 +58,7 @@
                         // aCheck true이면 Q는 있지만 A는 없음 
                         // 병원 측에서 A를 입력할 수 있는 textarea를 출력
                         if(aCheck) {
-                        	str += "<br><div class='info container'>";
+                        	str += "<br><div class='info container' style='background-color:white;'>";
                         	str += "<input type='hidden' class='form-control' name='userEmail' value='dummy@gmail.com'>";
                         	str += "<input type='hidden' class='form-control' name='hospitalId' value='${hospital.hospitalId}'>";
                         	str += "	<div class='form-group'>";

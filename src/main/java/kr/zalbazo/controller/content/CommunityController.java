@@ -50,10 +50,6 @@ public class CommunityController {
     		content.getAttachList().forEach(attach -> log.info(attach));
     	}
     	
-    	if(content.getTitle().trim().isEmpty() == true || content.getBody().trim().isEmpty() == true) {
-    		return "redirect:/community/register";
-    	}
-    	
         content.setCategoryId(COMMUNITY_CATEGORY_NUM);
         service.register(content);
         rttr.addFlashAttribute("result", content);

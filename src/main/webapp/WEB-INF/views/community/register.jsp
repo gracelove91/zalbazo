@@ -125,7 +125,17 @@
         $("button[type='submit']").on("click", function (e) {
             e.preventDefault();
             console.log("submit clicked");
-
+			
+        	if($("input[id='title']").val().trim() === "" || $("input[id='title']").val().trim() == null) {
+        		alert("제목을 입력하세요");
+        		return;
+        	}
+        	
+        	if($("textarea[id='body']").val().trim() == "" || $("textarea[id='body']").val().trim() == null) {
+        		alert("내용을 입력하세요");
+        		return;
+        	}
+        	
             var str = "";
 
             $(".uploadResult ul li").each(function (i, obj) {
@@ -238,22 +248,5 @@
 
         });
     });
-</script>
-<script>
-var regBtn = $("button[id='regBtn']");
-
-regBtn.on("click", function(e) {
-	
-	if($("input[id='title']").val().trim() === "" || $("input[id='title']").val().trim() == null) {
-		alert("제목을 입력하세요");
-		return;
-	}
-	
-	if($("textarea[id='body']").val().trim() == "" || $("textarea[id='body']").val().trim() == null) {
-		alert("내용을 입력하세요");
-		return;
-	}
-	
-}); // regBtn click
 </script>
 <%@ include file="../includes/footer.jsp" %>

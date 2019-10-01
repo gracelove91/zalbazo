@@ -116,14 +116,14 @@
 </div>
 
     <!-- Related Projects Row -->
-<br><br><br>
-
+<br>
 <div class="container-fluid">
 <div class="row">
 
 <!-- Nav tabs -->
 <div class="col-1"></div>
 <div class="col-10">
+<hr>
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#home">Map</a>

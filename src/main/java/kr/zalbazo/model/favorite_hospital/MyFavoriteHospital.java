@@ -16,7 +16,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-public class FavoriteHospital {
+public class MyFavoriteHospital {
 
 	private String userEmail;
 	private Long hospitalId;

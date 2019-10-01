@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.zalbazo.model.content.Content;
-import kr.zalbazo.model.favorite_hospital.FavoriteHospital;
 import kr.zalbazo.model.hospital.HospitalListVO;
 import kr.zalbazo.service.hospital.HospitalService;
 import kr.zalbazo.service.hospital.HospitalService;

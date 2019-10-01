@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import kr.zalbazo.model.content.AttachFileDTO;
+import kr.zalbazo.model.pic.AttachFileDTO;
 import kr.zalbazo.service.content.ContentService;
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;

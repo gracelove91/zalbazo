@@ -9,6 +9,7 @@ import kr.zalbazo.mapper.hospital.HospitalMapper;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.hospital.Hospital;
 import kr.zalbazo.model.hospital.HospitalLabel;
+import kr.zalbazo.model.hospital.HospitalListVO;
 import kr.zalbazo.model.hospital.HospitalQnaVO;
 import kr.zalbazo.model.pic.PicLib;
 import lombok.extern.log4j.Log4j;
@@ -56,7 +57,12 @@ public class HospitalServiceImpl implements HospitalService{
 	}
 
 	@Override
-	public List<Hospital> getList() {
+	public List<HospitalListVO> getList() {
 		return mapper.getList();
+	}
+
+	@Override
+	public PicLib getPicOne(Long hospitalId) {
+		return mapper.getPicOne(hospitalId);
 	}
 }

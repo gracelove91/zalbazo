@@ -34,9 +34,14 @@
 </select>
 
 <select id="list" resultType="kr.zalbazo.model.hospital.Hospital">
-    SELECT *
+    SELECT hospital.hospital_id,hospital.name,hospital.treat_start,hospital.treat_end,hospital.address,hospital.tel
+     
     FROM hospital
-    ORDER BY hospital_id desc
+    WHERE
+    name like '%'||#{keyword}||'%'
+            OR address like '%'||#{keyword}||'%'
+            OR info like '%'||#{keyword}||'%'
+    ORDER BY hospital.hospital_id desc
 </select>
  
 

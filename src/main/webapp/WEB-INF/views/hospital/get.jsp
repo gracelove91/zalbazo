@@ -1,26 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     String ctx = request.getContextPath();
     pageContext.setAttribute("ctx", ctx);
 %>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
 <title>병원 상세 정보</title>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- 부트스트랩 CSS 추가하기 -->
-<link rel="stylesheet"
-	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<script src="https://kit.fontawesome.com/yourcode.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <%@include file="../includes/header.jsp" %>
 </head>
 
@@ -45,26 +31,28 @@
             <p class="h4">
                 <i class="material-icons" style="font-weight:bold">alarm_off</i> <span>&nbsp;&nbsp;${hospital.treatEnd}</span>
             </p><br>
+            
             <!-- 해당 병원에 맞는 라벨 출력 -->
             <c:forEach items="${labelList}" var="label">
+            
                  <c:if test="${label.labelCode == 1 }">
                      <i class="material-icons"> local_convenience_store </i>24시간&nbsp;&nbsp;&nbsp;
                  </c:if>
-
+            
                  <c:if test="${label.labelCode == 2 }">
-                     <i class="material-icons"> local_florist </i>미용&nbsp;&nbsp;&nbsp;
+                     <i class="material-icons"> local_florist </i> 미용&nbsp;&nbsp;&nbsp;
                  </c:if>
 
                  <c:if test="${label.labelCode == 3 }">
-                     <i class="material-icons"> local_parking </i>주차&nbsp;&nbsp;&nbsp;
+                     <i class="material-icons"> local_parking </i> 주차&nbsp;&nbsp;&nbsp;
                  </c:if>
 
                  <c:if test="${label.labelCode == 4 }">
-                     <i class="material-icons"> emoji_nature </i>특수동물&nbsp;&nbsp;&nbsp;
+                     <i class="material-icons"> emoji_nature </i> 특수동물&nbsp;&nbsp;&nbsp;
                  </c:if>
                  
                  <c:if test="${label.labelCode == 5 }">
-                     <i class="material-icons"> check_circle </i>수술
+                     <i class="material-icons"> check_circle </i> 수술
                  </c:if>
             </c:forEach>
 
@@ -72,34 +60,46 @@
             <p class="h5">${hospital.info}</p>
 
         </div>
+        
         <div class="col-5">
+        
             <!-- 병원사진 슬라이드 쇼 -->
-            <div id="carouselExampleControls" class="carousel slide"
-                 data-ride="carousel" style="width: 400px; margin: 0 auto">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="width: 400px; margin: 0 auto">
                 <div class="carousel-inner">
-
+                
+					<!-- 병원사진 갯수에 따라 다르게 처리 0개, 1개, 1개 이상일 때 -->
                     <c:choose>
                         <c:when test="${picCount eq 0}">
                         </c:when>
 
                         <c:when test="${picCount eq 1}">
+                          <c:forEach var="list" items="${picList}">
                             <div class="carousel-item active">
-                                <img src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg"
+                                <img src=${ctx}/resources/img/hospital/${list.uuid}_${list.fileName}
                                      width="400px" height="400px">
                             </div>
+                          </c:forEach>
                         </c:when>
-
+                        
                         <c:otherwise>
-                            <div class="carousel-item active">
-                                <img src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg"
-                                     width="400px" height="400px">
-                            </div>
-
-                            <c:forEach var="i" begin="2" end="${picCount}">
-                                <div class="carousel-item">
-                                    <img src="${ctx}/resources/img/${hospital.hospitalId}-${i}.jpg"
-                                         width="400px" height="400px">
-                                </div>
+                           <c:forEach items="${picList}" var="list" varStatus="status">
+                           
+                             <c:choose>
+                                <c:when test="${status.count == 1}">
+  	                               <div class="carousel-item active">
+	                                   <img src="${ctx}/resources/img/hospital/${list.uuid}_1.${list.ext}"
+	                                        width="400px" height="400px">
+	                               </div>
+	                            </c:when> 
+	                            
+	                            <c:otherwise>
+	                                <div class="carousel-item">
+	                                    <img src="${ctx}/resources/img/hospital/${list.uuid}_${status.count}.${list.ext}"
+	                                         width="400px" height="400px">
+	                                </div>
+	                            </c:otherwise>
+	                          </c:choose>
+	                            
                             </c:forEach>
                         </c:otherwise>
                     </c:choose>
@@ -117,13 +117,12 @@
             <br>
 <!-- FavoriteHospitalList의 class가 fav여야함 -->
 
-<%-- 	<c:forEach items="${favoriteHospitalList}" var="favoriteHospital"> --%>
-
 			<p class="h5 heart" style="text-align: center">
-				<i class="material-icons" style="cursor: pointer;">event</i>예약하기
+				<i class="material-icons" id="reserve" style="cursor: pointer;" href="index">event</i>예약하기
 				<i class="material-icons favorite" data-i="white" id=outlined style="cursor: pointer;">favorite_border</i>즐겨찾기
 			</p>
-
+			
+			
         </div>
         <div class="col-1"></div>
 
@@ -131,23 +130,23 @@
 </div>
 
     <!-- Related Projects Row -->
-<br><br><br>
-
+<br>
 <div class="container-fluid">
 <div class="row">
 
 <!-- Nav tabs -->
 <div class="col-1"></div>
 <div class="col-10">
+<hr>
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#home">Map</a>
+                <a class="nav-link active" data-toggle="tab" href="#home">&nbsp;&nbsp;&nbsp;Map&nbsp;&nbsp;&nbsp;</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu1">Review</a>
+                <a class="nav-link" data-toggle="tab" href="#menu1">&nbsp;&nbsp;&nbsp;Review&nbsp;&nbsp;&nbsp;</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu2">Q&A</a>
+                <a class="nav-link" data-toggle="tab" href="#menu2">&nbsp;&nbsp;&nbsp;Q&A&nbsp;&nbsp;&nbsp;</a>
             </li>
         </ul>
 
@@ -192,12 +191,14 @@
                             </div>
 							
                             <div class="panel-body">
+                            
                                 <ul style="list-style-type:none;">
                                     <li class="left clearfix">
                                         <div class="container mt-3">
                             
                                         	<!-- 리뷰 -->
-                                        	<div class="info container">
+                                        	<div class="info container" style="background-color:white;">
+                                        	<div class="container">
 							                    <input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com">
 							                    <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
 							
@@ -254,16 +255,18 @@
 
                                             </div>
                                         </div>
+                                        </div>
                                     </li>
                                 </ul>
 
-
+								<div class="container" style="background-color:white;">
                                 <ul class="review" style="list-style-type:none;">
                                     <li class="left clearfix" data-rno='12'>
                                         <div class="container mt-3">
+                                        
                                             <div class="media border p-3">
                                                 <img src="/resources/img/baba.png" class="mr-3 mt-3 rounded-circle"
-                                                     style="width: 50px">
+                                                     style="width: 80px">
                                                 
                                                 <div class="media-body">
 
@@ -280,11 +283,12 @@
                                                 </div>
                                                 
                                             </div>
+                                            
                                         </div>
                                     </li>
                                 </ul>
-                                
-                            </div>
+                            	</div>
+                            
                         </div>
                     </div>
                 </div>
@@ -295,8 +299,7 @@
 			
 
             <div id="menu2" class="container tab-pane fade"><br>
-            
-				<div class='row info'>
+				<div class='row'>
                     <input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com">
                     <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
                     <div class="col-lg-12">
@@ -312,25 +315,17 @@
                     				</div>
                     				
                     				<button type="submit" class="btn btn-secondary float-right" id="regBtn" name="regBtn">Submit</button>
-                    				
                             	</div>
                             </div>
                             		
                         </div>
                      </div>
             	</div>
-                <br><br>
-
+				<hr>
                 <!-- Q&A list -->
                 <div class='row'>
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-
-                            <div class="panel-heading" style="padding-left: 20px; font-size: x-large;">
-                                <strong>Q&A</strong>
-                            </div>
-                            <br>
-							
 							<!-- Q&A 리스트 출력 -->
                             <div class="qnaqna">
                                 <div class="card-body primary-font"> 아직 등록된 글이 없습니다.</div>
@@ -397,7 +392,4 @@ geocoder.addressSearch('${hospital.address}', function(result, status) {
 } 
 });   
 </script>
-
 <%@include file="../includes/footer.jsp" %>
-</body>
-</html>

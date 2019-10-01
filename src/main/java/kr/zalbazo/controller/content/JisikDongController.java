@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.zalbazo.model.content.AttachFileDTO;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.Criteria;
 import kr.zalbazo.model.content.PageDTO;
+import kr.zalbazo.model.pic.AttachFileDTO;
 import kr.zalbazo.service.content.ContentService;
 import lombok.extern.log4j.Log4j;
 
@@ -48,7 +48,7 @@ public class JisikDongController {
     	if(content.getAttachList() != null) {
     		content.getAttachList().forEach(attach -> log.info(attach));
     	}
-		
+    	
 		content.setCategoryId(JISIKDONG_CATEGORY_NUM);
 		service.register(content);
 		rttr.addFlashAttribute("result", content);

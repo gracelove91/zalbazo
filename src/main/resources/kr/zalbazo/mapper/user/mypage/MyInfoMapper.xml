@@ -8,5 +8,10 @@
 		where user_email = #{userEmail}
 	</select>
 	
+	<update id="modify">
+		update zalbazo_user set tel = #{tel}, name = #{name}, address = #{address}
+		where user_email = #{userEmail}
+	</update>
+	
 	
 </mapper>

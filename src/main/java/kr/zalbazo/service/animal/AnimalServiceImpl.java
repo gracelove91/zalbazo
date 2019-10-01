@@ -42,9 +42,9 @@ public class AnimalServiceImpl implements AnimalService {
 //    }
     
     @Override
-    public List<Animal> getList(){
+    public List<Animal> getList(String userEmail){
     
-    	return mapper.getList();
+    	return mapper.getList(userEmail);
     }
 
    

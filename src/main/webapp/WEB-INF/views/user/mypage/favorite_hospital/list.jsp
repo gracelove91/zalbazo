@@ -14,8 +14,8 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 </head>
-<body>
 <%@include file="/WEB-INF/views/includes/header.jsp" %>	
+<body>
 
 	<div class="container-fluid">
 		<div class="row d-flex d-md-block flex-nowrap wrapper">
@@ -60,30 +60,12 @@
 									<img class="img-fluid rounded mb-3 mb-md-0"
 									src="${ctx}/resources/img/${favoriteHospital.hospitalId}-1.jpg" alt="">
 							</a></td>
-							<td><a style="color: #000000;"
+							<td>
+							<a style="color: #000000;"
 								href='/hospital/get?hospitalId=<c:out value="${favoriteHospital.hospitalId}"/>'>
 									${favoriteHospital.name}</a><br> <br /> 
 
-									<c:forEach items="${favoriteHospital.label}" var="label">
-
-									<c:if test="${label.labelCode == 1 }">
-										<i class="material-icons"> local_convenience_store </i>
-									</c:if>
-
-									<c:if test="${label.labelCode == 2 }">
-										<i class="material-icons"> spa </i>
-									</c:if>
-
-									<c:if test="${label.labelCode == 3 }">
-										<i class="material-icons"> local_parking </i>
-									</c:if>
-
-									<c:if test="${label.labelCode == 4 }">
-										<i class="material-icons"> pets </i>
-									</c:if>
-
-
-								</c:forEach></td>
+							</td>
 
 							<td class="mobile" style="text-align: center;"><c:out
 									value="${favoriteHospital.treatStart}" /></td>
@@ -110,13 +92,9 @@
 </div>
 
 
-			<footer class="text-center" style="max-width: 1080px;">
-				<p>
-					Copyright ⓒ 2019 <b>zalbazo</b> All Rights Reserved.
-				</p>
-			</footer> </main>
-		</div>
-	</div>
+</main>
+</div>
+</div>
 
 	<!-- 제이쿼리 자바스크립트 추가하기 -->
 
@@ -126,7 +104,7 @@
 <script type="text/javascript" src="${ctx}/resources/js/hospital/favorite.js"></script>
 
 
-
+<%@include file="/WEB-INF/views/includes/footer.jsp" %>	
 </body>
 
 </html>

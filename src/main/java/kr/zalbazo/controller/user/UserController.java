@@ -42,29 +42,41 @@ public class UserController {
     public void validator(WebDataBinder webDataBinder){
         webDataBinder.setValidator(new UserValidator(this.service));
     }
-
+    
+    @GetMapping("/register_select")
+    public String register_select() {
+    	return "/register_select";
+    }
+    
     @GetMapping("/mypage")
-    public String mypage(Principal principal, Model model, Long categoryId, Content content) {
-    	
-    	categoryId = JISIKDONG_CATEGORY_NUM;
-    	
-    	model.addAttribute("MypostList", mypostsservice.getJisikdongList(categoryId));
-    	
+    public String mypage(Principal principal, Model model) {
+
     	model.addAttribute("useremail", principal.getName());
     	
     	return "user/mypage";
     }
     
     @GetMapping("/register")
-    public String join(Model model) {
+    public String join(@RequestParam String type, Model model) {
+
         model.addAttribute("user",new User());
-        return "user/userjoin";
+
+        if(type.equals("hospital")){
+            return "user/join/hospitaljoin";
+        }
+        return "user/join/userjoin";
     }
 
     @PostMapping("/register")
     public String join(@Valid @ModelAttribute User user, BindingResult bindingResult, RedirectAttributes rttr) {
+        String type = user.getRole();
+
         if(bindingResult.hasErrors()){
-            return "user/userjoin";
+            if(type.equals("hospital")){
+                return "user/join/hospitaljoin";
+            }
+
+            return "user/join/userjoin";
         }
 
         service.register(user);

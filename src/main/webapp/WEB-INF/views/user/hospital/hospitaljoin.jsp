@@ -35,7 +35,7 @@
 			<div class="form-group">
 			   <fieldset>
                   <label class="font-weight-bold">병원명</label>
-                  <input type="text" class="form-control" name="name" placeholder="병원명을 입력하세요">
+                  <input type="text" class="form-control" id="name" name="name" placeholder="병원명을 입력하세요">
                </fieldset>
             </div><br />
 
@@ -43,7 +43,7 @@
 			<div class="form-group">
 			   <fieldset>
                   <label class="font-weight-bold">전화번호</label>
-                  <input type="text" class="form-control" name="tel" placeholder="숫자만 입력해주세요">
+                  <input type="text" class="form-control" id="tel" name="tel" placeholder="000-0000-0000">
                </fieldset>
             </div><br />
             
@@ -101,8 +101,7 @@
 		      <label for="sel1" class="font-weight-bold">문 여는 시간</label>
 		      <select class="form-control" id="treatStart" name="treatStart">
 		        
-		        <option>-- --</option>
-		        <c:forEach begin="1" end="24" step="1" var="hour">
+		        <c:forEach begin="0" end="24" step="1" var="hour">
 		           <!-- hour라는 값에 변수가 10보다 작을 경우 -->
 		           <c:if test="${hour < 10}">
 		              <!-- hour 01,02,03... 으로 바뀜 -->
@@ -117,8 +116,7 @@
 		      <label for="sel1" class="font-weight-bold">문 닫는 시간</label>
 		      <select class="form-control" id="treatEnd" name="treatEnd">
 		        
-		        <option>-- --</option>
-		        <c:forEach begin="1" end="24" step="1" var="hour">
+		        <c:forEach begin="0" end="24" step="1" var="hour">
 		           <!-- hour라는 값에 변수가 10보다 작을 경우 -->
 		           <c:if test="${hour < 10}">
 		              <!-- hour 01,02,03... 으로 바뀜 -->
@@ -181,8 +179,40 @@ $(document).ready(function(e){
     var formObj = $("form[role='form']");
 
     $("button[type='submit']").on("click", function (e) {
+    	
         e.preventDefault();
+        
         console.log("submit clicked");
+		
+        var hName = $("input[id='name']").val();
+		var hTel = $("input[id='tel']").val();
+		var hAddress = $("input[id='address']").val();
+		var hInfo = $("textarea[id='info']").val();
+		var hTreatStart = $("select[id='treatStart']").val();
+		var hTreatEnd = $("select[id='treatEnd']").val(); 
+		
+		var regex= /^\d{2,3}-\d{3,4}-\d{4}$/;
+		
+		if(hName.trim() === "" || hName.trim() === null || hName.trim().length < 5) {
+			alert("병원명을 최소 5자 이상 입력해주세요.")
+			return;
+		}
+		
+		if(!regex.test($("input[id='tel']").val())) {
+			alert("전화번호를 000-0000-0000 형태로 입력해주세요");
+			return;
+		}
+		
+		if(hAddress.trim() ==="" || hAddress.trim() === null) {
+			alert("주소를 입력해주세요");
+			return;
+		}
+		
+		if(hInfo.trim().length < 10) {
+			alert("병원에 대한 정보를 최소 10자 이상 입력해주세요.");
+			return;
+		}
+		
 
         var str = "";
 

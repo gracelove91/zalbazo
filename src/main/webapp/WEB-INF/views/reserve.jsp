@@ -22,10 +22,10 @@
 
 <div class="container">
       <div class="row"> 
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mr-1"> 
 <div id="my-calendar"></div>
  </div>  <!-- col-6 -->
- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">  
+ <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">  
 
 <table class="table table-bordered">
   <thead>
@@ -55,10 +55,12 @@
 <input type="hidden" id='hospital' name='hospitalId' value='${hos.hospitalId}'>  
 <input type="hidden" id='userEmail' name='userEmail' value=<sec:authentication property="principal.username"/>>
 <input type="hidden" id='animalId' name='animalId' value=''>
-
-<div id='reservedate'>예약날짜</div> 
-<div id='reservetime'> 예약시간</div>
+<div class="row"> 
+<div class="col-md-6 col-md-offset-6 col-md-pull-6" id='reservedate' style="font-family: 돋움체; font-weight: bold; font-size: 2.0em; ">예약날짜</div>
+<br> 
+<div class="col-md-6 col-md-offset-6 col-md-pull-6" id='reservetime' style="font-family: 돋움체; font-weight: bold; font-size: 2.0em; ">예약시간</div>
 <br>
+  </div>
 <h3>동물선택</h3>
 <ul class="animallist">
   
@@ -69,8 +71,9 @@
 </c:forEach>
 
     </ul>
+  
 <button class="btn btn-primary" type ="submit"" style='float: right')>예약하기</button>
-
+</form>
 </div><!--(./COntainer")-->
 
 <script type="text/javascript">

@@ -17,6 +17,7 @@ $(document).ready(function() {
 						var str = "";
 
 						if (list == null || list.length == 0) {
+							fhlist.html(str);
 							return;
 						}
 
@@ -71,6 +72,4 @@ $(document).ready(function() {
 				});
 
 			});
-			
-			
 });

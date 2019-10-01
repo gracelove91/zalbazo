@@ -1,10 +1,7 @@
 package kr.zalbazo.controller.hospital;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,9 +29,6 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class FavoriteHospitalController {
 
-	@Autowired
-	private HospitalService hospitalService;
-	
 	@Autowired
 	private FavoriteHospitalService favoriteHospital_service;
 

@@ -5,6 +5,7 @@ import java.util.List;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.hospital.Hospital;
 import kr.zalbazo.model.hospital.HospitalLabel;
+import kr.zalbazo.model.hospital.HospitalListVO;
 import kr.zalbazo.model.hospital.HospitalQnaVO;
 import kr.zalbazo.model.pic.PicLib;
 
@@ -19,8 +20,9 @@ public interface HospitalService {
 	
 	List<PicLib> getPictureList(Long hospitalId);
 	int getPictureCount(Long hospitalId);
+	PicLib getPicOne(Long hospitalId);
 
 	//List<Content> getHospitalQnaList(Long hospitalId);
 
-	List<Hospital> getList();
+	List<HospitalListVO> getList();
 }

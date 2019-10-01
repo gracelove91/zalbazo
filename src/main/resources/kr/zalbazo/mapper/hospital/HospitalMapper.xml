@@ -9,11 +9,15 @@
 	</select>
 	
 
-	<select id="getList" resultType="kr.zalbazo.model.hospital.Hospital">
-		<![CDATA[
-			select * 
-            from HOSPITAL
-   		]]>
+	<select id="getList" resultType="kr.zalbazo.model.hospital.HospitalListVO">
+		select * 
+		from hospital,
+    		(select pic_lib.uuid, pic_lib.upload_path, pic_lib.file_name, pic_lib.ext, 
+    		pic_lib_rel_hospital.hospital_id
+     		from pic_lib, pic_lib_rel_hospital
+     		where pic_lib.uuid = pic_lib_rel_hospital.uuid)a
+		where a.hospital_id = hospital.hospital_id
+		and a.file_name LIKE '%1.%'
 	</select>
 
 
@@ -22,17 +26,27 @@
 	</select>
 	
 
-	<select id="pictureList" resultType="kr.zalbazo.model.pic.PicLib" >
-		select a.uuid, upload_path, file_name 
+	<select id="pictureList" resultType="kr.zalbazo.model.pic.PicLib">
+		select a.uuid, upload_path, file_name, ext
 		from pic_lib a, pic_lib_rel_hospital b
-		where a.uuid = b.uuid 
-			and hospital_id = #{hospitalId}
-	</select> 
+		where a.uuid = b.uuid
+		and hospital_id = #{hospitalId}
+	</select>
 	
 	
 	<select id="hPictureCount" resultType="int">
         select count(*) from pic_lib_rel_hospital
 		where hospital_id = #{hospitalId}
+    </select>
+    
+    <select id="getPicOne" resultType="kr.zalbazo.model.pic.PicLib">
+       select c.*	
+	   from 
+	   (select a.uuid, a.upload_path, a.file_name
+	   from pic_lib a, pic_lib_rel_hospital b
+	   where a.uuid = b.uuid
+	   and hospital_id = #{hospitalId}) c
+	   where rownum = 1
     </select>
     
     

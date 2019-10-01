@@ -54,7 +54,213 @@
 		      </div> <!-- 개인정보 수정 -->
 		      
 		      <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">동물 관리</div>
-		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">내가쓴글</div>
+		      
+		      
+		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+		      
+		       <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
+                <div class="page-header mt-3">
+                </div>
+                <p class="lead">내가 쓴 리뷰~~</p>
+                <hr>
+                <table class="table table-striped" style="max-width: 1000px;">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="mobile" style="width:70px; text-align:center;">번호</th>
+                            <th scope="col" class="mobile" style="text-align:center;">제목</th>
+                            <th scope="col" class="mobile" style="width:100px; text-align:center;">날짜</th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <c:forEach items="${MypostsList}" var="content">
+                            <tr>
+                            
+                                <th scope="row" class="mobile" style="text-align:center;">
+                                    <c:out value="${content.contentId}" />
+                                </th>
+
+
+                                <td>
+                                	 <a class='move' style="color : #000000;" href='<c:out value="${content.contentId}"/>'>
+                    				<c:out value="${content.title}" /></a>
+                    			</td>
+                                
+                                <td class ="mobile" style="text-align:center;">
+                                	 <fmt:formatDate value="${content.createdDate}" pattern="yyyy-MM-dd" />
+                                </td>
+                                
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+              </main>
+              
+              
+               <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
+                <div class="page-header mt-3">
+                   
+                </div>
+                <p class="lead">내가 쓴 지식동 글~~</p>
+                <hr>
+                <table class="table table-striped" style="max-width: 2000px;">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>
+                            <th scope="col" class="mobile" style="text-align:center;">제목</th>
+                            <th scope="col" class="mobile" style="width:120px; text-align:center;">날짜</th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <c:forEach items="${MypostsList}" var="content">
+                            <tr>
+                            
+                                <th scope="row" class="mobile" style="text-align:center;">
+                                    <c:out value="${content.contentId}" />
+                                </th>
+                                
+                                <td><a href='/jisikdong/get?contentId=<c:out value="${content.contentId}"/>'>
+                                	<c:out value="${content.title}"/></a>
+                                </td>
+									
+						<!-- 
+                                <td>
+                                	 <a class='move' style="color : #000000;" href='<c:out value="${content.contentId}"/>'>
+                    				<c:out value="${content.title}" /></a>
+                    			</td>
+						 -->                                
+                                <td class ="mobile" style="text-align:center;">
+                                	 <fmt:formatDate value="${content.createdDate}" pattern="yyyy-MM-dd" />
+                                </td>
+                                
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+              	  </table>
+                     </main>
+                     
+                      <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
+                <div class="page-header mt-3">
+                </div>
+               <p class="lead">내가 쓴 Q&A~~</p>
+                <hr>
+                <table class="table table-striped" style="max-width: 2000px;">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>
+                            <th scope="col" class="mobile" style="text-align:center;">제목</th>
+                            <th scope="col" class="mobile" style="width:120px; text-align:center;">날짜</th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <c:forEach items="${MypostsList}" var="content">
+                            <tr>
+                            
+                                <th scope="row" class="mobile" style="text-align:center;">
+                                    <c:out value="${content.contentId}" />
+                                </th>
+
+
+                                <td>
+                                	 <a class='move' style="color : #000000;" href='<c:out value="${content.contentId}"/>'>
+                    				<c:out value="${content.title}" /></a>
+                    			</td>
+                                
+                                <td class ="mobile" style="text-align:center;">
+                                	 <fmt:formatDate value="${content.createdDate}" pattern="yyyy-MM-dd" />
+                                </td>
+                                
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+                 </main>
+                 
+                  <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
+                <div class="page-header mt-3">
+                </div>
+                <p class="lead">내가 쓴 커뮤니티 글~~~</p>
+                <hr>
+                <table class="table table-striped" style="max-width: 2000px;">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>
+                            <th scope="col" class="mobile" style="text-align:center;">제목</th>
+                            <th scope="col" class="mobile" style="width:120px; text-align:center;">날짜</th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <c:forEach items="${MypostsList}" var="content">
+                            <tr>
+                            
+                                <th scope="row" class="mobile" style="text-align:center;">
+                                    <c:out value="${content.contentId}" />
+                                </th>
+
+
+                                <td>
+                                	 <a class='move' style="color : #000000;" href='<c:out value="${content.contentId}"/>'>
+                    				<c:out value="${content.title}" /></a>
+                    			</td>
+                                
+                                <td class ="mobile" style="text-align:center;">
+                                	 <fmt:formatDate value="${content.createdDate}" pattern="yyyy-MM-dd" />
+                                </td>
+                                
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+                 </main>
+                 
+                 <main id="main" class="col-md-9 float-left col pl-md-5 pt-3 main">
+                <div class="page-header mt-3">
+                </div>
+                <p class="lead">내가 쓴 댓글~~~</p>
+				<table class="table table-striped" style="max-width: 900px;">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>
+                            <th scope="col" class="mobile" style="text-align:center;">제목</th>
+                            <th scope="col" class="mobile" style="width:120px; text-align:center;">날짜</th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <c:forEach items="${MypostsList}" var="content">
+                            <tr>
+                            
+                                <th scope="row" class="mobile" style="text-align:center;">
+                                    <c:out value="${content.contentId}" />
+                                </th>
+
+
+                                <td>
+                                	 <a class='move' style="color : #000000;" href='<c:out value="${content.contentId}"/>'>
+                    				<c:out value="${content.title}" /></a>
+                    			</td>
+                                
+                                <td class ="mobile" style="text-align:center;">
+                                	 <fmt:formatDate value="${content.createdDate}" pattern="yyyy-MM-dd" />
+                                </td>
+                                
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+                </main>
+              
+             
+		      </div> <!-- 내가 쓴 글 내역  전체 -->
+		      
 		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">예약 내역</div>
 		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">즐겨찾는 병원</div>
 		      <div class="tab-pane" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">회원 탈퇴</div>

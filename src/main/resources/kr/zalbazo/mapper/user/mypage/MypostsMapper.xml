@@ -13,6 +13,7 @@
         from CONTENT
         where CONTENT_ID > 0
           AND CATEGORY_ID = #{categoryId}
+          AND USER_EMAIL = #{useremail}
         ]]>
 
 </select>

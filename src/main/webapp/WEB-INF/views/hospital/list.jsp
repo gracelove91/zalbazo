@@ -66,6 +66,7 @@ input.checkbox:checked + label.input-label.radio::before {
 </style>
 <title>병원 LIST</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <section class="feature-area">
 <form name="form1" method="Get" action="/hospital/searchedlistAll">
     <div class="container">
@@ -106,9 +107,8 @@ input.checkbox:checked + label.input-label.radio::before {
 </div>
 </form>
 <br>
-
-
-		<div style="text-align:left;"> 병원리스트</div>
+<br>
+<br>
 
                 <table class="table table-striped" style="width: 1150px;">
                     <thead>
@@ -148,34 +148,33 @@ input.checkbox:checked + label.input-label.radio::before {
 
                             <td class="mobile" style="text-align: center;"><a href="#">
                                 <img class="img-fluid rounded mb-3 mb-md-0"
-                                     src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg"
+                                     src="${ctx}/resources/img/hospital/${hospital.uuid}_${hospital.fileName}"
                                      alt="">
                             </a></td>
 
                             <td><a style="color: #000000;"
                                    href='/hospital/get?hospitalId=<c:out value="${hospital.hospitalId}"/>'>
                                     ${hospital.name}</a><br><br/>
-
                             <c:forEach items="${hospital.label}" var="label">
-				                 <c:if test="${label.labelCode == 1 }">
-				                     <i class="material-icons"> local_convenience_store </i>
-				                 </c:if>
-				
-				                 <c:if test="${label.labelCode == 2 }">
-				                     <i class="material-icons"> local_florist </i>
-				                 </c:if>
-				
-				                 <c:if test="${label.labelCode == 3 }">
-				                     <i class="material-icons"> local_parking </i>
-				                 </c:if>
-				
-				                 <c:if test="${label.labelCode == 4 }">
-				                     <i class="material-icons"> emoji_nature </i>
-				                 </c:if>
-				                 
-				                 <c:if test="${label.labelCode == 5 }">
-				                     <i class="material-icons"> check_circle </i>
-				                 </c:if>
+                                <c:if test="${label.labelCode == 1 }">
+                                    <i class="material-icons"> local_convenience_store </i>
+                                </c:if>
+
+                                <c:if test="${label.labelCode == 2 }">
+                                    <i class="material-icons"> local_florist </i>
+                                </c:if>
+
+                                <c:if test="${label.labelCode == 3 }">
+                                    <i class="material-icons"> local_parking </i>
+                                </c:if>
+
+                                <c:if test="${label.labelCode == 4 }">
+                                    <i class="material-icons"> emoji_nature </i>
+                                </c:if>
+                                
+                                <c:if test="${label.labelCode == 5 }">
+                                    <i class="material-icons"> check_circle </i>
+                                </c:if>
                             </c:forEach></td>
 
                             <td class="mobile" style="text-align: center;"><c:out
@@ -195,8 +194,7 @@ input.checkbox:checked + label.input-label.radio::before {
                 </table>
             </main>
         </div>
-    </div>
-    
+    </div>    
 </section>
 <script type="text/javascript" src="/resources/js/index/search.js"></script>
 <%@include file="../includes/footer.jsp" %>

@@ -60,32 +60,42 @@
         </div>
         <div class="col-5">
             <!-- 병원사진 슬라이드 쇼 -->
-            <div id="carouselExampleControls" class="carousel slide"
-                 data-ride="carousel" style="width: 400px; margin: 0 auto">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="width: 400px; margin: 0 auto">
                 <div class="carousel-inner">
-
+                
+					<!-- 병원사진 갯수에 따라 다르게 처리 0개, 1개, 1개 이상일 때 -->
                     <c:choose>
                         <c:when test="${picCount eq 0}">
                         </c:when>
 
                         <c:when test="${picCount eq 1}">
+                          <c:forEach var="list" items="${picList}">
                             <div class="carousel-item active">
-                                <img src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg"
+                                <img src=${ctx}/resources/img/hospital/${list.uuid}_${list.fileName}
                                      width="400px" height="400px">
                             </div>
+                          </c:forEach>
                         </c:when>
-
+                        
                         <c:otherwise>
-                            <div class="carousel-item active">
-                                <img src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg"
-                                     width="400px" height="400px">
-                            </div>
-
-                            <c:forEach var="i" begin="2" end="${picCount}">
-                                <div class="carousel-item">
-                                    <img src="${ctx}/resources/img/${hospital.hospitalId}-${i}.jpg"
-                                         width="400px" height="400px">
-                                </div>
+                           <c:forEach items="${picList}" var="list" varStatus="status">
+                           
+                             <c:choose>
+                                <c:when test="${status.count == 1}">
+  	                               <div class="carousel-item active">
+	                                   <img src="${ctx}/resources/img/hospital/${list.uuid}_${list.fileName}"
+	                                        width="400px" height="400px">
+	                               </div>
+	                            </c:when> 
+	                            
+	                            <c:otherwise>
+	                                <div class="carousel-item">
+	                                    <img src="${ctx}/resources/img/hospital/${list.uuid}_${list.fileName}"
+	                                         width="400px" height="400px">
+	                                </div>
+	                            </c:otherwise>
+	                          </c:choose>
+	                            
                             </c:forEach>
                         </c:otherwise>
                     </c:choose>
@@ -116,14 +126,14 @@
 </div>
 
     <!-- Related Projects Row -->
-<br><br><br>
-
+<br>
 <div class="container-fluid">
 <div class="row">
 
 <!-- Nav tabs -->
 <div class="col-1"></div>
 <div class="col-10">
+<hr>
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#home">Map</a>

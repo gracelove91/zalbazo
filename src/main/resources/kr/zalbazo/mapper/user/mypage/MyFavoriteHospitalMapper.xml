@@ -19,4 +19,9 @@
 		#{hospitalId}
 	</select>
 	
+	<delete id="removeMyFavorite">
+		delete from FAVORITE_HOSPITAL
+		where HOSPITAL_ID = #{hospitalId}
+	</delete>
+	
 </mapper>

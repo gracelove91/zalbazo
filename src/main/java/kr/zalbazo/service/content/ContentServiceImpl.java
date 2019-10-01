@@ -9,9 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.zalbazo.mapper.content.ContentAttachMapper;
 import kr.zalbazo.mapper.content.ContentMapper;
-import kr.zalbazo.model.content.AttachFileDTO;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.Criteria;
+import kr.zalbazo.model.pic.AttachFileDTO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 

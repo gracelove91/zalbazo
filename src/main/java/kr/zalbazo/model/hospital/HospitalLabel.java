@@ -17,4 +17,3 @@ public class HospitalLabel {
 	private int labelCode;
 
 }
-

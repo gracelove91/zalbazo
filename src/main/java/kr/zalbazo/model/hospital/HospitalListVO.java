@@ -1,17 +1,19 @@
 package kr.zalbazo.model.hospital;
 
-import lombok.*;
-
 import java.util.List;
 
-import kr.zalbazo.model.pic.AttachFileDTO;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor
 @Getter
 @Setter
-public class Hospital {
+public class HospitalListVO {
 	
 	private Long hospitalId;
 	private String name;
@@ -19,6 +21,12 @@ public class Hospital {
 	private String treatStart;
 	private String treatEnd;
 	private String tel;
-	private String info;
 	private List<HospitalLabel> label;
+	private String uuid;
+	private String uploadPath;
+	private String fileName;
+	private String ext;
+	
+	
+
 }

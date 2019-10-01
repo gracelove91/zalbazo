@@ -1,10 +1,7 @@
 package kr.zalbazo.controller.hospital;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,9 +30,6 @@ import lombok.extern.log4j.Log4j;
 public class FavoriteHospitalController {
 
 	@Autowired
-	private HospitalService hospitalService;
-	
-	@Autowired
 	private FavoriteHospitalService favoriteHospital_service;
 
 
@@ -60,11 +54,14 @@ public class FavoriteHospitalController {
 	}
 
 	@DeleteMapping(value="/remove/{hospitalId}", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> remove(@PathVariable("hospitalId") Long hospitalId) {
-		
+	public ResponseEntity<String> remove(@PathVariable("hospitalId") Long hospitalId, Model model, FavoriteHospital favoriteHospital, Principal principal) {
+	 
+		favoriteHospital.setUserEmail(principal.getName());
+	 	model.addAttribute("userEmail", principal.getName());
+    	
 		return favoriteHospital_service.remove(hospitalId) == 2
 		? new ResponseEntity<>("success", HttpStatus.OK)
-		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		: new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

@@ -7,8 +7,8 @@ var bh = $(".favorite");
 
 var h5 = $(".heart");
 
-h5.on('click','#reserve',function(e){location="../reserve?hospitalId="+hospitalId.val();+"&userEmail="+userEmail.val();})  //예약하기 페이지전송
 
+h5.on('click','#reserve',function(e){location="../reserve?hospitalId="+hospitalId.val();+"&userEmail="+userEmail.val();})  //예약하기 페이지전송
 h5.on("click", "i", function(e){
 	
 	var icon = $(this).attr("data-i");

@@ -253,7 +253,7 @@
                                     </li>
                                 </ul>
 
-
+                                <div class="container">
                                 <ul class="review" style="list-style-type:none;">
                                     <li class="left clearfix" data-rno='12'>
                                         <div class="container mt-3">
@@ -279,6 +279,7 @@
                                         </div>
                                     </li>
                                 </ul>
+                                </div>
                                 
                             </div>
                         </div>

@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -87,10 +88,11 @@ public class HospitalJoinController {
     
 	@ResponseBody
 	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<AttachFileDTO>> uploadAjaxPost(MultipartFile[] uploadFile) {
+	public ResponseEntity<List<AttachFileDTO>> uploadAjaxPost(MultipartFile[] uploadFile, HttpServletRequest httpServletRequest) {
+		
+		String uploadFolder = httpServletRequest.getSession().getServletContext().getRealPath("/static-resources/img/hospital/");
 		
 		List<AttachFileDTO> list = new ArrayList<>();
-		String uploadFolder = "C:\\upload\\hospital\\";
 		
 		int i = 1;
 				

@@ -60,21 +60,23 @@
         </div>
         <div class="col-5">
             <!-- 병원사진 슬라이드 쇼 -->
-            <div id="carouselExampleControls" class="carousel slide"
-                 data-ride="carousel" style="width: 400px; margin: 0 auto">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="width: 400px; margin: 0 auto">
                 <div class="carousel-inner">
-
+                
+					<!-- 병원사진 갯수에 따라 다르게 처리 0개, 1개, 1개 이상일 때 -->
                     <c:choose>
                         <c:when test="${picCount eq 0}">
                         </c:when>
 
                         <c:when test="${picCount eq 1}">
+                          <c:forEach var="list" items="${picList}">
                             <div class="carousel-item active">
-                                <img src="${ctx}/resources/img/${hospital.hospitalId}-1.jpg"
+                                <img src=${ctx}/resources/img/hospital/${list.uuid}_${list.fileName}
                                      width="400px" height="400px">
                             </div>
+                          </c:forEach>
                         </c:when>
-
+                        
                         <c:otherwise>
                            <c:forEach items="${picList}" var="list" varStatus="status">
                            

@@ -221,7 +221,8 @@
 		      </div><!-- 내가 쓴 글 -->
 		      
 		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">예약 내역</div>
-		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">즐겨찾는 병원
+		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+		      <br>
 		      <div class="fav">
 			<table class="table table-striped">
 

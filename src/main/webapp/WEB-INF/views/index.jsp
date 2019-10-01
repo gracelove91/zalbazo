@@ -20,8 +20,8 @@
 						당신의 반려동물에 딱 맞는 병원을 찾아보세요.</p>
 					<a href="/hospital/list" class="secondary-btn">병원목록 바로가기<span class="flaticon-next"></span></a>
 					</br></br>
-					<form action="#">
-						<input type="text" placeholder="검색어를 입력하세요" onfocus="this.placeholder = ''"
+					<form action="/hospital/searchedlist">
+						<input type="text" name="keyword" placeholder="검색어를 입력하세요" onfocus="this.placeholder = ''"
 							   onblur="this.placeholder = '검색어를 입력하세요'" required class="form-control" >
 						</br>
 						<button type="submit" class="template-btn btn-block">검색하기</button>

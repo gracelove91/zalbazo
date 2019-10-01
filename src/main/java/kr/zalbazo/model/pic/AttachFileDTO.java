@@ -1,4 +1,4 @@
-package kr.zalbazo.model.content;
+package kr.zalbazo.model.pic;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +16,9 @@ public class AttachFileDTO {
 	private String uuid;
 	private String uploadPath;
 	private String fileName;
+	private String ext;
 	
 	private Long contentId;
+	private Long hospitalId;
 	
 }

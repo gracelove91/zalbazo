@@ -117,8 +117,12 @@ input.checkbox:checked + label.input-label.radio::before {
 	<div class="col-1"></div>
 </div>
 <div class="row">
-	<div class="col-1"></div>
-	<div class="col-10">	
+<main id="main" class="col-md-12 main">
+	<div class="page-header mt-3">
+		<h2>병원 검색 결과</h2>
+	</div>
+        <p class="lead">병원 리스트</p>
+        	
         <table class="table table-striped">
 			
 			<thead>
@@ -197,12 +201,8 @@ input.checkbox:checked + label.input-label.radio::before {
 
                 </c:forEach>
 			</tbody>
-		</table>
-	</div>
-	<div class="col-1"></div>
-</div>            
+	</table>
 </main>
-
 </div>
 </div>
 </section>

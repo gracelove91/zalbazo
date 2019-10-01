@@ -18,8 +18,8 @@
     
     <insert id="hospitalPicInsert">
        INSERT ALL
-	   INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME, EXT)
-	   VALUES (#{uuid}, #{uploadPath}, #{fileName}, #{ext})
+	   INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
+	   VALUES (#{uuid}, #{uploadPath}, #{fileName})
 	   INTO PIC_LIB_REL_HOSPITAL (UUID, HOSPITAL_ID)
 	   VALUES (#{uuid}, #{hospitalId})
 	   SELECT * FROM DUAL

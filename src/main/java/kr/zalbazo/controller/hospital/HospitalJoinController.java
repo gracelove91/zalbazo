@@ -8,7 +8,6 @@ import java.nio.file.Files;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -57,14 +56,9 @@ public class HospitalJoinController {
     
 
     @PostMapping("/register")
-    public String join(@Valid HospitalInfo hospitalInfo, HospitalLabel hospitalLabel, User user,
-    			RedirectAttributes rttr, HttpServletRequest request, BindingResult bindingResult) {
+    public String join(HospitalInfo hospitalInfo, HospitalLabel hospitalLabel, User user,
+    			RedirectAttributes rttr, HttpServletRequest request) {
 
-    	if(bindingResult.hasErrors()) {
-    		System.out.println("에러발생");
-    		return "/hospitalinfo/register";
-    	}
-    	
     	hJoinService.hospitalInfoRegister(hospitalInfo);
     	
     	// form에 있는 selectbox에서 라벨들의 값을 받아온다 
@@ -95,8 +89,6 @@ public class HospitalJoinController {
 		log.info("uploadFolder : " +uploadFolder);
 		
 		List<AttachFileDTO> list = new ArrayList<>();
-		
-		int i = 1;
 				
 		for(MultipartFile multipartFile : uploadFile) {
 			
@@ -109,11 +101,7 @@ public class HospitalJoinController {
 			// IE has file path
 			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\")+1);
 			
-			String ext = uploadFileName.substring(uploadFileName.lastIndexOf(".") + 1).toLowerCase();
-			
-			uploadFileName = i +"."+ ext;
 			log.info("only file name : "+uploadFileName);
-			attachDTO.setExt(ext);
 			attachDTO.setFileName(uploadFileName);
 			
 			UUID uuid = UUID.randomUUID();
@@ -126,12 +114,9 @@ public class HospitalJoinController {
 				multipartFile.transferTo(saveFile);
 				
 				attachDTO.setUploadPath(uploadFolder);
-				System.out.println("uploadFolder : " +uploadFolder);
-				System.out.println("uploadFileName :"  +uploadFileName);
 				
 				// add to List
 				list.add(attachDTO);
-				i++;
 				
 			} catch(Exception e) {
 				log.error(e.getMessage());

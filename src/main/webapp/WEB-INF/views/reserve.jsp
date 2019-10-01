@@ -13,7 +13,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="/resources/css/reserve.css">
 
-<title>풀캘린더</title>
+<title>병원 예약</title>
 
 <div class="text-center"><h1>예약하기</h1></div>
 
@@ -69,8 +69,8 @@
 </c:forEach>
 
     </ul>
-<button class="btn btn-primary" type ="submit"" style='float: right')>예약하기</button>
-
+<button class="btn btn-primary" type ="submit"" style='float: right'>예약하기</button>
+</form>
 </div><!--(./COntainer")-->
 
 <script type="text/javascript">

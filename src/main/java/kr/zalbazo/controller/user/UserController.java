@@ -56,7 +56,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String join(@Valid @ModelAttribute User user, BindingResult bindingResult, SessionStatus status) {
+    public String join(@Valid @ModelAttribute User user, BindingResult bindingResult) {
         String type = user.getRole();
 
         if(bindingResult.hasErrors()){
@@ -75,7 +75,7 @@ public class UserController {
             return "redirect:/hospitalinfo/register";
         }
 
-        status.setComplete();
+
 
         return "redirect:/index";
     }

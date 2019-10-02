@@ -3,8 +3,8 @@
 <mapper namespace="kr.zalbazo.mapper.user.UserMapper">
 
     <insert id="insert" parameterType="kr.zalbazo.model.user.User">
-        insert into ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN)
-        values (#{userEmail}, #{password}, #{role}, #{tel}, #{address}, #{name}, sysdate, null)
+        insert into ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, HOSPITAL_ID)
+        values (#{userEmail}, #{password}, #{role}, #{tel}, #{address}, #{name}, sysdate, null, ${hospitalId})
     </insert>
 
     <update id="update">

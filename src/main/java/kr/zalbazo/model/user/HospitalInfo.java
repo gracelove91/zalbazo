@@ -49,6 +49,9 @@ public class HospitalInfo {
     private String userEmail;
     
     private List<AttachFileDTO> attachList;
+
+    private String password;
+    private String role;
 	
 
 }

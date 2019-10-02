@@ -230,6 +230,8 @@
                 
                 check = false;
 
+                check = false; 
+                
                 console.log(jobj);
 
                 str += "<input type='hidden' name='attachList[" + i + "].fileName' value='" + jobj.data("filename") + "'>";
@@ -238,11 +240,11 @@
 
             });
             
-            if(check){
-            	alert("병원에 대한 사진을 최소 1장 이상 등록해주세요.");
+            if(check) {
+            	alert("병원 사진을 최소 1장 이상 등록해주세요.");
             	return;
             }
-            
+
             formObj.append(str).submit();
         });
 

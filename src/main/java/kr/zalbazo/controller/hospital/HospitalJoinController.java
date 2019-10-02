@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -42,7 +41,6 @@ public class HospitalJoinController {
 	
 	@Autowired
 	private HospitalJoinService hJoinService;
-	
 	
     @GetMapping("/register")
     public String join(Model model, @SessionAttribute User user, Principal principal) {
@@ -75,6 +73,18 @@ public class HospitalJoinController {
         rttr.addFlashAttribute("email", user.getUserEmail());
 
         return "redirect:/index";
+    }
+    
+    
+    @GetMapping("/get")
+    public String get(Model model) {
+    	
+    	String userEmail = "scienceos@daum.net";
+    	
+    	model.addAttribute("hInfo", hJoinService.get(userEmail));
+    	log.info(hJoinService.get(userEmail));
+    	
+    	return "user/hospital/get";
     }
     
     

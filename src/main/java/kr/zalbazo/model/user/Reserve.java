@@ -21,5 +21,5 @@ public class Reserve {
 	private Long animalId;
 	private Long hospitalId;
 	private String status;
-
+	private String userEmail;
 }

@@ -29,5 +29,8 @@ public class HospitalInfo {
 	private List<Label> label;
     
     private List<AttachFileDTO> attachList;
+
+    private String password;
+    private String role;
 	
 }

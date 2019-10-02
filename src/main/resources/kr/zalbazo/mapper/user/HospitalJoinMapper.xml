@@ -45,6 +45,14 @@
 	   and label_code = code
 	   and user_email = #{userEmail}
     </select>
+    
+    <select id="getPic" resultType="kr.zalbazo.model.pic.AttachFileDTO">
+       select a.uuid, upload_path, file_name, c.hospital_id
+	   from pic_lib a, pic_lib_rel_hospital b, zalbazo_user c
+	   where a.uuid = b.uuid
+	   and b.hospital_id = c.hospital_id
+	   and user_email = #{userEmail}
+    </select>
 
 
 </mapper>

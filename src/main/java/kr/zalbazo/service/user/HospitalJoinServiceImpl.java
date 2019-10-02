@@ -49,10 +49,17 @@ public class HospitalJoinServiceImpl implements HospitalJoinService {
 
 	@Override
 	public HospitalInfo get(String userEmail) {
-		List<Label> list = hospitalJoinMapper.getLabel(userEmail);
 		
+		// userEmail(병원유저)에 해당하는 라벨과 병원 사진들의 리스트를 각각의 List에 담는다 
+		List<Label> list = hospitalJoinMapper.getLabel(userEmail);
+		List<AttachFileDTO> picList = hospitalJoinMapper.getPic(userEmail);
+		
+		// userEmail(병원유저)에 해당하는 병원의 정보를 HospitalInfo객체에 담는다
 		HospitalInfo info = hospitalJoinMapper.get(userEmail);
+		
+		// set메서드를 사용하여 HospitalInfo에 라벨들과 사진들을 넣는다
 		info.setLabel(list);
+		info.setAttachList(picList);
 		
 		log.info(info);
 		

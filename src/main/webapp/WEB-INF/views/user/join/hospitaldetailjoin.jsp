@@ -222,10 +222,14 @@
 
 
             var str = "";
+            
+            var check = true;
 
             $(".uploadResult ul li").each(function (i, obj) {
                 var jobj = $(obj);
 
+                check = false; 
+                
                 console.log(jobj);
 
                 str += "<input type='hidden' name='attachList[" + i + "].fileName' value='" + jobj.data("filename") + "'>";
@@ -233,6 +237,11 @@
                 str += "<input type='hidden' name='attachList[" + i + "].uploadPath' value='" + jobj.data("path") + "'>";
 
             });
+            
+            if(check) {
+            	alert("병원 사진을 최소 1장 이상 등록해주세요.");
+            	return;
+            }
 
             formObj.append(str).submit();
         });
@@ -274,7 +283,7 @@
             }
 
             $.ajax({
-                url: '`/hospitalinfo/uploadAjaxAction',`
+           	 url: '/hospitalinfo/uploadAjaxAction',
              processData: false,
              contentType: false,
              data: formData,

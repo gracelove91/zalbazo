@@ -29,8 +29,11 @@
           
           <form class="pt-3 md-3" role='form' action="/hospitalinfo/register" method="post" enctype="multipart/form-data">
           
-            <input type="hidden" name="userEmail" value="${userEmail}"/>
-
+            <input type="hidden" name="user" value="${user}"/>
+<%
+	session = request.getSession();
+	System.out.println(session.getAttribute("user"));
+%>
 
 			<div class="form-group">
 			   <fieldset>
@@ -267,7 +270,7 @@ $(document).ready(function(e){
          }
 
          $.ajax({
-             url: '/hospitalinfo/uploadAjaxAction',
+             url: '`/hospitalinfo/uploadAjaxAction',`
              processData: false,
              contentType: false,
              data: formData,

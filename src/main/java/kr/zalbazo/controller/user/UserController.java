@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -21,6 +22,7 @@ import javax.validation.Valid;
 @RequestMapping({"/user/*"})
 @Controller
 @Log4j
+@SessionAttributes("user")
 public class UserController {
     @Autowired
     private UserService service;
@@ -54,7 +56,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String join(@Valid @ModelAttribute User user, BindingResult bindingResult) {
+    public String join(@Valid @ModelAttribute User user, BindingResult bindingResult, SessionStatus status) {
         String type = user.getRole();
 
         if(bindingResult.hasErrors()){
@@ -70,11 +72,10 @@ public class UserController {
         }
 
         if(type.equals("hospital")) {
-
+            return "redirect:/hospitalinfo/register";
         }
 
-
-
+        status.setComplete();
 
         return "redirect:/index";
     }

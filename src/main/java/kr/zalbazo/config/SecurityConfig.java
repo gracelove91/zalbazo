@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
-                .mvcMatchers("/hospitalinfo/register").hasRole("hospital");
+                .mvcMatchers("/hospitalinfo/register").anonymous();
 
         http.authorizeRequests()
                 .mvcMatchers("/").permitAll()

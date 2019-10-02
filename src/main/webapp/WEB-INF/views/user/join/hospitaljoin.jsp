@@ -43,7 +43,7 @@
             <input type="hidden" name="role" value="hospital"/>
             <div class="form-group">
                 <fieldset>
-                    <form:label path="userEmail">이메일</form:label>
+                    <form:label path="userEmail">로그인할 이메일</form:label>
                     <form:input path="userEmail" required="required" type="email" id="userEmail" class="form-control"
                                 name="userEmail"
                                 placeholder="이메일을 입력하세요."/>
@@ -70,14 +70,7 @@
                     <form:errors path="password2" cssClass="text-danger"/>
                 </fieldset>
             </div>
-            <div class="form-group">
-                <fieldset>
-                    <form:label path="name" >병원 이름</form:label>
-                    <form:input path="name" type="text" required="required" id="name" class="form-control"
-                                name="name"
-                                placeholder="이름을 입력하세요."/>
-                </fieldset>
-            </div>
+
             <button id="join" type="submit" class="btn btn-primary">회원가입</button>
         </form:form>
         <div class="col-2"></div>

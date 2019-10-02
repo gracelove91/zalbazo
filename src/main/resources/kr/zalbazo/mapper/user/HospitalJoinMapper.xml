@@ -3,26 +3,32 @@
 <mapper namespace="kr.zalbazo.mapper.user.HospitalJoinMapper">
 
     <insert id="hospitalInfoInsert" parameterType="kr.zalbazo.model.user.HospitalInfo">
-       <selectKey keyProperty="hospitalId" resultType="Long" order="BEFORE">
-          select hospital_seq.nextval from dual
-       </selectKey>
-        insert into hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+        <selectKey keyProperty="hospitalId" resultType="Long" order="BEFORE">
+            select hospital_seq.nextval from dual
+        </selectKey>
+        INSERT ALL
+        into hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
         values (#{hospitalId}, #{name}, #{address}, #{treatStart}, #{treatEnd}, #{tel}, #{info})
+
+        into ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, HOSPITAL_ID)
+        values (#{userEmail}, #{password}, 'hospital', #{tel}, #{address}, #{name}, sysdate, null, #{hospitalId})
+        select sysdate from dual
     </insert>
-    
-    
+
+
     <insert id="labelInsert" parameterType="kr.zalbazo.model.hospital.HospitalLabel">
-       Insert into HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) 
-       values (#{labelCode}, #{hospitalId})
+        Insert into HOSPITAL_LABEL (LABEL_CODE, HOSPITAL_ID)
+        values (#{labelCode}, #{hospitalId})
     </insert>
-    
+
     <insert id="hospitalPicInsert">
-       INSERT ALL
-	   INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
-	   VALUES (#{uuid}, #{uploadPath}, #{fileName})
-	   INTO PIC_LIB_REL_HOSPITAL (UUID, HOSPITAL_ID)
-	   VALUES (#{uuid}, #{hospitalId})
-	   SELECT * FROM DUAL
+        INSERT ALL
+            INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
+        VALUES (#{uuid}, #{uploadPath}, #{fileName})
+        INTO PIC_LIB_REL_HOSPITAL (UUID, HOSPITAL_ID)
+        VALUES (#{uuid}, #{hospitalId})
+        SELECT *
+        FROM DUAL
     </insert>
 
 

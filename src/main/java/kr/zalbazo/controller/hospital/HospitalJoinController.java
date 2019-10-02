@@ -22,11 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -49,9 +45,11 @@ public class HospitalJoinController {
 	
 	
     @GetMapping("/register")
-    public String join(Model model, Principal principal) {
-        model.addAttribute("userEmail", principal.getName());
-        return "user/hospital/hospitaljoin";
+    public String join(Model model, @SessionAttribute User user, Principal principal) {
+		System.out.println(user);
+		System.out.println("===========================================");
+    	model.addAttribute("user", user);
+        return "user/join/hospitaldetailjoin";
     }
     
 

@@ -54,7 +54,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String join(@Valid @ModelAttribute User user, BindingResult bindingResult, RedirectAttributes rttr) {
+    public String join(@Valid @ModelAttribute User user, BindingResult bindingResult) {
         String type = user.getRole();
 
         if(bindingResult.hasErrors()){
@@ -65,8 +65,16 @@ public class UserController {
             return "user/join/userjoin";
         }
 
-        service.register(user);
-        rttr.addFlashAttribute("email", user.getUserEmail());
+        if(type.equals("user")){
+            service.register(user);
+        }
+
+        if(type.equals("hospital")) {
+
+        }
+
+
+
 
         return "redirect:/index";
     }

@@ -51,7 +51,7 @@ public class HospitalJoinController {
     @GetMapping("/register")
     public String join(Model model, Principal principal) {
         model.addAttribute("userEmail", principal.getName());
-        return "user/hospital/hospitaljoin";
+        return "user/join/hospitaldetailjoin";
     }
     
 

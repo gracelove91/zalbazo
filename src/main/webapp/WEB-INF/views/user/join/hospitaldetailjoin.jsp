@@ -23,15 +23,15 @@
           <div class="page-header mt-3">
               <h2>병원 정보 입력</h2>
           </div>
-          <p class="lead">병원의 상세정보를 입력해주세요.</p>
+          <p class="lead">병원의 정보를 입력해주세요.</p>
           <hr>
           
           
           <form class="pt-3 md-3" role='form' action="/hospitalinfo/register" method="post" enctype="multipart/form-data">
           
             <input type="hidden" name="userEmail" value="${userEmail}"/>
-            
-          
+
+
 			<div class="form-group">
 			   <fieldset>
                   <label class="font-weight-bold">병원명</label>
@@ -46,59 +46,59 @@
                   <input type="text" class="form-control" id="tel" name="tel" placeholder="000-0000-0000">
                </fieldset>
             </div><br />
-            
+
 
 			<div class="form-group">
 			  <p class="font-weight-bold">제공하는 서비스를 체크해주세요</p>
 			  
 			    <div class="form-check-inline">
-			      <label class="form-check-label" for="check1">
-			        <input type="checkbox" class="form-check-input" id="label_info" name="label_info" value=1>24시간
+			      <label class="form-check-label" for="label_info1">
+			        <input type="checkbox" class="form-check-input" id="label_info1" name="label_info" value=1>24시간
 			      </label>
 			    </div>
 			    
 			    <div class="form-check-inline">
-			      <label class="form-check-label" for="check2">
-			        <input type="checkbox" class="form-check-input" id="label_info" name="label_info" value=2>미용
+			      <label class="form-check-label" for="label_info2">
+			        <input type="checkbox" class="form-check-input" id="label_info2" name="label_info" value=2>미용
 			      </label>
 			    </div>
 			    
 			    <div class="form-check-inline">
-			      <label class="form-check-label" for="check3">
-			        <input type="checkbox" class="form-check-input" id="label_info" name="label_info" value=3>주차
+			      <label class="form-check-label" for="label_info3">
+			        <input type="checkbox" class="form-check-input" id="label_info3" name="label_info" value=3>주차
 			      </label>
 			    </div>
 			    
 			    <div class="form-check-inline">
-			      <label class="form-check-label" for="check4">
-			        <input type="checkbox" class="form-check-input" id="label_info" name="label_info" value=4>희귀종취급
+			      <label class="form-check-label" for="label_info4">
+			        <input type="checkbox" class="form-check-input" id="label_info4" name="label_info" value=4>희귀종취급
 			      </label>
 			    </div>
 			    
 			    <div class="form-check-inline">
-			      <label class="form-check-label" for="check5">
-			        <input type="checkbox" class="form-check-input" id="label_info" name="label_info" value=5>수술전문
+			      <label class="form-check-label" for="label_info5">
+			        <input type="checkbox" class="form-check-input" id="label_info5" name="label_info" value=5>수술전문
 			      </label>
 			    </div>
 			
 			</div><br />
-			
-			
-			
+
+
+
 			<div class="form-group">
                 <fieldset>
                     <label class="font-weight-bold">주소</label>
-                    <input required="required" type="text" class="form-control" name="address" 
+                    <input required="required" type="text" class="form-control" name="address"
                     	   id="address" placeholder="주소를 입력하세요." readonly="true"/>
                     <input type="button" onClick="goPopup();" value="주소찾기"/>
                 </fieldset>
             </div><br />
-            
-            
+
+
             <div class="row">
             
             <div class="form-group col-md-6">
-		      <label for="sel1" class="font-weight-bold">문 여는 시간</label>
+		      <label for="treatStart" class="font-weight-bold">문 여는 시간</label>
 		      <select class="form-control" id="treatStart" name="treatStart">
 		        
 		        <c:forEach begin="0" end="24" step="1" var="hour">
@@ -113,7 +113,7 @@
 		    </div>
 		    
 		    <div class="form-group col-md-6">
-		      <label for="sel1" class="font-weight-bold">문 닫는 시간</label>
+		      <label for="treatEnd" class="font-weight-bold">문 닫는 시간</label>
 		      <select class="form-control" id="treatEnd" name="treatEnd">
 		        
 		        <c:forEach begin="0" end="24" step="1" var="hour">
@@ -183,31 +183,31 @@ $(document).ready(function(e){
         e.preventDefault();
         
         console.log("submit clicked");
-		
+
         var hName = $("input[id='name']").val();
 		var hTel = $("input[id='tel']").val();
 		var hAddress = $("input[id='address']").val();
 		var hInfo = $("textarea[id='info']").val();
 		var hTreatStart = $("select[id='treatStart']").val();
-		var hTreatEnd = $("select[id='treatEnd']").val(); 
+		var hTreatEnd = $("select[id='treatEnd']").val();
 		
 		var regex= /^\d{2,3}-\d{3,4}-\d{4}$/;
-		
+
 		if(hName.trim() === "" || hName.trim() === null || hName.trim().length < 5) {
 			alert("병원명을 최소 5자 이상 입력해주세요.")
 			return;
 		}
-		
+
 		if(!regex.test($("input[id='tel']").val())) {
 			alert("전화번호를 000-0000-0000 형태로 입력해주세요");
 			return;
 		}
-		
+
 		if(hAddress.trim() ==="" || hAddress.trim() === null) {
 			alert("주소를 입력해주세요");
 			return;
 		}
-		
+
 		if(hInfo.trim().length < 10) {
 			alert("병원에 대한 정보를 최소 10자 이상 입력해주세요.");
 			return;

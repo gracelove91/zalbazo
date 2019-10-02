@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-lg-2" style="padding:0px;">
                 <div class="logo-area">
-                    <a href="/index"><img src="/resources/img/bbbaba.png" align="middle" alt="logo" width="280px" height="90px"></a>
+                    <a href="/index"><img src="/resources/img/text_logo.png" align="middle" alt="logo" width="280px" height="110px"></a>
                 </div>
             </div>
             <div class="col-lg-9" style="padding:0px;">

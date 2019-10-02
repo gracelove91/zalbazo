@@ -147,9 +147,9 @@ input.checkbox:checked + label.input-label.radio::before {
                                     value="${hospital.hospitalId}"/></td>
 
                             <td class="mobile" style="text-align: center;"><a href="#">
-                                <img class="img-fluid rounded mb-3 mb-md-0"
+                                <img class="rounded"
                                      src="${ctx}/resources/img/hospital/${hospital.uuid}_${hospital.fileName}"
-                                     alt="">
+                                     alt="" width="108px" height="85px">
                             </a></td>
 
                             <td><a style="color: #000000;"

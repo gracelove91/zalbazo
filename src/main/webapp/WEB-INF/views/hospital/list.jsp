@@ -107,9 +107,8 @@ input.checkbox:checked + label.input-label.radio::before {
 </div>
 </form>
 <br>
-
-
-		<div style="text-align:left;"> 병원리스트</div>
+<br>
+<br>
 
                 <table class="table table-striped" style="width: 1150px;">
                     <thead>
@@ -195,8 +194,7 @@ input.checkbox:checked + label.input-label.radio::before {
                 </table>
             </main>
         </div>
-    </div>
-    
+    </div>    
 </section>
 <script type="text/javascript" src="/resources/js/index/search.js"></script>
 <%@include file="../includes/footer.jsp" %>

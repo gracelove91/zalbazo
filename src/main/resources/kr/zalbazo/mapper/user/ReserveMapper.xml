@@ -3,8 +3,8 @@
 <mapper namespace="kr.zalbazo.mapper.user.ReserveMapper">
 
     <insert id="insert" parameterType="kr.zalbazo.model.user.Reserve">
-        insert into RESERVE (RESERVE_ID, NOTE, RDATE, ANIMAL_ID, HOSPITAL_ID, STATUS)
-        values (RESERVE_SEQ.nextval, #{note}, #{rdate}, #{animalId}, #{hospitalId}, #{status})
+        insert into RESERVE (RESERVE_ID, NOTE, RDATE, ANIMAL_ID, HOSPITAL_ID, STATUS,USER_EMAIL)
+        values (RESERVE_SEQ.nextval, #{note}, #{rdate}, #{animalId}, #{hospitalId}, #{status},#{userEmail})
     </insert>
 
 </mapper>

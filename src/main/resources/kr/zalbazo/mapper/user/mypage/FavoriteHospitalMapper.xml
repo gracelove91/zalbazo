@@ -11,7 +11,7 @@
 		values (#{userEmail}, #{hospitalId}, f_hospital_seq.NEXTVAL)
 	</insert>
 
-	<delete id="delete">
+	<delete id="remove">
 		delete from FAVORITE_HOSPITAL
 		where HOSPITAL_ID = #{hospitalId}
 	</delete>

@@ -31,14 +31,12 @@
             <p class="h4">
                 <i class="material-icons" style="font-weight:bold">alarm_off</i> <span>&nbsp;&nbsp;${hospital.treatEnd}</span>
             </p><br>
-            
             <!-- 해당 병원에 맞는 라벨 출력 -->
             <c:forEach items="${labelList}" var="label">
-            
                  <c:if test="${label.labelCode == 1 }">
                      <i class="material-icons"> local_convenience_store </i>24시간&nbsp;&nbsp;&nbsp;
                  </c:if>
-            
+
                  <c:if test="${label.labelCode == 2 }">
                      <i class="material-icons"> local_florist </i> 미용&nbsp;&nbsp;&nbsp;
                  </c:if>
@@ -60,9 +58,7 @@
             <p class="h5">${hospital.info}</p>
 
         </div>
-        
         <div class="col-5">
-        
             <!-- 병원사진 슬라이드 쇼 -->
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="width: 400px; margin: 0 auto">
                 <div class="carousel-inner">
@@ -87,14 +83,14 @@
                              <c:choose>
                                 <c:when test="${status.count == 1}">
   	                               <div class="carousel-item active">
-	                                   <img src="${ctx}/resources/img/hospital/${list.uuid}_1.${list.ext}"
+	                                   <img src="${ctx}/resources/img/hospital/${list.uuid}_${list.fileName}"
 	                                        width="400px" height="400px">
 	                               </div>
 	                            </c:when> 
 	                            
 	                            <c:otherwise>
 	                                <div class="carousel-item">
-	                                    <img src="${ctx}/resources/img/hospital/${list.uuid}_${status.count}.${list.ext}"
+	                                    <img src="${ctx}/resources/img/hospital/${list.uuid}_${list.fileName}"
 	                                         width="400px" height="400px">
 	                                </div>
 	                            </c:otherwise>
@@ -140,13 +136,13 @@
 <hr>
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#home">&nbsp;&nbsp;&nbsp;Map&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link active" data-toggle="tab" href="#home">Map</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu1">&nbsp;&nbsp;&nbsp;Review&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" data-toggle="tab" href="#menu1">Review</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#menu2">&nbsp;&nbsp;&nbsp;Q&A&nbsp;&nbsp;&nbsp;</a>
+                <a class="nav-link" data-toggle="tab" href="#menu2">Q&A</a>
             </li>
         </ul>
 
@@ -191,7 +187,6 @@
                             </div>
 							
                             <div class="panel-body">
-                            
                                 <ul style="list-style-type:none;">
                                     <li class="left clearfix">
                                         <div class="container mt-3">
@@ -255,18 +250,16 @@
 
                                             </div>
                                         </div>
-                                        </div>
                                     </li>
                                 </ul>
 
-								<div class="container" style="background-color:white;">
+                                <div class="container">
                                 <ul class="review" style="list-style-type:none;">
                                     <li class="left clearfix" data-rno='12'>
                                         <div class="container mt-3">
-                                        
                                             <div class="media border p-3">
                                                 <img src="/resources/img/baba.png" class="mr-3 mt-3 rounded-circle"
-                                                     style="width: 80px">
+                                                     style="width: 50px">
                                                 
                                                 <div class="media-body">
 
@@ -283,12 +276,12 @@
                                                 </div>
                                                 
                                             </div>
-                                            
                                         </div>
                                     </li>
                                 </ul>
-                            	</div>
-                            
+                                </div>
+                                
+                            </div>
                         </div>
                     </div>
                 </div>

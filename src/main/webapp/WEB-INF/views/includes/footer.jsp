@@ -19,15 +19,15 @@
                     </div>
                 </div>
                 <div class="col-xl-5 offset-xl-1 col-lg-6">
-                    <div class="single-widget-home mb-5 mb-lg-0">
-                        <h3 class="mb-4">newsletter</h3>
-                        <p class="mb-4">You can trust us. we only send promo offers, not a single.</p>
-                        <form action="#">
-                            <input type="email" placeholder="Your email here" onfocus="this.placeholder = ''"
-                                   onblur="this.placeholder = 'Your email here'" required>
-                            <button type="submit" class="template-btn">subscribe now</button>
-                        </form>
-                    </div>
+<%--                    <div class="single-widget-home mb-5 mb-lg-0">--%>
+<%--                        <h3 class="mb-4">newsletter</h3>--%>
+<%--                        <p class="mb-4">You can trust us. we only send promo offers, not a single.</p>--%>
+<%--&lt;%&ndash;                        <form>&ndash;%&gt;--%>
+<%--                            <input type="email" placeholder="Your email here" onfocus="this.placeholder = ''"--%>
+<%--                                   onblur="this.placeholder = 'Your email here'" required>--%>
+<%--                            <button type="button" class="template-btn">subscribe now</button>--%>
+<%--&lt;%&ndash;                        </form>&ndash;%&gt;--%>
+<%--                    </div>--%>
                 </div>
                 <div class="col-xl-3 offset-xl-1 col-lg-3">
                     <div class="single-widge-home">

@@ -12,7 +12,7 @@ public interface FavoriteHospitalMapper {
 
 	List<HospitalLabel> getLabelList(Long hospitalId);
 	
-	int delete(Long hospitalId);
+	int remove(Long hospitalId);
 
 	int insertFavorite(FavoriteHospital favoriteHospital);
 }

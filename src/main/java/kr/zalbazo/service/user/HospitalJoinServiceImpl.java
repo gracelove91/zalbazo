@@ -1,10 +1,13 @@
 package kr.zalbazo.service.user;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.zalbazo.mapper.user.HospitalJoinMapper;
+import kr.zalbazo.model.content.Label;
 import kr.zalbazo.model.hospital.HospitalLabel;
 import kr.zalbazo.model.pic.AttachFileDTO;
 import kr.zalbazo.model.user.HospitalInfo;
@@ -43,5 +46,18 @@ public class HospitalJoinServiceImpl implements HospitalJoinService {
 	public void picInsert(AttachFileDTO attachFile) {
 		hospitalJoinMapper.hospitalPicInsert(attachFile);
 	}
+
+	@Override
+	public HospitalInfo get(String userEmail) {
+		List<Label> list = hospitalJoinMapper.getLabel(userEmail);
+		
+		HospitalInfo info = hospitalJoinMapper.get(userEmail);
+		info.setLabel(list);
+		
+		log.info(info);
+		
+		return info;
+	}
+
 
 }

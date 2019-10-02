@@ -10,6 +10,10 @@ $(document).ready(function() {
 		
 		var str = "";
 		//console.log(data[0]);
+		
+		if(data[0].address == null || data[0].address == "") {
+			data[0].address = "등록된 주소가 존재하지 않습니다.";
+		}
 			
  			str += "<div class='form-group a'>";
 			str += "  <span>이메일</span>";

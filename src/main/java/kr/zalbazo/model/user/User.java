@@ -43,6 +43,8 @@ public class User {
     private String emailAuthKey;
     private String enabled;
 
+    private Long hospitalId;
+
 
     public void encodePassword(PasswordEncoder encoder){
         this.password = encoder.encode(this.password);

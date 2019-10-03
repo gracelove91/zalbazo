@@ -70,15 +70,8 @@
                     <form:errors path="password2" cssClass="text-danger"/>
                 </fieldset>
             </div>
-            <div class="form-group">
-                <fieldset>
-                    <form:label path="name" >사이트에서 이용할 이름</form:label>
-                    <form:input path="name" type="text" required="required" id="name" class="form-control"
-                                name="name"
-                                placeholder="이름을 입력하세요."/>
-                </fieldset>
-            </div>
-            <button id="join" type="submit" class="btn btn-primary pull-right">NEXT →</button>
+
+            <button id="join" type="submit" class="btn btn-primary">회원가입</button>
         </form:form>
         <div class="col-2"></div>
 	</div>

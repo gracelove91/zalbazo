@@ -46,7 +46,7 @@
             </div>
 			<div class="form-group">
               <label>이름</label>
-              <input type="text" class="form-control" id="aName" name="aName"  placeholder="이름" >
+              <input type="text" class="form-control" id="aname" name="aname"  placeholder="이름" >
             </div>
 			<div class="form-group">
               <label>참고사항</label>

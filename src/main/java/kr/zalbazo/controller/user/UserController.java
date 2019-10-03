@@ -1,11 +1,10 @@
 package kr.zalbazo.controller.user;
 
-import java.security.Principal;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -43,27 +42,28 @@ public class UserController {
     	return "/register_select";
     }
     
-    @GetMapping("/mypage")
-    public String mypage(User user, Principal principal, Model model) {
-
-    	model.addAttribute("useremail", principal.getName());
-    	
-    	return "user/mypage";
-    }
-    
 //    @GetMapping("/mypage")
-//    public String mypage(User user, Authentication authentication, Model model) {
+//    public String mypage(User user, Principal principal, Model model) {
 //    	
-//    	if(authentication.getAuthorities().toString().equals("[ROLE_user]")) {
-//    		model.addAttribute("useremail", authentication.getName());
-//        	System.out.println("유저는 유저마이페이지로!");
-//        	return "user/mypage";
-//    	}
-//
-//    	model.addAttribute("useremail", authentication.getName());
-//    	System.out.println("유저가 아니라면!!!!");
-//    	return "user/myhospitalpage";
-//    }
+//    	System.out.println("권한권한 : "+principal);
+//    	model.addAttribute("useremail", principal.getName());
+//    	
+//    	return "user/mypage";
+//    }ROLE_hospital
+    
+    @GetMapping("/mypage")
+    public String mypage(User user, Authentication authentication, Model model) {
+    	
+    	if(authentication.getAuthorities().toString().equals("[ROLE_user]")) {
+    		model.addAttribute("useremail", authentication.getName());
+        	System.out.println("유저는 유저마이페이지로!");
+        	return "user/mypage";
+    	}
+    	
+    	model.addAttribute("useremail", authentication.getName());
+    	System.out.println("유저가 아니라면!!!!");
+    	return "user/myhospitalpage";
+    }
     
     @GetMapping("/register")
     public String join(@RequestParam String type, Model model) {

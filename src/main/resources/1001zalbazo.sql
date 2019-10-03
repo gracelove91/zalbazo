@@ -1,7 +1,7 @@
--- »ý¼ºÀÚ Oracle SQL Developer Data Modeler 19.1.0.081.0911
---   À§Ä¡:        2019-09-18 14:22:58 KST
---   »çÀÌÆ®:      Oracle Database 11g
---   À¯Çü:      Oracle Database 11g
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Oracle SQL Developer Data Modeler 19.1.0.081.0911
+--   ï¿½ï¿½Ä¡:        2019-09-18 14:22:58 KST
+--   ï¿½ï¿½ï¿½ï¿½Æ®:      Oracle Database 11g
+--   ï¿½ï¿½ï¿½ï¿½:      Oracle Database 11g
 
 drop SEQUENCE F_HOSPITAL_SEQ;
 drop SEQUENCE UUID_SEQ;
@@ -65,28 +65,28 @@ COMMENT ON COLUMN zalbazo.animal.animal_id IS
     'ID';
 
 COMMENT ON COLUMN zalbazo.animal.type IS
-    'µ¿¹° Á¾';
+    'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½';
 
 COMMENT ON COLUMN zalbazo.animal.weight IS
-    '¸ö¹«°Ô';
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 COMMENT ON COLUMN zalbazo.animal.age IS
-    '³ªÀÌ';
+    'ï¿½ï¿½ï¿½ï¿½';
 
 COMMENT ON COLUMN zalbazo.animal.name IS
-    'ÀÌ¸§';
+    'ï¿½Ì¸ï¿½';
 
 COMMENT ON COLUMN zalbazo.animal.note IS
-    'Âü°í»çÇ×';
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 COMMENT ON COLUMN zalbazo.animal.last_treat_date IS
-    '¸¶Áö¸· Áø·áÀÏ';
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 COMMENT ON COLUMN zalbazo.animal.created_date IS
-    'µ¿¹°Á¤º¸ÀÔ·Â³¯Â¥';
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô·Â³ï¿½Â¥';
 
 COMMENT ON COLUMN zalbazo.animal.updated_date IS
-    '¼öÁ¤³¯Â¥';
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¥';
 
 CREATE UNIQUE INDEX zalbazo.animal_pk ON
     zalbazo.animal (
@@ -160,10 +160,10 @@ PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     DEFAULT );
 
 COMMENT ON COLUMN zalbazo.content.title IS
-    '°Ô½Ã±Û Á¦¸ñ';
+    'ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
 COMMENT ON COLUMN zalbazo.content.body IS
-    '°Ô½Ã±Û ³»¿ë';
+    'ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
 CREATE UNIQUE INDEX zalbazo.content_pk ON
     zalbazo.content (
@@ -241,22 +241,22 @@ PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     DEFAULT );
 
 COMMENT ON COLUMN zalbazo.hospital.name IS
-    'º´¿øÀÌ¸§';
+    'ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½';
 
 COMMENT ON COLUMN zalbazo.hospital.address IS
-    'º´¿øÁÖ¼Ò';
+    'ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½';
 
 COMMENT ON COLUMN zalbazo.hospital.treat_start IS
-    'Áø·á½ÃÀÛ½Ã°£';
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û½Ã°ï¿½';
 
 COMMENT ON COLUMN zalbazo.hospital.treat_end IS
-    'Áø·áÁ¾·á½Ã°£';
+    'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½';
 
 COMMENT ON COLUMN zalbazo.hospital.tel IS
-    'ÀüÈ­¹øÈ£';
+    'ï¿½ï¿½È­ï¿½ï¿½È£';
 
 COMMENT ON COLUMN zalbazo.hospital.info IS
-    'º´¿ø¼Ò°³';
+    'ï¿½ï¿½ï¿½ï¿½ï¿½Ò°ï¿½';
 
 CREATE UNIQUE INDEX zalbazo.hospital_pk ON
     zalbazo.hospital (
@@ -376,7 +376,7 @@ PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     DEFAULT );
 
 COMMENT ON COLUMN zalbazo.reserve.note IS
-    '¿¹¾à³»¿ë';
+    'ï¿½ï¿½ï¿½à³»ï¿½ï¿½';
 
 CREATE UNIQUE INDEX zalbazo.reserve_pk ON
     zalbazo.reserve (
@@ -433,16 +433,16 @@ PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     DEFAULT );
 
 COMMENT ON COLUMN zalbazo.zalbazo_user.user_email IS
-    'È¸¿ø°¡ÀÔÀÌ¸ÞÀÏ';
+    'È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½';
 
 COMMENT ON COLUMN zalbazo.zalbazo_user.password IS
-    'À¯Àú·Î±×ÀÎÆÐ½º¿öµå';
+    'ï¿½ï¿½ï¿½ï¿½ï¿½Î±ï¿½ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 COMMENT ON COLUMN zalbazo.zalbazo_user.role IS
-    'À¯Àú ±ÇÇÑ';
+    'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½';
 
 COMMENT ON COLUMN zalbazo.zalbazo_user.tel IS
-    'ÀüÈ­¹øÈ£';
+    'ï¿½ï¿½È­ï¿½ï¿½È£';
 
 CREATE UNIQUE INDEX zalbazo.zalbazo_user_pk ON
     zalbazo.zalbazo_user (
@@ -564,7 +564,7 @@ ALTER TABLE zalbazo.review
 
 
 
--- Oracle SQL Developer Data Modeler ¿ä¾à º¸°í¼­: 
+-- Oracle SQL Developer Data Modeler ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: 
 -- 
 -- CREATE TABLE                            16
 -- CREATE INDEX                            13
@@ -664,35 +664,35 @@ Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (3,'review');
 Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (4,'hqna');
 
 Insert into ZALBAZO.ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN) 
-Values('dummy@gmail.com', '{noop}1234', 'user', '01033499440', '¼­¿ï½Ã ¼­ÃÊ±¸', 'È«±æµ¿', sysdate, null);
+Values('dummy@gmail.com', '{noop}1234', 'user', '01033499440', 'ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ê±ï¿½', 'È«ï¿½æµ¿', sysdate, null);
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,UPDATED_DATE,CATEGORY_ID,USER_EMAIL) 
-values (CONTENT_SEQ.nextval,'¸ÅÆÛÅ×½ºÆ®Á¦¸ñÁö½Äµ¿1','¸ÅÆÛÅ×½ºÆ®³»¿ëÁö½Äµ¿1',to_date('19/09/05','RR/MM/DD'),to_date('19/09/05','RR/MM/DD'),2,'dummy@gmail.com');
+values (CONTENT_SEQ.nextval,'ï¿½ï¿½ï¿½ï¿½ï¿½×½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½1','ï¿½ï¿½ï¿½ï¿½ï¿½×½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½1',to_date('19/09/05','RR/MM/DD'),to_date('19/09/05','RR/MM/DD'),2,'dummy@gmail.com');
 
 
 Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) 
-values (HOSPITAL_SEQ.nextval,'µ¹º½ µ¿¹°º´¿ø','¼­¿ïÆ¯º°½Ã °­µ¿±¸ ¾Ï»çµ¿ 414-18 ·Ôµ¥Ä³½½»ó°¡ 2Ãþ','08:00','21:00','024262775',
-'°¡Á·À» µ¹º¸´Â ¸¶À½À¸·Î ¹Ý·Áµ¿¹°À» Áø·áÇÏ´Â µ¹º½ µ¿¹°º´¿øÀÔ´Ï´Ù.');
+values (HOSPITAL_SEQ.nextval,'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½Æ¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï»çµ¿ 414-18 ï¿½Ôµï¿½Ä³ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½','08:00','21:00','024262775',
+'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.');
 
 Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) 
-values (HOSPITAL_SEQ.nextval,'°í´ö24½Ãµ¿¹°º´¿ø','¼­¿ï °­µ¿±¸ µ¿³²·Î 877 106È£','00:00','24:00','0262278275',
-'°í´öµ¿/¸íÀÏµ¿¿¡ À§Ä¡ÇÑ 24½Ã°£ µ¿¹°º´¿øÀÔ´Ï´Ù.
-¾ðÁ¦ ¹ß»ýÇÒÁö ¸ð¸£´Â ÀÀ±ÞÇÑ ¾ÆÀÌµéÀ» À§ÇÑ ÀÀ±ÞÁø·á.
-´ëºÎºÐÀÇ ¿Ü°ú¼ö¼úÀÌ °¡´ÉÇÑ È£Èí¸¶Ãë±â, È¯ÀÚ°¨½Ã±â, ¼ö¼úÀåºñ.
-¾ÆÇÂ ¾ÆÀÌÀÇ Ç÷¾×»óÅÂ¸¦ ¹Ù·Î º¼ ¼ö ÀÖ´Â Ç÷¾×°Ë»ç±â.
-Ã¶ÀúÇÑ ÀÔ¿ø°ü¸®¸¦ À§ÇÑ ¼ö¾×ÆßÇÁ, ½Ç¸°Áö ÆßÇÁ, ÁýÁßÄ¡·á½Ç.
-º´¿øÀ¸·Î¼­ ÃÖ¼±À» ´ÙÇÏ±â À§ÇØ Àåºñ¸¦ °®Ãß±âÀ§ÇØ ³ë·ÂÇÏ°í ÀÖÀ¸¸ç ¾ÕÀ¸·Îµµ ´õ ¹ßÀü½ÃÄÑ³ª°¡°Ú½À´Ï´Ù.
-±× ¿Ü ¼­ºñ½º·Î´Â °í¾çÀÌ¸¦ À§ÇÑ Àü¿ë Ä¹Å¸¿ö È£ÅÚ. °í¾çÀÌ ¹Ì¿ë.
-±âÁ¸ ÄÉÀÌÁöº¸´Ù ³Ð°Ô Á¦ÀÛµÈ °­¾ÆÁö È£ÅÚ, °­¾ÆÁö ¹Ì¿ëÀÌ ÀÖÀ¸¸ç 
-Ä¹Å¸¿ö¿Í Ä¹·Îµå·Î °í¾çÀÌ¸¦ À§ÇÑ °ø°£À» ÇÒ¾ÖÇß½À´Ï´Ù. ¸¹Àº °ü½É ¹Ù¶ø´Ï´Ù.');
+values (HOSPITAL_SEQ.nextval,'ï¿½ï¿½ï¿½24ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 877 106È£','00:00','24:00','0262278275',
+'ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ 24ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.
+ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ð¸£´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+ï¿½ï¿½Îºï¿½ï¿½ï¿½ ï¿½Ü°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½ï¿½ï¿½, È¯ï¿½Ú°ï¿½ï¿½Ã±ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½×»ï¿½ï¿½Â¸ï¿½ ï¿½Ù·ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½×°Ë»ï¿½ï¿½.
+Ã¶ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ç¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½.
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¼ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ³ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½Ï´ï¿½.
+ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ñ½º·Î´ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä¹Å¸ï¿½ï¿½ È£ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½.
+ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð°ï¿½ ï¿½ï¿½ï¿½Ûµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+Ä¹Å¸ï¿½ï¿½ï¿½ï¿½ Ä¹ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¾ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶ï¿½ï¿½Ï´ï¿½.');
 
 Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) 
-values (HOSPITAL_SEQ.nextval,'½º¸¶Æ®µ¿¹°º´¿ø °­µ¿¾Ï»çÁ¡','¼­¿ïÆ¯º°½Ã °­µ¿±¸ ¾Ï»çµ¿ 452-31 ¼­¿øºôµù 1Ãþ','10:00','21:00','024428875',
-'¿øÈÆ :: ¿ì¸®Áý ¾ÆÀÌÃ³·³ °°ÀÌ ±â»µÇÏ°í °°ÀÌ °í¹ÎÇÏ´Â ½º¸¶Æ® °¡Á·ÀÌ µÇÀÚ
-¾È³çÇÏ¼¼¿ä ½º¸¶Æ®µ¿¹°º´¿ø °­µ¿¾Ï»çÁöÁ¡ÀÔ´Ï´Ù~!
-°­³² ½Å»çº»¿ø, °­³² ´ëÄ¡ÁöÁ¡, ¿ï»êÁöÁ¡, µ¿ÅºÁöÁ¡, °­µ¿±¸ÁöÁ¡ ÃÑ 5 °³ÀÇ ÁöÁ¡¿¡
-ÃÑ 36 ¸íÀÇ ¼öÀÇ»ç°¡ ½Éµµ±íÀº ÇùÁøÀ¸·Î °¡Àå ¾ÈÀüÇÏ°í ¿Ïº®À» Ãß±¸ÇÏ´Â ÀÇ·áÈ¯°æÀ» Ãß±¸ÇÕ´Ï´Ù
-¿øÈÆÃ³·³ ¹Ý·Áµ¿¹°µéÀÌ °¡Àå Æí¾ÈÇØ ÇÒ ¼ö ÀÖ´Â È¯°æÀ» Á¶¼ºÇÏ¿©, ¹Ý·Áµ¿¹°µéÀÇ °Ç°­°ú º¸È£ÀÚºÐ ¸ðµÎÀÇ
-Çàº¹°¨À» µå¸®°íÀÚ Ç×»ó ÃÖ¼±À» ´ÙÇÑ ÀÇ·á ¼­ºñ½º¸¦ Á¦°øÇØ µå¸®°Ú½À´Ï´Ù.');
+values (HOSPITAL_SEQ.nextval,'ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½Æ¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï»çµ¿ 452-31 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½','10:00','21:00','024428875',
+'ï¿½ï¿½ï¿½ï¿½ :: ï¿½ì¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½â»µï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+ï¿½È³ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½~!
+ï¿½ï¿½ï¿½ï¿½ ï¿½Å»çº»ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Åºï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 5 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ 36 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç»ç°¡ ï¿½Éµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ïºï¿½ï¿½ï¿½ ï¿½ß±ï¿½ï¿½Ï´ï¿½ ï¿½Ç·ï¿½È¯ï¿½ï¿½ï¿½ï¿½ ï¿½ß±ï¿½ï¿½Õ´Ï´ï¿½
+ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ È¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½, ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç°ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½Úºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½àº¹ï¿½ï¿½ï¿½ï¿½ ï¿½å¸®ï¿½ï¿½ï¿½ï¿½ ï¿½×»ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç·ï¿½ ï¿½ï¿½ï¿½ñ½º¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½å¸®ï¿½Ú½ï¿½ï¿½Ï´ï¿½.');
 
 Insert into ZALBAZO.LABEL (CODE,NAME) values (1,'24hr');
 Insert into ZALBAZO.LABEL (CODE,NAME) values (2,'beauty');
@@ -741,7 +741,7 @@ values(UUID_SEQ.currval, 3);
 insert all
 into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
 values (CONTENT_SEQ.nextval,
-'¿ì¸® Áý ¾î¸£½Å »Ç»ß(10¼¼)µµ ¸¸Á·ÇØÇÏ´õ±º¿ä,, ÀØÁö ¸»ÀÚ µ¹º½ µ¿¹°º´¿ø,,,', sysdate, 3, 'dummy@gmail.com')
+'ï¿½ì¸® ï¿½ï¿½ ï¿½î¸£ï¿½ï¿½ ï¿½Ç»ï¿½(10ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½,, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,,,', sysdate, 3, 'dummy@gmail.com')
 into review (review_id, hospital_id, content_id, star_point)
 values(REVIEW_SEQ.NEXTVAL, 1, CONTENT_SEQ.currval, 4)
 select * from dual;
@@ -749,7 +749,7 @@ select * from dual;
 insert all
 into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
 values (CONTENT_SEQ.nextval, 
-'¿ì¸® Áý ¾î¸£½Å »Ç»ß(10¼¼)µµ ¸¸Á·ÇØÇÏ´õ±º¿ä,, ÀØÁö ¸»ÀÚ µ¹º½ µ¿¹°º´¿ø,,,', sysdate, 3, 'dummy@gmail.com')
+'ï¿½ì¸® ï¿½ï¿½ ï¿½î¸£ï¿½ï¿½ ï¿½Ç»ï¿½(10ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½,, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,,,', sysdate, 3, 'dummy@gmail.com')
 into review (review_id, hospital_id, content_id, star_point)
 values(REVIEW_SEQ.NEXTVAL, 1, CONTENT_SEQ.currval, 1)
 select * from dual;
@@ -757,7 +757,7 @@ select * from dual;
 insert all
 into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
 values (CONTENT_SEQ.nextval, 
-'¿ì¸® Áý ¾î¸£½Å »Ç»ß(10¼¼)µµ ¸¸Á·ÇØÇÏ´õ±º¿ä,, ÀØÁö ¸»ÀÚ µ¹º½ µ¿¹°º´¿ø,,,', sysdate, 3, 'dummy@gmail.com')
+'ï¿½ì¸® ï¿½ï¿½ ï¿½î¸£ï¿½ï¿½ ï¿½Ç»ï¿½(10ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½,, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,,,', sysdate, 3, 'dummy@gmail.com')
 into review (review_id, hospital_id, content_id, star_point)
 values(REVIEW_SEQ.NEXTVAL, 1, CONTENT_SEQ.currval, 2)
 select * from dual;
@@ -765,7 +765,7 @@ select * from dual;
 insert all
 into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
 values (CONTENT_SEQ.nextval, 
-'¿ì¸® Áý ¾î¸£½Å »Ç»ß(10¼¼)µµ ¸¸Á·ÇØÇÏ´õ±º¿ä,, ÀØÁö ¸»ÀÚ µ¹º½ µ¿¹°º´¿ø,,,', sysdate, 3, 'dummy@gmail.com')
+'ï¿½ì¸® ï¿½ï¿½ ï¿½î¸£ï¿½ï¿½ ï¿½Ç»ï¿½(10ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½,, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,,,', sysdate, 3, 'dummy@gmail.com')
 into review (review_id, hospital_id, content_id, star_point)
 values(REVIEW_SEQ.NEXTVAL, 1, CONTENT_SEQ.currval, 2)
 select * from dual;
@@ -773,7 +773,7 @@ select * from dual;
 insert all
 into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
 values (CONTENT_SEQ.nextval, 
-'¿ì¸® Áý ¾î¸£½Å »Ç»ß(10¼¼)µµ ¸¸Á·ÇØÇÏ´õ±º¿ä,, ÀØÁö ¸»ÀÚ µ¹º½ µ¿¹°º´¿ø,,,', sysdate, 3, 'dummy@gmail.com')
+'ï¿½ì¸® ï¿½ï¿½ ï¿½î¸£ï¿½ï¿½ ï¿½Ç»ï¿½(10ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½,, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,,,', sysdate, 3, 'dummy@gmail.com')
 into review (review_id, hospital_id, content_id, star_point)
 values(REVIEW_SEQ.NEXTVAL, 1, CONTENT_SEQ.currval, 3)
 select * from dual;

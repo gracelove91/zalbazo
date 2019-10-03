@@ -18,7 +18,7 @@
 	<div class="col-1"></div>
 	<div class="col-11">
 	<br>
-    <h2>{병원이름}님의 마이페이지</h2>
+    <h2>${useremail} 님의 병원마이페이지</h2>
     <p>방가방가링~★</p>
     </div>
 </div>

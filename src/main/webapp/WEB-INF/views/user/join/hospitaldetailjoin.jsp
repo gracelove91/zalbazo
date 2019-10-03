@@ -38,7 +38,7 @@
 
                 <div class="form-group">
                     <fieldset>
-                        <label class="font-weight-bold">병원명</label>
+                        <label class="font-weight-bold">병원 이름</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="병원명을 입력하세요">
                     </fieldset>
                 </div>
@@ -227,7 +227,7 @@
 
             $(".uploadResult ul li").each(function (i, obj) {
                 var jobj = $(obj);
-                
+             
                 check = false; 
                 
                 console.log(jobj);

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.zalbazo.mapper.user.mypage.MyReserveMapper">
+
+	<select id="getReserveList" resultType="kr.zalbazo.model.user.Reserve">
+		select a.reserve_id, c.hospital_Id, c.name, a.rdate, b.animal_id, b.aname, a.status
+		from reserve a, animal b, hospital c
+		where a.user_email = #{userEmail}
+		and a.animal_id = b.animal_id
+		and c.hospital_id = a.hospital_id
+	</select>
+	
+	<select id="get" resultType="kr.zalbazo.model.user.Reserve">
+    	select a.reserve_id, c.hospital_Id, c.name, a.rdate, b.animal_id, b.aname, a.status
+		from reserve a, animal b, hospital c
+		where a.user_email = #{param2}
+		and a.animal_id = b.animal_id
+		and c.hospital_id = a.hospital_id
+		and a.reserve_id = #{param1}
+    </select>
+    
+    <insert id="insertReview">
+		insert all
+		into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
+		values (CONTENT_SEQ.nextval, #{body}, sysdate, 3, #{userEmail})
+		into review (review_id, hospital_id, content_id, star_point)
+		values(REVIEW_SEQ.NEXTVAL, #{hospitalId}, CONTENT_SEQ.currval, #{starPoint})
+		select * from dual
+	</insert>
+	
+</mapper>

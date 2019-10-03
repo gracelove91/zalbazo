@@ -105,6 +105,11 @@ function check() { // 날짜 시간 체킹
 		return false;
 
 	}
+	else if($('#animalId').val() ==""){
+		alert("동물을 선택해 주세요.")
+		
+		return false;
+	}
 
 	else
 		return "index";
@@ -273,7 +278,7 @@ $.fn.zabuto_calendar = function(options) {
 					var $prevMonthCell = $('<th></th>').append($prevMonthNav);
 					var $nextMonthCell = $('<th></th>').append($nextMonthNav);
 
-					var $currMonthLabel = $('<span>' + year + '년 '
+					var $currMonthLabel = $('<span>' + year  + '년'+' '
 							+ monthLabels[month] + '</span>');
 					$currMonthLabel.dblclick(function() {
 						var dateInitObj = $calendarElement.data('initDate');

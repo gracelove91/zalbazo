@@ -1,10 +1,12 @@
 package kr.zalbazo.controller.hospital;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,8 +29,11 @@ public class QnaController {
 	private HospitalQnaService qnaService;
 	
 	@PostMapping(value = "/question", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> addQuestion(@RequestBody HospitalQnaVO hospitalQnaVO){
+	public ResponseEntity<String> addQuestion(@RequestBody HospitalQnaVO hospitalQnaVO, Principal principal, Model model){
 		int insertHospitalQna = qnaService.insertHospitalQna(hospitalQnaVO);
+		
+		hospitalQnaVO.setUserEmail(principal.getName());
+		model.addAttribute("userEmail", principal.getName());
 
 		return insertHospitalQna == 2 
 		? new ResponseEntity<>("success", HttpStatus.OK)
@@ -36,8 +41,11 @@ public class QnaController {
 	}
 
 	@PostMapping(value = "/answer", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> addAnswer(@RequestBody HospitalQnaVO hospitalQnaVO){
+	public ResponseEntity<String> addAnswer(@RequestBody HospitalQnaVO hospitalQnaVO, Principal principal, Model model){
 		int insertAnswer = qnaService.insertAnswer(hospitalQnaVO);
+		
+		hospitalQnaVO.setUserEmail(principal.getName());
+		model.addAttribute("userEmail", principal.getName());
 		
 		return insertAnswer == 2 
 		? new ResponseEntity<>("success", HttpStatus.OK)

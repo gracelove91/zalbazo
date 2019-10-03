@@ -22,4 +22,8 @@ public class Reserve {
 	private Long hospitalId;
 	private String status;
 	private String userEmail;
+	
+	private String aName; // 동물이름
+	private String name; // 병원 이름
+	
 }

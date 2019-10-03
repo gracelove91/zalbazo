@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import kr.zalbazo.controller.user.UserController;
 import kr.zalbazo.service.user.UserService;

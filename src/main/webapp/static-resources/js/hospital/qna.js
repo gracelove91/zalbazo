@@ -1,9 +1,9 @@
  $(document).ready(function () {
 
-        var info = $(".info");
-        var hospitalId = info.find("input[name='hospitalId']");
-        var user = info.find("input[name='userEmail']");
-        var qnaBody = info.find("textarea[name='body']");
+        var qq = $(".qq");
+        var hospitalId = qq.find("input[id='hospitalId']");
+        var userEmail = qq.find("input[id='userEmail']");
+        var qnaBody = qq.find("textarea[id='body']");
 
         var qna = $(".qnaqna");
 
@@ -58,7 +58,7 @@
                         // aCheck true이면 Q는 있지만 A는 없음 
                         // 병원 측에서 A를 입력할 수 있는 textarea를 출력
                         if(aCheck) {
-                        	str += "<br><div class='info container' style='background-color:white;'>";
+                        	str += "<br><div class='qq container' style='background-color:white;'>";
                         	str += "<input type='hidden' class='form-control' name='userEmail' value='dummy@gmail.com'>";
                         	str += "<input type='hidden' class='form-control' name='hospitalId' value='${hospital.hospitalId}'>";
                         	str += "	<div class='form-group'>";
@@ -79,8 +79,13 @@
 
         submitBtn.on("click", function (e) {
         	
+        	var qq = $(".qq");
+            var hospitalId = qq.find("input[id='hospitalId']");
+            var userEmail = qq.find("input[id='userEmail']");
+            var qnaBody = qq.find("textarea[id='body']");
+        	
         	// 유효성 체크
-        	if(qnaBody.val().trim() === ""){
+        	if(qnaBody.val().trim() == "" || qnaBody.val().trim() == null){
         		alert("내용을 입력하세요!");
         		return;
         	}
@@ -88,7 +93,7 @@
         	qnaService.addQuestion(
         			{
         				body: qnaBody.val(),
-        				userEmail : user.val(),
+        				userEmail : userEmail.val(),
         				hospitalId : hospitalId.val(),
         				qnaType : "Q"
         			},
@@ -119,7 +124,7 @@
         	
         	qnaService.addAnswer({
         		body : body,
-        		userEmail : user.val(),
+        		userEmail : userEmail.val(),
         		hospitalId : hospitalId.val(),
         		cgroup : qno
         	},

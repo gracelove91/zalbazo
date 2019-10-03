@@ -165,7 +165,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary float-right" id="regBtn" name="regBtn">submit</button>
+                <button type="submit" class="btn btn-primary pull-right" id="regBtn" name="regBtn">회원가입</button>
             </form>
             <br/><br/><br/>
 
@@ -222,10 +222,16 @@
 
 
             var str = "";
+            
+            var check = true;
 
             $(".uploadResult ul li").each(function (i, obj) {
                 var jobj = $(obj);
+                
+                check = false;
 
+                check = false; 
+                
                 console.log(jobj);
 
                 str += "<input type='hidden' name='attachList[" + i + "].fileName' value='" + jobj.data("filename") + "'>";
@@ -233,6 +239,11 @@
                 str += "<input type='hidden' name='attachList[" + i + "].uploadPath' value='" + jobj.data("path") + "'>";
 
             });
+            
+            if(check) {
+            	alert("병원 사진을 최소 1장 이상 등록해주세요.");
+            	return;
+            }
 
             formObj.append(str).submit();
         });
@@ -274,7 +285,7 @@
             }
 
             $.ajax({
-                url: '`/hospitalinfo/uploadAjaxAction',`
+             url: '/hospitalinfo/uploadAjaxAction',
              processData: false,
              contentType: false,
              data: formData,
@@ -289,7 +300,7 @@
 	 
 	 
 	 
-	// 첨부파일 등록 시 이미지와 함꼐 X가 보여짐
+	// 첨부파일 등록 시 이미지와 함께 X가 보여짐
      function showUploadResult(uploadResultArr) {
          if (!uploadResultArr || uploadResultArr.length == 0) {
              return;

@@ -31,11 +31,20 @@ public class HomeController {
 	@Autowired
 	AnimalService as;
 	
+	@PostMapping("/myhospitalmodify")
+	public String modify(Model model) {
+		return "user/hospital/myhospitalmodify";
+	}
+    @GetMapping("/myhospitalpage")
+    public String mypage(Principal principal, Model model) {
+    	return "user/myhospitalpage";
+    }
 	
     @GetMapping({"/", "/index"})
     public String index(){
         return "/index";
     }
+    
     @GetMapping("/reserve")
     public String calendar(@RequestParam Long hospitalId, Model model,Principal principal){
     	model.addAttribute("animal",as.getList(principal.getName()));
@@ -43,6 +52,7 @@ public class HomeController {
     	   	
     	return "/reserve";
     }
+    
     @PostMapping("/reserve")
     public String calendarpost(@RequestParam Long hospitalId,@RequestParam String reservedate,@RequestParam String reservetime,Reserve reserve) throws ParseException{
 

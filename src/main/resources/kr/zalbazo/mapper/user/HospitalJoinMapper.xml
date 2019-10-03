@@ -25,6 +25,29 @@
         SELECT *
         FROM DUAL
     </insert>
+    
+    <select id="get" resultType="kr.zalbazo.model.user.HospitalInfo">
+       select * 
+	   from hospital a, zalbazo_user b
+	   where a.hospital_id = b.hospital_id
+	   and user_email = #{userEmail}
+    </select>
+    
+    <select id="getLabel" resultType="kr.zalbazo.model.content.Label">
+       select label_code, c.name
+	   from hospital_label a, zalbazo_user b, label c
+	   where a.hospital_id = b.hospital_id
+	   and label_code = code
+	   and user_email = #{userEmail}
+    </select>
+    
+    <select id="getPic" resultType="kr.zalbazo.model.pic.AttachFileDTO">
+       select a.uuid, upload_path, file_name, c.hospital_id
+	   from pic_lib a, pic_lib_rel_hospital b, zalbazo_user c
+	   where a.uuid = b.uuid
+	   and b.hospital_id = c.hospital_id
+	   and user_email = #{userEmail}
+    </select>
 
 
 </mapper>

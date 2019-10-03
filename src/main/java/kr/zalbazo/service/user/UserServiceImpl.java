@@ -38,11 +38,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         String uuid = UUID.randomUUID().toString();
         user.setEmailAuthKey(uuid);
 
-        try {
-            sendEmail(user);
-        } catch (MessagingException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        Thread thread = new Thread(()->{
+            try {
+                sendEmail(user);
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
 
         user.encodePassword(encoder);
 
@@ -99,11 +104,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
         User user = userMapper.read(userEmail);
 
-        if(user == null){
+        if (user == null) {
             throw new UsernameNotFoundException(userEmail);
         }
 
-        if(user.getEnabled() == null){
+        if (user.getEnabled() == null) {
             throw new EmailConfirmFirstException(userEmail);
         }
 

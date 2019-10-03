@@ -4,6 +4,10 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%
+    String ctx = request.getContextPath();
+    pageContext.setAttribute("ctx", ctx);
+%>
 <html>
 <head>
 <title>병원 정보</title>
@@ -11,6 +15,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- 부트스트랩 CSS 추가하기 -->
 <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+img{
+   display : inline;
+}
+</style>
 </head>
 <%@include file="/WEB-INF/views/includes/header.jsp"%>
 <body>
@@ -21,20 +30,17 @@
         
       <div id="main" class="col-md-8">
           <div class="page-header mt-3">
-              <h2>병원 정보</h2>
+              <h2>${info.name}의 상세 정보</h2>
           </div>
-          <p class="lead">${hInfo.name}의 상세 정보</p>
           <hr>
           
           
-          <form class="pt-3 md-3" role='form' method="post" enctype="multipart/form-data">
-          
-            <input type="hidden" name="userEmail" value="${userEmail}"/>
+            <input name="userEmail" value="${userEmail}"/>
           
 			<div class="form-group">
 			   <fieldset>
                   <label class="font-weight-bold">병원명</label>
-                  <input type="text" class="form-control" id="name" name="name" value='<c:out value="${hInfo.name}"/>' readonly="readonly">
+                  <input type="text" class="form-control" id="name" name="name" value='<c:out value="${info.name}"/>' readonly="readonly">
                </fieldset>
             </div><br />
 
@@ -42,7 +48,7 @@
 			<div class="form-group">
 			   <fieldset>
                   <label class="font-weight-bold">전화번호</label>
-                  <input type="text" class="form-control" id="tel" name="tel" value='<c:out value="${hInfo.tel}"/>' readonly="readonly">
+                  <input type="text" class="form-control" id="tel" name="tel" value='<c:out value="${info.tel}"/>' readonly="readonly">
                </fieldset>
             </div><br />
             
@@ -50,7 +56,7 @@
 			<div class="form-group">
 			  <p class="font-weight-bold">제공하는 서비스</p>
 			  
-			    <c:forEach items="${hInfo.label}" var="label">
+			    <c:forEach items="${info.label}" var="label">
 			    
 			    	 <c:if test="${label.labelCode == 1 }">
 	                     <i class="material-icons"> local_convenience_store </i>24시간&nbsp;&nbsp;&nbsp;
@@ -82,7 +88,7 @@
                 <fieldset>
                     <label class="font-weight-bold">주소</label>
                     <input required="required" type="text" class="form-control" name="address" 
-                    	   id="address" value='<c:out value="${hInfo.address}"/>' readonly="readonly"/>
+                    	   id="address" value='<c:out value="${info.address}"/>' readonly="readonly"/>
                 </fieldset>
             </div><br />
             
@@ -91,12 +97,12 @@
             
             <div class="form-group col-md-6">
 		      <label for="sel1" class="font-weight-bold">문 여는 시간</label>
-		      <input class="form-control" id="treatStart" name="treatStart" value='<c:out value="${hInfo.treatStart}"/>' readonly="readonly" />
+		      <input class="form-control" id="treatStart" name="treatStart" value='<c:out value="${info.treatStart}"/>' readonly="readonly" />
 		    </div>
 		    
 		    <div class="form-group col-md-6">
 		      <label for="sel1" class="font-weight-bold">문 닫는 시간</label>
-		      <input class="form-control" id="treatEnd" name="treatEnd" value='<c:out value="${hInfo.treatEnd}"/>' readonly="readonly" />
+		      <input class="form-control" id="treatEnd" name="treatEnd" value='<c:out value="${info.treatEnd}"/>' readonly="readonly" />
 		    </div>
 		    
 		    </div><br />
@@ -108,7 +114,7 @@
                <fieldset>
                   <label class="font-weight-bold">세부사항</label>
                   <input class="form-control" id="info" name="info"
-							value='<c:out value="${hInfo.info}"/>' readonly="readonly" />
+							value='<c:out value="${info.info}"/>' readonly="readonly" />
                </fieldset>
             </div><br />
             
@@ -118,21 +124,24 @@
             <div class="row">
                <div class="col-lg-12">
                
-                   <div class="form-group uploadDiv">
-                   	  <label class="font-weight-bold">병원 사진</label><br>
-                      <input type="file" name='uploadFile' multiple>
-                   </div>
-                   
-                   <div class='uploadResult'>
-                      <ul>
-                      </ul>
+                   <div class="form-group">
+                      <c:forEach items="${info.attachList}" var="picList">
+                        <div style="display:inline;"> 
+                           <small>${picList.fileName}</small>
+                		   <img src="${ctx}/resources/img/hospital/${picList.uuid}_${picList.fileName}"
+	                                  height="80px" width="80px">
+                		</div>
+                      </c:forEach>
                    </div>
                         
                </div>
             </div>
             
-            <button type="submit" class="btn btn-primary float-right" id="regBtn" name="regBtn">submit</button>
-          </form>
+            <form class="pt-3 md-3" role='form' action="/hospitalinfo/modify">
+            
+            	<button type="submit" class="btn btn-primary float-right" id="modify" name="modify">수정하기</button>
+            </form>
+            
           <br /><br /><br />
 
         </div>

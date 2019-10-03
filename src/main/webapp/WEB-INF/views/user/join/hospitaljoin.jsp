@@ -78,7 +78,7 @@
                                 placeholder="이름을 입력하세요."/>
                 </fieldset>
             </div>
-            <button id="join" type="submit" class="btn btn-primary">회원가입</button>
+            <button id="join" type="submit" class="btn btn-primary pull-right">NEXT →</button>
         </form:form>
         <div class="col-2"></div>
 	</div>

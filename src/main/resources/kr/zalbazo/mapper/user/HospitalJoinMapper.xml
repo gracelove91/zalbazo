@@ -53,6 +53,36 @@
 	   and b.hospital_id = c.hospital_id
 	   and user_email = #{userEmail}
     </select>
+    
+    <delete id="removePicFirst">
+    	delete from pic_lib_rel_hospital
+		where hospital_id = 
+    			(select hospital_id 
+     			 from zalbazo_user 
+     			 where user_email = #{userEmail})
+    </delete>
+    
+    <delete id="removePicLast">
+    	delete from pic_lib a
+		where not exists (
+    		select * 
+    		from pic_lib_rel_hospital b
+    		where a.uuid = b.uuid)
+    </delete>
+    
+    <update id="update">
+		update hospital 
+		set name = #{name},
+    		tel = #{tel},
+    		address = #{address},
+		    treat_start = #{treatStart},
+		    treat_end = #{treatEnd},
+    		info = #{info}
+		where hospital_id = (select a.hospital_id
+                             from zalbazo_user a, hospital b
+                             where a.hospital_id = b.hospital_id
+                             and user_email = #{userEmail})
+    </update>
 
 
 </mapper>

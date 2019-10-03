@@ -40,7 +40,7 @@
 			<div class="col-lg-4">
 				<div class="single-feature mb-4 mb-lg-0">
 					<h4>병원찾기</h4>
-					<p class="py-3">내 반려동물을 돌봐줄 병원을 찾아보세요.</p>
+					<p class="py-1">내 반려동물을 잘봐줄 병원을 찾아보세요.</p>
 					<a href="#" class="secondary-btn">바로가기<span class="flaticon-next"></span></a>
 				</div>
 			</div>

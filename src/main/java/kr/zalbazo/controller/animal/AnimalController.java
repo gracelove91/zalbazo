@@ -35,29 +35,22 @@ public class AnimalController {
 
         service.register(animal);
 
-
-
         return "redirect:/user/mypage";
     }
+    
     @PostMapping("/animal/list")
     public String list(){
-    	
-    	
-    	
-    	
     	
     	return "/user/mypage/animal/list";
     }
 
     @GetMapping("/animal/register")
-    public String register(@RequestParam String userEmail, Model model){
+    public String register(@RequestParam String userEmail, Model model) {
     	
     		model.addAttribute("userEmail", userEmail);
 
         return "/user/mypage/animal/register";
     }
-
-   
 
 
     @GetMapping("/animal/modify")

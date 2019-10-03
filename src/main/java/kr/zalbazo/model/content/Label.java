@@ -1,8 +1,10 @@
 package kr.zalbazo.model.content;
 
-import lombok.*;
-
-import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @NoArgsConstructor
 @ToString
@@ -13,5 +15,6 @@ public class Label {
 
 	private Long hospitalId;
 	private int labelCode;
+	private String name;
 
 }

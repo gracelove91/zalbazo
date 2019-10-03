@@ -13,8 +13,12 @@ public interface HospitalJoinMapper {
     void labelInsert(HospitalLabel hospitalLabel);
     void hospitalPicInsert(AttachFileDTO attachFile);
     
+    int update(HospitalInfo hospitalInfo);
+    
     HospitalInfo get(String userEmail);
     List<Label> getLabel(String userEmail);
     List<AttachFileDTO> getPic(String userEmail);
+    void removePicFirst(String userEmail);
+    void removePicLast();
 
 }

@@ -3,7 +3,6 @@ $(document).ready(function() {
 	
 	var userEmail = '<c:out value="${useremail}"/>';
 	var fhlist = $("#animalt");
-	
 
 	
 	myAnimalService.getList(userEmail, function(list) {
@@ -42,7 +41,7 @@ $(document).ready(function() {
 			str += "</td>";
 			str += "<td style='width: 350px; text-align: center;'>";
 			str += "<a class='move' style='color : #000000;' >";
-			str += "<button class='remove' id=''onclick="+"location.href='/user/mypage/animal/remove?id="+list[i].animalId+"'>삭제</button></a>";
+			str += "<button class='remove' id='remove' onclick="+"location.href='/user/mypage/animal/remove?id="+list[i].animalId+"'>삭제</button></a>";
 			str += "</td>"
 			str += "</tr>";
 			

@@ -20,8 +20,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -77,16 +81,46 @@ public class HospitalJoinController {
     
     
     @GetMapping("/get")
-    public String get(Model model) {
+    public String get(Principal principal, Model model) {
     	
-    	String userEmail = "scienceos@daum.net";
+    	//아직 병원등록 메일 전송이 안돼서 principal 사용 아직 못함
+    	//String userEmail = principal.getName();
+    	//model.addAttribute("userEmail", principal.getName());
     	
-    	model.addAttribute("hInfo", hJoinService.get(userEmail));
+    	String userEmail = "scienceos@naver.com";
+    	model.addAttribute("info", hJoinService.get(userEmail));
     	log.info(hJoinService.get(userEmail));
     	
     	return "user/hospital/get";
     }
     
+    
+    @GetMapping("/modify")
+    public String modify(Principal principal, Model model) {
+    	
+    	//아직 병원등록 메일 전송이 안돼서 principal 사용 아직 못함
+    	//String userEmail = principal.getName();
+    	//model.addAttribute("userEmail", principal.getName());
+    	
+    	String userEmail = "scienceos@naver.com";
+    	model.addAttribute("info", hJoinService.get(userEmail));
+    	
+    	return "user/hospital/modify";
+    }
+    
+    @PostMapping("/modify")
+    public String update(HospitalInfo hospitalInfo, RedirectAttributes rttr) {
+    	hJoinService.modify(hospitalInfo);
+    	
+    	if(hJoinService.modify(hospitalInfo)) {
+    		log.info("ssssssssssssssssssssss");
+    		rttr.addFlashAttribute("result", "success");
+    	}
+    	
+    	return "redirect:/user/mypage";
+    }
+    
+
     
 	@ResponseBody
 	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -157,6 +191,16 @@ public class HospitalJoinController {
 	}
 	
 	
+	@GetMapping(value="/getAttachList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<AttachFileDTO>> getPicList(String userEmail) {
+		
+		log.info("getPicList " + userEmail);
+		
+		return new ResponseEntity<>(hJoinService.getPicList(userEmail), HttpStatus.OK);
+	}
+	
+	
 	@ResponseBody
 	@PostMapping("/deleteFile")
 	public ResponseEntity<String> deleteFile(String fileName) {
@@ -175,7 +219,7 @@ public class HospitalJoinController {
 		
 		return new ResponseEntity<String>("deleted", HttpStatus.OK);
 		
-	} 
+	}
 
     
 

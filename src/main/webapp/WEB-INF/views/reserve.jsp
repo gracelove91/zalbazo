@@ -15,7 +15,7 @@
 
 <title>병원 예약</title>
 
-<div class="text-center"><h1>예약하기</h1></div>
+<h1 style="text-align:center;font-weight: bold;">${hos.name} 예약하기</h1>
 
 <br>
 <br>
@@ -56,19 +56,19 @@
 <input type="hidden" id='userEmail' name='userEmail' value=<sec:authentication property="principal.username"/>>
 <input type="hidden" id='animalId' name='animalId' value=''>
 
-<div id='reservedate'>예약날짜</div> 
-<div id='reservetime'> 예약시간</div>
+<div id='reservedate'><h4>예약날짜</h4></div> 
+<div id='reservetime'><h4>예약시간</h4></div>
 <br>
-<h3>동물선택</h3>
+<h3 style="font-weight:bold">동물선택</h3>
 <ul class="animallist">
   
 <c:forEach items="${animal}" var="animallist">
 
-	<li id="${animallist.animalId}">${animallist.name}</li>
+	<li id="${animallist.animalId}" data-id="${animallist.animalId}">${animallist.aname}</li>
 
 </c:forEach>
 
-    </ul>
+</ul>
 <button class="btn btn-primary" type ="submit"" style='float: right'>예약하기</button>
 </form>
 </div><!--(./COntainer")-->
@@ -76,6 +76,18 @@
 <script type="text/javascript">
 	window.start = '${hos.treatStart}';
 	window.end = '${hos.treatEnd}';
+</script>
+
+<script>
+
+$(".animallist").on("click", "li", function(e) {
+	
+	var a = $(this).data("id");
+	
+	console.log(a);
+	
+});
+
 </script>
 
 

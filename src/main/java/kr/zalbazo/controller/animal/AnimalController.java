@@ -34,17 +34,10 @@ public class AnimalController {
     public String register(Animal animal){
 
         service.register(animal);
-
-
-
         return "redirect:/user/mypage";
     }
     @PostMapping("/animal/list")
     public String list(){
-    	
-    	
-    	
-    	
     	
     	return "/user/mypage/animal/list";
     }

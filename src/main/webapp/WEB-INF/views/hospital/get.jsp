@@ -176,8 +176,6 @@
 			<div id="menu1" class="container tab-pane fade">
 
                 <br>
-
-
                 <!-- 리뷰List -->
                 <div class='row'>
                     <div class="col-lg-12">
@@ -198,7 +196,7 @@
 							                    <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
 							
 							                    <div class="form-group" style="border-width: 5px;">
-							                        <textarea class="form-control txt" rows="5" id="review" name="review" placeholder="리뷰를 남겨주세요"></textarea><br>
+							                        <textarea class="form-control txt" rows="5" id="review" name="review" placeholder="리뷰를 남겨주세요"></textarea>
 							                        <div>
 							                        	<div>
 								                        	<i class="stars" style="color:gold;font-weight:bold;" name="stars">
@@ -250,6 +248,7 @@
 
                                             </div>
                                         </div>
+                                        </div>
                                     </li>
                                 </ul>
 
@@ -292,9 +291,9 @@
 			
 
             <div id="menu2" class="container tab-pane fade"><br>
-				<div class='row'>
-                    <input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com">
-                    <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
+				<div class='row qq'>
+                    <input type='hidden' class="form-control" id="userEmail" name="userEmail" value="">
+                    <input type='hidden' class="form-control" id="hospitalId" name="hospitalId" value="${hospital.hospitalId}">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading" style="padding-left: 20px; font-size: x-large;">

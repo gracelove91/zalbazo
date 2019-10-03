@@ -56,7 +56,7 @@ public class UserController {
     	
     	if(authentication.getAuthorities().toString().equals("[ROLE_user]")) {
     		model.addAttribute("useremail", authentication.getName());
-        	System.out.println("유저는 유저마이페이지로!");
+        	System.out.println("유저는 유저마이페이지로! : " + authentication.getAuthorities());
         	return "user/mypage";
     	}
     	

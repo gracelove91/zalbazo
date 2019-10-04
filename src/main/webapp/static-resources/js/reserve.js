@@ -80,7 +80,7 @@ $(document).ready(function() {
 		$('#d').val($(this).attr('id'))
 	});
 	$('.animallist').on('click', 'li', function(e) {
-		$('#animalId').val($(this).attr("id"));
+		$('#aId').val($(this).attr('id'));
 		$('.animallist li').css('background-color', 'white');
 		$(this).css('background-color', '#CEECF5');
 	});

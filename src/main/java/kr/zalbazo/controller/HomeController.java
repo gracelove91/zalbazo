@@ -5,8 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.zalbazo.model.user.Reserve;
 import kr.zalbazo.service.animal.AnimalService;
 import kr.zalbazo.service.hospital.HospitalService;
+import kr.zalbazo.service.user.HospitalJoinService;
 import kr.zalbazo.service.user.ReserveService;
 
 @Controller

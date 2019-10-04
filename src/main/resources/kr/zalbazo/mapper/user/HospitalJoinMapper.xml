@@ -65,6 +65,13 @@
     		where a.uuid = b.uuid)
     </delete>
     
+    <delete id="removeLabel">
+    	delete hospital_label 
+		where hospital_id = (select hospital_id
+                     		from zalbazo_user
+                     		where user_email = #{userEmail})
+    </delete>
+    
     <update id="update">
 		update hospital 
 		set name = #{name},

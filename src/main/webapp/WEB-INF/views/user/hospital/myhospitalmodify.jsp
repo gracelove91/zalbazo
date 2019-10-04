@@ -27,15 +27,15 @@
           <hr>
           
           
-          <form class="pt-3 md-3" role='form' action="/" method="post" enctype="multipart/form-data">
+          <form class="pt-3 md-3" role='form' action="/hospitalinfo/modify1" method="post" enctype="multipart/form-data">
           
-            <input type="hidden" name="userEmail" value="${userEmail}"/>
-            
-          
+            <input class="email" type="hidden" name="userEmail" value="${userEmail}"/>
+          	<input class="hospitalId" type="hidden" name="hospitalId" value="${info.hospitalId}">
+			
 			<div class="form-group">
 			   <fieldset>
                   <label class="font-weight-bold">병원명</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="병원명을 입력하세요">
+                  <input type="text" class="form-control" id="name" name="name" value='<c:out value="${info.name}"/>'>
                </fieldset>
             </div><br />
 
@@ -43,7 +43,7 @@
 			<div class="form-group">
 			   <fieldset>
                   <label class="font-weight-bold">전화번호</label>
-                  <input type="text" class="form-control" id="tel" name="tel" placeholder="000-0000-0000">
+                  <input type="text" class="form-control" id="tel" name="tel" value='<c:out value="${info.tel}"/>'>
                </fieldset>
             </div><br />
             
@@ -53,31 +53,31 @@
 			  
 			    <div class="form-check-inline">
 			      <label class="form-check-label" for="check1">
-			        <input type="checkbox" class="form-check-input" id="label_info" name="label_info" value=1>24시간
+			        <input type="checkbox" class="form-check-input" id="check1" name="label_info" value=1>24시간
 			      </label>
 			    </div>
 			    
 			    <div class="form-check-inline">
 			      <label class="form-check-label" for="check2">
-			        <input type="checkbox" class="form-check-input" id="label_info" name="label_info" value=2>미용
+			        <input type="checkbox" class="form-check-input" id="check2" name="label_info" value=2>미용
 			      </label>
 			    </div>
 			    
 			    <div class="form-check-inline">
 			      <label class="form-check-label" for="check3">
-			        <input type="checkbox" class="form-check-input" id="label_info" name="label_info" value=3>주차
+			        <input type="checkbox" class="form-check-input" id="check3" name="label_info" value=3>주차
 			      </label>
 			    </div>
 			    
 			    <div class="form-check-inline">
 			      <label class="form-check-label" for="check4">
-			        <input type="checkbox" class="form-check-input" id="label_info" name="label_info" value=4>희귀종취급
+			        <input type="checkbox" class="form-check-input" id="check4" name="label_info" value=4>특수동물
 			      </label>
 			    </div>
 			    
 			    <div class="form-check-inline">
 			      <label class="form-check-label" for="check5">
-			        <input type="checkbox" class="form-check-input" id="label_info" name="label_info" value=5>수술전문
+			        <input type="checkbox" class="form-check-input" id="check5" name="label_info" value=5>수술전문
 			      </label>
 			    </div>
 			
@@ -89,7 +89,7 @@
                 <fieldset>
                     <label class="font-weight-bold">주소</label>
                     <input required="required" type="text" class="form-control" name="address" 
-                    	   id="address" placeholder="주소를 입력하세요." readonly="true"/>
+                    	   id="address" value='<c:out value="${info.address}"/>'/ readonly="readonly">
                     <input type="button" onClick="goPopup();" value="주소찾기"/>
                 </fieldset>
             </div><br />
@@ -99,7 +99,7 @@
             
             <div class="form-group col-md-6">
 		      <label for="sel1" class="font-weight-bold">문 여는 시간</label>
-		      <select class="form-control" id="treatStart" name="treatStart">
+		      <select class="form-control" id="treatStart" name="treatStart" value='<c:out value="${info.treatStart}"/>'>
 		        
 		        <c:forEach begin="0" end="24" step="1" var="hour">
 		           <!-- hour라는 값에 변수가 10보다 작을 경우 -->
@@ -114,7 +114,7 @@
 		    
 		    <div class="form-group col-md-6">
 		      <label for="sel1" class="font-weight-bold">문 닫는 시간</label>
-		      <select class="form-control" id="treatEnd" name="treatEnd">
+		      <select class="form-control" id="treatEnd" name="treatEnd" value='<c:out value="${info.treatEnd}"/>'>
 		        
 		        <c:forEach begin="0" end="24" step="1" var="hour">
 		           <!-- hour라는 값에 변수가 10보다 작을 경우 -->
@@ -135,7 +135,7 @@
                <fieldset>
                   <label class="font-weight-bold">세부사항</label>
                   <textarea class="form-control" id="info" name="info"
-							placeholder="병원에 대한 상세정보를 적어주세요." style="height: 200px;"></textarea>
+							 style="height: 200px;"><c:out value="${info.info}"/></textarea>
                </fieldset>
             </div><br />
             
@@ -151,8 +151,9 @@
                    </div>
                    
                    <div class='uploadResult'>
-                      <ul>
-                      </ul>
+                   	  <ul>
+                   	  
+                   	  </ul>
                    </div>
                         
                </div>
@@ -173,6 +174,34 @@
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <!-- 부트스트랩 자바스크립트 추가하기 -->
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function(){
+	(function(){
+		var userEmail = $(".email").val();
+		
+		$.getJSON("/hospitalinfo/getAttachList", {userEmail : userEmail}, function(arr){
+			console.log(arr);
+			
+			var str = "";
+			
+			$(arr).each(function(i, pic) {
+				
+				var fileCallPath = encodeURIComponent(pic.uploadPath + pic.uuid + "_" + pic.fileName);
+
+	            str += "<li data-path='" + pic.uploadPath + "' data-uuid='" + pic.uuid + "' data-filename='" + pic.fileName + "' data-ext='" +pic.ext+ "'><div>";
+	            str += "<span>" + pic.fileName + "</span>";
+	            str += "<button type='button' data-file=\'" + fileCallPath + "\' class='btn btn-secondary btn-sm'>";
+	            str += "<i class='fa fa-times'></i></button><br>";
+	            str += "<img style='width:80px; height:80px' src='/hospitalinfo/display?fileName=" + fileCallPath + "'></div></li>";
+			});
+			
+			$(".uploadResult ul").html(str);
+			
+		});
+	})();
+});
+</script>
 <script>
 $(document).ready(function(e){
 	
@@ -190,6 +219,7 @@ $(document).ready(function(e){
 		var hInfo = $("textarea[id='info']").val();
 		var hTreatStart = $("select[id='treatStart']").val();
 		var hTreatEnd = $("select[id='treatEnd']").val(); 
+		
 		
 		var regex= /^\d{2,3}-\d{3,4}-\d{4}$/;
 		

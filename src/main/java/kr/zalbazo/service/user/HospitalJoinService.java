@@ -16,6 +16,6 @@ public interface HospitalJoinService {
 	
     List<AttachFileDTO> getPicList(String userEmail);
 	
-	boolean modify(HospitalInfo hosptailInfo);
+	void modify(HospitalInfo hosptailInfo);
 
 }

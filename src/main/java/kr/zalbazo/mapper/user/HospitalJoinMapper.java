@@ -18,7 +18,9 @@ public interface HospitalJoinMapper {
     HospitalInfo get(String userEmail);
     List<Label> getLabel(String userEmail);
     List<AttachFileDTO> getPic(String userEmail);
+    
     void removePicFirst(String userEmail);
     void removePicLast();
+    void removeLabel(String userEmail);
 
 }

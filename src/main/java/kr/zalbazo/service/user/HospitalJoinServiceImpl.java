@@ -69,28 +69,28 @@ public class HospitalJoinServiceImpl implements HospitalJoinService {
 	
 	@Transactional
 	@Override
-	public boolean modify(HospitalInfo hospitalInfo) {
+	public void modify(HospitalInfo hospitalInfo) {
 		log.info("modify..........." + hospitalInfo.getUserEmail());
 		
 		// 어떤 사진이 다시 업데이트 되고 지워지는지 확인이 어렵기 때문에
-		// 첨부파일을 그냥 싹 지우고 다시 업데이트 하는 식으로 처리
+		// 첨부파일을 그냥 싹 지우고 다시 업데이트 하는 식으로 처리 (+ 라벨도)
 		hospitalJoinMapper.removePicFirst(hospitalInfo.getUserEmail());
 		hospitalJoinMapper.removePicLast();
+		hospitalJoinMapper.removeLabel(hospitalInfo.getUserEmail());
 		
-		boolean modifyResult = hospitalJoinMapper.update(hospitalInfo) == 1;
+		hospitalJoinMapper.update(hospitalInfo);
 		
-		log.info("modifyResult : " + modifyResult);
-		
-		if(modifyResult && hospitalInfo.getAttachList() != null 
-				&& hospitalInfo.getAttachList().size() > 0) {
-			
-			hospitalInfo.getAttachList().forEach(attach ->{
-				attach.setHospitalId(hospitalInfo.getHospitalId());
-				hospitalJoinMapper.hospitalPicInsert(attach);
-			});
+		if(hospitalInfo.getAttachList() == null || hospitalInfo.getAttachList().size() <= 0) {
+			return;
 		}
 		
-		return modifyResult;
+		System.out.println("hospitalId : " + hospitalInfo.getHospitalId());
+		
+		hospitalInfo.getAttachList().forEach(attach ->{
+			attach.setHospitalId(hospitalInfo.getHospitalId());
+			hospitalJoinMapper.hospitalPicInsert(attach);
+		});
+		
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public class HospitalListVO {
 	private String treatStart;
 	private String treatEnd;
 	private String tel;
-	private List<HospitalLabel> label;
+	private List<Label> label;
 	private String uuid;
 	private String uploadPath;
 	private String fileName;

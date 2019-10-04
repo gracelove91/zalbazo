@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.zalbazo.mapper.hospital.HospitalMapper;
-import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.hospital.Hospital;
-import kr.zalbazo.model.hospital.HospitalLabel;
 import kr.zalbazo.model.hospital.HospitalListVO;
-import kr.zalbazo.model.hospital.HospitalQnaVO;
+import kr.zalbazo.model.hospital.Label;
 import kr.zalbazo.model.pic.PicLib;
 import lombok.extern.log4j.Log4j;
 
@@ -27,7 +25,7 @@ public class HospitalServiceImpl implements HospitalService{
 	}
 
 	@Override
-	public List<HospitalLabel> getLabelList(Long hospitalId) {
+	public List<Label> getLabelList(Long hospitalId) {
 		return mapper.getLabelList(hospitalId);
 	}
 
@@ -46,15 +44,6 @@ public class HospitalServiceImpl implements HospitalService{
 		return mapper.hPictureCount(hospitalId);
 	}
 
-	@Override
-	public void hContentRegister(Content content) {
-		mapper.hContentInsert(content);
-	}
-
-	@Override
-	public void hQnaRegister(HospitalQnaVO hospitalQnaVO) {
-		mapper.hQnaInsert(hospitalQnaVO);
-	}
 
 	@Override
 	public List<HospitalListVO> getList() {

@@ -31,9 +31,9 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.zalbazo.model.hospital.HospitalLabel;
+import kr.zalbazo.model.hospital.Hospital;
+import kr.zalbazo.model.hospital.Label;
 import kr.zalbazo.model.pic.AttachFileDTO;
-import kr.zalbazo.model.user.HospitalInfo;
 import kr.zalbazo.model.user.User;
 import kr.zalbazo.service.user.HospitalJoinService;
 import kr.zalbazo.service.user.UserService;
@@ -62,22 +62,22 @@ public class HospitalJoinController {
 
 
     @PostMapping("/register")
-    public String join(HospitalInfo hospitalInfo, HospitalLabel hospitalLabel, @ModelAttribute User user,
+    public String join(Hospital hospital, Label label, @ModelAttribute User user,
     			RedirectAttributes rttr, HttpServletRequest request) {
 		user.setRole("hospital");
 
 
-		service.hospitalInfoRegister(hospitalInfo);
-		user.setHospitalId(hospitalInfo.getHospitalId());
+		service.hospitalInfoRegister(hospital);
+		user.setHospitalId(hospital.getHospitalId());
     	// form에 있는 selectbox에서 라벨들의 값을 받아온다
-    	String[] label = request.getParameterValues("label_info");
+    	String[] labelList = request.getParameterValues("label_info");
 
     	// 반복문을 이용하여 HospitaLabel객체에 값을 넣어주고 메서드를 이용해서 디비에 insert
-    	for(int i=0; i<label.length; i++) {
+    	for(int i=0; i<labelList.length; i++) {
 
-    		HospitalLabel hL = new HospitalLabel();
-    		hL.setLabelCode(Integer.parseInt(label[i]));
-    		hL.setHospitalId(hospitalInfo.getHospitalId());
+    		Label hL = new Label();
+    		hL.setLabelCode(Integer.parseInt(labelList[i]));
+    		hL.setHospitalId(hospital.getHospitalId());
 
     		service.labelInsert(hL);
     	}
@@ -92,7 +92,7 @@ public class HospitalJoinController {
     
 	@GetMapping(value = "/detail/{userEmail}", produces = { 
 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<HospitalInfo> getInfo(@PathVariable("userEmail") String userEmail) {
+	public ResponseEntity<Hospital> getInfo(@PathVariable("userEmail") String userEmail) {
 		return new ResponseEntity<>(service.get(userEmail), HttpStatus.OK);
 	}
     
@@ -105,18 +105,18 @@ public class HospitalJoinController {
     }
     
     @PostMapping("/modify1")
-    public String update(HospitalInfo hospitalInfo, HttpServletRequest request) {
+    public String update(Hospital hospital, HttpServletRequest request) {
 
-    	service.modify(hospitalInfo);
+    	service.modify(hospital);
     	
     	// form에 있는 selectbox에서 라벨들의 값을 받아온다
-    	String[] label = request.getParameterValues("label_info");
+    	String[] labelList = request.getParameterValues("label_info");
     	// 반복문을 이용하여 HospitaLabel객체에 값을 넣어주고 메서드를 이용해서 디비에 insert
-    	for(int i=0; i<label.length; i++) {
+    	for(int i=0; i<labelList.length; i++) {
 
-    		HospitalLabel hL = new HospitalLabel();
-    		hL.setLabelCode(Integer.parseInt(label[i]));
-    		hL.setHospitalId(hospitalInfo.getHospitalId());
+    		Label hL = new Label();
+    		hL.setLabelCode(Integer.parseInt(labelList[i]));
+    		hL.setHospitalId(hospital.getHospitalId());
 
     		service.labelInsert(hL);
     	}

@@ -2,20 +2,20 @@ package kr.zalbazo.service.user;
 
 import java.util.List;
 
-import kr.zalbazo.model.hospital.HospitalLabel;
+import kr.zalbazo.model.hospital.Hospital;
+import kr.zalbazo.model.hospital.Label;
 import kr.zalbazo.model.pic.AttachFileDTO;
-import kr.zalbazo.model.user.HospitalInfo;
 
 public interface HospitalJoinService {
 	
-	void hospitalInfoRegister(HospitalInfo hospitalInfo);
-	void labelInsert(HospitalLabel hospitalLabel);
+	void hospitalInfoRegister(Hospital hospital);
+	void labelInsert(Label label);
 	void picInsert(AttachFileDTO attachFile);
-	HospitalInfo get(String userEmail);
-	int update(HospitalInfo hospitalInfo);
+	Hospital get(String userEmail);
+	int update(Hospital hospital);
 	
     List<AttachFileDTO> getPicList(String userEmail);
 	
-	void modify(HospitalInfo hosptailInfo);
+	void modify(Hospital hospital);
 
 }

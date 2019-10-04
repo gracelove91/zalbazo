@@ -2,20 +2,19 @@ package kr.zalbazo.mapper.user;
 
 import java.util.List;
 
-import kr.zalbazo.model.hospital.HospitalLabel;
+import kr.zalbazo.model.hospital.Hospital;
 import kr.zalbazo.model.hospital.Label;
 import kr.zalbazo.model.pic.AttachFileDTO;
-import kr.zalbazo.model.user.HospitalInfo;
 
 public interface HospitalJoinMapper {
 	
-    void hospitalInfoInsert(HospitalInfo hospitalInfo);
-    void labelInsert(HospitalLabel hospitalLabel);
+    void hospitalInfoInsert(Hospital hospital);
+    void labelInsert(Label label);
     void hospitalPicInsert(AttachFileDTO attachFile);
     
-    int update(HospitalInfo hospitalInfo);
+    int update(Hospital hospital);
     
-    HospitalInfo get(String userEmail);
+    Hospital get(String userEmail);
     List<Label> getLabel(String userEmail);
     List<AttachFileDTO> getPic(String userEmail);
     

@@ -220,18 +220,15 @@ $(document).ready(function(e){
 		var hTreatStart = $("select[id='treatStart']").val();
 		var hTreatEnd = $("select[id='treatEnd']").val(); 
 		
-		
-		var regex= /^\d{2,3}-\d{3,4}-\d{4}$/;
-		
 		if(hName.trim() === "" || hName.trim() === null || hName.trim().length < 5) {
 			alert("병원명을 최소 5자 이상 입력해주세요.")
 			return;
 		}
 		
-		if(!regex.test($("input[id='tel']").val())) {
-			alert("전화번호를 000-0000-0000 형태로 입력해주세요");
-			return;
-		}
+        if (hTel.trim().length < 9 || hTel.trim().length > 11) {
+            alert('전화번호를 제대로 입력해주세요.');
+            return;
+        }
 		
 		if(hAddress.trim() ==="" || hAddress.trim() === null) {
 			alert("주소를 입력해주세요");

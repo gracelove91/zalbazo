@@ -48,7 +48,7 @@
                 <div class="form-group">
                     <fieldset>
                         <label class="font-weight-bold">전화번호</label>
-                        <input type="text" class="form-control" id="tel" name="tel" placeholder="000-0000-0000">
+                        <input type="number" class="form-control" id="tel" name="tel" placeholder="숫자만 입력해주세요">
                     </fieldset>
                 </div>
                 <br/>
@@ -198,15 +198,13 @@
             var hTreatStart = $("select[id='treatStart']").val();
             var hTreatEnd = $("select[id='treatEnd']").val();
 
-            var regex = /^\d{2,3}-\d{3,4}-\d{4}$/;
-
             if (hName.trim() === "" || hName.trim() === null || hName.trim().length < 5) {
                 alert("병원명을 최소 5자 이상 입력해주세요.")
                 return;
             }
 
-            if (!regex.test($("input[id='tel']").val())) {
-                alert("전화번호를 000-0000-0000 형태로 입력해주세요");
+            if (hTel.trim().length < 9 || hTel.trim().length > 11) {
+                alert('전화번호를 제대로 입력해주세요.');
                 return;
             }
 

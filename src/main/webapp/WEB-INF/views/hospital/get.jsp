@@ -114,8 +114,8 @@
 <!-- FavoriteHospitalList의 class가 fav여야함 -->
 
 			<p class="h5 heart" style="text-align: center">
-				<i class="material-icons" id="reserve" style="cursor: pointer;" href="index">event</i>예약하기
-				<i class="material-icons favorite" data-i="white" id=outlined style="cursor: pointer;">favorite_border</i>즐겨찾기
+				<i class="material-icons res" id="reserve" style="cursor: pointer;" href="index">event</i>예약하기
+				<i class="material-icons fav" data-i="white" id="favorite" style="cursor: pointer;">favorite_border</i>즐겨찾기
 			</p>
 			
 			

@@ -3,12 +3,12 @@
 
 <mapper namespace="kr.zalbazo.mapper.hospital.HospitalQnaMapper">
 	
-	<insert id="insertHospitalQna">
+	<insert id="insertQuestion">
 	  insert all
 	  into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
 	  values (CONTENT_SEQ.nextval, #{body}, sysdate, 4, #{userEmail})
 	  into hospital_qna (HOSPITAL_QNA_ID, HOSPITAL_ID, CONTENT_ID, QNA_TYPE, C_GROUP)
-	  values (HOSPITAL_QNA_SEQ.nextval, #{hospitalId}, CONTENT_SEQ.currval, #{qnaType}, CONTENT_SEQ.currval)
+	  values (HOSPITAL_QNA_SEQ.nextval, #{hospitalId}, CONTENT_SEQ.currval, 'Q', CONTENT_SEQ.currval)
 	  select * from dual
 	</insert>
 	

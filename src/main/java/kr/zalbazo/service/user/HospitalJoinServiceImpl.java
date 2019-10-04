@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.zalbazo.mapper.user.HospitalJoinMapper;
-import kr.zalbazo.model.content.Label;
 import kr.zalbazo.model.hospital.HospitalLabel;
+import kr.zalbazo.model.hospital.Label;
 import kr.zalbazo.model.pic.AttachFileDTO;
 import kr.zalbazo.model.user.HospitalInfo;
 import lombok.Setter;

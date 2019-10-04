@@ -48,7 +48,7 @@
                 <div class="form-group">
                     <fieldset>
                         <label class="font-weight-bold">전화번호</label>
-                        <input type="number" class="form-control" id="tel" name="tel" placeholder="숫자만 입력해주세요">
+                        <input type="text" class="form-control" id="tel" name="tel" placeholder="숫자만 입력해주세요">
                     </fieldset>
                 </div>
                 <br/>
@@ -77,7 +77,7 @@
 
                     <div class="form-check-inline">
                         <label class="form-check-label" for="label_info4">
-                            <input type="checkbox" class="form-check-input" id="label_info4" name="label_info" value=4>희귀종취급
+                            <input type="checkbox" class="form-check-input" id="label_info4" name="label_info" value=4>특수동물
                         </label>
                     </div>
 
@@ -241,6 +241,7 @@
             	return;
             }
 
+            alert('등록되었습니다. 인증메일을 확인해주세요.');
             formObj.append(str).submit();
         });
 

@@ -9,7 +9,7 @@ import kr.zalbazo.model.hospital.HospitalQnaVO;
 
 public interface HospitalQnaMapper {
 
-	public int insertHospitalQna(HospitalQnaVO hospitalQnaVO);
+	public int insertQuestion(HospitalQnaVO hospitalQnaVO);
 	public int insertAnswer(HospitalQnaVO hospitalQnaVO);
 	
 	public int deleteQna(Long contentId);

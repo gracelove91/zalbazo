@@ -33,7 +33,7 @@
 	   and user_email = #{userEmail}
     </select>
     
-    <select id="getLabel" resultType="kr.zalbazo.model.content.Label">
+    <select id="getLabel" resultType="kr.zalbazo.model.hospital.Label">
        select label_code, c.name
 	   from hospital_label a, zalbazo_user b, label c
 	   where a.hospital_id = b.hospital_id

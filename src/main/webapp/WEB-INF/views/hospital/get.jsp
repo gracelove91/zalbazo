@@ -192,7 +192,7 @@
                                         	<!-- 리뷰 -->
                                         	<div class="info container" style="background-color:white;">
                                         	<div class="container">
-							                    <input type="hidden" class="form-control" name="userEmail" value="dummy@gmail.com">
+							                    <input type="hidden" class="form-control" name="userEmail" value="${userEmail}">
 							                    <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
 							
 							                    <div class="form-group" style="border-width: 5px;">
@@ -292,7 +292,7 @@
 
             <div id="menu2" class="container tab-pane fade"><br>
 				<div class='row qq'>
-                    <input type='hidden' class="form-control" id="userEmail" name="userEmail" value="">
+                    <input type='hidden' class="form-control" id="userEmail" name="userEmail" value="${userEmail}">
                     <input type='hidden' class="form-control" id="hospitalId" name="hospitalId" value="${hospital.hospitalId}">
                     <div class="col-lg-12">
                         <div class="panel panel-default">

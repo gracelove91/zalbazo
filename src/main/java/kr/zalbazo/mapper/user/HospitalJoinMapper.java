@@ -2,8 +2,8 @@ package kr.zalbazo.mapper.user;
 
 import java.util.List;
 
-import kr.zalbazo.model.content.Label;
 import kr.zalbazo.model.hospital.HospitalLabel;
+import kr.zalbazo.model.hospital.Label;
 import kr.zalbazo.model.pic.AttachFileDTO;
 import kr.zalbazo.model.user.HospitalInfo;
 

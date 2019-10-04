@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.hospital.HospitalListVO;
 import kr.zalbazo.service.hospital.HospitalService;
-import kr.zalbazo.service.hospital.HospitalService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -28,12 +27,13 @@ public class HospitalController {
 
 
 	@GetMapping("/get")
-	public void get(@RequestParam("hospitalId") Long hospitalId, Content content, Model model) {
+	public void get(@RequestParam("hospitalId") Long hospitalId, Content content, Model model, Principal principal) {
 		model.addAttribute("hospital", hospitalService.get(hospitalId));
 		model.addAttribute("labelList", hospitalService.getLabelList(hospitalId));
 		model.addAttribute("picList", hospitalService.getPictureList(hospitalId));
 		model.addAttribute("picCount", hospitalService.getPictureCount(hospitalId));
 		model.addAttribute("content", content);
+		model.addAttribute("userEmail", principal.getName());
 
 	    
 //		model.addAttribute("qnaList", hospitalService.getHospitalQnaList(hospitalId));

@@ -29,23 +29,19 @@ public class QnaController {
 	private HospitalQnaService qnaService;
 	
 	@PostMapping(value = "/question", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> addQuestion(@RequestBody HospitalQnaVO hospitalQnaVO, Principal principal, Model model){
+	public ResponseEntity<String> addQuestion(@RequestBody HospitalQnaVO hospitalQnaVO){
+		
 		int insertHospitalQna = qnaService.insertHospitalQna(hospitalQnaVO);
 		
-		hospitalQnaVO.setUserEmail(principal.getName());
-		model.addAttribute("userEmail", principal.getName());
-
 		return insertHospitalQna == 2 
 		? new ResponseEntity<>("success", HttpStatus.OK)
 		: new ResponseEntity<>(HttpStatus.BAD_REQUEST);	
 	}
 
 	@PostMapping(value = "/answer", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> addAnswer(@RequestBody HospitalQnaVO hospitalQnaVO, Principal principal, Model model){
-		int insertAnswer = qnaService.insertAnswer(hospitalQnaVO);
+	public ResponseEntity<String> addAnswer(@RequestBody HospitalQnaVO hospitalQnaVO){
 		
-		hospitalQnaVO.setUserEmail(principal.getName());
-		model.addAttribute("userEmail", principal.getName());
+		int insertAnswer = qnaService.insertAnswer(hospitalQnaVO);
 		
 		return insertAnswer == 2 
 		? new ResponseEntity<>("success", HttpStatus.OK)

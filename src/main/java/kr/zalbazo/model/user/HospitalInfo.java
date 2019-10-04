@@ -2,7 +2,7 @@ package kr.zalbazo.model.user;
 
 import java.util.List;
 
-import kr.zalbazo.model.content.Label;
+import kr.zalbazo.model.hospital.Label;
 import kr.zalbazo.model.pic.AttachFileDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

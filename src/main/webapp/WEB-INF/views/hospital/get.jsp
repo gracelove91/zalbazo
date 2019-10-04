@@ -32,7 +32,7 @@
                 <i class="material-icons" style="font-weight:bold">alarm_off</i> <span>&nbsp;&nbsp;${hospital.treatEnd}</span>
             </p><br>
             <!-- 해당 병원에 맞는 라벨 출력 -->
-            <c:forEach items="${labelList}" var="label">
+            <c:forEach items="${hospital.label}" var="label">
                  <c:if test="${label.labelCode == 1 }">
                      <i class="material-icons"> local_convenience_store </i>24시간&nbsp;&nbsp;&nbsp;
                  </c:if>
@@ -69,7 +69,7 @@
                         </c:when>
 
                         <c:when test="${picCount eq 1}">
-                          <c:forEach var="list" items="${picList}">
+                          <c:forEach var="list" items="${hospital.attachList}">
                             <div class="carousel-item active">
                                 <img src=${ctx}/resources/img/hospital/${list.uuid}_${list.fileName}
                                      width="400px" height="400px">
@@ -78,7 +78,7 @@
                         </c:when>
                         
                         <c:otherwise>
-                           <c:forEach items="${picList}" var="list" varStatus="status">
+                           <c:forEach items="${hospital.attachList}" var="list" varStatus="status">
                            
                              <c:choose>
                                 <c:when test="${status.count == 1}">

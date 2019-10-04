@@ -3,30 +3,23 @@
 
 <mapper namespace="kr.zalbazo.mapper.hospital.HospitalMapper">
 
-	<select id="read" resultType="kr.zalbazo.model.hospital.Hospital">
+	<select id="get" resultType="kr.zalbazo.model.hospital.Hospital">
 		select * from hospital
 		where hospital_id = #{hospitalId}
 	</select>
 	
 
-	<select id="getList" resultType="kr.zalbazo.model.hospital.HospitalListVO">
-		select *
-		from hospital h, pic_lib p, 
-  		  (select hospital_id, max(uuid) as uuid
-   		   from pic_lib_rel_hospital
-    	   group by hospital_id
-     	   order by 1 asc) a
-		where p.uuid = a.uuid
-		and h.hospital_id = a.hospital_id
+	<select id="getList" resultType="kr.zalbazo.model.hospital.Hospital">
+		select * from hospital
 	</select>
 
 
-	<select id="getLabelList" resultType="kr.zalbazo.model.hospital.Label">
+	<select id="labelList" resultType="kr.zalbazo.model.hospital.Label">
 		select * from HOSPITAL_LABEL where HOSPITAL_ID = #{hospitalId} 
 	</select>
 	
 
-	<select id="pictureList" resultType="kr.zalbazo.model.pic.PicLib">
+	<select id="pictureList" resultType="kr.zalbazo.model.pic.AttachFileDTO">
 		select a.uuid, upload_path, file_name
 		from pic_lib a, pic_lib_rel_hospital b
 		where a.uuid = b.uuid
@@ -34,20 +27,20 @@
 	</select>
 	
 	
-	<select id="hPictureCount" resultType="int">
+	<select id="picCount" resultType="int">
         select count(*) from pic_lib_rel_hospital
 		where hospital_id = #{hospitalId}
     </select>
     
-    <select id="getPicOne" resultType="kr.zalbazo.model.pic.PicLib">
-       select c.*	
-	   from 
-	   (select a.uuid, a.upload_path, a.file_name
-	   from pic_lib a, pic_lib_rel_hospital b
-	   where a.uuid = b.uuid
-	   and hospital_id = #{hospitalId}) c
-	   where rownum = 1
+    <select id="picOne" resultType="kr.zalbazo.model.pic.AttachFileDTO">
+    	select * 
+		from pic_lib a, (select hospital_id, min(uuid) as uuid
+                		 from pic_lib_rel_hospital
+                		 group by hospital_id) b
+		where a.uuid = b.uuid
+		and hospital_id = #{hospitalId}
     </select>
+    
 	
 </mapper>
 

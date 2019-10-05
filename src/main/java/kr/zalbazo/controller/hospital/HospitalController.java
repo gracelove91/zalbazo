@@ -1,6 +1,5 @@
 package kr.zalbazo.controller.hospital;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.zalbazo.mapper.hospital.HospitalMapper;
 import kr.zalbazo.model.hospital.Hospital;
+import kr.zalbazo.model.user.User;
 import kr.zalbazo.service.hospital.HospitalService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -30,11 +30,10 @@ public class HospitalController {
 
 	
 	@GetMapping("/get")
-	public void get(@RequestParam("hospitalId") Long hospitalId, Model model, Principal principal) {
+	public void get(@RequestParam("hospitalId") Long hospitalId, Model model) {
 		
 		model.addAttribute("hospital", service.get(hospitalId));
 		model.addAttribute("picCount", mapper.picCount(hospitalId));
-		model.addAttribute("userEmail", principal.getName());
 
 	}
 

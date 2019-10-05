@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,11 +30,13 @@ public class QnaController {
 	private HospitalQnaService qnaService;
 	
 	@PostMapping(value = "/question", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> addQuestion(@RequestBody HospitalQnaVO hospitalQnaVO){
+	public ResponseEntity<String> addQuestion(@RequestBody HospitalQnaVO hospitalQnaVO, Principal principal, Model model, Authentication auth){
 		
-		int insertHospitalQna = qnaService.insertHospitalQna(hospitalQnaVO);
+		hospitalQnaVO.setUserEmail(principal.getName());
 		
-		return insertHospitalQna == 2 
+		int insertQuestion = qnaService.insertQuestion(hospitalQnaVO, auth);
+		
+		return insertQuestion == 2 
 		? new ResponseEntity<>("success", HttpStatus.OK)
 		: new ResponseEntity<>(HttpStatus.BAD_REQUEST);	
 	}

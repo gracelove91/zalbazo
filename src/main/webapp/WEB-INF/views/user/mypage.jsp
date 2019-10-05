@@ -51,7 +51,7 @@
 					</div>
 		      		<div class='form-group a'>
 					  <span>이름</span>
-					  <input type='text' class='form-control col-12' id='name' name='name' value=''>
+					  <input type='text' class='form-control col-12' id='aname' name='aname' value=''>
 					</div>
 		      		<div class='form-group a'>
 					  <span>전화번호</span>

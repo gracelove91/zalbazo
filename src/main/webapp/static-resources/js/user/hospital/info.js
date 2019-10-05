@@ -4,7 +4,7 @@ $(document).ready(function(){
 	var hospitalGet = $(".hospitalGet");
 	
 	var str = "";
-	
+
 	console.log(userEmail);
 	
 	infoService.get(userEmail, function(data){

@@ -3,7 +3,9 @@ package kr.zalbazo.service.hospital;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.zalbazo.mapper.hospital.HospitalQnaMapper;
 import kr.zalbazo.model.hospital.HospitalQnaVO;
@@ -26,6 +28,25 @@ public class HospitalQnaServiceImpl implements HospitalQnaService {
 	public int removeContent(Long contentId) {
 		return qnaMapper.deleteContent(contentId);
 	}
+	
+	
+    @Transactional
+	@Override
+	public void remove(Long contentId) {
+		
+		// Q와 A를 동시에 지우기 
+		
+		qnaMapper.deleteQna(contentId);
+		qnaMapper.deleteContent(contentId);
+		
+		// Q에 대한 A의 contentId값을 얻기 
+		HospitalQnaVO vo = qnaMapper.getANo(contentId);
+		Long ano = vo.getHospitalId();
+		
+		qnaMapper.deleteQna(ano);
+		qnaMapper.deleteContent(ano);
+		
+	}
 
 	@Override
 	public List<HospitalQnaVO> getQnaList(Long hospitalId) {
@@ -38,13 +59,23 @@ public class HospitalQnaServiceImpl implements HospitalQnaService {
 	}
 
 	@Override
-	public int insertHospitalQna(HospitalQnaVO hospitalQnaVO) {
-		return qnaMapper.insertQuestion(hospitalQnaVO);
+	public int insertQuestion(HospitalQnaVO hospitalQnaVO, Authentication auth) {
+		
+		int result = 0;
+		
+		if(!(auth.getAuthorities().toString().equals("[ROLE_user]"))) {
+			result = -1;
+		} else {
+			result = qnaMapper.insertQuestion(hospitalQnaVO);
+		}
+		
+		return result;
 	}
 
 	@Override
 	public int insertAnswer(HospitalQnaVO hospitalQnaVO) {
 		return qnaMapper.insertAnswer(hospitalQnaVO);
 	}
+
 
 }

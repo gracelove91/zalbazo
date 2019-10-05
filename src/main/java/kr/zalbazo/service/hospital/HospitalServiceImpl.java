@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.zalbazo.mapper.hospital.HospitalMapper;
 import kr.zalbazo.model.hospital.Hospital;
@@ -18,6 +19,7 @@ public class HospitalServiceImpl implements HospitalService{
 	@Autowired
 	HospitalMapper mapper;
 
+    @Transactional
 	@Override
 	public Hospital get(Long hospitalId) {
 		
@@ -31,7 +33,8 @@ public class HospitalServiceImpl implements HospitalService{
 		return hospital;
 	}
 
-	
+    
+    @Transactional
 	@Override
 	public List<Hospital> getList() {
 		

@@ -376,6 +376,7 @@ img{
 <script type="text/javascript" src="${ctx}/resources/js/user/myhospitalcontentFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myhospitalcontent.js"></script>
 
+
 <script>
     function goPopup(){
         var pop = window.open("jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes");

@@ -291,7 +291,7 @@
 
             <div id="menu2" class="container tab-pane fade"><br>
 				<div class='row qq'>
-                    <input type='hidden' class="form-control" id="userEmail" name="userEmail" value="${userEmail}">
+                    <input type='hidden' class="form-control" id="email" name="email" value="${email}">
                     <input type='hidden' class="form-control" id="hospitalId" name="hospitalId" value="${hospital.hospitalId}">
                     <div class="col-lg-12">
                         <div class="panel panel-default">

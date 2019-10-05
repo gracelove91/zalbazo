@@ -2,9 +2,9 @@
 
         var qq = $(".qq");
         var hospitalId = qq.find("input[id='hospitalId']");
-        var userEmail = qq.find("input[id='userEmail']");
+        var userEmail = qq.find("input[id='email']");
         var qnaBody = qq.find("textarea[id='body']");
-
+        
         var qna = $(".qnaqna");
 
         showQnaList(1);
@@ -85,13 +85,15 @@
         		return;
         	}
         	
+        	console.log('useremail : ' + userEmail.val());
+        	
         	qnaService.addQuestion(
         			{
         				body: qnaBody.val(),
-        				userEmail : userEmail.val(),
         				hospitalId : hospitalId.val(),
         				qnaType : "Q"
         			},
+        			
         			function(result) {
         				console.log(result);
         				
@@ -100,6 +102,9 @@
                          // textarea 리셋
                          $(".txt").val('');
         				
+        		}, function(error){
+        			alert("회원만 입력가능합니다.");
+        			$(".txt").val('');
         		});
 
         });

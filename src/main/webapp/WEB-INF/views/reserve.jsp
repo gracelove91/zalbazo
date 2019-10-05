@@ -93,11 +93,5 @@ $(".animallist").on("click", "li", function(e) {
 
 </script>
 
-
-
-  
-
-   
-
 <script type="text/javascript" src="/resources/js/reserve.js"></script>
 <%@include file="includes/footer.jsp"%>

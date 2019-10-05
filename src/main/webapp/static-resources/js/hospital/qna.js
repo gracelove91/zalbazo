@@ -79,11 +79,6 @@
 
         submitBtn.on("click", function (e) {
         	
-        	var qq = $(".qq");
-            var hospitalId = qq.find("input[id='hospitalId']");
-            var userEmail = qq.find("input[id='userEmail']");
-            var qnaBody = qq.find("textarea[id='body']");
-        	
         	// 유효성 체크
         	if(qnaBody.val().trim() == "" || qnaBody.val().trim() == null){
         		alert("내용을 입력하세요!");

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.zalbazo.mapper.user.mypage.MyFavoriteHospitalMapper;
 import kr.zalbazo.model.hospital.Hospital;
-import kr.zalbazo.model.hospital.HospitalLabel;
+import kr.zalbazo.model.hospital.Label;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
@@ -24,7 +24,7 @@ public class MyFavoriteHospitalServiceImpl implements MyFavoriteHospitalService{
 	}
 
 	@Override
-	public List<HospitalLabel> getLabelList (Long hospitalId) {
+	public List<Label> getLabelList (Long hospitalId) {
 		return myFavoriteHospitalMapper.getLabelList(hospitalId);
 	}
 

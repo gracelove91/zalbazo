@@ -13,7 +13,12 @@
 <div class="container-fluid">
 <div class="row d-flex d-md-block flex-nowrap wrapper">
 <main id="main">
-
+<style>
+img{
+   display : inline;
+   padding: 10px;
+}
+</style>
 <div class="page-header row">
 	<div class="col-1"></div>
 	<div class="col-11">
@@ -41,15 +46,14 @@
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab"><!-- 병원정보 수정 -->
 				      <div id="main" class="col-md-12">
 			          <div class="page-header mt-3">
-			              <h2>상세정보 보기</h2>
+			              <h2>병원상세정보</h2>
 			          </div>
 			          <hr>
+			      
+			      
+			      <form class="pt-3 md-3" role='form' action="/hospitalinfo/modify" method="post" enctype="multipart/form-data">
 			          
-			          
-			          <form class="pt-3 md-3" role='form' action="/myhospitalmodify" method="post" enctype="multipart/form-data">
-			          
-			            <input type="hidden" name="userEmail" value=""/>
-			            
+			          <div class="hospitalGet">
 			          
 						<div class="form-group">
 						   <fieldset>
@@ -176,10 +180,13 @@
 			                        
 			               </div>
 			            </div>
+			            </div>
 			            
-			            <button type="submit" class="btn btn-primary float-right" id="modifyBtn" name="modifyBtn">수정하기</button>
-			          </form>
-			          <br /><br /><br />
+			            <input class="email" type="hidden" name="userEmail" value="${useremail}"/>
+			            
+			            <button type="submit" class="btn btn-primary float-right">수정하기</button>
+			         </form>
+			         <br /><br /><br />
 			
 			        </div>
 		      </div> <!-- 병원정보 수정 -->
@@ -355,9 +362,18 @@
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+<script type="text/javascript" src="${ctx}/resources/js/user/mycontentFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/mycontent.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myInfoFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myInfo.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospitalFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospital.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myAnimalFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myAnimal.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/hospital/infoFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/hospital/info.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myHospitalReserveFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myHospitalReserve.js"></script>
-
 
 <script>
     function goPopup(){

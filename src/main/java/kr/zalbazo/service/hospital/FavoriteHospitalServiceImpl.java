@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.zalbazo.mapper.user.mypage.FavoriteHospitalMapper;
 import kr.zalbazo.model.favorite_hospital.FavoriteHospital;
 import kr.zalbazo.model.hospital.Hospital;
-import kr.zalbazo.model.hospital.HospitalLabel;
+import kr.zalbazo.model.hospital.Label;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
@@ -35,7 +35,7 @@ public class FavoriteHospitalServiceImpl implements FavoriteHospitalService {
 	}
 
 	@Override
-	public List<HospitalLabel> getLabelList(Long hospitalId) {
+	public List<Label> getLabelList(Long hospitalId) {
 		// TODO Auto-generated method stub
 		return mapper.getLabelList(hospitalId);
 	}

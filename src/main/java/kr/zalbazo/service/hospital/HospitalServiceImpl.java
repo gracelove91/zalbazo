@@ -6,12 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.zalbazo.mapper.hospital.HospitalMapper;
-import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.hospital.Hospital;
-import kr.zalbazo.model.hospital.HospitalLabel;
-import kr.zalbazo.model.hospital.HospitalListVO;
-import kr.zalbazo.model.hospital.HospitalQnaVO;
-import kr.zalbazo.model.pic.PicLib;
+import kr.zalbazo.model.hospital.Label;
+import kr.zalbazo.model.pic.AttachFileDTO;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
@@ -23,46 +20,32 @@ public class HospitalServiceImpl implements HospitalService{
 
 	@Override
 	public Hospital get(Long hospitalId) {
-		return mapper.read(hospitalId);
+		
+		List<Label> labelList = mapper.labelList(hospitalId);
+		List<AttachFileDTO> picList = mapper.pictureList(hospitalId);
+		
+		Hospital hospital = mapper.get(hospitalId);
+		hospital.setLabel(labelList);
+		hospital.setAttachList(picList);
+		
+		return hospital;
 	}
 
+	
 	@Override
-	public List<HospitalLabel> getLabelList(Long hospitalId) {
-		return mapper.getLabelList(hospitalId);
+	public List<Hospital> getList() {
+		
+		List<Hospital> list = mapper.getList();
+		
+		list.forEach(hospital->{
+			List<Label> labelList = mapper.labelList(hospital.getHospitalId());
+			List<AttachFileDTO> pic = mapper.picOne(hospital.getHospitalId());
+			hospital.setLabel(labelList);
+			hospital.setAttachList(pic);
+		});
+		
+		return list; 
 	}
 
-//	@Override
-//	public List<Content> getHospitalQnaList(Long hospitalId) {
-//		return mapper.hospitalQnaList(hospitalId);
-//	}
 
-	@Override
-	public List<PicLib> getPictureList(Long hospitalId) {
-		return mapper.pictureList(hospitalId);
-	}
-
-	@Override
-	public int getPictureCount(Long hospitalId) {
-		return mapper.hPictureCount(hospitalId);
-	}
-
-	@Override
-	public void hContentRegister(Content content) {
-		mapper.hContentInsert(content);
-	}
-
-	@Override
-	public void hQnaRegister(HospitalQnaVO hospitalQnaVO) {
-		mapper.hQnaInsert(hospitalQnaVO);
-	}
-
-	@Override
-	public List<HospitalListVO> getList() {
-		return mapper.getList();
-	}
-
-	@Override
-	public PicLib getPicOne(Long hospitalId) {
-		return mapper.getPicOne(hospitalId);
-	}
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kr.zalbazo.mapper.user.HospitalJoinMapper">
 
-    <insert id="hospitalInfoInsert" parameterType="kr.zalbazo.model.user.HospitalInfo">
+    <insert id="hospitalInfoInsert" parameterType="kr.zalbazo.model.hospital.Hospital">
         <selectKey keyProperty="hospitalId" resultType="Long" order="BEFORE">
             select hospital_seq.nextval from dual
         </selectKey>
@@ -11,7 +11,7 @@
     </insert>
 
 
-    <insert id="labelInsert" parameterType="kr.zalbazo.model.hospital.HospitalLabel">
+    <insert id="labelInsert" parameterType="kr.zalbazo.model.hospital.Label">
         Insert into HOSPITAL_LABEL (LABEL_CODE, HOSPITAL_ID)
         values (#{labelCode}, #{hospitalId})
     </insert>
@@ -26,14 +26,14 @@
         FROM DUAL
     </insert>
     
-    <select id="get" resultType="kr.zalbazo.model.user.HospitalInfo">
+    <select id="get" resultType="kr.zalbazo.model.hospital.Hospital">
        select * 
 	   from hospital a, zalbazo_user b
 	   where a.hospital_id = b.hospital_id
 	   and user_email = #{userEmail}
     </select>
     
-    <select id="getLabel" resultType="kr.zalbazo.model.content.Label">
+    <select id="getLabel" resultType="kr.zalbazo.model.hospital.Label">
        select label_code, c.name
 	   from hospital_label a, zalbazo_user b, label c
 	   where a.hospital_id = b.hospital_id
@@ -48,6 +48,43 @@
 	   and b.hospital_id = c.hospital_id
 	   and user_email = #{userEmail}
     </select>
+    
+    <delete id="removePicFirst">
+    	delete from pic_lib_rel_hospital
+		where hospital_id = 
+    			(select hospital_id 
+     			 from zalbazo_user 
+     			 where user_email = #{userEmail})
+    </delete>
+    
+    <delete id="removePicLast">
+    	delete from pic_lib a
+		where not exists (
+    		select * 
+    		from pic_lib_rel_hospital b
+    		where a.uuid = b.uuid)
+    </delete>
+    
+    <delete id="removeLabel">
+    	delete hospital_label 
+		where hospital_id = (select hospital_id
+                     		from zalbazo_user
+                     		where user_email = #{userEmail})
+    </delete>
+    
+    <update id="update">
+		update hospital 
+		set name = #{name},
+    		tel = #{tel},
+    		address = #{address},
+		    treat_start = #{treatStart},
+		    treat_end = #{treatEnd},
+    		info = #{info}
+		where hospital_id = (select a.hospital_id
+                             from zalbazo_user a, hospital b
+                             where a.hospital_id = b.hospital_id
+                             and user_email = #{userEmail})
+    </update>
 
 
 </mapper>

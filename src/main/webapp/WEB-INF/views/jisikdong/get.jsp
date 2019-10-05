@@ -123,12 +123,12 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Reply</label>
-                    <input class="form-control" name='body' value='new!'>
+                    <input class="form-control" name='body' value=''>
                 </div>
 
                 <div class="form-group">
                     <label>Replyer</label>
-                    <input class="form-control" name='userEmail' value='dummy@gmail.com'>
+                    <input class="form-control" id='userEmail' name='userEmail' value=''>
                 </div>
 
                 <div class="form-group">
@@ -155,6 +155,8 @@ $(document).ready(function () {
     var contentIdValue = '<c:out value="${content.contentId}"/>';
     console.log(contentIdValue);
     var bodyUL = $(".list-group-flush");
+    
+    var userEmail = '<c:out value="${userEmail}"/>';
 
     showList(1);
 
@@ -296,7 +298,7 @@ $(document).ready(function () {
         replyService.get(replyid, function (body) {
 
             modalInputBody.val(body.body);
-            modalInputUserEmail.val(body.userEmail); // 이것도 readonly처리 해야할까?
+            modalInputUserEmail.val(body.userEmail).attr("readonly", "readonly"); // 이것도 readonly처리 해야할까?
             modalInputCreatedDate.val(replyService.displayTime(body.createdDate)).attr("readonly", "readonly");
             modal.data("replyid", body.replyid);
 

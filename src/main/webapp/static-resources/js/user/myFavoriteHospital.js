@@ -1,5 +1,5 @@
 $(document).ready(function() {
-			console.log("mypage_myfavorite");
+			//console.log("mypage_myfavorite");
 			var userEmail = '<c:out value="${useremail}"/>';
 			// var hh = '<c:out value="${hospitalId}"/>';
 
@@ -23,7 +23,7 @@ $(document).ready(function() {
 
 						for (var i = 0, len = list.length || 0; i < len; i++) {
 
-							console.log(list[i]);
+							//console.log(list[i]);
 
 							str += "<tr>";
 							str += "	<th scope='row' class='mobile' style='width: 150px; text-align:center;'>"+ list[i].hospitalId+ "</th>";
@@ -67,7 +67,7 @@ $(document).ready(function() {
 				myFavoriteHospitalService.removeMyFavorite(
 						hospitalId, function(removeResult) {
 							alert("즐겨찾는 병원이 삭제되었습니다.");
-							console.log("즐찾 삭제 성공쓰");
+							//console.log("즐찾 삭제 성공쓰");
 							showList(userEmail);
 				});
 

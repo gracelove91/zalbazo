@@ -30,11 +30,10 @@ public class HospitalController {
 
 	
 	@GetMapping("/get")
-	public void get(@RequestParam("hospitalId") Long hospitalId, Model model, Principal principal) {
+	public void get(@RequestParam("hospitalId") Long hospitalId, Model model) {
 		
 		model.addAttribute("hospital", service.get(hospitalId));
 		model.addAttribute("picCount", mapper.picCount(hospitalId));
-		model.addAttribute("userEmail", principal.getName());
 
 	}
 

@@ -1,4 +1,4 @@
-console.log("myContent");
+//console.log("myContent");
 
 var myContentService = (function() {
 	

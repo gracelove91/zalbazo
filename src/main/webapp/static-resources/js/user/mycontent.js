@@ -1,12 +1,12 @@
 $(document).ready(function() {
-	console.log("mypage");
+	//console.log("mypage");
 	
 	var userEmail = '<c:out value="${useremail}"/>';
-	var table1 = $(".table1");
-	var table2 = $(".table2");
-	var table3 = $(".table3");
-	var table4 = $(".table4");
-	var table5 = $(".table5");
+	var table1 = $(".table1"); // 커뮤니티
+	var table2 = $(".table2"); // 지식동
+	var table3 = $(".table3"); // 병원리뷰 
+	var table4 = $(".table4"); // 병원Q&A
+	var table5 = $(".table5"); // 댓글
 	
 	
 	myContentService.getCommunityList(userEmail, function(list) {
@@ -172,10 +172,10 @@ $(document).ready(function() {
                    // 같은 그룹의 A가 있다면 A 출력 태그
                    if (list[j].cgroup === group && list[j].qnaType === 'A') {
                 	   
-                   	   str += "<div id='collapse"+list[i].contentId+"' class='collapse' data-parent='#accordion' style=''>";
+                   	   str += "<div id='collapse"+list[i].contentId+"' style=''>";
                        str += "<div class='card-body' data-ano='"+list[j].contentId+"'> &nbsp;&nbsp;&nbsp; A: " + list[j].body + "";
                        str += "<p><small class='float-right text-muted'>" + myContentService.displayTime(list[i].createdDate) + "</small></p> ";
-                       str += "<small class='primary-font'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 관리자</small> ";
+                       str += "<small class='primary-font'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 관리자</small><hr> ";
                        str += "</div></div>";
                        
                        // A가 있는지 없는지 체크 
@@ -186,8 +186,8 @@ $(document).ready(function() {
                
                if(aCheck) {
             	   
-            	   str += "<div id='collapse"+list[i].contentId+"' class='collapse' data-parent='#accordion' style=''>";
-                   str += "<div class='card-body'> &nbsp;&nbsp;&nbsp; 등록된 답변이 없습니다</div></div> ";
+            	   str += "<div id='collapse"+list[i].contentId+"' style=''>";
+                   str += "<div class='card-body'> &nbsp;&nbsp;&nbsp; 등록된 답변이 없습니다</div></div><hr> ";
                    
                }
 	        

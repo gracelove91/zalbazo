@@ -17,6 +17,10 @@ $(document).ready(function() {
 	var modalStatusBtn = modal.find("button[id='modalStatusBtn']");
 	
 	var reserveId = $(this).attr("data-no");
+	
+	showList(userEmail);
+	
+	function showList(userEmail) {
 		
 		MyHospitalReserveService.getHospitalReserveList(userEmail, function(list) {
 			
@@ -61,6 +65,8 @@ $(document).ready(function() {
 			myreservelist.html(str);
 			
 		}); // getHospitalReserveList
+		
+	} // showList
 	
 	myreservelist.on("click", ".status", function(list, e) {
 		
@@ -110,16 +116,16 @@ $(document).ready(function() {
 				// 여기서부터 update
 				MyHospitalReserveService.update(rrr, function(result) {
 					
-					if(result == "success") {
-						alert("진료 상태가 수정되었습니다.");						
+					if(result === "success") {
+						alert("진료 상태가 수정되었습니다.");	
 					}
+					
 					modal.modal("hide");
 					location.reload();
 					
 				}); // update
 				
 			}); // 상태버튼 클릭
-			
 			
 		}); // get
 		

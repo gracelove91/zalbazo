@@ -195,7 +195,7 @@
 							                    <input type="hidden" class="form-control" name="userEmail" value="${userEmail}">
 							                    <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
 							
-							                    <div class="form-group" style="border-width: 5px;">
+							                    <!-- <div class="form-group" style="border-width: 5px;">
 							                        <textarea class="form-control txt" rows="5" id="review" name="review" placeholder="리뷰를 남겨주세요"></textarea>
 							                        <div>
 							                        	<div>
@@ -211,9 +211,8 @@
 								                    		<button type="submit" class="btn btn-secondary" id="reviewBtn" name="reviewBtn">Submit</button>
 								                    	</div>
 								                    </div>
-							                    </div>
+							                    </div> -->
 							                </div>
-							                <hr>
 							                
                                         	<!-- 평균 -->
                                             <div class="media border p-3"

@@ -29,7 +29,9 @@ public class QnaController {
 	private HospitalQnaService qnaService;
 	
 	@PostMapping(value = "/question", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> addQuestion(@RequestBody HospitalQnaVO hospitalQnaVO){
+	public ResponseEntity<String> addQuestion(@RequestBody HospitalQnaVO hospitalQnaVO, Principal principal){
+		
+		hospitalQnaVO.setUserEmail(principal.getName());
 		
 		int insertHospitalQna = qnaService.insertHospitalQna(hospitalQnaVO);
 		

@@ -3,13 +3,13 @@ package kr.zalbazo.controller.content;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,8 +38,10 @@ public class CommunityController {
     private ContentService service;
 
     @GetMapping("/register")
-    public String register(Model model, Principal principal){
-        model.addAttribute("useremail", principal.getName());
+    public String register(Model model, Authentication authentication){
+    	
+    	model.addAttribute("role", authentication.getAuthorities().toString()); // 병원 계정은 글 등록은 못 하니까!!!!
+    	model.addAttribute("useremail", authentication.getName());
         return "/community/register"; //WEB-INF/views/register.jsp
     }
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.zalbazo.mapper.user.MyHospitalReserveMapper">
+
+	<select id="getHospitalReserveList" resultType="kr.zalbazo.model.user.Reserve">
+		select a.reserve_id, a.rdate, a.animal_id, a.hospital_id, a.status, a.user_email, b.aname, c.name
+		from reserve a, animal b, hospital c, zalbazo_user d
+		where a.animal_id = b.animal_id
+		and c.hospital_id = a.hospital_id
+		and c.hospital_id = d.hospital_id
+		and d.user_email = #{userEmail}
+	</select>
+	
+	<select id="get" resultType="kr.zalbazo.model.user.Reserve">
+    	select a.reserve_id, a.rdate, a.animal_id, a.hospital_id, a.status, a.user_email, b.aname, c.name
+		from reserve a, animal b, hospital c
+		where a.animal_id = b.animal_id
+		and c.hospital_id = a.hospital_id
+		and a.reserve_id = #{reserveId}
+    </select>
+    
+    <update id="update">
+	    update reserve
+		set status = #{status}
+		where reserve_id = #{reserveId}
+    </update>
+    
+</mapper>

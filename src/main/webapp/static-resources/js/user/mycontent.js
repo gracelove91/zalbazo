@@ -144,12 +144,16 @@ $(document).ready(function() {
 		
 	}); // getReviewList
 	
+	showQnaList(1);
+	
+	function showQnaList(page) {
 	myContentService.getQList(userEmail, function(list) {
 		
 		
 		var str = "";
 		
 		if (list == null || list.length == 0) {
+			
         	return;
         }
 		
@@ -197,6 +201,61 @@ $(document).ready(function() {
 		table4.html(str);
 		
 	}); // getQList
+	}
+	
+    /* Q&A 삭제  */
+	table4.on("click", ".del", function (e) {
+
+        var qno = $(this).attr("data-qno");
+        //var qno = $(this).data("qno"); 이거 왜 안될까?
+        
+        // qno를 이용해서 ano를 얻어오는 메서드
+        myContentService.getANo(qno, function(data) {
+        	
+        	var ano = data.contentId;
+        	
+        	// Q 삭제
+        	myContentService.deleteQna(qno, function (count) {
+                if (count === "success") {
+                	myContentService.deleteContent(qno, function (count) {
+
+                        if (count === "success") {
+                            showQnaList(1);
+                        }
+                    }, function (err) {
+                        console.log('Q Con Delete ERROR...');
+                    });
+                }
+            }, function (err) {
+                console.log('Q Qna Delete ERROR...');
+            });
+        	
+        	// A가 존재한다면 A도 삭제
+        	if(typeof ano !== "undefined") {
+        		
+        		myContentService.deleteQna(ano, function (count) {
+                    if (count === "success") {
+                    	myContentService.deleteContent(ano, function (count) {
+
+                            if (count === "success") {
+                                showQnaList(1);
+                            }
+                        }, function (err) {
+                            console.log('A Con ERROR...');
+                        });
+                    }
+                }, function (err) {
+                    alert('A Qna ERROR...');
+                });
+        	}
+        	
+        	
+        });
+
+        alert("처리되었습니다");
+
+
+    });
 	
 	myContentService.getReplyList(userEmail, function(list) {
 		

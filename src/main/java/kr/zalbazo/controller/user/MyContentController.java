@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,5 +68,24 @@ public class MyContentController {
 	@GetMapping(value = "/6/{hospitalId}", produces= {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<Hospital> getName(@PathVariable("hospitalId") Long hospitalId) {
 		return new ResponseEntity<>(myContentService.getName(hospitalId), HttpStatus.OK);
+	}
+	
+	@DeleteMapping(value="/delQna/{contentId}", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> deleteQna(@PathVariable("contentId") Long contentId) {
+		return myContentService.deleteQna(contentId) == 1
+		? new ResponseEntity<>("success", HttpStatus.OK)
+		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@DeleteMapping(value="/delCon/{contentId}", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> deleteContent(@PathVariable("contentId") Long contentId) {
+		return myContentService.deleteContent(contentId) == 1
+		? new ResponseEntity<>("success", HttpStatus.OK)
+		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@PostMapping(value = "/getANo/{contentId}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity<HospitalQnaVO> getANo(@PathVariable("contentId") Long contentId) {
+		return new ResponseEntity<>(myContentService.getANo(contentId), HttpStatus.OK);
 	}
 }

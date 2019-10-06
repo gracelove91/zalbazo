@@ -120,6 +120,54 @@ var myContentService = (function() {
 		});
 	}
 	
+	function deleteQna(contentId, callback, error) {
+		$.ajax({
+			type : 'delete',
+			url : '/mycontent/delQna/' + contentId,
+			success : function(deleteResult, status, xhr) {
+				if(callback) {
+					callback(deleteResult);
+				}
+			},
+			error : function(xhr, status, er) {
+				if(error) {
+					error(er);
+				}
+			}
+		});
+	}
+	
+	
+	function deleteContent(contentId, callback, error) {
+		$.ajax({
+			type : 'delete',
+			url : '/mycontent/delCon/' + contentId,
+			success : function(deleteResult, status, xhr) {
+				if(callback) {
+					callback(deleteResult);
+				}
+			},
+			error : function(xhr, status, er) {
+				if(error) {
+					error(er);
+				}
+			}
+		});
+	}
+	
+	function getANo(contentId, callback, error){
+		
+		$.post("/mycontent/getANo/" + contentId + ".json", function(result){
+			if(callback){
+				callback(result);
+			}
+		}).fail(function(xhr, status, err){
+			if(error){
+				error();
+			}
+		});
+	}
+	
 	return{
 		displayTime : displayTime,
 		getCommunityList : getCommunityList,
@@ -127,6 +175,9 @@ var myContentService = (function() {
 		getReviewList : getReviewList,
 		getQList : getQList,
 		getReplyList : getReplyList,
-		getName : getName
+		getName : getName,
+		deleteQna : deleteQna,
+		deleteContent : deleteContent,
+		getANo : getANo
 	}
 })();

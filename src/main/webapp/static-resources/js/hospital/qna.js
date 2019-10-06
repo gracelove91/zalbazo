@@ -35,7 +35,7 @@
 
                     	// Q 출력 태그
                         str += "<div id='accordion'><div class='card-header primary-font'> Q.&nbsp; <a class='card-link collapsed' data-toggle='collapse' href='#collapse"+list[i].contentId+"' aria-expanded='false'>" + list[i].body + "";
-                        str += "</a><div class='del float-right' data-qno='"+list[i].contentId+"' style='cursor:pointer'> X </div>";
+                        str += "</a><div class='del float-right' data-qno='"+list[i].contentId+"' style='cursor:pointer'></div>";
                         str += "<p><small class='float-right text-muted'>" + qnaService.displayTime(list[i].createdDate) + "</small></p>";
                         str += "<small class='primary-font'>" + list[i].userEmail + "</small></div></div>";
                         
@@ -58,12 +58,10 @@
                         // aCheck true이면 Q는 있지만 A는 없음 
                         // 병원 측에서 A를 입력할 수 있는 textarea를 출력
                         if(aCheck) {
-                        	str += "<br><div class='qq container' style='background-color:white;'>";
-                        	str += "<input type='hidden' class='form-control' name='userEmail' value='dummy@gmail.com'>";
-                        	str += "<input type='hidden' class='form-control' name='hospitalId' value='${hospital.hospitalId}'>";
-                        	str += "	<div class='form-group'>";
-                        	str += "    <textarea class='form-control "+list[i].contentId+"' rows='3' id='body' name='body'></textarea></div>";
-                        	str += "<button type='submit' class='answerBtn btn btn-secondary float-right' data-qno='"+list[i].contentId+"'>Submit</button></div><br><br><br>";
+                        	
+                        	 str += "<div id='collapse"+list[i].contentId+"' style=''>";
+                             str += "<div class='card-body'> &nbsp;&nbsp;&nbsp; 등록된 답변이 없습니다</div></div><hr> ";
+                             
                         }
                         
                     }

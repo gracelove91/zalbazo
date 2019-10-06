@@ -49,7 +49,7 @@ public class UserController {
 //    	model.addAttribute("useremail", principal.getName());
 //    	
 //    	return "user/mypage";
-//    }ROLE_hospital
+//    }
     
     @GetMapping("/mypage")
     public String mypage(User user, Authentication authentication, Model model) {

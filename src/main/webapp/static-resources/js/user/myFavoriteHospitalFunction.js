@@ -1,4 +1,4 @@
-console.log("myFavorite");
+//console.log("myFavorite");
 
 var myFavoriteHospitalService = (function() {
 

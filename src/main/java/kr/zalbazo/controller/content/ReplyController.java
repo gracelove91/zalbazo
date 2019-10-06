@@ -1,8 +1,11 @@
 package kr.zalbazo.controller.content;
 
+import java.security.Principal;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,10 +31,11 @@ public class ReplyController {
 	private ReplyService service;
 	
 	@PostMapping(value = "/new", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> create(@RequestBody ReplyVO vo) {
+	public ResponseEntity<String> create(@RequestBody ReplyVO vo, Principal principal, Model model) {
 		log.info("ReplyVO : "+ vo);
 
 		int insertCount = service.register(vo);
+		
 
 		log.info("Reply INSERT COUNT : " + insertCount);
 

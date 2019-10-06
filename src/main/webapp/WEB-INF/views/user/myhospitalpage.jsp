@@ -52,7 +52,7 @@ img{
 			      
 			      
 			      <form class="pt-3 md-3" role='form' action="/hospitalinfo/modify" method="post" enctype="multipart/form-data">
-			          
+			          <input type='hidden' class="email" id="userEmail" name="userEmail" value="${useremail}">
 			          <div class="hospitalGet">
 			          
 						<div class="form-group">
@@ -264,7 +264,7 @@ img{
 				  	<div class="qqq">
                     	<div class="card-body primary-font">등록된 Q&A가 없습니다</div> <!-- qna가 생기면 이 부분이 바뀜 -->
                     </div>
-                    
+                    <br>
 				  </div> <!-- Q&A끝 -->
 				  
 				  <div class="tab-pane fade" id="nav-b" role="tabpanel" aria-labelledby="nav-b-tab">
@@ -294,8 +294,7 @@ img{
 				  </div> <!-- 지식동 -->
 				  
 				  <div class="tab-pane fade" id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab">
-				  
-				  	<ul class="list-group rrr col-12">
+				  	<ul class="list-group table5">
                     	<li class="list-group-item">
                             <div>
                             	<div class="card-body primary-font">등록된 댓글이 없습니다</div>
@@ -374,6 +373,8 @@ img{
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/info.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myHospitalReserveFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myHospitalReserve.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myhospitalcontentFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myhospitalcontent.js"></script>
 
 
 <script>

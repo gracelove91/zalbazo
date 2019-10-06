@@ -19,11 +19,7 @@ public class HospitalQnaServiceImpl implements HospitalQnaService {
 	@Setter(onMethod_= @Autowired)
 	private HospitalQnaMapper qnaMapper;
 
-	@Override
-	public int removeQna(Long contentId) {
-		return qnaMapper.deleteQna(contentId);
-	}
-
+	
 	@Override
 	public int removeContent(Long contentId) {
 		return qnaMapper.deleteContent(contentId);
@@ -32,31 +28,30 @@ public class HospitalQnaServiceImpl implements HospitalQnaService {
 	
     @Transactional
 	@Override
-	public void remove(Long contentId) {
+	public int removeQ(Long contentId) {
 		
-		// Q와 A를 동시에 지우기 
-		
-		qnaMapper.deleteQna(contentId);
-		qnaMapper.deleteContent(contentId);
+    	int i=0;
+		i += qnaMapper.deleteContent(contentId);
 		
 		// Q에 대한 A의 contentId값을 얻기 
 		HospitalQnaVO vo = qnaMapper.getANo(contentId);
-		Long ano = vo.getHospitalId();
 		
-		qnaMapper.deleteQna(ano);
-		qnaMapper.deleteContent(ano);
+		// A가 있다면 A도 삭제 
+		if(vo != null) {
+			Long ano = vo.getContentId();
+
+			i += qnaMapper.deleteContent(ano);			
+		}
 		
+		return i;
 	}
 
+    
 	@Override
 	public List<HospitalQnaVO> getQnaList(Long hospitalId) {
 		return qnaMapper.getQnaList(hospitalId);
 	}
-
-	@Override
-	public HospitalQnaVO getANo(Long contentId) {
-		return qnaMapper.getANo(contentId);
-	}
+	
 
 	@Override
 	public int insertQuestion(HospitalQnaVO hospitalQnaVO, Authentication auth) {
@@ -71,6 +66,7 @@ public class HospitalQnaServiceImpl implements HospitalQnaService {
 		
 		return result;
 	}
+	
 
 	@Override
 	public int insertAnswer(HospitalQnaVO hospitalQnaVO) {

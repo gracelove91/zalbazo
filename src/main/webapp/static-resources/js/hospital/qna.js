@@ -42,11 +42,11 @@
                         for (let j = 0, len = list.length || 0; j < len; j++) {
 
                             // 같은 그룹의 A가 있다면 A 출력 태그
-                            if (list[j].cgroup === group && list[j].qnaType === 'A') {
-                            	str += "<div id='collapse"+list[i].contentId+"' class='collapse' data-parent='#accordion' style=''>";
-                                str += "<div class='card-body' data-ano='"+list[j].contentId+"'> &nbsp;&nbsp;&nbsp; A: " + list[j].body + "";
-                                str += "<p><small class='float-right text-muted'>" + qnaService.displayTime(list[j].createdDate) + "</small></p> ";
-                                str += "<small class='primary-font'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 관리자</small> ";
+                        	if (list[j].cgroup === group && list[j].qnaType === 'A') {
+                            	str += "<div id='collapse"+list[i].contentId+"'>";
+                                str += "<div class='card-body'> &nbsp;&nbsp;&nbsp; A: " + list[j].body + " <br><br>";
+                                str += "<small class='primary-font'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " +list[j].name+ " </small> ";
+                                str += "<small class='float-right text-muted'>" + qnaService.displayTime(list[j].createdDate) + "</small><hr> ";
                                 str += "</div></div>";
                                 
                                 // A가 있는지 없는지 체크 
@@ -100,7 +100,7 @@
                          $(".txt").val('');
         				
         		}, function(error){
-        			alert("회원만 입력가능합니다.");
+        			alert("일반회원만 입력가능합니다.");
         			$(".txt").val('');
         		});
 
@@ -140,7 +140,7 @@
             var qno = $(this).attr("data-qno");
             //var qno = $(this).data("qno"); 이거 왜 안될까?
             
-            qnaService.removeQ(qno, function(result){
+            qnaService.removeQnA(qno, function(result){
             		showQnaList(1);
             }, function(err) {
             	console.log('QnA Delete ERROR....');

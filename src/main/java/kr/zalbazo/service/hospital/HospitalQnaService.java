@@ -12,9 +12,8 @@ public interface HospitalQnaService {
 	public int insertQuestion(HospitalQnaVO hospitalQnaVO, Authentication auth);
 	public int insertAnswer(HospitalQnaVO hospitalQnaVO);
 	
-	public int removeQ(Long contentId);
-	
-	public int removeContent(Long contentId);
+	public int removeQnA(Long contentId);
+	public int removeA(Long contentId);
 	
 	public List<HospitalQnaVO> getQnaList(@Param("hospitalId") Long hospitalId);
 

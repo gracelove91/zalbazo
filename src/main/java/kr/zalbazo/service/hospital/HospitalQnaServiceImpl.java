@@ -21,14 +21,14 @@ public class HospitalQnaServiceImpl implements HospitalQnaService {
 
 	
 	@Override
-	public int removeContent(Long contentId) {
+	public int removeA(Long contentId) {
 		return qnaMapper.deleteContent(contentId);
 	}
 	
 	
     @Transactional
 	@Override
-	public int removeQ(Long contentId) {
+	public int removeQnA(Long contentId) {
 		
     	int i=0;
 		i += qnaMapper.deleteContent(contentId);

@@ -63,10 +63,10 @@
 		
 		
 		
-		function removeCon(contentId, callback, error) {
+		function removeA(contentId, callback, error) {
 			$.ajax({
 				type : 'delete',
-				url : '/qna/delCon/' + contentId,
+				url : '/qna/removeA/' + contentId,
 				success : function(deleteResult, status, xhr) {
 					if(callback) {
 						callback(deleteResult);
@@ -81,10 +81,10 @@
 		}
 		
 		
-		function removeQ(contentId, callback, error) {
+		function removeQnA(contentId, callback, error) {
 			$.ajax({
 				type : 'delete',
-				url : '/qna/removeQ/' + contentId,
+				url : '/qna/removeQnA/' + contentId,
 				success : function(deleteResult, status, xhr) {
 					if(callback){
 						callback(deleteResult);
@@ -128,9 +128,9 @@
 			addAnswer : addAnswer,
 			addQuestion : addQuestion,
 			getList : getList,
-			removeCon : removeCon,
 			displayTime : displayTime,
-			removeQ : removeQ
+			removeA : removeA,
+			removeQnA : removeQnA
 		};
 		
 	})();

@@ -51,18 +51,18 @@ public class QnaController {
 		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);	
 	}
 
-	@DeleteMapping(value="/delCon/{contentId}", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> removeCon(@PathVariable("contentId") Long contentId) {
-		return qnaService.removeContent(contentId) == 1
+	@DeleteMapping(value="/removeA/{contentId}", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> removeA(@PathVariable("contentId") Long contentId) {
+		return qnaService.removeA(contentId) == 1
 		? new ResponseEntity<>("success", HttpStatus.OK)
 		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	
-	@DeleteMapping(value="/removeQ/{contentId}" , produces="application/json")
-	public ResponseEntity<Integer> removeQ(@PathVariable("contentId") Long contentId) {
+	@DeleteMapping(value="/removeQnA/{contentId}" , produces="application/json")
+	public ResponseEntity<Integer> removeQnA(@PathVariable("contentId") Long contentId) {
 		
-		return new ResponseEntity<>(qnaService.removeQ(contentId), HttpStatus.OK);
+		return new ResponseEntity<>(qnaService.removeQnA(contentId), HttpStatus.OK);
 	}
 	
 

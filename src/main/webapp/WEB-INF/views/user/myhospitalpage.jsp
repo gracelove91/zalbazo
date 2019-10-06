@@ -369,12 +369,12 @@ img{
 <script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospital.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myAnimalFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myAnimal.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/hospital/infoFunction.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/hospital/info.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myHospitalReserveFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myHospitalReserve.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myhospitalcontentFunction.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myhospitalcontent.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/hospital/infoFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/hospital/info.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcontentFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcontent.js"></script>
 
 
 <script>

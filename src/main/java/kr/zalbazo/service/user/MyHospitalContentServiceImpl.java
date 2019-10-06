@@ -27,4 +27,9 @@ public class MyHospitalContentServiceImpl implements MyHospitalContentService {
 		return myHospitalContentMapper.insertAnswer(hospitalQnaVO);
 	}
 
+	@Override
+	public int removeA(Long contentId) {
+		return myHospitalContentMapper.removeContent(contentId);
+	}
+
 }

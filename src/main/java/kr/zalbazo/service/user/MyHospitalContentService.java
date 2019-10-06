@@ -10,5 +10,6 @@ public interface MyHospitalContentService {
 	
 	// 병원의 A달기
 	public int insertAnswer(HospitalQnaVO hospitalQnaVO);
+	public int removeA(Long contentId);
 
 }

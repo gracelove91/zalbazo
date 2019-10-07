@@ -1,10 +1,13 @@
 package kr.zalbazo.model.hospital;
 
-import lombok.*;
-
 import java.util.List;
 
 import kr.zalbazo.model.pic.AttachFileDTO;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @NoArgsConstructor
 @ToString
@@ -20,5 +23,11 @@ public class Hospital {
 	private String treatEnd;
 	private String tel;
 	private String info;
-	private List<HospitalLabel> label;
+	private List<Label> label;
+	private String userEmail;
+	
+    private List<AttachFileDTO> attachList;
+
+    private String password;
+    private String role;
 }

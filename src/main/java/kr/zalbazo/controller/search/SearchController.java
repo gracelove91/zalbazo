@@ -4,15 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.zalbazo.mapper.hospital.HospitalMapper;
 import kr.zalbazo.model.hospital.Hospital;
-import kr.zalbazo.service.hospital.HospitalService;
 import kr.zalbazo.service.search.SearchService;
 import lombok.extern.log4j.Log4j;
 
@@ -23,7 +22,7 @@ public class SearchController {
 	@Autowired
 	private SearchService service;
 	@Autowired
-	private HospitalService hospitalService;
+	private HospitalMapper hospitalMapper;
 
 
 	@GetMapping("/hospital/searchedlistAll")
@@ -36,7 +35,7 @@ public class SearchController {
 		//병원별 라벨 값 세팅
 		for (int i = 0; i < list.size(); i++) {
 			Hospital hospital = list.get(i);
-			hospital.setLabel(hospitalService.getLabelList(hospital.getHospitalId()));
+			hospital.setLabel(hospitalMapper.labelList(hospital.getHospitalId()));
 		}
 
 		ModelAndView mav = new ModelAndView();
@@ -54,7 +53,7 @@ public class SearchController {
 		List<Hospital> list = service.list(keyword); //라벨 문자열배열을 쿼리문으로 짜기 쉽게 리스트로 변환  
 		for (int i = 0; i < list.size(); i++) {
 			Hospital hospital = list.get(i);
-			hospital.setLabel(hospitalService.getLabelList(hospital.getHospitalId()));
+			hospital.setLabel(hospitalMapper.labelList(hospital.getHospitalId()));
 		}
 		
 		ModelAndView mav = new ModelAndView();

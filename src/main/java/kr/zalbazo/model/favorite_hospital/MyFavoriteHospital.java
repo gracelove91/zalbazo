@@ -1,10 +1,8 @@
 package kr.zalbazo.model.favorite_hospital;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
-import kr.zalbazo.model.hospital.HospitalLabel;
+import kr.zalbazo.model.hospital.Label;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +23,6 @@ public class MyFavoriteHospital {
 	private String treatStart;
 	private String treatEnd;
 	private String tel;
-	private List<HospitalLabel> label;
+	private List<Label> label;
 }
 

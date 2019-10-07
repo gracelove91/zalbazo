@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	
 var info = $(".info");
 var hospitalId = info.find("input[name='hospitalId']");
 var userEmail = info.find("input[name='userEmail']");

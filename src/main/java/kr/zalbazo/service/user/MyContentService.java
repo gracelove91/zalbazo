@@ -21,5 +21,11 @@ public interface MyContentService {
 	public List<ReplyVO> getReplyList(String userEmail);
 	
 	public Hospital getName(Long hospitalId);
+	
+	// Q&A 삭제
+	public int deleteQna(Long contentId);
+	public int deleteContent(Long contentId);
+	
+	public HospitalQnaVO getANo(Long contentId);
 
 }

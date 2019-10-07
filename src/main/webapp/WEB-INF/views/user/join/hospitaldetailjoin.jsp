@@ -48,7 +48,7 @@
                 <div class="form-group">
                     <fieldset>
                         <label class="font-weight-bold">전화번호</label>
-                        <input type="text" class="form-control" id="tel" name="tel" placeholder="000-0000-0000">
+                        <input type="text" class="form-control" id="tel" name="tel" placeholder="숫자만 입력해주세요">
                     </fieldset>
                 </div>
                 <br/>
@@ -77,7 +77,7 @@
 
                     <div class="form-check-inline">
                         <label class="form-check-label" for="label_info4">
-                            <input type="checkbox" class="form-check-input" id="label_info4" name="label_info" value=4>희귀종취급
+                            <input type="checkbox" class="form-check-input" id="label_info4" name="label_info" value=4>특수동물
                         </label>
                     </div>
 
@@ -165,7 +165,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary float-right" id="regBtn" name="regBtn">submit</button>
+                <button type="submit" class="btn btn-primary pull-right" id="regBtn" name="regBtn">회원가입</button>
             </form>
             <br/><br/><br/>
 
@@ -198,15 +198,13 @@
             var hTreatStart = $("select[id='treatStart']").val();
             var hTreatEnd = $("select[id='treatEnd']").val();
 
-            var regex = /^\d{2,3}-\d{3,4}-\d{4}$/;
-
             if (hName.trim() === "" || hName.trim() === null || hName.trim().length < 5) {
                 alert("병원명을 최소 5자 이상 입력해주세요.")
                 return;
             }
 
-            if (!regex.test($("input[id='tel']").val())) {
-                alert("전화번호를 000-0000-0000 형태로 입력해주세요");
+            if (hTel.trim().length < 9 || hTel.trim().length > 11) {
+                alert('전화번호를 제대로 입력해주세요.');
                 return;
             }
 
@@ -222,10 +220,14 @@
 
 
             var str = "";
+            
+            var check = true;
 
             $(".uploadResult ul li").each(function (i, obj) {
                 var jobj = $(obj);
-
+             
+                check = false; 
+                
                 console.log(jobj);
 
                 str += "<input type='hidden' name='attachList[" + i + "].fileName' value='" + jobj.data("filename") + "'>";
@@ -233,7 +235,13 @@
                 str += "<input type='hidden' name='attachList[" + i + "].uploadPath' value='" + jobj.data("path") + "'>";
 
             });
+            
+            if(check) {
+            	alert("병원 사진을 최소 1장 이상 등록해주세요.");
+            	return;
+            }
 
+            alert('등록되었습니다. 인증메일을 확인해주세요.');
             formObj.append(str).submit();
         });
 
@@ -274,7 +282,7 @@
             }
 
             $.ajax({
-                url: '`/hospitalinfo/uploadAjaxAction',`
+             url: '/hospitalinfo/uploadAjaxAction',
              processData: false,
              contentType: false,
              data: formData,
@@ -289,7 +297,7 @@
 	 
 	 
 	 
-	// 첨부파일 등록 시 이미지와 함꼐 X가 보여짐
+	// 첨부파일 등록 시 이미지와 함께 X가 보여짐
      function showUploadResult(uploadResultArr) {
          if (!uploadResultArr || uploadResultArr.length == 0) {
              return;

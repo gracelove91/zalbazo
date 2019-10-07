@@ -51,4 +51,19 @@ public class MyContentServiceImpl implements MyContentService{
 		return myContentMapper.getName(hospitalId);
 	}
 
+	@Override
+	public int deleteQna(Long contentId) {
+		return myContentMapper.deleteQna(contentId);
+	}
+
+	@Override
+	public int deleteContent(Long contentId) {
+		return myContentMapper.deleteContent(contentId);
+	}
+
+	@Override
+	public HospitalQnaVO getANo(Long contentId) {
+		return myContentMapper.getANo(contentId);
+	}
+
 }

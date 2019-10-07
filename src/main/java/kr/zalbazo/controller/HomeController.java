@@ -5,8 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.zalbazo.model.user.Reserve;
 import kr.zalbazo.service.animal.AnimalService;
 import kr.zalbazo.service.hospital.HospitalService;
+import kr.zalbazo.service.user.HospitalJoinService;
 import kr.zalbazo.service.user.ReserveService;
 
 @Controller
@@ -31,11 +30,20 @@ public class HomeController {
 	@Autowired
 	AnimalService as;
 	
+	@PostMapping("/myhospitalmodify")
+	public String modify(Model model) {
+		return "user/hospital/myhospitalmodify";
+	}
+    @GetMapping("/myhospitalpage")
+    public String mypage(Principal principal, Model model) {
+    	return "user/myhospitalpage";
+    }
 	
     @GetMapping({"/", "/index"})
     public String index(){
         return "/index";
     }
+    
     @GetMapping("/reserve")
     public String calendar(@RequestParam Long hospitalId, Model model,Principal principal){
     	model.addAttribute("animal",as.getList(principal.getName()));
@@ -43,6 +51,7 @@ public class HomeController {
     	   	
     	return "/reserve";
     }
+    
     @PostMapping("/reserve")
     public String calendarpost(@RequestParam Long hospitalId,@RequestParam String reservedate,@RequestParam String reservetime,Reserve reserve) throws ParseException{
 

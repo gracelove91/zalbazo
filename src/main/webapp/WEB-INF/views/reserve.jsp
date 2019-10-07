@@ -13,9 +13,9 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="/resources/css/reserve.css">
 
-<title>풀캘린더</title>
+<title>병원 예약</title>
 
-<div class="text-center"><h1>예약하기</h1></div>
+<h1 style="text-align:center;font-weight: bold;">${hos.name} 예약하기</h1>
 
 <br>
 <br>
@@ -66,7 +66,7 @@
   
 <c:forEach items="${animal}" var="animallist">
 
-	<li id="${animallist.animalId}">${animallist.name}</li>
+	<li id="${animallist.animalId}" data-id="${animallist.animalId}">${animallist.aname}</li>
 
 </c:forEach>
 
@@ -81,11 +81,17 @@
 	window.end = '${hos.treatEnd}';
 </script>
 
+<script>
 
+$(".animallist").on("click", "li", function(e) {
+	
+	var a = $(this).data("id");
+	
+	console.log(a);
+	
+});
 
-  
-
-   
+</script>
 
 <script type="text/javascript" src="/resources/js/reserve.js"></script>
 <%@include file="includes/footer.jsp"%>

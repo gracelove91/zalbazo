@@ -152,7 +152,7 @@
 
 <!-- 댓글 모달 끝 -->
 <script type="text/javascript" src="${ctx}/resources/js/content/replyFunction.js"></script>
-
+<script type="text/javascript" src="${ctx}/resources/js/user/userFunction.js"></script>
 <script>
 $(document).ready(function () {
 	
@@ -266,7 +266,7 @@ $(document).ready(function () {
     
     $("#addReplyBtn").on("click", function (e) {
     	
-        replyService.getUser(function(data){
+    	userInfoService.getUser(function(data){
         	
         	if(data.role === 'user' || data.role === 'hospital') {
         		
@@ -372,7 +372,7 @@ $(document).ready(function () {
     (function () {
         var contentId = '<c:out value="${content.contentId}"/>';
 
-        $.getJSON("/jisikdong/getAttachList", {contentId: contentId}, function (arr) {
+        $.getJSON("/community/getAttachList", {contentId: contentId}, function (arr) {
             console.log(arr);
 
             var str = "";

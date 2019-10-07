@@ -148,7 +148,7 @@
 </body>
 <!-- 댓글 모달 끝 -->
 <script type="text/javascript" src="${ctx}/resources/js/content/replyFunction.js"></script>
-
+<script type="text/javascript" src="${ctx}/resources/js/user/userFunction.js"></script>
 <script>
 $(document).ready(function () {
 
@@ -263,17 +263,42 @@ $(document).ready(function () {
     var modalCloseBtn = $("#modalCloseBtn");
 
     $("#addReplyBtn").on("click", function (e) {
+    	
+    	userInfoService.getUser(function(data){
+        	
+        	if(data.role === 'user' || data.role === 'hospital') {
+        		
+        		modal.find("input[name='body']").val("");
+                modalInputCreatedDate.closest("div").hide();
+                modal.find("button[id != 'modalCloseBtn']").hide();
+                modalInputUserEmail.val(data.userEmail);
 
-        modal.find("input").val("");
-        modalInputCreatedDate.closest("div").hide();
-        modal.find("button[id != 'modalCloseBtn']").hide();
+                modalRegisterBtn.show();
 
-        modalRegisterBtn.show();
+                $(".modal").modal("show");
+        		
+        	}
+        	
+        }, function(error) {
+    		alert('로그인이 필요한 서비스입니다.');
+    		return;
+    	});
+        
+    }); // 댓글달기 클릭
 
-        $(".modal").modal("show");
-    });
 
     modalRegisterBtn.on("click", function (e) {
+    	
+    	
+    	if(modalInputUserEmail.val() == null || modalInputUserEmail.val() == "") {
+    		alert("로그인 후 댓글작성이 가능합니다.");
+    		return;
+    	}
+    	
+    	if(modalInputBody.val().trim() == null || modalInputBody.val().trim() == "") {
+    		alert("내용을 입력하세요.");
+    		return;
+    	}
 
         var body = {
             body: modalInputBody.val(),

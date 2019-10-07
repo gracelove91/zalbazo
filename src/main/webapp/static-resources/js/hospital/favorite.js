@@ -4,17 +4,16 @@ var info = $(".info");
 var hospitalId = info.find("input[name='hospitalId']");
 var userEmail = info.find("input[name='userEmail']");
 
-var favorite = $("#favorite"); // 즐겨찾기 버튼의 id
-var reserve = $("#reserve"); // 예약하기 버튼의 id
 
-var res = $(".res"); // 예약하기 버튼의 클래스
-var fav = $(".fav"); // 즐겨찾기 버튼의 클래스
+var h5 = $(".h5");
 
+h5.on('click','#reserve',function(e) {
+	
+	location="../reserve?hospitalId="+hospitalId.val();+"&userEmail="+userEmail.val();
+	
+});  //예약하기 페이지전송
 
-res.on('click','#reserve',function(e){
-	location="../reserve?hospitalId="+hospitalId.val();+"&userEmail="+userEmail.val();})  //예약하기 페이지전송
-
-fav.on("click", "#favorite", function(e){
+h5.on("click", "i", function(e){
 	
 	var icon = $(this).attr("data-i");
 	/* 아이콘이 흰 하트면.. 검정 하트로 바뀌기 */
@@ -22,8 +21,8 @@ fav.on("click", "#favorite", function(e){
 		
 		var str ="";
 		
-		str += "<i class='material-icons res' id='reserve' style='cursor: pointer;'>event</i> 예약하기";	
-		str += "<i class='material-icons fav' data-i='black' id='favorite' style='cursor: pointer;'>favorite</i> 즐겨찾기";
+		str += "<i class='material-icons' id='reserve' style='cursor: pointer;' href='index'>event</i> 예약하기";	
+		str += "<i class='material-icons' data-i='black' id=filled style='cursor: pointer;'>favorite</i> 즐겨찾기";
 
 		var info = $(".info");
 		var hospitalId = info.find("input[name='hospitalId']");
@@ -46,8 +45,8 @@ fav.on("click", "#favorite", function(e){
 	if (icon=="black") {
 		var str ="";
 		
-		str += "<i class='material-icons res' id='reserve' style='cursor: pointer;'>event</i> 예약하기";	
-		str += "<i class='material-icons fav' data-i='white' id='favorite' style='cursor: pointer;'>favorite_border</i> 즐겨찾기";
+		str += "<i class='material-icons' id='reserve' style='cursor: pointer;'>event</i> 예약하기";	
+		str += "<i class='material-icons' data-i='white' id=outlined style='cursor: pointer;'>favorite_border</i> 즐겨찾기";
 
 		var info = $(".info");
 		var hospitalId = info.find("input[name='hospitalId']"); 
@@ -62,8 +61,7 @@ fav.on("click", "#favorite", function(e){
 			);
 	}
              
-	fav.html(str);
-	res.html(str);
+	h5.html(str);
 });
 
 		

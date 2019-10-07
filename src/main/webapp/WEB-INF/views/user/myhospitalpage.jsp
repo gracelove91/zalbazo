@@ -35,7 +35,7 @@ img{
 		      <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true" style="padding:5px;">병원정보 수정</a>
 		      <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false" style="padding:5px;">예약 관리</a>
 		      <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="padding:5px;">예약 내역</a>
-		      <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false" style="padding:5px;">동물 관리</a>
+		      <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false" style="padding:5px;">병원 Q&A</a>
 		      <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false" style="padding:5px;">내가 쓴 글</a>
 		    </div>
 		  </div>
@@ -244,56 +244,36 @@ img{
 		      </div>
 		      
 		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
-		      	동물 관리
-		      </div>
-		      
-		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
-				<br>
+		      	<br>
 				<nav>
 				  <div class="nav nav-tabs" id="nav-tab" role="tablist">
 				    <a class="nav-item nav-link active" id="nav-a-tab" data-toggle="tab" href="#nav-a" role="tab" aria-controls="nav-a" aria-selected="true">&nbsp;&nbsp;&nbsp;Q&A&nbsp;&nbsp;&nbsp;</a>
-				    <a class="nav-item nav-link" id="nav-b-tab" data-toggle="tab" href="#nav-b" role="tab" aria-controls="nav-b" aria-selected="false">&nbsp;&nbsp;&nbsp;지식동&nbsp;&nbsp;&nbsp;</a>
-				    <a class="nav-item nav-link" id="nav-c-tab" data-toggle="tab" href="#nav-c" role="tab" aria-controls="nav-c" aria-selected="false">&nbsp;&nbsp;&nbsp;댓글&nbsp;&nbsp;&nbsp;</a>
 				  </div>
 				</nav>
 				<hr>
 				<div class="tab-content fade show active" id="nav-tabContent">
 				
 				  <div class="tab-pane fade show active" id="nav-a" role="tabpanel" aria-labelledby="nav-a-tab"> <!-- Q&A -->
-				  
 				  	<div class="qqq">
                     	<div class="card-body primary-font">등록된 Q&A가 없습니다</div> <!-- qna가 생기면 이 부분이 바뀜 -->
                     </div>
                     <br>
 				  </div> <!-- Q&A끝 -->
 				  
-				  <div class="tab-pane fade" id="nav-b" role="tabpanel" aria-labelledby="nav-b-tab">
-				  
-				  <div class="container">
-					  <table class="table table-striped col-12">
-				      	<thead>
-				        	<tr>
-				              <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>
-				              <th scope="col" class="mobile" style="text-align:center;">제목</th>
-				              <th scope="col" class="mobile" style="width:110px; text-align:center;">날짜</th>
-				            </tr>
-				        </thead>
-				        <tbody class="ddd">
-				        	<tr>
-				            	<th scope="row" class="mobile" style="text-align:center;"></th>
-				                <td>
-				                  <a class='move' style="color : #000000;" href=#></a>
-				                </td>
-				                <td class="mobile" style="text-align:center;">
-				                </td>
-				        	</tr>
-				      	</tbody>
-				      </table>
-					</div>
-				  
-				  </div> <!-- 지식동 -->
-				  
-				  <div class="tab-pane fade" id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab">
+				</div>
+		      </div>
+		      
+		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+				<br>
+				<nav>
+				  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+				    <a class="nav-item nav-link active" id="nav-c-tab" data-toggle="tab" href="#nav-c" role="tab" aria-controls="nav-c" aria-selected="false">&nbsp;&nbsp;&nbsp;댓글&nbsp;&nbsp;&nbsp;</a>
+				  </div>
+				</nav>
+				<hr>
+				<div class="tab-content fade show active" id="nav-tabContent">
+				
+				  <div class="tab-pane show active" id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab">
 				  	<ul class="list-group table5">
                     	<li class="list-group-item">
                             <div>

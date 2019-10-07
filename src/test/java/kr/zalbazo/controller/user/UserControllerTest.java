@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(value = "file:../../../../../../main/webapp/WEB-INF/views/exception/root-context.xml")
+@ContextConfiguration(value = "file:src/main/webapp/WEB-INF/views/exception/root-context.xml")
 public class UserControllerTest {
 
     private MockMvc mockMvc;

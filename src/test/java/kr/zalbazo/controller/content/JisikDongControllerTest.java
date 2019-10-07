@@ -16,7 +16,7 @@ import static org.hamcrest.core.Is.is;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
-        "file:../../../../../../main/webapp/WEB-INF/views/exception/root-context.xml",
+        "file:src/main/webapp/WEB-INF/views/exception/root-context.xml",
         "file:src/main/webapp/WEB-INF/servlet-context.xml"
 })
 @WebAppConfiguration

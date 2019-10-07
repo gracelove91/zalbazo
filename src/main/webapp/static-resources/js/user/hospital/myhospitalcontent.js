@@ -55,8 +55,8 @@ $(document).ready(function() {
                 if(aCheck) {
                 	
                 	str += "<br><div class='qq container' style='background-color:white;'>";
-                	str += "<input class='form-control' id='userEmail' name='userEmail' value='"+ userEmail +"'>";
-                	str += "<input class='form-control' id='hospitalId' name='hospitalId' value='"+ list[i].hospitalId +"'>";
+                	str += "<input type='hidden' class='form-control' id='userEmail' name='userEmail' value='"+ userEmail +"'>";
+                	str += "<input type='hidden' class='form-control' id='hospitalId' name='hospitalId' value='"+ list[i].hospitalId +"'>";
                 	str += "	<div class='form-group'>";
                 	str += "    <textarea class='form-control "+list[i].contentId+"' rows='3' id='body' name='body'></textarea></div>";
                 	str += "<button type='submit' class='answerBtn btn btn-secondary float-right' data-no='"+ list[i].hospitalId +"' data-qno='"+list[i].contentId+"'>Submit</button></div><br><br><br><hr>";

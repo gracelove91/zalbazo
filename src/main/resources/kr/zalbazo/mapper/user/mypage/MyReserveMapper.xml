@@ -9,6 +9,7 @@
 		where a.user_email = #{userEmail}
 		and a.animal_id = b.animal_id
 		and c.hospital_id = a.hospital_id
+		order by a.rdate desc
 	</select>
 	
 	<select id="get" resultType="kr.zalbazo.model.user.Reserve">

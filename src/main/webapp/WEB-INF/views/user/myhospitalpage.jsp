@@ -13,7 +13,12 @@
 <div class="container-fluid">
 <div class="row d-flex d-md-block flex-nowrap wrapper">
 <main id="main">
-
+<style>
+img{
+   display : inline;
+   padding: 10px;
+}
+</style>
 <div class="page-header row">
 	<div class="col-1"></div>
 	<div class="col-11">
@@ -41,15 +46,14 @@
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab"><!-- 병원정보 수정 -->
 				      <div id="main" class="col-md-12">
 			          <div class="page-header mt-3">
-			              <h2>상세정보 보기</h2>
+			              <h2>병원상세정보</h2>
 			          </div>
 			          <hr>
-			          
-			          
-			          <form class="pt-3 md-3" role='form' action="/myhospitalmodify" method="post" enctype="multipart/form-data">
-			          
-			            <input type="hidden" name="userEmail" value=""/>
-			            
+			      
+			      
+			      <form class="pt-3 md-3" role='form' action="/hospitalinfo/modify" method="post" enctype="multipart/form-data">
+			          <input type='hidden' class="email" id="userEmail" name="userEmail" value="${useremail}">
+			          <div class="hospitalGet">
 			          
 						<div class="form-group">
 						   <fieldset>
@@ -176,10 +180,13 @@
 			                        
 			               </div>
 			            </div>
+			            </div>
 			            
-			            <button type="submit" class="btn btn-primary float-right" id="modifyBtn" name="modifyBtn">수정하기</button>
-			          </form>
-			          <br /><br /><br />
+			            <input class="email" type="hidden" name="userEmail" value="${useremail}"/>
+			            
+			            <button type="submit" class="btn btn-primary float-right">수정하기</button>
+			         </form>
+			         <br /><br /><br />
 			
 			        </div>
 		      </div> <!-- 병원정보 수정 -->
@@ -188,9 +195,53 @@
 				예약관리	
 		     </div>
 		     
-		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
-				예약 내역
-		      </div><!-- 내가 쓴 글 -->
+		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab"> <!-- 예약내역 -->
+					<br>
+		      		<div class="viewreserve">
+					<table class="table table-striped col-12">
+				      <thead>
+				        <tr>
+				           <th scope="col" class="mobile" style="width:80px; text-align:center;">No.</th>
+				           <th scope="col" class="mobile" style="text-align:center;">예약 시간</th>
+				           <th scope="col" class="mobile" style="text-align:center;">동물 이름</th>
+				           <th scope="col" class="mobile" style="text-align:center;">Email</th>
+				           <th scope="col" class="mobile" style="text-align:center;">진행 상태</th>
+				           <th scope="col" class="mobile" style="width:100px; text-align:center;"></th>
+				        </tr>
+				      </thead>
+				      
+				      <tbody class="myreservelist">
+				        <tr>
+				        
+						<th scope='row' class='mobile' style='width:80px; text-align:center;'></th>
+						
+						<td style='text-align: center;'>
+						  <a class='move' style='color : #000000;' href='#'>예약 시간</a>
+						</td>
+						
+						<td style='text-align: center;'>
+						  <a class='move' style='color : #000000;'>동물 이름</a>
+						</td>
+						
+						<td style='text-align: center;'>
+						  <a class='move' style='color : #000000;'>Email</a>
+						</td>
+						
+						<td style='text-align: center;'>
+						  <a class='move' style='color : #000000;'>진행 상태</a>
+						</td>
+						
+						<td style='text-align: center;'>
+						  <a class='move' style='color : #000000;' >
+						  <button class='status' id='status' data-no='#' style='font-size:14px'>상태 변경</button></a>
+						</td>
+						
+						</tr>	
+				      </tbody>
+				      
+			   		</table> 
+					</div>
+		      </div>
 		      
 		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
 		      	동물 관리
@@ -213,7 +264,7 @@
 				  	<div class="qqq">
                     	<div class="card-body primary-font">등록된 Q&A가 없습니다</div> <!-- qna가 생기면 이 부분이 바뀜 -->
                     </div>
-                    
+                    <br>
 				  </div> <!-- Q&A끝 -->
 				  
 				  <div class="tab-pane fade" id="nav-b" role="tabpanel" aria-labelledby="nav-b-tab">
@@ -243,8 +294,7 @@
 				  </div> <!-- 지식동 -->
 				  
 				  <div class="tab-pane fade" id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab">
-				  
-				  	<ul class="list-group rrr col-12">
+				  	<ul class="list-group table5">
                     	<li class="list-group-item">
                             <div>
                             	<div class="card-body primary-font">등록된 댓글이 없습니다</div>
@@ -269,6 +319,43 @@
 </div>
 </div>
 
+<!-- 예약 내역 내, 상태변경 모달 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">진료 상태 변경</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>동물 이름</label>
+					<input class="form-control" name="aname" id="aname" value="동물이름" readonly>
+					<input type='hidden' class="form-control" name="animalId" id="animalId" value="동물id">
+				</div>
+				<div class="form-group">
+					<label>예약 시간</label>
+					<input class="form-control" name="rdate" id="rdate" value="예약시간" readonly>
+				</div>
+				<div class="form-group">
+					<label>진료 상태</label>
+					<input type='hidden' class="form-control" name="reserveId" id="reserveId"value="예약번호"><br>
+					<div class="statusVal">
+  						<input type="radio" name="진료 전" id="진료 전" value="진료 전" data-status="진료 전"> 진료 전<br>
+						<input type="radio" name="진료 완료" id="진료 완료" value="진료 완료" data-status="진료 완료"> 진료 완료<br>
+						<input type='hidden' class="form-control" name="status" id="status" value="">
+                    </div>	
+				</div>
+				<div class="modal-footer">
+					<button id="modalStatusBtn" name="modalStatusBtn" type="button" class="btn btn-primary pull-right">변경 완료</button>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
 
 <!-- Bootstrap core JavaScript -->
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
@@ -282,6 +369,13 @@
 <script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospital.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myAnimalFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myAnimal.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myHospitalReserveFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/myHospitalReserve.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/hospital/infoFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/hospital/info.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcontentFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcontent.js"></script>
+
 
 <script>
     function goPopup(){

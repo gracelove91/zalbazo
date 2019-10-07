@@ -12,9 +12,6 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
-import kr.zalbazo.controller.user.UserController;
-import kr.zalbazo.service.user.UserService;
-import kr.zalbazo.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,18 +20,23 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.zalbazo.model.hospital.HospitalLabel;
+import kr.zalbazo.model.hospital.Hospital;
+import kr.zalbazo.model.hospital.Label;
 import kr.zalbazo.model.pic.AttachFileDTO;
-import kr.zalbazo.model.user.HospitalInfo;
 import kr.zalbazo.model.user.User;
 import kr.zalbazo.service.user.HospitalJoinService;
+import kr.zalbazo.service.user.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -45,7 +47,7 @@ import lombok.extern.log4j.Log4j;
 public class HospitalJoinController {
 
 	@Autowired
-	private HospitalJoinService hJoinService;
+	private HospitalJoinService service;
 
 	@Autowired
 	private UserService userService;
@@ -60,24 +62,24 @@ public class HospitalJoinController {
 
 
     @PostMapping("/register")
-    public String join(HospitalInfo hospitalInfo, HospitalLabel hospitalLabel, @ModelAttribute User user,
+    public String join(Hospital hospital, Label label, @ModelAttribute User user,
     			RedirectAttributes rttr, HttpServletRequest request) {
 		user.setRole("hospital");
 
 
-    	hJoinService.hospitalInfoRegister(hospitalInfo);
-		user.setHospitalId(hospitalInfo.getHospitalId());
+		service.hospitalInfoRegister(hospital);
+		user.setHospitalId(hospital.getHospitalId());
     	// form에 있는 selectbox에서 라벨들의 값을 받아온다
-    	String[] label = request.getParameterValues("label_info");
+    	String[] labelList = request.getParameterValues("label_info");
 
     	// 반복문을 이용하여 HospitaLabel객체에 값을 넣어주고 메서드를 이용해서 디비에 insert
-    	for(int i=0; i<label.length; i++) {
+    	for(int i=0; i<labelList.length; i++) {
 
-    		HospitalLabel hL = new HospitalLabel();
-    		hL.setLabelCode(Integer.parseInt(label[i]));
-    		hL.setHospitalId(hospitalInfo.getHospitalId());
+    		Label hL = new Label();
+    		hL.setLabelCode(Integer.parseInt(labelList[i]));
+    		hL.setHospitalId(hospital.getHospitalId());
 
-    		hJoinService.labelInsert(hL);
+    		service.labelInsert(hL);
     	}
 
 		userService.register(user);
@@ -87,8 +89,43 @@ public class HospitalJoinController {
 
         return "redirect:/index";
     }
+    
+	@GetMapping(value = "/detail/{userEmail}", produces = { 
+			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity<Hospital> getInfo(@PathVariable("userEmail") String userEmail) {
+		return new ResponseEntity<>(service.get(userEmail), HttpStatus.OK);
+	}
+    
+    @PostMapping("/modify")
+    public String modify(Principal principal, Model model) {
+    	model.addAttribute("userEmail", principal.getName());
+    	model.addAttribute("info", service.get(principal.getName()));
+    	
+    	return "user/hospital/myhospitalmodify";
+    }
+    
+    @PostMapping("/modify1")
+    public String update(Hospital hospital, HttpServletRequest request) {
 
+    	service.modify(hospital);
+    	
+    	// form에 있는 selectbox에서 라벨들의 값을 받아온다
+    	String[] labelList = request.getParameterValues("label_info");
+    	// 반복문을 이용하여 HospitaLabel객체에 값을 넣어주고 메서드를 이용해서 디비에 insert
+    	for(int i=0; i<labelList.length; i++) {
 
+    		Label hL = new Label();
+    		hL.setLabelCode(Integer.parseInt(labelList[i]));
+    		hL.setHospitalId(hospital.getHospitalId());
+
+    		service.labelInsert(hL);
+    	}
+    	
+    	return "redirect:/user/mypage";
+    }
+    
+
+    
 	@ResponseBody
 	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<AttachFileDTO>> uploadAjaxPost(MultipartFile[] uploadFile, HttpServletRequest httpServletRequest) {
@@ -156,8 +193,18 @@ public class HospitalJoinController {
 		}
 		return result;
 	}
-
-
+	
+	
+	@GetMapping(value="/getAttachList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<AttachFileDTO>> getPicList(String userEmail) {
+		
+		log.info("getPicList " + userEmail);
+		
+		return new ResponseEntity<>(service.getPicList(userEmail), HttpStatus.OK);
+	}
+	
+	
 	@ResponseBody
 	@PostMapping("/deleteFile")
 	public ResponseEntity<String> deleteFile(String fileName) {
@@ -175,7 +222,7 @@ public class HospitalJoinController {
 		}
 
 		return new ResponseEntity<String>("deleted", HttpStatus.OK);
-
+		
 	}
 
 

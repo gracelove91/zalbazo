@@ -52,7 +52,6 @@ var myReserveService = (function() {
 	} // get
 	
 	function insertReview(review, callback, error) {
-		console.log("병원예약에서 리뷰 작성");
 		
 		$.ajax({
 			type : 'post',

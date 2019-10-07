@@ -5,8 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,7 +44,8 @@ public class HomeController {
     }
     
     @GetMapping("/reserve")
-    public String calendar(@RequestParam Long hospitalId, Model model,Principal principal){
+    public String calendar(@RequestParam Long hospitalId, Model model, Principal principal){
+    	
     	model.addAttribute("animal",as.getList(principal.getName()));
     	model.addAttribute("hos",hs.get(hospitalId));
     	   	
@@ -54,23 +53,20 @@ public class HomeController {
     }
     
     @PostMapping("/reserve")
-    public String calendarpost(@RequestParam Long hospitalId,@RequestParam String reservedate,@RequestParam String reservetime,Reserve reserve) throws ParseException{
-
+    public String calendarpost(Principal principal, @RequestParam Long hospitalId,@RequestParam String reservedate,@RequestParam String reservetime,Reserve reserve) throws ParseException{
+    	
     	String datetext = reservedate+" "+reservetime;
     	
  		Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(datetext);
 
     	Reserve res = reserve;
     	
-    	
     	res.setRdate(date);
-    	res.setAnimalId((long) 1);    //임의의값넣을때 (실험용)
-    	
     	rs.register(res);
     	
     	String result= "redirect:/hospital/get?hospitalId="+hospitalId;
     	
     	
     	return result;
-    }
+    } 
 }

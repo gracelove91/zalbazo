@@ -27,4 +27,10 @@ public interface MyContentMapper {
 	
 	// Q(4) 병원Name 가져오기
 	public Hospital getName(Long hospitalId);
+	
+	// Q&A 삭제
+	public int deleteQna(Long contentId);
+	public int deleteContent(Long contentId);
+	
+	public HospitalQnaVO getANo(Long contentId);
 }

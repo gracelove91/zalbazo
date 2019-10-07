@@ -68,7 +68,7 @@ public class ContentServiceImpl implements ContentService {
     		attachMapper.deletePic(attach.getUuid());
     	});
     	
-    	// 최종적으로 해당 글을 삭제
+    	// 글 수정
     	boolean modifyResult = mapper.update(content) == 1;
     	
     	if(modifyResult && content.getAttachList() != null && content.getAttachList().size() > 0) {

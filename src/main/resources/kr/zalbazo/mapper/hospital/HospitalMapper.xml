@@ -40,7 +40,7 @@
 		where a.uuid = b.uuid
 		and hospital_id = #{hospitalId}
     </select>
-    
+
 	
 </mapper>
 

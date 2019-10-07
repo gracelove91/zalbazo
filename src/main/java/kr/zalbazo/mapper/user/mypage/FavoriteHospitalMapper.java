@@ -5,6 +5,7 @@ import java.util.List;
 import kr.zalbazo.model.favorite_hospital.FavoriteHospital;
 import kr.zalbazo.model.hospital.Hospital;
 import kr.zalbazo.model.hospital.Label;
+import kr.zalbazo.model.user.User;
 
 public interface FavoriteHospitalMapper {
 
@@ -15,5 +16,7 @@ public interface FavoriteHospitalMapper {
 	int remove(Long hospitalId);
 
 	int insertFavorite(FavoriteHospital favoriteHospital);
+	
+	User getUser(String userEmail);
 }
 

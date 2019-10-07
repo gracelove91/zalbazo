@@ -23,7 +23,7 @@
 			</div>
 			<div class="col-5">
 				<a href="/user/register?type=user">
-					<img src="/resources/img/register_2.jpeg" width="300px" height="300px" style="border-radius: 70px; border:5px solid #66e0ff">
+					<img src="/resources/img/register_2.png" width="300px" height="300px" style="border-radius: 70px; border:5px solid #66e0ff">
 				</a>
 			</div>
 		</div>

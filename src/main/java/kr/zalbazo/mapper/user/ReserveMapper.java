@@ -9,5 +9,6 @@ public interface ReserveMapper {
     Reserve read(String email);
     List<ReserveMapper> getList(Long hospitalId);
     int delete(Long reserveId);
+    List<String> readTime(String date);
    
 }

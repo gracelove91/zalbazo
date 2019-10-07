@@ -14,13 +14,13 @@ $(document).ready(function() {
 	for (sft, count, rowcount; sft < eft; sft++, count++) {
 		var obj = $('#tt tr');
 		if (count < 2) {
-			obj.eq(rowcount).append('<td>' + sft + ':' + set + '</td>')
-			obj.eq(rowcount).append('<td>' + sft + ':' + sset + '</td>')
+			obj.eq(rowcount).append('<td class="time">' + sft + ':' + set + '</td>')
+			obj.eq(rowcount).append('<td class="time">' + sft + ':' + sset + '</td>')
 		}
 
 		if (count == 2) {
 			$('#tt').append(
-					'<tr><td>' + sft + ':' + set + '</td><td>' + sft + ':' + sset
+					'<tr><td class="time">' + sft + ':' + set + '</td><td class="time">' + sft + ':' + sset
 							+ '</td></tr>')
 			rowcount++;
 			count = 0;
@@ -35,9 +35,6 @@ $(document).ready(function() {
 	}
 	
 	
-	console.log("start : " +start);
-	
-	
 	$("#my-calendar").zabuto_calendar({
 
 		ajax : {
@@ -46,25 +43,7 @@ $(document).ready(function() {
 	});
 
 	/* $('#tt').on('click','td',function(e){alert($('this').text())}) */
-
-	$("#tt tr td").click(function() {
-		var txt = $(this).text();
-		var reservett = document.getElementById('reservetime').innerHTML;
-		var reservedt = document.getElementById('reservedate').innerHTML;
-		$('#tt tr td').css('background-color', 'white');
-		if (reservedt.length < 5) {
-			alert('날짜먼저 선택해주세요');
-
-		} else {
-			document.getElementById('reservetime').innerHTML = "예약시간 : " + txt;
-			$('#t').val(txt);
-			$(this).css({
-				"background-color" : "#CEECF5"
-			});
-
-		}
-
-	});
+	
 
 	$('#tt').on('mouseenter', 'td', function(e) {
 		$('td').css('cursor', 'pointer');
@@ -74,10 +53,66 @@ $(document).ready(function() {
 	}) // 마우스커서 바꾸기
 	// 날짜입력, 클릭시 색바꿈
 	$('#my-calendar').on('click', '.day', function(e) {
+		var date = $(this).attr('id');
 		$('#reservedate').html("예약날짜 :  " + $(this).attr('id'));
+		$('#reservetime').html("예약시간 : ");
 		$('.day').css('background-color', 'white');
 		$(this).css('background-color', '#CEECF5');
 		$('#d').val($(this).attr('id'))
+		$('.time').removeClass("block"); 	//이미 예약완료인 타임테이블 초기화
+		$('.time').removeClass("selected");
+		// 타임테이블 기능적용
+		$(".time").each(function () {
+
+				$(this).click(function() {
+					var txt = $(this).text();
+					var reservett = document.getElementById('reservetime').innerHTML;
+					var reservedt = document.getElementById('reservedate').innerHTML;
+					
+					if (reservedt.length < 5) {
+						alert('날짜먼저 선택해주세요');
+
+					} else {
+						document.getElementById('reservetime').innerHTML = "예약시간 : " + txt;
+						$('#t').val(txt);
+						$('.time').siblings().removeClass("selected");
+						  $(this).addClass("selected"); //클릭된 부분을 상단에 정의된 CCS인 selected클래스로 적용
+						
+					}
+
+				});
+				   });
+		
+		//날짜별로 타임테이블 유효성검사 적용시키기
+		$.ajax({
+			type : "GET",
+			url : "/reserve.do",
+			error : function(error){
+				
+			},
+			data : {date : $(this).attr('id') }  ,
+			success : function(result){
+				
+			var adate = result.date;
+			var ttable = $('#tt .time');
+			//시간이 들어간 타임테이블 click 못하게하고 class block 추가하여 색깔변경
+				$.each(adate, function( date, value ) {
+					
+					for(var i=0; i<ttable.length;i++){
+						if((ttable[i].innerText)==value){
+							$(ttable[i]).off('click');
+							$(ttable[i]).addClass('block');
+						
+						};	
+					}
+				});
+			}
+			
+			
+		});
+		
+		
+		
 	});
 	$('.animallist').on('click', 'li', function(e) {
 		$('#animalId').val($(this).attr('id'));
@@ -85,7 +120,11 @@ $(document).ready(function() {
 		$(this).css('background-color', '#CEECF5');
 	});
 
-});
+	
+	
+});//.ready
+
+
 
 // 예약 시간 생성!!!
 function check() { // 날짜 시간 체킹

@@ -62,10 +62,11 @@
 		}
 		
 		
-		function removeQna(contentId, callback, error) {
+		
+		function removeA(contentId, callback, error) {
 			$.ajax({
 				type : 'delete',
-				url : '/qna/delQna/' + contentId,
+				url : '/qna/removeA/' + contentId,
 				success : function(deleteResult, status, xhr) {
 					if(callback) {
 						callback(deleteResult);
@@ -80,16 +81,16 @@
 		}
 		
 		
-		function removeCon(contentId, callback, error) {
+		function removeQnA(contentId, callback, error) {
 			$.ajax({
 				type : 'delete',
-				url : '/qna/delCon/' + contentId,
+				url : '/qna/removeQnA/' + contentId,
 				success : function(deleteResult, status, xhr) {
-					if(callback) {
+					if(callback){
 						callback(deleteResult);
 					}
 				},
-				error : function(xhr, status, er) {
+				error : function (xhr, status, er) {
 					if(error) {
 						error(er);
 					}
@@ -97,19 +98,6 @@
 			});
 		}
 		
-
-		function getANo(contentId, callback, error){
-			
-			$.post("/qna/getANo/" + contentId + ".json", function(result){
-				if(callback){
-					callback(result);
-				}
-			}).fail(function(xhr, status, err){
-				if(error){
-					error();
-				}
-			});
-		}
 		
 		function displayTime(timeValue) {
 			var today = new Date();
@@ -140,10 +128,9 @@
 			addAnswer : addAnswer,
 			addQuestion : addQuestion,
 			getList : getList,
-			removeQna : removeQna,
-			removeCon : removeCon,
 			displayTime : displayTime,
-			getANo : getANo
+			removeA : removeA,
+			removeQnA : removeQnA
 		};
 		
 	})();

@@ -64,9 +64,30 @@ var MyHospitalContentService = (function() {
 		});
 	}
 	
+
+	function removeA(contentId, callback, error) {
+		$.ajax({
+			type : 'delete',
+			url : '/myhospitalcontent/removeA/' + contentId,
+			success : function(deleteResult, status, xhr) {
+				if(callback) {
+					callback(deleteResult);
+				}
+			},
+			error : function(xhr, status, er) {
+				if(error) {
+					error(er);
+				}
+			}
+		});
+	}
+	
+	
+	
 	return{
 		displayTime : displayTime,
 		getHospitalQList : getHospitalQList,
-		insertAnswer : insertAnswer
+		insertAnswer : insertAnswer,
+		removeA : removeA
 	}
 })();

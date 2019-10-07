@@ -10,5 +10,7 @@ public interface MyHospitalContentMapper {
 	
 	// 병원의 A달기
 	public int insertAnswer(HospitalQnaVO hospitalQnaVO);
+	// A 삭제
+	public int removeContent(Long contentId);
 
 }

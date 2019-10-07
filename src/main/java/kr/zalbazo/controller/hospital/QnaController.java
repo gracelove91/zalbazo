@@ -50,20 +50,21 @@ public class QnaController {
 		? new ResponseEntity<>("success", HttpStatus.OK)
 		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);	
 	}
-	
-	@DeleteMapping(value="/delQna/{contentId}", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> removeQna(@PathVariable("contentId") Long contentId) {
-		return qnaService.removeQna(contentId) == 1
+
+	@DeleteMapping(value="/removeA/{contentId}", produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> removeA(@PathVariable("contentId") Long contentId) {
+		return qnaService.removeA(contentId) == 1
 		? new ResponseEntity<>("success", HttpStatus.OK)
 		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@DeleteMapping(value="/delCon/{contentId}", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> removeCon(@PathVariable("contentId") Long contentId) {
-		return qnaService.removeContent(contentId) == 1
-		? new ResponseEntity<>("success", HttpStatus.OK)
-		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	
+	@DeleteMapping(value="/removeQnA/{contentId}" , produces="application/json")
+	public ResponseEntity<Integer> removeQnA(@PathVariable("contentId") Long contentId) {
+		
+		return new ResponseEntity<>(qnaService.removeQnA(contentId), HttpStatus.OK);
 	}
+	
 
 	@GetMapping(value = "/list/{hospitalId}", produces = { 
 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
@@ -71,9 +72,5 @@ public class QnaController {
 		return new ResponseEntity<>(qnaService.getQnaList(hospitalId), HttpStatus.OK);
 	}
 	
-	@PostMapping(value = "/getANo/{contentId}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<HospitalQnaVO> getANo(@PathVariable("contentId") Long contentId) {
-		return new ResponseEntity<>(qnaService.getANo(contentId), HttpStatus.OK);
-	}
 	
 }

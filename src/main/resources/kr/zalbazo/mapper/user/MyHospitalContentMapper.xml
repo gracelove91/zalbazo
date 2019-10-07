@@ -21,5 +21,9 @@
 	  values (HOSPITAL_QNA_SEQ.nextval, #{hospitalId}, CONTENT_SEQ.currval, 'A', #{cGroup})
 	  select * from dual
 	</insert>
+	
+	<delete id="removeContent">
+	  delete from content where content_id = #{contentId}
+	</delete>
     
 </mapper>

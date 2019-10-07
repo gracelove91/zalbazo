@@ -9,13 +9,12 @@ import kr.zalbazo.model.hospital.HospitalQnaVO;
 
 public interface HospitalQnaMapper {
 
+	public List<HospitalQnaVO> getQnaList(@Param("hospitalId") Long hospitalId);
+
 	public int insertQuestion(HospitalQnaVO hospitalQnaVO);
 	public int insertAnswer(HospitalQnaVO hospitalQnaVO);
 	
-	public int deleteQna(Long contentId);
 	public int deleteContent(Long contentId);
-	
-	public List<HospitalQnaVO> getQnaList(@Param("hospitalId") Long hospitalId);
 	
 	public HospitalQnaVO getANo(Long contentId);
 

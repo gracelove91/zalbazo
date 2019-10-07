@@ -263,17 +263,30 @@ $(document).ready(function () {
     var modalRemoveBtn = $("#modalRemoveBtn");
     var modalRegisterBtn = $("#modalRegisterBtn");
     var modalCloseBtn = $("#modalCloseBtn");
-
+    
     $("#addReplyBtn").on("click", function (e) {
+    	
+        replyService.getUser(function(data){
+        	
+        	if(data.role === 'user' || data.role === 'hospital') {
+        		
+        		modal.find("input[name='body']").val("");
+                modalInputCreatedDate.closest("div").hide();
+                modal.find("button[id != 'modalCloseBtn']").hide();
+                modalInputUserEmail.val(data.userEmail);
 
-        modal.find("input[name='body']").val("");
-        modalInputCreatedDate.closest("div").hide();
-        modal.find("button[id != 'modalCloseBtn']").hide();
+                modalRegisterBtn.show();
 
-        modalRegisterBtn.show();
-
-        $(".modal").modal("show");
-    });
+                $(".modal").modal("show");
+        		
+        	}
+        	
+        }, function(error) {
+    		alert('로그인이 필요한 서비스입니다.');
+    		return;
+    	});
+        
+    }); // 댓글달기 클릭
 
     modalRegisterBtn.on("click", function (e) {
     	

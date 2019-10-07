@@ -111,6 +111,21 @@ var replyService = (function() {
 			return [ yy, '/', (mm > 9 ? '' : '0') + mm, '/', (dd > 9 ? '' : '0') + dd].join('');
 		}
 	};
+	
+	function getUser(callback, error) {
+
+		$.get("/hospital/reserve" + ".json", function(result) {
+			if (callback) {
+				callback(result);
+			}
+		}).fail(function(xhr, status, err) {
+
+			if (error) {
+				error();
+			}
+
+		});
+	} // get
 
 	return {
 		add : add,
@@ -118,6 +133,7 @@ var replyService = (function() {
 		getList : getList,
 		remove : remove,
 		update : update,
-		displayTime : displayTime
+		displayTime : displayTime,
+		getUser : getUser
 	};
 })();

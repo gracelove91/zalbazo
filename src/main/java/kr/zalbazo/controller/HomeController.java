@@ -21,7 +21,6 @@ import kr.zalbazo.service.user.ReserveService;
 @Controller
 public class HomeController {
 	
-	
 	@PostMapping("/myhospitalmodify")
 	public String modify(Model model) {
 		return "user/hospital/myhospitalmodify";

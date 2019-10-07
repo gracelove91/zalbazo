@@ -24,7 +24,7 @@ h5.on('click','#reserve',function(e){
 });  //예약하기 페이지전송
 
 
-h5.on("click", "i", function(e){
+h5.on("click", ".favorite", function(e){
 	
 	var icon = $(this).attr("data-i");
 	

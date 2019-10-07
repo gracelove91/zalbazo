@@ -804,4 +804,18 @@ insert into zalbazo.favorite_hospital (user_email, hospital_id, f_hospital_id)
 values ('dummy@gmail.com', 3, f_hospital_seq.NEXTVAL);
 
 
+
+create table FAQ (
+                     FAQ_ID number not null,
+                     Question varchar2 (4000),
+                     Answer varchar2 (4000))
+;
+CREATE SEQUENCE zalbazo.FAQ_ID INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
+
+
+
+insert into zalbazo.FAQ values(FAQ_ID.nextval, '가입은 어떻게 하나요?', '우측 상단 sign-up 버튼을 클릭하세요');
+insert into zalbazo.FAQ values(FAQ_ID.nextval, '예약은 언제부터 가능한가요?', '   방문일 한달 전부터 가능합니다');
+insert into zalbazo.FAQ values(FAQ_ID.nextval, '파충류도 치료 받을 수 있나요?', '특수동물 치료 가능 병원을 검색 해 주세요');
+insert into zalbazo.FAQ values(FAQ_ID.nextval, '동물병원을 개원했습니다. 병원 등록을 하고 싶은데 어떻게 해야 하나요?', '   병원 등록 전용 페이지에서 가입 해 주세요');
 commit;

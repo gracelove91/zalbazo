@@ -149,11 +149,13 @@ input.checkbox:checked + label.input-label.radio::before {
                         <td class="mobile" style="text-align: center;"><c:out
                                 value="${hospital.hospitalId}" /></td>
 
-                        <td class="mobile" style="text-align: center;"><a href="#">
-                                <img class="rounded"
-                                     src="${ctx}/resources/img/hospital/${hospital.uuid}_${hospital.fileName}"
+                     <c:forEach items="${hospital.attachList}" var="pic">
+                            <td class="mobile" style="text-align: center;"><a href="#">
+                                	<img class="rounded"
+                                     src="${ctx}/resources/img/hospital/${pic.uuid}_${pic.fileName}"
                                      alt="" width="108px" height="85px">
                             </a></td>
+                        </c:forEach>
 
                         <td><a style="color: #000000;"
                                href='/hospital/get?hospitalId=<c:out value="${hospital.hospitalId}"/>'>

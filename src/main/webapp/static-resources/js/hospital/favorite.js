@@ -8,7 +8,22 @@ var bh = $(".favorite");
 
 var h5 = $(".heart");
 
-h5.on('click','#reserve',function(e){location="../reserve?hospitalId="+hospitalId.val();+"&userEmail="+userEmail.val();})  //예약하기 페이지전송
+h5.on('click','#reserve',function(e){
+	favoriteService.getUser(function(data){
+		
+		if(data.role === 'user') {
+			location="../reserve?hospitalId="+hospitalId.val();+"&userEmail="+userEmail.val();
+		} else {
+			alert('일반 유저만 가능합니다.');
+		}
+
+	}, function(error) {
+		alert('로그인이 필요한 서비스입니다.');
+		return;
+	});
+});  //예약하기 페이지전송
+
+
 h5.on("click", "i", function(e){
 	
 	var icon = $(this).attr("data-i");
@@ -41,8 +56,8 @@ h5.on("click", "i", function(e){
 	if (icon=="black") {
 		var str ="";
 		
-		str += "<i class='material-icons' style='cursor: pointer;'>event</i> 예약하기";	
-		str += "<i class='material-icons remove' data-i='white' id=outlined style='cursor: pointer;'>favorite_border</i> 즐겨찾기";
+		str += "<i class='material-icons' id='reserve' style='cursor: pointer;'>event</i> 예약하기";	
+		str += "<i class='material-icons favorite' data-i='white' id=outlined style='cursor: pointer;'>favorite_border</i> 즐겨찾기";
 
 		var info = $(".info");
 		var hospitalId = info.find("input[name='hospitalId']"); 

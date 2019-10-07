@@ -75,6 +75,8 @@
                         <label>EMAIL</label>
                         <input type="text" class="form-control" name="userEmail" readonly="readonly"
                                value="${useremail}">
+                        <input type="hidden" class="form-control" id="role" name="role" readonly="readonly"
+                               value="${role}">
                     </div>
                     <div class="form-group">
                         <label>제목</label>
@@ -127,6 +129,11 @@
         $("button[type='submit']").on("click", function (e) {
             e.preventDefault();
             console.log("submit clicked");
+            
+            if($("input[id='role']").val() == "[ROLE_hospital]") {
+            	alert("병원 회원은 글 작성이 불가능합니다.");
+            	return;
+            }
             
         	if($("input[id='title']").val().trim() === "" || $("input[id='title']").val().trim() == null) {
         		alert("제목을 입력하세요");

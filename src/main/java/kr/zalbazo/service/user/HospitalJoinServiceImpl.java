@@ -22,29 +22,20 @@ public class HospitalJoinServiceImpl implements HospitalJoinService {
 
 	@Transactional
 	@Override
-	public void hospitalInfoRegister(Hospital hospital) {
-		hospitalJoinMapper.hospitalInfoInsert(hospital);
+	public void insert(Hospital hospital) {
+		
+		hospitalJoinMapper.infoInsert(hospital);
 		
 		if(hospital.getAttachList() == null || hospital.getAttachList().size() <= 0) {
 			return;
 		}
 		
-		System.out.println("hospitalId : " + hospital.getHospitalId());
 		hospital.getAttachList().forEach(attach ->{
 			attach.setHospitalId(hospital.getHospitalId());
-			hospitalJoinMapper.hospitalPicInsert(attach);
+			hospitalJoinMapper.picInsert(attach);
 		});
 	}
 
-	@Override
-	public void labelInsert(Label label) {
-		hospitalJoinMapper.labelInsert(label);
-	}
-
-	@Override
-	public void picInsert(AttachFileDTO attachFile) {
-		hospitalJoinMapper.hospitalPicInsert(attachFile);
-	}
 
 	@Override
 	public Hospital get(String userEmail) {
@@ -83,23 +74,11 @@ public class HospitalJoinServiceImpl implements HospitalJoinService {
 			return;
 		}
 		
-		System.out.println("hospitalId : " + hospital.getHospitalId());
-		
 		hospital.getAttachList().forEach(attach ->{
 			attach.setHospitalId(hospital.getHospitalId());
-			hospitalJoinMapper.hospitalPicInsert(attach);
+			hospitalJoinMapper.picInsert(attach);
 		});
 		
-	}
-
-	@Override
-	public List<AttachFileDTO> getPicList(String userEmail) {
-		return hospitalJoinMapper.getPic(userEmail);
-	}
-
-	@Override
-	public int update(Hospital hospital) {
-		return hospitalJoinMapper.update(hospital);
 	}
 
 

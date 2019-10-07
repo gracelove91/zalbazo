@@ -6,13 +6,13 @@
 	<insert id="insert"
 		parameterType="kr.zalbazo.model.animal.Animal">
 		INSERT into animal(ANIMAL_ID, TYPE, SEX, WEIGHT, AGE,
-		NAME,NOTE,LAST_TREAT_DATE,CREATED_DATE,UPDATED_DATE,USER_EMAIL)
-		values (ANIMAL_SEQ.nextval, #{type}, #{sex},#{weight},#{age},#{name},#{note},sysdate,sysdate,sysdate,#{userEmail})
+		ANAME, NOTE, LAST_TREAT_DATE, CREATED_DATE, UPDATED_DATE, USER_EMAIL)
+		values (ANIMAL_SEQ.nextval, #{type}, #{sex}, #{weight}, #{age}, #{aname}, #{note}, sysdate, sysdate, sysdate, #{userEmail})
 	</insert>
 
 	<update id="update">
         update ANIMAL
-        set TYPE= #{type}, SEX = #{sex}, WEIGHT = #{weight}, AGE = #{age}, NAME=#{name}, NOTE= #{note} ,UPDATED_DATE= sysdate
+        set TYPE= #{type}, SEX = #{sex}, WEIGHT = #{weight}, AGE = #{age}, ANAME=#{aname}, NOTE= #{note} ,UPDATED_DATE= sysdate
         where ANIMAL_ID = #{animalId}
 	</update>
 
@@ -24,7 +24,7 @@
 	<select id="read" resultType="kr.zalbazo.model.animal.Animal">
 		select *
 		from ANIMAL
-		where ANIMAL_ID = #{animalId}	
+		where ANIMAL_ID = #{animalId}
 	</select>
 
 	<select id="getList"
@@ -32,7 +32,6 @@
 		select * from animal where user_email =
 		#{userEmail}
          order by 1 desc
-            
    </select>
 
 

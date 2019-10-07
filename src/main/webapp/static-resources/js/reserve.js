@@ -80,7 +80,7 @@ $(document).ready(function() {
 		$('#d').val($(this).attr('id'))
 	});
 	$('.animallist').on('click', 'li', function(e) {
-		$('#animalId').val($(this).attr("id"));
+		$('#animalId').val($(this).attr('id'));
 		$('.animallist li').css('background-color', 'white');
 		$(this).css('background-color', '#CEECF5');
 	});
@@ -104,6 +104,11 @@ function check() { // 날짜 시간 체킹
 
 		return false;
 
+	}
+	else if($('#animalId').val() ==""){
+		alert("동물을 선택해 주세요.")
+		
+		return false;
 	}
 
 	else
@@ -273,8 +278,8 @@ $.fn.zabuto_calendar = function(options) {
 					var $prevMonthCell = $('<th></th>').append($prevMonthNav);
 					var $nextMonthCell = $('<th></th>').append($nextMonthNav);
 
-					var $currMonthLabel = $('<span>' + monthLabels[month] + ' '
-							+ year + '</span>');
+					var $currMonthLabel = $('<span>' + year  + '년'+' '
+							+ monthLabels[month] + '</span>');
 					$currMonthLabel.dblclick(function() {
 						var dateInitObj = $calendarElement.data('initDate');
 						drawTable($calendarElement, $tableObj, dateInitObj

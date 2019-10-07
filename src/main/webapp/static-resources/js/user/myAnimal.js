@@ -3,7 +3,6 @@ $(document).ready(function() {
 	
 	var userEmail = '<c:out value="${useremail}"/>';
 	var fhlist = $("#animalt");
-	
 
 	
 	myAnimalService.getList(userEmail, function(list) {
@@ -16,14 +15,14 @@ $(document).ready(function() {
 		
 		for(var i = 0, len = list.length||0; i < len; i++) {
 						
-          //console.log(list[i]);
+          console.log(list[i]);
 			
 			str += "<tr>";
 			str += "	<th scope='row' class='mobile' style='width: 150px; text-align:center;'>" + list[i].animalId + "</th>";
 			
 		
 			str += "<td style='width: 300px; text-align: center;'>";
-			str += "  <a class='move' style='color : #000000;'>" + list[i].name + "</a>";
+			str += "  <a class='move' style='color : #000000;'>" + list[i].aname + "</a>";
 			str += "</td>";
 			str += "<td style='width: 300px; text-align: center;'>";
 			str += "  <a class='move' style='color : #000000;'>" + list[i].type + "</a>";
@@ -42,7 +41,7 @@ $(document).ready(function() {
 			str += "</td>";
 			str += "<td style='width: 350px; text-align: center;'>";
 			str += "<a class='move' style='color : #000000;' >";
-			str += "<button class='remove' id=''onclick="+"location.href='/user/mypage/animal/remove?id="+list[i].animalId+"'>삭제</button></a>";
+			str += "<button class='remove' id='remove' onclick="+"location.href='/user/mypage/animal/remove?id="+list[i].animalId+"'>삭제</button></a>";
 			str += "</td>"
 			str += "</tr>";
 			

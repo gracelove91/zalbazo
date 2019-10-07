@@ -42,7 +42,7 @@
                                 <td class="mobile" style="text-align:center;">
                                     <c:out value="없음" />
                            
-                                        <td><c:out value="${animal.name}" /></td>
+                                        <td><c:out value="${animal.aname}" /></td>
 
                                 </td>
                                 <td class="mobile" style="text-align:center;">

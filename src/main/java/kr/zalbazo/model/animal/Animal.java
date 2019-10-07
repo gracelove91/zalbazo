@@ -15,22 +15,17 @@ import lombok.ToString;
 @Setter
 
 public class Animal {
-
 	
 	private Long animalId;
 	private String type;
 	private String sex;
 	private Integer weight;
 	private Integer age;
-	private String name;
+	private String aname;
 	private String note;
 	private Date lasttreatDate;
 	private Date createdDate;
 	private Date updatedDate;
 	private String userEmail;
 	
-	
-
-
-
 }

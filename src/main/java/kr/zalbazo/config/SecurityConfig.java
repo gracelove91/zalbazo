@@ -28,6 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
+                .mvcMatchers("/hospitalinfo/register").anonymous();
+
+        http.authorizeRequests()
                 .mvcMatchers("/").permitAll()
                 .mvcMatchers("/login").anonymous()
                 .mvcMatchers("/user/register/**", "/user/jusoPopup").permitAll()
@@ -39,6 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/admin/**").hasRole("admin")
                 .anyRequest().permitAll()
                 .expressionHandler(expressionHandler());
+
+
 
         http.formLogin()
                 .loginPage("/login")
@@ -53,6 +58,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private SecurityExpressionHandler<FilterInvocation> expressionHandler() {
         RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
         roleHierarchy.setHierarchy("ROLE_admin > ROLE_user");
+        roleHierarchy.setHierarchy("ROLE_admin > ROLE_hospital");
+        roleHierarchy.setHierarchy("ROLE_hospital > ROLE_user");
+
+
+
 
         DefaultWebSecurityExpressionHandler handler = new DefaultWebSecurityExpressionHandler();
         handler.setRoleHierarchy(roleHierarchy);

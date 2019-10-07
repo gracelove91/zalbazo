@@ -56,6 +56,21 @@
 	   select name
 	   from hospital
 	   where hospital_id = #{hospitalId}
-	</select>	
+	</select>
+	
+	<delete id="deleteQna">
+	  delete from hospital_qna where content_id = #{contentId}
+	</delete>
+	
+	<delete id="deleteContent">
+	  delete from content where content_id = #{contentId}
+	</delete>	
+	
+	<select id="getANo" resultType="kr.zalbazo.model.hospital.HospitalQnaVO">
+		select a.content_id
+		from content a, hospital_qna b
+		where a.content_id = b.content_id
+		and qna_type = 'A' and c_group = #{contentId}
+	</select>
 	
 </mapper>

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.zalbazo.model.user.Reserve;
 import kr.zalbazo.service.animal.AnimalService;
 import kr.zalbazo.service.hospital.HospitalService;
-import kr.zalbazo.service.user.HospitalJoinService;
 import kr.zalbazo.service.user.ReserveService;
 
 @Controller
@@ -45,7 +44,8 @@ public class HomeController {
     }
     
     @GetMapping("/reserve")
-    public String calendar(@RequestParam Long hospitalId, Model model,Principal principal){
+    public String calendar(@RequestParam Long hospitalId, Model model, Principal principal){
+    	
     	model.addAttribute("animal",as.getList(principal.getName()));
     	model.addAttribute("hos",hs.get(hospitalId));
     	   	
@@ -53,14 +53,13 @@ public class HomeController {
     }
     
     @PostMapping("/reserve")
-    public String calendarpost(@RequestParam Long hospitalId,@RequestParam String reservedate,@RequestParam String reservetime,Reserve reserve) throws ParseException{
-
+    public String calendarpost(Principal principal, @RequestParam Long hospitalId,@RequestParam String reservedate,@RequestParam String reservetime,Reserve reserve) throws ParseException{
+    	
     	String datetext = reservedate+" "+reservetime;
     	
  		Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(datetext);
 
     	Reserve res = reserve;
-    	
     	
     	res.setRdate(date);
     	res.setAnimalId((long) 1);    //임의의값넣을때 (실험용)
@@ -71,5 +70,5 @@ public class HomeController {
     	
     	
     	return result;
-    }
+    } 
 }

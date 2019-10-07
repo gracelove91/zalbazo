@@ -33,9 +33,8 @@ public class ReplyController {
 	@PostMapping(value = "/new", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> create(@RequestBody ReplyVO vo, Principal principal, Model model) {
 		log.info("ReplyVO : "+ vo);
-
-		int insertCount = service.register(vo);
 		
+		int insertCount = service.register(vo);
 
 		log.info("Reply INSERT COUNT : " + insertCount);
 

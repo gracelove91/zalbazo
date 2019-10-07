@@ -1,11 +1,10 @@
 package kr.zalbazo.controller.user;
 
-import java.security.Principal;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,12 +15,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.user.User;
-import kr.zalbazo.service.content.MypostsService;
 import kr.zalbazo.service.user.UserService;
 import kr.zalbazo.validator.UserValidator;
 import lombok.extern.log4j.Log4j;
@@ -29,14 +27,10 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping({"/user/*"})
 @Controller
 @Log4j
+@SessionAttributes("user")
 public class UserController {
     @Autowired
     private UserService service;
-    
-    @Autowired
-    MypostsService mypostsservice;
-    
-    private static final Long JISIKDONG_CATEGORY_NUM=2L;
 
     @InitBinder
     public void validator(WebDataBinder webDataBinder){
@@ -48,12 +42,27 @@ public class UserController {
     	return "/register_select";
     }
     
+//    @GetMapping("/mypage")
+//    public String mypage(User user, Principal principal, Model model) {
+//    	
+//    	System.out.println("권한권한 : "+principal);
+//    	model.addAttribute("useremail", principal.getName());
+//    	
+//    	return "user/mypage";
+//    }
+    
     @GetMapping("/mypage")
-    public String mypage(Principal principal, Model model) {
-
-    	model.addAttribute("useremail", principal.getName());
+    public String mypage(User user, Authentication authentication, Model model) {
     	
-    	return "user/mypage";
+    	if(authentication.getAuthorities().toString().equals("[ROLE_user]")) {
+    		model.addAttribute("useremail", authentication.getName());
+        	System.out.println("유저는 유저마이페이지로! : " + authentication.getAuthorities());
+        	return "user/mypage";
+    	}
+    	
+    	model.addAttribute("useremail", authentication.getName());
+    	System.out.println("유저가 아니라면!!!!");
+    	return "user/myhospitalpage";
     }
     
     @GetMapping("/register")
@@ -68,7 +77,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String join(@Valid @ModelAttribute User user, BindingResult bindingResult, RedirectAttributes rttr) {
+    public String join(@Valid @ModelAttribute User user, BindingResult bindingResult) {
         String type = user.getRole();
 
         if(bindingResult.hasErrors()){
@@ -79,8 +88,15 @@ public class UserController {
             return "user/join/userjoin";
         }
 
-        service.register(user);
-        rttr.addFlashAttribute("email", user.getUserEmail());
+        if(type.equals("user")){
+            service.register(user);
+        }
+
+        if(type.equals("hospital")) {
+            return "redirect:/hospitalinfo/register";
+        }
+
+
 
         return "redirect:/index";
     }

@@ -10,6 +10,7 @@
 		and c.hospital_id = a.hospital_id
 		and c.hospital_id = d.hospital_id
 		and d.user_email = #{userEmail}
+		order by a.rdate desc
 	</select>
 	
 	<select id="get" resultType="kr.zalbazo.model.user.Reserve">

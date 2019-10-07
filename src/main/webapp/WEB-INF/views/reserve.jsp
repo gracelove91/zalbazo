@@ -51,10 +51,9 @@
 <br>
 <input type="hidden" id='d' name='reservedate' value=''>   
 <input type="hidden" id='t' name='reservetime' value=''>
-<input type="hidden" id='animal' name='animalId' value=''>  
+<input type="hidden" id='animalId' name='animalId' value=''>  
 <input type="hidden" id='hospital' name='hospitalId' value='${hos.hospitalId}'>  
 <input type="hidden" id='userEmail' name='userEmail' value=<sec:authentication property="principal.username"/>>
-<input type="hidden" id='animalId' name='animalId' value=''>
 <div class="row"> 
 <div class="col-md-6 col-md-offset-6 col-md-pull-6" id='reservedate' style="font-family: 돋움체; font-weight: bold; font-size: 2.0em; ">예약날짜</div>
 <br> 
@@ -79,18 +78,6 @@
 <script type="text/javascript">
 	window.start = '${hos.treatStart}';
 	window.end = '${hos.treatEnd}';
-</script>
-
-<script>
-
-$(".animallist").on("click", "li", function(e) {
-	
-	var a = $(this).data("id");
-	
-	console.log(a);
-	
-});
-
 </script>
 
 <script type="text/javascript" src="/resources/js/reserve.js"></script>

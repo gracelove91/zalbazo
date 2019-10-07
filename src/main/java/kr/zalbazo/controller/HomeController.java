@@ -62,8 +62,6 @@ public class HomeController {
     	Reserve res = reserve;
     	
     	res.setRdate(date);
-    	res.setAnimalId((long) 1);    //임의의값넣을때 (실험용)
-    	
     	rs.register(res);
     	
     	String result= "redirect:/hospital/get?hospitalId="+hospitalId;

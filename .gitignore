@@ -221,3 +221,11 @@ buildNumber.properties
 src/main/webapp/WEB-INF/views/index.jsp
 src/main/webapp/static-resources/img/c_baba_logo2.png
 src/main/resources/mail.properties
+.idea/compiler.xml
+.idea/dataSources.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/zalbazo.iml
+.idea/artifacts/zalbazo_war.xml
+.idea/artifacts/zalbazo_war_exploded.xml

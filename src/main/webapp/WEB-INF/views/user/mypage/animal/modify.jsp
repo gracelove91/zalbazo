@@ -59,7 +59,7 @@
 		</div>
 		<div class="form-group">
 			<label>이름</label> <input type="text" class="form-control" id="name"
-				name="name" value="${animal.aName}" >
+				name="name" value="${animal.aname}" >
 		</div>
 		<div class="form-group">
 			<label>내용</label>

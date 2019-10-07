@@ -44,26 +44,10 @@ var favoriteService = (function(){
 		});
 	}
 	
-	function getUser(callback, error) {
-
-		$.get("/hospital/reserve" + ".json", function(result) {
-			if (callback) {
-				callback(result);
-			}
-		}).fail(function(xhr, status, err) {
-
-			if (error) {
-				error();
-			}
-
-		});
-	} // get
 	
-    
     return {
         addFavorite : addFavorite,
-        removeFavorite : removeFavorite,
-        getUser : getUser
+        removeFavorite : removeFavorite
     };
     
 })();

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kr.zalbazo.mapper.user.HospitalJoinMapper">
 
-    <insert id="hospitalInfoInsert" parameterType="kr.zalbazo.model.hospital.Hospital">
+    <insert id="infoInsert" parameterType="kr.zalbazo.model.hospital.Hospital">
         <selectKey keyProperty="hospitalId" resultType="Long" order="BEFORE">
             select hospital_seq.nextval from dual
         </selectKey>
@@ -16,7 +16,7 @@
         values (#{labelCode}, #{hospitalId})
     </insert>
 
-    <insert id="hospitalPicInsert">
+    <insert id="picInsert">
         INSERT ALL
             INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
         VALUES (#{uuid}, #{uploadPath}, #{fileName})

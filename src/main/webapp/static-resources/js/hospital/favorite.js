@@ -57,7 +57,7 @@ h5.on("click", "i", function(e){
 	if (icon=="black") {
 		var str ="";
 		
-		str += "<i class='material-icons' style='cursor: pointer;'>event</i> 예약하기";	
+		str += "<i class='material-icons' id='reserve' style='cursor: pointer;'>event</i> 예약하기";	
 		str += "<i class='material-icons remove' data-i='white' id=outlined style='cursor: pointer;'>favorite_border</i> 즐겨찾기";
 
 		var info = $(".info");

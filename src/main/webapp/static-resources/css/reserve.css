@@ -206,3 +206,9 @@ ul.animallist li, ol.animallist li {
     font-size: 15px;
     cursor: pointer;
 }
+.selected{
+	background-color: #CEECF5;
+}
+.block{
+	background-color: red;
+}

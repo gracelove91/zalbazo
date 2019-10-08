@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	
+	
 	var sft = start.substr(0, 2);
 	var eft = end.substr(0, 2);
 	var eet = end.substr(3);
@@ -39,6 +40,8 @@ $(document).ready(function() {
 
 		ajax : {
 			url : "show_data.php?grade=1"
+
+			
 		}
 	});
 
@@ -56,8 +59,8 @@ $(document).ready(function() {
 		var date = $(this).attr('id');
 		$('#reservedate').html("예약날짜 :  " + $(this).attr('id'));
 		$('#reservetime').html("예약시간 : ");
-		$('.day').css('background-color', 'white');
-		$(this).css('background-color', '#CEECF5');
+		$('.day').removeClass("selected");
+		$(this).addClass("selected");
 		$('#d').val($(this).attr('id'))
 		$('.time').removeClass("block"); 	//이미 예약완료인 타임테이블 초기화
 		$('.time').removeClass("selected");
@@ -90,9 +93,8 @@ $(document).ready(function() {
 			error : function(error){
 				
 			},
-			data : {date : $(this).attr('id') }  ,
+			data : {date : $(this).attr('id'),hospitalId : $('#hospital').val() }  ,
 			success : function(result){
-				
 			var adate = result.date;
 			var ttable = $('#tt .time');
 			//시간이 들어간 타임테이블 click 못하게하고 class block 추가하여 색깔변경
@@ -161,7 +163,7 @@ $.fn.zabuto_calendar = function(options) {
 	var opts = $.extend({}, $.fn.zabuto_calendar_defaults(), options);
 	var languageSettings = $.fn.zabuto_calendar_language(opts.language);
 	opts = $.extend({}, opts, languageSettings);
-
+	
 	this
 			.each(function() {
 				var $calendarElement = $(this);
@@ -212,7 +214,19 @@ $.fn.zabuto_calendar = function(options) {
 						checkEvents($calendarElement,
 								dateInitObj.getFullYear(), dateInitObj
 										.getMonth());
+						
+						
 					}
+					var daycheck = $('.day');
+					var today =new Date();
+				for(var i=0; i<daycheck.length;i++){
+				if(new Date(daycheck[i].id)<today){
+					$(daycheck[i]).prop('disabled', true);
+					$(daycheck[i]).addClass('block');
+
+				};	
+				}
+					
 				}
 
 				function drawTable($calendarElement, $tableObj, year, month) { // 테이블
@@ -228,6 +242,16 @@ $.fn.zabuto_calendar = function(options) {
 					$tableObj = appendDaysOfMonth($calendarElement, $tableObj,
 							year, month);
 					checkEvents($calendarElement, year, month);
+					var daycheck = $('.day');
+					var today =new Date();
+				for(var i=0; i<daycheck.length;i++){
+				if(new Date(daycheck[i].id)<today){
+					$(daycheck[i]).prop('disabled', true);
+					$(daycheck[i]).addClass('block');
+
+				};	
+				}
+					
 					return $tableObj;
 				}
 
@@ -405,8 +429,7 @@ $.fn.zabuto_calendar = function(options) {
 									}
 								}
 
-								var $dowElement = $('<td id="' + dateId
-										+ '"></td>');
+								var $dowElement = $('<td ></td>');
 								$dowElement.append($dayElement);
 
 								$dowElement.data('date', dateAsString(year,

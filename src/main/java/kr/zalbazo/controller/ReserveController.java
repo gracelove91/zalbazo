@@ -63,10 +63,10 @@ public class ReserveController {
 	    
 	    @GetMapping(value = "/reserve.do", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	    @ResponseBody
-	    public Map reservecheck(@RequestParam String date) throws Exception {
+	    public Map reservecheck(@RequestParam String date, @RequestParam String hospitalId) throws Exception {
 	    	
 	    	Map<String, Object> dateMap = new HashMap<String, Object>();
-	    	dateMap.put("date",rs.getTime(date));
+	    	dateMap.put("date",rs.getTime(date,hospitalId));
 	    	
 			return dateMap;
 	    	

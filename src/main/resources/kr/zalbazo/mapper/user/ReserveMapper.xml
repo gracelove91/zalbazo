@@ -11,7 +11,7 @@
     
     select TO_CHAR(Rdate,'HH24:MI') from reserve 
 	where rdate BETWEEN (#{date}) and TO_DATE(#{date})+1
-    
+    and hospital_id = #{hospitalId} 
     
     </select>
 

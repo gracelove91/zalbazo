@@ -19,7 +19,7 @@
 	<div class="col-11">
 	<br>
     <h2>${useremail} 님의 마이페이지</h2>
-    <p>방가방가링~★</p>
+    <p>환영합니다!</p>
     </div>
 </div>
 
@@ -35,7 +35,7 @@
 		    </div>
 		  </div>
 		  
-		  <div class="col-8" style="border: 2px solid #25ccf7;">
+		  <div class="col-8">
 		    <div class="tab-content" id="v-pills-tabContent">
 		    
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">

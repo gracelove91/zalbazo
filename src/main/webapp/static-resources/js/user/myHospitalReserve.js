@@ -22,10 +22,6 @@ $(document).ready(function() {
 	var modalStatusBtn = modal.find("button[id='modalStatusBtn']");
 	
 	var reserveId = $(this).attr("data-no");
-	
-	showList(userEmail);
-	
-	function showList(userEmail) {
 		
 		MyHospitalReserveService.getHospitalReserveList(userEmail, function(list) {
 			
@@ -36,83 +32,94 @@ $(document).ready(function() {
 				return;
 			}
 			
+			$('#my-calendar').on('click', '.day', function(e) {
+				var date = $(this).attr('id');
+				$('.day').removeClass("selected");
+				$(this).addClass("selected");
+				
 			for(var i = 0, len = list.length||0; i < len; i++) {
-				console.log(list[i]);
+				var reserveDate = MyHospitalReserveService.displayTime(list[i].rdate).substring(0,10);
 				
-				if(list[i].status == "리뷰 완료") {
-					
-					str += "<tr>";
-					
-					str += "<th scope='row' class='mobile' style='width:80px; text-align:center;'>"+ list[i].reserveId +"</th>";
-					str += "<td style='text-align: center;'>";
-					str += "  <a class='move' style='color : #000000;' href='#'>"+ MyHospitalReserveService.displayTime(list[i].rdate) +"</a>";
-					str += "</td>";
-					
-					str += "<td style='text-align: center;'>";
-					str += "  <a class='move' style='color : #000000;'>"+ list[i].aname +"</a>";
-					str += "</td>";
-					
-					str += "<td style='text-align: center;'>";
-					str += "  <a class='move' style='color : #000000;'>"+ list[i].userEmail +"</a>";
-					str += "</td>";
-					
-					str += "<td style='text-align: center;'>";
-					str += "  <a class='move' style='color : #000000;'>"+ list[i].status +"</a>";
-					str += "</td>";
-					
-					str += "<td style='text-align: center;'>";
-					str += "  <a class='move' style='color : #000000;'>";
-/*					str += "  <button class='status' id='status' data-no='"+ list[i].reserveId +"' style='font-size:14px'>상태 변경</button></a>";*/
-					str += "</td>";
-					
-					str += "<td style='text-align: center;'>";
-					str += "  <a class='move' style='color : #000000;'>";
-/*					str += "  <button class='delete' id='delete' data-no='"+ list[i].reserveId +"' style='font-size:14px'>X</button></a>";*/
-					str += "</td>";
-					
-					str += "</tr>";
-					
-				} else{
-					
-				str += "<tr>";
-				
-				str += "<th scope='row' class='mobile' style='width:80px; text-align:center;'>"+ list[i].reserveId +"</th>";
-				str += "<td style='text-align: center;'>";
-				str += "  <a class='move' style='color : #000000;' href='#'>"+ MyHospitalReserveService.displayTime(list[i].rdate) +"</a>";
-				str += "</td>";
-				
-				str += "<td style='text-align: center;'>";
-				str += "  <a class='move' style='color : #000000;'>"+ list[i].aname +"</a>";
-				str += "</td>";
-				
-				str += "<td style='text-align: center;'>";
-				str += "  <a class='move' style='color : #000000;'>"+ list[i].userEmail +"</a>";
-				str += "</td>";
-				
-				str += "<td style='text-align: center;'>";
-				str += "  <a class='move' style='color : #000000;'>"+ list[i].status +"</a>";
-				str += "</td>";
-				
-				str += "<td style='text-align: center;'>";
-				str += "  <a class='move' style='color : #000000;'>";
-				str += "  <button class='btn btn-outline-secondary btn-sm status' id='status' data-no='"+ list[i].reserveId +"' style='font-size:15px'>상세보기</button></a>";
-				str += "</td>";
-				
-				str += "<td style='text-align: center;'>";
-				str += "  <a class='move' style='color : #000000;'>";
-				str += "  <button class='btn btn-outline-danger btn-sm delete' id='delete' data-no='"+ list[i].reserveId +"' style='font-size:15px'>예약삭제</button></a>";
-				str += "</td>";
-				
-				str += "</tr>";
-				}
+					if(date.toString() == reserveDate) {
+						console.log(list[i]);
+						
+						if(list[i].status == "리뷰 완료") {
+							
+							str += "<tr>";
+							
+							str += "<th scope='row' class='mobile' style='width:80px; text-align:center;'>"+ list[i].reserveId +"</th>";
+							str += "<td style='text-align: center;'>";
+							str += "  <a class='move' style='color : #000000;' href='#'>"+ MyHospitalReserveService.displayTime(list[i].rdate) +"</a>";
+							str += "</td>";
+							
+							str += "<td style='text-align: center;'>";
+							str += "  <a class='move' style='color : #000000;'>"+ list[i].aname +"</a>";
+							str += "</td>";
+							
+							str += "<td style='text-align: center;'>";
+							str += "  <a class='move' style='color : #000000;'>"+ list[i].userEmail +"</a>";
+							str += "</td>";
+							
+							str += "<td style='text-align: center;'>";
+							str += "  <a class='move' style='color : #000000;'>"+ list[i].status +"</a>";
+							str += "</td>";
+							
+							str += "<td style='text-align: center;'>";
+							str += "  <a class='move' style='color : #000000;'>";
+							/*					str += "  <button class='status' id='status' data-no='"+ list[i].reserveId +"' style='font-size:14px'>상태 변경</button></a>";*/
+							str += "</td>";
+							
+							str += "<td style='text-align: center;'>";
+							str += "  <a class='move' style='color : #000000;'>";
+							/*					str += "  <button class='delete' id='delete' data-no='"+ list[i].reserveId +"' style='font-size:14px'>X</button></a>";*/
+							str += "</td>";
+							
+							str += "</tr>";
+							
+						} else{
+							
+							str += "<tr>";
+							
+							str += "<th scope='row' class='mobile' style='width:80px; text-align:center;'>"+ list[i].reserveId +"</th>";
+							str += "<td style='text-align: center;'>";
+							str += "  <a class='move' style='color : #000000;' href='#'>"+ MyHospitalReserveService.displayTime(list[i].rdate) +"</a>";
+							str += "</td>";
+							
+							str += "<td style='text-align: center;'>";
+							str += "  <a class='move' style='color : #000000;'>"+ list[i].aname +"</a>";
+							str += "</td>";
+							
+							str += "<td style='text-align: center;'>";
+							str += "  <a class='move' style='color : #000000;'>"+ list[i].userEmail +"</a>";
+							str += "</td>";
+							
+							str += "<td style='text-align: center;'>";
+							str += "  <a class='move' style='color : #000000;'>"+ list[i].status +"</a>";
+							str += "</td>";
+							
+							str += "<td style='text-align: center;'>";
+							str += "  <a class='move' style='color : #000000;'>";
+							str += "  <button class='btn btn-outline-secondary btn-sm status' id='status' data-no='"+ list[i].reserveId +"' style='font-size:15px'>상세보기</button></a>";
+							str += "</td>";
+							
+							str += "<td style='text-align: center;'>";
+							str += "  <a class='move' style='color : #000000;'>";
+							str += "  <button class='btn btn-outline-danger btn-sm delete' id='delete' data-no='"+ list[i].reserveId +"' style='font-size:15px'>예약삭제</button></a>";
+							str += "</td>";
+							
+							str += "</tr>";
+						}
+						
+					} // 날짜비교
 				
 			} // for
-			
 			myreservelist.html(str);
+			str = "";
+
+			}); // my-calendar click
 			
 		}); // getHospitalReserveList
 		
-	} // showList
 	
 	myreservelist.on("click", ".status", function(list, e) {
 		

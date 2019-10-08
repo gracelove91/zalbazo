@@ -127,12 +127,12 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Reply</label>
-                    <input class="form-control" name='body' value='new!'>
+                    <input class="form-control" name='body' value=''>
                 </div>
 
                 <div class="form-group">
                     <label>Replyer</label>
-                    <input class="form-control" name='userEmail' value='dummy@gmail.com'>
+                    <input class="form-control" id='userRemail' name='userEmail' value='' readonly>
                 </div>
 
                 <div class="form-group">
@@ -155,7 +155,7 @@
 
 <script>
 $(document).ready(function () {
-
+	
     var contentIdValue = '<c:out value="${content.contentId}"/>';
     console.log(contentIdValue);
     var bodyUL = $(".list-group-flush");
@@ -256,7 +256,7 @@ $(document).ready(function () {
 
     var modal = $(".modal");
     var modalInputBody = modal.find("input[name='body']");
-    var modalInputUserEmail = modal.find("input[name='userEmail']");
+    var modalInputUserEmail = modal.find("input[id='userRemail']");
     var modalInputCreatedDate = modal.find("input[name='createdDate']");
 
     var modalModBtn = $("#modalModBtn");
@@ -266,7 +266,7 @@ $(document).ready(function () {
 
     $("#addReplyBtn").on("click", function (e) {
 
-        modal.find("input").val("");
+        modal.find("input[name='body']").val("");
         modalInputCreatedDate.closest("div").hide();
         modal.find("button[id != 'modalCloseBtn']").hide();
 
@@ -276,6 +276,16 @@ $(document).ready(function () {
     });
 
     modalRegisterBtn.on("click", function (e) {
+    	
+    	if(modalInputUserEmail.val() == null || modalInputUserEmail.val() == "") {
+    		alert("로그인 후 댓글작성이 가능합니다.");
+    		return;
+    	}
+    	
+    	if(modalInputBody.val().trim() == null || modalInputBody.val().trim() == "") {
+    		alert("내용을 입력하세요.");
+    		return;
+    	}
 
         var body = {
             body: modalInputBody.val(),

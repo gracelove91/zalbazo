@@ -35,6 +35,7 @@ public class SearchController {
 		//병원별 라벨 값 세팅
 		for (int i = 0; i < list.size(); i++) {
 			Hospital hospital = list.get(i);
+			hospital.setAttachList(hospitalMapper.picOne(hospital.getHospitalId()));
 			hospital.setLabel(hospitalMapper.labelList(hospital.getHospitalId()));
 		}
 
@@ -53,6 +54,7 @@ public class SearchController {
 		List<Hospital> list = service.list(keyword); //라벨 문자열배열을 쿼리문으로 짜기 쉽게 리스트로 변환  
 		for (int i = 0; i < list.size(); i++) {
 			Hospital hospital = list.get(i);
+			hospital.setAttachList(hospitalMapper.picOne(hospital.getHospitalId()));
 			hospital.setLabel(hospitalMapper.labelList(hospital.getHospitalId()));
 		}
 		

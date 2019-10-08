@@ -10,6 +10,7 @@ import kr.zalbazo.mapper.hospital.HospitalMapper;
 import kr.zalbazo.model.hospital.Hospital;
 import kr.zalbazo.model.hospital.Label;
 import kr.zalbazo.model.pic.AttachFileDTO;
+import kr.zalbazo.model.user.User;
 import lombok.extern.log4j.Log4j;
 
 @Log4j

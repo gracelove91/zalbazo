@@ -3,6 +3,7 @@ package kr.zalbazo.controller.content;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,7 +71,7 @@ public class CommunityController {
     }
 
     @GetMapping({"/get", "/modify"})
-    public void detail(@RequestParam("contentId") Long contentId, Model model, @ModelAttribute("cri") Criteria cri){
+    public void detail(@RequestParam("contentId") Long contentId, Model model, @ModelAttribute("cri") Criteria cri, Principal principal){
         model.addAttribute("content", service.get(contentId));
     }
     

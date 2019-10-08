@@ -59,6 +59,7 @@
 <br> 
 <div class="col-md-6 col-md-offset-6 col-md-pull-6" id='reservetime' style="font-family: 돋움체; font-weight: bold; font-size: 2.0em; ">예약시간</div>
 <br>
+<textarea id='note' name='name' style=" width:80%; height:100px" ></textarea>
   </div>
 <h3>동물선택</h3>
 <ul class="animallist">

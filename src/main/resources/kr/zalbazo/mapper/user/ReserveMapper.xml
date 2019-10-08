@@ -6,6 +6,14 @@
         insert into RESERVE (RESERVE_ID, NOTE, RDATE, ANIMAL_ID, HOSPITAL_ID, STATUS,USER_EMAIL)
         values (RESERVE_SEQ.nextval, #{note}, #{rdate}, #{animalId}, #{hospitalId}, '진료 전', #{userEmail})
     </insert>
+    
+    <select id="readTime" resultType="String">
+    
+    select TO_CHAR(Rdate,'HH24:MI') from reserve 
+	where rdate BETWEEN (#{date}) and TO_DATE(#{date})+1
+    
+    
+    </select>
 
 </mapper>
 

@@ -82,12 +82,12 @@
            return false;
        }
      
-      
-       if(obj.sex.value == '') {
-           alert('성별을 선택하세요');
-           obj.sex.focus();
-           return false;
-       }
+       if($(':radio[name="sex"]:checked').length < 1){
+    	    alert('성별을 선택하세요');
+    	    obj.sex[0].focus();
+    	    return false;
+    	}
+       
      
        if(obj.note.value == '') {
            alert('자기소개를 입력하세요');

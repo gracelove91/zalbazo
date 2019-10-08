@@ -4,7 +4,6 @@
 
 <%@include file="includes/header.jsp" %>
 
-
 <title>자주하는 질문</title>
 
  <head>             

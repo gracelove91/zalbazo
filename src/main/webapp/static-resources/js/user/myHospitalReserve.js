@@ -34,6 +34,48 @@ $(document).ready(function() {
 			for(var i = 0, len = list.length||0; i < len; i++) {
 				console.log(list[i]);
 				
+				if(list[i].status == "리뷰 완료") {
+					
+					str += "<tr>";
+					
+					str += "<th scope='row' class='mobile' style='width:80px; text-align:center;'>"+ list[i].reserveId +"</th>";
+					str += "<td style='text-align: center;'>";
+					str += "  <a class='move' style='color : #000000;' href='#'>"+ MyHospitalReserveService.displayTime(list[i].rdate) +"</a>";
+					str += "</td>";
+					
+					str += "<td style='text-align: center;'>";
+					str += "  <a class='move' style='color : #000000;'>"+ list[i].aname +"</a>";
+					str += "</td>";
+					
+					str += "<td style='text-align: center;'>";
+					str += "  <a class='move' style='color : #000000;'>"+ list[i].age +"</a>";
+					str += "</td>";					
+
+					str += "<td style='text-align: center;'>";
+					str += "  <a class='move' style='color : #000000;'>"+ list[i].sex +"</a>";
+					str += "</td>";	
+					
+					str += "<td style='text-align: center;'>";
+					str += "  <a class='move' style='color : #000000;'>"+ list[i].type +"</a>";
+					str += "</td>";						
+					
+					str += "<td style='text-align: center;'>";
+					str += "  <a class='move' style='color : #000000;'>"+ list[i].userEmail +"</a>";
+					str += "</td>";
+					
+					str += "<td style='text-align: center;'>";
+					str += "  <a class='move' style='color : #000000;'>"+ list[i].status +"</a>";
+					str += "</td>";
+					
+					str += "<td style='text-align: center;'>";
+					str += "  <a class='move' style='color : #000000;'>";
+/*					str += "  <button class='status' id='status' data-no='"+ list[i].reserveId +"' style='font-size:14px'>상태 변경</button></a>";*/
+					str += "</td>";
+					
+					str += "</tr>";
+					
+				} else{
+					
 				str += "<tr>";
 				
 				str += "<th scope='row' class='mobile' style='width:80px; text-align:center;'>"+ list[i].reserveId +"</th>";
@@ -44,6 +86,18 @@ $(document).ready(function() {
 				str += "<td style='text-align: center;'>";
 				str += "  <a class='move' style='color : #000000;'>"+ list[i].aname +"</a>";
 				str += "</td>";
+				
+				str += "<td style='text-align: center;'>";
+				str += "  <a class='move' style='color : #000000;'>"+ list[i].age +"</a>";
+				str += "</td>";					
+
+				str += "<td style='text-align: center;'>";
+				str += "  <a class='move' style='color : #000000;'>"+ list[i].sex +"</a>";
+				str += "</td>";	
+				
+				str += "<td style='text-align: center;'>";
+				str += "  <a class='move' style='color : #000000;'>"+ list[i].type +"</a>";
+				str += "</td>";		
 				
 				str += "<td style='text-align: center;'>";
 				str += "  <a class='move' style='color : #000000;'>"+ list[i].userEmail +"</a>";
@@ -59,6 +113,7 @@ $(document).ready(function() {
 				str += "</td>";
 				
 				str += "</tr>";
+				}
 				
 			} // for
 			

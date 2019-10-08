@@ -27,5 +27,7 @@ public class HospitalReviewVO {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	private Date createdDate;
 	private Long categoryId;
+	
+	private Long reserveId;
 
 }

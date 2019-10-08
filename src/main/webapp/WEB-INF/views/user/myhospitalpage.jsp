@@ -204,6 +204,9 @@ img{
 				           <th scope="col" class="mobile" style="width:80px; text-align:center;">No.</th>
 				           <th scope="col" class="mobile" style="text-align:center;">예약 시간</th>
 				           <th scope="col" class="mobile" style="text-align:center;">동물 이름</th>
+				           <th scope="col" class="mobile" style="text-align:center;">나이</th>
+				           <th scope="col" class="mobile" style="text-align:center;">성별</th>
+				           <th scope="col" class="mobile" style="text-align:center;">종</th>
 				           <th scope="col" class="mobile" style="text-align:center;">Email</th>
 				           <th scope="col" class="mobile" style="text-align:center;">진행 상태</th>
 				           <th scope="col" class="mobile" style="width:100px; text-align:center;"></th>
@@ -223,6 +226,18 @@ img{
 						  <a class='move' style='color : #000000;'>동물 이름</a>
 						</td>
 						
+						<td style='text-align: center;'>
+						  <a class='move' style='color : #000000;'>나이</a>
+						</td>
+
+						<td style='text-align: center;'>
+						  <a class='move' style='color : #000000;'>성별</a>
+						</td>												
+
+						<td style='text-align: center;'>
+						  <a class='move' style='color : #000000;'>종</a>
+						</td>
+												
 						<td style='text-align: center;'>
 						  <a class='move' style='color : #000000;'>Email</a>
 						</td>

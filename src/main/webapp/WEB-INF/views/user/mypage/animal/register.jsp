@@ -30,10 +30,10 @@
             </div>
 			<div class="form-group">
               <label>성별</label>
-				<div>             
-              <input type="radio"  id="sex" name="sex"  value="남" >남&nbsp;&nbsp;&nbsp;
-              <input type="radio"  id="sex" name="sex"  value="여" >여&nbsp;&nbsp;&nbsp;
-              <input type="radio"  id="sex" name="sex"  value="중성" >중성
+			  <div>             
+	              <input type="radio"  id="sex" name="sex"  value="남" >남&nbsp;&nbsp;&nbsp;
+	              <input type="radio"  id="sex" name="sex"  value="여" >여&nbsp;&nbsp;&nbsp;
+	              <input type="radio"  id="sex" name="sex"  value="중성" >중성
               </div>
             </div>
 			<div class="form-group">
@@ -53,7 +53,7 @@
                <textarea class="form-control" id="note" name="note" placeholder="내용을 입력하세요." style="height: 320px;"></textarea>
             </div>
              <input type="hidden" id="userEmail" name="userEmail" value="${userEmail}">
-            <button class="btn btn-primary pull-right" id="regBtn" name="regBtn" >글 쓰기</button>
+            <button class="btn btn-primary pull-right" id="regBtn" name="regBtn" >등록하기</button>
           </form>
           </div>
           <div class="col-1"></div>
@@ -70,27 +70,38 @@
    function fun2() {
        var obj = document.frm;
        
+       if(obj.weight.value < 0 || obj.weight.value == '') {
+    	   alert('몸무게를 입력하세요');
+    	   obj.weight.focus();
+    	   return false;
+       }
+       
+       if(obj.age.value < 0 || obj.age.value == '') {
+    	   alert('나이를 입력하세요');
+    	   obj.age.focus();
+    	   return false;
+       }
+       
        if(obj.type.value == '') {
            alert('타입을 입력하세요');
            obj.type.focus();
            return false;
        }
 
-       if(obj.name.value == '') {
+       if(obj.aname.value == '') {
            alert('이름을 입력하세요');
            obj.aName.focus();
            return false;
        }
      
-      
-       if(obj.sex.value == '') {
+       if(obj.sex.value != '남' || obj.sex.value != '여' || obj.sex.value != '중성') {
            alert('성별을 선택하세요');
            obj.sex.focus();
            return false;
        }
      
        if(obj.note.value == '') {
-           alert('자기소개를 입력하세요');
+           alert('참고사항을 입력하세요');
            obj.note.focus();
            return false;
        }

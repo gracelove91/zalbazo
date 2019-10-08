@@ -289,12 +289,6 @@ $(document).ready(function () {
 
     modalRegisterBtn.on("click", function (e) {
     	
-    	
-    	if(modalInputUserEmail.val() == null || modalInputUserEmail.val() == "") {
-    		alert("로그인 후 댓글작성이 가능합니다.");
-    		return;
-    	}
-    	
     	if(modalInputBody.val().trim() == null || modalInputBody.val().trim() == "") {
     		alert("내용을 입력하세요.");
     		return;
@@ -317,25 +311,37 @@ $(document).ready(function () {
     });
 
     $(".list-group-flush").on("click", "li", function (e) {
-
-        var replyid = $(this).data("replyid");
-
-        replyService.get(replyid, function (body) {
-
-            modalInputBody.val(body.body);
-            modalInputUserEmail.val(body.userEmail).attr("readonly", "readonly"); // 이것도 readonly처리 해야할까?
-            modalInputCreatedDate.val(replyService.displayTime(body.createdDate)).attr("readonly", "readonly");
-            modal.data("replyid", body.replyid);
-
-            modal.find("button[id != 'modalCloseBtn']").hide();
-            modalModBtn.show();
-            modalRemoveBtn.show();
-
-            $(".modal").modal("show");
-        });
-
-        console.log(replyid);
-    });
+	    
+    	var replyid = $(this).data("replyid");
+    	
+    	userInfoService.getUser(function(data){
+    		
+	        replyService.get(replyid, function (body) {
+	        	
+	        	if(data.userEmail !== body.userEmail) {
+	        		alert("본인만 가능");
+	        		return;
+	        	}
+	        	
+	            modalInputBody.val(body.body);
+	            modalInputUserEmail.val(body.userEmail); // 이것도 readonly처리 해야할까?
+	            modalInputCreatedDate.val(replyService.displayTime(body.createdDate)).attr("readonly", "readonly");
+	            modal.data("replyid", body.replyid);
+	
+	            modal.find("button[id != 'modalCloseBtn']").hide();
+	            modalModBtn.show();
+	            modalRemoveBtn.show();
+	
+	            $(".modal").modal("show");
+	        });
+	
+	        console.log(replyid);
+	        
+    	}, function(error) {
+    		alert('로그인이 필요한 서비스입니다.');
+    		return;
+    	});
+    }); // click li
 
     modalModBtn.on("click", function (e) {
 

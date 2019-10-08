@@ -4,7 +4,7 @@
 <mapper namespace="kr.zalbazo.mapper.user.MyHospitalReserveMapper">
 
 	<select id="getHospitalReserveList" resultType="kr.zalbazo.model.user.Reserve">
-		select a.reserve_id, a.rdate, a.animal_id, a.hospital_id, a.status, a.user_email, b.aname, c.name
+		select a.reserve_id, a.rdate, a.hospital_id, a.status, a.user_email, a.animal_id, b.type, b.sex, b.weight, b.age, b.aname, c.name
 		from reserve a, animal b, hospital c, zalbazo_user d
 		where a.animal_id = b.animal_id
 		and c.hospital_id = a.hospital_id
@@ -14,7 +14,7 @@
 	</select>
 	
 	<select id="get" resultType="kr.zalbazo.model.user.Reserve">
-    	select a.reserve_id, a.rdate, a.animal_id, a.hospital_id, a.status, a.user_email, b.aname, c.name
+    	select a.reserve_id, a.rdate, a.hospital_id, a.status, a.user_email, a.animal_id, b.type, b.sex, b.weight, b.age, b.aname, c.name
 		from reserve a, animal b, hospital c
 		where a.animal_id = b.animal_id
 		and c.hospital_id = a.hospital_id

@@ -16,7 +16,7 @@ $(document).ready(function() {
 		
 		var obj = $('#tt tr');
 		if (count < 2) {
-			if(sft<10){
+			if(sft<10){  //10보다 작을때  0 붙여
 				obj.eq(rowcount).append('<td class="time">' +'0'+ sft + ':' + set + '</td>')
 				obj.eq(rowcount).append('<td class="time">' +'0'+ sft + ':' + sset + '</td>')
 			}
@@ -59,10 +59,7 @@ $(document).ready(function() {
 			
 		}
 	});
-
-	/* $('#tt').on('click','td',function(e){alert($('this').text())}) */
 	
-
 	$('#tt').on('mouseenter', 'td', function(e) {
 		$('td').css('cursor', 'pointer');
 	}) // 마우스커서 바꾸기
@@ -232,6 +229,7 @@ $.fn.zabuto_calendar = function(options) {
 						
 					}
 					var daycheck = $('.day');
+					var dtable = $('.rows');
 					var today =new Date();
 				for(var i=0; i<daycheck.length;i++){
 				if(new Date(daycheck[i].id)<today){
@@ -257,11 +255,12 @@ $.fn.zabuto_calendar = function(options) {
 							year, month);
 					checkEvents($calendarElement, year, month);
 					var daycheck = $('.day');
+					var dtable = $('.rows');
 					var today =new Date();
 				for(var i=0; i<daycheck.length;i++){
 				if(new Date(daycheck[i].id)<today){
 					$(daycheck[i]).prop('disabled', true);
-					$(daycheck[i]).addClass('block');
+					$(dtable[i]).addClass('block');
 
 				};	
 				}
@@ -443,7 +442,7 @@ $.fn.zabuto_calendar = function(options) {
 									}
 								}
 
-								var $dowElement = $('<td ></td>');
+								var $dowElement = $('<td class="rows"></td>');
 								$dowElement.append($dayElement);
 
 								$dowElement.data('date', dateAsString(year,

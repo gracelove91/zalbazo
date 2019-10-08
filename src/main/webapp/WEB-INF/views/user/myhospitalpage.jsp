@@ -24,7 +24,7 @@ img{
 	<div class="col-11">
 	<br>
     <h2>${useremail} 님의 병원마이페이지</h2>
-    <p>방가방가링~★</p>
+    <p>환영합니다!</p>
     </div>
 </div>
 
@@ -33,14 +33,13 @@ img{
 		  <div class="col-2">
 		    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 		      <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true" style="padding:5px;">병원정보 수정</a>
-		      <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false" style="padding:5px;">예약 관리</a>
-		      <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="padding:5px;">예약 내역</a>
+		      <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="padding:5px;">예약 관리</a>
 		      <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false" style="padding:5px;">병원 Q&A</a>
 		      <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false" style="padding:5px;">내가 쓴 글</a>
 		    </div>
 		  </div>
 		  
-		  <div class="col-8" style="border: 2px solid #25ccf7;">
+		  <div class="col-8">
 		    <div class="tab-content" id="v-pills-tabContent">
 		    
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab"><!-- 병원정보 수정 -->
@@ -191,11 +190,9 @@ img{
 			        </div>
 		      </div> <!-- 병원정보 수정 -->
 		      
-		      <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
-				예약관리	
-		     </div>
-		     
-		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab"> <!-- 예약내역 -->
+		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab"> <!-- 관리 -->
+					<br>
+					<div id="my-calendar"></div>
 					<br>
 		      		<div class="viewreserve">
 					<table class="table table-striped col-12">
@@ -212,37 +209,7 @@ img{
 				      </thead>
 				      
 				      <tbody class="myreservelist">
-				        <tr>
 				        
-						<th scope='row' class='mobile' style='width:80px; text-align:center;'></th>
-						
-						<td style='text-align: center;'>
-						  <a class='move' style='color : #000000;' href='#'>예약 시간</a>
-						</td>
-						
-						<td style='text-align: center;'>
-						  <a class='move' style='color : #000000;'>동물 이름</a>
-						</td>
-						
-						<td style='text-align: center;'>
-						  <a class='move' style='color : #000000;'>Email</a>
-						</td>
-						
-						<td style='text-align: center;'>
-						  <a class='move' style='color : #000000;'>진행 상태</a>
-						</td>
-						
-						<td style='text-align: center;'>
-						  <a class='move' style='color : #000000;' >
-						  <button class='status' id='status' data-no='#' style='font-size:14px'>상세보기</button></a>
-						</td>
-						
-						<td style='text-align: center;'>
-						  <a class='move' style='color : #000000;' >
-						  <button class='delete' id='delete' data-no='#' style='font-size:14px'>예약삭제</button></a>
-						</td>
-						
-						</tr>	
 				      </tbody>
 				      
 			   		</table> 
@@ -385,6 +352,8 @@ img{
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/info.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcontentFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcontent.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcal.js"></script>
+<link rel="stylesheet" href="/resources/css/MyHospitalReserve.css">
 
 
 <script>

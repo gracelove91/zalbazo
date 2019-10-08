@@ -94,11 +94,12 @@
            return false;
        }
      
-       if(obj.sex.value != '남' || obj.sex.value != '여' || obj.sex.value != '중성') {
-           alert('성별을 선택하세요');
-           obj.sex.focus();
-           return false;
-       }
+       if($(':radio[name="sex"]:checked').length < 1){
+    	    alert('성별을 선택하세요');
+    	    obj.sex[0].focus();
+    	    return false;
+    	}
+       
      
        if(obj.note.value == '') {
            alert('참고사항을 입력하세요');

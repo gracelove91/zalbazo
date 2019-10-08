@@ -204,12 +204,10 @@ img{
 				           <th scope="col" class="mobile" style="width:80px; text-align:center;">No.</th>
 				           <th scope="col" class="mobile" style="text-align:center;">예약 시간</th>
 				           <th scope="col" class="mobile" style="text-align:center;">동물 이름</th>
-				           <th scope="col" class="mobile" style="text-align:center;">나이</th>
-				           <th scope="col" class="mobile" style="text-align:center;">성별</th>
-				           <th scope="col" class="mobile" style="text-align:center;">종</th>
 				           <th scope="col" class="mobile" style="text-align:center;">Email</th>
 				           <th scope="col" class="mobile" style="text-align:center;">진행 상태</th>
-				           <th scope="col" class="mobile" style="width:100px; text-align:center;"></th>
+				           <th scope="col" class="mobile" style="width:108px; text-align:center;"></th>
+				           <th scope="col" class="mobile" style="width:108px; text-align:center;"></th>
 				        </tr>
 				      </thead>
 				      
@@ -227,18 +225,6 @@ img{
 						</td>
 						
 						<td style='text-align: center;'>
-						  <a class='move' style='color : #000000;'>나이</a>
-						</td>
-
-						<td style='text-align: center;'>
-						  <a class='move' style='color : #000000;'>성별</a>
-						</td>												
-
-						<td style='text-align: center;'>
-						  <a class='move' style='color : #000000;'>종</a>
-						</td>
-												
-						<td style='text-align: center;'>
 						  <a class='move' style='color : #000000;'>Email</a>
 						</td>
 						
@@ -248,7 +234,12 @@ img{
 						
 						<td style='text-align: center;'>
 						  <a class='move' style='color : #000000;' >
-						  <button class='status' id='status' data-no='#' style='font-size:14px'>상태 변경</button></a>
+						  <button class='status' id='status' data-no='#' style='font-size:14px'>상세보기</button></a>
+						</td>
+						
+						<td style='text-align: center;'>
+						  <a class='move' style='color : #000000;' >
+						  <button class='delete' id='delete' data-no='#' style='font-size:14px'>예약삭제</button></a>
 						</td>
 						
 						</tr>	
@@ -320,17 +311,41 @@ img{
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">진료 상태 변경</h4>
+				<h4 class="modal-title" id="myModalLabel">예약 상세 보기</h4>
 			</div>
 			<div class="modal-body">
 				<div class="form-group">
-					<label>동물 이름</label>
-					<input class="form-control" name="aname" id="aname" value="동물이름" readonly>
-					<input type='hidden' class="form-control" name="animalId" id="animalId" value="동물id">
-				</div>
-				<div class="form-group">
 					<label>예약 시간</label>
 					<input class="form-control" name="rdate" id="rdate" value="예약시간" readonly>
+				</div>
+				<div class="row">
+					<div class="form-group col-6">
+						<label>종</label>
+						<input class="form-control" name="type" id="type" value="동물종" readonly>
+					</div>
+					<div class="form-group col-6">
+						<label>동물 이름</label>
+						<input class="form-control" name="aname" id="aname" value="동물이름" readonly>
+						<input type='hidden' class="form-control" name="animalId" id="animalId" value="동물id">
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-4">
+						<label>나이(세)</label>
+						<input class="form-control" name="age" id="age" value="나이" readonly>
+					</div>
+					<div class="form-group col-4">
+						<label>몸무게(kg)</label>
+						<input class="form-control" name="weight" id="weight" value="몸무게" readonly>
+					</div>
+					<div class="form-group col-4">
+						<label>성별</label>
+						<input class="form-control" name="sex" id="sex" value="성별" readonly>
+					</div>								
+				</div>
+				<div class="form-group">
+				<label>세부사항</label>
+					<textarea class="form-control note" rows="5" id="note" name="note" placeholder="세부사항" readonly></textarea>
 				</div>
 				<div class="form-group">
 					<label>진료 상태</label>

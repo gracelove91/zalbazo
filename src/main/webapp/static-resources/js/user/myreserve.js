@@ -171,13 +171,13 @@ $(document).ready(function() {
 						return;
 					}
 		 			
-		 			alert("리뷰가 등록되었습니다");
-		 			$(".modal").modal("hide");
-		 			
 		 			myReserveService.insertReview(
 		 					{body:modalInputReview.val(), userEmail:modalInputuserEmail.val(), starPoint:Number(modalInputStars), hospitalId:modalInputHospitalId.val()}
 		 		 			,
 		 		 			function(result) {
+		 		 				
+		 		 				alert("리뷰가 등록되었습니다.");
+		 		 				
 		 		 				// textarea 리셋
 		 		 	            $(".txt").val('');
 		 		 				
@@ -197,7 +197,6 @@ $(document).ready(function() {
 		 						myReserveService.update(rrr, function(result) {
 		 							
 		 							if(result === "success") {
-		 								//alert("진료 상태가 수정되었습니다.");	
 		 								modal.modal("hide");
 		 								location.reload();
 		 							}
@@ -208,7 +207,7 @@ $(document).ready(function() {
 		 			
 		 		}); // modalReviewBtn
 				
-				$(".modal").modal("show");
+				modal.modal("show");
 			});
 			
 		}

@@ -337,6 +337,7 @@
 
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/userFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qnaFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/reviewFunction.js"></script>

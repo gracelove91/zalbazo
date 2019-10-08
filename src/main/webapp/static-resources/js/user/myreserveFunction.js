@@ -69,13 +69,35 @@ var myReserveService = (function() {
 				}
 			}
 		})
-	} // addReview
+	} // insertReview
+	
+	function update(rrr, callback, error) {
+		
+		$.ajax({
+			type : 'put',
+			url : '/myreserve/update',
+			data : JSON.stringify(rrr),
+			contentType : "application/json; charset=utf-8",
+			success : function(result, status, xhr) {
+				if (callback) {
+					callback(result);
+				}
+			},
+			error : function(xhr, status, er) {
+				if(error) {
+					error(er);
+				}
+			}			
+		});
+		
+	} /// update
 	
 	return{
 		displayTime : displayTime,
 		getReserveList : getReserveList,
 		get : get,
-		insertReview : insertReview
+		insertReview : insertReview,
+		update : update
 	}
 	
 })();

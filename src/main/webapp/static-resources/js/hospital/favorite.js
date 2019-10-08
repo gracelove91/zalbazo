@@ -6,7 +6,7 @@ var userEmail = info.find("input[name='userEmail']");
 
 
 h5.on('click','#reserve',function(e){
-	favoriteService.getUser(function(data){
+	userInfoService.getUser(function(data){
 		
 		if(data.role === 'user') {
 			location="../reserve?hospitalId="+hospitalId.val();+"&userEmail="+userEmail.val();
@@ -21,11 +21,11 @@ h5.on('click','#reserve',function(e){
 });  //예약하기 페이지전송
 
 
-h5.on("click", "i", function(e){
+h5.on("click", ".favorite", function(e){
 	
 	var icon = $(this).attr("data-i");
 	
-	favoriteService.getUser(function(data){
+	userInfoService.getUser(function(data){
 		
 		if(data.role === 'user') {
 			/* 아이콘이 흰 하트면.. 검정 하트로 바뀌기 */

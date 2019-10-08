@@ -45,10 +45,10 @@ public class ReserveServiceImpl implements ReserveService{
 	}
 
 	@Override
-	public List<String> getTime(String date) {
+	public List<String> getTime(String date,String hospitalId) {
 		// TODO Auto-generated method stub
 		
-		return reservemapper.readTime(date);
+		return reservemapper.readTime(date,hospitalId);
 	}
 
   

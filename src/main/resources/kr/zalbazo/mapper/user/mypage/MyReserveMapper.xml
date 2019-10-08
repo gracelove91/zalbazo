@@ -30,4 +30,10 @@
 		select * from dual
 	</insert>
 	
+	<update id="update">
+	    update reserve
+		set status = #{status}
+		where reserve_id = #{reserveId}
+    </update>
+	
 </mapper>

@@ -33,16 +33,6 @@ public class FavoriteHospitalController {
 
 	@Autowired
 	private FavoriteHospitalService service;
-	
-    @Autowired
-    private FavoriteHospitalMapper mapper;
-    
-    
-	@GetMapping(value= "/reserve", produces = {
-			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity <User> getUser(Model model, Principal principal) {
-		return new ResponseEntity<>(mapper.getUser(principal.getName()), HttpStatus.OK);
-	}
 
 
 	@PostMapping(value = "/register", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })

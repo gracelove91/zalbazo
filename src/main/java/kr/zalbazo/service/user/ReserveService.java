@@ -10,5 +10,5 @@ public interface ReserveService {
     Reserve get(String email);
     boolean remove(Long reserveId);
     List<Reserve> getList();
-    List<String> getTime(String date);
+    List<String> getTime(String date, String hospitalId);
 }

@@ -3,9 +3,6 @@ $(document).ready(function () {
 var info = $(".info");
 var hospitalId = info.find("input[name='hospitalId']");
 var userEmail = info.find("input[name='userEmail']");
-var fh = $(".fav");
-var bh = $(".favorite");
-
 var h5 = $(".get");
 
 h5.on('click','#reserve',function(e){

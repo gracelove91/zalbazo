@@ -19,7 +19,7 @@
 	<div class="col-11">
 	<br>
     <h2>${useremail} 님의 마이페이지</h2>
-    <p>환영합니다!</p>
+    <p>환영합니다!!</p>
     </div>
 </div>
 

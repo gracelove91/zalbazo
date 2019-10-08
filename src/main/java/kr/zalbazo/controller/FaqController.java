@@ -23,7 +23,6 @@ public class FaqController {
 	public String list() {
 		
 		return "faq";
-		
 	}
 	
 	

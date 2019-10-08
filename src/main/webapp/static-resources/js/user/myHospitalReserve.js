@@ -132,7 +132,7 @@ $(document).ready(function() {
 			modalInputSex.val(result.sex);
 			modalInputAge.val(result.age);
 			modalInputWeight.val(result.weight);
-			modalInputNote.val("!!!!!");
+			modalInputNote.val(result.note);
 
 			if(modalInputStatus.val(result.status).val() == "진료 전") {
 				modalInputStatusBefore.prop("checked", true);

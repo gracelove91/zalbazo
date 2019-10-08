@@ -13,16 +13,31 @@ $(document).ready(function() {
 	eft = parseInt(eft); // end 앞넘버값
 
 	for (sft, count, rowcount; sft < eft; sft++, count++) {
+		
 		var obj = $('#tt tr');
 		if (count < 2) {
+			if(sft<10){
+				obj.eq(rowcount).append('<td class="time">' +'0'+ sft + ':' + set + '</td>')
+				obj.eq(rowcount).append('<td class="time">' +'0'+ sft + ':' + sset + '</td>')
+			}
+			else{
 			obj.eq(rowcount).append('<td class="time">' + sft + ':' + set + '</td>')
 			obj.eq(rowcount).append('<td class="time">' + sft + ':' + sset + '</td>')
 		}
+		}
 
 		if (count == 2) {
+			
+			if(sft<10){
+				$('#tt').append(
+						'<tr><td class="time">' +'0'+ sft + ':' + set + '</td><td class="time">' +'0'+ sft + ':' + sset
+								+ '</td></tr>')
+			}
+			else{
 			$('#tt').append(
 					'<tr><td class="time">' + sft + ':' + set + '</td><td class="time">' + sft + ':' + sset
 							+ '</td></tr>')
+		}
 			rowcount++;
 			count = 0;
 

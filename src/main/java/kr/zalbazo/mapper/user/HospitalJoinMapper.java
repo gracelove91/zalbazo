@@ -8,9 +8,9 @@ import kr.zalbazo.model.pic.AttachFileDTO;
 
 public interface HospitalJoinMapper {
 	
-    void hospitalInfoInsert(Hospital hospital);
+    void infoInsert(Hospital hospital);
     void labelInsert(Label label);
-    void hospitalPicInsert(AttachFileDTO attachFile);
+    void picInsert(AttachFileDTO attachFile);
     
     int update(Hospital hospital);
     

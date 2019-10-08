@@ -11,4 +11,6 @@ public interface MyHospitalReserveMapper {
 	public Reserve get(Long reserveId);
 
 	public int update(Reserve reserveId);
+	
+	public int delete(Long reserveId);
 }

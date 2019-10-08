@@ -12,4 +12,6 @@ public interface MyReserveService {
 	public Reserve get(Long reserveId, String userEmail);
 	
 	public int insertReview(HospitalReviewVO hospitalReviewVO);
+	
+	public int update(Reserve reserve);
 }

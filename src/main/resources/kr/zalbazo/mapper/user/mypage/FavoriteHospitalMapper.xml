@@ -33,11 +33,4 @@
 		#{hospitalId}
 	</select>
 	
-	<select id="getUser" resultType="kr.zalbazo.model.user.User">
-	    select *
-		from zalbazo_user
-		where user_email = #{userEmail}
-	</select>
-
-
 </mapper>

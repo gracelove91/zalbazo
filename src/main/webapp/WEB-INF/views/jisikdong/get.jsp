@@ -148,7 +148,7 @@
 </body>
 <!-- 댓글 모달 끝 -->
 <script type="text/javascript" src="${ctx}/resources/js/content/replyFunction.js"></script>
-
+<script type="text/javascript" src="${ctx}/resources/js/user/userFunction.js"></script>
 <script>
 $(document).ready(function () {
 
@@ -263,17 +263,36 @@ $(document).ready(function () {
     var modalCloseBtn = $("#modalCloseBtn");
 
     $("#addReplyBtn").on("click", function (e) {
+    	
+    	userInfoService.getUser(function(data){
+        	
+        	if(data.role === 'user' || data.role === 'hospital') {
+        		
+        		modal.find("input[name='body']").val("");
+                modalInputCreatedDate.closest("div").hide();
+                modal.find("button[id != 'modalCloseBtn']").hide();
+                modalInputUserEmail.val(data.userEmail);
 
-        modal.find("input").val("");
-        modalInputCreatedDate.closest("div").hide();
-        modal.find("button[id != 'modalCloseBtn']").hide();
+                modalRegisterBtn.show();
 
-        modalRegisterBtn.show();
+                $(".modal").modal("show");
+        		
+        	}
+        	
+        }, function(error) {
+    		alert('로그인이 필요한 서비스입니다.');
+    		return;
+    	});
+        
+    }); // 댓글달기 클릭
 
-        $(".modal").modal("show");
-    });
 
     modalRegisterBtn.on("click", function (e) {
+    	
+    	if(modalInputBody.val().trim() == null || modalInputBody.val().trim() == "") {
+    		alert("내용을 입력하세요.");
+    		return;
+    	}
 
         var body = {
             body: modalInputBody.val(),
@@ -292,25 +311,37 @@ $(document).ready(function () {
     });
 
     $(".list-group-flush").on("click", "li", function (e) {
-
-        var replyid = $(this).data("replyid");
-
-        replyService.get(replyid, function (body) {
-
-            modalInputBody.val(body.body);
-            modalInputUserEmail.val(body.userEmail).attr("readonly", "readonly"); // 이것도 readonly처리 해야할까?
-            modalInputCreatedDate.val(replyService.displayTime(body.createdDate)).attr("readonly", "readonly");
-            modal.data("replyid", body.replyid);
-
-            modal.find("button[id != 'modalCloseBtn']").hide();
-            modalModBtn.show();
-            modalRemoveBtn.show();
-
-            $(".modal").modal("show");
-        });
-
-        console.log(replyid);
-    });
+	    
+    	var replyid = $(this).data("replyid");
+    	
+    	userInfoService.getUser(function(data){
+    		
+	        replyService.get(replyid, function (body) {
+	        	
+	        	if(data.userEmail !== body.userEmail) {
+	        		alert("본인만 가능");
+	        		return;
+	        	}
+	        	
+	            modalInputBody.val(body.body);
+	            modalInputUserEmail.val(body.userEmail); // 이것도 readonly처리 해야할까?
+	            modalInputCreatedDate.val(replyService.displayTime(body.createdDate)).attr("readonly", "readonly");
+	            modal.data("replyid", body.replyid);
+	
+	            modal.find("button[id != 'modalCloseBtn']").hide();
+	            modalModBtn.show();
+	            modalRemoveBtn.show();
+	
+	            $(".modal").modal("show");
+	        });
+	
+	        console.log(replyid);
+	        
+    	}, function(error) {
+    		alert('로그인이 필요한 서비스입니다.');
+    		return;
+    	});
+    }); // click li
 
     modalModBtn.on("click", function (e) {
 

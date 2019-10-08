@@ -33,6 +33,11 @@ public class MyReserveServiceImpl implements MyReserveService{
 		return myReserveMapper.insertReview(hospitalReviewVO);
 	}
 
+	@Override
+	public int update(Reserve reserve) {
+		return myReserveMapper.update(reserve);
+	}
+
 
 
 }

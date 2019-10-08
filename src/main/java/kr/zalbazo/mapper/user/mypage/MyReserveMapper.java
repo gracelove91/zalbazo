@@ -13,4 +13,7 @@ public interface MyReserveMapper {
 	
 	// 병원리뷰 쓰기
 	public int insertReview(HospitalReviewVO hospitalReviewVO);
+	
+	// 리뷰 작성 시, 상태 변경
+	public int update(Reserve reserveId);
 }

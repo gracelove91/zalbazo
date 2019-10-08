@@ -24,7 +24,7 @@ img{
 	<div class="col-11">
 	<br>
     <h2>${useremail} 님의 병원마이페이지</h2>
-    <p>방가방가링~★</p>
+    <p>환영합니다!</p>
     </div>
 </div>
 
@@ -33,14 +33,13 @@ img{
 		  <div class="col-2">
 		    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 		      <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true" style="padding:5px;">병원정보 수정</a>
-		      <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false" style="padding:5px;">예약 관리</a>
-		      <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="padding:5px;">예약 내역</a>
-		      <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false" style="padding:5px;">동물 관리</a>
+		      <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="padding:5px;">예약 관리</a>
+		      <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false" style="padding:5px;">병원 Q&A</a>
 		      <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false" style="padding:5px;">내가 쓴 글</a>
 		    </div>
 		  </div>
 		  
-		  <div class="col-8" style="border: 2px solid #25ccf7;">
+		  <div class="col-8">
 		    <div class="tab-content" id="v-pills-tabContent">
 		    
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab"><!-- 병원정보 수정 -->
@@ -191,11 +190,9 @@ img{
 			        </div>
 		      </div> <!-- 병원정보 수정 -->
 		      
-		      <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
-				예약관리	
-		     </div>
-		     
-		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab"> <!-- 예약내역 -->
+		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab"> <!-- 관리 -->
+					<br>
+					<div id="my-calendar"></div>
 					<br>
 		      		<div class="viewreserve">
 					<table class="table table-striped col-12">
@@ -206,37 +203,13 @@ img{
 				           <th scope="col" class="mobile" style="text-align:center;">동물 이름</th>
 				           <th scope="col" class="mobile" style="text-align:center;">Email</th>
 				           <th scope="col" class="mobile" style="text-align:center;">진행 상태</th>
-				           <th scope="col" class="mobile" style="width:100px; text-align:center;"></th>
+				           <th scope="col" class="mobile" style="width:108px; text-align:center;"></th>
+				           <th scope="col" class="mobile" style="width:108px; text-align:center;"></th>
 				        </tr>
 				      </thead>
 				      
 				      <tbody class="myreservelist">
-				        <tr>
 				        
-						<th scope='row' class='mobile' style='width:80px; text-align:center;'></th>
-						
-						<td style='text-align: center;'>
-						  <a class='move' style='color : #000000;' href='#'>예약 시간</a>
-						</td>
-						
-						<td style='text-align: center;'>
-						  <a class='move' style='color : #000000;'>동물 이름</a>
-						</td>
-						
-						<td style='text-align: center;'>
-						  <a class='move' style='color : #000000;'>Email</a>
-						</td>
-						
-						<td style='text-align: center;'>
-						  <a class='move' style='color : #000000;'>진행 상태</a>
-						</td>
-						
-						<td style='text-align: center;'>
-						  <a class='move' style='color : #000000;' >
-						  <button class='status' id='status' data-no='#' style='font-size:14px'>상태 변경</button></a>
-						</td>
-						
-						</tr>	
 				      </tbody>
 				      
 			   		</table> 
@@ -244,56 +217,36 @@ img{
 		      </div>
 		      
 		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
-		      	동물 관리
-		      </div>
-		      
-		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
-				<br>
+		      	<br>
 				<nav>
 				  <div class="nav nav-tabs" id="nav-tab" role="tablist">
 				    <a class="nav-item nav-link active" id="nav-a-tab" data-toggle="tab" href="#nav-a" role="tab" aria-controls="nav-a" aria-selected="true">&nbsp;&nbsp;&nbsp;Q&A&nbsp;&nbsp;&nbsp;</a>
-				    <a class="nav-item nav-link" id="nav-b-tab" data-toggle="tab" href="#nav-b" role="tab" aria-controls="nav-b" aria-selected="false">&nbsp;&nbsp;&nbsp;지식동&nbsp;&nbsp;&nbsp;</a>
-				    <a class="nav-item nav-link" id="nav-c-tab" data-toggle="tab" href="#nav-c" role="tab" aria-controls="nav-c" aria-selected="false">&nbsp;&nbsp;&nbsp;댓글&nbsp;&nbsp;&nbsp;</a>
 				  </div>
 				</nav>
 				<hr>
 				<div class="tab-content fade show active" id="nav-tabContent">
 				
 				  <div class="tab-pane fade show active" id="nav-a" role="tabpanel" aria-labelledby="nav-a-tab"> <!-- Q&A -->
-				  
 				  	<div class="qqq">
                     	<div class="card-body primary-font">등록된 Q&A가 없습니다</div> <!-- qna가 생기면 이 부분이 바뀜 -->
                     </div>
                     <br>
 				  </div> <!-- Q&A끝 -->
 				  
-				  <div class="tab-pane fade" id="nav-b" role="tabpanel" aria-labelledby="nav-b-tab">
-				  
-				  <div class="container">
-					  <table class="table table-striped col-12">
-				      	<thead>
-				        	<tr>
-				              <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>
-				              <th scope="col" class="mobile" style="text-align:center;">제목</th>
-				              <th scope="col" class="mobile" style="width:110px; text-align:center;">날짜</th>
-				            </tr>
-				        </thead>
-				        <tbody class="ddd">
-				        	<tr>
-				            	<th scope="row" class="mobile" style="text-align:center;"></th>
-				                <td>
-				                  <a class='move' style="color : #000000;" href=#></a>
-				                </td>
-				                <td class="mobile" style="text-align:center;">
-				                </td>
-				        	</tr>
-				      	</tbody>
-				      </table>
-					</div>
-				  
-				  </div> <!-- 지식동 -->
-				  
-				  <div class="tab-pane fade" id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab">
+				</div>
+		      </div>
+		      
+		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+				<br>
+				<nav>
+				  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+				    <a class="nav-item nav-link active" id="nav-c-tab" data-toggle="tab" href="#nav-c" role="tab" aria-controls="nav-c" aria-selected="false">&nbsp;&nbsp;&nbsp;댓글&nbsp;&nbsp;&nbsp;</a>
+				  </div>
+				</nav>
+				<hr>
+				<div class="tab-content fade show active" id="nav-tabContent">
+				
+				  <div class="tab-pane show active" id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab">
 				  	<ul class="list-group table5">
                     	<li class="list-group-item">
                             <div>
@@ -325,17 +278,41 @@ img{
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">진료 상태 변경</h4>
+				<h4 class="modal-title" id="myModalLabel">예약 상세 보기</h4>
 			</div>
 			<div class="modal-body">
 				<div class="form-group">
-					<label>동물 이름</label>
-					<input class="form-control" name="aname" id="aname" value="동물이름" readonly>
-					<input type='hidden' class="form-control" name="animalId" id="animalId" value="동물id">
-				</div>
-				<div class="form-group">
 					<label>예약 시간</label>
 					<input class="form-control" name="rdate" id="rdate" value="예약시간" readonly>
+				</div>
+				<div class="row">
+					<div class="form-group col-6">
+						<label>종</label>
+						<input class="form-control" name="type" id="type" value="동물종" readonly>
+					</div>
+					<div class="form-group col-6">
+						<label>동물 이름</label>
+						<input class="form-control" name="aname" id="aname" value="동물이름" readonly>
+						<input type='hidden' class="form-control" name="animalId" id="animalId" value="동물id">
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-4">
+						<label>나이(세)</label>
+						<input class="form-control" name="age" id="age" value="나이" readonly>
+					</div>
+					<div class="form-group col-4">
+						<label>몸무게(kg)</label>
+						<input class="form-control" name="weight" id="weight" value="몸무게" readonly>
+					</div>
+					<div class="form-group col-4">
+						<label>성별</label>
+						<input class="form-control" name="sex" id="sex" value="성별" readonly>
+					</div>								
+				</div>
+				<div class="form-group">
+				<label>세부사항</label>
+					<textarea class="form-control note" rows="5" id="note" name="note" placeholder="세부사항" readonly></textarea>
 				</div>
 				<div class="form-group">
 					<label>진료 상태</label>
@@ -375,6 +352,8 @@ img{
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/info.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcontentFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcontent.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcal.js"></script>
+<link rel="stylesheet" href="/resources/css/MyHospitalReserve.css">
 
 
 <script>

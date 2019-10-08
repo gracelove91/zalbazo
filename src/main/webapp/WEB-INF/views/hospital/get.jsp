@@ -113,7 +113,7 @@
             <br>
 <!-- FavoriteHospitalList의 class가 fav여야함 -->
 
-			<p class="h5 heart" style="text-align: center">
+			<p class="h5 get" style="text-align: center">
 				<i class="material-icons" id="reserve" style="cursor: pointer;" href="index">event</i>예약하기
 				<i class="material-icons favorite" data-i="white" id=outlined style="cursor: pointer;">favorite_border</i>즐겨찾기
 			</p>
@@ -337,6 +337,7 @@
 
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/userFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qnaFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/qna.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/reviewFunction.js"></script>

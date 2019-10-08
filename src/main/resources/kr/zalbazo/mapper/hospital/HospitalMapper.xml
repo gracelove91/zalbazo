@@ -11,6 +11,7 @@
 
 	<select id="getList" resultType="kr.zalbazo.model.hospital.Hospital">
 		select * from hospital
+		ORDER BY hospital_id desc
 	</select>
 
 

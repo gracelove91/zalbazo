@@ -8,6 +8,7 @@ $(document).ready(function() {
 	var modalInputRdate = modal.find("input[id='rdate']");
 	var modalInputAname = modal.find("input[id='aname']");
 	var modalReviewDate = modal.find("input[id='reviewDate']");
+	var modalInputReserveId = modal.find("input[id='reserveId']");
 	var modalInputuserEmail = modal.find("input[id='userEmail']");
 	var modalInputReview = modal.find("textarea[id='review']");
 	var modalInputStars = modal.find("i[id='stars']");
@@ -34,6 +35,20 @@ $(document).ready(function() {
 			//console.log(myReserveService.displayTime(list[i].rdate));
 			console.log(list[i]);
 			
+			if(list[i].status != "진료 완료") {
+				
+				str += "<tr>";
+		        str += " <th scope='row' class='mobile' style='width:80px; text-align:center;'>" + list[i].reserveId + "</th>";
+		        str += "	<td style='text-align: center;'><a class='move' style='color : #000000;' href='/hospital/get?hospitalId="+ list[i].hospitalId +"'>"+ list[i].name +"</a></td>";
+		        str += "	<td style='text-align: center;'>"+ myReserveService.displayTime(list[i].rdate) +"</td>";
+		        str += "	<td style='text-align: center;'>"+ list[i].aname +"</td>";
+		        str += "	<td style='text-align: center;'>"+ list[i].status +"</td>";
+		        str += "	<td style='text-align: center;'><a class='move' style='color : #000000;'>";
+/*		        str += "  	<button class='review' id='review' data-id='" + list[i].status + "' data-no='" + list[i].reserveId + "' style='font-size:14px'>리뷰 쓰기</button></a></td>";*/
+		        str += "</tr>";
+				
+			} else {
+				
 	        str += "<tr>";
 	        str += " <th scope='row' class='mobile' style='width:80px; text-align:center;'>" + list[i].reserveId + "</th>";
 	        str += "	<td style='text-align: center;'><a class='move' style='color : #000000;' href='/hospital/get?hospitalId="+ list[i].hospitalId +"'>"+ list[i].name +"</a></td>";
@@ -43,6 +58,8 @@ $(document).ready(function() {
 	        str += "	<td style='text-align: center;'><a class='move' style='color : #000000;'>";
 	        str += "  	<button class='review' id='review' data-id='" + list[i].status + "' data-no='" + list[i].reserveId + "' style='font-size:14px'>리뷰 쓰기</button></a></td>";
 	        str += "</tr>";
+	        
+			}
 		}
 		
 		myreservelist.html(str);
@@ -60,6 +77,9 @@ $(document).ready(function() {
 		} else {
 			
 			myReserveService.get(reserveId, function(result) {
+				
+				console.log(result.reserveId);
+				console.log(reserveId);
 				
 				modalInputName.val(result.name);
 				modalInputHospitalId.val(result.hospitalId);
@@ -151,13 +171,13 @@ $(document).ready(function() {
 						return;
 					}
 		 			
-		 			alert("리뷰가 등록되었습니다");
-		 			$(".modal").modal("hide");
-		 			
 		 			myReserveService.insertReview(
 		 					{body:modalInputReview.val(), userEmail:modalInputuserEmail.val(), starPoint:Number(modalInputStars), hospitalId:modalInputHospitalId.val()}
 		 		 			,
 		 		 			function(result) {
+		 		 				
+		 		 				alert("리뷰가 등록되었습니다.");
+		 		 				
 		 		 				// textarea 리셋
 		 		 	            $(".txt").val('');
 		 		 				
@@ -170,12 +190,24 @@ $(document).ready(function() {
 		 		 	 			str += "<i class='material-icons star' id='star5' name='star5' data-star='5'>star_border</i>";
 
 		 		 	 			starUL.html(str);
+		 		 	 			
+		 						var rrr = {status : '리뷰 완료', reserveId : reserveId};
+		 						
+		 						// 여기서부터 update
+		 						myReserveService.update(rrr, function(result) {
+		 							
+		 							if(result === "success") {
+		 								modal.modal("hide");
+		 								location.reload();
+		 							}
+		 							
+		 						}); // update
 		 		 			}
-		 	 			);
+		 	 			); // insert
 		 			
 		 		}); // modalReviewBtn
 				
-				$(".modal").modal("show");
+				modal.modal("show");
 			});
 			
 		}

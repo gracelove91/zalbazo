@@ -70,11 +70,29 @@ var MyHospitalReserveService = (function() {
 		
 	} /// update
 	
+	function remove(reserveId, callback, error) {
+		$.ajax({
+			type : 'delete',
+			url : '/myhospitalreserve/' + reserveId,
+			success : function(deleteresult, status, xhr) {
+				if (callback) {
+					callback(deleteresult);
+				}
+			},
+			error : function(xhr, status, er) {
+				if(error) {
+					error(er);
+				}
+			}
+		});
+	} // remove
+	
 	return{
 		displayTime : displayTime,
 		getHospitalReserveList : getHospitalReserveList,
 		get : get,
-		update : update
+		update : update,
+		remove : remove
 	}
 	
 })();

@@ -26,4 +26,9 @@ public class Reserve {
 	private String aName; // 동물이름
 	private String name; // 병원 이름
 	
+	private String type;
+	private String sex;
+	private Integer weight;
+	private Integer age;
+	
 }

@@ -11,5 +11,7 @@ public interface MyHospitalReserveService {
 	public Reserve get(Long reserveId);
 	
 	public int update(Reserve reserve);
+	
+	public int delete(Long reserveId);
 
 }

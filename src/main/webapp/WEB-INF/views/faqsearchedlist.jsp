@@ -7,12 +7,17 @@
 
 <title>자주하는 질문</title>
 
- <head>             
-       <style>
+ <head> 
+               
+ <style>
+       
+ 
+       
+       
 		#accordian li{list-style:none;}
 		#accordian li > .question {color: #25ccf7; cursor:pointer;}
 		li > ul{background-color: #25ccf7; display:none;}
-		li > ul >li{ color:black;}
+		li > ul >li{color:black;}
 
     </style>
     
@@ -28,12 +33,10 @@
                 </div>
                 <p class="lead">자주하는 질문들을 모았습니다</p>
                 
-
-					
 					
                     <div class="col-md-10 col-lg-8 col-xl-7 mx-auto" style="float: left; width: 45%;">
                       <form id='searchForm' action="/faq/faq/faqsearchedlist" method='get'>
-                    <input class="form-control form-control-lg" type='text' type="keyword" name='keyword' placeholder="키워드를 입력하세요" value='<c:out value="${pageMaker.cri.keyword}"/>'/>
+                    <input class="form-control form-control-lg" type='text' name='keyword' placeholder="키워드를 입력하세요" />
                     </div>
                         <div  style="float: left; width: 20%;">
                             <button type="submit" class="btn btn-block btn-lg btn-primary">검색하기</button>
@@ -46,32 +49,20 @@
                   <br><br><br>
                 
                 
-                 <c:forEach items="${FaqList2}" var="FaqVO">
-	    		    <p><c:out value="Q : ${FaqVO.question}"/></p>
-				    <p><c:out value="A : ${FaqVO.answer}"/></p>
+                <c:forEach items="${FaqList2}" var="FaqVO">
+	    		    <h4 class="text-primary"><c:out value="${FaqVO.question}"/></h4>
+				  <p class="font-weight-normal"><c:out value="${FaqVO.answer}"/></p>
+				  <br>
 				</c:forEach>  
-					
-
- 
                 </div>
-                </div>
-              </div>
-
-          </section>
+          </section> 
+          
+        
           
 <script>
               
 var searchForm = $("#searchForm");
 $("#searchForm button").on("click", function (e) {
-
-
-    if (!searchForm.find("input[name='keyword']").val()) {
-        alert("키워드를 입력하세요");
-        return false;
-    }
-
-    searchForm.find("input[name='pageNum']").val("1");
-    e.preventDefault();
 
     searchForm.submit();
 });

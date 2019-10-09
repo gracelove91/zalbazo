@@ -26,4 +26,10 @@ public class FaqServiceImpl implements FaqService {
 
 		return mapper.getFaqList2(faq);
 	}
+
+	@Override
+	public List<FaqVO> getFaqListAll() {
+		// TODO Auto-generated method stub
+		return mapper.getFaqListAll();
+	}
 }

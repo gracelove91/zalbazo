@@ -7,26 +7,19 @@
 
 <title>자주하는 질문</title>
 
- <head>  
- 
- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-   <!--     Fonts and icons     -->
-   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />           
- <style>
+ <head>             
+       <style>
        
 .template_faq {
     background: #edf3fe none repeat scroll 0 0;
 }
-
-/* .panel-group {
+.panel-group {
     background: #fff none repeat scroll 0 0;
     border-radius: 3px;
     box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.04);
     margin-bottom: 0;
     padding: 30px;
-} */
-
+}
 #accordion .panel {
     border: medium none;
     border-radius: 0;
@@ -38,10 +31,10 @@
     padding: 0;
 }
 #accordion .panel-title a {
-    background: white none repeat scroll 0 0;
-    border: 1px solid #ddd;;
+    background: #25ccf7 none repeat scroll 0 0;
+    border: 1px solid transparent;
     border-radius: 30px;
-    color: black;
+    color: #fff;
     display: block;
     font-size: 18px;
     font-weight: 600;
@@ -55,11 +48,11 @@
     color: #333;
 }
 #accordion .panel-title a::after, #accordion .panel-title a.collapsed::after {
-    background: #fff none repeat scroll 0 0;
-    border: 1px solid #ddd;
+    background: #ffb900 none repeat scroll 0 0;
+    border: 1px solid transparent;
     border-radius: 50%;
-    box-shadow: none;
-    color: black;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.58);
+    color: #fff;
     content: "";
     font-family: fontawesome;
     font-size: 25px;
@@ -92,10 +85,22 @@
     padding-left: 25px;
 }
 		
+		
+		#accordian li{list-style:none;}
+		#accordian li > .question {color: text-primary; cursor:pointer;}
+		li > ul{display:none;}
+		li > ul >li{ color:text-primary;}
+		
+		
 
-</style> 
+    </style> 
+    	
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    	<!--     Fonts and icons     -->
+    	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
 </head>
-
 
 <section class="feature-area">
     <div class="container">
@@ -104,10 +109,10 @@
                 <div class="page-header mt-3">
                     <h2>FAQ</h2>
                 </div>
-               <p class="lead">자주하는 질문들을 모았습니다</p>
-               
-                <!-- 검색창 -->
-                   <div class="col-md-10 col-lg-8 col-xl-7 mx-auto" style="float: left; width: 45%;">
+                <p class="lead">자주하는 질문들을 모았습니다</p>
+                
+
+               <div class="col-md-10 col-lg-8 col-xl-7 mx-auto" style="float: left; width: 45%;">
 						<form id='searchForm' action="/faq/faq/faqsearchedlist" method='get'>
                     <input class="form-control form-control-lg" type='text' name='keyword' placeholder="키워드를 입력하세요"/>
 					</div>
@@ -116,67 +121,48 @@
 					</div>
                         </form>
                     </div>
-                   </div>
                 </div>
-           </section>
-                
-<br><br>
 
- <div class="container">
-        <div class="row">
-            <div id="main" class="col-md-12">
-                <div class="page-header mt-3">
-					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-						<div class="panel panel-default">
-						
-						<c:forEach items="${FaqList}" var="FaqVO">
-						
-							<div class="panel-heading" role="tab" id="heading">
-								<h4 class="panel-title" >
-									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="true" aria-controls="collapse">
-										${FaqVO.question} 
-									</a>
-								</h4>
-							</div>
-							
-							<div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
-								<div class="panel-body">
-									<p>${FaqVO.answer}</p>
-								</div>
-							  </div>
-							</c:forEach>
-							
-							
-						  </div>
-						</div>
-					</div>
-				</div><!--- END COL -->		
-			</div><!--- END ROW -->			
-          </div>
+                   <br><br><br>
+
+
+
+ <div id="accordian">
+	<ul>
+	 	<c:forEach items="${FaqList}" var="FaqVO">
+			 <li>
+				<div class ="question" style="border:1; font-size:20px;" > <h3 class="text-primary" >${FaqVO.question} </h3></div>
+				<ul>
+					<li><h4>${FaqVO.answer}</h4></li>
+				</ul>
+			</li>
+		</c:forEach>
+	</ul> 
+</div>
+	
+  
+  </div>
+ </section>
+ 
+
+
+
+       
 <script>
               
-
-(function($) {
-	'use strict';
-	
-	jQuery(document).on('ready', function(){
-	
-			$('a.page-scroll').on('click', function(e){
-				var anchor = $(this);
-				$('html, body').stop().animate({
-					scrollTop: $(anchor.attr('href')).offset().top - 50
-				}, 1500);
-				e.preventDefault();
-			});		
-
-	}); 	
-
-				
-})(jQuery);
-
-
-
-
+$(function(){
+	$(".question").click(function(){
+		
+		$("#accordian ul ul").slideUp();
+		
+		$('.ico_ar').css('transform','none');
+		if(!$(this).next().is(":visible"))
+		{
+			$(this).next().slideDown();
+			$(this).find('.ico_ar:eq(0)').css('transform','rotate(180deg)');
+		}
+	})
+})
 
 </script>
               

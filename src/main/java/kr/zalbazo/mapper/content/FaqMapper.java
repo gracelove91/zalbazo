@@ -9,5 +9,5 @@ public interface FaqMapper {
 
 	List<FaqVO> getFaqList(Long faqId);
 	List<FaqVO> getFaqList2(FaqVO faq);
-	
+	List<FaqVO> getFaqListAll();
 }

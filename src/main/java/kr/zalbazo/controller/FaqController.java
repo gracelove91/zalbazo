@@ -17,23 +17,32 @@ public class FaqController {
 	@Autowired
 	FaqService service;
 	
-	public static final long Faq_Id = 2L;
+	public static long Faq_Id; 
+	
+	/*
+	 * @GetMapping("/faq") public String list(Model model, Long faqId, FaqVO
+	 * keyword) {
+	 * 
+	 * faqId = Faq_Id;
+	 * 
+	 * model.addAttribute("FaqList", service.getFaqList(faqId));
+	 * 
+	 * return "faq"; }
+	 */
 	
 	@GetMapping("/faq")
-	public String list() {
+	public String list(Model model) {
+		
+
+		model.addAttribute("FaqList", service.getFaqListAll());
 		
 		return "faq";
 	}
 	
-	
 	@GetMapping("faq/faqsearchedlist")
-	public String searchedlist(Criteria cri, Model model, Long faqId, FaqVO keyword) {
+	public String searchedlist(Model model, Long faqId, FaqVO keyword) {
 	
-	faqId = Faq_Id;
 	
-	System.out.println(faqId);
-	
-	model.addAttribute("FaqList", service.getFaqList(faqId));
 	model.addAttribute("FaqList2", service.getFaqList2(keyword));
 	
 	

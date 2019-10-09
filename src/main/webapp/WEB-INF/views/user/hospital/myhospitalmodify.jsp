@@ -239,7 +239,16 @@ $(document).ready(function(e){
 			alert("병원에 대한 정보를 최소 10자 이상 입력해주세요.");
 			return;
 		}
+
+		if(hTreatStart.toString().trim() === "24:00") {
+			alert("문 여는 시간을 확인해주세요. 24시간 영업의 경우 00:00 - 24:00 으로 해주세요.");
+			return;
+		}
 		
+		if(hTreatEnd.toString().trim() === "00:00") {
+			alert("문 닫는 시간을 확인해주세요. 24시간 영업의 경우 00:00 - 24:00 으로 해주세요.");
+			return;
+		}
 
         var str = "";
 

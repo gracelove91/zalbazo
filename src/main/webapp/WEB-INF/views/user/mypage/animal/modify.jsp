@@ -71,11 +71,7 @@
 		<button  data-oper='list' class="btn btn-info">List</button>
 
 	</form>
-	<footer class="text-center" style="max-width: 920px;">
-		<p>
-			Copyright ⓒ 2018 <b>잘바조</b> All Rights Reserved.
-		</p>
-	</footer> </main>
+	</main>
 
 	<!-- 제이쿼리 자바스크립트 추가하기 -->
 	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>

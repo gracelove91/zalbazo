@@ -4,8 +4,12 @@ import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,12 +61,14 @@ public class ReserveController {
 	    	return result;
 	    }
 	    
-	    @GetMapping("/reserve.do")
+	    @GetMapping(value = "/reserve.do", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	    @ResponseBody
-	    public String reservecheck() {
+	    public Map reservecheck(@RequestParam String date, @RequestParam String hospitalId) throws Exception {
 	    	
+	    	Map<String, Object> dateMap = new HashMap<String, Object>();
+	    	dateMap.put("date",rs.getTime(date,hospitalId));
 	    	
-			return null;
+			return dateMap;
 	    	
 	    }
 }

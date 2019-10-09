@@ -1,9 +1,13 @@
 package kr.zalbazo.controller.user;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +23,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.zalbazo.mapper.user.UserMapper;
 import kr.zalbazo.model.user.User;
 import kr.zalbazo.service.user.UserService;
 import kr.zalbazo.validator.UserValidator;
@@ -31,6 +36,9 @@ import lombok.extern.log4j.Log4j;
 public class UserController {
     @Autowired
     private UserService service;
+    
+	@Autowired
+	UserMapper mapper;
 
     @InitBinder
     public void validator(WebDataBinder webDataBinder){
@@ -122,5 +130,12 @@ public class UserController {
             throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
         }
     }
+    
+    
+	@GetMapping(value= "/get", produces = {
+			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity <User> getUser(Model model, Principal principal) {
+		return new ResponseEntity<>(mapper.getUser(principal.getName()), HttpStatus.OK);
+	}
 
 }

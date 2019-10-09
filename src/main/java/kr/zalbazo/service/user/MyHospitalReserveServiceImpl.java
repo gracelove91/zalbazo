@@ -32,5 +32,10 @@ public class MyHospitalReserveServiceImpl implements MyHospitalReserveService{
 		return myHospitalReserveMapper.update(reserve);
 	}
 
+	@Override
+	public int delete(Long reserveId) {
+		return myHospitalReserveMapper.delete(reserveId);
+	}
+
 
 }

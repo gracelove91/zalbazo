@@ -39,28 +39,30 @@
 <header class="header-area main-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-2" style="padding:0px;">
+            <div class="col-2" style="padding:0px;"><br>
                 <div class="logo-area">
-                    <a href="/index"><img src="/resources/img/bbbaba.png" align="middle" alt="logo" width="280px" height="90px"></a>
+                    <a href="/index"><img src="/resources/img/text_logo.png" align="middle" alt="logo" width="250px" height="90px"></a>
                 </div>
             </div>
-            <div class="col-lg-9" style="padding:0px;">
-                <div class="main-menu">
+            <div class="col-10" style="padding:0px; left:0px; position: absolute;">
+                <div class="main-menu" style="padding:0px;">
                 <br><br>
                     <ul>
-                        <li class="active"><a href="/index">home</a></li>
-                        <li><a href="about.html">about us</a></li>
-                        <li><a href="/jisikdong/list">지식동</a></li>
-                        <li><a href="/community/list">커뮤니티</a></li>
-                        <li><a href="/hospital/list">병원찾기</a></li>
-                        <li><a href="#">pages</a>
+                        <li class="active"><a href="/index">home</a></li>&ensp;
+                        <li><a href="about.html">about us</a></li>&ensp;
+                        <li><a href="/jisikdong/list">지식동</a></li>&ensp;
+                        <li><a href="/community/list">커뮤니티</a></li>&ensp;
+                        <li><a href="/hospital/list">병원찾기</a></li>&ensp;
+                        <li><a href="/faq">FAQ</a></li>
+              
+<!--                         <li><a href="#">pages</a>
                             <ul class="sub-menu">
                                 <li><a href="job-search.html">Job Search</a></li>
                                 <li><a href="job-single.html">Job Single</a></li>
                                 <li><a href="pricing-plan.html">Pricing Plan</a></li>
                                 <li><a href="elements.html">Elements</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li class="menu-btn">
                             <sec:authorize access="isAnonymous()">
                                 <a href="/login" class="login">log in</a>
@@ -80,5 +82,6 @@
             </div>
         </div>
     </div>
+    <br><br>
 </header>
 <!-- Header Area End -->

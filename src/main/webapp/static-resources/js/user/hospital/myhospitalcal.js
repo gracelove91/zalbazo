@@ -1,176 +1,16 @@
 $(document).ready(function() {
-	
-	
-	var sft = start.substr(0, 2);
-	var eft = end.substr(0, 2);
-	var eet = end.substr(3);
-	var rowcount = 0;
-	var count = 0;
-	var set = '00'
-	var sset = '30';
-	sft = parseInt(sft); // start 앞넘버값
-
-	eft = parseInt(eft); // end 앞넘버값
-
-	for (sft, count, rowcount; sft < eft; sft++, count++) {
-		
-		var obj = $('#tt tr');
-		if (count < 2) {
-			if(sft<10){  //10보다 작을때  0 붙여
-				obj.eq(rowcount).append('<td class="time">' +'0'+ sft + ':' + set + '</td>')
-				obj.eq(rowcount).append('<td class="time">' +'0'+ sft + ':' + sset + '</td>')
-			}
-			else{
-			obj.eq(rowcount).append('<td class="time">' + sft + ':' + set + '</td>')
-			obj.eq(rowcount).append('<td class="time">' + sft + ':' + sset + '</td>')
-		}
-		}
-
-		if (count == 2) {
-			
-			if(sft<10){
-				$('#tt').append(
-						'<tr><td class="time">' +'0'+ sft + ':' + set + '</td><td class="time">' +'0'+ sft + ':' + sset
-								+ '</td></tr>')
-			}
-			else{
-			$('#tt').append(
-					'<tr><td class="time">' + sft + ':' + set + '</td><td class="time">' + sft + ':' + sset
-							+ '</td></tr>')
-		}
-			rowcount++;
-			count = 0;
-
-		}
-
-	}
-
-	function setTreatTime(treatStart, treatEnd) {
-		start = treatStart;
-		end = treatEnd;
-	}
-	
-	
 	$("#my-calendar").zabuto_calendar({
-
 		ajax : {
 			url : "show_data.php?grade=1"
-
-			
 		}
 	});
 	
-	$('#tt').on('mouseenter', 'td', function(e) {
-		$('td').css('cursor', 'pointer');
-	}) // 마우스커서 바꾸기
 	$('#my-calendar').on('mouseenter', '.day', function(e) {
 		$('.day').css('cursor', 'pointer');
 	}) // 마우스커서 바꾸기
-	// 날짜입력, 클릭시 색바꿈
-	$('#my-calendar').on('click', '.day', function(e) {
-		var date = $(this).attr('id');
-		$('#reservedate').html("예약날짜 :  " + $(this).attr('id'));
-		$('#reservetime').html("예약시간 : ");
-		$('.day').removeClass("selected");
-		$(this).addClass("selected");
-		$('#d').val($(this).attr('id'))
-		$('.time').removeClass("block"); 	//이미 예약완료인 타임테이블 초기화
-		$('.time').removeClass("selected");
-		// 타임테이블 기능적용
-		$(".time").each(function () {
-
-				$(this).click(function() {
-					var txt = $(this).text();
-					var reservett = document.getElementById('reservetime').innerHTML;
-					var reservedt = document.getElementById('reservedate').innerHTML;
-					
-					if (reservedt.length < 5) {
-						alert('날짜먼저 선택해주세요');
-
-					} else {
-						document.getElementById('reservetime').innerHTML = "예약시간 : " + txt;
-						$('#t').val(txt);
-						$('.time').siblings().removeClass("selected");
-						  $(this).addClass("selected"); //클릭된 부분을 상단에 정의된 CCS인 selected클래스로 적용
-						
-					}
-
-				});
-				   });
-		
-		//날짜별로 타임테이블 유효성검사 적용시키기
-		$.ajax({
-			type : "GET",
-			url : "/reserve.do",
-			error : function(error){
-				
-			},
-			data : {date : $(this).attr('id'),hospitalId : $('#hospital').val() }  ,
-			success : function(result){
-			var adate = result.date;
-			var ttable = $('#tt .time');
-			//시간이 들어간 타임테이블 click 못하게하고 class block 추가하여 색깔변경
-				$.each(adate, function( date, value ) {
-					
-					for(var i=0; i<ttable.length;i++){
-						if((ttable[i].innerText)==value){
-							$(ttable[i]).off('click');
-							$(ttable[i]).addClass('block');
-						
-						};	
-					}
-				});
-			}
-			
-			
-		});
-		
-		
-		
-	});
-	$('.animallist').on('click', 'li', function(e) {
-		$('#animalId').val($(this).attr('id'));
-		$('.animallist li').css('background-color', 'white');
-		$(this).css('background-color', '#CEECF5');
-	});
-
 	
-	
-});//.ready
+});
 
-
-
-// 예약 시간 생성!!!
-function check() { // 날짜 시간 체킹
-
-	if ($('#d').val() == "") {
-
-		alert("날짜를 입력해 주세요.");
-
-		return false;
-
-	}
-
-	else if ($('#t').val() == "") {
-
-		alert("시간을 입력해 주세요.");
-
-		return false;
-
-	}
-	else if($('#animalId').val() ==""){
-		alert("동물을 선택해 주세요.")
-		
-		return false;
-	}
-
-	else
-		return "index";
-}
-
-
-
-// 캘린더 생성
 $.fn.zabuto_calendar = function(options) {
 	var opts = $.extend({}, $.fn.zabuto_calendar_defaults(), options);
 	var languageSettings = $.fn.zabuto_calendar_language(opts.language);
@@ -228,16 +68,7 @@ $.fn.zabuto_calendar = function(options) {
 						
 						
 					}
-					var daycheck = $('.day');
-					var dtable = $('.rows');
-					var today =new Date();
-				for(var i=0; i<daycheck.length;i++){
-				if(new Date(daycheck[i].id)<today){
-					$(daycheck[i]).prop('disabled', true);
-					$(daycheck[i]).addClass('block');
-
-				};	
-				}
+			
 					
 				}
 
@@ -254,16 +85,7 @@ $.fn.zabuto_calendar = function(options) {
 					$tableObj = appendDaysOfMonth($calendarElement, $tableObj,
 							year, month);
 					checkEvents($calendarElement, year, month);
-					var daycheck = $('.day');
-					var dtable = $('.rows');
-					var today =new Date();
-				for(var i=0; i<daycheck.length;i++){
-				if(new Date(daycheck[i].id)<today){
-					$(daycheck[i]).prop('disabled', true);
-					$(dtable[i]).addClass('block');
-
-				};	
-				}
+					
 					
 					return $tableObj;
 				}
@@ -271,8 +93,8 @@ $.fn.zabuto_calendar = function(options) {
 				function appendMonthHeader($calendarElement, $tableObj, year,
 						month) { // 위에 이전 다음 아이콘
 					var navIcons = $calendarElement.data('navIcons');
-					var $prevMonthNavIcon = $('<span><span class="glyphicon glyphicon-chevron-left"></span></span>');
-					var $nextMonthNavIcon = $('<span><span class="glyphicon glyphicon-chevron-right"></span></span>');
+					var $prevMonthNavIcon = $('<span><i class="material-icons">keyboard_arrow_left</i></span>');
+					var $nextMonthNavIcon = $('<span><i class="material-icons">keyboard_arrow_right</i></span>');
 					if (typeof (navIcons) === 'object') {
 						if ('prev' in navIcons) {
 							$prevMonthNavIcon.html(navIcons.prev);
@@ -442,7 +264,7 @@ $.fn.zabuto_calendar = function(options) {
 									}
 								}
 
-								var $dowElement = $('<td class="rows"></td>');
+								var $dowElement = $('<td ></td>');
 								$dowElement.append($dayElement);
 
 								$dowElement.data('date', dateAsString(year,

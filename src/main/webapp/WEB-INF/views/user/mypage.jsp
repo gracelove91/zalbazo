@@ -19,6 +19,8 @@
 	<div class="col-11">
 	<br>
     <h2>${useremail} 님의 마이페이지</h2>
+    <input type='hidden' class="email" id="userEmail" value="${useremail}">
+    <!-- js에서 	var userEmail = $(".email").val(); 이걸로 메일 호출 가능 -->
     <p>환영합니다!!</p>
     </div>
 </div>
@@ -392,23 +394,23 @@
 <script type="text/javascript" src="${ctx}/resources/js/user/mycontent.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfoFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfo.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospitalFunction.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospital.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myAnimalFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myAnimal.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myreserveFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myreserve.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/hospital/favoriteFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/hospital/myFavorite.js"></script>
 
 <script>
-    function goPopup(){
-        var pop = window.open("jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes");
-    }
+function goPopup(){
+    var pop = window.open("jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+}
 
-    function jusoCallBack(roadFullAddr){
-        $("#address").val(roadFullAddr);
-    }
-    
+function jusoCallBack(roadFullAddr){
+    $("#address").val(roadFullAddr);
+}
 </script>
+
 <%@include file="/WEB-INF/views/includes/footer.jsp" %>
 </body>
 </html>

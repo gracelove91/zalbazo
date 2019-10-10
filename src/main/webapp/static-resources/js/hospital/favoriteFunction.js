@@ -1,6 +1,6 @@
 var favoriteService = (function(){
 
-    function addFavorite(favorite, callback, error) {
+    function toFullHeart(favorite, callback, error) {
         console.log("favorite...");
         
         $.ajax({
@@ -81,7 +81,7 @@ var favoriteService = (function(){
 	
 		
     return {
-        addFavorite : addFavorite,
+    	toFullHeart : toFullHeart,
         removeFavorite : removeFavorite,
         getFavoriteList : getFavoriteList,
         toEmptyHeart : toEmptyHeart

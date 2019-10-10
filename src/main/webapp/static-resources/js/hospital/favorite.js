@@ -72,7 +72,7 @@ h5.on("click", ".favorite", function(e){
 		 				}
 					);
 			}
-		             
+
 			h5.html(str);
 			
 		} else {

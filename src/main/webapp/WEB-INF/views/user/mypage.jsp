@@ -9,16 +9,20 @@
     String ctx = request.getContextPath();
     pageContext.setAttribute("ctx", ctx);
 %>
+<link rel="stylesheet" href="/resources/css/scroll.css">
 <title>마이페이지</title>
+<body>
+<a onclick="topFunction()" id="myBtn" title="Go to top"><img src="${ctx}/resources/img/GoToTop.png" width="50px;"></a>
 <div class="container-fluid">
 <div class="row d-flex d-md-block flex-nowrap wrapper">
 <main id="main">
 
 <div class="page-header row">
-	<div class="col-1"></div>
-	<div class="col-11">
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col-9">
 	<br>
-    <h2>${useremail} 님의 마이페이지</h2>
+    <h2>${name}님의 마이페이지</h2>
     <input type='hidden' class="email" id="userEmail" value="${useremail}">
     <!-- js에서 	var userEmail = $(".email").val(); 이걸로 메일 호출 가능 -->
     <p>환영합니다!!</p>
@@ -26,8 +30,8 @@
 </div>
 
 <div class="row">
-		  <div class="col-1"></div>
-		  <div class="col-2">
+		  <div class="col"></div>
+		  <div class="col">
 		    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 		      <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true" style="padding:5px;">개인정보 수정</a>
 		      <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false" style="padding:5px;">동물 관리</a>
@@ -37,7 +41,7 @@
 		    </div>
 		  </div>
 		  
-		  <div class="col-8">
+		  <div class="col-8" style="border: 1.1px solid #04b1fb; border-radius: 4px;">
 		    <div class="tab-content" id="v-pills-tabContent">
 		    
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
@@ -383,7 +387,7 @@
 		</div>
 	</div>
 </div>
-
+</body>
 
 
 <!-- Bootstrap core JavaScript -->
@@ -400,6 +404,7 @@
 <script type="text/javascript" src="${ctx}/resources/js/user/myreserve.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/favoriteFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/myFavorite.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/scroll.js"></script>
 
 <script>
 function goPopup(){

@@ -13,6 +13,16 @@
 		order by a.rdate desc
 	</select>
 	
+	<select id="getHospitalReserveCount" resultType="kr.zalbazo.model.user.Reserve">
+		select count(a.reserve_id) as countR
+		from reserve a, animal b, hospital c, zalbazo_user d
+		where a.animal_id = b.animal_id
+		and c.hospital_id = a.hospital_id
+		and c.hospital_id = d.hospital_id
+		and d.user_email = #{userEmail}
+		and a.rdate = sysdate
+	</select>
+	
 	<select id="get" resultType="kr.zalbazo.model.user.Reserve">
     	select a.reserve_id, a.rdate, a.hospital_id, a.status, a.user_email, a.animal_id, a.note, b.type, b.sex, b.weight, b.age, b.aname, c.name
 		from reserve a, animal b, hospital c

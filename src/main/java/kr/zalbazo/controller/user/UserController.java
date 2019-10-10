@@ -60,18 +60,22 @@ public class UserController {
 //    }
     
     @GetMapping("/mypage")
-    public String mypage(User user, Authentication authentication, Model model) {
+    public String mypage(Authentication authentication, Model model) {
     	System.out.println("!!!!!" + authentication.getAuthorities());
     	System.out.println("!!!!!" + authentication.getName());
     	
+    	User user = service.get(authentication.getName());
+    	
     	if(authentication.getAuthorities().toString().equals("[ROLE_user]")) {
     		model.addAttribute("useremail", authentication.getName());
+    		model.addAttribute("name", user.getName());
         	System.out.println("유저는 유저마이페이지로! : " + authentication.getAuthorities());
         	return "user/mypage";
     	}
     	
     	if(authentication.getAuthorities().toString().equals("[ROLE_hospital]")) {
     		model.addAttribute("useremail", authentication.getName());
+    		model.addAttribute("name", user.getName());
         	System.out.println("병원은 병원마이페이지로! : " + authentication.getAuthorities());
         	return "user/myhospitalpage";
     	}

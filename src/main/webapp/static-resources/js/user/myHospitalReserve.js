@@ -4,6 +4,7 @@ $(document).ready(function() {
 	var userEmail = '<c:out value="${useremail}"/>';
 	
 	var myreservelist = $(".myreservelist");
+	var countRlist = $(".countR");
 		
 	var modal = $(".modal");
 	var modalInputAname = modal.find("input[id='aname']");
@@ -26,6 +27,7 @@ $(document).ready(function() {
 		MyHospitalReserveService.getHospitalReserveList(userEmail, function(list) {
 			
 			var str = "";
+			var str2 = "";
 			
 			if(list == null || list.length == 0) {
 				myreservelist.html(str);
@@ -37,11 +39,16 @@ $(document).ready(function() {
 				$('.day').removeClass("selected");
 				$(this).addClass("selected");
 				
+			var countR = 0; // 예약 수
+			
 			for(var i = 0, len = list.length||0; i < len; i++) {
 				var reserveDate = MyHospitalReserveService.displayTime(list[i].rdate).substring(0,10);
 				
+				
 					if(date.toString() == reserveDate) {
-						console.log(list[i]);
+						//console.log(list[i]);
+						
+						countR++;
 						
 						if(list[i].status == "리뷰 완료") {
 							
@@ -114,7 +121,16 @@ $(document).ready(function() {
 				
 			} // for
 			myreservelist.html(str);
+			
+			var reserveDate = MyHospitalReserveService.displayTime(list[0].rdate).substring(0,10);
+			console.log(reserveDate);
+			console.log(countR);
+			
+			str2 += "<span style='font-weight:bold;'>총 예약 수 : <span style='font-weight:bold; font-size:20px; color:#04b1fb;'>"+ countR +"건</span></span>";
+			countRlist.html(str2);
+			
 			str = "";
+			str2 = "";
 
 			}); // my-calendar click
 			
@@ -125,11 +141,11 @@ $(document).ready(function() {
 		
 		var reserveId = $(this).attr("data-no");
 		
-		console.log(reserveId);
+		//console.log(reserveId);
 		
 		MyHospitalReserveService.get(reserveId, function(result) {
 			
-			console.log(result);
+			//console.log(result);
 			
 			modalInputAname.val(result.aname);
 			modalInputAnimalId.val(result.animalId);
@@ -194,7 +210,7 @@ $(document).ready(function() {
 	myreservelist.on("click", ".delete", function(list, e) {
 		var reserveId = $(this).attr("data-no");
 		
-		console.log(reserveId);
+		//console.log(reserveId);
 		
 		MyHospitalReserveService.remove(reserveId, function (result) {
 

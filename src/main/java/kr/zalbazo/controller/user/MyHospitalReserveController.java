@@ -36,6 +36,13 @@ public class MyHospitalReserveController {
 		return new ResponseEntity<>(myHospitalReserveService.getHospitalReserveList(principal.getName()), HttpStatus.OK);
 	}
 	
+	@GetMapping(value = "/listR", produces = { 
+			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity<List<Reserve>> getHospitalReserveCount(Principal principal) {
+		
+		return new ResponseEntity<>(myHospitalReserveService.getHospitalReserveCount(principal.getName()), HttpStatus.OK);
+	}
+	
 	@GetMapping(value = "/{reserveId}", produces = {
 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<Reserve> get(@PathVariable("reserveId") Long reserveId) {

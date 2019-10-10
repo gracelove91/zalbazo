@@ -11,6 +11,8 @@
 </head>
 
 <body>
+<input type='hidden' class="hospitalNo" id="hospitalNo" value="${hospital.hospitalId}">
+<input type='hidden' class="mailmail" id="mailmail" value="${userEmail}">
 <div class="container-fluid">
     <br>
     <h1 style="text-align:center">${hospital.name}</h1>

@@ -113,10 +113,9 @@
                 </a>
             </div>
             <br>
-<!-- FavoriteHospitalList의 class가 fav여야함 -->
 
 			<p class="h5 get" style="text-align: center">
-				<i class="material-icons" id="reserve" style="cursor: pointer; font-size: 200%; vertical-align: text-bottom;" href="index">event</i> 예약하기 
+				<i class="material-icons" id="reserve" style="cursor: pointer; font-size: 200%; vertical-align: text-bottom;" href="index">event</i> 예약하기
 				<img class="favorite" data-i="white" id="outlined" style="cursor: pointer; vertical-align: text-bottom;" src="${ctx}/resources/img/outlined_heart_icon.png" width="40px" height="40px"> 즐겨찾기
 			</p>
 			

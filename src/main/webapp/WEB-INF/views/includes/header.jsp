@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-lg-2" style="padding:0px;"><br>
                 <div class="logo-area">
-                    <a href="/index" style="width:210px; height:90px"><img src="/resources/img/text_logo.png" align="middle" alt="logo" width="210px" height="90px"></a>
+                    <a href="/index" style="width:210px; height:90px"><img src="/resources/img/text_logo.png" align="middle" alt="logo" width="250px" height="110px"></a>
                 </div>
             </div>
             <div class="col-lg-10" style="left:0px; position: absolute;">

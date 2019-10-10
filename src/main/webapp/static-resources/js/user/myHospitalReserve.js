@@ -49,29 +49,29 @@ $(document).ready(function() {
 							
 							str += "<th scope='row' class='mobile' style='width:80px; text-align:center;'>"+ list[i].reserveId +"</th>";
 							str += "<td style='text-align: center;'>";
-							str += "  <a class='move' style='color : #000000;' href='#'>"+ MyHospitalReserveService.displayTime(list[i].rdate) +"</a>";
+							str += "  <p class='move' style='color : #000000;' href='#'>"+ MyHospitalReserveService.displayTime(list[i].rdate) +"</p>";
 							str += "</td>";
 							
 							str += "<td style='text-align: center;'>";
-							str += "  <a class='move' style='color : #000000;'>"+ list[i].aname +"</a>";
+							str += "  <p class='move' style='color : #000000;'>"+ list[i].aname +"</p>";
 							str += "</td>";
 							
 							str += "<td style='text-align: center;'>";
-							str += "  <a class='move' style='color : #000000;'>"+ list[i].userEmail +"</a>";
+							str += "  <p class='move' style='color : #000000;'>"+ list[i].userEmail +"</p>";
 							str += "</td>";
 							
 							str += "<td style='text-align: center;'>";
-							str += "  <a class='move' style='color : #000000;'>"+ list[i].status +"</a>";
+							str += "  <p class='move' style='color : #000000;'>"+ list[i].status +"</p>";
 							str += "</td>";
 							
 							str += "<td style='text-align: center;'>";
-							str += "  <a class='move' style='color : #000000;'>";
-							/*					str += "  <button class='status' id='status' data-no='"+ list[i].reserveId +"' style='font-size:14px'>상태 변경</button></a>";*/
+							str += "  <p class='move' style='color : #000000;'>";
+							str += "  </p>";
 							str += "</td>";
 							
 							str += "<td style='text-align: center;'>";
-							str += "  <a class='move' style='color : #000000;'>";
-							/*					str += "  <button class='delete' id='delete' data-no='"+ list[i].reserveId +"' style='font-size:14px'>X</button></a>";*/
+							str += "  <p class='move' style='color : #000000;'>";
+							str += "  </p>";
 							str += "</td>";
 							
 							str += "</tr>";
@@ -82,29 +82,29 @@ $(document).ready(function() {
 							
 							str += "<th scope='row' class='mobile' style='width:80px; text-align:center;'>"+ list[i].reserveId +"</th>";
 							str += "<td style='text-align: center;'>";
-							str += "  <a class='move' style='color : #000000;' href='#'>"+ MyHospitalReserveService.displayTime(list[i].rdate) +"</a>";
+							str += "  <p class='move' style='color : #000000;' href='#'>"+ MyHospitalReserveService.displayTime(list[i].rdate) +"</p>";
 							str += "</td>";
 							
 							str += "<td style='text-align: center;'>";
-							str += "  <a class='move' style='color : #000000;'>"+ list[i].aname +"</a>";
+							str += "  <p class='move' style='color : #000000;'>"+ list[i].aname +"</p>";
 							str += "</td>";
 							
 							str += "<td style='text-align: center;'>";
-							str += "  <a class='move' style='color : #000000;'>"+ list[i].userEmail +"</a>";
+							str += "  <p class='move' style='color : #000000;'>"+ list[i].userEmail +"</p>";
 							str += "</td>";
 							
 							str += "<td style='text-align: center;'>";
-							str += "  <a class='move' style='color : #000000;'>"+ list[i].status +"</a>";
+							str += "  <p class='move' style='color : #000000;'>"+ list[i].status +"</p>";
 							str += "</td>";
 							
 							str += "<td style='text-align: center;'>";
-							str += "  <a class='move' style='color : #000000;'>";
-							str += "  <button class='btn btn-outline-secondary btn-sm status' id='status' data-no='"+ list[i].reserveId +"' style='font-size:15px'>상세보기</button></a>";
+							str += "  <p class='move' style='color : #000000;'>";
+							str += "  <button class='btn btn-outline-secondary btn-sm status' id='status' data-no='"+ list[i].reserveId +"' style='font-size:15px'>상세보기</button></p>";
 							str += "</td>";
 							
 							str += "<td style='text-align: center;'>";
-							str += "  <a class='move' style='color : #000000;'>";
-							str += "  <button class='btn btn-outline-danger btn-sm delete' id='delete' data-no='"+ list[i].reserveId +"' style='font-size:15px'>예약삭제</button></a>";
+							str += "  <p class='move' style='color : #000000;'>";
+							str += "  <button class='btn btn-outline-danger btn-sm delete' id='delete' data-no='"+ list[i].reserveId +"' style='font-size:15px'>예약삭제</button></p>";
 							str += "</td>";
 							
 							str += "</tr>";

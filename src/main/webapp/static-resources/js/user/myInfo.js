@@ -47,16 +47,18 @@ $(document).ready(function() {
 	}); // getInfoList
 	
 	modifyBtn.on("click", function(e) {
-		//console.log($("input[id='name']").val());
-		//console.log($("input[id='tel']").val());
-		//console.log($("input[id='address']").val());
 		
-		var regex= /^\d{2,3}-\d{3,4}-\d{4}$/;
+		var regex= /^[0-9]*$/;
 		
-		if(!regex.test($("input[id='tel']").val())) {
-			alert("000-0000-0000형태로 입력해주세요");
+		if(!regex.test($("input[id='tel']").val().trim())) {
+			alert("-을 제외하고 입력해주세요");
 			return;
 		}
+		
+        if ($("input[id='tel']").val().trim().length < 9 || $("input[id='tel']").val().trim().length > 11) {
+            alert('전화번호는 9~11자로 입력해주세요.');
+            return;
+        }
 		
 		if($("input[id='name']").val().trim() === "" || $("input[id='name']").val().trim() == null) {
 			alert("이름을 입력해주세요");

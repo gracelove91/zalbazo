@@ -61,6 +61,8 @@ public class UserController {
     
     @GetMapping("/mypage")
     public String mypage(User user, Authentication authentication, Model model) {
+    	System.out.println("!!!!!" + authentication.getAuthorities());
+    	System.out.println("!!!!!" + authentication.getName());
     	
     	if(authentication.getAuthorities().toString().equals("[ROLE_user]")) {
     		model.addAttribute("useremail", authentication.getName());
@@ -68,9 +70,16 @@ public class UserController {
         	return "user/mypage";
     	}
     	
+    	if(authentication.getAuthorities().toString().equals("[ROLE_hospital]")) {
+    		model.addAttribute("useremail", authentication.getName());
+        	System.out.println("병원은 병원마이페이지로! : " + authentication.getAuthorities());
+        	return "user/myhospitalpage";
+    	}
+    	
+    	// admin
     	model.addAttribute("useremail", authentication.getName());
-    	System.out.println("유저가 아니라면!!!!");
-    	return "user/myhospitalpage";
+    	System.out.println("admin이라면!!!!");
+    	return "user/adminpage";
     }
     
     @GetMapping("/register")

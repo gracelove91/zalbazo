@@ -3,39 +3,25 @@
 
 <mapper namespace="kr.zalbazo.mapper.content.FaqMapper">
 
-<select id="getFaqList" resultType="kr.zalbazo.model.content.FaqVO">
-
-   <!--  SELECT *
-    FROM faq
-    WHERE
-       question like '%'||'#{keyword}'||'%' -->
-   
-    
-    
-     SELECT *
-    FROM faq
-    where FAQ_ID = #{faqId} 
-    
-    </select>
-    
-    <select id="getFaqListAll" resultType="kr.zalbazo.model.content.FaqVO">
-    	SELECT *  FROM faq
-     </select>
-    
- <select id="getFaqList2" resultType="kr.zalbazo.model.content.FaqVO">
+    <select id="getFaqList" resultType="kr.zalbazo.model.content.FaqVO">
 	
 	<![CDATA[
 	
      SELECT *
-    FROM faq
-    WHERE                     
+     FROM faq
+     WHERE                     
        QUESTION like '%'||#{keyword}||'%' 
    
     ]]>
     
     </select>
- 
- 
+    
+    <select id="getFaqListAll" resultType="kr.zalbazo.model.content.FaqVO">
+    	
+    	SELECT *  
+    	FROM faq
+    	
+     </select>
     
     </mapper>
 

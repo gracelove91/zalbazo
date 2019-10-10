@@ -14,17 +14,11 @@ public class FaqServiceImpl implements FaqService {
 	@Autowired
 	private FaqMapper mapper;
 
-	@Override
-	public List<FaqVO> getFaqList(Long faqId) {
-
-		return mapper.getFaqList(faqId);
-
-	}
 
 	@Override
-	public List<FaqVO> getFaqList2(FaqVO faq) {
+	public List<FaqVO> getFaqList(FaqVO faq) {
 
-		return mapper.getFaqList2(faq);
+		return mapper.getFaqList(faq);
 	}
 
 	@Override

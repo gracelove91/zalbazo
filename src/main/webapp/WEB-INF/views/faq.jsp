@@ -91,10 +91,8 @@
     padding-left: 25px;
 }
 		
-
 </style> 
 </head>
-
 
 <section class="feature-area">
     <div class="container">
@@ -107,7 +105,7 @@
                
                 <!-- 검색창 -->
                    <div class="col-md-10 col-lg-8 col-xl-7 mx-auto" style="float: left; width: 45%;">
-						<form id='searchForm' action="/faq/faq/faqsearchedlist" method='get'>
+						<form id='searchForm' action="/faq/faqsearchedlist" method='get'>
                     <input class="form-control form-control-lg" type='text' name='keyword' placeholder="키워드를 입력하세요"/>
 					</div>
 					<div  style="float: left; width: 20%;">
@@ -126,32 +124,30 @@
             <div id="main" class="col-md-12">
                 <div class="page-header mt-3">
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						<c:forEach items="${FaqListAll}" var="FaqVO" varStatus="status">
+						<c:set var="pre-fix" value="#" />
+						<c:set var="cordinate" value="collapse" /> 
 						<div class="panel panel-default">
-						
-						<c:forEach items="${FaqList}" var="FaqVO">
-						
-							<div class="panel-heading" role="tab" id="heading">
+							<div class="panel-heading" role="tab" id="headingOne">
 								<h4 class="panel-title" >
-									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="true" aria-controls="collapse">
-										${FaqVO.question} 
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="${'#'}${cordinate}${status.count}" aria-expanded="true" aria-controls="collapseOne">
+									 	${FaqVO.question} 
 									</a>
 								</h4>
 							</div>
-							
-							<div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading">
+							<div id="${cordinate}${status.count}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 								<div class="panel-body">
 									<p>${FaqVO.answer}</p>
 								</div>
 							  </div>
-							</c:forEach>
-							
-							
+						    </div>					
+						  </c:forEach>
 						  </div>
 						</div>
 					</div>
 				</div><!--- END COL -->		
 			</div><!--- END ROW -->			
-          </div>
+
 <script>
               
 
@@ -172,9 +168,6 @@
 
 				
 })(jQuery);
-
-
-
 
 
 </script>

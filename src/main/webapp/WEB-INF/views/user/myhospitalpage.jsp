@@ -18,6 +18,10 @@ img{
    display : inline;
    padding: 10px;
 }
+
+th mobile{
+	height : 40px;
+}
 </style>
 <div class="page-header row">
 	<div class="col-1"></div>
@@ -39,7 +43,7 @@ img{
 		    </div>
 		  </div>
 		  
-		  <div class="col-8">
+		  <div class="col-8" style="border: 1.1px solid #04b1fb; border-radius: 4px;">
 		    <div class="tab-content" id="v-pills-tabContent">
 		    
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab"><!-- 병원정보 수정 -->
@@ -48,7 +52,6 @@ img{
 			              <h2>병원상세정보</h2>
 			          </div>
 			          <hr>
-			      
 			      
 			      <form class="pt-3 md-3" role='form' action="/hospitalinfo/modify" method="post" enctype="multipart/form-data">
 			          <input type='hidden' class="email" id="userEmail" name="userEmail" value="${useremail}">
@@ -217,7 +220,7 @@ img{
 		      </div>
 		      
 		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
-		      	<br>
+		      	<h4></h4>
 				<nav>
 				  <div class="nav nav-tabs" id="nav-tab" role="tablist">
 				    <a class="nav-item nav-link active" id="nav-a-tab" data-toggle="tab" href="#nav-a" role="tab" aria-controls="nav-a" aria-selected="true">&nbsp;&nbsp;&nbsp;Q&A&nbsp;&nbsp;&nbsp;</a>
@@ -237,7 +240,7 @@ img{
 		      </div>
 		      
 		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
-				<br>
+				<h4></h4>
 				<nav>
 				  <div class="nav nav-tabs" id="nav-tab" role="tablist">
 				    <a class="nav-item nav-link active" id="nav-c-tab" data-toggle="tab" href="#nav-c" role="tab" aria-controls="nav-c" aria-selected="false">&nbsp;&nbsp;&nbsp;댓글&nbsp;&nbsp;&nbsp;</a>

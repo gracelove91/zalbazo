@@ -18,8 +18,8 @@ userInfoService.getUser(function(data) {
 					
 					if(list[i].hospitalId == hospitalId.val()) {
 						
-						str += "<i class='material-icons' id='reserve' style='cursor: pointer;' href='index'>event</i> 예약하기";	
-						str += "<i class='material-icons favorite' data-i='black' id=filled style='cursor: pointer;'>favorite</i> 즐겨찾기";
+						str += "<i class='material-icons' id='reserve' style='cursor: pointer; font-size: 200%; vertical-align: text-bottom;' href='index'>event</i> 예약하기 ";
+						str += "<img class='favorite' data-i='black' id=filled style='cursor: pointer; vertical-align: text-bottom;' src='/resources/img/filled_heart_icon.png' width='40px' height='40px'> 즐겨찾기";
 						
 						h5.html(str);
 						break;
@@ -73,8 +73,9 @@ h5.on("click", ".favorite", function(e){
 							alert("즐겨찾는 병원으로 등록되었습니다.");
 							console.log("즐찾 등록 성공따리");
 
-							str += "<i class='material-icons' id='reserve' style='cursor: pointer;' href='index'>event</i> 예약하기";	
-							str += "<i class='material-icons favorite' data-i='black' id=filled style='cursor: pointer;'>favorite</i> 즐겨찾기";
+							str += "<i class='material-icons' id='reserve' style='cursor: pointer; font-size: 200%; vertical-align: text-bottom;' href='index'>event</i> 예약하기 ";
+							str += "<img class='favorite' data-i='black' id=filled style='cursor: pointer; vertical-align: text-bottom;' src='/resources/img/filled_heart_icon.png' width='40px' height='40px'> 즐겨찾기";
+							
 							h5.html(str);
 							
 						});
@@ -93,8 +94,8 @@ h5.on("click", ".favorite", function(e){
 					
 						alert("즐겨찾는 병원에서 삭제되었습니다.");
 						
-						str += "<i class='material-icons' id='reserve' style='cursor: pointer;'>event</i> 예약하기";	
-						str += "<i class='material-icons favorite' data-i='white' id=outlined style='cursor: pointer;'>favorite_border</i> 즐겨찾기";
+						str += "<i class='material-icons' id='reserve' style='cursor: pointer; font-size: 200%; vertical-align: text-bottom;'>event</i> 예약하기 ";	
+						str += "<img class='favorite' data-i='white' id=outlined style='cursor: pointer; vertical-align: text-bottom;' src='/resources/img/outlined_heart_icon.png' width='40px' height='40px'> 즐겨찾기";
 						h5.html(str);
 				});
 				

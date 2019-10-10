@@ -11,7 +11,6 @@ import kr.zalbazo.model.content.FaqVO;
 import kr.zalbazo.service.content.FaqService;
 
 @Controller
-@RequestMapping("/faq")
 public class FaqController {
 
 	@Autowired

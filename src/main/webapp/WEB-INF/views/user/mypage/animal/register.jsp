@@ -49,8 +49,8 @@
               <input type="text" class="form-control" id="aname" name="aname"  placeholder="이름" >
             </div>
 			<div class="form-group">
-              <label>참고사항</label>
-               <textarea class="form-control" id="note" name="note" placeholder="내용을 입력하세요." style="height: 320px;"></textarea>
+              <label>특이사항</label>
+               <textarea class="form-control" id="note" name="note" placeholder="특이사항을 입력하세요." style="height: 100px;"></textarea>
             </div>
              <input type="hidden" id="userEmail" name="userEmail" value="${userEmail}">
             <button class="btn btn-primary pull-right" id="regBtn" name="regBtn" >등록하기</button>
@@ -99,12 +99,11 @@
     	    obj.sex[0].focus();
     	    return false;
     	}
-       
      
-       if(obj.note.value == '') {
-           alert('참고사항을 입력하세요');
-           obj.note.focus();
-           return false;
+       if($("textarea[id='note']").trim().value == '' || $("textarea[id='note']").trim().length < 15) {
+           alert('특이사항은 1~15자로 입력하세요');
+           $("textarea[id='note']").focus();
+           return;
        }
        
       

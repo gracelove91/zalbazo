@@ -140,12 +140,5 @@ public class UserController {
 	public ResponseEntity <User> getUser(Model model, Principal principal) {
 		return new ResponseEntity<>(mapper.getUser(principal.getName()), HttpStatus.OK);
 	}
-
-   @GetMapping(value= "/get", produces = {
-         MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
-   public ResponseEntity <User> getUser(Model model, Principal principal) {
-      return new ResponseEntity<>(service.getUser(principal.getName()), HttpStatus.OK);
-   }
-
    
 }

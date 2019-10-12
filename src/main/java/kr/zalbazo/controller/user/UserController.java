@@ -37,8 +37,8 @@ public class UserController {
     @Autowired
     private UserService service;
     
-	@Autowired
-	UserMapper mapper;
+   @Autowired
+   UserMapper mapper;
 
     @InitBinder
     public void validator(WebDataBinder webDataBinder){
@@ -47,39 +47,33 @@ public class UserController {
     
     @GetMapping("/register_select")
     public String register_select() {
-    	return "/register_select";
+       return "/register_select";
     }
     
-//    @GetMapping("/mypage")
-//    public String mypage(User user, Principal principal, Model model) {
-//    	
-//    	System.out.println("권한권한 : "+principal);
-//    	model.addAttribute("useremail", principal.getName());
-//    	
-//    	return "user/mypage";
-//    }
-    
     @GetMapping("/mypage")
-    public String mypage(User user, Authentication authentication, Model model) {
-    	System.out.println("!!!!!" + authentication.getAuthorities());
-    	System.out.println("!!!!!" + authentication.getName());
-    	
-    	if(authentication.getAuthorities().toString().equals("[ROLE_user]")) {
-    		model.addAttribute("useremail", authentication.getName());
-        	System.out.println("유저는 유저마이페이지로! : " + authentication.getAuthorities());
-        	return "user/mypage";
-    	}
-    	
-    	if(authentication.getAuthorities().toString().equals("[ROLE_hospital]")) {
-    		model.addAttribute("useremail", authentication.getName());
-        	System.out.println("병원은 병원마이페이지로! : " + authentication.getAuthorities());
-        	return "user/myhospitalpage";
-    	}
-    	
-    	// admin
-    	model.addAttribute("useremail", authentication.getName());
-    	System.out.println("admin이라면!!!!");
-    	return "user/adminpage";
+    public String mypage(Authentication authentication, Model model) {
+       
+       User user = service.getUser(authentication.getName());
+       
+       if(authentication.getAuthorities().toString().equals("[ROLE_user]")) {
+          model.addAttribute("useremail", authentication.getName());
+           model.addAttribute("name", user.getName());
+           System.out.println("유저는 유저마이페이지로! : " + authentication.getAuthorities());
+           return "user/mypage";
+       }
+       
+       if(authentication.getAuthorities().toString().equals("[ROLE_hospital]")) {
+          model.addAttribute("useremail", authentication.getName());
+           model.addAttribute("name", user.getName());
+           System.out.println("병원은 병원마이페이지로! : " + authentication.getAuthorities());
+           return "user/myhospitalpage";
+       }
+       
+       // admin
+       //model.addAttribute("useremail", authentication.getName());
+       model.addAttribute("name", user.getName());
+       System.out.println("admin이라면!!!!");
+       return "user/adminpage";
     }
     
     @GetMapping("/register")
@@ -147,4 +141,11 @@ public class UserController {
 		return new ResponseEntity<>(mapper.getUser(principal.getName()), HttpStatus.OK);
 	}
 
+   @GetMapping(value= "/get", produces = {
+         MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+   public ResponseEntity <User> getUser(Model model, Principal principal) {
+      return new ResponseEntity<>(service.getUser(principal.getName()), HttpStatus.OK);
+   }
+
+   
 }

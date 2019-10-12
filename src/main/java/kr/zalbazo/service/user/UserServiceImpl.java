@@ -72,8 +72,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User get(String email) {
-        return userMapper.read(email);
+    public User getUser(String email) {
+        return userMapper.getUser(email);
     }
 
     @Override
@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public boolean updateEnabled(String email) {
-        User user = get(email);
+        User user = getUser(email);
         user.setEmailAuthKey("");
         user.setEnabled("enabled");
 
@@ -102,7 +102,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
-        User user = userMapper.read(userEmail);
+        User user = userMapper.getUser(userEmail);
 
         if (user == null) {
             throw new UsernameNotFoundException(userEmail);

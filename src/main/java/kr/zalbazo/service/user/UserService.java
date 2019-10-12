@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface UserService {
     void register(User user);
-    User get(String email);
     boolean modify(User user);
     boolean remove(String email);
     List<User> getList();
+    User getUser(String email);
 
     boolean updateEnabled(String email);
 }

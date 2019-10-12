@@ -15,7 +15,10 @@ $(document).ready(function() {
 		
 		for(var i = 0, len = list.length||0; i < len; i++) {
 						
-          console.log(list[i]);
+          if(list[i].note == null) {
+        	  list[i].note = "";
+          };
+          
 			
 			str += "<tr>";
 			str += "	<th scope='row' class='mobile' style='width: 150px; text-align:center;'>" + list[i].animalId + "</th>";

@@ -75,7 +75,9 @@
                     <input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
                 </form>
 
-                <button data-oper='modify' class="btn btn-outline-primary">Modify</button>
+			    <span class="coverModify">
+                	<button data-oper='modify' class="btn btn-outline-primary">Modify</button>
+                </span>
                 <button data-oper='list' class="btn btn-primary">list</button>
 
                 <!-- 여기부터 댓글 관련  -->
@@ -152,17 +154,40 @@
 <script>
 $(document).ready(function () {
 
-    var contentIdValue = '<c:out value="${content.contentId}"/>';
-    console.log(contentIdValue);
+    var contentId = '<c:out value="${content.contentId}"/>';
+    console.log(contentId);
     var bodyUL = $(".list-group-flush");
     
     var userEmail = '<c:out value="${userEmail}"/>';
 
     showList(1);
+    
+    var coverModify = $(".coverModify");
+    
+    /* 
+		로그인한 유저와 해당 글 쓴 유저의 메일 주소가 같지 않다면 
+		modify 버튼을 없애버림 
+	*/
+		userInfoService.getUser(function(user){
+		var userMail = user.userEmail;
+		
+		userInfoService.getWriter(contentId, function(writer) {
+			var writerMail = writer.userEmail;
+			
+			if(userMail !== writerMail){
+				coverModify.html("");
+			}
+		});
+		
+	}, function(error) {
+		coverModify.html("");
+		console.log('로그인 안했긔');
+	}); 
+
 
     function showList(page) {
 
-        replyService.getList({contentId: contentIdValue, page: page || 1}, function (replyCnt, list) {
+        replyService.getList({contentId: contentId, page: page || 1}, function (replyCnt, list) {
 
             if (page == -1) {
                 pageNum = Math.ceil(replyCnt / 10.0);
@@ -297,7 +322,7 @@ $(document).ready(function () {
         var body = {
             body: modalInputBody.val(),
             userEmail: modalInputUserEmail.val(),
-            contentId: contentIdValue
+            contentId: contentId
         };
 
         replyService.add(body, function (result) {
@@ -432,7 +457,7 @@ $(document).ready(function () {
 <script>
     console.log("JS TEST");
 
-    var contentIdValue = '<c:out value="${content.contentId}"/>';
+    var contentId = '<c:out value="${content.contentId}"/>';
 
     $(document).ready(function () {
 

@@ -3,6 +3,7 @@ package kr.zalbazo.service.user;
 import kr.zalbazo.common.MailHandler;
 import kr.zalbazo.exception.EmailConfirmFirstException;
 import kr.zalbazo.mapper.user.UserMapper;
+import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.user.User;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,8 +73,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User get(String email) {
-        return userMapper.read(email);
+    public User getUser(String email) {
+        return userMapper.getUser(email);
     }
 
     @Override
@@ -93,7 +94,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public boolean updateEnabled(String email) {
-        User user = get(email);
+        User user = getUser(email);
         user.setEmailAuthKey("");
         user.setEnabled("enabled");
 
@@ -102,7 +103,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
-        User user = userMapper.read(userEmail);
+        User user = userMapper.getUser(userEmail);
 
         if (user == null) {
             throw new UsernameNotFoundException(userEmail);
@@ -118,4 +119,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .roles(user.getRole())
                 .build();
     }
+
+	@Override
+	public Content getWriter(Long contentId) {
+		return userMapper.getWriter(contentId);
+	}
+    
 }

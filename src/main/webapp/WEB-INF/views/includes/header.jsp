@@ -37,7 +37,7 @@
 
 <!-- Header Area Starts -->
 
-<header class="header-area main-header" style="padding-bottom: 100px;">
+<header class="header-area main-header" style="padding-bottom: 100px; padding-top: 50px;">
 
     <div class="container">
         <div class="row">

@@ -163,7 +163,6 @@ $(document).ready(function() {
 var modiBtn = $(".modiBtn");
 var contentId = '<c:out value="${content.contentId}"/>';
 
-
 	userInfoService.getUser(function(user){
 		console.log("로그인 유저 이메일 :"+user.userEmail);
 

@@ -10,7 +10,6 @@
         <if test="role=='hospital'">
             values (#{userEmail}, #{password}, #{role}, #{tel}, #{address}, #{name}, sysdate, null, ${hospitalId})
         </if>
-
     </insert>
 
     <update id="update">
@@ -21,6 +20,7 @@
             name     = #{name}
         where USER_EMAIL = #{userEmail}
     </update>
+    
     <update id="updateEnabled">
         update ZALBAZO_USER
         set ENABLED = #{enabled},
@@ -31,22 +31,19 @@
     <delete id="delete">
         delete ZALBAZO_USER
         where USER_EMAIL = #{userEmail}
-
     </delete>
-
 
     <select id="getUser" resultType="kr.zalbazo.model.user.User">
         SELECT *
         FROM ZALBAZO_USER
         WHERE USER_EMAIL = #{userEmail}
     </select>
-
-    <select id="getWriter" resultType="kr.zalbazo.model.content.Content">
-        SELECT *
-        FROM CONTENT
-        WHERE CONTENT_ID = #{contentId}
-    </select>
     
+    <select id="getWriter" resultType="kr.zalbazo.model.content.Content">
+    	select *
+		from content
+		where content_id = #{contentId}
+    </select>
 
     <select id="getList" resultType="kr.zalbazo.model.user.User">
         <![CDATA[
@@ -54,6 +51,5 @@
         FROM ZALBAZO_USER
         ]]>
     </select>
-
-
+    
 </mapper>

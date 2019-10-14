@@ -1,10 +1,9 @@
 package kr.zalbazo.service.user;
 
+import java.util.List;
+
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.user.User;
-import org.springframework.validation.BindingResult;
-
-import java.util.List;
 
 public interface UserService {
     void register(User user);

@@ -75,9 +75,9 @@
                     <input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
                     <input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
                 </form>
-                
-                <span class="modiBtn">
-                <button data-oper='modify' class="btn btn-outline-primary">Modify</button>
+
+                <span class="coverModify">
+                	<button data-oper='modify' class="btn btn-outline-primary">Modify</button>
                 </span>
                 <button data-oper='list' class="btn btn-primary">list</button>
 
@@ -156,45 +156,42 @@
 <script type="text/javascript" src="${ctx}/resources/js/content/replyFunction.js"></script>
 
 <script type="text/javascript" src="${ctx}/resources/js/user/userFunction.js"></script>
-<script type="text/javascript">
-// 내 글이 아니면, modify 버튼이 보이지 않는다.
-$(document).ready(function() {
-	
-var modiBtn = $(".modiBtn");
-var contentId = '<c:out value="${content.contentId}"/>';
-
-	userInfoService.getUser(function(user){
-		console.log("로그인 유저 이메일 :"+user.userEmail);
-
-console.log("현재 글 번호 :"+contentId);
-
-	userInfoService.getWriter(contentId, 
-			function(writer) {
-		console.log("글 작성자 이메일 : "+writer.userEmail);
-	    
-		if (user.userEmail != writer.userEmail) {
-
-	        modiBtn.html("");
-		}
-	
-	}); //getUser
-}); //getWriter
-
-});
-</script>
 
 <script>
 $(document).ready(function () {
 	
-    var contentIdValue = '<c:out value="${content.contentId}"/>';
-    console.log(contentIdValue);
+    var contentId = '<c:out value="${content.contentId}"/>';
+    console.log("contentId : "  +contentId);
     var bodyUL = $(".list-group-flush");
 
     showList(1);
+    
+    var coverModify = $(".coverModify");
+    
+    /* 
+		로그인한 유저와 해당 글 쓴 유저의 메일 주소가 같지 않다면 
+		modify 버튼을 없애버림 
+    */
+ 	userInfoService.getUser(function(user){
+		var userMail = user.userEmail;
+		
+		userInfoService.getWriter(contentId, function(writer) {
+			var writerMail = writer.userEmail;
+			
+			if(userMail !== writerMail){
+				coverModify.html("");
+			}
+		});
+		
+	}, function(error) {
+		coverModify.html("");
+		console.log('로그인 안했긔');
+	}); 
 
+	
     function showList(page) {
 
-        replyService.getList({contentId: contentIdValue, page: page || 1}, function (replyCnt, list) {
+        replyService.getList({contentId: contentId, page: page || 1}, function (replyCnt, list) {
 
             if (page == -1) {
                 pageNum = Math.ceil(replyCnt / 10.0);
@@ -328,7 +325,7 @@ $(document).ready(function () {
         var body = {
             body: modalInputBody.val(),
             userEmail: modalInputUserEmail.val(),
-            contentId: contentIdValue
+            contentId: contentId
         };
 
         replyService.add(body, function (result) {

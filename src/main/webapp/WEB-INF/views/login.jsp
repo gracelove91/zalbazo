@@ -42,4 +42,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    <c:if test="${!empty email}">
+        alert("${email} 님 환영합니다. 로그인해주세요.");
+        $('#inputEmail').val("${email}");
+    </c:if>
+</script>
 <%@include file="includes/footer.jsp"%>

@@ -9,16 +9,20 @@
     String ctx = request.getContextPath();
     pageContext.setAttribute("ctx", ctx);
 %>
+<link rel="stylesheet" href="/resources/css/scroll.css">
 <title>마이페이지</title>
+<body>
+<a onclick="topFunction()" id="myBtn" title="Go to top"><img src="${ctx}/resources/img/GoToTop.png" width="50px;"></a>
 <div class="container-fluid">
 <div class="row d-flex d-md-block flex-nowrap wrapper">
 <main id="main">
 
 <div class="page-header row">
-	<div class="col-1"></div>
-	<div class="col-11">
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col-9">
 	<br>
-    <h2>${useremail} 님의 마이페이지</h2>
+    <h2>${name}님의 마이페이지</h2>
     <input type='hidden' class="email" id="userEmail" value="${useremail}">
     <!-- js에서 	var userEmail = $(".email").val(); 이걸로 메일 호출 가능 -->
     <p>환영합니다!!</p>
@@ -26,18 +30,19 @@
 </div>
 
 <div class="row">
-		  <div class="col-1"></div>
-		  <div class="col-2">
+		  <div class="col"></div>
+		  <div class="col">
 		    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 		      <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true" style="padding:5px;">개인정보 수정</a>
 		      <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false" style="padding:5px;">동물 관리</a>
 		      <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="padding:5px;">내가 쓴 글</a>
 		      <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false" style="padding:5px;">예약 내역</a>
 		      <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false" style="padding:5px;">즐겨찾는 병원</a>
+		      <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false" style="padding:5px;">운영자 문의</a>
 		    </div>
 		  </div>
 		  
-		  <div class="col-8">
+		  <div class="col-8" style="border: 1.1px solid #04b1fb; border-radius: 4px;">
 		    <div class="tab-content" id="v-pills-tabContent">
 		    
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
@@ -87,7 +92,7 @@
 						           <th scope="col" class="mobile" style="text-align:center;">몸무게</th>
 						           <th scope="col" class="mobile" style="text-align:center;">나이</th>
 						           <th scope="col" class="mobile" style="width:120px; text-align:center;">특이사항</th>
-						           <th scope="col" class="mobile" style="text-align:center;">삭제</th>
+						           <th scope="col" class="mobile" style="text-align:center;">수정/삭제</th>
 						           
 						        </tr>
 						      </thead>
@@ -228,6 +233,7 @@
 				
 		      </div><!-- 내가 쓴 글 -->
 		      
+		      
 		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
 		      		<br>
 		      		<div class="myreserve">
@@ -327,10 +333,47 @@
 			</div>
 		      
 		      </div><!-- 즐겨찾는 병원 -->
-		    </div>
+		      
+		      
+		      <!-- 운영자 문의 -->
+		      <div class="tab-pane" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
+		      	    <div id="main" class="col-md-12">
+		      	     
+			            <div class="page-header mt-3">
+			                 <h5>운영자에게 의견 혹은 건의사항을 직접 전달하세요.</h5>
+			            </div><hr>
+		      	        
+		      	        <div class="row">
+			      	        <div class="col-sm-10">
+							   <div class="form-group toAdmin">
+								  <textarea class="form-control" name="toAdmin" rows="4"></textarea>
+							   </div>
+			      	        </div>
+			      	        
+			      	        <div class="col-sm-2">
+							    <button id="adminBtn" class="btn btn-primary adminBtn">보내기</button>
+			      	        </div>
+		      	        </div>
+		      	        <hr>
+		      	        
+		      	        <div class="row">
+		      	           <div class="col-sm-10 msg">
+		      	              <!-- user message list 뜨는 곳  -->
+		      	           </div>
+		      	           <div class="col-sm-2"></div>
+		      	        </div>
+		      	        
+		      	    
+			        </div>
+		      </div>
+		      <!-- 운영자 문의 끝 -->
+		      
+		      
 		  </div>
-		  <div class="col-1"></div>
-  
+		</div>
+		  
+		<div class="col-1"></div>
+
 </div>
 
             
@@ -383,7 +426,7 @@
 		</div>
 	</div>
 </div>
-
+</body>
 
 
 <!-- Bootstrap core JavaScript -->
@@ -398,8 +441,159 @@
 <script type="text/javascript" src="${ctx}/resources/js/user/myAnimal.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myreserveFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myreserve.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/messageFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/favoriteFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/myFavorite.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/scroll.js"></script>
+
+<script>
+$(document).ready(function(){
+	
+	var adminBtn = $(".adminBtn");
+
+	var userEmail = '<c:out value="${useremail}"/>';
+	var message = $("textarea[name='toAdmin']");
+	
+	var msgSpace = $(".msg");
+	
+	showMessageList();
+	
+    function showMessageList() {
+    	
+    	messageService.getUserList(userEmail, function(list) {
+    		
+            var str = "";
+
+            if (list == null || list.length == 0) {
+            	
+            	str += "<div class='card-body primary-font'> 아직 등록된 글이 없습니다.</div>";
+            	
+            	msgSpace.html(str);
+            	return;
+            }
+
+            msgSpace.html("");
+
+            for (let i = 0, len = list.length || 0; i < len; i++) {
+                let type = list[i].type;
+                let group = list[i].mgroup;
+                
+                // 운영자 답변이 있는지 없는지 체크
+                let replyCheck = true;
+                
+                // Q 타입이면 출력 
+                if (type === 'send') {
+                	
+					// 동물캐릭터사진 무작위로 뽑기 위해서,,,
+                	var random = Math.floor(Math.random() * 10) + 1;
+                	
+                    for (let j = 0, len = list.length || 0; j < len; j++) {
+
+                        // 문의와 답변이 같이 있다면 아래의 태그를 출력
+                    	if (list[j].mgroup === group && list[j].type === 'reply') {
+                    		
+    		                str += "<div class='row'>";
+    		                str += "  <div class='media border-0 p-3 col-sm-7'>";
+    		                str += "    <img src='/resources/img/animal/animal"+random+".png' class='mr-3 mt-2' style='width:60px; padding:5px;'>";
+    		                str += "    <div class='media-body'>";
+    		                str += "      <h4>" + list[i].name + "<small><i>&nbsp;&nbsp;&nbsp; Posted on " +messageService.displayTime(list[i].createdDate)+ " ";
+    		                str += "	   </i></small>&nbsp;&nbsp;&nbsp;<span class='remove' style='cursor:pointer' data-cno='"+list[i].contentId+"'>X</span></h4>";
+			                str += "      <p>"+ list[i].body + "</p>";      
+			                str += "    </div>";
+			                str += "  </div>";
+			                str += "  <div class='col-sm-5'></div>";
+			                str += "</div>";
+
+			                
+			                str += "<div class='row'>";
+			                str += "  <div class='col-sm-6'></div>";
+			                str += "  <div class='media border-0 p-3 col-sm-6'>";
+			                str += "    <div class='media-body'>";
+			                str += "      <h4>" + list[j].name + "<small><i>&nbsp;&nbsp;&nbsp;Posted on " +messageService.displayTime(list[j].createdDate)+ "</i></small></h4>";
+			                str += "      <p>"+ list[j].body + "</p>";      
+			                str += "    </div>";
+			                str += "    <img src='/resources/img/baba.png' class='mr-2 mt-2' style='width:60px; padding-left:10px;'>";
+			                str += "  </div>";
+			                str += "</div><hr>";
+	                
+                            // 답변 있는지 없는지 체크 
+                            replyCheck = false;
+                        } 
+
+                    }
+                    
+                    // replyCheck true이면 문의는 했지만 답변 못받음  
+                    if(replyCheck) {
+                    	
+		                str += "<div class='row'>";
+		                str += "  <div class='media border-0 p-3 col-sm-7'>";
+		                str += "    <img src='/resources/img/animal/animal"+random+".png' class='mr-3 mt-2' style='width:60px; padding:5px;'>";
+		                str += "    <div class='media-body'>";
+		                str += "      <h4>" + list[i].name + "<small><i>&nbsp;&nbsp;&nbsp; Posted on " +messageService.displayTime(list[i].createdDate)+ " ";
+		                str += "	   </i></small>&nbsp;&nbsp;&nbsp;<span class='remove' style='cursor:pointer' data-cno='"+list[i].contentId+"'>X</span></h4>";
+		                str += "      <p>"+ list[i].body + "</p>";      
+		                str += "    </div>";
+		                str += "  </div>";
+		                str += "  <div class='col-sm-5'></div>";
+		                str += "</div>";
+		                
+		                str += "<div class='row'>";
+		                str += "  <div class='col-sm-6'></div>";
+		                str += "  <div class='media border-0 p-3 col-sm-6'>";
+		                str += "    <div class='media-body'>";
+		                str += "      <p><small>보내주신 문의를 확인하고 있습니다.</small></p>";      
+		                str += "    </div>";
+		                str += "    <img src='/resources/img/baba.png' class='mr-2 mt-2' style='width:60px; padding-left:10px;'>";
+		                str += "  </div>";
+		                str += "</div><hr>";
+
+                    }
+                    
+                }
+            }
+
+            msgSpace.html(str);
+        });
+    }
+
+
+	
+	adminBtn.on("click", function(e) {
+		
+		var msg = {
+			body : message.val(),
+			userEmail : userEmail
+		};
+		
+		messageService.send(msg, function(result){
+			showMessageList();
+			message.val('');
+		});
+	});
+	
+
+	
+	msgSpace.on("click", ".remove", function (e) {
+		
+        var contentId = $(this).attr("data-cno");
+		
+		var remove_confirm = function(){
+	        if (confirm('삭제하시겠습니까?')) {
+				messageService.remove(contentId, function(result){
+					showMessageList();
+				}, function(error){
+					console.log('remove Message error,,,,,')
+				});
+	        }
+	    }
+		remove_confirm();
+	});
+	
+	
+	
+	
+});
+</script>
 
 <script>
 function goPopup(){

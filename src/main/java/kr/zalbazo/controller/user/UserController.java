@@ -112,13 +112,11 @@ public class UserController {
             return "redirect:/hospitalinfo/register";
         }
 
-
-
         return "redirect:/index";
     }
 
     @RequestMapping("/jusoPopup")
-    public String popup(@RequestParam(required = false) String roadFullAddr){
+    public String popup(@RequestParam(required = false) String roadFullAddr) {
         System.out.println(roadFullAddr);
         return "user/jusoPopup";
     }
@@ -140,18 +138,17 @@ public class UserController {
     }
     
     
-   @GetMapping(value= "/getUser", produces = {
-         MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
-   public ResponseEntity <User> getUser(Model model, Principal principal) {
-      return new ResponseEntity<>(service.getUser(principal.getName()), HttpStatus.OK);
-   }
-   
-   @GetMapping(value= "/getWriter/{contentId}", produces = {
-	     MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
-	   public ResponseEntity <Content> getWriter(Model model, @PathVariable("contentId") Long contentId) {
-
-   		  return new ResponseEntity<>(service.getWriter(contentId), HttpStatus.OK);
-	   }
-
+	@GetMapping(value= "/get", produces = {
+			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity <User> getUser(Model model, Principal principal) {
+		return new ResponseEntity<>(service.getUser(principal.getName()), HttpStatus.OK);
+	}
+	
+	@GetMapping(value= "/getWriter/{contentId}", produces = {
+			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity <Content> getWriter(@PathVariable("contentId") Long contentId) {
+		log.info("aaaaaaa: "  + contentId);
+		return new ResponseEntity<>(service.getWriter(contentId), HttpStatus.OK);
+	}
    
 }

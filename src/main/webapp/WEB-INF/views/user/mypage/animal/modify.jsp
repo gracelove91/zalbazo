@@ -58,18 +58,17 @@
 
 		</div>
 		<div class="form-group">
-			<label>이름</label> <input type="text" class="form-control" id="name"
-				name="name" value="${animal.aname}" >
+			<label>이름</label> <input type="text" class="form-control" id="aname"
+				name="aname" value="${animal.aname}" >
 		</div>
 		<div class="form-group">
 			<label>내용</label>
 			<textarea class="form-control" id="note" name="note"
 				style="height: 320px;">${animal.note}</textarea>
 		</div>
-
-		<button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
-		<button  data-oper='list' class="btn btn-info">List</button>
-
+	
+		<button id='modify' type="submit" data-oper='modify' class="btn btn-primary">수정</button>
+		<button type="button" data-oper='list' class="btn btn-info" onclick="location.href='/user/mypage' ">취소</button>
 	</form>
 	</main>
 
@@ -79,7 +78,7 @@
 	<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	
-	 function fun2() {
+	 function fun2(e) {
 	       var obj = document.frm;
 	       
 	       if(obj.type.value == '') {
@@ -90,7 +89,7 @@
 
 	       if(obj.name.value == '') {
 	           alert('이름을 입력하세요');
-	           obj.name.focus();
+	           obj.aname.focus();
 	           return false;
 	       }
 	     
@@ -106,20 +105,16 @@
 	           obj.note.focus();
 	           return false;
 	       }
-	       
-	      
+	     
+	       alert('수정이 완료되었습니다.');
+	     
 	   }
 	        
 
 	
 	
 		$(document).ready(
-				
-				
-				
-							
-			
-				
+	
 				function() {
 					//성별체크
 					var a = document.getElementsByClassName("${animal.sex}");

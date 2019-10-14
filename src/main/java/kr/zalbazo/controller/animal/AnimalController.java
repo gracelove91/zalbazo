@@ -68,7 +68,7 @@ public class AnimalController {
         service.modify(animal);
         rttr.addFlashAttribute("result", "success");
 
-        return "redirect:/user/mypage/animal/list";
+        return "redirect:/user/mypage";
     }
 
     @RequestMapping("/animal/remove")

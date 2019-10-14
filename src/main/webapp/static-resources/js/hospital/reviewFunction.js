@@ -2,26 +2,20 @@ console.log("병원리뷰!");
 
 var reviewService = (function() {
 	
-	function addReview(review, callback, error) {
-		console.log("병원리뷰 Review등록");
-		
-		$.ajax({
-			type : 'post',
-			url : '/reviews/newre',
-			data : JSON.stringify(review),
-			contentType : "application/json; charset=utf-8",
-			success : function(result, status, xhr) {
-				if(callback) {
-					callback(result);
-				}
-			},
-			erorr : function(xhr, status, er) {
-				if(error) {
-					error(er);
-				}
+	function getTotal(hospitalId, callback, error) {
+
+		$.get("/reviews/total/" + hospitalId + ".json", function(result) {
+			if (callback) {
+				callback(result);
 			}
-		})
-	} // addReview
+		}).fail(function(xhr, status, err) {
+
+			if (error) {
+				error();
+			}
+
+		});
+	} // get
 
 	function get(hospitalId, callback, error) {
 
@@ -79,7 +73,7 @@ var reviewService = (function() {
 	}
 
 	return {
-		addReview : addReview,
+		getTotal : getTotal,
 		get : get,
 		getReviewList : getReviewList,
 		displayTime : displayTime

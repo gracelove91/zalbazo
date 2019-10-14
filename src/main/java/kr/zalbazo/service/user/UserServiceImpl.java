@@ -123,5 +123,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	@Override
 	public Content getWriter(Long contentId) {
 		return userMapper.getWriter(contentId);
-    }
+	}
+    
 }

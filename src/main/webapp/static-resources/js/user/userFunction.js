@@ -17,11 +17,12 @@ var userInfoService = (function(){
 	} // getUser
 	
 	
+	
 	function getWriter(contentId, callback, error) {
-		
-		$.get("/user/getWriter/" + contentId + ".json", function(writer) {
+
+		$.get("/user/getWriter/" + contentId + ".json", function(result) {
 			if (callback) {
-				callback(writer);
+				callback(result);
 			}
 		}).fail(function(xhr, status, err) {
 
@@ -30,11 +31,12 @@ var userInfoService = (function(){
 			}
 
 		});
-	} // getWriter
-
+	} // get
+	
+	
 	return {
 		getUser : getUser,
 		getWriter : getWriter
-	};
+	}
 	
 })();

@@ -229,8 +229,9 @@ th mobile{
 		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
 		      	<h4></h4>
 				<nav>
-				  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-				    <a class="nav-item nav-link active" id="nav-a-tab" data-toggle="tab" href="#nav-a" role="tab" aria-controls="nav-a" aria-selected="true">&nbsp;&nbsp;&nbsp;Q&A&nbsp;&nbsp;&nbsp;</a>
+				  <div class="nav nav-tabs mt-2" id="nav-tab" role="tablist">
+				  	&nbsp;&nbsp;&nbsp;<h4 class="answerCount">안뇽</h4>
+				  
 				  </div>
 				</nav>
 				<hr>

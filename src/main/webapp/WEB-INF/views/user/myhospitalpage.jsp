@@ -12,21 +12,20 @@
 <link rel="stylesheet" href="/resources/css/scroll.css">
 <link rel="stylesheet" href="/resources/css/MyHospitalReserve.css">
 <title>병원 마이페이지</title>
-<body>
-<a onclick="topFunction()" id="myBtn" title="Go to top"><img src="${ctx}/resources/img/GoToTop.png" width="50px;"></a>
-<div class="container-fluid">
-<div class="row d-flex d-md-block flex-nowrap wrapper">
-<main id="main">
 <style>
 img{
    display : inline;
    padding: 10px;
 }
-
 th mobile{
 	height : 40px;
 }
 </style>
+<body>
+<a onclick="topFunction()" id="myBtn" title="Go to top"><img id="up" src="${ctx}/resources/img/GoToTop.png" width="70px;"></a>
+<div class="container-fluid">
+<div class="row d-flex d-md-block flex-nowrap wrapper">
+<main id="main">
 <div class="page-header row">
 	<div class="col"></div>
 	<div class="col"></div>
@@ -46,6 +45,7 @@ th mobile{
 		      <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="padding:5px;">예약 관리</a>
 		      <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false" style="padding:5px;">병원 Q&A</a>
 		      <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false" style="padding:5px;">내가 쓴 글</a>
+		      <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false" style="padding:5px;">운영자 문의</a>
 		    </div>
 		  </div>
 		  
@@ -166,7 +166,7 @@ th mobile{
 			               <fieldset>
 			                  <label class="font-weight-bold">세부사항</label>
 			                  <textarea class="form-control" id="info" name="info"
-										placeholder="병원에 대한 상세정보를 적어주세요." style="height: 200px;"></textarea>
+										placeholder="병원에 대한 상세정보를 적어주세요." style="height: 200px;resize: none;"></textarea>
 			               </fieldset>
 			            </div><br />
 			            
@@ -229,8 +229,9 @@ th mobile{
 		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
 		      	<h4></h4>
 				<nav>
-				  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-				    <a class="nav-item nav-link active" id="nav-a-tab" data-toggle="tab" href="#nav-a" role="tab" aria-controls="nav-a" aria-selected="true">&nbsp;&nbsp;&nbsp;Q&A&nbsp;&nbsp;&nbsp;</a>
+				  <div class="nav nav-tabs mt-2" id="nav-tab" role="tablist">
+				  	&nbsp;&nbsp;&nbsp;<h4 class="answerCount">안뇽</h4>
+				  
 				  </div>
 				</nav>
 				<hr>
@@ -270,6 +271,38 @@ th mobile{
 				</div>  
 						      
 		      </div> <!--  내가 쓴 글 -->
+		      
+		      <!-- 운영자 문의 -->
+		      <div class="tab-pane" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
+		      	    <div id="main" class="col-md-12">
+		      	     
+			            <div class="page-header mt-3">
+			                 <h5>운영자에게 의견 혹은 건의사항을 직접 전달하세요.</h5>
+			            </div><hr>
+		      	        
+		      	        <div class="row">
+			      	        <div class="col-sm-10">
+							   <div class="form-group toAdmin">
+								  <textarea class="form-control" name="toAdmin" rows="4" style="resize: none;"></textarea>
+							   </div>
+			      	        </div>
+			      	        
+			      	        <div class="col-sm-2">
+							    <button id="adminBtn" class="btn btn-primary adminBtn">보내기</button>
+			      	        </div>
+		      	        </div>
+		      	        <hr>
+		      	        
+		      	        <div class="row">
+		      	           <div class="col-sm-10 msg">
+		      	              <!-- user message list 뜨는 곳  -->
+		      	           </div>
+		      	           <div class="col-sm-2"></div>
+		      	        </div>
+		      	        
+		      	    
+			        </div>
+		      </div> <!-- 운영자 문의 -->
 		      
 		    </div>
 		  </div>
@@ -360,6 +393,8 @@ th mobile{
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcontent.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcal.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/scroll.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/messageFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/message.js"></script>
 
 <script>
     function goPopup(){

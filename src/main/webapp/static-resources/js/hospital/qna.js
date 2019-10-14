@@ -38,7 +38,7 @@
                         	// (제목?)내용이 너무 길면 20자 내로 자르기
                         	var iBody = list[i].body;
                         	if(iBody.length > 20){
-                        		iBody = iBody.substring(0,19);
+                        		iBody = iBody.substring(0,19) + " (...)";
                         	}
                         	
                             // 같은 그룹의 A가 있다면 A 출력 태그

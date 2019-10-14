@@ -234,7 +234,7 @@ $(document).ready(function() {
 		                str += "  <div class='col-sm-6'></div>";
 		                str += "  <div class='media border-0 p-3 col-sm-6'>";
 		                str += "    <div class='media-body'>";
-		                str += "      <p><textarea class='form-control "+list[i].contentId+"' name='toUser' rows='3'></textarea></p>";      
+		                str += "      <p><textarea class='form-control "+list[i].contentId+"' name='toUser' rows='3' style='resize:none;'></textarea></p>";      
 		                str += "    </div>";
 		                str += "    <button id='userBtn' class='btn btn-sm btn-secondary userBtn ml-3 ";
 		                str += "      mt-4' data-mail='"+list[i].userEmail+"' data-cno='"+list[i].contentId+"' '>답장</button>";

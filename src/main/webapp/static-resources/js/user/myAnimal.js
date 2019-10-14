@@ -46,7 +46,9 @@ $(document).ready(function() {
 					str += "</td>";
 					str += "<td style='width: 350px; text-align: center;'>";
 					str += "<a class='move' style='color : #000000;' >";
-					str += "<button class='remove' id='remove' onclick="+"location.href='/user/mypage/animal/remove?id="+list[i].animalId+"'>삭제</button></a>";
+					str += "<button class='modify' id='modify' onclick="+"location.href='/user/mypage/animal/modify?id="+list[i].animalId+"'>수정</button></a>";
+					str += "<a class='move' style='color : #000000;' >";
+					str += "<button class='remove' id='remove'>삭제</button></a>";
 					str += "</td>"
 					str += "</tr>";
 			
@@ -56,5 +58,19 @@ $(document).ready(function() {
 		});
 	}
 
+	$(document).on("click",".remove",function() {
+		$.ajax({
+			url: '/user/mypage/animal/remove',
+			type : 'post',
+			data : {id : this.parentElement.parentElement.parentElement.children[0].innerText},
+			success: function(result){
+				showList(userEmail);
+				alert('삭제되었습니다');
+			}
+			
+		}); 
+		});
+	
+	
 	
 }); // function end

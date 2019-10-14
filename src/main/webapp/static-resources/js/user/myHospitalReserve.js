@@ -212,7 +212,7 @@ $(document).ready(function() {
 		
 		//console.log(reserveId);
 		
-		MyHospitalReserveService.remove(reserveId, function (result) {
+		MyHospitalReserveService.remove(reserveId, function(result) {
 
 			if(result === "success") {
 				alert("예약이 삭제 되었습니다.");

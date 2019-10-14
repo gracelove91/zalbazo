@@ -1,10 +1,10 @@
 package kr.zalbazo.config;
 
-import kr.zalbazo.service.user.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.access.expression.SecurityExpressionHandler;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userServiceImpl;
-
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 //        http.csrf().ignoringAntMatchers("/user/jusoPopup/**");
@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/login").anonymous()
                 .mvcMatchers("/user/register/**", "/user/jusoPopup").permitAll()
                 .mvcMatchers("/**/register").hasRole("user") // 이런 패턴들을 모두 허용 (권한을 가지면)
-                .mvcMatchers("/user/mypage").hasRole("user")
+                .mvcMatchers("/user/mypage").hasAnyRole("user", "hospital", "admin")
                 .mvcMatchers("/jisikdong", "/jisikdong/list", "/jisikdong/get").permitAll()
                 .mvcMatchers("/community", "/community/list", "/community/get").permitAll()
                 .mvcMatchers("/hospital", "/hospital/list", "/hospital/get").permitAll()
@@ -58,11 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private SecurityExpressionHandler<FilterInvocation> expressionHandler() {
         RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
         roleHierarchy.setHierarchy("ROLE_admin > ROLE_user");
-        roleHierarchy.setHierarchy("ROLE_admin > ROLE_hospital");
         roleHierarchy.setHierarchy("ROLE_hospital > ROLE_user");
-
-
-
 
         DefaultWebSecurityExpressionHandler handler = new DefaultWebSecurityExpressionHandler();
         handler.setRoleHierarchy(roleHierarchy);

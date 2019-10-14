@@ -82,6 +82,7 @@ public class UserController {
     	
     	// admin
     	model.addAttribute("useremail", authentication.getName());
+		model.addAttribute("name", user.getName());
     	System.out.println("admin이라면!!!!");
     	return "user/adminpage";
     }

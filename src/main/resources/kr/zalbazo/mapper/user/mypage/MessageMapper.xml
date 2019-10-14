@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="kr.zalbazo.mapper.user.mypage.MessageMapper">
+
+	<insert id="send">
+       insert all
+       into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
+       values (CONTENT_SEQ.nextval, #{body}, sysdate, 5, #{userEmail})
+       into message (MESSAGE_ID, CONTENT_ID, TYPE, M_GROUP, USER_EMAIL)
+       values (MESSAGE_SEQ.nextval, CONTENT_SEQ.currval, 'send', CONTENT_SEQ.currval, #{userEmail})
+       select * from dual
+	</insert>
+	
+	<insert id="reply">
+	  insert all
+	  into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
+	  values (CONTENT_SEQ.nextval, #{body}, sysdate, 5, #{userEmail})
+       into message (MESSAGE_ID, CONTENT_ID, TYPE, M_GROUP, USER_EMAIL)
+       values (MESSAGE_SEQ.nextval, CONTENT_SEQ.currval, 'reply', #{mGroup}, #{userEmail})
+       select * from dual
+	</insert>
+	
+	<delete id="delete">
+	  delete from content where content_id = #{contentId}
+	</delete>
+	
+	<select id="get" resultType="kr.zalbazo.model.user.MessageVO">
+      select a.content_id
+      from content a, message b
+      where a.content_id = b.content_id
+      and type = 'reply'
+      and m_group = #{contentId}
+	</select>
+	
+	<select id="adminList" resultType="kr.zalbazo.model.user.MessageVO">
+      select * 
+      from content a, message b, zalbazo_user c
+      where a.content_id = b.content_id
+      and a.user_email = c.user_email
+      and category_id = 5
+      order by m_group desc, message_id asc
+	</select>
+	
+	<select id="userList" resultType="kr.zalbazo.model.user.MessageVO">
+      select * 
+      from content a, message b, zalbazo_user c
+      where a.content_id = b.content_id
+      and a.user_email = c.user_email
+      and b.user_email = #{userEmail}
+      order by m_group desc, message_id asc
+	</select>
+	
+	
+</mapper>

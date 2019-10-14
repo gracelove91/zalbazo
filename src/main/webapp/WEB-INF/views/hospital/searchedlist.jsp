@@ -63,8 +63,12 @@ input.checkbox:checked + label.input-label.radio::before {
     content:"\f058";
 }
 </style>
+<link rel="stylesheet" href="/resources/css/scroll.css">
 <title>병원 LIST</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<body>
+<a onclick="topFunction()" id="myBtn" title="Go to top"><img src="${ctx}/resources/img/GoToTop.png" width="60px;"></a>
 <section class="feature-area">
 
 
@@ -205,8 +209,9 @@ input.checkbox:checked + label.input-label.radio::before {
 </div>
 </div>
 </section>
-<script type="text/javascript" src="/resources/js/index/search.js"></script> 
-<!-- 제이쿼리 자바스크립트 추가하기 -->
+</body>
+<script type="text/javascript" src="/resources/js/index/search.js"></script>
+<script type="text/javascript" src="/resources/js/scroll.js"></script>
 
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>

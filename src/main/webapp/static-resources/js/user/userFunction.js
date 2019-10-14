@@ -16,8 +16,26 @@ var userInfoService = (function(){
 	} // get
 	
 	
+	
+	function getWriter(contentId, callback, error) {
+
+		$.get("/user/getWriter/" + contentId + ".json", function(result) {
+			if (callback) {
+				callback(result);
+			}
+		}).fail(function(xhr, status, err) {
+
+			if (error) {
+				error();
+			}
+
+		});
+	} // get
+	
+	
 	return {
-		getUser : getUser
+		getUser : getUser,
+		getWriter : getWriter
 	}
 	
 })();

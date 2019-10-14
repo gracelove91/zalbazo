@@ -36,7 +36,9 @@
 <!-- Preloader End -->
 
 <!-- Header Area Starts -->
+
 <header class="header-area main-header" style="padding-bottom: 100px;">
+
     <div class="container">
         <div class="row">
             <div class="image-container col-lg-3" style=" display: flex; align-items: center; ustify-content: center; height: 35px;" >

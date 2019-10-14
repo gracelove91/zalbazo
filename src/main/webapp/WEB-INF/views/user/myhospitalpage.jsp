@@ -12,21 +12,20 @@
 <link rel="stylesheet" href="/resources/css/scroll.css">
 <link rel="stylesheet" href="/resources/css/MyHospitalReserve.css">
 <title>병원 마이페이지</title>
-<body>
-<a onclick="topFunction()" id="myBtn" title="Go to top"><img src="${ctx}/resources/img/GoToTop.png" width="50px;"></a>
-<div class="container-fluid">
-<div class="row d-flex d-md-block flex-nowrap wrapper">
-<main id="main">
 <style>
 img{
    display : inline;
    padding: 10px;
 }
-
 th mobile{
 	height : 40px;
 }
 </style>
+<body>
+<a onclick="topFunction()" id="myBtn" title="Go to top"><img id="up" src="${ctx}/resources/img/GoToTop.png" width="70px;"></a>
+<div class="container-fluid">
+<div class="row d-flex d-md-block flex-nowrap wrapper">
+<main id="main">
 <div class="page-header row">
 	<div class="col"></div>
 	<div class="col"></div>
@@ -167,7 +166,7 @@ th mobile{
 			               <fieldset>
 			                  <label class="font-weight-bold">세부사항</label>
 			                  <textarea class="form-control" id="info" name="info"
-										placeholder="병원에 대한 상세정보를 적어주세요." style="height: 200px;"></textarea>
+										placeholder="병원에 대한 상세정보를 적어주세요." style="height: 200px;resize: none;"></textarea>
 			               </fieldset>
 			            </div><br />
 			            
@@ -283,7 +282,7 @@ th mobile{
 		      	        <div class="row">
 			      	        <div class="col-sm-10">
 							   <div class="form-group toAdmin">
-								  <textarea class="form-control" name="toAdmin" rows="4"></textarea>
+								  <textarea class="form-control" name="toAdmin" rows="4" style="resize: none;"></textarea>
 							   </div>
 			      	        </div>
 			      	        
@@ -393,6 +392,8 @@ th mobile{
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcontent.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcal.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/scroll.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/messageFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/message.js"></script>
 
 <script>
     function goPopup(){

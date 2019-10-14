@@ -82,7 +82,7 @@ $(document).ready(function(){
 	    str += "<div class='form-group'>";
 	    str += "   <label class='font-weight-bold'>세부사항</label>";
 	    str += "   <textarea class='form-control' id='info' name='info' "
-	    str += "    style='height: 200px;' readonly='readonly'>"+data.info+"</textarea>";
+	    str += "    style='height: 200px;resize: none;' readonly='readonly'>"+data.info+"</textarea>";
 	    str += "</div><br />";
 	    
 	    

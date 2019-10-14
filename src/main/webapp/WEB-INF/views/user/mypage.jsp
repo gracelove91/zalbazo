@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/resources/css/scroll.css">
 <title>마이페이지</title>
 <body>
-<a onclick="topFunction()" id="myBtn" title="Go to top"><img src="${ctx}/resources/img/GoToTop.png" width="50px;"></a>
+<a onclick="topFunction()" id="myBtn" title="Go to top"><img id="up" src="${ctx}/resources/img/GoToTop.png" width="50px;"></a>
 <div class="container-fluid">
 <div class="row d-flex d-md-block flex-nowrap wrapper">
 <main id="main">
@@ -346,7 +346,7 @@
 		      	        <div class="row">
 			      	        <div class="col-sm-10">
 							   <div class="form-group toAdmin">
-								  <textarea class="form-control" name="toAdmin" rows="4"></textarea>
+								  <textarea class="form-control" name="toAdmin" rows="4" style="resize: none;"></textarea>
 							   </div>
 			      	        </div>
 			      	        
@@ -407,7 +407,7 @@
 					<label>리뷰</label>
 					<input type='hidden' class="form-control" name="reviewDate" id="reviewDate" value="sysdate">
 					<input type='hidden' class="form-control" name="userEmail" id="userEmail"value="${useremail}">
-					<textarea class="form-control txt" rows="5" id="review" name="review" placeholder="리뷰를 남겨주세요"></textarea><br>
+					<textarea class="form-control txt" rows="5" id="review" name="review" placeholder="리뷰를 남겨주세요" style="resize: none;"></textarea><br>
 					<div>
 						<i class="stars" style="color:gold;font-weight:bold;" name="stars" id="stars">
 				            <i class='material-icons star' id="star1" name="star1" data-star="1">star_border</i>

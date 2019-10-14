@@ -42,7 +42,7 @@ $(document).ready(function() {
                         str += "<div class='qqqaaa' data-qno='"+list[i].contentId+"' style='cursor:pointer'>";
                         str += "   &nbsp;&nbsp;&nbsp;&nbsp;<span style='color:#04b1fb;'>답변완료</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ iBody + " ";
                         str += "	  <small class='float-right text-muted'>" + list[i].userEmail + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + MyHospitalContentService.displayTime(list[i].createdDate) + "</small>";
-                        str += "   </div><hr>";
+                        str += "</div><hr>";
                         
                         str += "<div class='card-body collapse "+list[i].contentId+"'>";
                         str += "   <img src='/resources/img/q.png' style='width:50px'> " + list[i].body + " <br><br>";

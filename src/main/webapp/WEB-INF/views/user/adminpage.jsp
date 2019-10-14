@@ -32,11 +32,11 @@
 		  <div class="col-2"></div>
 		  <div class="col">
 		    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-		      <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true" style="padding:5px;">개인정보 수정</a>
-		      <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false" style="padding:5px;">동물 관리</a>
-		      <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="padding:5px;">내가 쓴 글</a>
-		      <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false" style="padding:5px;">예약 내역</a>
-		      <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false" style="padding:5px;">운영자 1:1 문의</a>
+		      <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true" style="padding:5px;">main</a>
+		      <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false" style="padding:5px;">유저관리</a>
+		      <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="padding:5px;">병원관리</a>
+		      <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false" style="padding:5px;">운영자 1:1 문의</a>
+		      <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false" style="padding:5px;">몰라</a>
 		    </div>
 		  </div>
 		  
@@ -87,27 +87,26 @@
 				</div>				
 		      </div>
 		      
-		      
-		    <!-- 운영자 문의 -->
-		    <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
-		       <div id="main" class="col-md-12">
+		      <!-- 운영자 1:1 문의 -->
+		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+					<div id="main" class="col-md-12">
 		       
-		          <div class="row">
-		      	     <div class="col-sm-10 msg">
-		      	        <!-- admin message list 뜨는 곳  -->
-		      	     </div>
-		      	     <div class="col-sm-2"></div>
-		      	  </div>
+			          <div class="row">
+			      	     <div class="col-sm-10 msg">
+			      	        <!-- admin message list 뜨는 곳  -->
+			      	     </div>
+			      	     <div class="col-sm-2"></div>
+			      	  </div>
 
-		       </div>
+		       		</div>
+		      </div><!-- 운영자 1:1 문의 -->
+		      
+		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+		      	몰라
+		      </div>
 		    </div>
-		    <!-- 운영자 문의 -->
-		      
-		      
-		      
 		  </div>
-	   </div>
-    <div class="col-1"></div>
+		  <div class="col-2"></div>
   
 </div>
 
@@ -123,21 +122,10 @@
 <script type="text/javascript" src="${ctx}/resources/js/user/adminFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/admin.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/scroll.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/mycontentFunction.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/mycontent.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myInfoFunction.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myInfo.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myAnimalFunction.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myAnimal.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myreserveFunction.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myreserve.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/hospital/favoriteFunction.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/hospital/myFavorite.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/messageFunction.js"></script>
 
 <script>
 $(document).ready(function() {
-
 	var msgSpace = $(".msg");
 	
 	
@@ -174,7 +162,6 @@ $(document).ready(function() {
     	messageService.getAdminList(function(list) {
     		
             var str = "";
-
             if (list == null || list.length == 0) {
             	
             	str += "<div class='card-body primary-font'> 아직 등록된 글이 없습니다.</div>";
@@ -182,9 +169,7 @@ $(document).ready(function() {
             	msgSpace.html(str);
             	return;
             }
-
             msgSpace.html("");
-
             for (let i = 0, len = list.length || 0; i < len; i++) {
                 let type = list[i].type;
                 let group = list[i].mgroup;
@@ -199,7 +184,6 @@ $(document).ready(function() {
                 	var random = Math.floor(Math.random() * 10) + 1;
                 	
                     for (let j = 0, len = list.length || 0; j < len; j++) {
-
                         // 문의와 답변이 같이 있다면 아래의 태그를 출력
                     	if (list[j].mgroup === group && list[j].type === 'reply') {
                     		
@@ -214,7 +198,6 @@ $(document).ready(function() {
 			                str += "  </div>";
 			                str += "  <div class='col-sm-5'></div>";
 			                str += "</div>";
-
 			                
 			                str += "<div class='row'>";
 			                str += "  <div class='col-sm-6'></div>";
@@ -230,7 +213,6 @@ $(document).ready(function() {
                             // 답변 있는지 없는지 체크 
                             replyCheck = false;
                         } 
-
                     }
                     
                     // replyCheck true이면 문의는 했지만 답변 못받음  
@@ -258,27 +240,16 @@ $(document).ready(function() {
 		                str += "      mt-4' data-mail='"+list[i].userEmail+"' data-cno='"+list[i].contentId+"' '>답장</button>";
 		                str += "  </div>";
 		                str += "</div><hr>";
-
                     }
                     
                 }
             }
-
             msgSpace.html(str);
         });
     }
 	
 	
 });
-</script>
-<script>
-function goPopup(){
-    var pop = window.open("jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes");
-}
-
-function jusoCallBack(roadFullAddr){
-    $("#address").val(roadFullAddr);
-}
 </script>
 
 <%@include file="/WEB-INF/views/includes/footer.jsp" %>

@@ -88,7 +88,8 @@ input.checkbox:checked + label.input-label.radio::before {
   <label for="select4" class="input-label checkbox">수술전문</label>
 </div>
 <input type="hidden" id="length" name="length" value="">
-<div style="float: left; width: 35%;">
+<div class="row">
+<div class="col-lg-2">
 <select name="searchOption">
 						<option value="all">전체검색</option>
 						<option value="name">병원이름</option>
@@ -97,15 +98,16 @@ input.checkbox:checked + label.input-label.radio::before {
 					</select>
 	</div>				
 					<!-- 검색창 -->
-					<div class="col-md-10 col-lg-8 col-xl-7 mx-auto" style="float: left; width: 45%;">
-						<input name="keyword" type="keyword" class="form-control form-control-lg" placeholder="검색어를 입력해주세요.">
+					<div class="col-md-8 col-lg-8 col-xl-8 mx-auto" style='padding-top: 10px;'>
+						<input name="keyword" type="keyword" class="form-control form-control-md" placeholder="검색어를 입력해주세요.">
 					</div>
-					<div  style="float: left; width: 20%;">
-						<button type="submit" class="btn btn-block btn-lg btn-primary">검색하기</button>
+					<div class="col-lg-2" style='padding-top: 10px;'>
+						<button type="submit" class="btn btn-block btn-md btn-primary">검색하기</button>
 					</div>
 
 </div>
 </form>
+<br>
 <div class="container-fluid">
 <div class="row d-flex d-md-block flex-nowrap wrapper">
 <main id="main">

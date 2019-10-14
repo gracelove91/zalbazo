@@ -9,8 +9,9 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <%@include file="../includes/header.jsp" %>
 </head>
-
+<link rel="stylesheet" href="/resources/css/scroll.css">
 <body>
+<a onclick="topFunction()" id="myBtn" title="Go to top"><img src="${ctx}/resources/img/GoToTop.png" width="60px;"></a>
 <input type='hidden' class="hospitalNo" id="hospitalNo" value="${hospital.hospitalId}">
 <input type='hidden' class="mailmail" id="mailmail" value="${userEmail}">
 <div class="container-fluid">
@@ -57,7 +58,9 @@
             </c:forEach>
 
             <hr>
-            <p class="h5">${hospital.info}</p>
+            <div class="h5 ff" id="info" name="info">
+            </div>
+            <textarea class="h5 ff2" id="info2" name="info2" hidden>${hospital.info}</textarea>
 
         </div>
         <div class="col-5">
@@ -157,7 +160,7 @@
             	<div class='row'>
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading" style="padding-left: 20px; font-size: x-large;">
+                            <div class="panel-heading" style="padding-left: 20px; font-size: large;">
                                 <strong>${hospital.name}</strong>은 어디에 있을까?
                             </div>
                             
@@ -181,7 +184,7 @@
                 <div class='row'>
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading" style="padding-left: 20px; font-size: x-large;">
+                            <div class="panel-heading" style="padding-left: 20px; font-size: large;">
                                 <strong>${hospital.name}</strong> 리뷰
                             </div>
 							
@@ -195,58 +198,45 @@
                                         	<div class="container">
 							                    <input type="hidden" class="form-control" name="userEmail" value="${userEmail}">
 							                    <input type='hidden' class="form-control" name="hospitalId" value="${hospital.hospitalId}">
-							
-							                    <!-- <div class="form-group" style="border-width: 5px;">
-							                        <textarea class="form-control txt" rows="5" id="review" name="review" placeholder="리뷰를 남겨주세요"></textarea>
-							                        <div>
-							                        	<div>
-								                        	<i class="stars" style="color:gold;font-weight:bold;" name="stars">
-		                                                        <i class='material-icons star' id="star1" name="star1" data-star="1">star_border</i>
-		                                                        <i class='material-icons star' id="star2" name="star2" data-star="2">star_border</i>
-		                                                        <i class='material-icons star' id="star3" name="star3" data-star="3">star_border</i>
-		                                                        <i class='material-icons star' id="star4" name="star4" data-star="4">star_border</i>
-		                                                        <i class='material-icons star' id="star5" name="star5" data-star="5">star_border</i>
-	                                                        </i>
-                                                        </div>
-                                                        <div align="right">
-								                    		<button type="submit" class="btn btn-secondary" id="reviewBtn" name="reviewBtn">Submit</button>
-								                    	</div>
-								                    </div>
-							                    </div> -->
 							                </div>
 							                
                                         	<!-- 평균 -->
-                                            <div class="media border p-3"
-                                                 style="background-color:LightCyan; border-style: solid; border-width: 5px;">
+                                            <div class="media p-3">
 
-                                                <img src="/resources/img/baba.png" class="mr-3 mt-3 rounded-circle"
-                                                     style="width: 80px">
-
-                                                <div class="media-body rate">
-
-                                                    <div style="font-weight:bold;font-size: x-large;">
-                                                        <h1 class="material-icons"
-                                                            style="color:gold; font-weight:bold;font-size: x-large;">
-                                                            star</h1>
-                                                        <h1 class="material-icons"
-                                                            style="color:gold; font-weight:bold;font-size: x-large;">
-                                                            star</h1>
-                                                        <h1 class="material-icons"
-                                                            style="color:gold; font-weight:bold;font-size: x-large;">
-                                                            star</h1>
-                                                        <h1 class="material-icons"
-                                                            style="color:gold; font-weight:bold;font-size: x-large;">
-                                                            star</h1>
-                                                        <h1 class="material-icons"
-                                                            style="color:gold; font-weight:bold;font-size: x-large;">
-                                                            star</h1>
-                                                        &nbsp;5.0
-                                                    </div>
-                                                    <p>점수, 총 명수 이런 거 적으면 좋겠다고 생각하는 부분임</p>
-
-                                                </div>
-
+												<div class="media-body row">
+													<div class="col"></div>
+	                                                <div class="rate col-5">
+														<h3 style='color:#707070;' align='center'>사용자 총 평점</h3>
+	                                                    <div style="font-weight:bold;font-size: x-large;" align='center'>
+	                                                        <h1 class="material-icons"
+	                                                            style="color:gold; font-weight:bold;font-size: x-large;">
+	                                                            star_border</h1>
+	                                                        <h1 class="material-icons"
+	                                                            style="color:gold; font-weight:bold;font-size: x-large;">
+	                                                            star_border</h1>
+	                                                        <h1 class="material-icons"
+	                                                            style="color:gold; font-weight:bold;font-size: x-large;">
+	                                                            star_border</h1>
+	                                                        <h1 class="material-icons"
+	                                                            style="color:gold; font-weight:bold;font-size: x-large;">
+	                                                            star_border</h1>
+	                                                        <h1 class="material-icons"
+	                                                            style="color:gold; font-weight:bold;font-size: x-large;">
+	                                                            star_border</h1>
+	                                                    </div>
+	                                                    <h2 style='color:#707070;' align='center'>0 / 5</h2>
+	                                                </div>
+	                                                <div class="col"></div>
+	                                                <div class="getTotal col-5">
+	                                                	<h3 style='color:#707070;' align='center'>전체 리뷰 수</h3>
+	                                                	<br>
+	                                                	<h2 style='color:#707070;' align='center'>0개</h2>
+	                                                </div>
+	                                                <div class="col-1"></div>
+												</div>
                                             </div>
+                                            
+                                            
                                         </div>
                                         </div>
                                     </li>
@@ -296,7 +286,7 @@
                     <input type='hidden' class="form-control" id="hospitalId" name="hospitalId" value="${hospital.hospitalId}">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading" style="padding-left: 20px; font-size: x-large;">
+                            <div class="panel-heading" style="padding-left: 20px; font-size: large;">
                                 <strong>${hospital.name}</strong>에 궁금한 점을 질문하세요
                             </div>
                             
@@ -346,8 +336,20 @@
 <script type="text/javascript" src="${ctx}/resources/js/hospital/review.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/favoriteFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/favorite.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/scroll.js"></script>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5ea4ef47b16d9a398f9876fcc56c42fe&libraries=services"></script>
+
+<script>
+$(document).ready(function(){
+	
+var ff = $(".ff");
+
+ff.html($(".ff2").val().replace(/(?:\r\n|\r|\n)/g, '<br/>'));
+
+});
+</script>
+
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 mapOption = {

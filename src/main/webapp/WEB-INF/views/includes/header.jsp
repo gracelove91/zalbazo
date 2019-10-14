@@ -36,7 +36,7 @@
 <!-- Preloader End -->
 
 <!-- Header Area Starts -->
-<header class="header-area main-header">
+<header class="header-area main-header" style="padding:30px 0px 0px 0px;">
     <div class="container">
         <div class="row">
             <div class="col-lg-2" style="padding:0px;"><br>

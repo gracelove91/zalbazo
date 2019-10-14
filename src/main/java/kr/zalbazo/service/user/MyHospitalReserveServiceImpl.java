@@ -21,6 +21,11 @@ public class MyHospitalReserveServiceImpl implements MyHospitalReserveService{
 	public List<Reserve> getHospitalReserveList(String userEmail) {
 		return myHospitalReserveMapper.getHospitalReserveList(userEmail);
 	}
+	
+	@Override
+	public List<Reserve> getHospitalReserveCount(String userEmail) {
+		return myHospitalReserveMapper.getHospitalReserveCount(userEmail);
+	}
 
 	@Override
 	public Reserve get(Long reserveId) {

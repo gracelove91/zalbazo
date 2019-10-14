@@ -13,6 +13,6 @@ public interface HospitalReviewService {
 	
 	public double get(@Param("hospitalId") Long hospitalId);
 	
-	public int insertReview(HospitalReviewVO hospitalReviewVO);
+	public int getTotal(@Param("hospitalId") Long hospitalId);
 
 }

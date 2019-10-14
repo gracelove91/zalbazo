@@ -14,181 +14,108 @@
  		var starUL = $(".stars");
  		
  		var starPoint = info.find("i[name='stars']");
-
- 		starUL.on("click", ".star", function(e) {
- 			var star = $(this).attr("data-star");
+ 		
+ 		var total = $(".getTotal");
+ 		
+ 		reviewService.getTotal(hospitalId.val(), function(data) {
+ 			console.log(data);
  			
- 			if(star == 1) {
- 				
- 				str = "";
-
- 	 			str += "<i class='material-icons star' id='star1' name='star1' data-star='1'>star</i>";
- 	 			str += "<i class='material-icons star' id='star2' name='star2' data-star='2'>star_border</i>";
- 	 			str += "<i class='material-icons star' id='star3' name='star3' data-star='3'>star_border</i>";
- 	 			str += "<i class='material-icons star' id='star4' name='star4' data-star='4'>star_border</i>";
- 	 			str += "<i class='material-icons star' id='star5' name='star5' data-star='5'>star_border</i>";
-
- 	 			starUL.html(str);
- 	 			starPoint = "1";
- 	 					
- 			} else if(star == 2) {
- 				
- 				str = "";
-
- 	 			str += "<i class='material-icons star' id='star1' name='star1' data-star='1'>star</i>";
- 	 			str += "<i class='material-icons star' id='star2' name='star2' data-star='2'>star</i>";
- 	 			str += "<i class='material-icons star' id='star3' name='star3' data-star='3'>star_border</i>";
- 	 			str += "<i class='material-icons star' id='star4' name='star4' data-star='4'>star_border</i>";
- 	 			str += "<i class='material-icons star' id='star5' name='star5' data-star='5'>star_border</i>";
-
- 	 			starUL.html(str);
- 	 			starPoint = "2";
- 				
- 			} else if(star == 3) {
- 				
- 				str = "";
-
- 	 			str += "<i class='material-icons star' id='star1' name='star1' data-star='1'>star</i>";
- 	 			str += "<i class='material-icons star' id='star2' name='star2' data-star='2'>star</i>";
- 	 			str += "<i class='material-icons star' id='star3' name='star3' data-star='3'>star</i>";
- 	 			str += "<i class='material-icons star' id='star4' name='star4' data-star='4'>star_border</i>";
- 	 			str += "<i class='material-icons star' id='star5' name='star5' data-star='5'>star_border</i>";
-
- 	 			starUL.html(str);
- 	 			starPoint = "3";
- 	 			
- 			} else if(star == 4) {
- 				
- 				str = "";
-
- 	 			str += "<i class='material-icons star' id='star1' name='star1' data-star='1'>star</i>";
- 	 			str += "<i class='material-icons star' id='star2' name='star2' data-star='2'>star</i>";
- 	 			str += "<i class='material-icons star' id='star3' name='star3' data-star='3'>star</i>";
- 	 			str += "<i class='material-icons star' id='star4' name='star4' data-star='4'>star</i>";
- 	 			str += "<i class='material-icons star' id='star5' name='star5' data-star='5'>star_border</i>";
-
- 	 			starUL.html(str);
- 	 			starPoint = "4";
- 				
- 			} else if(star == 5) {
- 				
- 				str = "";
-
- 	 			str += "<i class='material-icons star' id='star1' name='star1' data-star='1'>star</i>";
- 	 			str += "<i class='material-icons star' id='star2' name='star2' data-star='2'>star</i>";
- 	 			str += "<i class='material-icons star' id='star3' name='star3' data-star='3'>star</i>";
- 	 			str += "<i class='material-icons star' id='star4' name='star4' data-star='4'>star</i>";
- 	 			str += "<i class='material-icons star' id='star5' name='star5' data-star='5'>star</i>";
-
- 	 			starUL.html(str);
- 	 			starPoint = "5";
- 				
- 			}
+ 			var str = "";
  			
- 			console.log(starPoint);
- 		}); // 별점
-
- 		reviewBtn.on("click", function (e) {
-			if(reviewBody.val().trim() === "" || reviewBody.val().length < 10) {
-				alert("10자 이상만 등록 가능합니다");
-				return;
-			}
-			if(Number(starPoint) != 1 && Number(starPoint) != 2 && Number(starPoint) != 3 && Number(starPoint) != 4 && Number(starPoint) != 5) {
-				alert("별점이 없습니다");
-				return;
-			}
- 			alert("리뷰가 등록되었습니다");
+ 			str += "<h3 style='color:#707070;' align='center'>전체 리뷰 수</h3>";
+ 			str += "<br>";
+ 			str += "<h2 style='color:#707070;' align='center'>"+ data +"개</h2>";
  			
- 			reviewService.addReview(
-	 			{body:reviewBody.val(), userEmail:user.val(), starPoint:Number(starPoint), hospitalId:hospitalId.val()}
-	 			,
-	 			function(result) {
-	 				// textarea 리셋
-	 	            $(".txt").val('');
-	 				
-	 	           var str = "";
-
-	 	 			str += "<i class='material-icons star' id='star1' name='star1' data-star='1'>star_border</i>";
-	 	 			str += "<i class='material-icons star' id='star2' name='star2' data-star='2'>star_border</i>";
-	 	 			str += "<i class='material-icons star' id='star3' name='star3' data-star='3'>star_border</i>";
-	 	 			str += "<i class='material-icons star' id='star4' name='star4' data-star='4'>star_border</i>";
-	 	 			str += "<i class='material-icons star' id='star5' name='star5' data-star='5'>star_border</i>";
-
-	 	 			starUL.html(str);
-	 			}
- 			);
-        }); // on
-		
+ 			total.html(str);
+ 		}); // getTotal
+	
 		reviewService.get(hospitalId.val(), function(data) {
-			console.log("평균 : "+data);
+			//console.log(data);
 			
 			var str = "";
 			var star = "";
 
 			if(data == 1) {
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+				star += "<div style='font-weight:bold;font-size: x-large;'>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "</div>";
 			} else if(data < 2) {
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+				star += "<div style='font-weight:bold;font-size: x-large;'>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_half</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "</div>";
 			} else if(data == 2) {
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+				star += "<div style='font-weight:bold;font-size: x-large;'>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "</div>";
 			} else if(data < 3) {
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+				star += "<div style='font-weight:bold;font-size: x-large;'>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_half</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "</div>";
 			} else if(data == 3) {
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+				star += "<div style='font-weight:bold;font-size: x-large;'>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "</div>";
 			} else if(data < 4) {
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+				star += "<div style='font-weight:bold;font-size: x-large;'>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_half</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "</div>";
 			} else if(data == 4) {
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_border</span>";
+				star += "<div style='font-weight:bold;font-size: x-large;'>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_border</h1>";
+				star += "</div>";
 			} else if(data < 5) {
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star_half</span>";
+				star += "<div style='font-weight:bold;font-size: x-large;'>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star_half</h1>";
+				star += "</div>";
 			} else if(data == 5) {
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
-				star += "<span class='material-icons' style='font-weight:bold'>star</span>";
+				star += "<div style='font-weight:bold;font-size: x-large;'>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "<h1 class='material-icons' style='font-weight:bold;color:gold;'>star</h1>";
+				star += "</div>";
 			}
 
-			str += "<span class='heading'><p style='font-weight:bold'>User Rating &nbsp;&nbsp;";
-			str += "	<span style='color:gold;font-weight:bold'>"+star+"</span>&nbsp;&nbsp;"+data+"</p></span>";
-			str += "		<p>평균평균</p>";
+			str += "<h3 style='color:#707070;' align='center'>사용자 총 평점</h3>";
+			str += "	<h1 style='color:gold;font-weight:bold' align='center'>"+star+"</h1>";
+			str += "	<h2 style='color:#707070;' align='center'>"+data+" / 5</h2>";
 
 			rateUL.html(str);
-		});
-
-
+		}); // get
+		
 		reviewService.getReviewList({hospitalId:hospitalId.val()}, function(list){
 
 			var str = "";
@@ -272,5 +199,6 @@
 
 			reviewUL.html(str);
 		});
+		
 		
 	}); // ready

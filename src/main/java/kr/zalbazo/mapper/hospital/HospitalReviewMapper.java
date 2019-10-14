@@ -16,7 +16,7 @@ public interface HospitalReviewMapper {
 	// 병원별 리뷰 평점 평균
 	public double get(@Param("hospitalId") Long hospitalId);
 	
-	// 병원리뷰 쓰기
-	public int insertReview(HospitalReviewVO hospitalReviewVO);
+	// 병원별 리뷰 평점 개수
+	public int getTotal(@Param("hospitalId") Long hospitalId);
 
 }

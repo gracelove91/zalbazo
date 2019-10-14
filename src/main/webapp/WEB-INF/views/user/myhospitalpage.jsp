@@ -9,7 +9,11 @@
     String ctx = request.getContextPath();
     pageContext.setAttribute("ctx", ctx);
 %>
+<link rel="stylesheet" href="/resources/css/scroll.css">
+<link rel="stylesheet" href="/resources/css/MyHospitalReserve.css">
 <title>병원 마이페이지</title>
+<body>
+<a onclick="topFunction()" id="myBtn" title="Go to top"><img src="${ctx}/resources/img/GoToTop.png" width="50px;"></a>
 <div class="container-fluid">
 <div class="row d-flex d-md-block flex-nowrap wrapper">
 <main id="main">
@@ -24,17 +28,19 @@ th mobile{
 }
 </style>
 <div class="page-header row">
-	<div class="col-1"></div>
-	<div class="col-11">
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col-9">
 	<br>
     <h2>${name}님의 마이페이지</h2>
+    <input type='hidden' class="email" id="userEmail" value="${useremail}">
     <p>환영합니다!</p>
     </div>
 </div>
 
 <div class="row">
-		  <div class="col-1"></div>
-		  <div class="col-2">
+		  <div class="col"></div>
+		  <div class="col">
 		    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 		      <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true" style="padding:5px;">병원정보 수정</a>
 		      <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="padding:5px;">예약 관리</a>
@@ -195,8 +201,10 @@ th mobile{
 		      
 		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab"> <!-- 관리 -->
 					<br>
-					<div id="my-calendar"></div>
+						<div id="my-calendar"></div>
 					<br>
+					<div class="countR" style="text-align:right">
+					</div>
 		      		<div class="viewreserve">
 					<table class="table table-striped col-12">
 				      <thead>
@@ -212,7 +220,6 @@ th mobile{
 				      </thead>
 				      
 				      <tbody class="myreservelist">
-				        
 				      </tbody>
 				      
 			   		</table> 
@@ -334,7 +341,7 @@ th mobile{
 		</div>
 	</div>
 </div>
-
+</body>
 
 
 <!-- Bootstrap core JavaScript -->
@@ -345,10 +352,6 @@ th mobile{
 <script type="text/javascript" src="${ctx}/resources/js/user/mycontent.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfoFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfo.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospitalFunction.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospital.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myAnimalFunction.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myAnimal.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myHospitalReserveFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myHospitalReserve.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/infoFunction.js"></script>
@@ -356,8 +359,7 @@ th mobile{
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcontentFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcontent.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcal.js"></script>
-<link rel="stylesheet" href="/resources/css/MyHospitalReserve.css">
-
+<script type="text/javascript" src="${ctx}/resources/js/scroll.js"></script>
 
 <script>
     function goPopup(){

@@ -6,7 +6,7 @@ div.zabuto_calendar {
 div.zabuto_calendar .table {
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 5px;
 }
 
 div.zabuto_calendar .table th,

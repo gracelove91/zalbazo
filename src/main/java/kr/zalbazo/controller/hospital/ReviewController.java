@@ -39,15 +39,13 @@ public class ReviewController {
 		return new ResponseEntity<>(reviewService.get(hospitalId), HttpStatus.OK);
 	}
 	
-	// 병원별 리뷰 등록
-	@PostMapping(value="/newre", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> createre(@RequestBody HospitalReviewVO hospitalReviewVO) {
-		int insertReview = reviewService.insertReview(hospitalReviewVO);
-		
-		return insertReview == 2
-		? new ResponseEntity<>("success", HttpStatus.OK)
-		: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	// 병원별 리뷰 개수
+	@GetMapping(value= "/total/{hospitalId}", produces = {
+			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity <Integer> getTotal(@PathVariable("hospitalId") Long hospitalId) {
+		return new ResponseEntity<>(reviewService.getTotal(hospitalId), HttpStatus.OK);
 	}
+	
 	
 
 }

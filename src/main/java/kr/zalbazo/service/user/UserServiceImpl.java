@@ -3,6 +3,7 @@ package kr.zalbazo.service.user;
 import kr.zalbazo.common.MailHandler;
 import kr.zalbazo.exception.EmailConfirmFirstException;
 import kr.zalbazo.mapper.user.UserMapper;
+import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.user.User;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,4 +119,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .roles(user.getRole())
                 .build();
     }
+
+	@Override
+	public Content getWriter(Long contentId) {
+		return userMapper.getWriter(contentId);
+	}
+    
 }

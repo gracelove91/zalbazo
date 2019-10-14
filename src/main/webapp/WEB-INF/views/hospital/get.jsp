@@ -313,13 +313,14 @@
                         </div>
                      </div>
             	</div>
-				<hr>
+            	<br><hr>
                 <!-- Q&A list -->
                 <div class='row'>
                     <div class="col-lg-12">
                         <div class="panel panel-default">
 							<!-- Q&A 리스트 출력 -->
-                            <div class="qnaqna">
+                            <div class="qnaqna accordion">
+                            	<br>
                                 <div class="card-body primary-font"> 아직 등록된 글이 없습니다.</div>
                             </div>
 

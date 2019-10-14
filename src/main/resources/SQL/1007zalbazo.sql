@@ -1,7 +1,7 @@
--- ������ Oracle SQL Developer Data Modeler 19.1.0.081.0911
---   ��ġ:        2019-09-18 14:22:58 KST
---   ����Ʈ:      Oracle Database 11g
---   ����:      Oracle Database 11g
+-- 생성자 Oracle SQL Developer Data Modeler 19.1.0.081.0911
+--   위치:        2019-09-18 14:22:58 KST
+--   사이트:      Oracle Database 11g
+--   유형:      Oracle Database 11g
 
 drop SEQUENCE F_HOSPITAL_SEQ;
 drop SEQUENCE UUID_SEQ;
@@ -50,7 +50,7 @@ CREATE TABLE zalbazo.animal (
     sex               VARCHAR2(100 BYTE),
     weight            NUMBER,
     age               NUMBER,
-    name              VARCHAR2(300 BYTE),
+    aname              VARCHAR2(300 BYTE),
     note              VARCHAR2(3000 BYTE),
     last_treat_date   DATE,
     created_date      DATE,
@@ -65,28 +65,28 @@ COMMENT ON COLUMN zalbazo.animal.animal_id IS
     'ID';
 
 COMMENT ON COLUMN zalbazo.animal.type IS
-    '���� ��';
+    '동물 종';
 
 COMMENT ON COLUMN zalbazo.animal.weight IS
-    '������';
+    '몸무게';
 
 COMMENT ON COLUMN zalbazo.animal.age IS
-    '����';
+    '나이';
 
-COMMENT ON COLUMN zalbazo.animal.name IS
-    '�̸�';
+COMMENT ON COLUMN zalbazo.animal.aname IS
+    '이름';
 
 COMMENT ON COLUMN zalbazo.animal.note IS
-    '�������';
+    '참고사항';
 
 COMMENT ON COLUMN zalbazo.animal.last_treat_date IS
-    '������ ������';
+    '마지막 진료일';
 
 COMMENT ON COLUMN zalbazo.animal.created_date IS
-    '���������Է³�¥';
+    '동물정보입력날짜';
 
 COMMENT ON COLUMN zalbazo.animal.updated_date IS
-    '������¥';
+    '수정날짜';
 
 CREATE UNIQUE INDEX zalbazo.animal_pk ON
     zalbazo.animal (
@@ -160,10 +160,10 @@ PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     DEFAULT );
 
 COMMENT ON COLUMN zalbazo.content.title IS
-    '�Խñ� ����';
+    '게시글 제목';
 
 COMMENT ON COLUMN zalbazo.content.body IS
-    '�Խñ� ����';
+    '게시글 내용';
 
 CREATE UNIQUE INDEX zalbazo.content_pk ON
     zalbazo.content (
@@ -241,22 +241,22 @@ PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     DEFAULT );
 
 COMMENT ON COLUMN zalbazo.hospital.name IS
-    '�����̸�';
+    '병원이름';
 
 COMMENT ON COLUMN zalbazo.hospital.address IS
-    '�����ּ�';
+    '병원주소';
 
 COMMENT ON COLUMN zalbazo.hospital.treat_start IS
-    '������۽ð�';
+    '진료시작시간';
 
 COMMENT ON COLUMN zalbazo.hospital.treat_end IS
-    '��������ð�';
+    '진료종료시간';
 
 COMMENT ON COLUMN zalbazo.hospital.tel IS
-    '��ȭ��ȣ';
+    '전화번호';
 
 COMMENT ON COLUMN zalbazo.hospital.info IS
-    '�����Ұ�';
+    '병원소개';
 
 CREATE UNIQUE INDEX zalbazo.hospital_pk ON
     zalbazo.hospital (
@@ -369,14 +369,15 @@ CREATE TABLE zalbazo.reserve (
     RDATE        DATE,
     animal_id     NUMBER NOT NULL,
     hospital_id   NUMBER NOT NULL,
-    status        VARCHAR2(100 BYTE)
+    status        VARCHAR2(100 BYTE),
+    user_email    VARCHAR2(1000) NOT NULL
 )
 PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
 COMMENT ON COLUMN zalbazo.reserve.note IS
-    '���೻��';
+    '예약내용';
 
 CREATE UNIQUE INDEX zalbazo.reserve_pk ON
     zalbazo.reserve (
@@ -426,23 +427,24 @@ CREATE TABLE zalbazo.zalbazo_user (
     join_date        DATE,
     last_login       DATE,
     enabled          VARCHAR2(20 BYTE),
-    email_auth_key   VARCHAR2(50 BYTE)
+    email_auth_key   VARCHAR2(50 BYTE),
+    hospital_id      NUMBER
 )
 PCTFREE 10 PCTUSED 40 TABLESPACE system LOGGING
     STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
     DEFAULT );
 
 COMMENT ON COLUMN zalbazo.zalbazo_user.user_email IS
-    'ȸ�������̸���';
+    '회원가입이메일';
 
 COMMENT ON COLUMN zalbazo.zalbazo_user.password IS
-    '�����α����н�����';
+    '유저로그인패스워드';
 
 COMMENT ON COLUMN zalbazo.zalbazo_user.role IS
-    '���� ����';
+    '유저 권한';
 
 COMMENT ON COLUMN zalbazo.zalbazo_user.tel IS
-    '��ȭ��ȣ';
+    '전화번호';
 
 CREATE UNIQUE INDEX zalbazo.zalbazo_user_pk ON
     zalbazo.zalbazo_user (
@@ -452,25 +454,31 @@ CREATE UNIQUE INDEX zalbazo.zalbazo_user_pk ON
             STORAGE ( INITIAL 65536 NEXT 1048576 PCTINCREASE 0 MINEXTENTS 1 MAXEXTENTS 2147483645 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL
             DEFAULT )
         LOGGING;
-
+        
+    
 ALTER TABLE zalbazo.zalbazo_user
     ADD CONSTRAINT zalbazo_user_pk PRIMARY KEY ( user_email )
-        USING INDEX zalbazo.zalbazo_user_pk;
+        USING INDEX zalbazo.zalbazo_user_pk;        
+
+ALTER TABLE zalbazo.zalbazo_user
+    ADD CONSTRAINT zalbazo_user_fk FOREIGN KEY ( hospital_id )
+        REFERENCES zalbazo.hospital ( hospital_id )
+    on delete cascade;
 
 ALTER TABLE zalbazo.animal
     ADD CONSTRAINT animal_user_fk FOREIGN KEY ( user_email )
         REFERENCES zalbazo.zalbazo_user ( user_email )
-    NOT DEFERRABLE;
+    on delete cascade;
 
 ALTER TABLE zalbazo.care_animal
     ADD CONSTRAINT care_animal_animal_fk FOREIGN KEY ( animal_id )
         REFERENCES zalbazo.animal ( animal_id )
-    NOT DEFERRABLE;
+    on delete cascade;
 
 ALTER TABLE zalbazo.care_animal
     ADD CONSTRAINT care_animal_hospital_fk FOREIGN KEY ( hospital_id )
         REFERENCES zalbazo.hospital ( hospital_id )
-    NOT DEFERRABLE;
+    on delete cascade;
 
 ALTER TABLE zalbazo.content
     ADD CONSTRAINT content_category_fk FOREIGN KEY ( category_id )
@@ -485,17 +493,17 @@ ALTER TABLE zalbazo.content
 ALTER TABLE zalbazo.favorite_hospital
     ADD CONSTRAINT favorite_hospital_hospital_fk FOREIGN KEY ( hospital_id )
         REFERENCES zalbazo.hospital ( hospital_id )
-    NOT DEFERRABLE;
+    on delete cascade;
 
 ALTER TABLE zalbazo.favorite_hospital
     ADD CONSTRAINT favorite_hospital_user_fk FOREIGN KEY ( user_email )
         REFERENCES zalbazo.zalbazo_user ( user_email )
-    NOT DEFERRABLE;
+    on delete cascade;
 
 ALTER TABLE zalbazo.hospital_label
     ADD CONSTRAINT hospital_label_hospital_fk FOREIGN KEY ( hospital_id )
         REFERENCES zalbazo.hospital ( hospital_id )
-    NOT DEFERRABLE;
+    on delete cascade;
 
 ALTER TABLE zalbazo.hospital_label
     ADD CONSTRAINT hospital_label_label_fk FOREIGN KEY ( label_code )
@@ -505,32 +513,32 @@ ALTER TABLE zalbazo.hospital_label
 ALTER TABLE zalbazo.hospital_qna
     ADD CONSTRAINT hospital_qna_content_fk FOREIGN KEY ( content_id )
         REFERENCES zalbazo.content ( content_id )
-    NOT DEFERRABLE;
+    on delete cascade;
 
 ALTER TABLE zalbazo.hospital_qna
     ADD CONSTRAINT hospital_qna_hospital_fk FOREIGN KEY ( hospital_id )
         REFERENCES zalbazo.hospital ( hospital_id )
-    NOT DEFERRABLE;
+    on delete cascade;
 
 ALTER TABLE zalbazo.pic_lib_rel_content
     ADD CONSTRAINT pic_lib_rel_content_fk FOREIGN KEY ( content_id )
         REFERENCES zalbazo.content ( content_id )
-    NOT DEFERRABLE;
+    on delete cascade;
 
 ALTER TABLE zalbazo.pic_lib_rel_hospital
     ADD CONSTRAINT pic_lib_rel_hospital_fk FOREIGN KEY ( hospital_id )
         REFERENCES zalbazo.hospital ( hospital_id )
-    NOT DEFERRABLE;
+    on delete cascade;
 
 ALTER TABLE zalbazo.pic_lib_rel_content
     ADD CONSTRAINT pic_rel_content_pic_fk FOREIGN KEY ( uuid )
         REFERENCES zalbazo.pic_lib ( uuid )
-    NOT DEFERRABLE;
+    on delete cascade;
 
 ALTER TABLE zalbazo.pic_lib_rel_hospital
     ADD CONSTRAINT pic_rel_hospital_pic_fk FOREIGN KEY ( uuid )
         REFERENCES zalbazo.pic_lib ( uuid )
-    NOT DEFERRABLE;
+    on delete cascade;
 
 ALTER TABLE zalbazo.reply
     ADD CONSTRAINT reply_content_fk FOREIGN KEY ( content_id )
@@ -545,26 +553,32 @@ ALTER TABLE zalbazo.reply
 ALTER TABLE zalbazo.reserve
     ADD CONSTRAINT reserve_animal_fk FOREIGN KEY ( animal_id )
         REFERENCES zalbazo.animal ( animal_id )
-    NOT DEFERRABLE;
+    on delete cascade;
     
 ALTER TABLE zalbazo.reserve
     ADD CONSTRAINT reserve_hospital_fk FOREIGN KEY ( hospital_id )
         REFERENCES zalbazo.hospital ( hospital_id )
-    NOT DEFERRABLE;
+    on delete cascade;
+
+--ddddd
+ALTER TABLE zalbazo.reserve
+    ADD CONSTRAINT reserve_fk FOREIGN KEY ( user_email )
+        REFERENCES zalbazo.zalbazo_user ( user_email )
+    on delete cascade;
 
 ALTER TABLE zalbazo.review
     ADD CONSTRAINT review_content_fk FOREIGN KEY ( content_id )
         REFERENCES zalbazo.content ( content_id )
-    NOT DEFERRABLE;
+    on delete cascade;
 
 ALTER TABLE zalbazo.review
     ADD CONSTRAINT review_hospital_fk FOREIGN KEY ( hospital_id )
         REFERENCES zalbazo.hospital ( hospital_id )
-    NOT DEFERRABLE;
+    on delete cascade;
 
 
 
--- Oracle SQL Developer Data Modeler ��� ����: 
+-- Oracle SQL Developer Data Modeler 요약 보고서: 
 -- 
 -- CREATE TABLE                            16
 -- CREATE INDEX                            13
@@ -663,36 +677,39 @@ Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (2,'jisik');
 Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (3,'review');
 Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (4,'hqna');
 
+
 Insert into ZALBAZO.ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN) 
-Values('dummy@gmail.com', '{noop}1234', 'user', '01033499440', '����� ���ʱ�', 'ȫ�浿', sysdate, null);
+Values('dummy@gmail.com', '{noop}1234', 'user', '01033499440', '서울시 서초구', '홍길동', sysdate, sysdate);
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,UPDATED_DATE,CATEGORY_ID,USER_EMAIL) 
-values (CONTENT_SEQ.nextval,'�����׽�Ʈ�������ĵ�1','�����׽�Ʈ�������ĵ�1',to_date('19/09/05','RR/MM/DD'),to_date('19/09/05','RR/MM/DD'),2,'dummy@gmail.com');
+values (CONTENT_SEQ.nextval,'매퍼테스트제목지식동1','매퍼테스트내용지식동1',to_date('19/09/05','RR/MM/DD'),to_date('19/09/05','RR/MM/DD'),2,'dummy@gmail.com');
 
 
-Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) 
-values (HOSPITAL_SEQ.nextval,'���� ��������','����Ư���� ������ �ϻ絿 414-18 �Ե�ĳ���� 2��','08:00','21:00','024262775',
-'������ ������ �������� �ݷ������� �����ϴ� ���� ���������Դϴ�.');
 
 Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) 
-values (HOSPITAL_SEQ.nextval,'���24�õ�������','���� ������ ������ 877 106ȣ','00:00','24:00','0262278275',
-'�����/���ϵ��� ��ġ�� 24�ð� ���������Դϴ�.
-���� �߻����� �𸣴� ������ ���̵��� ���� ��������.
-��κ��� �ܰ������� ������ ȣ�����, ȯ�ڰ��ñ�, �������.
-���� ������ ���׻��¸� �ٷ� �� �� �ִ� ���װ˻��.
-ö���� �Կ������� ���� ��������, �Ǹ��� ����, ����ġ���.
-�������μ� �ּ��� ���ϱ� ���� ��� ���߱����� ����ϰ� ������ �����ε� �� �������ѳ����ڽ��ϴ�.
-�� �� ���񽺷δ� ����̸� ���� ���� ĹŸ�� ȣ��. ����� �̿�.
-���� ���������� �а� ���۵� ������ ȣ��, ������ �̿��� ������ 
-ĹŸ���� Ĺ�ε�� ����̸� ���� ������ �Ҿ��߽��ϴ�. ���� ���� �ٶ��ϴ�.');
+values (HOSPITAL_SEQ.nextval,'돌봄 동물병원','서울특별시 강동구 암사동 414-18 롯데캐슬상가 2층','08:00','21:00','024262775',
+'가족을 돌보는 마음으로 반려동물을 진료하는 돌봄 동물병원입니다.');
 
 Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) 
-values (HOSPITAL_SEQ.nextval,'����Ʈ�������� �����ϻ���','����Ư���� ������ �ϻ絿 452-31 �������� 1��','10:00','21:00','024428875',
-'���� :: �츮�� ����ó�� ���� �⻵�ϰ� ���� ����ϴ� ����Ʈ ������ ����
-�ȳ��ϼ��� ����Ʈ�������� �����ϻ������Դϴ�~!
-���� �Ż纻��, ���� ��ġ����, �������, ��ź����, ���������� �� 5 ���� ������
-�� 36 ���� ���ǻ簡 �ɵ����� �������� ���� �����ϰ� �Ϻ��� �߱��ϴ� �Ƿ�ȯ���� �߱��մϴ�
-����ó�� �ݷ��������� ���� ����� �� �� �ִ� ȯ���� �����Ͽ�, �ݷ��������� �ǰ��� ��ȣ�ں� �����
-�ູ���� �帮���� �׻� �ּ��� ���� �Ƿ� ���񽺸� ������ �帮�ڽ��ϴ�.');
+values (HOSPITAL_SEQ.nextval,'고덕24시동물병원','서울 강동구 동남로 877 106호','00:00','24:00','0262278275',
+'고덕동/명일동에 위치한 24시간 동물병원입니다.
+언제 발생할지 모르는 응급한 아이들을 위한 응급진료.
+대부분의 외과수술이 가능한 호흡마취기, 환자감시기, 수술장비.
+아픈 아이의 혈액상태를 바로 볼 수 있는 혈액검사기.
+철저한 입원관리를 위한 수액펌프, 실린지 펌프, 집중치료실.
+병원으로서 최선을 다하기 위해 장비를 갖추기위해 노력하고 있으며 앞으로도 더 발전시켜나가겠습니다.
+그 외 서비스로는 고양이를 위한 전용 캣타워 호텔. 고양이 미용.
+기존 케이지보다 넓게 제작된 강아지 호텔, 강아지 미용이 있으며 
+캣타워와 캣로드로 고양이를 위한 공간을 할애했습니다. 많은 관심 바랍니다.');
+
+Insert into ZALBAZO.HOSPITAL (HOSPITAL_ID,NAME,ADDRESS,TREAT_START,TREAT_END,TEL,INFO) 
+values (HOSPITAL_SEQ.nextval,'스마트동물병원 강동암사점','서울특별시 강동구 암사동 452-31 서원빌딩 1층','10:00','21:00','024428875',
+'원훈 :: 우리집 아이처럼 같이 기뻐하고 같이 고민하는 스마트 가족이 되자
+안녕하세요 스마트동물병원 강동암사지점입니다~!
+강남 신사본원, 강남 대치지점, 울산지점, 동탄지점, 강동구지점 총 5 개의 지점에
+총 36 명의 수의사가 심도깊은 협진으로 가장 안전하고 완벽을 추구하는 의료환경을 추구합니다
+원훈처럼 반려동물들이 가장 편안해 할 수 있는 환경을 조성하여, 반려동물들의 건강과 보호자분 모두의
+행복감을 드리고자 항상 최선을 다한 의료 서비스를 제공해 드리겠습니다.');
+
 
 Insert into ZALBAZO.LABEL (CODE,NAME) values (1,'24hr');
 Insert into ZALBAZO.LABEL (CODE,NAME) values (2,'beauty');
@@ -741,7 +758,7 @@ values(UUID_SEQ.currval, 3);
 insert all
 into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
 values (CONTENT_SEQ.nextval,
-'�츮 �� ��� �ǻ�(10��)�� �������ϴ�����,, ���� ���� ���� ��������,,,', sysdate, 3, 'dummy@gmail.com')
+'우리 집 어르신 뽀삐(10세)도 만족해하더군요,, 잊지 말자 돌봄 동물병원,,,', sysdate, 3, 'dummy@gmail.com')
 into review (review_id, hospital_id, content_id, star_point)
 values(REVIEW_SEQ.NEXTVAL, 1, CONTENT_SEQ.currval, 4)
 select * from dual;
@@ -749,7 +766,7 @@ select * from dual;
 insert all
 into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
 values (CONTENT_SEQ.nextval, 
-'�츮 �� ��� �ǻ�(10��)�� �������ϴ�����,, ���� ���� ���� ��������,,,', sysdate, 3, 'dummy@gmail.com')
+'우리 집 어르신 뽀삐(10세)도 만족해하더군요,, 잊지 말자 돌봄 동물병원,,,', sysdate, 3, 'dummy@gmail.com')
 into review (review_id, hospital_id, content_id, star_point)
 values(REVIEW_SEQ.NEXTVAL, 1, CONTENT_SEQ.currval, 1)
 select * from dual;
@@ -757,7 +774,7 @@ select * from dual;
 insert all
 into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
 values (CONTENT_SEQ.nextval, 
-'�츮 �� ��� �ǻ�(10��)�� �������ϴ�����,, ���� ���� ���� ��������,,,', sysdate, 3, 'dummy@gmail.com')
+'우리 집 어르신 뽀삐(10세)도 만족해하더군요,, 잊지 말자 돌봄 동물병원,,,', sysdate, 3, 'dummy@gmail.com')
 into review (review_id, hospital_id, content_id, star_point)
 values(REVIEW_SEQ.NEXTVAL, 1, CONTENT_SEQ.currval, 2)
 select * from dual;
@@ -765,7 +782,7 @@ select * from dual;
 insert all
 into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
 values (CONTENT_SEQ.nextval, 
-'�츮 �� ��� �ǻ�(10��)�� �������ϴ�����,, ���� ���� ���� ��������,,,', sysdate, 3, 'dummy@gmail.com')
+'우리 집 어르신 뽀삐(10세)도 만족해하더군요,, 잊지 말자 돌봄 동물병원,,,', sysdate, 3, 'dummy@gmail.com')
 into review (review_id, hospital_id, content_id, star_point)
 values(REVIEW_SEQ.NEXTVAL, 1, CONTENT_SEQ.currval, 2)
 select * from dual;
@@ -773,7 +790,7 @@ select * from dual;
 insert all
 into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
 values (CONTENT_SEQ.nextval, 
-'�츮 �� ��� �ǻ�(10��)�� �������ϴ�����,, ���� ���� ���� ��������,,,', sysdate, 3, 'dummy@gmail.com')
+'우리 집 어르신 뽀삐(10세)도 만족해하더군요,, 잊지 말자 돌봄 동물병원,,,', sysdate, 3, 'dummy@gmail.com')
 into review (review_id, hospital_id, content_id, star_point)
 values(REVIEW_SEQ.NEXTVAL, 1, CONTENT_SEQ.currval, 3)
 select * from dual;
@@ -787,11 +804,18 @@ insert into zalbazo.favorite_hospital (user_email, hospital_id, f_hospital_id)
 values ('dummy@gmail.com', 3, f_hospital_seq.NEXTVAL);
 
 
-commit;
 
-ALTER TABLE RESERVE ADD(USER_EMAIL VARCHAR2(1000)NOT NULL);
-ALTER TABLE RESERVE ADD CONSTRAINT RESERVE_USER_EMAIL_FK
-FOREIGN KEY(USER_EMAIL)
-REFERENCES ZALBAZO_USER(USER_EMAIL);
+create table FAQ (
+                     FAQ_ID number not null,
+                     Question varchar2 (4000),
+                     Answer varchar2 (4000))
+;
+CREATE SEQUENCE zalbazo.FAQ_ID INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
 
+
+
+insert into zalbazo.FAQ values(FAQ_ID.nextval, '가입은 어떻게 하나요?', '우측 상단 sign-up 버튼을 클릭하세요');
+insert into zalbazo.FAQ values(FAQ_ID.nextval, '예약은 언제부터 가능한가요?', '   방문일 한달 전부터 가능합니다');
+insert into zalbazo.FAQ values(FAQ_ID.nextval, '파충류도 치료 받을 수 있나요?', '특수동물 치료 가능 병원을 검색 해 주세요');
+insert into zalbazo.FAQ values(FAQ_ID.nextval, '동물병원을 개원했습니다. 병원 등록을 하고 싶은데 어떻게 해야 하나요?', '   병원 등록 전용 페이지에서 가입 해 주세요');
 commit;

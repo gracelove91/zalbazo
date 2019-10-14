@@ -218,7 +218,17 @@ $(document).ready(function(e){
 		var hAddress = $("input[id='address']").val();
 		var hInfo = $("textarea[id='info']").val();
 		var hTreatStart = $("select[id='treatStart']").val();
-		var hTreatEnd = $("select[id='treatEnd']").val(); 
+		var hTreatEnd = $("select[id='treatEnd']").val();
+		
+		var space = hInfo.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+		//console.log(space);
+		
+		var space2 = space.split('<br/>').join("\r\n");
+		//console.log(space2);
+		
+		hInfo = space2;
+		
+		console.log(hInfo);
 		
 		if(hName.trim() === "" || hName.trim() === null || hName.trim().length < 5) {
 			alert("병원명을 최소 5자 이상 입력해주세요.")

@@ -64,8 +64,13 @@ input.checkbox:checked + label.input-label.radio::before {
     content:"\f058";
 }
 </style>
+<link rel="stylesheet" href="/resources/css/scroll.css">
+
 <title>병원 LIST</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<body>
+
+<a onclick="topFunction()" id="myBtn" title="Go to top"><img src="${ctx}/resources/img/GoToTop.png" width="50px;"></a>
 
 <section class="feature-area">
 <form name="form1" method="Get" action="/hospital/searchedlistAll">
@@ -197,5 +202,8 @@ input.checkbox:checked + label.input-label.radio::before {
         </div>
     </div>    
 </section>
+</body>
 <script type="text/javascript" src="/resources/js/index/search.js"></script>
+<script type="text/javascript" src="/resources/js/scroll.js"></script>
+
 <%@include file="../includes/footer.jsp" %>

@@ -35,15 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/login").anonymous()
                 .mvcMatchers("/user/register/**", "/user/jusoPopup").permitAll()
                 .mvcMatchers("/**/register").hasRole("user") // 이런 패턴들을 모두 허용 (권한을 가지면)
-                .mvcMatchers("/user/mypage").hasAnyRole("user", "hospital", "admin")
+                .mvcMatchers("/user/mypage").hasAnyRole("user","admin","hospital")
                 .mvcMatchers("/jisikdong", "/jisikdong/list", "/jisikdong/get").permitAll()
                 .mvcMatchers("/community", "/community/list", "/community/get").permitAll()
                 .mvcMatchers("/hospital", "/hospital/list", "/hospital/get").permitAll()
                 .mvcMatchers("/admin/**").hasRole("admin")
                 .anyRequest().permitAll()
                 .expressionHandler(expressionHandler());
-
-
 
         http.formLogin()
                 .loginPage("/login")
@@ -57,16 +55,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private SecurityExpressionHandler<FilterInvocation> expressionHandler() {
         RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
+        
         roleHierarchy.setHierarchy("ROLE_admin > ROLE_user");
         roleHierarchy.setHierarchy("ROLE_hospital > ROLE_user");
+        
 
         DefaultWebSecurityExpressionHandler handler = new DefaultWebSecurityExpressionHandler();
         handler.setRoleHierarchy(roleHierarchy);
 
         return handler;
     }
+    
 
-
+    
     @Override
     public void configure(WebSecurity web)  { // 시큐리티 관련 필터 적용 없이 바로 들어오는 게 가능한 애들
         web.ignoring().mvcMatchers("/resources/**");

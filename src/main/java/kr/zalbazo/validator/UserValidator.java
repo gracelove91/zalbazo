@@ -21,7 +21,7 @@ public class UserValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         User newUser = (User) target;
-        User savedUser = service.get(newUser.getUserEmail());
+        User savedUser = service.getUser(newUser.getUserEmail());
 
         if (savedUser != null) {
             errors.rejectValue("userEmail", "duplicateEmail", "중복된 이메일입니다.");

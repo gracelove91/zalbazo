@@ -21,7 +21,7 @@
 	<div class="col-2"></div>
 	<div class="col-10">
 	<br>
-    <h2>${name}의 관리자페이지</h2>
+    <h2>${name}님의 마이페이지</h2>
     <input type='hidden' class="email" id="userEmail" value="${useremail}">
     <!-- js에서 	var userEmail = $(".email").val(); 이걸로 메일 호출 가능 -->
     <p>환영합니다!!</p>

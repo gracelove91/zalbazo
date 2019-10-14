@@ -65,7 +65,7 @@ h5.on("click", ".favorite", function(e){
 				
 				var str ="";
 				
-				favoriteService.addFavorite({
+				favoriteService.toFullHeart({
 					userEmail:userEmail.val(), 
 					hospitalId:hospitalId.val()}
 						,

@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.zalbazo.mapper.hospital.FavoriteMapper;
 import kr.zalbazo.model.hospital.Hospital;
+import kr.zalbazo.service.hospital.FavoriteService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -28,15 +28,14 @@ import lombok.extern.log4j.Log4j;
 public class FavoriteController {
 
 	@Autowired
-	private FavoriteMapper mapper;
-
+	private FavoriteService service;
 
 	@PostMapping(value = "/insert", consumes = "application/json", produces = { MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<String> insert(@RequestBody Hospital hospital, Model model, Principal principal){
 		
 		hospital.setUserEmail(principal.getName());
 	    	
-		int insert = mapper.insertFavorite(hospital);
+		int insert = service.toFullHeart(hospital);
 		
 		return insert == 1 
 		? new ResponseEntity<>("success", HttpStatus.OK)
@@ -47,20 +46,20 @@ public class FavoriteController {
 	@DeleteMapping(value="/remove/{fhospitalId}", produces="application/json")
 	public ResponseEntity<Integer> remove(@PathVariable("fhospitalId") Long fhospitalId) {
 	 
-		return new ResponseEntity<>(mapper.removeFavorite(fhospitalId), HttpStatus.OK);
+		return new ResponseEntity<>(service.removeFavorite(fhospitalId), HttpStatus.OK);
 	}
 	
 	
 	@GetMapping(value ="/list/{userEmail}" , produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<Hospital>> getFavoriteList(Principal principal){
-		return new ResponseEntity<>(mapper.getFavoriteList(principal.getName()), HttpStatus.OK);
+		return new ResponseEntity<>(service.getFavoriteList(principal.getName()), HttpStatus.OK);
 	}
 	
 	
 	@DeleteMapping(value = "/heart/{hospitalId}", produces = "application/json")
 	public ResponseEntity<Integer> heart(@PathVariable("hospitalId") Long hospitalId, Principal principal) {
 		
-		return new ResponseEntity<>(mapper.toEmptyHeart(hospitalId, principal.getName()), HttpStatus.OK);
+		return new ResponseEntity<>(service.toEmptyHeart(hospitalId, principal.getName()), HttpStatus.OK);
 	}
 	
 

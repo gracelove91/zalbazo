@@ -55,7 +55,7 @@ th mobile{
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab"><!-- 병원정보 수정 -->
 				      <div id="main" class="col-md-12">
 			          <div class="page-header mt-3">
-			              <h2>병원상세정보</h2>
+			              <h3>병원상세정보</h3>
 			          </div>
 			          <hr>
 			      

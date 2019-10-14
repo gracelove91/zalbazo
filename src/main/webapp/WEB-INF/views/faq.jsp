@@ -6,16 +6,92 @@
 
 <title>자주하는 질문</title>
 
- <head>             
-       <style>
-		#accordian li{list-style:none;}
-		#accordian li > .question {color: #25ccf7; cursor:pointer;}
-		li > ul{background-color: #25ccf7; display:none;}
-		li > ul >li{ color:black;}
+ <head>  
+ 
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+   <!--     Fonts and icons     -->
+   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />           
+ <style>
+       
+.template_faq {
+    background: #edf3fe none repeat scroll 0 0;
+}
 
-    </style>
-    
+/* .panel-group {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 3px;
+    box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.04);
+    margin-bottom: 0;
+    padding: 30px;
+} */
 
+#accordion .panel {
+    border: medium none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0 0 15px 10px;
+}
+#accordion .panel-heading {
+    border-radius: 30px;
+    padding: 0;
+}
+#accordion .panel-title a {
+    background: white none repeat scroll 0 0;
+    border: 1px solid #ddd;;
+    border-radius: 30px;
+    color: black;
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px 20px 12px 50px;
+    position: relative;
+    transition: all 0.3s ease 0s;
+}
+#accordion .panel-title a.collapsed {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    color: #333;
+}
+#accordion .panel-title a::after, #accordion .panel-title a.collapsed::after {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    box-shadow: none;
+    color: black;
+    content: "";
+    font-family: fontawesome;
+    font-size: 25px;
+    height: 55px;
+    left: -20px;
+    line-height: 55px;
+    position: absolute;
+    text-align: center;
+    top: -5px;
+    transition: all 0.3s ease 0s;
+    width: 55px;
+}
+#accordion .panel-title a.collapsed::after {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    box-shadow: none;
+    color: #333;
+    content: "";
+}
+#accordion .panel-body {
+    background: transparent none repeat scroll 0 0;
+    border-top: medium none;
+    padding: 20px 25px 10px 9px;
+    position: relative;
+}
+
+
+#accordion .panel-body p {
+    border-left: 1px dashed #8c8c8c;
+    padding-left: 25px;
+}
+		
+</style> 
 </head>
 
 <section class="feature-area">
@@ -25,79 +101,78 @@
                 <div class="page-header mt-3">
                     <h2>FAQ</h2>
                 </div>
-                <p class="lead">자주하는 질문들을 모았습니다</p>
-                
-
-               <div class="col-md-10 col-lg-8 col-xl-7 mx-auto" style="float: left; width: 45%;">
-						<form id='searchForm' action="/faq/faq/faqsearchedlist" method='get'>
-                    <input class="form-control form-control-lg" type='text' type="keyword" name='keyword' placeholder="키워드를 입력하세요" value='<c:out value="${pageMaker.cri.keyword}"/>'/>
+               <p class="lead">자주하는 질문들을 모았습니다</p>
+               
+                <!-- 검색창 -->
+                   <div class="col-md-10 col-lg-8 col-xl-7 mx-auto" style="float: left; width: 45%;">
+						<form id='searchForm' action="/faq/faqsearchedlist" method='get'>
+                    <input class="form-control form-control-lg" type='text' name='keyword' placeholder="키워드를 입력하세요"/>
 					</div>
 					<div  style="float: left; width: 20%;">
 						<button type="submit" class="btn btn-block btn-lg btn-primary">검색하기</button>
 					</div>
-
                         </form>
                     </div>
+                   </div>
                 </div>
+           </section>
+                
+<br><br>
 
-                   <br><br><br>
+ <div class="container">
+        <div class="row">
+            <div id="main" class="col-md-12">
+                <div class="page-header mt-3">
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						<c:forEach items="${FaqListAll}" var="FaqVO" varStatus="status">
+						<c:set var="pre-fix" value="#" />
+						<c:set var="cordinate" value="collapse" /> 
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="headingOne">
+								<h4 class="panel-title" >
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="${'#'}${cordinate}${status.count}" aria-expanded="true" aria-controls="collapseOne">
+									 	${FaqVO.question} 
+									</a>
+								</h4>
+							</div>
+							<div id="${cordinate}${status.count}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+								<div class="panel-body">
+									<p>${FaqVO.answer}</p>
+								</div>
+							  </div>
+						    </div>					
+						  </c:forEach>
+						  </div>
+						</div>
+					</div>
+				</div><!--- END COL -->		
+			</div><!--- END ROW -->			
 
-
- <div id="accordian">
-	<ul>
-		<li>
-			 <div class="question" id="header_1" style="border:1; font-size:20px; color:black; font-family: 'FontAwesome';" >가입은 어떻게 하나요?</div>
-			<ul>
-				<li>우측 상단 sign-up 버튼을 클릭하세요</li>
-			</ul>
-		</li>
-		<li>
-			<div class="question" id="header_1" style="border:1; font-size:20px; color:black;" >예약은 언제부터 가능한가요?</div>
-			<ul>
-				<li>방문일 한달 전부터 가능합니다</li>
-			</ul>
-		</li>
-		<li>
-			<div class="question" id="header_1" style="border:1; font-size:20px; color:black;">파충류도 치료 받을 수 있나요?</div>
-			<ul>
-				<li>특수동물 치료 가능 병원을 검색 해 주세요</li>
-			</ul>
-		</li>
-		<li>
-			<div class="question" id="header_1" style="border:1; font-size:20px; color:black;">동물병원을 개원했습니다. 병원 등록을 하고 싶은데 어떻게 해야 하나요?</div>
-			<ul>
-				<li>병원 등록 전용 페이지에서 가입 해 주세요</li>
-			</ul>
-		</li>
-	</ul>
-</div>	
-                </div>
-                </div>
-              </div>
-
-          </section>
-          
 <script>
               
 
-$(function(){
-	$(".question").click(function(){
-		
-		$("#accordian ul ul").slideUp();
-		
-		$('.ico_ar').css('transform','none');
-		if(!$(this).next().is(":visible"))
-		{
-			$(this).next().slideDown();
-			$(this).find('.ico_ar:eq(0)').css('transform','rotate(180deg)');
-		}
-	})
-})
+(function($) {
+	'use strict';
+	
+	jQuery(document).on('ready', function(){
+	
+			$('a.page-scroll').on('click', function(e){
+				var anchor = $(this);
+				$('html, body').stop().animate({
+					scrollTop: $(anchor.attr('href')).offset().top - 50
+				}, 1500);
+				e.preventDefault();
+			});		
+
+	}); 	
+
+				
+})(jQuery);
 
 
 </script>
               
-     <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>          
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>          
                            
 
 <%@include file="includes/footer.jsp" %>

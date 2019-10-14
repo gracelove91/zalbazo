@@ -36,17 +36,17 @@
 <!-- Preloader End -->
 
 <!-- Header Area Starts -->
-<header class="header-area main-header">
+<header class="header-area main-header" style="padding-bottom: 100px;">
     <div class="container">
         <div class="row">
-            <div class="col-lg-2" style="padding:0px;"><br>
-                <div class="logo-area">
+            <div class="image-container col-lg-3" style=" display: flex; align-items: center; ustify-content: center; height: 35px;" >
+                
                     <a href="/index" style="width:210px; height:90px"><img src="/resources/img/text_logo.png" align="middle" alt="logo" width="250px" height="110px"></a>
-                </div>
+              
             </div>
-            <div class="col-lg-10" style="left:0px; position: absolute;">
+            <div class="col-lg-9" ">
                 <div class="main-menu">
-                <br><br>
+               
                     <ul>
                         <li class="active"><a href="/index">home</a></li>&ensp;
                         <li><a href="about.html">about us</a></li>&ensp;
@@ -82,6 +82,6 @@
             </div>
         </div>
     </div>
-    <br><br>
+   
 </header>
 <!-- Header Area End -->

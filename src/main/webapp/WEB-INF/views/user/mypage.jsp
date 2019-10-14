@@ -78,23 +78,24 @@
 		      <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
 		  
 			  	<div class="container"><br>
-			   	<table class="table table-striped col-12">
-						<thead>
-						  <tr>
-						     <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>
-						     <th scope="col" class="mobile" style="text-align:center;">이름</th>
-						     <th scope="col" class="mobile" style="text-align:center;">타입</th>
-						     <th scope="col" class="mobile" style="text-align:center;">성별</th>
-						     <th scope="col" class="mobile" style="text-align:center;">몸무게</th>
-						     <th scope="col" class="mobile" style="text-align:center;">나이</th>
-						     <th scope="col" class="mobile" style="width:120px; text-align:center;">특이사항</th>
-						     <th scope="col" class="mobile" style="text-align:center;">삭제</th>
-						     
-						  </tr>
-						</thead>
-						<tbody id="animalt">
-						
-						</tbody>
+			   	 <table class="table table-striped col-12">
+						      <thead>
+						        <tr>
+						           <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>
+						           <th scope="col" class="mobile" style="text-align:center;">이름</th>
+						           <th scope="col" class="mobile" style="text-align:center;">타입</th>
+						           <th scope="col" class="mobile" style="text-align:center;">성별</th>
+						           <th scope="col" class="mobile" style="text-align:center;">몸무게</th>
+						           <th scope="col" class="mobile" style="text-align:center;">나이</th>
+						           <th scope="col" class="mobile" style="width:120px; text-align:center;">특이사항</th>
+						           <th scope="col" class="mobile" style="text-align:center;">수정/삭제</th>
+						           
+						        </tr>
+						      </thead>
+						      <tbody id="animalt">
+						      
+						      </tbody>
+			   	
 			   	</table>  
 			   	
 				<a href="/user/mypage/animal/register?userEmail=${useremail}" id='regBtn'>

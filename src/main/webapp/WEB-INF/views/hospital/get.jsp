@@ -293,7 +293,7 @@
                              <div class="panel-body">
                              	<div class="container mt-3">
                             		<div class="form-group">
-                            			<textarea class="form-control txt" rows="5" id="body" name="body"></textarea>
+                            			<textarea class="form-control txt" rows="5" id="body" name="body" style="resize: none;"></textarea>
                     				</div>
                     				
                     				<button type="submit" class="btn btn-secondary float-right" id="regBtn" name="regBtn">Submit</button>

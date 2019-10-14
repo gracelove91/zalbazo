@@ -135,7 +135,7 @@
                <fieldset>
                   <label class="font-weight-bold">세부사항</label>
                   <textarea class="form-control" id="info" name="info"
-							 style="height: 200px;"><c:out value="${info.info}"/></textarea>
+							 style="height: 200px;resize: none;"><c:out value="${info.info}"/></textarea>
                </fieldset>
             </div><br />
             

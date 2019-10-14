@@ -167,31 +167,49 @@ $(document).ready(function() {
 	        
 	        if (type === 'Q') {
 	        	
-	        	str += "<div id='accordion'><div class='card-header primary-font'> <a href='/hospital/get?hospitalId=" + list[i].hospitalId +"'>" + list[i].name + "</a><br>Q.&nbsp; <a class='card-link collapsed' data-toggle='collapse' href='#collapse"+list[i].contentId+"' aria-expanded='false'>" + list[i].body + "";
-                str += "</a><div class='del float-right' data-qno='"+list[i].contentId+"' style='cursor:pointer'> X </div>";
-                str += "<p><small class='float-right text-muted'>" + myContentService.displayTime(list[i].createdDate) + "</small></p>";
-                str += "<small class='primary-font'>" + list[i].userEmail + "</small></div></div>";
-                
-               for (let j = 0, len = list.length || 0; j < len; j++) {
-                   // 같은 그룹의 A가 있다면 A 출력 태그
-                   if (list[j].cgroup === group && list[j].qnaType === 'A') {
-                	   
-                   	   str += "<div id='collapse"+list[i].contentId+"' style=''>";
-                       str += "<div class='card-body' data-ano='"+list[j].contentId+"'> &nbsp;&nbsp;&nbsp; A: " + list[j].body + "";
-                       str += "<p><small class='float-right text-muted'>" + myContentService.displayTime(list[i].createdDate) + "</small></p> ";
-                       str += "<small class='primary-font'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 관리자</small><hr> ";
-                       str += "</div></div>";
-                       
-                       // A가 있는지 없는지 체크 
-                       aCheck = false;
-                   }
+                for (let j = 0, len = list.length || 0; j < len; j++) {
+                	
+                	// (제목?)내용이 너무 길면 20자 내로 자르기
+                	var iBody = list[i].body;
+                	if(iBody.length > 20){
+                		iBody = iBody.substring(0,19) + " (...)";
+                	}
+                	
+                    // 같은 그룹의 A가 있다면 A 출력 태그
+                	if (list[j].cgroup === group && list[j].qnaType === 'A') {
+                		
+                		// Q 출력 태그
+                        str += "<div class='qqqaaa' data-qno='"+list[i].contentId+"' style='cursor:pointer'>";
+                        str += "   &nbsp;&nbsp;&nbsp;&nbsp;<span style='color:#04b1fb;'>답변완료</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ iBody + " ";
+                        str += "	  <div class='del float-right' data-qno='"+list[i].contentId+"' style='cursor:pointer;font-weight:bold'>&nbsp;&nbsp;X&nbsp;&nbsp;</div>";
+                        str += "	  <small class='float-right text-muted'>" + list[i].userEmail + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + myContentService.displayTime(list[i].createdDate) + "</small>";
+                        str += "   </div><hr>";
+                        
+                        str += "<div class='card-body collapse "+list[i].contentId+"'>";
+                        str += "   <img src='/resources/img/q.png' style='width:30px'> " + list[i].body + " <br><br>";
+                        str += "   <img src='/resources/img/a.png' style='width:30px'> " + list[j].body + " <br>";
+                        str += "	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small class='primary-font text-muted'> "+list[j].name+ " ";
+                        str += "	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +myContentService.displayTime(list[j].createdDate)+ "</small><br><br>";
+                        str += "<hr></div>";
+                        
+                        // A가 있는지 없는지 체크 
+                        aCheck = false;
+                    } 
 
-               } // for J
+                }
                
                if(aCheck) {
             	   
-            	   str += "<div id='collapse"+list[i].contentId+"' style=''>";
-                   str += "<div class='card-body'> &nbsp;&nbsp;&nbsp; 등록된 답변이 없습니다</div></div><hr> ";
+            	// Q 출력 태그
+                   str += "<div class='qqqaaa' data-qno='"+list[i].contentId+"' style='cursor:pointer'>";
+                   str += "   &nbsp;&nbsp;&nbsp;&nbsp;<span style='color:lightgray;'>검토중</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ iBody + " ";
+                   str += "	  <div class='del float-right' data-qno='"+list[i].contentId+"' style='cursor:pointer;font-weight:bold'>&nbsp;&nbsp;X&nbsp;&nbsp;</div>";
+                   str += "	  <small class='float-right text-muted'>" + list[i].userEmail + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + myContentService.displayTime(list[i].createdDate) + "</small>";
+                   str += "   </div><hr>";
+               	
+                   str += "<div class='card-body collapse "+list[i].contentId+"'>";
+                   str += "   <img src='/resources/img/q.png' style='width:30px'> " + list[i].body + " <br><br>";
+                   str += "<hr></div>";
                    
                }
 	        
@@ -203,6 +221,13 @@ $(document).ready(function() {
 	}); // getQList
 	}
 	
+	
+    // collapse
+	table4.on("click", ".qqqaaa", function(e){
+    	var qno = $(this).attr("data-qno");
+    	$("."+qno).collapse('toggle');
+    });
+
     /* Q&A 삭제  */
 	table4.on("click", ".del", function (e) {
 

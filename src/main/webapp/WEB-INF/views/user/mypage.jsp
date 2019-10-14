@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/resources/css/scroll.css">
 <title>마이페이지</title>
 <body>
-<a onclick="topFunction()" id="myBtn" title="Go to top"><img src="${ctx}/resources/img/GoToTop.png" width="50px;"></a>
+<a onclick="topFunction()" id="myBtn" title="Go to top"><img id="up" src="${ctx}/resources/img/GoToTop.png" width="50px;"></a>
 <div class="container-fluid">
 <div class="row d-flex d-md-block flex-nowrap wrapper">
 <main id="main">
@@ -38,7 +38,7 @@
 		      <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="padding:5px;">내가 쓴 글</a>
 		      <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false" style="padding:5px;">예약 내역</a>
 		      <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false" style="padding:5px;">즐겨찾는 병원</a>
-		      <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false" style="padding:5px;">운영자 문의</a>
+		      <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false" style="padding:5px;">운영자 1:1 문의</a>
 		    </div>
 		  </div>
 		  
@@ -346,7 +346,7 @@
 		      	        <div class="row">
 			      	        <div class="col-sm-10">
 							   <div class="form-group toAdmin">
-								  <textarea class="form-control" name="toAdmin" rows="4"></textarea>
+								  <textarea class="form-control" name="toAdmin" rows="4" style="resize: none;"></textarea>
 							   </div>
 			      	        </div>
 			      	        
@@ -407,7 +407,7 @@
 					<label>리뷰</label>
 					<input type='hidden' class="form-control" name="reviewDate" id="reviewDate" value="sysdate">
 					<input type='hidden' class="form-control" name="userEmail" id="userEmail"value="${useremail}">
-					<textarea class="form-control txt" rows="5" id="review" name="review" placeholder="리뷰를 남겨주세요"></textarea><br>
+					<textarea class="form-control txt" rows="5" id="review" name="review" placeholder="리뷰를 남겨주세요" style="resize: none;"></textarea><br>
 					<div>
 						<i class="stars" style="color:gold;font-weight:bold;" name="stars" id="stars">
 				            <i class='material-icons star' id="star1" name="star1" data-star="1">star_border</i>
@@ -442,158 +442,11 @@
 <script type="text/javascript" src="${ctx}/resources/js/user/myreserveFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myreserve.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/messageFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/message.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/favoriteFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/hospital/myFavorite.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/scroll.js"></script>
 
-<script>
-$(document).ready(function(){
-	
-	var adminBtn = $(".adminBtn");
-
-	var userEmail = '<c:out value="${useremail}"/>';
-	var message = $("textarea[name='toAdmin']");
-	
-	var msgSpace = $(".msg");
-	
-	showMessageList();
-	
-    function showMessageList() {
-    	
-    	messageService.getUserList(userEmail, function(list) {
-    		
-            var str = "";
-
-            if (list == null || list.length == 0) {
-            	
-            	str += "<div class='card-body primary-font'> 아직 등록된 글이 없습니다.</div>";
-            	
-            	msgSpace.html(str);
-            	return;
-            }
-
-            msgSpace.html("");
-
-            for (let i = 0, len = list.length || 0; i < len; i++) {
-                let type = list[i].type;
-                let group = list[i].mgroup;
-                
-                // 운영자 답변이 있는지 없는지 체크
-                let replyCheck = true;
-                
-                // Q 타입이면 출력 
-                if (type === 'send') {
-                	
-					// 동물캐릭터사진 무작위로 뽑기 위해서,,,
-                	var random = Math.floor(Math.random() * 10) + 1;
-                	
-                    for (let j = 0, len = list.length || 0; j < len; j++) {
-
-                        // 문의와 답변이 같이 있다면 아래의 태그를 출력
-                    	if (list[j].mgroup === group && list[j].type === 'reply') {
-                    		
-    		                str += "<div class='row'>";
-    		                str += "  <div class='media border-0 p-3 col-sm-7'>";
-    		                str += "    <img src='/resources/img/animal/animal"+random+".png' class='mr-3 mt-2' style='width:60px; padding:5px;'>";
-    		                str += "    <div class='media-body'>";
-    		                str += "      <h4>" + list[i].name + "<small><i>&nbsp;&nbsp;&nbsp; Posted on " +messageService.displayTime(list[i].createdDate)+ " ";
-    		                str += "	   </i></small>&nbsp;&nbsp;&nbsp;<span class='remove' style='cursor:pointer' data-cno='"+list[i].contentId+"'>X</span></h4>";
-			                str += "      <p>"+ list[i].body + "</p>";      
-			                str += "    </div>";
-			                str += "  </div>";
-			                str += "  <div class='col-sm-5'></div>";
-			                str += "</div>";
-
-			                
-			                str += "<div class='row'>";
-			                str += "  <div class='col-sm-6'></div>";
-			                str += "  <div class='media border-0 p-3 col-sm-6'>";
-			                str += "    <div class='media-body'>";
-			                str += "      <h4>" + list[j].name + "<small><i>&nbsp;&nbsp;&nbsp;Posted on " +messageService.displayTime(list[j].createdDate)+ "</i></small></h4>";
-			                str += "      <p>"+ list[j].body + "</p>";      
-			                str += "    </div>";
-			                str += "    <img src='/resources/img/baba.png' class='mr-2 mt-2' style='width:60px; padding-left:10px;'>";
-			                str += "  </div>";
-			                str += "</div><hr>";
-	                
-                            // 답변 있는지 없는지 체크 
-                            replyCheck = false;
-                        } 
-
-                    }
-                    
-                    // replyCheck true이면 문의는 했지만 답변 못받음  
-                    if(replyCheck) {
-                    	
-		                str += "<div class='row'>";
-		                str += "  <div class='media border-0 p-3 col-sm-7'>";
-		                str += "    <img src='/resources/img/animal/animal"+random+".png' class='mr-3 mt-2' style='width:60px; padding:5px;'>";
-		                str += "    <div class='media-body'>";
-		                str += "      <h4>" + list[i].name + "<small><i>&nbsp;&nbsp;&nbsp; Posted on " +messageService.displayTime(list[i].createdDate)+ " ";
-		                str += "	   </i></small>&nbsp;&nbsp;&nbsp;<span class='remove' style='cursor:pointer' data-cno='"+list[i].contentId+"'>X</span></h4>";
-		                str += "      <p>"+ list[i].body + "</p>";      
-		                str += "    </div>";
-		                str += "  </div>";
-		                str += "  <div class='col-sm-5'></div>";
-		                str += "</div>";
-		                
-		                str += "<div class='row'>";
-		                str += "  <div class='col-sm-6'></div>";
-		                str += "  <div class='media border-0 p-3 col-sm-6'>";
-		                str += "    <div class='media-body'>";
-		                str += "      <p><small>보내주신 문의를 확인하고 있습니다.</small></p>";      
-		                str += "    </div>";
-		                str += "    <img src='/resources/img/baba.png' class='mr-2 mt-2' style='width:60px; padding-left:10px;'>";
-		                str += "  </div>";
-		                str += "</div><hr>";
-
-                    }
-                    
-                }
-            }
-
-            msgSpace.html(str);
-        });
-    }
-
-
-	
-	adminBtn.on("click", function(e) {
-		
-		var msg = {
-			body : message.val(),
-			userEmail : userEmail
-		};
-		
-		messageService.send(msg, function(result){
-			showMessageList();
-			message.val('');
-		});
-	});
-	
-
-	
-	msgSpace.on("click", ".remove", function (e) {
-		
-        var contentId = $(this).attr("data-cno");
-		
-		var remove_confirm = function(){
-	        if (confirm('삭제하시겠습니까?')) {
-				messageService.remove(contentId, function(result){
-					showMessageList();
-				}, function(error){
-					console.log('remove Message error,,,,,')
-				});
-	        }
-	    }
-		remove_confirm();
-	});
-	
-	
-	
-	
-});
-</script>
 
 <script>
 function goPopup(){

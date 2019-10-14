@@ -28,8 +28,14 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public int delete(String userEmail) {
+	public Integer delete(String userEmail) {
 		return adminMapper.delete(userEmail);
+	}
+
+	@Override
+	public User get(String userEmail) {
+		adminMapper.delete(userEmail);
+		return adminMapper.get(userEmail);
 	}
 
     

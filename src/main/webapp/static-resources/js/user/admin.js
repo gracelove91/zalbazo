@@ -33,17 +33,13 @@ $(document).ready(function() {
 		var yes = confirm(userEmail + "의 모든 정보를 삭제하시겠습니까?");
 		
 		if(yes) {
-			adminService.remove(userEmail, function(result) {
-				if(result === "success") {
-					alert("유저 삭제가 완료되었습니다");
-		            location.reload();
-				}
+			adminService.get(userEmail, function(result){
+				alert("유저 삭제가 완료되었습니다");
+	            location.reload();
 			}, function(error){
-				alert("삭제 오류");
+				console.log('에러에러');
 			});
 			
-		}else{
-			alert("유저 삭제가 취소되었습니다.");
 		}
 		
 	}); // 유저 삭제 버튼 클릭
@@ -70,14 +66,18 @@ $(document).ready(function() {
 	hospitalList.on("click", ".removeHos", function(list, e) {
 		
 		var hoshos = $(this).attr("data-id");
-		alert(hoshos);
+		var yes = confirm("병원 " + hoshos + "의 모든 정보를 삭제하시겠습니까?");
 		
-		adminService.remove(hoshos, function(result) {
-			if(result === "success") {
-				alert("유저 삭제가 완료되었습니다");
-	            location.reload();
-			}
-		});
+		if(yes) {
+			
+			adminService.get(hoshos, function(result){
+				alert("병원 삭제가 완료되었습니다");
+				location.reload();
+			}, function(error){
+				console.log('에러에러');
+			});
+			
+		}
 		
 	}); // 병원 삭제 버튼 클릭
 	

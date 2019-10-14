@@ -225,8 +225,15 @@ $(document).ready(function(e){
 			return;
 		}
 		
+		var regex= /^[0-9]*$/;
+		
+		if(!regex.test(hTel.trim())) {
+			alert("-을 제외하고 입력해주세요");
+			return;
+		}
+		
         if (hTel.trim().length < 9 || hTel.trim().length > 11) {
-            alert('전화번호를 제대로 입력해주세요.');
+            alert('전화번호는 9~11자로 입력해주세요.');
             return;
         }
 		

@@ -188,7 +188,7 @@ input.checkbox:checked + label.input-label.radio::before {
 
                             <td class="mobile" style="text-align: center;"><c:out
                                     value="${hospital.tel}"/></td>
-                        </tr>
+                            </tr>
                     </c:forEach>
                     </tbody>
                 </table>

@@ -18,7 +18,7 @@
 	<div class="col-1"></div>
 	<div class="col-11">
 	<br>
-    <h2>${useremail} 님의 마이페이지</h2>
+    <h2>관리자 ${useremail} 님의 마이페이지</h2>
     <input type='hidden' class="email" id="userEmail" value="${useremail}">
     <!-- js에서 	var userEmail = $(".email").val(); 이걸로 메일 호출 가능 -->
     <p>환영합니다!!</p>
@@ -87,7 +87,7 @@
 						           <th scope="col" class="mobile" style="text-align:center;">몸무게</th>
 						           <th scope="col" class="mobile" style="text-align:center;">나이</th>
 						           <th scope="col" class="mobile" style="width:120px; text-align:center;">특이사항</th>
-						           <th scope="col" class="mobile" style="text-align:center;">수정/삭제</th>
+						           <th scope="col" class="mobile" style="text-align:center;">삭제</th>
 						           
 						        </tr>
 						      </thead>

@@ -25,6 +25,7 @@ public class Hospital {
 	private String info;
 	private List<Label> label;
 	private String userEmail;
+	private Long fhospitalId;
 	
     private List<AttachFileDTO> attachList;
 

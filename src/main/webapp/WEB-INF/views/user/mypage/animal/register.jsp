@@ -70,6 +70,18 @@
    function fun2() {
        var obj = document.frm;
        
+       if(obj.type.value == '') {
+           alert('타입을 입력하세요');
+           obj.type.focus();
+           return false;
+       }
+       
+       if($(':radio[name="sex"]:checked').length < 1){
+   	    alert('성별을 선택하세요');
+   	    obj.sex[0].focus();
+   	    return false;
+   		}
+       
        if(obj.weight.value < 0 || obj.weight.value == '') {
     	   alert('몸무게를 입력하세요');
     	   obj.weight.focus();
@@ -82,32 +94,20 @@
     	   return false;
        }
        
-       if(obj.type.value == '') {
-           alert('타입을 입력하세요');
-           obj.type.focus();
-           return false;
-       }
-
        if(obj.aname.value == '') {
            alert('이름을 입력하세요');
-           obj.aName.focus();
+           obj.aname.focus();
            return false;
        }
      
-       if($(':radio[name="sex"]:checked').length < 1){
-    	    alert('성별을 선택하세요');
-    	    obj.sex[0].focus();
-    	    return false;
-    	}
+      
      
-       if($("textarea[id='note']").trim().value == '' || $("textarea[id='note']").trim().length < 15) {
-           alert('특이사항은 1~15자로 입력하세요');
-           $("textarea[id='note']").focus();
-           return;
+      	alert('동물이 등록되었습니다.');
+           return true;
        }
        
       
-   }
+   
         
    
 </script>

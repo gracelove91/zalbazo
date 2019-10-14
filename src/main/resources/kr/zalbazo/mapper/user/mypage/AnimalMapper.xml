@@ -18,7 +18,7 @@
 
 	<delete id="delete">
 		delete from ANIMAL
-		where ANIMAL_ID = #{animalId}
+		where ANIMAL_ID = #{animalId} 
 	</delete>
 
 	<select id="read" resultType="kr.zalbazo.model.animal.Animal">

@@ -85,7 +85,7 @@
 						           <th scope="col" class="mobile" style="text-align:center;">몸무게</th>
 						           <th scope="col" class="mobile" style="text-align:center;">나이</th>
 						           <th scope="col" class="mobile" style="width:120px; text-align:center;">특이사항</th>
-						           <th scope="col" class="mobile" style="text-align:center;">삭제</th>
+						           <th scope="col" class="mobile" style="text-align:center;">수정/삭제</th>
 						           
 						        </tr>
 						      </thead>

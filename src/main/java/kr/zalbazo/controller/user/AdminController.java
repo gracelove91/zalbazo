@@ -40,6 +40,7 @@ public class AdminController {
 		return new ResponseEntity<>(adminService.getHosList(), HttpStatus.OK);
 	}
 	
+	// admin페이지 유저 삭제
 	@DeleteMapping(value = "/delete/{userEmail}", produces = "application/json")
 	public ResponseEntity<String> delete(@PathVariable("userEmail") String userEmail) {
 		

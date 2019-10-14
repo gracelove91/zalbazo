@@ -2,9 +2,9 @@ var userInfoService = (function(){
 
 	function getUser(callback, error) {
 
-		$.get("/user/get" + ".json", function(result) {
+		$.get("/user/getUser" + ".json", function(user) {
 			if (callback) {
-				callback(result);
+				callback(user);
 			}
 		}).fail(function(xhr, status, err) {
 
@@ -13,11 +13,28 @@ var userInfoService = (function(){
 			}
 
 		});
-	} // get
+		
+	} // getUser
 	
 	
+	function getWriter(contentId, callback, error) {
+		
+		$.get("/user/getWriter/" + contentId + ".json", function(writer) {
+			if (callback) {
+				callback(writer);
+			}
+		}).fail(function(xhr, status, err) {
+
+			if (error) {
+				error();
+			}
+
+		});
+	} // getWriter
+
 	return {
-		getUser : getUser
-	}
+		getUser : getUser,
+		getWriter : getWriter
+	};
 	
 })();

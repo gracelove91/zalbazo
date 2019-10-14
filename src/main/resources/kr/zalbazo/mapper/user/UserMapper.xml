@@ -38,9 +38,15 @@
     <select id="getUser" resultType="kr.zalbazo.model.user.User">
         SELECT *
         FROM ZALBAZO_USER
-        WHERE USER_EMAIL = #{email}
+        WHERE USER_EMAIL = #{userEmail}
     </select>
 
+    <select id="getWriter" resultType="kr.zalbazo.model.content.Content">
+        SELECT *
+        FROM CONTENT
+        WHERE CONTENT_ID = #{contentId}
+    </select>
+    
 
     <select id="getList" resultType="kr.zalbazo.model.user.User">
         <![CDATA[

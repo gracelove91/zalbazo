@@ -75,8 +75,10 @@
                     <input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
                     <input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
                 </form>
-
+                
+                <span class="modiBtn">
                 <button data-oper='modify' class="btn btn-outline-primary">Modify</button>
+                </span>
                 <button data-oper='list' class="btn btn-primary">list</button>
 
                 <!-- 여기부터 댓글 관련  -->
@@ -152,7 +154,36 @@
 
 <!-- 댓글 모달 끝 -->
 <script type="text/javascript" src="${ctx}/resources/js/content/replyFunction.js"></script>
+
 <script type="text/javascript" src="${ctx}/resources/js/user/userFunction.js"></script>
+<script type="text/javascript">
+// 내 글이 아니면, modify 버튼이 보이지 않는다.
+$(document).ready(function() {
+	
+var modiBtn = $(".modiBtn");
+var contentId = '<c:out value="${content.contentId}"/>';
+
+
+	userInfoService.getUser(function(user){
+		console.log("로그인 유저 이메일 :"+user.userEmail);
+
+console.log("현재 글 번호 :"+contentId);
+
+	userInfoService.getWriter(contentId, 
+			function(writer) {
+		console.log("글 작성자 이메일 : "+writer.userEmail);
+	    
+		if (user.userEmail != writer.userEmail) {
+
+	        modiBtn.html("");
+		}
+	
+	}); //getUser
+}); //getWriter
+
+});
+</script>
+
 <script>
 $(document).ready(function () {
 	

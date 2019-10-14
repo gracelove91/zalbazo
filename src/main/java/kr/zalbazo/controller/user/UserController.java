@@ -16,6 +16,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +25,9 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.zalbazo.mapper.user.UserMapper;
+import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.user.User;
+import kr.zalbazo.service.content.ContentService;
 import kr.zalbazo.service.user.UserService;
 import kr.zalbazo.validator.UserValidator;
 import lombok.extern.log4j.Log4j;
@@ -36,6 +39,8 @@ import lombok.extern.log4j.Log4j;
 public class UserController {
     @Autowired
     private UserService service;
+    @Autowired
+    private ContentService content_service;
     
    @Autowired
    UserMapper mapper;
@@ -135,11 +140,18 @@ public class UserController {
     }
     
     
-   @GetMapping(value= "/get", produces = {
+   @GetMapping(value= "/getUser", produces = {
          MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
    public ResponseEntity <User> getUser(Model model, Principal principal) {
       return new ResponseEntity<>(service.getUser(principal.getName()), HttpStatus.OK);
    }
+   
+   @GetMapping(value= "/getWriter/{contentId}", produces = {
+	     MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	   public ResponseEntity <Content> getWriter(Model model, @PathVariable("contentId") Long contentId) {
+
+   		  return new ResponseEntity<>(service.getWriter(contentId), HttpStatus.OK);
+	   }
 
    
 }

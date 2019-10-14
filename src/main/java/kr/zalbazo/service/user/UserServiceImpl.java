@@ -3,6 +3,7 @@ package kr.zalbazo.service.user;
 import kr.zalbazo.common.MailHandler;
 import kr.zalbazo.exception.EmailConfirmFirstException;
 import kr.zalbazo.mapper.user.UserMapper;
+import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.user.User;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,8 +73,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User getUser(String email) {
-        return userMapper.getUser(email);
+    public User getUser(String userEmail) {
+        return userMapper.getUser(userEmail);
     }
 
     @Override
@@ -82,8 +83,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public boolean remove(String email) {
-        return userMapper.delete(email) == 1;
+    public boolean remove(String userEmail) {
+        return userMapper.delete(userEmail) == 1;
     }
 
     @Override
@@ -92,8 +93,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public boolean updateEnabled(String email) {
-        User user = getUser(email);
+    public boolean updateEnabled(String userEmail) {
+        User user = getUser(userEmail);
         user.setEmailAuthKey("");
         user.setEnabled("enabled");
 
@@ -117,5 +118,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .password(user.getPassword())
                 .roles(user.getRole())
                 .build();
+    }
+
+	@Override
+	public Content getWriter(Long contentId) {
+		return userMapper.getWriter(contentId);
     }
 }

@@ -14,9 +14,15 @@
 		where role = 'hospital'
 	</select>
 	
-	<select id="delete">
+	<select id="delete" resultType="Integer">
 		delete from zalbazo_user
 		where user_email = #{userEmail}
+	</select>
+	
+	<select id="get" resultType="kr.zalbazo.model.user.User">
+	   select *
+	   from zalbazo_user
+	   where user_email = #{userEmail}
 	</select>
 	
 	

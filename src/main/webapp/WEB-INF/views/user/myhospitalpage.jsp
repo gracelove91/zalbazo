@@ -46,6 +46,7 @@ th mobile{
 		      <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="padding:5px;">예약 관리</a>
 		      <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false" style="padding:5px;">병원 Q&A</a>
 		      <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false" style="padding:5px;">내가 쓴 글</a>
+		      <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false" style="padding:5px;">운영자 문의</a>
 		    </div>
 		  </div>
 		  
@@ -270,6 +271,38 @@ th mobile{
 				</div>  
 						      
 		      </div> <!--  내가 쓴 글 -->
+		      
+		      <!-- 운영자 문의 -->
+		      <div class="tab-pane" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
+		      	    <div id="main" class="col-md-12">
+		      	     
+			            <div class="page-header mt-3">
+			                 <h5>운영자에게 의견 혹은 건의사항을 직접 전달하세요.</h5>
+			            </div><hr>
+		      	        
+		      	        <div class="row">
+			      	        <div class="col-sm-10">
+							   <div class="form-group toAdmin">
+								  <textarea class="form-control" name="toAdmin" rows="4"></textarea>
+							   </div>
+			      	        </div>
+			      	        
+			      	        <div class="col-sm-2">
+							    <button id="adminBtn" class="btn btn-primary adminBtn">보내기</button>
+			      	        </div>
+		      	        </div>
+		      	        <hr>
+		      	        
+		      	        <div class="row">
+		      	           <div class="col-sm-10 msg">
+		      	              <!-- user message list 뜨는 곳  -->
+		      	           </div>
+		      	           <div class="col-sm-2"></div>
+		      	        </div>
+		      	        
+		      	    
+			        </div>
+		      </div> <!-- 운영자 문의 -->
 		      
 		    </div>
 		  </div>

@@ -73,10 +73,22 @@ var adminService = (function() {
 		});
 	} // remove
 	
+	
+	function get(userEmail, callback, error) {
+		$.get("/admin/get/" +userEmail+ ".json", function(result){
+			if(callback){
+				callback(result);
+			}
+		}).fail(function(xhr, status, err){
+			error();
+		});
+	}
+	
 	return{
 		displayTime : displayTime,
 		getUserList : getUserList,
 		getHosList : getHosList,
-		remove : remove
+		remove : remove,
+		get : get
 	}
 })();

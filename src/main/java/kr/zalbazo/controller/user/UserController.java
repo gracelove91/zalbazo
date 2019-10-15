@@ -68,9 +68,18 @@ public class UserController {
         	return "user/mypage";
     	}
     	
+    	if(authentication.getAuthorities().toString().equals("[ROLE_hospital]")) {
+    		model.addAttribute("useremail", authentication.getName());
+        	System.out.println("병원은 병원페이지로! : " + authentication.getAuthorities());
+        	return "user/myhospitalpage";
+    	}
+    	
+    	
     	model.addAttribute("useremail", authentication.getName());
-    	System.out.println("유저가 아니라면!!!!");
-    	return "user/myhospitalpage";
+    	System.out.println("유저와 병원이 아니라면!!!!");
+    	
+    	return "user/adminpage";
+    	
     }
     
     @GetMapping("/register")

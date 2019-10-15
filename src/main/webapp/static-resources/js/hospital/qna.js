@@ -32,22 +32,30 @@
                     
                     // Q 타입이면 출력 
                     if (type === 'Q') {
-
-                    	// Q 출력 태그
-                        str += "<div id='accordion'><div class='card-header primary-font'> Q.&nbsp; "
-                        str += "<a class='card-link collapsed' data-toggle='collapse' href='#collapse"+list[i].contentId+"' aria-expanded='false'>" + list[i].body + "</a>";
-                        str += "<p><small class='float-right text-muted'>" + qnaService.displayTime(list[i].createdDate) + "</small></p>";
-                        str += "<small class='primary-font'>" + list[i].userEmail + "</small></div></div>";
                         
                         for (let j = 0, len = list.length || 0; j < len; j++) {
-
+                        	
+                        	// (제목?)내용이 너무 길면 20자 내로 자르기
+                        	var iBody = list[i].body;
+                        	if(iBody.length > 20){
+                        		iBody = iBody.substring(0,19) + " (...)";
+                        	}
+                        	
                             // 같은 그룹의 A가 있다면 A 출력 태그
                         	if (list[j].cgroup === group && list[j].qnaType === 'A') {
-                            	str += "<div id='collapse"+list[i].contentId+"'>";
-                                str += "<div class='card-body'> &nbsp;&nbsp;&nbsp; A: " + list[j].body + " <br><br>";
-                                str += "<small class='primary-font'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " +list[j].name+ " </small> ";
-                                str += "<small class='float-right text-muted'>" + qnaService.displayTime(list[j].createdDate) + "</small><hr> ";
-                                str += "</div></div>";
+                        		
+                        		// Q 출력 태그
+                                str += "<div class='qqqaaa' data-qno='"+list[i].contentId+"' style='cursor:pointer'>";
+                                str += "   &nbsp;&nbsp;&nbsp;&nbsp;<span style='color:#04b1fb;'>답변완료</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ iBody + " ";
+                                str += "	  <small class='float-right text-muted'>" + list[i].userEmail + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + qnaService.displayTime(list[i].createdDate) + "</small>";
+                                str += "   </div><hr>";
+                                
+                                str += "<div class='card-body collapse "+list[i].contentId+"'>";
+                                str += "   <img src='/resources/img/q.png' style='width:30px'> " + list[i].body + " <br><br>";
+                                str += "   <img src='/resources/img/a.png' style='width:30px'> " + list[j].body + " <br>";
+                                str += "	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small class='primary-font text-muted'> "+list[j].name+ " ";
+                                str += "	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +qnaService.displayTime(list[j].createdDate)+ "</small><br><br>";
+                                str += "<hr></div>";
                                 
                                 // A가 있는지 없는지 체크 
                                 aCheck = false;
@@ -56,10 +64,17 @@
                         }
                         
                         // aCheck true이면 Q는 있지만 A는 없음 
-                        // 병원 측에서 A를 입력할 수 있는 textarea를 출력
                         if(aCheck) {
-                        	str += "<div id='collapse"+list[i].contentId+"' style=''>";
-                            str += "<div class='card-body'> &nbsp;&nbsp;&nbsp; 등록된 답변이 없습니다</div></div><hr> ";
+                        	
+                    		// Q 출력 태그
+                            str += "<div class='qqqaaa' data-qno='"+list[i].contentId+"' style='cursor:pointer'>";
+                            str += "   &nbsp;&nbsp;&nbsp;&nbsp;<span style='color:lightgray;'>검토중</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ iBody + " ";
+                            str += "	  <small class='float-right text-muted'>" + list[i].userEmail + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + qnaService.displayTime(list[i].createdDate) + "</small>";
+                            str += "   </div><hr>";
+                        	
+                            str += "<div class='card-body collapse "+list[i].contentId+"'>";
+                            str += "   <img src='/resources/img/q.png' style='width:30px'> " + list[i].body + " <br><br>";
+                            str += "<hr></div>";
                         }
                         
                         
@@ -69,6 +84,13 @@
                 qna.html(str);
             });
         }
+        
+        
+        // collapse
+        qna.on("click", ".qqqaaa", function(e){
+        	var qno = $(this).attr("data-qno");
+        	$("."+qno).collapse('toggle');
+        });
 
 
         // Question Add

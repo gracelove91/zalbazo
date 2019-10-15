@@ -29,8 +29,8 @@ public class HospitalReviewServiceImpl implements HospitalReviewService {
 	}
 
 	@Override
-	public int insertReview(HospitalReviewVO hospitalReviewVO) {
-		return reviewMapper.insertReview(hospitalReviewVO);
+	public int getTotal(Long hospitalId) {
+		return reviewMapper.getTotal(hospitalId);
 	}
 
 }

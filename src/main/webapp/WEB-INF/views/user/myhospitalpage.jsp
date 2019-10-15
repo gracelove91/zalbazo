@@ -9,46 +9,55 @@
     String ctx = request.getContextPath();
     pageContext.setAttribute("ctx", ctx);
 %>
+<link rel="stylesheet" href="/resources/css/scroll.css">
+<link rel="stylesheet" href="/resources/css/MyHospitalReserve.css">
 <title>병원 마이페이지</title>
-<div class="container-fluid">
-<div class="row d-flex d-md-block flex-nowrap wrapper">
-<main id="main">
 <style>
 img{
    display : inline;
    padding: 10px;
 }
+th mobile{
+	height : 40px;
+}
 </style>
+<body>
+<a onclick="topFunction()" id="myBtn" title="Go to top"><img id="up" src="${ctx}/resources/img/GoToTop.png" width="70px;"></a>
+<div class="container-fluid">
+<div class="row d-flex d-md-block flex-nowrap wrapper">
+<main id="main">
 <div class="page-header row">
-	<div class="col-1"></div>
-	<div class="col-11">
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col-9">
 	<br>
-    <h2>${useremail} 님의 병원마이페이지</h2>
+    <h2>${name}님의 마이페이지</h2>
+    <input type='hidden' class="email" id="userEmail" value="${useremail}">
     <p>환영합니다!</p>
     </div>
 </div>
 
 <div class="row">
-		  <div class="col-1"></div>
-		  <div class="col-2">
+		  <div class="col"></div>
+		  <div class="col">
 		    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 		      <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true" style="padding:5px;">병원정보 수정</a>
 		      <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="padding:5px;">예약 관리</a>
 		      <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false" style="padding:5px;">병원 Q&A</a>
 		      <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false" style="padding:5px;">내가 쓴 글</a>
+		      <a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false" style="padding:5px;">운영자 문의</a>
 		    </div>
 		  </div>
 		  
-		  <div class="col-8">
+		  <div class="col-8" style="border: 1.1px solid #04b1fb; border-radius: 4px;">
 		    <div class="tab-content" id="v-pills-tabContent">
 		    
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab"><!-- 병원정보 수정 -->
 				      <div id="main" class="col-md-12">
 			          <div class="page-header mt-3">
-			              <h2>병원상세정보</h2>
+			              <h3>병원상세정보</h3>
 			          </div>
 			          <hr>
-			      
 			      
 			      <form class="pt-3 md-3" role='form' action="/hospitalinfo/modify" method="post" enctype="multipart/form-data">
 			          <input type='hidden' class="email" id="userEmail" name="userEmail" value="${useremail}">
@@ -157,7 +166,7 @@ img{
 			               <fieldset>
 			                  <label class="font-weight-bold">세부사항</label>
 			                  <textarea class="form-control" id="info" name="info"
-										placeholder="병원에 대한 상세정보를 적어주세요." style="height: 200px;"></textarea>
+										placeholder="병원에 대한 상세정보를 적어주세요." style="height: 200px;resize: none;"></textarea>
 			               </fieldset>
 			            </div><br />
 			            
@@ -192,8 +201,10 @@ img{
 		      
 		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab"> <!-- 관리 -->
 					<br>
-					<div id="my-calendar"></div>
+						<div id="my-calendar"></div>
 					<br>
+					<div class="countR" style="text-align:right">
+					</div>
 		      		<div class="viewreserve">
 					<table class="table table-striped col-12">
 				      <thead>
@@ -209,7 +220,6 @@ img{
 				      </thead>
 				      
 				      <tbody class="myreservelist">
-				        
 				      </tbody>
 				      
 			   		</table> 
@@ -217,10 +227,11 @@ img{
 		      </div>
 		      
 		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
-		      	<br>
+		      	<h4></h4>
 				<nav>
-				  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-				    <a class="nav-item nav-link active" id="nav-a-tab" data-toggle="tab" href="#nav-a" role="tab" aria-controls="nav-a" aria-selected="true">&nbsp;&nbsp;&nbsp;Q&A&nbsp;&nbsp;&nbsp;</a>
+				  <div class="nav nav-tabs mt-2" id="nav-tab" role="tablist">
+				  	&nbsp;&nbsp;&nbsp;<h4 class="answerCount">안뇽</h4>
+				  
 				  </div>
 				</nav>
 				<hr>
@@ -237,7 +248,7 @@ img{
 		      </div>
 		      
 		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
-				<br>
+				<h4></h4>
 				<nav>
 				  <div class="nav nav-tabs" id="nav-tab" role="tablist">
 				    <a class="nav-item nav-link active" id="nav-c-tab" data-toggle="tab" href="#nav-c" role="tab" aria-controls="nav-c" aria-selected="false">&nbsp;&nbsp;&nbsp;댓글&nbsp;&nbsp;&nbsp;</a>
@@ -260,6 +271,38 @@ img{
 				</div>  
 						      
 		      </div> <!--  내가 쓴 글 -->
+		      
+		      <!-- 운영자 문의 -->
+		      <div class="tab-pane" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
+		      	    <div id="main" class="col-md-12">
+		      	     
+			            <div class="page-header mt-3">
+			                 <h5>운영자에게 의견 혹은 건의사항을 직접 전달하세요.</h5>
+			            </div><hr>
+		      	        
+		      	        <div class="row">
+			      	        <div class="col-sm-10">
+							   <div class="form-group toAdmin">
+								  <textarea class="form-control" name="toAdmin" rows="4" style="resize: none;"></textarea>
+							   </div>
+			      	        </div>
+			      	        
+			      	        <div class="col-sm-2">
+							    <button id="adminBtn" class="btn btn-primary adminBtn">보내기</button>
+			      	        </div>
+		      	        </div>
+		      	        <hr>
+		      	        
+		      	        <div class="row">
+		      	           <div class="col-sm-10 msg">
+		      	              <!-- user message list 뜨는 곳  -->
+		      	           </div>
+		      	           <div class="col-sm-2"></div>
+		      	        </div>
+		      	        
+		      	    
+			        </div>
+		      </div> <!-- 운영자 문의 -->
 		      
 		    </div>
 		  </div>
@@ -331,7 +374,7 @@ img{
 		</div>
 	</div>
 </div>
-
+</body>
 
 
 <!-- Bootstrap core JavaScript -->
@@ -342,10 +385,6 @@ img{
 <script type="text/javascript" src="${ctx}/resources/js/user/mycontent.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfoFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myInfo.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospitalFunction.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myFavoriteHospital.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myAnimalFunction.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/user/myAnimal.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myHospitalReserveFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/myHospitalReserve.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/infoFunction.js"></script>
@@ -353,8 +392,9 @@ img{
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcontentFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcontent.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/hospital/myhospitalcal.js"></script>
-<link rel="stylesheet" href="/resources/css/MyHospitalReserve.css">
-
+<script type="text/javascript" src="${ctx}/resources/js/scroll.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/messageFunction.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/message.js"></script>
 
 <script>
     function goPopup(){

@@ -49,8 +49,8 @@
               <input type="text" class="form-control" id="aname" name="aname"  placeholder="이름" >
             </div>
 			<div class="form-group">
-              <label>참고사항</label>
-               <textarea class="form-control" id="note" name="note" placeholder="내용을 입력하세요." style="height: 320px;"></textarea>
+              <label>특이사항</label>
+               <textarea class="form-control" id="note" name="note" placeholder="특이사항을 입력하세요." style="height: 100px;resize:none;"></textarea>
             </div>
              <input type="hidden" id="userEmail" name="userEmail" value="${userEmail}">
             <button class="btn btn-primary pull-right" id="regBtn" name="regBtn" >등록하기</button>
@@ -70,6 +70,18 @@
    function fun2() {
        var obj = document.frm;
        
+       if(obj.type.value == '') {
+           alert('타입을 입력하세요');
+           obj.type.focus();
+           return false;
+       }
+       
+       if($(':radio[name="sex"]:checked').length < 1){
+   	    alert('성별을 선택하세요');
+   	    obj.sex[0].focus();
+   	    return false;
+   		}
+       
        if(obj.weight.value < 0 || obj.weight.value == '') {
     	   alert('몸무게를 입력하세요');
     	   obj.weight.focus();
@@ -82,33 +94,20 @@
     	   return false;
        }
        
-       if(obj.type.value == '') {
-           alert('타입을 입력하세요');
-           obj.type.focus();
-           return false;
-       }
-
        if(obj.aname.value == '') {
            alert('이름을 입력하세요');
-           obj.aName.focus();
+           obj.aname.focus();
            return false;
        }
      
-       if($(':radio[name="sex"]:checked').length < 1){
-    	    alert('성별을 선택하세요');
-    	    obj.sex[0].focus();
-    	    return false;
-    	}
-       
+      
      
-       if(obj.note.value == '') {
-           alert('참고사항을 입력하세요');
-           obj.note.focus();
-           return false;
+      	alert('동물이 등록되었습니다.');
+           return true;
        }
        
       
-   }
+   
         
    
 </script>

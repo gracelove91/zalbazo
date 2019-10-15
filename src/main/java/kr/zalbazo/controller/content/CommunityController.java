@@ -71,7 +71,7 @@ public class CommunityController {
     }
 
     @GetMapping({"/get", "/modify"})
-    public void detail(@RequestParam("contentId") Long contentId, Model model, @ModelAttribute("cri") Criteria cri, Principal principal){
+    public void detail(@RequestParam("contentId") Long contentId, Model model, @ModelAttribute("cri") Criteria cri){
         model.addAttribute("content", service.get(contentId));
     }
     

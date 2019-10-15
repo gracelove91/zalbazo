@@ -63,8 +63,12 @@ input.checkbox:checked + label.input-label.radio::before {
     content:"\f058";
 }
 </style>
+<link rel="stylesheet" href="/resources/css/scroll.css">
 <title>병원 LIST</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<body>
+<a onclick="topFunction()" id="myBtn" title="Go to top"><img src="${ctx}/resources/img/GoToTop.png" width="60px;"></a>
 <section class="feature-area">
 
 
@@ -88,7 +92,8 @@ input.checkbox:checked + label.input-label.radio::before {
   <label for="select4" class="input-label checkbox">수술전문</label>
 </div>
 <input type="hidden" id="length" name="length" value="">
-<div style="float: left; width: 35%;">
+<div class="row">
+<div class="col-lg-2">
 <select name="searchOption">
 						<option value="all">전체검색</option>
 						<option value="name">병원이름</option>
@@ -97,15 +102,16 @@ input.checkbox:checked + label.input-label.radio::before {
 					</select>
 	</div>				
 					<!-- 검색창 -->
-					<div class="col-md-10 col-lg-8 col-xl-7 mx-auto" style="float: left; width: 45%;">
-						<input name="keyword" type="keyword" class="form-control form-control-lg" placeholder="검색어를 입력해주세요.">
+					<div class="col-md-8 col-lg-8 col-xl-8 mx-auto" style='padding-top: 10px;'>
+						<input name="keyword" type="keyword" class="form-control form-control-md" placeholder="검색어를 입력해주세요.">
 					</div>
-					<div  style="float: left; width: 20%;">
-						<button type="submit" class="btn btn-block btn-lg btn-primary">검색하기</button>
+					<div class="col-lg-2" style='padding-top: 10px;'>
+						<button type="submit" class="btn btn-block btn-md btn-primary">검색하기</button>
 					</div>
 
 </div>
 </form>
+<br>
 <div class="container-fluid">
 <div class="row d-flex d-md-block flex-nowrap wrapper">
 <main id="main">
@@ -205,8 +211,9 @@ input.checkbox:checked + label.input-label.radio::before {
 </div>
 </div>
 </section>
-<script type="text/javascript" src="/resources/js/index/search.js"></script> 
-<!-- 제이쿼리 자바스크립트 추가하기 -->
+</body>
+<script type="text/javascript" src="/resources/js/index/search.js"></script>
+<script type="text/javascript" src="/resources/js/scroll.js"></script>
 
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>

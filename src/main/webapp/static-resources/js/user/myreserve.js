@@ -33,7 +33,7 @@ $(document).ready(function() {
 		
 		for(var i = 0, len = list.length||0; i < len; i++) {
 			//console.log(myReserveService.displayTime(list[i].rdate));
-			console.log(list[i]);
+			//console.log(list[i]);
 			
 			if(list[i].status != "진료 완료") {
 				

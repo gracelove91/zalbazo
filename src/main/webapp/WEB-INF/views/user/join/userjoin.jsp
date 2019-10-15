@@ -39,7 +39,7 @@
 	<div class="row">
 		<div class="col-2"></div>
         <form:form class="col-8" action="/user/register" method="post"
-                   modelAttribute="user">
+                   modelAttribute="user" id="userinfo">
             <input type="hidden" name="role" value="user"/>
             <div class="form-group">
                 <fieldset>
@@ -106,6 +106,8 @@
 <!-- 부트스트랩 자바스크립트 추가하기 -->
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
+    var formObj = $('#userinfo');
+
     function goPopup(){
         var pop = window.open("jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes");
     }
@@ -113,6 +115,15 @@
     function jusoCallBack(roadFullAddr){
         $("#address").val(roadFullAddr);
     }
+
+    $('#join').on('click', function(evt) {
+        evt.preventDefault();
+
+        alert("인증메일을 확인해주시면 회원가입이 완료됩니다.")
+
+        formObj.submit();
+
+    })
 </script>
 <%@include file="/WEB-INF/views/includes/footer.jsp"%>
 </body>

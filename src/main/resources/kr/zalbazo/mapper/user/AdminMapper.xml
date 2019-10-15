@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kr.zalbazo.mapper.user.AdminMapper">
+    
+    <select id="getUserList" resultType="kr.zalbazo.model.user.User">
+	    select name, user_email, tel, join_date
+		from zalbazo_user
+		where role = 'user'
+	</select>
+	
+	<select id="getHosList" resultType="kr.zalbazo.model.user.User">
+		select hospital_id, name, user_email, tel, address, join_date
+		from zalbazo_user
+		where role = 'hospital'
+	</select>
+	
+	<select id="delete" resultType="Integer">
+		delete from zalbazo_user
+		where user_email = #{userEmail}
+	</select>
+	
+	<select id="get" resultType="kr.zalbazo.model.user.User">
+	   select *
+	   from zalbazo_user
+	   where user_email = #{userEmail}
+	</select>
+	
+	
+
+</mapper>

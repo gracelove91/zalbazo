@@ -33,6 +33,22 @@ var MyHospitalReserveService = (function() {
 		});
 	} // getReserveList
 	
+	function getHospitalReserveCount(param, callback, error) {
+		
+		var userEmail = param.userEmail;
+		
+		$.getJSON("/myhospitalreserve/listR" + ".json",
+			function(data) {
+				if(callback) {
+					callback(data);
+				}
+		}).fail(function(xhr, status, err) {
+			if(error) {
+				error();
+			}
+		});
+	} // getHospitalReserveCount
+	
 	function get(reserveId, callback, error) {
 		
 		$.get("/myhospitalreserve/" + reserveId + ".json", function(result) {

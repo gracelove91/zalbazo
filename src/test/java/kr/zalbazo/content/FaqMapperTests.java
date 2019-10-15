@@ -28,8 +28,6 @@ public class FaqMapperTests {
 	
 	faqvo.setKeyword("파");
 	
-//	List<FaqVO> list = service.getFaqList2(faqvo);// getFaqList2(faqvo);  
-	
 
 	}	  
 

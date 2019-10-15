@@ -16,6 +16,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +25,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.zalbazo.mapper.user.UserMapper;
+import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.user.User;
 import kr.zalbazo.service.user.UserService;
 import kr.zalbazo.validator.UserValidator;
@@ -37,8 +39,8 @@ public class UserController {
     @Autowired
     private UserService service;
     
-	@Autowired
-	UserMapper mapper;
+   @Autowired
+   UserMapper mapper;
 
     @InitBinder
     public void validator(WebDataBinder webDataBinder){
@@ -47,39 +49,33 @@ public class UserController {
     
     @GetMapping("/register_select")
     public String register_select() {
-    	return "/register_select";
+       return "/register_select";
     }
     
-//    @GetMapping("/mypage")
-//    public String mypage(User user, Principal principal, Model model) {
-//    	
-//    	System.out.println("권한권한 : "+principal);
-//    	model.addAttribute("useremail", principal.getName());
-//    	
-//    	return "user/mypage";
-//    }
-    
     @GetMapping("/mypage")
-    public String mypage(User user, Authentication authentication, Model model) {
-    	
-    	if(authentication.getAuthorities().toString().equals("[ROLE_user]")) {
-    		model.addAttribute("useremail", authentication.getName());
-        	System.out.println("유저는 유저마이페이지로! : " + authentication.getAuthorities());
-        	return "user/mypage";
-    	}
-    	
-    	if(authentication.getAuthorities().toString().equals("[ROLE_hospital]")) {
-    		model.addAttribute("useremail", authentication.getName());
-        	System.out.println("병원은 병원페이지로! : " + authentication.getAuthorities());
-        	return "user/myhospitalpage";
-    	}
-    	
-    	
-    	model.addAttribute("useremail", authentication.getName());
-    	System.out.println("유저와 병원이 아니라면!!!!");
-    	
-    	return "user/adminpage";
-    	
+    public String mypage(Authentication authentication, Model model) {
+       
+       User user = service.getUser(authentication.getName());
+       
+       if(authentication.getAuthorities().toString().equals("[ROLE_user]")) {
+          model.addAttribute("useremail", authentication.getName());
+           model.addAttribute("name", user.getName());
+           System.out.println("유저는 유저마이페이지로! : " + authentication.getAuthorities());
+           return "user/mypage";
+       }
+       
+       if(authentication.getAuthorities().toString().equals("[ROLE_hospital]")) {
+          model.addAttribute("useremail", authentication.getName());
+           model.addAttribute("name", user.getName());
+           System.out.println("병원은 병원마이페이지로! : " + authentication.getAuthorities());
+           return "user/myhospitalpage";
+       }
+       
+       // admin
+       //model.addAttribute("useremail", authentication.getName());
+       model.addAttribute("name", user.getName());
+       System.out.println("admin이라면!!!!");
+       return "user/adminpage";
     }
     
     @GetMapping("/register")
@@ -113,13 +109,11 @@ public class UserController {
             return "redirect:/hospitalinfo/register";
         }
 
-
-
         return "redirect:/index";
     }
 
     @RequestMapping("/jusoPopup")
-    public String popup(@RequestParam(required = false) String roadFullAddr){
+    public String popup(@RequestParam(required = false) String roadFullAddr) {
         System.out.println(roadFullAddr);
         return "user/jusoPopup";
     }
@@ -144,7 +138,14 @@ public class UserController {
 	@GetMapping(value= "/get", produces = {
 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
 	public ResponseEntity <User> getUser(Model model, Principal principal) {
-		return new ResponseEntity<>(mapper.getUser(principal.getName()), HttpStatus.OK);
+		return new ResponseEntity<>(service.getUser(principal.getName()), HttpStatus.OK);
 	}
-
+	
+	@GetMapping(value= "/getWriter/{contentId}", produces = {
+			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity <Content> getWriter(@PathVariable("contentId") Long contentId) {
+		log.info("aaaaaaa: "  + contentId);
+		return new ResponseEntity<>(service.getWriter(contentId), HttpStatus.OK);
+	}
+   
 }

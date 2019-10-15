@@ -235,6 +235,14 @@
 			<version>2.9.5</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+
+
 
 		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator 썸네일이미지생성 -->
 		<dependency>

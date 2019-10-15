@@ -164,8 +164,10 @@ function check() { // 날짜 시간 체킹
 		return false;
 	}
 
-	else
-		return "index";
+	else{
+		alert("예약이 완료되었습니다.");
+		return true;
+	}
 }
 
 
@@ -225,11 +227,10 @@ $.fn.zabuto_calendar = function(options) {
 						checkEvents($calendarElement,
 								dateInitObj.getFullYear(), dateInitObj
 										.getMonth());
-						
-						
+											
+												
 					}
 					var daycheck = $('.day');
-					var dtable = $('.rows');
 					var today =new Date();
 				for(var i=0; i<daycheck.length;i++){
 				if(new Date(daycheck[i].id)<today){
@@ -237,8 +238,7 @@ $.fn.zabuto_calendar = function(options) {
 					$(daycheck[i]).addClass('block');
 
 				};	
-				}
-					
+				}	
 				}
 
 				function drawTable($calendarElement, $tableObj, year, month) { // 테이블
@@ -254,17 +254,16 @@ $.fn.zabuto_calendar = function(options) {
 					$tableObj = appendDaysOfMonth($calendarElement, $tableObj,
 							year, month);
 					checkEvents($calendarElement, year, month);
+					
 					var daycheck = $('.day');
-					var dtable = $('.rows');
 					var today =new Date();
 				for(var i=0; i<daycheck.length;i++){
 				if(new Date(daycheck[i].id)<today){
 					$(daycheck[i]).prop('disabled', true);
-					$(dtable[i]).addClass('block');
+					$(daycheck[i]).addClass('block');
 
 				};	
 				}
-					
 					return $tableObj;
 				}
 

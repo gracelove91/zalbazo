@@ -135,7 +135,7 @@
                <fieldset>
                   <label class="font-weight-bold">세부사항</label>
                   <textarea class="form-control" id="info" name="info"
-							 style="height: 200px;"><c:out value="${info.info}"/></textarea>
+							 style="height: 200px;resize: none;"><c:out value="${info.info}"/></textarea>
                </fieldset>
             </div><br />
             
@@ -218,15 +218,32 @@ $(document).ready(function(e){
 		var hAddress = $("input[id='address']").val();
 		var hInfo = $("textarea[id='info']").val();
 		var hTreatStart = $("select[id='treatStart']").val();
-		var hTreatEnd = $("select[id='treatEnd']").val(); 
+		var hTreatEnd = $("select[id='treatEnd']").val();
+		
+		var space = hInfo.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+		//console.log(space);
+		
+		var space2 = space.split('<br/>').join("\r\n");
+		//console.log(space2);
+		
+		hInfo = space2;
+		
+		console.log(hInfo);
 		
 		if(hName.trim() === "" || hName.trim() === null || hName.trim().length < 5) {
 			alert("병원명을 최소 5자 이상 입력해주세요.")
 			return;
 		}
 		
+		var regex= /^[0-9]*$/;
+		
+		if(!regex.test(hTel.trim())) {
+			alert("-을 제외하고 입력해주세요");
+			return;
+		}
+		
         if (hTel.trim().length < 9 || hTel.trim().length > 11) {
-            alert('전화번호를 제대로 입력해주세요.');
+            alert('전화번호는 9~11자로 입력해주세요.');
             return;
         }
 		

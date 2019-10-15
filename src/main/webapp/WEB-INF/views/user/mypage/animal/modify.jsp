@@ -64,7 +64,7 @@
 		<div class="form-group">
 			<label>내용</label>
 			<textarea class="form-control" id="note" name="note"
-				style="height: 320px;">${animal.note}</textarea>
+				style="height: 320px;resize:none;">${animal.note}</textarea>
 		</div>
 	
 		<button id='modify' type="submit" data-oper='modify' class="btn btn-primary">수정</button>

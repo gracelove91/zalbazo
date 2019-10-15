@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kr.zalbazo.mapper.aboutus.AboutUsMapper">
+
+    <select id="reseveCount" resultType="int">
+		select count(*) from reserve
+	</select>
+	
+	<select id="reviewCount" resultType="int">
+		select count(*) from content
+		where category_id = 3
+	</select>
+	
+	<select id="userCount" resultType="int">
+		select count(*) from zalbazo_user
+		where role != 'admin'
+	</select>
+	
+	<select id="hospitalCount" resultType="int">
+		select count(*) from hospital
+	</select>
+
+</mapper>
+
+

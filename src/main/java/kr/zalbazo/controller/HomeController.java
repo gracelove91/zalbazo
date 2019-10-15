@@ -24,4 +24,9 @@ public class HomeController {
         return "/index";
     }
     
+    @GetMapping("/aboutus")
+    public String aboutus() {
+    	return "/aboutus";
+    }
+    
 }

@@ -27,21 +27,17 @@
 		and hospital_id = #{hospitalId}
 	</select>
 	
-	
 	<select id="picCount" resultType="int">
         select count(*) from pic_lib_rel_hospital
 		where hospital_id = #{hospitalId}
     </select>
     
     <select id="picOne" resultType="kr.zalbazo.model.pic.AttachFileDTO">
-    	select * 
-		from pic_lib a, (select hospital_id, min(uuid) as uuid
-                		 from pic_lib_rel_hospital
-                		 group by hospital_id) b
-		where a.uuid = b.uuid
-		and hospital_id = #{hospitalId}
+		select uuid, min(file_name) as file_name
+		from pic_lib
+		where uuid like 'h' || #{hospitalId}
+		group by uuid
     </select>
 
 	
 </mapper>
-

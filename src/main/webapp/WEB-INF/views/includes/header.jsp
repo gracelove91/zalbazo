@@ -46,25 +46,15 @@
                     <a href="/index" style="width:210px; height:90px"><img src="/resources/img/text_logo.png" align="middle" alt="logo" width="250px" height="110px"></a>
               
             </div>
-            <div class="col-lg-9" ">
-                <div class="main-menu">
-               
-                    <ul>
-                        <li class="active"><a href="/index">home</a></li>&ensp;
-                        <li><a href="/aboutus">about us</a></li>&ensp;
+            <div class="col-lg-9 main-menu">
+                   
+                    <ul style="width:100%;">
+                        <li><a href="/aboutus">서비스 소개</a></li>&ensp;
                         <li><a href="/jisikdong/list">지식동</a></li>&ensp;
                         <li><a href="/community/list">커뮤니티</a></li>&ensp;
                         <li><a href="/hospital/list">병원찾기</a></li>&ensp;
                         <li><a href="/faq">FAQ</a></li>
               
-<!--                         <li><a href="#">pages</a>
-                            <ul class="sub-menu">
-                                <li><a href="job-search.html">Job Search</a></li>
-                                <li><a href="job-single.html">Job Single</a></li>
-                                <li><a href="pricing-plan.html">Pricing Plan</a></li>
-                                <li><a href="elements.html">Elements</a></li>
-                            </ul>
-                        </li> -->
                         <li class="menu-btn">
                             <sec:authorize access="isAnonymous()">
                                 <a href="/login" class="login">log in</a>
@@ -80,7 +70,7 @@
                             </sec:authorize>
                         </li>
                     </ul>
-                </div>
+                    
             </div>
         </div>
     </div>

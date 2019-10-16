@@ -36,10 +36,10 @@ $(document).ready(function() {
 					str += " <a class='move' style='color : #000000;'>" + list[i].sex + "</a>";
 					str += "</td>";
 					str += "<td style='width: 300px; text-align: center;'>";
-					str += "  <a class='move' style='color : #000000;'>" + list[i].weight + "</a>";
+					str += "  <a class='move' style='color : #000000;'>" + list[i].weight +" kg </a>";
 					str += "</td>";
 					str += "<td style='width: 300px; text-align: center;'>";
-					str += "  <a class='move' style='color : #000000;'>" + list[i].age + "</a>";
+					str += "  <a class='move' style='color : #000000;'>" + list[i].age + " 살</a>";
 					str += "</td>";
 					str += "<td style='width: 700px; text-align: center;'>";
 					str += "  <a class='move' style='color : #000000;'>" + list[i].note + "</a>";

@@ -51,7 +51,7 @@
                
                     <ul>
                         <li class="active"><a href="/index">home</a></li>&ensp;
-                        <li><a href="/aboutus">about us</a></li>&ensp;
+                        <li><a href="/aboutus">서비스 소개</a></li>&ensp;
                         <li><a href="/jisikdong/list">지식동</a></li>&ensp;
                         <li><a href="/community/list">커뮤니티</a></li>&ensp;
                         <li><a href="/hospital/list">병원찾기</a></li>&ensp;

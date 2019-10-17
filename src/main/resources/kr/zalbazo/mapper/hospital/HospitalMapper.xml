@@ -27,14 +27,13 @@
 		and hospital_id = #{hospitalId}
 	</select>
 	
-	
 	<select id="picCount" resultType="int">
         select count(*) from pic_lib_rel_hospital
 		where hospital_id = #{hospitalId}
     </select>
     
     <select id="picOne" resultType="kr.zalbazo.model.pic.AttachFileDTO">
-    	select * 
+  		select * 
 		from pic_lib a, (select hospital_id, min(uuid) as uuid
                 		 from pic_lib_rel_hospital
                 		 group by hospital_id) b
@@ -44,4 +43,3 @@
 
 	
 </mapper>
-

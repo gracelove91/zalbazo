@@ -339,7 +339,6 @@
 <script type="text/javascript" src="${ctx}/resources/js/scroll.js"></script>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5ea4ef47b16d9a398f9876fcc56c42fe&libraries=services"></script>
-
 <script>
 $(document).ready(function(){
 	

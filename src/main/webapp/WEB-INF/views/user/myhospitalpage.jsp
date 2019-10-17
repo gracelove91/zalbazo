@@ -49,7 +49,7 @@ th mobile{
 		    </div>
 		  </div>
 		  
-		  <div class="col-8" style="border: 1.1px solid #04b1fb; border-radius: 4px;">
+		  <div class="col-8">
 		    <div class="tab-content" id="v-pills-tabContent">
 		    
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab"><!-- 병원정보 수정 -->
@@ -200,8 +200,7 @@ th mobile{
 		      </div> <!-- 병원정보 수정 -->
 		      
 		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab"> <!-- 관리 -->
-					<br>
-						<div id="my-calendar"></div>
+					<div id="my-calendar"></div>
 					<br>
 					<div class="countR" style="text-align:right">
 					</div>
@@ -227,10 +226,9 @@ th mobile{
 		      </div>
 		      
 		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
-		      	<h4></h4>
 				<nav>
 				  <div class="nav nav-tabs mt-2" id="nav-tab" role="tablist">
-				  	&nbsp;&nbsp;&nbsp;<h4 class="answerCount">안뇽</h4>
+				  	&nbsp;&nbsp;&nbsp;<h4 class="answerCount">새로운 질문이 0건 있습니다.</h4>
 				  
 				  </div>
 				</nav>
@@ -248,7 +246,6 @@ th mobile{
 		      </div>
 		      
 		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
-				<h4></h4>
 				<nav>
 				  <div class="nav nav-tabs" id="nav-tab" role="tablist">
 				    <a class="nav-item nav-link active" id="nav-c-tab" data-toggle="tab" href="#nav-c" role="tab" aria-controls="nav-c" aria-selected="false">&nbsp;&nbsp;&nbsp;댓글&nbsp;&nbsp;&nbsp;</a>

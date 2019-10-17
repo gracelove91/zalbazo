@@ -18,37 +18,30 @@
 <main id="main">
 
 <div class="page-header row">
-	<div class="col-2"></div>
-	<div class="col-10">
+	<div class="col"></div>
+	<div class="col"></div>
+	<div class="col-9">
 	<br>
-    <h2>${name}님의 마이페이지</h2>
+    <h2>관리자 ${name}님의 마이페이지</h2>
     <input type='hidden' class="email" id="userEmail" value="${useremail}">
     <!-- js에서 	var userEmail = $(".email").val(); 이걸로 메일 호출 가능 -->
     <p>환영합니다!!</p>
     </div>
 </div>
-
 <div class="row">
-		  <div class="col-2"></div>
+		  <div class="col"></div>
 		  <div class="col">
 		    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-		      <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true" style="padding:5px;">main</a>
-		      <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false" style="padding:5px;">유저관리</a>
+		      <a class="nav-link active" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="true" style="padding:5px;">유저관리</a>
 		      <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="padding:5px;">병원관리</a>
 		      <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false" style="padding:5px;">운영자 1:1 문의</a>
-		      <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false" style="padding:5px;">몰라</a>
 		    </div>
 		  </div>
 		  
-		  <div class="col-6" style="border: 1.1px solid #04b1fb; border-radius: 4px;">
+		  <div class="col-8">
 		    <div class="tab-content" id="v-pills-tabContent">
 		    
-		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
-		      	메인
-		      </div> <!-- 개인정보 수정 -->
-		      
-		      <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
-		      <br>
+		      <div class="tab-pane fade show active" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
 			  	<div class="container-fluid">          
 				  <table class="table table-striped">
 				    <thead>
@@ -68,7 +61,6 @@
 			   </div>
 		     
 		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
-		      <br>
 				<div class="container-fluid">          
 				  <table class="table table-striped">
 				    <thead>
@@ -101,12 +93,9 @@
 		       		</div>
 		      </div><!-- 운영자 1:1 문의 -->
 		      
-		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
-		      	몰라
-		      </div>
 		    </div>
 		  </div>
-		  <div class="col-2"></div>
+		  <div class="col-1"></div>
   
 </div>
 

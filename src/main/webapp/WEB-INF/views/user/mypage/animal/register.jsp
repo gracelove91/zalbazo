@@ -50,7 +50,7 @@
             </div>
 			<div class="form-group">
               <label>특이사항</label>
-               <textarea class="form-control" id="note" name="note" placeholder="특이사항을 입력하세요." style="height: 100px;"></textarea>
+               <textarea class="form-control" id="note" name="note" placeholder="특이사항을 입력하세요." style="height: 100px;resize:none;"></textarea>
             </div>
              <input type="hidden" id="userEmail" name="userEmail" value="${userEmail}">
             <button class="btn btn-primary pull-right" id="regBtn" name="regBtn" >등록하기</button>

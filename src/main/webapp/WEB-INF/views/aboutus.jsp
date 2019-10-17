@@ -27,7 +27,7 @@
 	  	<div class="row">
 		    <div class="col">
 		      <div class="img" align="center" style="margin-bottom:20px">
-		      <img style="max-width: 100%; height: auto;" src="${ctx}/resources/img/aboutus/오늘의예약.png">
+		      <img style="max-width: 200px; height: auto;" src="${ctx}/resources/img/aboutus/오늘의예약.png">
 		      </div>
 		      <h2 align="center">누적 예약 수</h2>
 		      <h3 align="center">ㅡ</h3>
@@ -36,7 +36,7 @@
 		    
 		    <div class="col">
 		      <div class="img" align="center" style="margin-bottom:20px">
-		      <img style="max-width: 84%; height: auto;" src="${ctx}/resources/img/aboutus/리뷰수.png">
+		      <img style="max-width: 190px; height: auto;" src="${ctx}/resources/img/aboutus/리뷰수.png">
 		      </div>
 		      <h2 align="center">누적 리뷰수</h2>
 		      <h3 align="center">ㅡ</h3>
@@ -45,7 +45,7 @@
 		    
 		     <div class="col">
 		      <div class="img" align="center" style="margin-bottom:20px">
-		      <img style="max-width: 100%; height: auto;" src="${ctx}/resources/img/aboutus/유저수.png">
+		      <img style="max-width: 200px; height: auto;" src="${ctx}/resources/img/aboutus/유저수.png">
 		      </div>
 		      <h2 align="center">잘바조 사용자</h2>
 		      <h3 align="center">ㅡ</h3>
@@ -54,7 +54,7 @@
 		    
 		    <div class="col">
 			  <div class="img" align="center" style="margin-bottom:20px">
-		      <img style="max-width: 100%; height: auto;" src="${ctx}/resources/img/aboutus/병원수.png">
+		      <img style="max-width: 200px; height: auto;" src="${ctx}/resources/img/aboutus/병원수.png">
 		      </div>
 		      <h2 align="center">누적 병원찾기</h2>
 		      <h3 align="center">ㅡ</h3>

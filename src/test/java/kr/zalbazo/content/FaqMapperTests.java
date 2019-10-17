@@ -1,7 +1,5 @@
 package kr.zalbazo.content;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,7 @@ import lombok.extern.log4j.Log4j;
 
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/views/exception/root-context.xml")
+@ContextConfiguration("file:src/main/webapp/WEB-INF/root-context.xml")
 @Log4j
 public class FaqMapperTests {
 	

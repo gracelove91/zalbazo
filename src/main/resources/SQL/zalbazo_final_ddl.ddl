@@ -730,3 +730,4 @@ ALTER TABLE zalbazo.zalbazo_user
 -- 
 -- ERRORS                                   0
 -- WARNINGS                                 0
+commit;

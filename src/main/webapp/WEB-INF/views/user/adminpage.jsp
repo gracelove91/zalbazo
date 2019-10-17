@@ -112,7 +112,6 @@
 <script type="text/javascript" src="${ctx}/resources/js/user/admin.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/scroll.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/messageFunction.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 <script>
 $(document).ready(function() {
@@ -239,71 +238,6 @@ $(document).ready(function() {
     }
 	
 	
-});
-</script>
-<script>
-// date, 요일 관련
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
-var yyyy = today.getFullYear();
-
-if(dd<10) {
-    dd='0'+dd
-} 
-
-if(mm<10) {
-    mm='0'+mm
-}
-
-var week = new Array('일', '월', '화', '수', '목', '금', '토');
-
-console.log(week[today.getDay()]);
-// date, 요일관련 끝!
-
-var ctx = document.getElementById("myChart"); //캔버스 id값 가져오기
-var myChart = new Chart(ctx, {
-    type: 'bar', //그래프 형태 지정하기
-    data: { labels: [yyyy + '-' + mm + '-' + dd, 
-			         yyyy + '-' + mm + '-' + (dd + 1),
-			         yyyy + '-' + mm + '-' + (dd + 2),
-			         yyyy + '-' + mm + '-' + (dd + 3),
-			         yyyy + '-' + mm + '-' + (dd + 4),
-			         yyyy + '-' + mm + '-' + (dd + 5),
-			         yyyy + '-' + mm + '-' + (dd + 6)], //X축 제목
-        datasets: [{
-            label: '# 요일별예약건수',
-            data: [5, 10, 3, 5, 2, 3, 10],
-            backgroundColor: [
-                '#ffcccc', //1번째 그래프의 바탕색
-                '#ffd9cc',
-                '#fff2cc',
-                '#e6ffcc',
-                '#ccf2ff',
-                '#ccd9ff',
-                '#e6ccff'
-            ],
-            borderColor: [
-            	'#ffcccc', //1번째 그래프의 선색
-            	'#ffd9cc',
-                '#fff2cc',
-                '#e6ffcc',
-                '#ccf2ff',
-                '#ccd9ff',
-                '#e6ccff'
-            ],
-            borderWidth: 1 //선굵기
-        }]
-    },
-    options: {
-        scales: { //X,Y축 옵션
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true  //Y축의 값이 0부터 시작
-                }
-            }]
-        }
-    }
 });
 </script>
 

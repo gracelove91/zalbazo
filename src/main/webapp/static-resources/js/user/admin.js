@@ -33,7 +33,7 @@ $(document).ready(function() {
 		var yes = confirm(userEmail + "의 모든 정보를 삭제하시겠습니까?");
 		
 		if(yes) {
-			adminService.get(userEmail, function(result){
+			adminService.getUser(userEmail, function(result){
 				alert("유저 삭제가 완료되었습니다");
 	            location.reload();
 			}, function(error){
@@ -70,7 +70,7 @@ $(document).ready(function() {
 		
 		if(yes) {
 			
-			adminService.get(hoshos, function(result){
+			adminService.getHos(hoshos, function(result){
 				alert("병원 삭제가 완료되었습니다");
 				location.reload();
 			}, function(error){

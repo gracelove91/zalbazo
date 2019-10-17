@@ -14,12 +14,24 @@
 		where role = 'hospital'
 	</select>
 	
-	<select id="delete" resultType="Integer">
+	<select id="deleteUser" resultType="Integer">
 		delete from zalbazo_user
 		where user_email = #{userEmail}
 	</select>
 	
-	<select id="get" resultType="kr.zalbazo.model.user.User">
+	<select id="deleteHos" resultType="Integer">
+		delete from hospital
+		where hospital_id = (select hospital_id from zalbazo_user
+                     		 where zalbazo_user.user_email = #{userEmail})
+	</select>
+	
+	<select id="getUser" resultType="kr.zalbazo.model.user.User">
+	   select *
+	   from zalbazo_user
+	   where user_email = #{userEmail}
+	</select>
+	
+	<select id="getHos" resultType="kr.zalbazo.model.user.User">
 	   select *
 	   from zalbazo_user
 	   where user_email = #{userEmail}

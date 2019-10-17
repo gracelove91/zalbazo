@@ -11,8 +11,12 @@ public interface AdminMapper {
 	
 	public List<User> getHosList();
 	
-	public Integer delete(String userEmail);
+	public Integer deleteUser(String userEmail);
+
+	public Integer deleteHos(String userEmail);
 	
-	public User get(String userEmail);
+	public User getUser(String userEmail);
+	
+	public User getHos(String userEmail);
 
 }

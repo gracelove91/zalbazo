@@ -67,6 +67,9 @@ DROP SEQUENCE zalbazo.review_seq;
 
 DROP SEQUENCE zalbazo.uuid_seq;
 
+CREATE user zalbazo identified by account unlock 
+;
+
 CREATE SEQUENCE zalbazo.animal_seq INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
 
 CREATE SEQUENCE zalbazo.care_animal_seq INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
@@ -562,6 +565,7 @@ ALTER TABLE zalbazo.content
 ALTER TABLE zalbazo.content
     ADD CONSTRAINT content_user_fk FOREIGN KEY ( user_email )
         REFERENCES zalbazo.zalbazo_user ( user_email )
+            ON DELETE CASCADE
     NOT DEFERRABLE;
 
 ALTER TABLE zalbazo.favorite_hospital
@@ -683,7 +687,6 @@ ALTER TABLE zalbazo.zalbazo_user
     NOT DEFERRABLE;
 
 
-commit;
 
 -- Oracle SQL Developer Data Modeler 요약 보고서: 
 -- 

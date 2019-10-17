@@ -40,11 +40,18 @@ public class AdminController {
 		return new ResponseEntity<>(adminService.getHosList(), HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/get/{userEmail}", produces = { 
+	@GetMapping(value = "/getuser/{userEmail}", produces = { 
 			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<User> get(@PathVariable("userEmail") String userEmail) {
+	public ResponseEntity<User> getUser(@PathVariable("userEmail") String userEmail) {
 		
-		return new ResponseEntity<>(adminService.get(userEmail), HttpStatus.OK);
+		return new ResponseEntity<>(adminService.getUser(userEmail), HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/gethos/{userEmail}", produces = { 
+			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity<User> getHos(@PathVariable("userEmail") String userEmail) {
+		
+		return new ResponseEntity<>(adminService.getHos(userEmail), HttpStatus.OK);
 	}
 	
 }

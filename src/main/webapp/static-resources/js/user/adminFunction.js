@@ -74,8 +74,18 @@ var adminService = (function() {
 	} // remove
 	
 	
-	function get(userEmail, callback, error) {
-		$.get("/admin/get/" +userEmail+ ".json", function(result){
+	function getUser(userEmail, callback, error) {
+		$.get("/admin/getuser/" +userEmail+ ".json", function(result){
+			if(callback){
+				callback(result);
+			}
+		}).fail(function(xhr, status, err){
+			error();
+		});
+	}
+	
+	function getHos(userEmail, callback, error) {
+		$.get("/admin/gethos/" +userEmail+ ".json", function(result){
 			if(callback){
 				callback(result);
 			}
@@ -89,6 +99,7 @@ var adminService = (function() {
 		getUserList : getUserList,
 		getHosList : getHosList,
 		remove : remove,
-		get : get
+		getUser : getUser,
+		getHos : getHos
 	}
 })();

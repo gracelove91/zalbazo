@@ -36,7 +36,7 @@
 		    
 		    <div class="col">
 		      <div class="img" align="center" style="margin-bottom:20px">
-		      <img style="max-width: 100%; height: auto;" src="${ctx}/resources/img/aboutus/리뷰수.png">
+		      <img style="max-width: 84%; height: auto;" src="${ctx}/resources/img/aboutus/리뷰수.png">
 		      </div>
 		      <h2 align="center">누적 리뷰수</h2>
 		      <h3 align="center">ㅡ</h3>

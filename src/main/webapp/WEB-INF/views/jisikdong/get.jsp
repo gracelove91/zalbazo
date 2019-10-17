@@ -60,10 +60,11 @@
                 <br>
 
                 <div class="form-group">
+					<textarea class="bodyText" id="bodyText" name="bodyText" hidden>${content.body}</textarea>
                     <div class='uploadResult'>
-                        <ul></ul>
-                    </div>
+                    <ul></ul>
                     ${content.body}
+                    </div>
                     <br><br><br><br>
                 </div>
 
@@ -151,6 +152,20 @@
 <!-- 댓글 모달 끝 -->
 <script type="text/javascript" src="${ctx}/resources/js/content/replyFunction.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/user/userFunction.js"></script>
+<script>
+$(document).ready(function(){
+var str = "";
+var uploadResult = $(".uploadResult");
+var bodyText = $(".bodyText").val();
+
+console.log(bodyText);
+
+str += "<ul></ul>";
+str += bodyText.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+
+uploadResult.html(str);
+});
+</script>
 <script>
 $(document).ready(function () {
 

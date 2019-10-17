@@ -42,7 +42,7 @@
 		    </div>
 		  </div>
 		  
-		  <div class="col-8" style="border: 1.1px solid #04b1fb; border-radius: 4px;">
+		  <div class="col-8">
 		    <div class="tab-content" id="v-pills-tabContent">
 		    
 		      <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
@@ -81,7 +81,7 @@
 		      
 		      <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
 		  
-			  	<div class="container"><br>
+			  	<div class="container">
 			   	 <table class="table table-striped col-12">
 						      <thead>
 						        <tr>
@@ -112,7 +112,6 @@
 		     </div> <!-- 동물등록 -->
 		     
 		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
-		      	<br>
 				<nav>
 				  <div class="nav nav-tabs" id="nav-tab" role="tablist">
 				    <a class="nav-item nav-link active" id="nav-a-tab" data-toggle="tab" href="#nav-a" role="tab" aria-controls="nav-a" aria-selected="true">&nbsp;&nbsp;&nbsp;커뮤니티&nbsp;&nbsp;&nbsp;</a>
@@ -235,7 +234,6 @@
 		      
 		      
 		      <div class="tab-pane" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
-		      		<br>
 		      		<div class="myreserve">
 					<table class="table table-striped col-12">
 				      <thead>
@@ -284,7 +282,6 @@
 		      </div>
 		      
 		      <div class="tab-pane" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab"> <!-- 즐겨찾는 병원 -->
-		      <br>
 		      <div class="fav">
 			<table class="table table-striped">
 

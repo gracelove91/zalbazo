@@ -61,7 +61,7 @@ $(document).ready(function() {
 				str2 += "<th scope='row' class='mobile' style='text-align:center;'><a href='/hospital/get?hospitalId=" + list[i].hospitalId + "'>" + list[i].name + "</a></th>";
 				str2 += "<td class='move' style='text-align:center;'>" + list[i].userEmail + "</td>";
 				str2 += "<td class='move' style='text-align:center;'>" + list[i].tel + "</td>";
-				str2 += "<td class='move' style='width:200px; text-align:center;'>" + list[i].address + "</td>";
+				str2 += "<td class='move' style='text-align:center;width:350px;'>" + list[i].address + "</td>";
 				str2 += "<td style='text-align:center;width:60px;'><button class='btn btn-outline-secondary btn-sm removeHos' data-id='"+ list[i].userEmail+"'>X</button></td>";
 				
 				str2 += "</tr>";

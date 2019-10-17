@@ -24,8 +24,6 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
-
-
 </head>
 
 <body>
@@ -42,48 +40,39 @@
     <div class="container">
         <div class="row">
             <div class="image-container col-lg-3" style=" display: flex; align-items: center; ustify-content: center; height: 35px;" >
-                
-                    <a href="/index" style="width:210px; height:90px"><img src="/resources/img/text_logo.png" align="middle" alt="logo" width="250px" height="110px"></a>
-              
+               <a href="/index" style="width:210px; height:90px">
+                  <img src="/resources/img/text_logo.png" align="middle" alt="logo" width="250px" height="110px">
+               </a>
             </div>
-            <div class="col-lg-9" ">
-                <div class="main-menu">
-               
-                    <ul>
-                        <li class="active"><a href="/index">home</a></li>&ensp;
-                        <li><a href="/aboutus">about us</a></li>&ensp;
-                        <li><a href="/jisikdong/list">지식동</a></li>&ensp;
-                        <li><a href="/community/list">커뮤니티</a></li>&ensp;
-                        <li><a href="/hospital/list">병원찾기</a></li>&ensp;
-                        <li><a href="/faq">FAQ</a></li>
+            
+            <div class="col-lg-9 main-menu">
+                   
+               <ul style="width:100%;">
+                   <li><a href="/aboutus">서비스 소개</a></li>&ensp;
+                   <li><a href="/hospital/list">병원찾기</a></li>&ensp;
+                   <li><a href="/jisikdong/list">지식동</a></li>&ensp;
+                   <li><a href="/community/list">커뮤니티</a></li>&ensp;
+                   <li><a href="/faq">FAQ</a></li>
               
-<!--                         <li><a href="#">pages</a>
-                            <ul class="sub-menu">
-                                <li><a href="job-search.html">Job Search</a></li>
-                                <li><a href="job-single.html">Job Single</a></li>
-                                <li><a href="pricing-plan.html">Pricing Plan</a></li>
-                                <li><a href="elements.html">Elements</a></li>
-                            </ul>
-                        </li> -->
-                        <li class="menu-btn">
-                            <sec:authorize access="isAnonymous()">
-                                <a href="/login" class="login">log in</a>
-                                <a href="/user/register_select" class="template-btn" style="padding:0px;">sign up</a>
-                            </sec:authorize>
+                   <li class="menu-btn">
+                       <sec:authorize access="isAnonymous()">
+                           <a href="/login" class="login">log in</a>
+                           <a href="/user/register_select" class="template-btn" style="padding:0px;">sign up</a>
+                       </sec:authorize>
 
-                            <sec:authorize access="isAuthenticated()">
-                                <a href="#" style="padding:0px;"><sec:authentication property="principal.username"/></a>
-                                <ul class="sub-menu">
-                                    <li><a href="/user/mypage">마이페이지</a></li>
-                                    <li><a href="/logout">로그아웃</a></li>
-                                </ul>
-                            </sec:authorize>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+                       <sec:authorize access="isAuthenticated()">
+                           <a href="#" style="padding:0px;"><sec:authentication property="principal.username"/></a>
+                           <ul class="sub-menu">
+                               <li><a href="/user/mypage">마이페이지</a></li>
+                               <li><a href="/logout">로그아웃</a></li>
+                           </ul>
+                       </sec:authorize>
+                   </li>
+               </ul>
+                    
+           </div>
+       </div>
+   </div>
    
 </header>
 <!-- Header Area End -->

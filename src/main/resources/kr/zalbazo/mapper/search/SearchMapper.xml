@@ -22,6 +22,7 @@
 	and
 	<include refid="search"></include>
 	group by hospital.hospital_id,hospital.name,hospital.treat_start,hospital.treat_end,hospital.address,hospital.tel
+    having count(hospital.hospital_id) >#{length}-1
     </if>
     <if test="length &lt; 1">
     where

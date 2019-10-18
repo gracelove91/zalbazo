@@ -121,28 +121,28 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">REPLY MODAL</h4>
+                <h4 class="modal-title" id="myModalLabel">댓글쓰기</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label>Reply</label>
+                    <label>댓글</label>
                     <input class="form-control" name='body' value=''>
                 </div>
 
                 <div class="form-group">
-                    <label>Replyer</label>
-                    <input class="form-control" id='userEmail' name='userEmail' value=''>
+                    <label>작성자</label>
+                    <input class="form-control" id='userEmail' name='userEmail' value='' readonly>
                 </div>
 
                 <div class="form-group">
-                    <label>Reply Date</label>
+                    <label>작성일</label>
                     <input class="form-control" name='createdDate' value=''>
                 </div>
             </div>
             <div class="modal-footer">
-                <button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
-                <button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
-                <button id='modalRegisterBtn' type="button" class="btn btn-primary">Register</button>
+                <button id='modalModBtn' type="button" class="btn btn-warning">수정</button>
+                <button id='modalRemoveBtn' type="button" class="btn btn-danger">삭제</button>
+                <button id='modalRegisterBtn' type="button" class="btn btn-primary">작성완료</button>
                 <button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>
             </div>
         </div>
@@ -341,7 +341,7 @@ $(document).ready(function () {
         };
 
         replyService.add(body, function (result) {
-            alert(result);
+            alert("댓글 작성이 완료되었습니다.");
 
             modal.find("input").val("");
             modal.modal("hide");
@@ -359,7 +359,7 @@ $(document).ready(function () {
 	        replyService.get(replyid, function (body) {
 	        	
 	        	if(data.userEmail !== body.userEmail) {
-	        		alert("본인만 가능");
+	        		alert("본인이 작성한 댓글만 수정/삭제가 가능합니다.");
 	        		return;
 	        	}
 	        	
@@ -389,7 +389,7 @@ $(document).ready(function () {
 
         replyService.update(body, function (result) {
 
-            alert(result);
+        	alert("댓글이 수정되었습니다.");
             modal.modal("hide");
             showList(pageNum);
         });
@@ -401,7 +401,7 @@ $(document).ready(function () {
 
         replyService.remove(replyid, function (result) {
 
-            alert(result);
+        	alert("댓글이 삭제되었습니다.");
             modal.modal("hide");
             showList(pageNum);
         });

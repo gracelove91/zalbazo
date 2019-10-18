@@ -34,7 +34,7 @@
 <!-- Banner Area End -->
 
 <!-- Feature Area Starts -->
-<section class="feature-area section-padding2">
+<section class="feature-area section-padding2" style="padding: 40px 0px 40px 0px;">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-4">

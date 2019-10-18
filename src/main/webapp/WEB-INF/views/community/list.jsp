@@ -11,7 +11,7 @@
                 <div class="page-header mt-3">
                     <h2>커뮤니티</h2>
                 </div>
-                <p class="lead">커뮤니티게시판</p>
+                <p class="lead">반려동물에 대한 자유로운 이야기를 나눠보세요</p>
                 <hr>
                 
                 <table class="table table-striped">
@@ -63,8 +63,9 @@
                     </div>
                 </div>
 
-                <div>
-          			<button id='regBtn' type="button" type="button" class="btn btn-primary float-right" data-dismiss="modal" href="/jisikdong/register">글쓰기</button>
+                <div style="max-width: 100%;">
+          			<button id='regBtn' type="button" type="button" class="btn btn-primary pull-right"
+          					data-dismiss="modal" href="/community/register">글쓰기</button>
         		</div>
                 
                 <div class='row'>

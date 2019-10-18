@@ -63,15 +63,14 @@
                     </div>
                 </div>
 
-                <div style="max-width: 1080px;">
-                    <button id='regBtn' type="button" type="button" class="btn btn-primary float-right"
-                            data-dismiss="modal" href="/jisikdong/register">글쓰기
-                    </button>
+                <div style="max-width: 100%;">
+                    <button id='regBtn' type="button" type="button" class="btn btn-primary pull-right"
+                            data-dismiss="modal" href="/jisikdong/register">글쓰기</button>
                 </div>
 
                 <!-- 검색 -->
                 <div class='row'>
-                    <div class="col-lg-12 text-center">
+                    <div class="col-lg-12">
                         <form id='searchForm' action="/jisikdong/list" method='get'>
                             <select name='type'>
                                 <option value=""<c:out value="${pageMaker.cri.type == null ? 'selected' : '' }"/>>--

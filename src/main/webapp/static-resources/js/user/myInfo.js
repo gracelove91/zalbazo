@@ -73,7 +73,7 @@ $(document).ready(function() {
 		
 		myInfoService.update(modimodi, function(result) {
 			console.log(result);
-			alert(result);
+			alert("정보가 수정되었습니다.");
 		});
 		
 	}) // modifyBtn

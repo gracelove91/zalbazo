@@ -28,13 +28,13 @@
 	<select id="getUser" resultType="kr.zalbazo.model.user.User">
 	   select *
 	   from zalbazo_user
-	   where user_email = #{userEmail}
-	</select>
+	   where user_email = #{userEmail} and role = 'user'
+	</select> 
 	
 	<select id="getHos" resultType="kr.zalbazo.model.user.User">
 	   select *
 	   from zalbazo_user
-	   where user_email = #{userEmail}
+	   where user_email = #{userEmail} and role = 'hospital'
 	</select>
 	
 	

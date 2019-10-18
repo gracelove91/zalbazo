@@ -19,4 +19,8 @@ public interface AdminService {
 	
 	public User getHos(String userEmail);
 	
+	public User getsearchUser(String userEmail);
+
+	public User getsearchHos(String userEmail);
+	
 }

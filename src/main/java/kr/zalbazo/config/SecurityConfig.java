@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/").permitAll()
                 .mvcMatchers("/login").anonymous()
                 .mvcMatchers("/user/register/**", "/user/jusoPopup").permitAll()
-                .mvcMatchers("/**/register").hasAnyRole("user","admin","hospital") // 이런 패턴들을 모두 허용 (권한을 가지면)
+                .mvcMatchers("/**/register").hasAnyRole("user","admin") // 이런 패턴들을 모두 허용 (권한을 가지면)
                 .mvcMatchers("/user/mypage").hasAnyRole("user","admin","hospital")
                 .mvcMatchers("/jisikdong", "/jisikdong/list", "/jisikdong/get").permitAll()
                 .mvcMatchers("/community", "/community/list", "/community/get").permitAll()

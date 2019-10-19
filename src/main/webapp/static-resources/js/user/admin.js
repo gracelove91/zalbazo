@@ -5,11 +5,22 @@ $(document).ready(function() {
 	var hosview = $("#hosview");
 	var hospitalList = $(".hospitalList");
 	
+	var refreshUser = $(".refreshUser");
+	var refreshHos = $(".refreshHos");
+	
 	var str1 = "";
 	var str2 = "";
 	
 	showUserList();
 	showHosList();
+	
+	refreshUser.on("click",function(e) {
+		showUserList();
+	});
+	
+	refreshHos.on("click", function(e) {
+		showHosList();
+	});
 	
 	function showUserList(){
 		adminService.getUserList(function(list) {
@@ -114,6 +125,7 @@ $(document).ready(function() {
 				
 				str1 += "</tr>";
 				userList.html(str1);
+				$('#searchuserEmail').val("");
 			}
 			
 			
@@ -143,6 +155,7 @@ $(document).ready(function() {
 				
 				str2 += "</tr>";
 				hospitalList.html(str2);
+				$('#searchhosEmail').val("");
 			}
 			
 			

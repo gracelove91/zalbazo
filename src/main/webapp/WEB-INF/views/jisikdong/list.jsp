@@ -73,7 +73,7 @@
                     <div class="col-lg-12">
                         <form id='searchForm' action="/jisikdong/list" method='get'>
                             <select name='type'>
-                                <option value=""<c:out value="${pageMaker.cri.type == null ? 'selected' : '' }"/>>--
+                                <option value=""<c:out value="${pageMaker.cri.type == null ? 'selected' : '' }"/>>검색키워드
                                 </option>
                                 <option value="T"<c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : '' }"/>>제목
                                 </option>

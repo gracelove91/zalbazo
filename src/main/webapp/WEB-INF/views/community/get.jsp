@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="form-group">
-                    <small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${content.userEmail}</small>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>${content.name}&nbsp;(${content.userEmail})</small>
                 </div>
                 <br>
 

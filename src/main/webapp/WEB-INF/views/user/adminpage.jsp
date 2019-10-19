@@ -42,6 +42,14 @@
 		    <div class="tab-content" id="v-pills-tabContent">
 		    
 		      <div class="tab-pane fade show active" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+		      <div class="col" id='userview' style ="text-align: right;">
+			     <form> 
+			        <input type='text' id='searchuserEmail' name='userEmail' value=''>
+			        <button type = 'button' id='userbtn' class = 'btn btn-md btn-primary'>검색</button>&nbsp;
+			        <img class="refreshUser" src='/resources/img/refresh.png' style="width:25px; cursor:pointer;"> 
+			     </form>
+		      </div>
+		      
 			  	<div class="container-fluid">          
 				  <table class="table table-striped">
 				    <thead>
@@ -61,6 +69,14 @@
 			   </div>
 		     
 		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+		       <div class="col" id='hosview' style ="text-align: right;">
+
+		      <form> 
+			     <input type='text' id='searchhosEmail' name='userEmail' value=''>
+			     <button type = 'button' id='hosbtn' class = 'btn btn-md btn-primary'>검색</button>&nbsp;
+			     <img class="refreshHos" src='/resources/img/refresh.png' style="width:25px; cursor:pointer;"> 
+			  </form>
+		      </div>
 				<div class="container-fluid">          
 				  <table class="table table-striped">
 				    <thead>
@@ -117,6 +133,8 @@
 $(document).ready(function() {
 	var msgSpace = $(".msg");
 	
+	
+
 	
 	msgSpace.on("click", ".userBtn", function (e) {
 	    var mgroup = $(this).attr("data-cno");

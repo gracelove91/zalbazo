@@ -35,6 +35,7 @@ public class Content { //BoardVO
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	private Date updatedDate;
 	private Long categoryId;
+	private String name;
 	
 	private List<AttachFileDTO> attachList;
 

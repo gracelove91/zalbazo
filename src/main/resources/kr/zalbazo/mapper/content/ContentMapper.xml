@@ -28,8 +28,9 @@
 
     <select id="read" resultType="kr.zalbazo.model.content.Content">
         select *
-        from CONTENT
-        where content_id = #{contentId}
+        from content a, zalbazo_user b
+        where a.user_email = b.user_email
+        and content_id = #{contentId}
     </select>
 
     <select id="getList" resultType="kr.zalbazo.model.content.Content">
@@ -45,7 +46,9 @@
         from CONTENT
         where CONTENT_ID > 0
           AND CATEGORY_ID = #{categoryId}
-        ]]></select>
+        ]]>
+        
+    </select>
 
 <sql id="criteria">
 	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
@@ -69,20 +72,22 @@
 
     <select id="getListWithPaging" resultType="kr.zalbazo.model.content.Content">
       <![CDATA[
-        select CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, USER_EMAIL
+        select CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, USER_EMAIL, NAME
         from 
         	(
         	select /*+ INDEX_DESC(content content_pk) */
-        	  rownum RN, CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, CATEGORY_ID, USER_EMAIL
+        	  rownum RN, CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, CATEGORY_ID, A.USER_EMAIL, NAME
         	from 
-        	  content
+        	  content a, zalbazo_user b
         	where 
+        	a.user_email = b.user_email
         	]]>
         	
         	<include refid="criteria"></include>
         	
         	<![CDATA[
-        	CATEGORY_ID = #{category} and rownum <= #{pageNum} * #{amount}
+        	and CATEGORY_ID = #{category} and rownum <= #{pageNum} * #{amount}
+	        order by content_id desc
         	)
         where rn > (#{pageNum} -1) * #{amount}
       ]]>

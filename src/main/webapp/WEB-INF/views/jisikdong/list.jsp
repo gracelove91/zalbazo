@@ -63,10 +63,9 @@
                     </div>
                 </div>
 
-                <div style="max-width: 1080px;">
-                    <button id='regBtn' type="button" type="button" class="btn btn-primary float-right"
-                            data-dismiss="modal" href="/jisikdong/register">글쓰기
-                    </button>
+                <div style="max-width: 100%;">
+                    <button id='regBtn' type="button" type="button" class="btn btn-primary pull-right"
+                            data-dismiss="modal" href="/jisikdong/register">글쓰기</button>
                 </div>
 
                 <!-- 검색 -->

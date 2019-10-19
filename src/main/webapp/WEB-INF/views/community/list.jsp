@@ -72,7 +72,7 @@
                 		
                 		<form id='searchForm' action="/community/list" method='get'>
                 			<select name='type'>
-                				<option value=""<c:out value="${pageMaker.cri.type == null ? 'selected' : '' }"/>>--</option>
+                				<option value=""<c:out value="${pageMaker.cri.type == null ? 'selected' : '' }"/>>키워드를 선택하세요</option>
                 					<option value="T"<c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : '' }"/>>제목</option>
                 					<option value="B"<c:out value="${pageMaker.cri.type eq 'B' ? 'selected' : '' }"/>>내용</option>
                 					<option value="U"<c:out value="${pageMaker.cri.type eq 'U' ? 'selected' : '' }"/>>작성자</option>

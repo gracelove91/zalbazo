@@ -4,7 +4,7 @@
 <mapper namespace="kr.zalbazo.mapper.hospital.HospitalQnaMapper">
 
 	<select id="getQnaList" resultType="kr.zalbazo.model.hospital.HospitalQnaVO">
-       select a.content_id, body, created_date, user_email, hospital_qna_id, b.hospital_id, qna_type, c_group, name 
+       select a.content_id, body, created_date, user_email, hospital_qna_id, b.hospital_id, qna_type, c_group, c.name 
 	   from content a, hospital_qna b, hospital c
 	   where a.content_id = b.content_id
        and b.hospital_id = c.hospital_id

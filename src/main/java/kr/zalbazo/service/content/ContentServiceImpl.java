@@ -12,6 +12,7 @@ import kr.zalbazo.mapper.content.ContentMapper;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.Criteria;
 import kr.zalbazo.model.pic.AttachFileDTO;
+import kr.zalbazo.model.user.User;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
@@ -116,6 +117,11 @@ public class ContentServiceImpl implements ContentService {
 	public List<AttachFileDTO> getAttachList(Long contentId) {
 		log.info("get Attach list by contentId  " + contentId);
 		return attachMapper.findByNo(contentId);
+	}
+
+	@Override
+	public User getUser(String userEmail) {
+		return mapper.getUser(userEmail);
 	}
 
 }

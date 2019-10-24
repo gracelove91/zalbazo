@@ -2,9 +2,9 @@ var userInfoService = (function(){
 
 	function getUser(callback, error) {
 
-		$.get("/user/getUser" + ".json", function(user) {
+		$.get("/user/get" + ".json", function(result) {
 			if (callback) {
-				callback(user);
+				callback(result);
 			}
 		}).fail(function(xhr, status, err) {
 
@@ -13,8 +13,7 @@ var userInfoService = (function(){
 			}
 
 		});
-		
-	} // getUser
+	} // get
 	
 	
 	

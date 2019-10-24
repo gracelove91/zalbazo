@@ -27,38 +27,38 @@
 	  	<div class="row">
 		    <div class="col">
 		      <div class="img" align="center" style="margin-bottom:20px">
-		      <img style="max-width: 100%; height: auto;" src="${ctx}/resources/img/aboutus/오늘의예약.png">
+		      <img style="max-width: 200px; height: auto;" src="${ctx}/resources/img/aboutus/오늘의예약.png">
 		      </div>
 		      <h2 align="center">누적 예약 수</h2>
 		      <h3 align="center">ㅡ</h3>
-		      <h1 id="reserve" align="center">100만</h1>
+		      <h1 id="reserve" align="center">153</h1>
 		    </div>
 		    
 		    <div class="col">
 		      <div class="img" align="center" style="margin-bottom:20px">
-		      <img style="max-width: 84%; height: auto;" src="${ctx}/resources/img/aboutus/리뷰수.png">
+		      <img style="max-width: 190px; height: auto;" src="${ctx}/resources/img/aboutus/리뷰수.png">
 		      </div>
 		      <h2 align="center">누적 리뷰수</h2>
 		      <h3 align="center">ㅡ</h3>
-		      <h1 id="review" align="center">100만</h1>
+		      <h1 id="review" align="center">97</h1>
 		    </div>
 		    
 		     <div class="col">
 		      <div class="img" align="center" style="margin-bottom:20px">
-		      <img style="max-width: 100%; height: auto;" src="${ctx}/resources/img/aboutus/유저수.png">
+		      <img style="max-width: 200px; height: auto;" src="${ctx}/resources/img/aboutus/유저수.png">
 		      </div>
 		      <h2 align="center">잘바조 사용자</h2>
 		      <h3 align="center">ㅡ</h3>
-		      <h1 id="user" align="center">100만</h1>
+		      <h1 id="user" align="center">351</h1>
 		    </div>
 		    
 		    <div class="col">
 			  <div class="img" align="center" style="margin-bottom:20px">
-		      <img style="max-width: 100%; height: auto;" src="${ctx}/resources/img/aboutus/병원수.png">
+		      <img style="max-width: 200px; height: auto;" src="${ctx}/resources/img/aboutus/병원수.png">
 		      </div>
 		      <h2 align="center">누적 병원찾기</h2>
 		      <h3 align="center">ㅡ</h3>
-		      <h1 id="hos" align="center">100만</h1>
+		      <h1 id="hos" align="center">165</h1>
 		    </div>
 	    </div>
     </div>
@@ -85,6 +85,5 @@
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="${ctx}/resources/js/aboutusFunction.js"></script>
-<script type="text/javascript" src="${ctx}/resources/js/aboutus.js"></script>
 
 <%@include file="includes/footer.jsp"%>

@@ -36,7 +36,7 @@
     <select id="getUser" resultType="kr.zalbazo.model.user.User">
         SELECT *
         FROM ZALBAZO_USER
-        WHERE USER_EMAIL = #{userEmail}
+        WHERE USER_EMAIL = #{email}
     </select>
     
     <select id="getWriter" resultType="kr.zalbazo.model.content.Content">

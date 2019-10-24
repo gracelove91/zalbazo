@@ -2,6 +2,7 @@ package kr.zalbazo.mapper.content;
 
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.content.Criteria;
+import kr.zalbazo.model.user.User;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface ContentMapper {
     int update(Content content);
     List<Content> getListWithPaging(Criteria cri);
     int getTotalCount(Criteria cri);
-    
+    User getUser(String userEmail);
 }
 
 

@@ -43,6 +43,7 @@ public class CommunityController {
     	
     	model.addAttribute("role", authentication.getAuthorities().toString()); // 병원 계정은 글 등록은 못 하니까!!!!
     	model.addAttribute("useremail", authentication.getName());
+    	model.addAttribute("name", service.getUser(authentication.getName()).getName());
         return "/community/register"; //WEB-INF/views/register.jsp
     }
 

@@ -24,6 +24,7 @@
 	<br>
     <h2>${name}님의 마이페이지</h2>
     <input type='hidden' class="email" id="userEmail" value="${useremail}">
+    <input type='hidden' class="name" id="name" value="${name}">
     <!-- js에서 	var userEmail = $(".email").val(); 이걸로 메일 호출 가능 -->
     <p>환영합니다!!</p>
     </div>
@@ -85,14 +86,14 @@
 			   	 <table class="table table-striped col-12">
 						      <thead>
 						        <tr>
-						           <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>
+						           <th scope="col" class="mobile" style="width:70px; text-align:center;">번호</th>
 						           <th scope="col" class="mobile" style="text-align:center;">이름</th>
 						           <th scope="col" class="mobile" style="text-align:center;">타입</th>
 						           <th scope="col" class="mobile" style="text-align:center;">성별</th>
 						           <th scope="col" class="mobile" style="text-align:center;">몸무게</th>
 						           <th scope="col" class="mobile" style="text-align:center;">나이</th>
-						           <th scope="col" class="mobile" style="width:120px; text-align:center;">특이사항</th>
-						           <th scope="col" class="mobile" style="text-align:center;">수정/삭제</th>
+						           <th scope="col" class="mobile" style="text-align:center;">특이사항</th>
+						           <th scope="col" class="mobile" style="width:400px; text-align:center;">수정/삭제</th>
 						           
 						        </tr>
 						      </thead>

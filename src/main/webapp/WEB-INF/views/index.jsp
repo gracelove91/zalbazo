@@ -16,7 +16,7 @@
 			<div class="col-lg-5 align-self-center">
 				<div class="banner-text">
 					<h1>내 반려동물을 <span>잘</span> 봐줄 </br><span>동물병원</span>을 찾아보세요!</h1>
-                    <p class="py-7">24시간 운영 병원, 응급 수술, 특수 동물 진료까지.<br>
+                    <p class="py-7">24시간운영 병원, 응급수술, 특이한 동물까지.<br>
 						당신의 반려동물에 딱 맞는 병원을 찾아보세요.</p>
 					<a href="/hospital/list" class="secondary-btn">병원목록 바로가기<span class="flaticon-next"></span></a>
 					</br></br>
@@ -34,7 +34,7 @@
 <!-- Banner Area End -->
 
 <!-- Feature Area Starts -->
-<section class="feature-area section-padding2">
+<section class="feature-area section-padding2" style="padding: 40px 0px 40px 0px;">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-4">
@@ -60,6 +60,7 @@
 			</div>
 		</div>
 	</div>
+	<br><br><br><br><br>
 </section>
 <!-- Feature Area End -->
 <%@include file="includes/footer.jsp"%>

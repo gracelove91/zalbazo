@@ -8,9 +8,9 @@ import kr.zalbazo.model.user.User;
 public interface UserMapper {
     void insert(User user);
     List<User> getList();
-    int delete(String userEmail);
+    int delete(String email);
     int update(User user);
-    User getUser(String userEmail);
+    User getUser(String email);
     Content getWriter(Long contentId);
 
     int updateEnabled(User user);

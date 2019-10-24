@@ -27,7 +27,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.zalbazo.mapper.user.UserMapper;
 import kr.zalbazo.model.content.Content;
 import kr.zalbazo.model.user.User;
-import kr.zalbazo.service.content.ContentService;
 import kr.zalbazo.service.user.UserService;
 import kr.zalbazo.validator.UserValidator;
 import lombok.extern.log4j.Log4j;
@@ -39,8 +38,6 @@ import lombok.extern.log4j.Log4j;
 public class UserController {
     @Autowired
     private UserService service;
-    @Autowired
-    private ContentService content_service;
     
    @Autowired
    UserMapper mapper;

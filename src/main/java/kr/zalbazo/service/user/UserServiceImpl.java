@@ -73,8 +73,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User getUser(String userEmail) {
-        return userMapper.getUser(userEmail);
+    public User getUser(String email) {
+        return userMapper.getUser(email);
     }
 
     @Override
@@ -83,8 +83,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public boolean remove(String userEmail) {
-        return userMapper.delete(userEmail) == 1;
+    public boolean remove(String email) {
+        return userMapper.delete(email) == 1;
     }
 
     @Override
@@ -93,8 +93,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public boolean updateEnabled(String userEmail) {
-        User user = getUser(userEmail);
+    public boolean updateEnabled(String email) {
+        User user = getUser(email);
         user.setEmailAuthKey("");
         user.setEnabled("enabled");
 

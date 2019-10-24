@@ -7,8 +7,8 @@
        <selectKey keyProperty="contentId" resultType="Long" order="BEFORE">
           select content_seq.nextval from dual
        </selectKey>
-        INSERT into content(CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, CATEGORY_ID, USER_EMAIL)
-        values (#{contentId}, #{title}, #{body}, sysdate, sysdate, #{categoryId}, #{userEmail})
+        INSERT into content(CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, CATEGORY_ID, USER_EMAIL, NAME)
+        values (#{contentId}, #{title}, #{body}, sysdate, sysdate, #{categoryId}, #{userEmail}, #{name})
     </insert>
 
     <update id="update">
@@ -28,8 +28,15 @@
 
     <select id="read" resultType="kr.zalbazo.model.content.Content">
         select *
-        from CONTENT
-        where content_id = #{contentId}
+        from content a, zalbazo_user b
+        where a.user_email = b.user_email
+        and content_id = #{contentId}
+    </select>
+    
+    <select id="getUser" resultType="kr.zalbazo.model.user.User">
+    	select *
+    	from zalbazo_user
+    	where user_email = #{userEmail}
     </select>
 
     <select id="getList" resultType="kr.zalbazo.model.content.Content">
@@ -45,7 +52,9 @@
         from CONTENT
         where CONTENT_ID > 0
           AND CATEGORY_ID = #{categoryId}
-        ]]></select>
+        ]]>
+        
+    </select>
 
 <sql id="criteria">
 	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
@@ -66,21 +75,19 @@
 		</foreach>
 	</trim>
 </sql>
-
-    <select id="getListWithPaging" resultType="kr.zalbazo.model.content.Content">
+ 
+     <select id="getListWithPaging" resultType="kr.zalbazo.model.content.Content">
       <![CDATA[
-        select CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, USER_EMAIL
+        select CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, USER_EMAIL, NAME
         from 
         	(
         	select /*+ INDEX_DESC(content content_pk) */
-        	  rownum RN, CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, CATEGORY_ID, USER_EMAIL
+        	  rownum RN, CONTENT_ID, TITLE, BODY, CREATED_DATE, UPDATED_DATE, CATEGORY_ID, USER_EMAIL, NAME
         	from 
         	  content
         	where 
         	]]>
-        	
         	<include refid="criteria"></include>
-        	
         	<![CDATA[
         	CATEGORY_ID = #{category} and rownum <= #{pageNum} * #{amount}
         	)

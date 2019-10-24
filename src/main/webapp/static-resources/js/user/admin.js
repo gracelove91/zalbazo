@@ -1,14 +1,26 @@
 $(document).ready(function() {
 	
 	var userList = $(".userList");
-	
+	var userview = $("#userview");
+	var hosview = $("#hosview");
 	var hospitalList = $(".hospitalList");
+	
+	var refreshUser = $(".refreshUser");
+	var refreshHos = $(".refreshHos");
 	
 	var str1 = "";
 	var str2 = "";
 	
 	showUserList();
 	showHosList();
+	
+	refreshUser.on("click",function(e) {
+		showUserList();
+	});
+	
+	refreshHos.on("click", function(e) {
+		showHosList();
+	});
 	
 	function showUserList(){
 		adminService.getUserList(function(list) {
@@ -90,5 +102,64 @@ $(document).ready(function() {
 		}
 		
 	}); // 병원 삭제 버튼 클릭
+	
+	userview.on("click","#userbtn",function(){
+		
+		$.ajax({
+			type : "GET",
+			url : "/admin/getsearchuser",
+			error : function(error){
+				
+			},
+			data : {"userEmail" : $('#searchuserEmail').val()}  ,
+			dataType : 'json',
+			success : function(result){
+				var str1 = "";
+				str1 += "<tr>";
+				str1 += "<th scope='row' class='mobile' style='text-align:center;'>" + result.name + "</th>";
+				
+				str1 += "<td class='move' style='text-align:center;'>" + result.userEmail + "</td>";
+				str1 += "<td class='move' style='text-align:center;'>" + result.tel + "</td>";
+				str1 += "<td class='move' style='text-align:center;'>" + adminService.displayTime(result.joinDate) + "</td>";
+				str1 += "<td style='text-align:center;'><button class='btn btn-outline-secondary btn-sm removeUser' data-id='"+ result.userEmail+"'>X</button></td>";
+				
+				str1 += "</tr>";
+				userList.html(str1);
+				$('#searchuserEmail').val("");
+			}
+			
+			
+		});
+		
+		});
+	
+	hosview.on("click","#hosbtn",function(){
+		
+		$.ajax({
+			type : "GET",
+			url : "/admin/getsearchhos",
+			error : function(error){
+				
+			},
+			data : {"userEmail" : $('#searchhosEmail').val()}  ,
+			dataType : 'json',
+			success : function(result){
+				var str2 = "";
+				str2 += "<tr>";
+				
+				str2 += "<th scope='row' class='mobile' style='text-align:center;'><a href='/hospital/get?hospitalId=" + result.hospitalId + "'>" + result.name + "</a></th>";
+				str2 += "<td class='move' style='text-align:center;'>" + result.userEmail + "</td>";
+				str2 += "<td class='move' style='text-align:center;'>" + result.tel + "</td>";
+				str2 += "<td class='move' style='text-align:center;width:350px;'>" + result.address + "</td>";
+				str2 += "<td style='text-align:center;width:60px;'><button class='btn btn-outline-secondary btn-sm removeHos' data-id='"+ result.userEmail+"'>X</button></td>";
+				
+				str2 += "</tr>";
+				hospitalList.html(str2);
+				$('#searchhosEmail').val("");
+			}
+			
+		});
+		
+	});
 	
 }); // ready

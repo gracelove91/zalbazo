@@ -1,4 +1,4 @@
--- ±âÁ¸ sql
+-- ê¸°ì¡´ sql
 Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (1,'community');
 Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (2,'jisik');
 Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (3,'review');
@@ -6,27 +6,27 @@ Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (4,'hqna');
 Insert into ZALBAZO.CATEGORY (CATEGORY_ID,NAME) values (5,'message');
 
 INSERT into ZALBAZO.ZALBAZO_USER(USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED)
-values('dummy@gmail.com', '{noop}1234', 'admin', '01000000000', '¼­¿ï½Ã ¼­ÃÊ±¸', '°ü¸®ÀÚ', sysdate, sysdate, 'enabled');
+values('dummy@gmail.com', '{noop}1234', 'admin', '01000000000', 'ì„œìš¸ì‹œ ì„œì´ˆêµ¬', 'ê´€ë¦¬ìž', sysdate, sysdate, 'enabled');
 
 INSERT into ZALBAZO.ZALBAZO_USER(USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED)
-values('zalbazo@zalbazo.kr', '{noop}1234', 'admin', '01000000000', '¼­¿ï½Ã ¼­ÃÊ±¸', '°ü¸®ÀÚ', sysdate, sysdate, 'enabled');
+values('zalbazo@zalbazo.kr', '{noop}1234', 'admin', '01000000000', 'ì„œìš¸ì‹œ ì„œì´ˆêµ¬', 'ê´€ë¦¬ìž', sysdate, sysdate, 'enabled');
 
-Insert into ZALBAZO.LABEL (CODE,NAME) values (1,'24½Ã°£');
-Insert into ZALBAZO.LABEL (CODE,NAME) values (2,'¹Ì¿ë');
-Insert into ZALBAZO.LABEL (CODE,NAME) values (3,'ÁÖÂ÷');
-Insert into ZALBAZO.LABEL (CODE,NAME) values (4,'Æ¯¼öµ¿¹°');
-Insert into ZALBAZO.LABEL (CODE,NAME) values (5,'¼ö¼úÀü¹®');
+Insert into ZALBAZO.LABEL (CODE,NAME) values (1,'24ì‹œê°„');
+Insert into ZALBAZO.LABEL (CODE,NAME) values (2,'ë¯¸ìš©');
+Insert into ZALBAZO.LABEL (CODE,NAME) values (3,'ì£¼ì°¨');
+Insert into ZALBAZO.LABEL (CODE,NAME) values (4,'íŠ¹ìˆ˜ë™ë¬¼');
+Insert into ZALBAZO.LABEL (CODE,NAME) values (5,'ìˆ˜ìˆ ì „ë¬¸');
 
 
 
---º´¿ø
+--ë³‘ì›
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, 'µ¹º½µ¿¹°º´¿ø', '¼­¿ïÆ¯º°½Ã °­µ¿±¸ ¾Ï»çµ¿ 414-18 ·Ôµ¥Ä³½½»ó°¡ 2Ãþ', 
-'08:00','21:00','024262775',
-'°¡Á·À» µ¹º¸´Â ¸¶À½À¸·Î ¹Ý·Áµ¿¹°À» Áø·áÇÏ´Â µ¹º½ µ¿¹°º´¿øÀÔ´Ï´Ù.')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ëŒë´„ë™ë¬¼ë³‘ì›', 'ì„œìš¸íŠ¹ë³„ì‹œ ê°•ë™êµ¬ ì•”ì‚¬ë™ 414-18 ë¡¯ë°ìºìŠ¬ìƒê°€ 2ì¸µ',
+        '08:00','21:00','024262775',
+        'ê°€ì¡±ì„ ëŒë³´ëŠ” ë§ˆìŒìœ¼ë¡œ ë°˜ë ¤ë™ë¬¼ì„ ì§„ë£Œí•˜ëŠ” ëŒë´„ ë™ë¬¼ë³‘ì›ìž…ë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, NAME, ADDRESS, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '024262775', 'µ¹º½µ¿¹°º´¿ø', '¼­¿ïÆ¯º°½Ã °­µ¿±¸ ¾Ï»çµ¿ 414-18 ·Ôµ¥Ä³½½»ó°¡ 2Ãþ', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '024262775', 'ëŒë´„ë™ë¬¼ë³‘ì›', 'ì„œìš¸íŠ¹ë³„ì‹œ ê°•ë™êµ¬ ì•”ì‚¬ë™ 414-18 ë¡¯ë°ìºìŠ¬ìƒê°€ 2ì¸µ', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (1,HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (2,HOSPITAL_SEQ.currval)
@@ -42,13 +42,13 @@ show escape;
 set escape on;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '¾ÆÀÌÀª24½Ãµ¿¹°º´¿ø', '¼­¿ï °­³²±¸ ÇÐµ¿·Î 437', 
-'00:00', '24:00', '0269257021',
-'°­¾ÆÁö °í°üÀý(LCPD) \& ½½°³°ñ ¼ö¼ú Àü¹®
-°í¾çÀÌ Àü¹® µ¿¹°º´¿ø')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ì•„ì´ìœŒ24ì‹œë™ë¬¼ë³‘ì›', 'ì„œìš¸ ê°•ë‚¨êµ¬ í•™ë™ë¡œ 437',
+        '00:00', '24:00', '0269257021',
+        'ê°•ì•„ì§€ ê³ ê´€ì ˆ(LCPD) \& ìŠ¬ê°œê³¨ ìˆ˜ìˆ  ì „ë¬¸
+        ê³ ì–‘ì´ ì „ë¬¸ ë™ë¬¼ë³‘ì›')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, NAME, ADDRESS, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0269257021', '¾ÆÀÌÀª24½Ãµ¿¹°º´¿ø', '¼­¿ï °­³²±¸ ÇÐµ¿·Î 437', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0269257021', 'ì•„ì´ìœŒ24ì‹œë™ë¬¼ë³‘ì›', 'ì„œìš¸ ê°•ë‚¨êµ¬ í•™ë™ë¡œ 437', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (5,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
@@ -59,10 +59,10 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, 'ÀÚÀÌ¾ðÃ÷µ¿¹°º´¿ø', 'ºÎ»ê±¤¿ª½Ã µ¿·¡±¸ »çÁ÷ºÏ·Î 26', '00:00', '24:00', '0515127582', '')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ìžì´ì–¸ì¸ ë™ë¬¼ë³‘ì›', 'ë¶€ì‚°ê´‘ì—­ì‹œ ë™ëž˜êµ¬ ì‚¬ì§ë¶ë¡œ 26', '00:00', '24:00', '0515127582', '')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0515127582', 'ºÎ»ê±¤¿ª½Ã µ¿·¡±¸ »çÁ÷ºÏ·Î 26', 'ÀÚÀÌ¾ðÃ÷µ¿¹°º´¿ø', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0515127582', 'ë¶€ì‚°ê´‘ì—­ì‹œ ë™ëž˜êµ¬ ì‚¬ì§ë¶ë¡œ 26', 'ìžì´ì–¸ì¸ ë™ë¬¼ë³‘ì›', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (1,HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (5,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
@@ -73,12 +73,12 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, 'Á¤¼­µ¿¹°º´¿ø', 'ÀÎÃµ ³²µ¿±¸ ÁÖ¾È·Î 234 Ç³¸²¾ÆÀÌ¿ø ÁÖ»ó°¡ 112È£', 
-'10:00', '20:00', '0324225399', '[³²µ¿±¸ ÁÖ¾È·Î 234 ] , Ç³¸²¾ÆÀÌ¿ø »ó°¡ 112È£¿¡ À§Ä¡ÇÏ¿© ÀÖ½À´Ï´Ù. µµ·Î¸íÁÖ¼Ò·Î °Ë»öÀ» ÇÏ½Ã¸é
-º¸´Ù ½±°Ô »õ·Î ÀÌ»çÇÑ º´¿ø À§Ä¡¸¦ Ã£À¸½Ç ¼ö ÀÖ½À´Ï´Ù~^^ [ÀÎÃµ Á¤¼­µ¿¹°º´¿ø]')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ì •ì„œë™ë¬¼ë³‘ì›', 'ì¸ì²œ ë‚¨ë™êµ¬ ì£¼ì•ˆë¡œ 234 í’ë¦¼ì•„ì´ì› ì£¼ìƒê°€ 112í˜¸',
+        '10:00', '20:00', '0324225399', '[ë‚¨ë™êµ¬ ì£¼ì•ˆë¡œ 234 ] , í’ë¦¼ì•„ì´ì› ìƒê°€ 112í˜¸ì— ìœ„ì¹˜í•˜ì—¬ ìžˆìŠµë‹ˆë‹¤. ë„ë¡œëª…ì£¼ì†Œë¡œ ê²€ìƒ‰ì„ í•˜ì‹œë©´
+ë³´ë‹¤ ì‰½ê²Œ ìƒˆë¡œ ì´ì‚¬í•œ ë³‘ì› ìœ„ì¹˜ë¥¼ ì°¾ìœ¼ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤~^^ [ì¸ì²œ ì •ì„œë™ë¬¼ë³‘ì›]')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, NAME, ADDRESS, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0324225399', 'Á¤¼­µ¿¹°º´¿ø', 'ÀÎÃµ ³²µ¿±¸ ÁÖ¾È·Î 234 Ç³¸²¾ÆÀÌ¿ø ÁÖ»ó°¡ 112È£', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0324225399', 'ì •ì„œë™ë¬¼ë³‘ì›', 'ì¸ì²œ ë‚¨ë™êµ¬ ì£¼ì•ˆë¡œ 234 í’ë¦¼ì•„ì´ì› ì£¼ìƒê°€ 112í˜¸', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (2,HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
@@ -89,15 +89,15 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '°í¾çÀÌº´¿ø ¹é»êµ¿¹°º´¿ø', '¼­¿ï °­³²±¸ ³íÇö·Î86±æ 22', 
-'00:00', '24:00', '16445653',
-'ÀúÈñ ¹é»êµ¿¹°º´¿øÀº ¼­¿ï °­³²±¸ ¿ª»ïµ¿¿¡ À§Ä¡ÇÏ°í ÀÖÀ¸¸ç, °í¾çÀÌ¸¸ Áø·áÇÏ´Â °í¾çÀÌº´¿øÀÔ´Ï´Ù.
-±¹Á¦ °í¾çÀÌ ÇÐÈ¸(ISFM)º´¿øÀ¸·Î¼­ ¼öÀÇ»ç ¼±»ý´Ôµé¿¡°Ôµµ ¸¹Àº °­ÀÇ¸¦ ÅëÇØ ±¹³»´Â ¹°·Ð ¼¼°èÀûÀÎ °í¾çÀÌ Àü¹®º´¿øÀÌ µÇ°íÀÚ Ç×»ó ³ë·ÂÇÏ°í ÀÖ½À´Ï´Ù.
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ê³ ì–‘ì´ë³‘ì› ë°±ì‚°ë™ë¬¼ë³‘ì›', 'ì„œìš¸ ê°•ë‚¨êµ¬ ë…¼í˜„ë¡œ86ê¸¸ 22',
+        '00:00', '24:00', '16445653',
+        'ì €í¬ ë°±ì‚°ë™ë¬¼ë³‘ì›ì€ ì„œìš¸ ê°•ë‚¨êµ¬ ì—­ì‚¼ë™ì— ìœ„ì¹˜í•˜ê³  ìžˆìœ¼ë©°, ê³ ì–‘ì´ë§Œ ì§„ë£Œí•˜ëŠ” ê³ ì–‘ì´ë³‘ì›ìž…ë‹ˆë‹¤.
+        êµ­ì œ ê³ ì–‘ì´ í•™íšŒ(ISFM)ë³‘ì›ìœ¼ë¡œì„œ ìˆ˜ì˜ì‚¬ ì„ ìƒë‹˜ë“¤ì—ê²Œë„ ë§Žì€ ê°•ì˜ë¥¼ í†µí•´ êµ­ë‚´ëŠ” ë¬¼ë¡  ì„¸ê³„ì ì¸ ê³ ì–‘ì´ ì „ë¬¸ë³‘ì›ì´ ë˜ê³ ìž í•­ìƒ ë…¸ë ¥í•˜ê³  ìžˆìŠµë‹ˆë‹¤.
 
-¾ÕÀ¸·Îµµ ÀúÈñ ¹é»ê°¡Á·Àº ¹Ý·Áµ¿¹°°ú º¸È£ÀÚºÐµéÀ» À§ÇÑ ÃÖ»óÀÇ ÀÇ·á¼­ºñ½º°¡ °¡´ÉÇÏµµ·Ï ´õ¿í ³ë·ÂÇÏ°Ú½À´Ï´Ù.')
+        ì•žìœ¼ë¡œë„ ì €í¬ ë°±ì‚°ê°€ì¡±ì€ ë°˜ë ¤ë™ë¬¼ê³¼ ë³´í˜¸ìžë¶„ë“¤ì„ ìœ„í•œ ìµœìƒì˜ ì˜ë£Œì„œë¹„ìŠ¤ê°€ ê°€ëŠ¥í•˜ë„ë¡ ë”ìš± ë…¸ë ¥í•˜ê² ìŠµë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, NAME, ADDRESS, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '16445653', '°í¾çÀÌº´¿ø ¹é»êµ¿¹°º´¿ø', '¼­¿ï °­³²±¸ ³íÇö·Î86±æ 22', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '16445653', 'ê³ ì–‘ì´ë³‘ì› ë°±ì‚°ë™ë¬¼ë³‘ì›', 'ì„œìš¸ ê°•ë‚¨êµ¬ ë…¼í˜„ë¡œ86ê¸¸ 22', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (1,HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
@@ -108,14 +108,14 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, 'µ¿¼öµ¿¹°º´¿ø', 'ÀÎÃµ±¤¿ª½Ã ºÎÆò±¸ °æ¿ø´ë·Î 1422 ºÎÆò´ë´ö¾ÆÅ©·ÎÁ¸', 
-'10:00', '20:00', '0325115338',
-'ÁøÂû°ú °Ë»ç¸¦ ÅëÇØ Á¤È®ÇÏ°Ô Áø´ÜÀ» ÇÏ°í µû¶æÇÑ º¸»ìÇË°ú ÀûÀýÇÑ Ä¡·á¸¦ ÇØ¾ßÇÑ´Ù°í »ý°¢ÇÕ´Ï´Ù.
-ÀúÈñ º´¿øÀº Ç×»ó ¹àÀº ¿ôÀ½°ú Ã»°áÀ» À§ÇØ ³ë·ÂÇÏ°í ÀÖ½À´Ï´Ù. °­¾ÆÁö¿Í °í¾çÀÌÀÇ ¸Ú°ú ÇÇºÎ °Ç°­À» À§ÇØ¼­ ¹Ì¿ë½ÇÀ» ¿î¿µÇÏ°í ÀÖÀ¸¸ç, »ç¶û°ú µû¶æÇÑ ¼Õ±æ·Î ¹Ì¿ëÀ» ÇÏ°í ÀÖ½À´Ï´Ù.
-°í°´´ÔµéÀÌ Ã£¾Æ ÁÖ½Ã¸é ¸¸Á·À» µå¸®°Ú½À´Ï´Ù.')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ë™ìˆ˜ë™ë¬¼ë³‘ì›', 'ì¸ì²œê´‘ì—­ì‹œ ë¶€í‰êµ¬ ê²½ì›ëŒ€ë¡œ 1422 ë¶€í‰ëŒ€ë•ì•„í¬ë¡œì¡´',
+        '10:00', '20:00', '0325115338',
+        'ì§„ì°°ê³¼ ê²€ì‚¬ë¥¼ í†µí•´ ì •í™•í•˜ê²Œ ì§„ë‹¨ì„ í•˜ê³  ë”°ëœ»í•œ ë³´ì‚´í•Œê³¼ ì ì ˆí•œ ì¹˜ë£Œë¥¼ í•´ì•¼í•œë‹¤ê³  ìƒê°í•©ë‹ˆë‹¤.
+        ì €í¬ ë³‘ì›ì€ í•­ìƒ ë°ì€ ì›ƒìŒê³¼ ì²­ê²°ì„ ìœ„í•´ ë…¸ë ¥í•˜ê³  ìžˆìŠµë‹ˆë‹¤. ê°•ì•„ì§€ì™€ ê³ ì–‘ì´ì˜ ë©‹ê³¼ í”¼ë¶€ ê±´ê°•ì„ ìœ„í•´ì„œ ë¯¸ìš©ì‹¤ì„ ìš´ì˜í•˜ê³  ìžˆìœ¼ë©°, ì‚¬ëž‘ê³¼ ë”°ëœ»í•œ ì†ê¸¸ë¡œ ë¯¸ìš©ì„ í•˜ê³  ìžˆìŠµë‹ˆë‹¤.
+        ê³ ê°ë‹˜ë“¤ì´ ì°¾ì•„ ì£¼ì‹œë©´ ë§Œì¡±ì„ ë“œë¦¬ê² ìŠµë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, NAME, ADDRESS, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0325115338', 'µ¿¼öµ¿¹°º´¿ø', 'ÀÎÃµ±¤¿ª½Ã ºÎÆò±¸ °æ¿ø´ë·Î 1422 ºÎÆò´ë´ö¾ÆÅ©·ÎÁ¸', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0325115338', 'ë™ìˆ˜ë™ë¬¼ë³‘ì›', 'ì¸ì²œê´‘ì—­ì‹œ ë¶€í‰êµ¬ ê²½ì›ëŒ€ë¡œ 1422 ë¶€í‰ëŒ€ë•ì•„í¬ë¡œì¡´', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
 VALUES (uuid_SEQ.nextval, 'resources/img', '1.jpg')
@@ -125,11 +125,11 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, 'Ã»¶ó¶óÀÓµ¿¹°º´¿ø', 'ÀÎÃµ±¤¿ª½Ã ¼­±¸ Ã»¶ó¶óÀÓ·Î 102', 
-'09:00', '20:00', '0325631900', ' ')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ì²­ë¼ë¼ìž„ë™ë¬¼ë³‘ì›', 'ì¸ì²œê´‘ì—­ì‹œ ì„œêµ¬ ì²­ë¼ë¼ìž„ë¡œ 102',
+        '09:00', '20:00', '0325631900', ' ')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, NAME, ADDRESS, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0325631900', 'Ã»¶ó¶óÀÓµ¿¹°º´¿ø', 'ÀÎÃµ±¤¿ª½Ã ¼­±¸ Ã»¶ó¶óÀÓ·Î 102', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0325631900', 'ì²­ë¼ë¼ìž„ë™ë¬¼ë³‘ì›', 'ì¸ì²œê´‘ì—­ì‹œ ì„œêµ¬ ì²­ë¼ë¼ìž„ë¡œ 102', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
 VALUES (uuid_SEQ.nextval, 'resources/img', '1.jpg')
 INTO PIC_LIB_REL_HOSPITAL (UUID, HOSPITAL_ID)
@@ -138,11 +138,11 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '24½Ãµ¶½ºµ¿¹°º´¿ø', 'ÀÎÃµ±¤¿ª½Ã ³²µ¿±¸ ³²µ¿´ë·Î 912 À¯Áøºôµù', '00:00', '24:00', '0324330075',
-'400Æò ±Ô¸ðÀÇ µ¿¹°º´¿øÀ¸·Î¼­ ÃÖÃ·´ÜÀÇ·áÀåºñ¸¦ ´Ù¼ö º¸À¯ÇÏ°í, ½Ç·Â°ú °æ·ÂÀÌ °ËÁõµÈ 7¸íÀÇ ¼öÀÇ»ç ¹× 30¿©¸íÀÇ ±Ù¹«ÀÚ°¡ 365ÀÏ 24½Ã°£ ¼­ºñ½ºÇÏ°í ÀÖ½À´Ï´Ù.')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, '24ì‹œë…ìŠ¤ë™ë¬¼ë³‘ì›', 'ì¸ì²œê´‘ì—­ì‹œ ë‚¨ë™êµ¬ ë‚¨ë™ëŒ€ë¡œ 912 ìœ ì§„ë¹Œë”©', '00:00', '24:00', '0324330075',
+        '400í‰ ê·œëª¨ì˜ ë™ë¬¼ë³‘ì›ìœ¼ë¡œì„œ ìµœì²¨ë‹¨ì˜ë£Œìž¥ë¹„ë¥¼ ë‹¤ìˆ˜ ë³´ìœ í•˜ê³ , ì‹¤ë ¥ê³¼ ê²½ë ¥ì´ ê²€ì¦ëœ 7ëª…ì˜ ìˆ˜ì˜ì‚¬ ë° 30ì—¬ëª…ì˜ ê·¼ë¬´ìžê°€ 365ì¼ 24ì‹œê°„ ì„œë¹„ìŠ¤í•˜ê³  ìžˆìŠµë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, NAME, ADDRESS, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0324330075', '24½Ãµ¶½ºµ¿¹°º´¿ø', 'ÀÎÃµ±¤¿ª½Ã ³²µ¿±¸ ³²µ¿´ë·Î 912 À¯Áøºôµù', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0324330075', '24ì‹œë…ìŠ¤ë™ë¬¼ë³‘ì›', 'ì¸ì²œê´‘ì—­ì‹œ ë‚¨ë™êµ¬ ë‚¨ë™ëŒ€ë¡œ 912 ìœ ì§„ë¹Œë”©', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (1,HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
@@ -153,11 +153,11 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, 'ºÎ»êµ¿¹°¸ÞµðÄÃ¼¾ÅÍ', 'ºÎ»ê±¤¿ª½Ã ¿¬Á¦±¸ °ÅÁ¦´ë·Î 278', '09:00', '18:00', '0518687591', 
-'¼®, ¹Ú»ç ÀÇ·áÁøÀ» ºñ·ÔÇÑ 40¿©¸íÀÇ ½ºÅÜµé °£ÀÇ »óÈ£ Ã¼°èÀûÀÌ°í Àü¹®È­µÈ Áø·á ½Ã½ºÅÛ')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ë¶€ì‚°ë™ë¬¼ë©”ë””ì»¬ì„¼í„°', 'ë¶€ì‚°ê´‘ì—­ì‹œ ì—°ì œêµ¬ ê±°ì œëŒ€ë¡œ 278', '09:00', '18:00', '0518687591',
+        'ì„, ë°•ì‚¬ ì˜ë£Œì§„ì„ ë¹„ë¡¯í•œ 40ì—¬ëª…ì˜ ìŠ¤í…ë“¤ ê°„ì˜ ìƒí˜¸ ì²´ê³„ì ì´ê³  ì „ë¬¸í™”ëœ ì§„ë£Œ ì‹œìŠ¤í…œ')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0518687591', 'ºÎ»ê±¤¿ª½Ã ¿¬Á¦±¸ °ÅÁ¦´ë·Î 278', 'ºÎ»êµ¿¹°¸ÞµðÄÃ¼¾ÅÍ', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0518687591', 'ë¶€ì‚°ê´‘ì—­ì‹œ ì—°ì œêµ¬ ê±°ì œëŒ€ë¡œ 278', 'ë¶€ì‚°ë™ë¬¼ë©”ë””ì»¬ì„¼í„°', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (2,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
 VALUES (uuid_SEQ.nextval, 'resources/img', '1.jpg')
@@ -167,11 +167,11 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '24½ÃºÎÆòÁ¾ÇÕµ¿¹°ÀÇ·á¼¾ÅÍ', 'ÀÎÃµ ºÎÆò±¸ ºÎÆò´ë·Î 138 ½ÅÀÏÀ¯½ºÅ×ÀÌ¼Ç 2Ãþ', 
-'00:00', '24:00', '0325116836', '°Ç¹° ÁöÇÏ¿¡ ¹«·áÁÖÂ÷ÀåÀÌ ÁØºñµÇ¾î ÀÖ½À´Ï´Ù.')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, '24ì‹œë¶€í‰ì¢…í•©ë™ë¬¼ì˜ë£Œì„¼í„°', 'ì¸ì²œ ë¶€í‰êµ¬ ë¶€í‰ëŒ€ë¡œ 138 ì‹ ì¼ìœ ìŠ¤í…Œì´ì…˜ 2ì¸µ',
+        '00:00', '24:00', '0325116836', 'ê±´ë¬¼ ì§€í•˜ì— ë¬´ë£Œì£¼ì°¨ìž¥ì´ ì¤€ë¹„ë˜ì–´ ìžˆìŠµë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, NAME, ADDRESS, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0325116836', '24½ÃºÎÆòÁ¾ÇÕµ¿¹°ÀÇ·á¼¾ÅÍ', 'ÀÎÃµ ºÎÆò±¸ ºÎÆò´ë·Î 138 ½ÅÀÏÀ¯½ºÅ×ÀÌ¼Ç 2Ãþ', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0325116836', '24ì‹œë¶€í‰ì¢…í•©ë™ë¬¼ì˜ë£Œì„¼í„°', 'ì¸ì²œ ë¶€í‰êµ¬ ë¶€í‰ëŒ€ë¡œ 138 ì‹ ì¼ìœ ìŠ¤í…Œì´ì…˜ 2ì¸µ', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (1,HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
@@ -182,10 +182,10 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, 'µ¿¹°º´¿ø»êÃ¥', 'ºÎ»ê±¤¿ª½Ã ±ÝÁ¤±¸ ¼ö¸²·Î 25 ½Ö¿ë¾ÆÆÄÆ®', '10:00', '19:00', '0517140209', '»êÃ¥ÇÏµí °¡º±°Ô µé¸±¼ö ÀÖ´Â µ¿¹°º´¿øÀÔ´Ï´Ù^^')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ë™ë¬¼ë³‘ì›ì‚°ì±…', 'ë¶€ì‚°ê´‘ì—­ì‹œ ê¸ˆì •êµ¬ ìˆ˜ë¦¼ë¡œ 25 ìŒìš©ì•„íŒŒíŠ¸', '10:00', '19:00', '0517140209', 'ì‚°ì±…í•˜ë“¯ ê°€ë³ê²Œ ë“¤ë¦´ìˆ˜ ìžˆëŠ” ë™ë¬¼ë³‘ì›ìž…ë‹ˆë‹¤^^')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0517140209', 'ºÎ»ê±¤¿ª½Ã ±ÝÁ¤±¸ ¼ö¸²·Î 25 ½Ö¿ë¾ÆÆÄÆ®', 'µ¿¹°º´¿ø»êÃ¥', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0517140209', 'ë¶€ì‚°ê´‘ì—­ì‹œ ê¸ˆì •êµ¬ ìˆ˜ë¦¼ë¡œ 25 ìŒìš©ì•„íŒŒíŠ¸', 'ë™ë¬¼ë³‘ì›ì‚°ì±…', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
 VALUES (uuid_SEQ.nextval, 'resources/img', '1.jpg')
@@ -195,13 +195,13 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '±Ý¿Àµ¿¹°º´¿ø', '°æ±â ÀÇÁ¤ºÎ½Ã Ã»»ç·Î 37', '09:00', '21:00', '0318267582',
-'ÀúÈñ µ¿¹°º´¿øÀº ÃÖ½ÅÀÇ ÀÇ·áÀåºñ¿Í ÄèÀûÇÑ È¯°æÀ» °®Ãß°í ÀÖ¾î ¹Ý·Á µ¿¹°µéÀÌ ÃÖ¼±ÀÇ Áø·á¸¦ ¹ÞÀ» ¼ö ÀÖµµ·Ï ³ë·ÂÇÏ°í ÀÖ½À´Ï´Ù.
-Ç×»ó »õ·Î¿î Áö½ÄÀ» ½ÀµæÇÏ¸ç °øºÎÇØ ³ª°¡´Â º´¿øÀÔ´Ï´Ù.
-º»¿øÀÇ Áø·á ¿©ºÎ¿Í »ó°ü¾øÀÌ ÀüÈ­·Î ¹Ý·Áµ¿¹°ÀÇ ¹®Á¦¸¦ »ó´ãÇØ µå¸®¸ç °¡Á· °°Àº Æí¾ÈÇÔÀ¸·Î ¸ÂÀÌÇÕ´Ï´Ù. °¨»çÇÕ´Ï´Ù.')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ê¸ˆì˜¤ë™ë¬¼ë³‘ì›', 'ê²½ê¸° ì˜ì •ë¶€ì‹œ ì²­ì‚¬ë¡œ 37', '09:00', '21:00', '0318267582',
+        'ì €í¬ ë™ë¬¼ë³‘ì›ì€ ìµœì‹ ì˜ ì˜ë£Œìž¥ë¹„ì™€ ì¾Œì í•œ í™˜ê²½ì„ ê°–ì¶”ê³  ìžˆì–´ ë°˜ë ¤ ë™ë¬¼ë“¤ì´ ìµœì„ ì˜ ì§„ë£Œë¥¼ ë°›ì„ ìˆ˜ ìžˆë„ë¡ ë…¸ë ¥í•˜ê³  ìžˆìŠµë‹ˆë‹¤.
+        í•­ìƒ ìƒˆë¡œìš´ ì§€ì‹ì„ ìŠµë“í•˜ë©° ê³µë¶€í•´ ë‚˜ê°€ëŠ” ë³‘ì›ìž…ë‹ˆë‹¤.
+        ë³¸ì›ì˜ ì§„ë£Œ ì—¬ë¶€ì™€ ìƒê´€ì—†ì´ ì „í™”ë¡œ ë°˜ë ¤ë™ë¬¼ì˜ ë¬¸ì œë¥¼ ìƒë‹´í•´ ë“œë¦¬ë©° ê°€ì¡± ê°™ì€ íŽ¸ì•ˆí•¨ìœ¼ë¡œ ë§žì´í•©ë‹ˆë‹¤. ê°ì‚¬í•©ë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0318267582', '°æ±â ÀÇÁ¤ºÎ½Ã Ã»»ç·Î 37', '±Ý¿Àµ¿¹°º´¿ø', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0318267582', 'ê²½ê¸° ì˜ì •ë¶€ì‹œ ì²­ì‚¬ë¡œ 37', 'ê¸ˆì˜¤ë™ë¬¼ë³‘ì›', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
 VALUES (uuid_SEQ.nextval, 'resources/img', '1.jpg')
 INTO PIC_LIB_REL_HOSPITAL (UUID, HOSPITAL_ID)
@@ -210,12 +210,12 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, 'UNµ¿¹°ÀÇ·á¼¾ÅÍ', 'ºÎ»ê±¤¿ª½Ã ³²±¸ ´ë¿¬µ¿ 1745-9', '00:00', '24:00', '0516242475',
-'1,2,3Ãþ 160¿©ÆòÀÇ ´Üµ¶º´¿øÀ¸·Î ±â°è,Àåºñ¿¡ ´ëÇÑ ÅõÀÚ¸¦ ²÷ÀÓ¾øÀÌ ÇÏ°í ÀÖÀ¸¸ç
-³»°ú¼¾ÅÍ,¿Ü°ú(¼ö¼ú)¼¾ÅÍ,°í¾çÀÌÀÇ·á¼¾ÅÍ,Æ¯¼öµ¿¹°¼¾ÅÍ, ÀçÈ°¼¾ÅÍ,ÁÙ±â¼¼Æ÷¼¾ÅÍ, ¿µ»óÁø´Ü¼¾ÅÍ, 24½Ã¾ß°£ÀÀ±Þ¼¾ÅÍ¸¦ °®Ãß°í ÀÖ½À´Ï´Ù.')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'UNë™ë¬¼ì˜ë£Œì„¼í„°', 'ë¶€ì‚°ê´‘ì—­ì‹œ ë‚¨êµ¬ ëŒ€ì—°ë™ 1745-9', '00:00', '24:00', '0516242475',
+        '1,2,3ì¸µ 160ì—¬í‰ì˜ ë‹¨ë…ë³‘ì›ìœ¼ë¡œ ê¸°ê³„,ìž¥ë¹„ì— ëŒ€í•œ íˆ¬ìžë¥¼ ëŠìž„ì—†ì´ í•˜ê³  ìžˆìœ¼ë©°
+        ë‚´ê³¼ì„¼í„°,ì™¸ê³¼(ìˆ˜ìˆ )ì„¼í„°,ê³ ì–‘ì´ì˜ë£Œì„¼í„°,íŠ¹ìˆ˜ë™ë¬¼ì„¼í„°, ìž¬í™œì„¼í„°,ì¤„ê¸°ì„¸í¬ì„¼í„°, ì˜ìƒì§„ë‹¨ì„¼í„°, 24ì‹œì•¼ê°„ì‘ê¸‰ì„¼í„°ë¥¼ ê°–ì¶”ê³  ìžˆìŠµë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0516242475', 'ºÎ»ê±¤¿ª½Ã ³²±¸ ´ë¿¬µ¿ 1745-9', 'UNµ¿¹°ÀÇ·á¼¾ÅÍ', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0516242475', 'ë¶€ì‚°ê´‘ì—­ì‹œ ë‚¨êµ¬ ëŒ€ì—°ë™ 1745-9', 'UNë™ë¬¼ì˜ë£Œì„¼í„°', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (1,HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (4,HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (5,HOSPITAL_SEQ.currval)
@@ -227,12 +227,12 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, 'Ä³ºñ¾î µ¿¹°¸ÞµðÄÃ¼¾ÅÍ', '°æ±âµµ ¼º³²½Ã Áß¿ø±¸ ±Ý±¤2µ¿ 4614', '00:00', '24:00', '0317411799',
-'2Â÷ Áø·á º´¿øÀÎ Ä³ºñ¾î µ¿¹°¸ÞµðÄÃ¼¾ÅÍ´Â TV¿Í ÀâÁö ÇÐ¼úÁö¿¡ ÀÚÁÖ ¼Ò°³µÇ´Â º´¿øÀ¸·Î, ¼öÀÇ»ç´ÜÃ¼ÀÇ °­»çÁøÀ¸·Î ±¸¼ºµÈ Àü¹® ÀÇ·áÁø°ú Àü¹® ¼öÀÇ°£È£»çÀÇ ½ºÅÜÀ¸·Î ÇÑÂ÷¿ø ³ôÀº Áø·áÀÇ ÁúÀ» Ãß±¸ÇÏ¿´À¸¸ç,
-¼­¿ï´ëÇÐ±³¿Í Ãæ³²´ëÇÐ±³ ±³¼öÁø°ú ±ä¹ÐÇÑ Áø·áÇùÁ¶°ü°è¸¦ ÅëÇØ Á¤È®ÇÑ Áø´Ü°ú ÃÖ¼±ÀÇ Ã³Ä¡¸¦ ¹ÞÀ¸½Ç ¼ö ÀÖ½À´Ï´Ù.')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ìºë¹„ì–´ ë™ë¬¼ë©”ë””ì»¬ì„¼í„°', 'ê²½ê¸°ë„ ì„±ë‚¨ì‹œ ì¤‘ì›êµ¬ ê¸ˆê´‘2ë™ 4614', '00:00', '24:00', '0317411799',
+        '2ì°¨ ì§„ë£Œ ë³‘ì›ì¸ ìºë¹„ì–´ ë™ë¬¼ë©”ë””ì»¬ì„¼í„°ëŠ” TVì™€ ìž¡ì§€ í•™ìˆ ì§€ì— ìžì£¼ ì†Œê°œë˜ëŠ” ë³‘ì›ìœ¼ë¡œ, ìˆ˜ì˜ì‚¬ë‹¨ì²´ì˜ ê°•ì‚¬ì§„ìœ¼ë¡œ êµ¬ì„±ëœ ì „ë¬¸ ì˜ë£Œì§„ê³¼ ì „ë¬¸ ìˆ˜ì˜ê°„í˜¸ì‚¬ì˜ ìŠ¤í…ìœ¼ë¡œ í•œì°¨ì› ë†’ì€ ì§„ë£Œì˜ ì§ˆì„ ì¶”êµ¬í•˜ì˜€ìœ¼ë©°,
+        ì„œìš¸ëŒ€í•™êµì™€ ì¶©ë‚¨ëŒ€í•™êµ êµìˆ˜ì§„ê³¼ ê¸´ë°€í•œ ì§„ë£Œí˜‘ì¡°ê´€ê³„ë¥¼ í†µí•´ ì •í™•í•œ ì§„ë‹¨ê³¼ ìµœì„ ì˜ ì²˜ì¹˜ë¥¼ ë°›ìœ¼ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0317411799', '°æ±âµµ ¼º³²½Ã Áß¿ø±¸ ±Ý±¤2µ¿ 4614', 'Ä³ºñ¾î µ¿¹°¸ÞµðÄÃ¼¾ÅÍ', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0317411799', 'ê²½ê¸°ë„ ì„±ë‚¨ì‹œ ì¤‘ì›êµ¬ ê¸ˆê´‘2ë™ 4614', 'ìºë¹„ì–´ ë™ë¬¼ë©”ë””ì»¬ì„¼í„°', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (1,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
 VALUES (uuid_SEQ.nextval, 'resources/img', '1.jpg')
@@ -242,12 +242,12 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '¶ó¿Âµ¿¹°º´¿ø', 'ºÎ»ê±¤¿ª½Ã »çÇÏ±¸ ³«µ¿´ë·Î 5118', '09:00', '18:00', '0512917900',
-'½Ã²ô·´°í ³¸¼± È¯°æ¿¡ ¿¹¹ÎÇÒ ¼ö ÀÖ´Â °í¾çÀÌ¸¦ ¹è·ÁÇÑ °í¾çÀÌ Àü¿ë ´ë±â½Ç, °í¾çÀÌ Àü¿ë Áø·á½Ç, °í¾çÀÌ Àü¿ë ÀÔ¿ø½Ç, °Ý¸® ÀÔ¿ø½ÇÀ» ºÐ¸® ¿î¿µÇÏ¿©
-°í¾çÀÌ¿Í º¸È£ÀÚºÐ Æí¾ÈÇÏ°Ô Áø·á¸¦ ¹ÞÀ» ¼ö ÀÖ½À´Ï´Ù.')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ë¼ì˜¨ë™ë¬¼ë³‘ì›', 'ë¶€ì‚°ê´‘ì—­ì‹œ ì‚¬í•˜êµ¬ ë‚™ë™ëŒ€ë¡œ 5118', '09:00', '18:00', '0512917900',
+        'ì‹œë„ëŸ½ê³  ë‚¯ì„  í™˜ê²½ì— ì˜ˆë¯¼í•  ìˆ˜ ìžˆëŠ” ê³ ì–‘ì´ë¥¼ ë°°ë ¤í•œ ê³ ì–‘ì´ ì „ìš© ëŒ€ê¸°ì‹¤, ê³ ì–‘ì´ ì „ìš© ì§„ë£Œì‹¤, ê³ ì–‘ì´ ì „ìš© ìž…ì›ì‹¤, ê²©ë¦¬ ìž…ì›ì‹¤ì„ ë¶„ë¦¬ ìš´ì˜í•˜ì—¬
+        ê³ ì–‘ì´ì™€ ë³´í˜¸ìžë¶„ íŽ¸ì•ˆí•˜ê²Œ ì§„ë£Œë¥¼ ë°›ì„ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0512917900', 'ºÎ»ê±¤¿ª½Ã »çÇÏ±¸ ³«µ¿´ë·Î 5118', '¶ó¿Âµ¿¹°º´¿ø', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0512917900', 'ë¶€ì‚°ê´‘ì—­ì‹œ ì‚¬í•˜êµ¬ ë‚™ë™ëŒ€ë¡œ 5118', 'ë¼ì˜¨ë™ë¬¼ë³‘ì›', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
 VALUES (uuid_SEQ.nextval, 'resources/img', '1.jpg')
@@ -257,15 +257,15 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '¹Ù¸¥µ¿¹°º´¿ø', 'ÀÇÁ¤ºÎµ¿ 210-1', '09:00', '24:00', '0318427582',
-'- ¼ö¼úºñ¿ë ¹®ÀÇ´Â Áø·á ÈÄ »ó´ã ºÎÅ¹µå¸³´Ï´Ù.
-- ÀÔ¿øÇÑ µ¿¹° ¸éÈ¸, ÀüÈ­»ó´ãÀº ÀÏ¹Ý Áø·á½Ã°£À» ÀÌ¿ë ºÎÅ¹µå¸³´Ï´Ù.
-- ¾ß°£ÀÀ±ÞÁø·á ³»¿ø½Ã¿¡´Â ³»¿ø Àü¿¡ ÀüÈ­ ºÎÅ¹µå¸³´Ï´Ù. ( ÀÀ±Þ»óÈ²¿¡ Á» ´õ ½Å¼ÓÈ÷ ´ëºñÇÏ±â À§ÇØ¼­ÀÔ´Ï´Ù)
-- Áö¿ª ÁÖ¹Î, ¹Ý·Áµ¿¹°°ú ÇÔ²² ÇÏ´Â µ¿¹°º´¿øÀ» ¸¸µé±â À§ÇØ ³ë·ÂÇÏ°í ÀÖ½À´Ï´Ù.
-- Â÷·®ÀÌ¿ë½Ã¿¡´Â º»¿ø °Ç¹° Ãø¸é¿¡ ÀÖ´Â µ¿¹°º´¿ø Àü¿ë ÁÖÂ÷ÀåÀ» ÀÌ¿ëÇÏ½Ã¸é µË´Ï´Ù. (Å¸¿ö¿¡ ÁÖÂ÷ÇÏÁö ¾Ê¾Æµµ µÊ)')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ë°”ë¥¸ë™ë¬¼ë³‘ì›', 'ì˜ì •ë¶€ë™ 210-1', '09:00', '24:00', '0318427582',
+        '- ìˆ˜ìˆ ë¹„ìš© ë¬¸ì˜ëŠ” ì§„ë£Œ í›„ ìƒë‹´ ë¶€íƒë“œë¦½ë‹ˆë‹¤.
+        - ìž…ì›í•œ ë™ë¬¼ ë©´íšŒ, ì „í™”ìƒë‹´ì€ ì¼ë°˜ ì§„ë£Œì‹œê°„ì„ ì´ìš© ë¶€íƒë“œë¦½ë‹ˆë‹¤.
+        - ì•¼ê°„ì‘ê¸‰ì§„ë£Œ ë‚´ì›ì‹œì—ëŠ” ë‚´ì› ì „ì— ì „í™” ë¶€íƒë“œë¦½ë‹ˆë‹¤. ( ì‘ê¸‰ìƒí™©ì— ì¢€ ë” ì‹ ì†ížˆ ëŒ€ë¹„í•˜ê¸° ìœ„í•´ì„œìž…ë‹ˆë‹¤)
+        - ì§€ì—­ ì£¼ë¯¼, ë°˜ë ¤ë™ë¬¼ê³¼ í•¨ê»˜ í•˜ëŠ” ë™ë¬¼ë³‘ì›ì„ ë§Œë“¤ê¸° ìœ„í•´ ë…¸ë ¥í•˜ê³  ìžˆìŠµë‹ˆë‹¤.
+        - ì°¨ëŸ‰ì´ìš©ì‹œì—ëŠ” ë³¸ì› ê±´ë¬¼ ì¸¡ë©´ì— ìžˆëŠ” ë™ë¬¼ë³‘ì› ì „ìš© ì£¼ì°¨ìž¥ì„ ì´ìš©í•˜ì‹œë©´ ë©ë‹ˆë‹¤. (íƒ€ì›Œì— ì£¼ì°¨í•˜ì§€ ì•Šì•„ë„ ë¨)')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0318427582', 'ÀÇÁ¤ºÎµ¿ 210-1', '¹Ù¸¥µ¿¹°º´¿ø', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0318427582', 'ì˜ì •ë¶€ë™ 210-1', 'ë°”ë¥¸ë™ë¬¼ë³‘ì›', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
 VALUES (uuid_SEQ.nextval, 'resources/img', '1.jpg')
@@ -275,10 +275,10 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '±ºÆ÷±Â´ÚÅÍµ¿¹°º´¿ø', '°æ±âµµ ±ºÆ÷½Ã ´çµ¿ 922-25 1Ãþ', '10:00', '18:00', '0313917533', '')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'êµ°í¬êµ¿ë‹¥í„°ë™ë¬¼ë³‘ì›', 'ê²½ê¸°ë„ êµ°í¬ì‹œ ë‹¹ë™ 922-25 1ì¸µ', '10:00', '18:00', '0313917533', '')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0313917533', '°æ±âµµ ±ºÆ÷½Ã ´çµ¿ 922-25 1Ãþ', '±ºÆ÷±Â´ÚÅÍµ¿¹°º´¿ø', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0313917533', 'ê²½ê¸°ë„ êµ°í¬ì‹œ ë‹¹ë™ 922-25 1ì¸µ', 'êµ°í¬êµ¿ë‹¥í„°ë™ë¬¼ë³‘ì›', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (2,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
 VALUES (uuid_SEQ.nextval, 'resources/img', '1.jpg')
@@ -288,11 +288,11 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '´Ù¼Øµ¿¹°¸ÞµðÄÃ¼¾ÅÍ', 'ºÎ»ê ³²±¸ ¼ö¿µ·Î13¹ø±æ 3', '00:00', '24:00', '0516327580', 
-'¹Ý·Áµ¿¹°º¹ÇÕ¹®È­¼¾ÅÍ¸¦ ¿î¿µÇÏ¿© °­¾ÆÁö È£ÅÚ / ¾Ö°ß À¯Ä¡¿ø, ³îÀÌÅÍ / ¹Ý·Áµ¿¹° ¹Ì¿ë, ½ºÆÄ, ¿ëÇ°¼¥ µîÀÌ ¿î¿µµÇ°í ÀÖ½À´Ï´Ù.')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ë‹¤ì†œë™ë¬¼ë©”ë””ì»¬ì„¼í„°', 'ë¶€ì‚° ë‚¨êµ¬ ìˆ˜ì˜ë¡œ13ë²ˆê¸¸ 3', '00:00', '24:00', '0516327580',
+        'ë°˜ë ¤ë™ë¬¼ë³µí•©ë¬¸í™”ì„¼í„°ë¥¼ ìš´ì˜í•˜ì—¬ ê°•ì•„ì§€ í˜¸í…” / ì• ê²¬ ìœ ì¹˜ì›, ë†€ì´í„° / ë°˜ë ¤ë™ë¬¼ ë¯¸ìš©, ìŠ¤íŒŒ, ìš©í’ˆìƒµ ë“±ì´ ìš´ì˜ë˜ê³  ìžˆìŠµë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0516327580', 'ºÎ»ê ³²±¸ ¼ö¿µ·Î13¹ø±æ 3', '´Ù¼Øµ¿¹°¸ÞµðÄÃ¼¾ÅÍ', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0516327580', 'ë¶€ì‚° ë‚¨êµ¬ ìˆ˜ì˜ë¡œ13ë²ˆê¸¸ 3', 'ë‹¤ì†œë™ë¬¼ë©”ë””ì»¬ì„¼í„°', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (1,HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (2,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
@@ -303,11 +303,11 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '¸¶¸®µ¿¹°º´¿ø', 'ºÎ»ê±¤¿ª½Ã ÇØ¿î´ë±¸ ÇØ¿î´ë·Î 794 »ïÁ¤¿¤¸®¿ò', '09:00', '19:00', '0517025750', 
-'')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ë§ˆë¦¬ë™ë¬¼ë³‘ì›', 'ë¶€ì‚°ê´‘ì—­ì‹œ í•´ìš´ëŒ€êµ¬ í•´ìš´ëŒ€ë¡œ 794 ì‚¼ì •ì—˜ë¦¬ì›€', '09:00', '19:00', '0517025750',
+        '')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0517025750', 'ºÎ»ê±¤¿ª½Ã ÇØ¿î´ë±¸ ÇØ¿î´ë·Î 794 »ïÁ¤¿¤¸®¿ò', '¸¶¸®µ¿¹°º´¿ø', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0517025750', 'ë¶€ì‚°ê´‘ì—­ì‹œ í•´ìš´ëŒ€êµ¬ í•´ìš´ëŒ€ë¡œ 794 ì‚¼ì •ì—˜ë¦¬ì›€', 'ë§ˆë¦¬ë™ë¬¼ë³‘ì›', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (2,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
 VALUES (uuid_SEQ.nextval, 'resources/img', '1.jpg')
@@ -317,21 +317,21 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '¼­¿ïµ¿¹°½ÉÀåº´¿ø', '¼­¿ï °­³²±¸ ¾ðÁÖ·Î 542 ENPÅ¸¿ö 1Ãþ', 
-'09:00', '21:00', '0262037588',
-'¾È³çÇÏ¼¼¿ä. ÀúÈñ º´¿øÀº °í¾çÀÌ¿Í °³¸¦ Æ÷ÇÔÇÑ µ¿¹°ÀÇ ½ÉÀåÁúÈ¯ÀÇ Áø´Ü°ú Ä¡·á¿¡ Æ¯È­µÈ º´¿øÀÔ´Ï´Ù.
-ÁÖ¿ä Áø·á°ú¸ñÀº
-1) ÀÏ¹Ý ½ÉÀåÁúÈ¯ÀÇ Áø´Ü°ú Ä¡·á (°í¾çÀÌ ºñ´ë¼º ½É±Ùº´Áõ, °³ÀÇ ÀÌÃ·ÆÇ Æó¼â ºÎÀüÁõ µî)
-2) ³ë·É¼º Áß¿ä ³»°ú ÁúÈ¯ (½ÅÀå±â´ÉºÎÀü, ÃéÀå¿°, Äí½Ì ÁõÈÄ±º µî È£¸£¸ó ÁúÈ¯, °£Àå ºÎÀü µî)
-3) ¼±Ãµ¼º È¤Àº ÈÄÃµ¼º ½ÉÀåº´ÀÇ ½ÉÀåÁßÀç¼ú(interventional cardiology)¿¡ ÀÇÇÑ µ¿¸Æ°ü °³Á¸Áõ (PDA), Æóµ¿¸ÆÆÇ¸· ÇùÂøÁõ µî ¼ö¼ú
-4) °¢Á¾ ºÎÁ¤¸Æ ½Ã¼ú ( ÆäÀÌ½º ¸ÞÀÌÄ¿ ÀåÂø, ½É¹æ¼¼µ¿ÀÇ Á¦¼¼µ¿ µî ) ÀÔ´Ï´Ù.
-5) ½ÉÇ÷°ü°è °Ç°­»óÅÂ¿¡ ´ëÇÑ °Ç°­°ËÁø µî ÀÔ´Ï´Ù.
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ì„œìš¸ë™ë¬¼ì‹¬ìž¥ë³‘ì›', 'ì„œìš¸ ê°•ë‚¨êµ¬ ì–¸ì£¼ë¡œ 542 ENPíƒ€ì›Œ 1ì¸µ',
+        '09:00', '21:00', '0262037588',
+        'ì•ˆë…•í•˜ì„¸ìš”. ì €í¬ ë³‘ì›ì€ ê³ ì–‘ì´ì™€ ê°œë¥¼ í¬í•¨í•œ ë™ë¬¼ì˜ ì‹¬ìž¥ì§ˆí™˜ì˜ ì§„ë‹¨ê³¼ ì¹˜ë£Œì— íŠ¹í™”ëœ ë³‘ì›ìž…ë‹ˆë‹¤.
+        ì£¼ìš” ì§„ë£Œê³¼ëª©ì€
+        1) ì¼ë°˜ ì‹¬ìž¥ì§ˆí™˜ì˜ ì§„ë‹¨ê³¼ ì¹˜ë£Œ (ê³ ì–‘ì´ ë¹„ëŒ€ì„± ì‹¬ê·¼ë³‘ì¦, ê°œì˜ ì´ì²¨íŒ íì‡„ ë¶€ì „ì¦ ë“±)
+        2) ë…¸ë ¹ì„± ì¤‘ìš” ë‚´ê³¼ ì§ˆí™˜ (ì‹ ìž¥ê¸°ëŠ¥ë¶€ì „, ì·Œìž¥ì—¼, ì¿ ì‹± ì¦í›„êµ° ë“± í˜¸ë¥´ëª¬ ì§ˆí™˜, ê°„ìž¥ ë¶€ì „ ë“±)
+        3) ì„ ì²œì„± í˜¹ì€ í›„ì²œì„± ì‹¬ìž¥ë³‘ì˜ ì‹¬ìž¥ì¤‘ìž¬ìˆ (interventional cardiology)ì— ì˜í•œ ë™ë§¥ê´€ ê°œì¡´ì¦ (PDA), íë™ë§¥íŒë§‰ í˜‘ì°©ì¦ ë“± ìˆ˜ìˆ 
+        4) ê°ì¢… ë¶€ì •ë§¥ ì‹œìˆ  ( íŽ˜ì´ìŠ¤ ë©”ì´ì»¤ ìž¥ì°©, ì‹¬ë°©ì„¸ë™ì˜ ì œì„¸ë™ ë“± ) ìž…ë‹ˆë‹¤.
+        5) ì‹¬í˜ˆê´€ê³„ ê±´ê°•ìƒíƒœì— ëŒ€í•œ ê±´ê°•ê²€ì§„ ë“± ìž…ë‹ˆë‹¤.
 
 
-°¨»çÇÕ´Ï´Ù.')
+        ê°ì‚¬í•©ë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, NAME, ADDRESS, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0262037588', '¼­¿ïµ¿¹°½ÉÀåº´¿ø', '¼­¿ï °­³²±¸ ¾ðÁÖ·Î 542 ENPÅ¸¿ö 1Ãþ', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0262037588', 'ì„œìš¸ë™ë¬¼ì‹¬ìž¥ë³‘ì›', 'ì„œìš¸ ê°•ë‚¨êµ¬ ì–¸ì£¼ë¡œ 542 ENPíƒ€ì›Œ 1ì¸µ', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (5,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
@@ -342,11 +342,11 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '±¹Á¦µ¿¹°º´¿ø', 'ºÎ»ê °­¼­±¸ ¸íÁö±¹Á¦8·Î 243', '10:00', '20:00', '0512047588',
-'»ç¶û°ú Á¤¼ºÀ¸·Î ÃÖ¼±À»´ÙÇØ Ä¡·áÇÏ°Ú½À´Ï´Ù.')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'êµ­ì œë™ë¬¼ë³‘ì›', 'ë¶€ì‚° ê°•ì„œêµ¬ ëª…ì§€êµ­ì œ8ë¡œ 243', '10:00', '20:00', '0512047588',
+        'ì‚¬ëž‘ê³¼ ì •ì„±ìœ¼ë¡œ ìµœì„ ì„ë‹¤í•´ ì¹˜ë£Œí•˜ê² ìŠµë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0512047588', 'ºÎ»ê °­¼­±¸ ¸íÁö±¹Á¦8·Î 243', '±¹Á¦µ¿¹°º´¿ø', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0512047588', 'ë¶€ì‚° ê°•ì„œêµ¬ ëª…ì§€êµ­ì œ8ë¡œ 243', 'êµ­ì œë™ë¬¼ë³‘ì›', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
 VALUES (uuid_SEQ.nextval, 'resources/img', '1.jpg')
@@ -356,11 +356,11 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '°¡³ª24½Ãµ¿¹°º´¿ø', '°æ±âµµ ¾È»ê½Ã ´Ü¿ø±¸ °íÀÜµ¿ 537-4 ·Ôµ¥ÇÁ¶óÀÚ 1Ãþ', '00:00', '24:00', '0314024060',
-'°¡³ªµ¿¹°º´¿øÀº 24½ÃÁø·á »Ó¸¸¾Æ´Ï¶ó ¾Ö°ß¿ëÇ°,ºÐ¾ç,¹Ì¿ë,È£ÅÚ,À¯Ä¡¿ø,Ä«Æä¿¡ ÀÌ¸£±â±îÁö ¹Ý·Áµ¿¹°ÀÇ ¿ø½ºÅé ¼­ºñ½º¸¦ ÇÑ°÷¿¡¼­ ´©¸±¼ö ÀÖ½À´Ï´Ù.')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ê°€ë‚˜24ì‹œë™ë¬¼ë³‘ì›', 'ê²½ê¸°ë„ ì•ˆì‚°ì‹œ ë‹¨ì›êµ¬ ê³ ìž”ë™ 537-4 ë¡¯ë°í”„ë¼ìž 1ì¸µ', '00:00', '24:00', '0314024060',
+        'ê°€ë‚˜ë™ë¬¼ë³‘ì›ì€ 24ì‹œì§„ë£Œ ë¿ë§Œì•„ë‹ˆë¼ ì• ê²¬ìš©í’ˆ,ë¶„ì–‘,ë¯¸ìš©,í˜¸í…”,ìœ ì¹˜ì›,ì¹´íŽ˜ì— ì´ë¥´ê¸°ê¹Œì§€ ë°˜ë ¤ë™ë¬¼ì˜ ì›ìŠ¤í†± ì„œë¹„ìŠ¤ë¥¼ í•œê³³ì—ì„œ ëˆ„ë¦´ìˆ˜ ìžˆìŠµë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0314024060', '°æ±âµµ ¾È»ê½Ã ´Ü¿ø±¸ °íÀÜµ¿ 537-4 ·Ôµ¥ÇÁ¶óÀÚ 1Ãþ', '°¡³ª24½Ãµ¿¹°º´¿ø', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0314024060', 'ê²½ê¸°ë„ ì•ˆì‚°ì‹œ ë‹¨ì›êµ¬ ê³ ìž”ë™ 537-4 ë¡¯ë°í”„ë¼ìž 1ì¸µ', 'ê°€ë‚˜24ì‹œë™ë¬¼ë³‘ì›', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (1,HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (2,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
@@ -371,14 +371,14 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '¾ÆÅ©¸®½ºµ¿¹°ÀÇ·á¼¾ÅÍ', '¼­¿ï °­³²±¸ ºÀÀº»ç·Î104±æ 10 µ¿È­ºôµù 3Ãþ', 
-'09:00', '21:00', '025837582',
-'ACRIS Animal Medical Center´Â 1998³â °³¿øºÎÅÍ ÇöÀç±îÁö Ç×»ó ³·Àº ÀÚ¼¼·Î ±âº»¿¡ Ãæ½ÇÇÏ¸ç ÃÖ°íÀÇ ÀÇ·áÁø°ú Ã·´ÜÀåºñ¸¦ ±â¹ÝÀ¸·Î ÇÏ¿© ¹Ý·Áµ¿¹° º¹ÇÕ¹®È­°ø°£È®¸³¿¡ ÀÌ¹ÙÁöÇÏ°íÀÚ ³ë·ÂÀ» ¾Æ³¢Áö ¾Ê°í ÀÖ½À´Ï´Ù. 30¸í ÀÌ»óÀÇ ½ºÅÇÁøÀ¸·Î ±¸¼ºµÈ, ½ÇÆò¼ö 220Æò ÀÌ»óÀÇ ±Ô¸ð·Î ¸¸µé¾îÁø ¹Ý·Áµ¿¹° º¹ÇÕ ¹®È­ °ø°£ ÀÔ´Ï´Ù. °­¾ÆÁö, °í¾çÀÌ, Åä³¢, Ä£Ä¥¶ó, ÇÜ½ºÅÍ, ÀÌ±¸¾Æ³ª, Á¶·ù, °ÅºÏ, °í½¿µµÄ¡, Æä·µ, ¹ì, °ÅºÏÀÌ µîÀ» Áø·áÇÏ¸ç, ÀÛÀº »ý¸íµµ ¼ÒÁßÈ÷ »ý°¢ÇÕ´Ï´Ù ¶ó´Â º´¿øÀÇ ¿øÈÆÀ» ¹ÙÅÁÀ¸·Î, ÃÖ¼±ÀÇ Áø·á¿Í ÃÖÀûÀÇ ½Ã¼³·Î ²Ù¸ç ³õ¾Ò½À´Ï´Ù. ¾ÆÅ©¸®½º µ¿¹°ÀÇ·á¼¾ÅÍ¿¡¼­´Â °³,°í¾çÀÌ,Æä·µ,¾Þ¹«»õ,Åä³¢,°í½¿µµÄ¡ µîÀÇ ´Ù¾çÇÑ Á¾¿¡ ´ëÇØ ? Â÷º°È­µÈ Áø·áÆí¼ºÀ¸·Î ÃÖ»óÀÇ Áø·á¼­ºñ½º¸¦ Á¦°øÇÕ´Ï´Ù. ? º¸È£ÀÚ¿Í Çàº¹ÇÑ º¹ÇÕ¹®È­°ø°£À» ÇÔ²²ÇÕ´Ï´Ù.
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ì•„í¬ë¦¬ìŠ¤ë™ë¬¼ì˜ë£Œì„¼í„°', 'ì„œìš¸ ê°•ë‚¨êµ¬ ë´‰ì€ì‚¬ë¡œ104ê¸¸ 10 ë™í™”ë¹Œë”© 3ì¸µ',
+        '09:00', '21:00', '025837582',
+        'ACRIS Animal Medical CenterëŠ” 1998ë…„ ê°œì›ë¶€í„° í˜„ìž¬ê¹Œì§€ í•­ìƒ ë‚®ì€ ìžì„¸ë¡œ ê¸°ë³¸ì— ì¶©ì‹¤í•˜ë©° ìµœê³ ì˜ ì˜ë£Œì§„ê³¼ ì²¨ë‹¨ìž¥ë¹„ë¥¼ ê¸°ë°˜ìœ¼ë¡œ í•˜ì—¬ ë°˜ë ¤ë™ë¬¼ ë³µí•©ë¬¸í™”ê³µê°„í™•ë¦½ì— ì´ë°”ì§€í•˜ê³ ìž ë…¸ë ¥ì„ ì•„ë¼ì§€ ì•Šê³  ìžˆìŠµë‹ˆë‹¤. 30ëª… ì´ìƒì˜ ìŠ¤íƒ­ì§„ìœ¼ë¡œ êµ¬ì„±ëœ, ì‹¤í‰ìˆ˜ 220í‰ ì´ìƒì˜ ê·œëª¨ë¡œ ë§Œë“¤ì–´ì§„ ë°˜ë ¤ë™ë¬¼ ë³µí•© ë¬¸í™” ê³µê°„ ìž…ë‹ˆë‹¤. ê°•ì•„ì§€, ê³ ì–‘ì´, í† ë¼, ì¹œì¹ ë¼, í–„ìŠ¤í„°, ì´êµ¬ì•„ë‚˜, ì¡°ë¥˜, ê±°ë¶, ê³ ìŠ´ë„ì¹˜, íŽ˜ëŸ¿, ë±€, ê±°ë¶ì´ ë“±ì„ ì§„ë£Œí•˜ë©°, ìž‘ì€ ìƒëª…ë„ ì†Œì¤‘ížˆ ìƒê°í•©ë‹ˆë‹¤ ë¼ëŠ” ë³‘ì›ì˜ ì›í›ˆì„ ë°”íƒ•ìœ¼ë¡œ, ìµœì„ ì˜ ì§„ë£Œì™€ ìµœì ì˜ ì‹œì„¤ë¡œ ê¾¸ë©° ë†“ì•˜ìŠµë‹ˆë‹¤. ì•„í¬ë¦¬ìŠ¤ ë™ë¬¼ì˜ë£Œì„¼í„°ì—ì„œëŠ” ê°œ,ê³ ì–‘ì´,íŽ˜ëŸ¿,ì•µë¬´ìƒˆ,í† ë¼,ê³ ìŠ´ë„ì¹˜ ë“±ì˜ ë‹¤ì–‘í•œ ì¢…ì— ëŒ€í•´ ? ì°¨ë³„í™”ëœ ì§„ë£ŒíŽ¸ì„±ìœ¼ë¡œ ìµœìƒì˜ ì§„ë£Œì„œë¹„ìŠ¤ë¥¼ ì œê³µí•©ë‹ˆë‹¤. ? ë³´í˜¸ìžì™€ í–‰ë³µí•œ ë³µí•©ë¬¸í™”ê³µê°„ì„ í•¨ê»˜í•©ë‹ˆë‹¤.
 
-*ÁÖÂ÷¾È³» : °Ç¹° ÈÄ¸é ±â°è½ÄÁÖÂ÷Àå ÀÌ¿ë, ÁÖº¯ °ø¿µÁÖÂ÷Àå/À¯·áÁÖÂ÷Àå ÀÌ¿ë½Ã 1½Ã°£ ÁÖÂ÷ºñ Á¦°ø')
+        *ì£¼ì°¨ì•ˆë‚´ : ê±´ë¬¼ í›„ë©´ ê¸°ê³„ì‹ì£¼ì°¨ìž¥ ì´ìš©, ì£¼ë³€ ê³µì˜ì£¼ì°¨ìž¥/ìœ ë£Œì£¼ì°¨ìž¥ ì´ìš©ì‹œ 1ì‹œê°„ ì£¼ì°¨ë¹„ ì œê³µ')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, NAME, ADDRESS, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '025837582', '¾ÆÅ©¸®½ºµ¿¹°ÀÇ·á¼¾ÅÍ', '¼­¿ï °­³²±¸ ºÀÀº»ç·Î104±æ 10 µ¿È­ºôµù 3Ãþ', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '025837582', 'ì•„í¬ë¦¬ìŠ¤ë™ë¬¼ì˜ë£Œì„¼í„°', 'ì„œìš¸ ê°•ë‚¨êµ¬ ë´‰ì€ì‚¬ë¡œ104ê¸¸ 10 ë™í™”ë¹Œë”© 3ì¸µ', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,HOSPITAL_SEQ.currval)
 INTO PIC_LIB (UUID, UPLOAD_PATH, FILE_NAME)
 VALUES (uuid_SEQ.nextval, 'resources/img', '1.jpg')
@@ -388,20 +388,20 @@ SELECT * FROM DUAL;
 COMMIT;
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '°í´ö24½Ãµ¿¹°º´¿ø', '¼­¿ï °­µ¿±¸ µ¿³²·Î 877 106È£', 
-'00:00','24:00','0262278275',
-'°í´öµ¿/¸íÀÏµ¿¿¡ À§Ä¡ÇÑ 24½Ã°£ µ¿¹°º´¿øÀÔ´Ï´Ù.
-¾ðÁ¦ ¹ß»ýÇÒÁö ¸ð¸£´Â ÀÀ±ÞÇÑ ¾ÆÀÌµéÀ» À§ÇÑ ÀÀ±ÞÁø·á.
-´ëºÎºÐÀÇ ¿Ü°ú¼ö¼úÀÌ °¡´ÉÇÑ È£Èí¸¶Ãë±â, È¯ÀÚ°¨½Ã±â, ¼ö¼úÀåºñ.
-¾ÆÇÂ ¾ÆÀÌÀÇ Ç÷¾×»óÅÂ¸¦ ¹Ù·Î º¼ ¼ö ÀÖ´Â Ç÷¾×°Ë»ç±â.
-Ã¶ÀúÇÑ ÀÔ¿ø°ü¸®¸¦ À§ÇÑ ¼ö¾×ÆßÇÁ, ½Ç¸°Áö ÆßÇÁ, ÁýÁßÄ¡·á½Ç.
-º´¿øÀ¸·Î¼­ ÃÖ¼±À» ´ÙÇÏ±â À§ÇØ Àåºñ¸¦ °®Ãß±âÀ§ÇØ ³ë·ÂÇÏ°í ÀÖÀ¸¸ç ¾ÕÀ¸·Îµµ ´õ ¹ßÀü½ÃÄÑ³ª°¡°Ú½À´Ï´Ù.
-±× ¿Ü ¼­ºñ½º·Î´Â °í¾çÀÌ¸¦ À§ÇÑ Àü¿ë Ä¹Å¸¿ö È£ÅÚ. °í¾çÀÌ ¹Ì¿ë.
-±âÁ¸ ÄÉÀÌÁöº¸´Ù ³Ð°Ô Á¦ÀÛµÈ °­¾ÆÁö È£ÅÚ, °­¾ÆÁö ¹Ì¿ëÀÌ ÀÖÀ¸¸ç 
-Ä¹Å¸¿ö¿Í Ä¹·Îµå·Î °í¾çÀÌ¸¦ À§ÇÑ °ø°£À» ÇÒ¾ÖÇß½À´Ï´Ù. ¸¹Àº °ü½É ¹Ù¶ø´Ï´Ù.')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ê³ ë•24ì‹œë™ë¬¼ë³‘ì›', 'ì„œìš¸ ê°•ë™êµ¬ ë™ë‚¨ë¡œ 877 106í˜¸',
+        '00:00','24:00','0262278275',
+        'ê³ ë•ë™/ëª…ì¼ë™ì— ìœ„ì¹˜í•œ 24ì‹œê°„ ë™ë¬¼ë³‘ì›ìž…ë‹ˆë‹¤.
+        ì–¸ì œ ë°œìƒí• ì§€ ëª¨ë¥´ëŠ” ì‘ê¸‰í•œ ì•„ì´ë“¤ì„ ìœ„í•œ ì‘ê¸‰ì§„ë£Œ.
+        ëŒ€ë¶€ë¶„ì˜ ì™¸ê³¼ìˆ˜ìˆ ì´ ê°€ëŠ¥í•œ í˜¸í¡ë§ˆì·¨ê¸°, í™˜ìžê°ì‹œê¸°, ìˆ˜ìˆ ìž¥ë¹„.
+        ì•„í”ˆ ì•„ì´ì˜ í˜ˆì•¡ìƒíƒœë¥¼ ë°”ë¡œ ë³¼ ìˆ˜ ìžˆëŠ” í˜ˆì•¡ê²€ì‚¬ê¸°.
+        ì² ì €í•œ ìž…ì›ê´€ë¦¬ë¥¼ ìœ„í•œ ìˆ˜ì•¡íŽŒí”„, ì‹¤ë¦°ì§€ íŽŒí”„, ì§‘ì¤‘ì¹˜ë£Œì‹¤.
+        ë³‘ì›ìœ¼ë¡œì„œ ìµœì„ ì„ ë‹¤í•˜ê¸° ìœ„í•´ ìž¥ë¹„ë¥¼ ê°–ì¶”ê¸°ìœ„í•´ ë…¸ë ¥í•˜ê³  ìžˆìœ¼ë©° ì•žìœ¼ë¡œë„ ë” ë°œì „ì‹œì¼œë‚˜ê°€ê² ìŠµë‹ˆë‹¤.
+        ê·¸ ì™¸ ì„œë¹„ìŠ¤ë¡œëŠ” ê³ ì–‘ì´ë¥¼ ìœ„í•œ ì „ìš© ìº£íƒ€ì›Œ í˜¸í…”. ê³ ì–‘ì´ ë¯¸ìš©.
+        ê¸°ì¡´ ì¼€ì´ì§€ë³´ë‹¤ ë„“ê²Œ ì œìž‘ëœ ê°•ì•„ì§€ í˜¸í…”, ê°•ì•„ì§€ ë¯¸ìš©ì´ ìžˆìœ¼ë©°
+        ìº£íƒ€ì›Œì™€ ìº£ë¡œë“œë¡œ ê³ ì–‘ì´ë¥¼ ìœ„í•œ ê³µê°„ì„ í• ì• í–ˆìŠµë‹ˆë‹¤. ë§Žì€ ê´€ì‹¬ ë°”ëžë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, NAME, ADDRESS, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0262278275', '°í´ö24½Ãµ¿¹°º´¿ø', '¼­¿ï °­µ¿±¸ µ¿³²·Î 877 106È£', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '0262278275', 'ê³ ë•24ì‹œë™ë¬¼ë³‘ì›', 'ì„œìš¸ ê°•ë™êµ¬ ë™ë‚¨ë¡œ 877 106í˜¸', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (4,HOSPITAL_SEQ.currval)
@@ -414,17 +414,17 @@ SELECT * FROM DUAL;
 
 
 INSERT ALL
-INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
-values (HOSPITAL_SEQ.nextval, '½º¸¶Æ®µ¿¹°º´¿ø °­µ¿¾Ï»çÁ¡', '¼­¿ïÆ¯º°½Ã °­µ¿±¸ ¾Ï»çµ¿ 452-31 ¼­¿øºôµù 1Ãþ', 
-'10:00','21:00','024428875',
-'¿øÈÆ :: ¿ì¸®Áý ¾ÆÀÌÃ³·³ °°ÀÌ ±â»µÇÏ°í °°ÀÌ °í¹ÎÇÏ´Â ½º¸¶Æ® °¡Á·ÀÌ µÇÀÚ
-¾È³çÇÏ¼¼¿ä ½º¸¶Æ®µ¿¹°º´¿ø °­µ¿¾Ï»çÁöÁ¡ÀÔ´Ï´Ù~!
-°­³² ½Å»çº»¿ø, °­³² ´ëÄ¡ÁöÁ¡, ¿ï»êÁöÁ¡, µ¿ÅºÁöÁ¡, °­µ¿±¸ÁöÁ¡ ÃÑ 5 °³ÀÇ ÁöÁ¡¿¡
-ÃÑ 36 ¸íÀÇ ¼öÀÇ»ç°¡ ½Éµµ±íÀº ÇùÁøÀ¸·Î °¡Àå ¾ÈÀüÇÏ°í ¿Ïº®À» Ãß±¸ÇÏ´Â ÀÇ·áÈ¯°æÀ» Ãß±¸ÇÕ´Ï´Ù
-¿øÈÆÃ³·³ ¹Ý·Áµ¿¹°µéÀÌ °¡Àå Æí¾ÈÇØ ÇÒ ¼ö ÀÖ´Â È¯°æÀ» Á¶¼ºÇÏ¿©, ¹Ý·Áµ¿¹°µéÀÇ °Ç°­°ú º¸È£ÀÚºÐ ¸ðµÎÀÇ
-Çàº¹°¨À» µå¸®°íÀÚ Ç×»ó ÃÖ¼±À» ´ÙÇÑ ÀÇ·á ¼­ºñ½º¸¦ Á¦°øÇØ µå¸®°Ú½À´Ï´Ù.')
+    INTO hospital (hospital_id, name, address, treat_start, treat_end, tel, info)
+values (HOSPITAL_SEQ.nextval, 'ìŠ¤ë§ˆíŠ¸ë™ë¬¼ë³‘ì› ê°•ë™ì•”ì‚¬ì ', 'ì„œìš¸íŠ¹ë³„ì‹œ ê°•ë™êµ¬ ì•”ì‚¬ë™ 452-31 ì„œì›ë¹Œë”© 1ì¸µ',
+        '10:00','21:00','024428875',
+        'ì›í›ˆ :: ìš°ë¦¬ì§‘ ì•„ì´ì²˜ëŸ¼ ê°™ì´ ê¸°ë»í•˜ê³  ê°™ì´ ê³ ë¯¼í•˜ëŠ” ìŠ¤ë§ˆíŠ¸ ê°€ì¡±ì´ ë˜ìž
+        ì•ˆë…•í•˜ì„¸ìš” ìŠ¤ë§ˆíŠ¸ë™ë¬¼ë³‘ì› ê°•ë™ì•”ì‚¬ì§€ì ìž…ë‹ˆë‹¤~!
+        ê°•ë‚¨ ì‹ ì‚¬ë³¸ì›, ê°•ë‚¨ ëŒ€ì¹˜ì§€ì , ìš¸ì‚°ì§€ì , ë™íƒ„ì§€ì , ê°•ë™êµ¬ì§€ì  ì´ 5 ê°œì˜ ì§€ì ì—
+        ì´ 36 ëª…ì˜ ìˆ˜ì˜ì‚¬ê°€ ì‹¬ë„ê¹Šì€ í˜‘ì§„ìœ¼ë¡œ ê°€ìž¥ ì•ˆì „í•˜ê³  ì™„ë²½ì„ ì¶”êµ¬í•˜ëŠ” ì˜ë£Œí™˜ê²½ì„ ì¶”êµ¬í•©ë‹ˆë‹¤
+        ì›í›ˆì²˜ëŸ¼ ë°˜ë ¤ë™ë¬¼ë“¤ì´ ê°€ìž¥ íŽ¸ì•ˆí•´ í•  ìˆ˜ ìžˆëŠ” í™˜ê²½ì„ ì¡°ì„±í•˜ì—¬, ë°˜ë ¤ë™ë¬¼ë“¤ì˜ ê±´ê°•ê³¼ ë³´í˜¸ìžë¶„ ëª¨ë‘ì˜
+        í–‰ë³µê°ì„ ë“œë¦¬ê³ ìž í•­ìƒ ìµœì„ ì„ ë‹¤í•œ ì˜ë£Œ ì„œë¹„ìŠ¤ë¥¼ ì œê³µí•´ ë“œë¦¬ê² ìŠµë‹ˆë‹¤.')
 INTO ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, NAME, ADDRESS, JOIN_DATE, LAST_LOGIN, ENABLED, HOSPITAL_ID)
-values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '024428875', '½º¸¶Æ®µ¿¹°º´¿ø °­µ¿¾Ï»çÁ¡', '¼­¿ïÆ¯º°½Ã °­µ¿±¸ ¾Ï»çµ¿ 452-31 ¼­¿øºôµù 1Ãþ', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
+values ('hospital'||HOSPITAL_SEQ.currval||'@gmail.com', '{noop}1234', 'hospital', '024428875', 'ìŠ¤ë§ˆíŠ¸ë™ë¬¼ë³‘ì› ê°•ë™ì•”ì‚¬ì ', 'ì„œìš¸íŠ¹ë³„ì‹œ ê°•ë™êµ¬ ì•”ì‚¬ë™ 452-31 ì„œì›ë¹Œë”© 1ì¸µ', sysdate, null, 'enabled', HOSPITAL_SEQ.currval)
 
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (1,HOSPITAL_SEQ.currval)
 INTO ZALBAZO.HOSPITAL_LABEL (LABEL_CODE,HOSPITAL_ID) values (3,HOSPITAL_SEQ.currval)
@@ -440,265 +440,265 @@ SELECT * FROM DUAL;
 
 -- USER INSER --
 Insert into ZALBAZO.ZALBAZO_USER (USER_EMAIL,PASSWORD,ROLE,TEL,ADDRESS,NAME,JOIN_DATE,LAST_LOGIN,ENABLED,EMAIL_AUTH_KEY,HOSPITAL_ID)
-values ('upwyy123@gmail.com','{noop}1234','user','444','¼­¿ïÆ¯º°½Ã µ¿ÀÛ±¸ µ¿ÀÛ´ë·Î 121-4,(»ç´çµ¿)','¸Þ¸Þ',to_date('19/09/14','RR/MM/DD'),null,'enabled',null,null);
+values ('upwyy123@gmail.com','{noop}1234','user','444','ì„œìš¸íŠ¹ë³„ì‹œ ë™ìž‘êµ¬ ë™ìž‘ëŒ€ë¡œ 121-4,(ì‚¬ë‹¹ë™)','ë©”ë©”',to_date('19/09/14','RR/MM/DD'),null,'enabled',null,null);
 
 Insert into ZALBAZO.ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, enabled)
-Values('jjlee@gmail.com', '{noop}1234', 'user', '01097946214', 'ÀÎÃµ½Ã ºÎÆò±¸', 'ÀÌÀçÀÌ', to_date('19/09/29','RR/MM/DD'), sysdate, 'enabled');
+Values('jjlee@gmail.com', '{noop}1234', 'user', '01097946214', 'ì¸ì²œì‹œ ë¶€í‰êµ¬', 'ì´ìž¬ì´', to_date('19/09/29','RR/MM/DD'), sysdate, 'enabled');
 
 Insert into ZALBAZO.ZALBAZO_USER (USER_EMAIL,PASSWORD,ROLE,TEL,ADDRESS,NAME,JOIN_DATE,LAST_LOGIN,ENABLED,EMAIL_AUTH_KEY,HOSPITAL_ID)
-values ('iceice@gmail.com','{noop}1234','user','01012340987','¼­¿ï½Ã ¼­ÃÊ±¸','¾ÆÀÌ½ºº£¾î',to_date('19/10/01','RR/MM/DD'),sysdate,'enabled',null,null);
+values ('iceice@gmail.com','{noop}1234','user','01012340987','ì„œìš¸ì‹œ ì„œì´ˆêµ¬','ì•„ì´ìŠ¤ë² ì–´',to_date('19/10/01','RR/MM/DD'),sysdate,'enabled',null,null);
 
 insert into ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, HOSPITAL_ID)
-values ('baba1234@gmail.com', '{noop}1234', 'user', '01012341234', '¼­¿ï½Ã ¼­ÃÊ±¸', '¹Ù¹Ù', to_date('19/10/11','RR/MM/DD'), null, null);
+values ('baba1234@gmail.com', '{noop}1234', 'user', '01012341234', 'ì„œìš¸ì‹œ ì„œì´ˆêµ¬', 'ë°”ë°”', to_date('19/10/11','RR/MM/DD'), null, null);
 
 
--- °èÁ¤ 5°³ ¸¸µé±â
+-- ê³„ì • 5ê°œ ë§Œë“¤ê¸°
 insert into ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, HOSPITAL_ID, ENABLED)
-values ('doglover@daum.net', '{noop}1234', 'user', 01045671234, '¼­¿ï ¼­ÃÊ±¸ ¹æ¹è·Î33±æ 29', '¹Ú¼öÁø', to_date('19/09/01','RR/MM/DD'),null, null, 'enabled');
+values ('doglover@daum.net', '{noop}1234', 'user', 01045671234, 'ì„œìš¸ ì„œì´ˆêµ¬ ë°©ë°°ë¡œ33ê¸¸ 29', 'ë°•ìˆ˜ì§„', to_date('19/09/01','RR/MM/DD'),null, null, 'enabled');
 insert into ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, HOSPITAL_ID, ENABLED)
-values ('ilikecat@gmail.com', '{noop}1234', 'user', 01012347890, '°æ±â ¿À»ê½Ã »ï¹Ì·Î 34', 'ÇÑ¼ºÁø', to_date('19/09/22','RR/MM/DD'),null, null, 'enabled');
+values ('ilikecat@gmail.com', '{noop}1234', 'user', 01012347890, 'ê²½ê¸° ì˜¤ì‚°ì‹œ ì‚¼ë¯¸ë¡œ 34', 'í•œì„±ì§„', to_date('19/09/22','RR/MM/DD'),null, null, 'enabled');
 insert into ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, HOSPITAL_ID, ENABLED)
-values ('bird1234@daum.net', '{noop}1234', 'user', 01011119923, 'ºÎ»ê ÇØ¿î´ë±¸ ¸¶¸°½ÃÆ¼2·Î 33', 'jin', to_date('19/10/10','RR/MM/DD'),null, null, 'enabled');
+values ('bird1234@daum.net', '{noop}1234', 'user', 01011119923, 'ë¶€ì‚° í•´ìš´ëŒ€êµ¬ ë§ˆë¦°ì‹œí‹°2ë¡œ 33', 'jin', to_date('19/10/10','RR/MM/DD'),null, null, 'enabled');
 insert into ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, HOSPITAL_ID, ENABLED)
-values ('puppylover@naver.com', '{noop}1234', 'user', 01045671234, '¼¼Á¾Æ¯º°ÀÚÄ¡½Ã ´ÙÁ¤³²·Î 22', 'mike', to_date('19/10/07','RR/MM/DD'),null, null, 'enabled');
+values ('puppylover@naver.com', '{noop}1234', 'user', 01045671234, 'ì„¸ì¢…íŠ¹ë³„ìžì¹˜ì‹œ ë‹¤ì •ë‚¨ë¡œ 22', 'mike', to_date('19/10/07','RR/MM/DD'),null, null, 'enabled');
 insert into ZALBAZO_USER (USER_EMAIL, PASSWORD, ROLE, TEL, ADDRESS, NAME, JOIN_DATE, LAST_LOGIN, HOSPITAL_ID, ENABLED)
-values ('nakta@daum.net', '{noop}1234', 'user', 01099991625, '°æ±â ±¤¸í½Ã ¿¬¼­ÀÏ·Î17¹ø±æ 26', 'ÅÂ¼ö', sysdate,null, null, 'enabled');
+values ('nakta@daum.net', '{noop}1234', 'user', 01099991625, 'ê²½ê¸° ê´‘ëª…ì‹œ ì—°ì„œì¼ë¡œ17ë²ˆê¸¸ 26', 'íƒœìˆ˜', sysdate,null, null, 'enabled');
 
 
 
 
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL,name)
-values (CONTENT_SEQ.nextval,'È¤½Ã ÇÜ½ºÅÍ º¸È£ÀÚ ºÐ °è½Å°¡¿ä?','°£½Ä ÃßÃµ Á» ÇØÁÖ¼¼¿ä~',to_date('19/08/17','RR/MM/DD'),1,'baba1234@gmail.com', (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
-
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL,name) 
-values (CONTENT_SEQ.nextval,'¿Õ°ü¾Þ¹«µµ ¸»À» ÇÒ ¼ö ÀÖ³ª¿ä?','¾È³çÇÏ¼¼¿ä! Àú´Â ¿Õ°ü¾Þ¹«¸¦ ±â¸£°í ½ÍÀº »ç¶÷ÀÔ´Ï´Ù.
-±×·±µ¥ ¿Õ°ü¾Þ¹«µµ ´Ù¸¥ ¾Þ¹«»õÃ³·³ ¸»À» ÇÒ ¼ö ÀÖ³ª¿ä?
-Àú´Â ¿Õ°ü¾Þ¹«¸¦ ±â¸£¸é ¿Õ°ü¾Þ¹«¶û °°ÀÌ ³ë·¡¸¦ ºÎ¸£°í ½Í½À´Ï´Ù.
-´äº¯ ºÎÅ¹µå·Á¿ä!!!',to_date('19/08/17','RR/MM/DD'),2,'iceice@gmail.com', (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
+values (CONTENT_SEQ.nextval,'í˜¹ì‹œ í–„ìŠ¤í„° ë³´í˜¸ìž ë¶„ ê³„ì‹ ê°€ìš”?','ê°„ì‹ ì¶”ì²œ ì¢€ í•´ì£¼ì„¸ìš”~',to_date('19/08/17','RR/MM/DD'),1,'baba1234@gmail.com', (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL,name)
-values (CONTENT_SEQ.nextval,'°í¾çÀÌ ÀÔ¾ç½ÃÅ°·Á°í ÇÏ´Âµ¥ ÁØºñ¹°!!','°í¾çÀÌ¸¦ µåµð¾î ÀÔ¾ç½ÃÅ°°ÔµÇ¾ú½À´Ï´Ù ÀÌ¸§µµ Á¤ÇØ³ù¾î¿ä ‡œ‡œÀÌ ¶ó°í ¿ì¸® ‡œ‡œÀÌ ÀÔ¾ç½ÃÅ°·Á´Âµ¥ ÁØºñ¹°ÀÌ ¹¹°¡ ÇÊ¿äÇÑÁö ±Ã±ÝÇÕ´Ï´Ù~~',to_date('19/08/22','RR/MM/DD'),2,'upwyy123@gmail.com'
-, (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
+values (CONTENT_SEQ.nextval,'ì™•ê´€ì•µë¬´ë„ ë§ì„ í•  ìˆ˜ ìžˆë‚˜ìš”?','ì•ˆë…•í•˜ì„¸ìš”! ì €ëŠ” ì™•ê´€ì•µë¬´ë¥¼ ê¸°ë¥´ê³  ì‹¶ì€ ì‚¬ëžŒìž…ë‹ˆë‹¤.
+ê·¸ëŸ°ë° ì™•ê´€ì•µë¬´ë„ ë‹¤ë¥¸ ì•µë¬´ìƒˆì²˜ëŸ¼ ë§ì„ í•  ìˆ˜ ìžˆë‚˜ìš”?
+ì €ëŠ” ì™•ê´€ì•µë¬´ë¥¼ ê¸°ë¥´ë©´ ì™•ê´€ì•µë¬´ëž‘ ê°™ì´ ë…¸ëž˜ë¥¼ ë¶€ë¥´ê³  ì‹¶ìŠµë‹ˆë‹¤.
+ë‹µë³€ ë¶€íƒë“œë ¤ìš”!!!',to_date('19/08/17','RR/MM/DD'),2,'iceice@gmail.com', (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL,name)
-values (CONTENT_SEQ.nextval,'°í½¿µµÄ¡¿ë ÇÁ¶óÀÌ¸Ö ¿À¸® ±¸¸ÅÇß¾î¿ä!','È£ºÒÈ£ ¾øÀÌ Àß¸Ô´Â´Ù°í ¼Ò¹®³­ ÇÁ¶óÀÌ¸Ö ¿À¸®¸¦ ¿©±âÀú±â µÚÁ®º¸´Ùº¸´Ï ÄíÆÎ¿¡¼­ ÆÇ¸ÅÇÏ±æ·¡ µåµð¾î ±¸¸ÅÇß³×¿ä.
-´ÙÀ½ÁÖ È­¿äÀÏ¿¡ ¿ÀÁö¸¸ ±×¶§±îÁö Á» ±â´Ù·Á¾ßÁÒ ¹¹ ¤¾¤¾ ±¸¸Å ÇÏ½Ç ºÐµé Âü°íÇØÁÖ¼¼¿ä~',to_date('19/08/30','RR/MM/DD'),1,'jjlee@gmail.com'
-, (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
+values (CONTENT_SEQ.nextval,'ê³ ì–‘ì´ ìž…ì–‘ì‹œí‚¤ë ¤ê³  í•˜ëŠ”ë° ì¤€ë¹„ë¬¼!!','ê³ ì–‘ì´ë¥¼ ë“œë””ì–´ ìž…ì–‘ì‹œí‚¤ê²Œë˜ì—ˆìŠµë‹ˆë‹¤ ì´ë¦„ë„ ì •í•´ë†¨ì–´ìš” ë‡¸ë‡¸ì´ ë¼ê³  ìš°ë¦¬ ë‡¸ë‡¸ì´ ìž…ì–‘ì‹œí‚¤ë ¤ëŠ”ë° ì¤€ë¹„ë¬¼ì´ ë­ê°€ í•„ìš”í•œì§€ ê¶ê¸ˆí•©ë‹ˆë‹¤~~',to_date('19/08/22','RR/MM/DD'),2,'upwyy123@gmail.com'
+       , (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
 
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL,name) 
-values (CONTENT_SEQ.nextval,'°­¾ÆÁö ¿Ê ÃßÃµ ºÎÅ¹µå¸³´Ï´Ù¤Ð¤Ð¤Ð','ÀÌÁ¦ ³¯ÀÌ ½Ò½ÒÇØÁ®¼­ °­¾ÆÁö ¿ÊÀ» ÀÔÈú±î ÇÏ´Âµ¥
-ÃßÀ§¸¦ ¸¹ÀÌ Å¸¼­ ¸öÀ» ÀüÃ¼ µ¤À» ¼ö ÀÖ°í ¸ñÁÙ °Å´Â °Å ±îÁö ÀÖ´Â°É·Î ÃßÃµÇØÁÖ¼¼¿ä¤Ð¤Ð!
-¹Ý·Áµ¿¹°À» Ã³À½ Å°¿ì´Ùº¸´Ï ¾îµð°¡ ÁÁÀ»Áö °¨ÀÌ ¾È ¿Í¿ä¤Ð¤Ð¤Ð',to_date('19/08/30','RR/MM/DD'),2,'iceice@gmail.com', (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL,name)
+values (CONTENT_SEQ.nextval,'ê³ ìŠ´ë„ì¹˜ìš© í”„ë¼ì´ë©€ ì˜¤ë¦¬ êµ¬ë§¤í–ˆì–´ìš”!','í˜¸ë¶ˆí˜¸ ì—†ì´ ìž˜ë¨¹ëŠ”ë‹¤ê³  ì†Œë¬¸ë‚œ í”„ë¼ì´ë©€ ì˜¤ë¦¬ë¥¼ ì—¬ê¸°ì €ê¸° ë’¤ì ¸ë³´ë‹¤ë³´ë‹ˆ ì¿ íŒ¡ì—ì„œ íŒë§¤í•˜ê¸¸ëž˜ ë“œë””ì–´ êµ¬ë§¤í–ˆë„¤ìš”.
+ë‹¤ìŒì£¼ í™”ìš”ì¼ì— ì˜¤ì§€ë§Œ ê·¸ë•Œê¹Œì§€ ì¢€ ê¸°ë‹¤ë ¤ì•¼ì£  ë­ ã…Žã…Ž êµ¬ë§¤ í•˜ì‹¤ ë¶„ë“¤ ì°¸ê³ í•´ì£¼ì„¸ìš”~',to_date('19/08/30','RR/MM/DD'),1,'jjlee@gmail.com'
+       , (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
 
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'°­¾ÆÁö °£½Ä ÃßÃµÇØ¿ä!','Áö¸¶ÄÏ¿¡¼­ À°Æ÷¸¦ »ò´Âµ¥ °¡°Ýµµ Àû´çÇÏ°í
-¿ì¸®Áý ¾Ö±â°¡ ³Ê¹« Àß¸Ô³×¿ä! ÇÑ¹ø µµÀüÇØº¸¼¼¿ä~',to_date('19/09/01','RR/MM/DD'),1,'doglover@daum.net', (select name from zalbazo_user where user_email = 'doglover@daum.net'));
-
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'¿ì¸®Áý ¿Ð¿ÐÀÌ°¡ ÃÖ°í¾ä','Á¦ÀÏ ±Í¿©¿ö¿ë ¤¾¤¾¤¾¤¾¤¾¤¾¤¾¤¾ ÇÏÇÏÇÏ¤¿ÇÏÇÏÇÏÇÏÇÏÇÏ Â¯Â¯',to_date('19/09/04','RR/MM/DD'),1,'upwyy123@gmail.com'
-, (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
-
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'¿ì¸®Áý ÆÐ·µ º¸°í°¡¼¼¿ä','Ã³À½¿£ ³¸µµ ¸¹ÀÌ °¡¸®°í ÀúÇÑÅ× ¾È¿Ô¾ú´Âµ¥
-¿äÁòÀº ÀúÇÑÅ× ¾Ö±³µµ ºÎ¸®³×¿ä
-³Ê¹« ±Í¿©¿ö¿ä!!',to_date('19/09/09','RR/MM/DD'),1,'nakta@daum.net', (select name from zalbazo_user where user_email = 'nakta@daum.net'));
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL,name)
+values (CONTENT_SEQ.nextval,'ê°•ì•„ì§€ ì˜· ì¶”ì²œ ë¶€íƒë“œë¦½ë‹ˆë‹¤ã… ã… ã… ','ì´ì œ ë‚ ì´ ìŒ€ìŒ€í•´ì ¸ì„œ ê°•ì•„ì§€ ì˜·ì„ ìž…ížê¹Œ í•˜ëŠ”ë°
+ì¶”ìœ„ë¥¼ ë§Žì´ íƒ€ì„œ ëª¸ì„ ì „ì²´ ë®ì„ ìˆ˜ ìžˆê³  ëª©ì¤„ ê±°ëŠ” ê±° ê¹Œì§€ ìžˆëŠ”ê±¸ë¡œ ì¶”ì²œí•´ì£¼ì„¸ìš”ã… ã… !
+ë°˜ë ¤ë™ë¬¼ì„ ì²˜ìŒ í‚¤ìš°ë‹¤ë³´ë‹ˆ ì–´ë””ê°€ ì¢‹ì„ì§€ ê°ì´ ì•ˆ ì™€ìš”ã… ã… ã… ',to_date('19/08/30','RR/MM/DD'),2,'iceice@gmail.com', (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'°í¾çÀÌ ±â´ë¼ö¸í 30³â.. °¡´ÉÇÒ±î¿ä?','°í·ÉÀÇ °í¾çÀÌ´Â °ÅÀÇ ½ÅÀåº´À¸·Î »ýÀ» ¸¶°¨ÇÏ´Âµ¥ ½ÅÀåº´À» °íÄ¥ ¼ö ÀÖ´Â Æ¯È¿¾àÀÌ ÀÏº»¿¡¼­ °³¹ß µÇ¾ú´Ù´Â ´º½º¸¦ ºÃ¾î¿ä. 
-pkd ÆÇÁ¤¹ÞÀº ³ÉÀÌ µ¥¸®°í »ì°í ÀÖ´Âµ¥ È®½ÇÇÏÁø ¾ÊÀ¸³ª ÀÌ·± ¼Ò½ÄÀÌ ÀÖ¾î ±â´ë°¡ µÇ±âµµ ÇÏ³×¿ä!',to_date('19/09/13','RR/MM/DD'),1,'jjlee@gmail.com'
-, (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
+values (CONTENT_SEQ.nextval,'ê°•ì•„ì§€ ê°„ì‹ ì¶”ì²œí•´ìš”!','ì§€ë§ˆì¼“ì—ì„œ ìœ¡í¬ë¥¼ ìƒ€ëŠ”ë° ê°€ê²©ë„ ì ë‹¹í•˜ê³ 
+ìš°ë¦¬ì§‘ ì• ê¸°ê°€ ë„ˆë¬´ ìž˜ë¨¹ë„¤ìš”! í•œë²ˆ ë„ì „í•´ë³´ì„¸ìš”~',to_date('19/09/01','RR/MM/DD'),1,'doglover@daum.net', (select name from zalbazo_user where user_email = 'doglover@daum.net'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'±¸¿î°í±â ¸Ô¿©µµµÉ±î¿ä???','¿ì¸® ¿Ð¿ÐÀÌ°¡ »ý°í±â¸¦ ¾È¸Ô´Âµ¥ ±¸¿î°í±â¸¦ ¸Ô¿©µµ µÉÁö ¸ð¸£°Ú¾î¿ä ¾Ë·ÁÁÖ¼¼¿ë~~',to_date('19/09/12','RR/MM/DD'),2,'upwyy123@gmail.com'
-, (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
+values (CONTENT_SEQ.nextval,'ìš°ë¦¬ì§‘ ì™ˆì™ˆì´ê°€ ìµœê³ ì–Œ','ì œì¼ ê·€ì—¬ì›Œìš© ã…Žã…Žã…Žã…Žã…Žã…Žã…Žã…Ž í•˜í•˜í•˜ã…í•˜í•˜í•˜í•˜í•˜í•˜ ì§±ì§±',to_date('19/09/04','RR/MM/DD'),1,'upwyy123@gmail.com'
+       , (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'°í½¿µµÄ¡ È¯Àý±â º¸½À','¹æ¿¡ °¡½À±â·Î ½Àµµ 5-60%¸¦ À¯ÁöÇÏ°í ÀÖÁö¸¸ Ä¡¿øÀÌ¸¦ ¾ÆÁ÷ ¸ñ¿åÀ» ¾È½ÃÄÑ¼­ °¢ÁúÀÌ...¾öÃ»³³´Ï´Ù. 
-¾Æ¸¶ ÀÌ¹øÁÖ¿¡ Á¶±ÝÀÌ³ª¸¶ ÇÚµé¸µ¿¡ ¼º°øÇÏ¸é ¸ñ¿åÀ» ½ÃÄÑº¸·Á°í ÇØ¿ä Á¦°¡ »ç¿ëÇÏ´Â È£È£¹Ù 100% Á¦Ç° °°ÀÌ »ç¿ëÇØµµ ±¦ÂúÀ»±î¿ä...?',to_date('19/09/14','RR/MM/DD'),2,'jjlee@gmail.com'
-, (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
+values (CONTENT_SEQ.nextval,'ìš°ë¦¬ì§‘ íŒ¨ëŸ¿ ë³´ê³ ê°€ì„¸ìš”','ì²˜ìŒì—” ë‚¯ë„ ë§Žì´ ê°€ë¦¬ê³  ì €í•œí…Œ ì•ˆì™”ì—ˆëŠ”ë°
+ìš”ì¦˜ì€ ì €í•œí…Œ ì• êµë„ ë¶€ë¦¬ë„¤ìš”
+ë„ˆë¬´ ê·€ì—¬ì›Œìš”!!',to_date('19/09/09','RR/MM/DD'),1,'nakta@daum.net', (select name from zalbazo_user where user_email = 'nakta@daum.net'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ê³ ì–‘ì´ ê¸°ëŒ€ìˆ˜ëª… 30ë…„.. ê°€ëŠ¥í• ê¹Œìš”?','ê³ ë ¹ì˜ ê³ ì–‘ì´ëŠ” ê±°ì˜ ì‹ ìž¥ë³‘ìœ¼ë¡œ ìƒì„ ë§ˆê°í•˜ëŠ”ë° ì‹ ìž¥ë³‘ì„ ê³ ì¹  ìˆ˜ ìžˆëŠ” íŠ¹íš¨ì•½ì´ ì¼ë³¸ì—ì„œ ê°œë°œ ë˜ì—ˆë‹¤ëŠ” ë‰´ìŠ¤ë¥¼ ë´¤ì–´ìš”.
+pkd íŒì •ë°›ì€ ëƒ¥ì´ ë°ë¦¬ê³  ì‚´ê³  ìžˆëŠ”ë° í™•ì‹¤í•˜ì§„ ì•Šìœ¼ë‚˜ ì´ëŸ° ì†Œì‹ì´ ìžˆì–´ ê¸°ëŒ€ê°€ ë˜ê¸°ë„ í•˜ë„¤ìš”!',to_date('19/09/13','RR/MM/DD'),1,'jjlee@gmail.com'
+       , (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'êµ¬ìš´ê³ ê¸° ë¨¹ì—¬ë„ë ê¹Œìš”???','ìš°ë¦¬ ì™ˆì™ˆì´ê°€ ìƒê³ ê¸°ë¥¼ ì•ˆë¨¹ëŠ”ë° êµ¬ìš´ê³ ê¸°ë¥¼ ë¨¹ì—¬ë„ ë ì§€ ëª¨ë¥´ê² ì–´ìš” ì•Œë ¤ì£¼ì„¸ìš©~~',to_date('19/09/12','RR/MM/DD'),2,'upwyy123@gmail.com'
+       , (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ê³ ìŠ´ë„ì¹˜ í™˜ì ˆê¸° ë³´ìŠµ','ë°©ì— ê°€ìŠµê¸°ë¡œ ìŠµë„ 5-60%ë¥¼ ìœ ì§€í•˜ê³  ìžˆì§€ë§Œ ì¹˜ì›ì´ë¥¼ ì•„ì§ ëª©ìš•ì„ ì•ˆì‹œì¼œì„œ ê°ì§ˆì´...ì—„ì²­ë‚©ë‹ˆë‹¤.
+ì•„ë§ˆ ì´ë²ˆì£¼ì— ì¡°ê¸ˆì´ë‚˜ë§ˆ í•¸ë“¤ë§ì— ì„±ê³µí•˜ë©´ ëª©ìš•ì„ ì‹œì¼œë³´ë ¤ê³  í•´ìš” ì œê°€ ì‚¬ìš©í•˜ëŠ” í˜¸í˜¸ë°” 100% ì œí’ˆ ê°™ì´ ì‚¬ìš©í•´ë„ ê´œì°®ì„ê¹Œìš”...?',to_date('19/09/14','RR/MM/DD'),2,'jjlee@gmail.com'
+       , (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
 
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'ÀÎ»ý¾²´Ù...','´ëÃ¼ ¿äÁò Á¦°¡ ¹»ÇÏ°íÀÖ´ÂÁö ... ÀßÇÏ°íÀÖ´ÂÁö... Á¤¸» ¸¹Àº »ý°¢À» ÇÏ°ÔµÇ³×¿ä',to_date('19/09/16','RR/MM/DD'),1,'upwyy123@gmail.com'
-, (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
+values (CONTENT_SEQ.nextval,'ì¸ìƒì“°ë‹¤...','ëŒ€ì²´ ìš”ì¦˜ ì œê°€ ë­˜í•˜ê³ ìžˆëŠ”ì§€ ... ìž˜í•˜ê³ ìžˆëŠ”ì§€... ì •ë§ ë§Žì€ ìƒê°ì„ í•˜ê²Œë˜ë„¤ìš”',to_date('19/09/16','RR/MM/DD'),1,'upwyy123@gmail.com'
+       , (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'Áý»ç°¡ µÇ´Â ±æÀÌ¶õ..','ÇÏ... ¿ì¸®Áý ‡œ‡œÀÌ°¡(°í¾çÀÌ) ¹«·°¹«·° ÀßÀÚ¶úÀ¸¸é  ÇÏ´Â ¹Ù¶÷ÀÎµ¥Á¦°¡ ÀßÅ°¿ì°íÀÖ´Â°ÇÁö ¸ð¸£°Ú³×¿ä Á»´õ °øºÎ¸¦ ¸¹ÀÌÇØ¼­ ÁÁÀº Áý»ç°¡ µÇ°Ú½À´Ï´ç! 
-Áý»ç´Ôµé È­ÀÌÆÃ!',to_date('19/09/20','RR/MM/DD'),1,'upwyy123@gmail.com', (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
+values (CONTENT_SEQ.nextval,'ì§‘ì‚¬ê°€ ë˜ëŠ” ê¸¸ì´ëž€..','í•˜... ìš°ë¦¬ì§‘ ë‡¸ë‡¸ì´ê°€(ê³ ì–‘ì´) ë¬´ëŸ­ë¬´ëŸ­ ìž˜ìžëžìœ¼ë©´  í•˜ëŠ” ë°”ëžŒì¸ë°ì œê°€ ìž˜í‚¤ìš°ê³ ìžˆëŠ”ê±´ì§€ ëª¨ë¥´ê² ë„¤ìš” ì¢€ë” ê³µë¶€ë¥¼ ë§Žì´í•´ì„œ ì¢‹ì€ ì§‘ì‚¬ê°€ ë˜ê² ìŠµë‹ˆë‹¹!
+ì§‘ì‚¬ë‹˜ë“¤ í™”ì´íŒ…!',to_date('19/09/20','RR/MM/DD'),1,'upwyy123@gmail.com', (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'´ó´óÀÌºÐµé! ÀÎ½ºÅ¸¸ÂÆÈÇØ¿ä~','°­¾ÆÁö¸¦ ³Ê¹« ÁÁ¾ÆÇØ¼­ ¸Ç³¯ ÀÎ½ºÅ¸·Î ´Ù¸¥ ºÐµéÀÇ ´ó´óÀÌ¸¸ º¸´Ù°¡ ¿ì¸®Áý ´ó´óÀÌµµ ÀÎ½ºÅ¸¸¦ ½ÃÀÛÇÏ°í ½Í¾î ¸¸µé°Ô µÆ½À´Ï´Ù!
-ÇªµéÀ» ºñ·ÔÇØ¼­ ÀÎ½ºÅ¸ ¸ÂÆÈÇØ¿ë^>^ @mumu32 ÀÔ´Ï´Ù~!! Ä£±¸ÇØ¿ä~!!',to_date('19/09/22','RR/MM/DD'),1,'jjlee@gmail.com', (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
+values (CONTENT_SEQ.nextval,'ëŒ•ëŒ•ì´ë¶„ë“¤! ì¸ìŠ¤íƒ€ë§žíŒ”í•´ìš”~','ê°•ì•„ì§€ë¥¼ ë„ˆë¬´ ì¢‹ì•„í•´ì„œ ë§¨ë‚  ì¸ìŠ¤íƒ€ë¡œ ë‹¤ë¥¸ ë¶„ë“¤ì˜ ëŒ•ëŒ•ì´ë§Œ ë³´ë‹¤ê°€ ìš°ë¦¬ì§‘ ëŒ•ëŒ•ì´ë„ ì¸ìŠ¤íƒ€ë¥¼ ì‹œìž‘í•˜ê³  ì‹¶ì–´ ë§Œë“¤ê²Œ ëìŠµë‹ˆë‹¤!
+í‘¸ë“¤ì„ ë¹„ë¡¯í•´ì„œ ì¸ìŠ¤íƒ€ ë§žíŒ”í•´ìš©^>^ @mumu32 ìž…ë‹ˆë‹¤~!! ì¹œêµ¬í•´ìš”~!!',to_date('19/09/22','RR/MM/DD'),1,'jjlee@gmail.com', (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'±â´Ù¸®°í ±â´Ù¸®´ø Ä¹Å¸¿ö°¡ ¿Ô¾î¿ä~~','³»³â¿¡ ÀÌ»ç°¡¸é ¹Ù²ãÁÖ¸®¶ó ¸¶À½ ¸Ô¾úÁö¸¸ À¯Áî°¡ ¿ì´Ù´Ù ÇÒ ¶§¸¶´Ù ½ÉÇÏ°Ô Èçµé¸®´Â°Ô ¸¶À½¿¡ °É·Á Å«¸¾¸Ô°í Áö¸£°í ¸»¾Ò½À´Ï´Ù.
-±æ°í±ä ±â´Ù¸² ³¡¿¡ ¿À´Ã µåµð¾î µµÂøÇß³×¿ä. Á¶¸³À» ³¡³»°í º¸´Ï »ý°¢ ÀÌ»óÀ¸·Î Å©±â°¡ ¾î¸¶¾î¸¶ ÇÕ´Ï´Ù. Æ°Æ°ÇÔµµ ¸¸Á·½º·´³×¿ä. ¾ÆÁ÷Àº Å½»öÇÏ¸é¼­ °è¼Ó ¿ì´Âµ¥¤Ð¤Ð ÀûÀÀÀÌ µÇ¸é Â÷Â÷ ³ª¾ÆÁö°ÚÁö¿ä¤Ð¤Ð',to_date('19/09/22','RR/MM/DD'),1
-,'jjlee@gmail.com', (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
+values (CONTENT_SEQ.nextval,'ê¸°ë‹¤ë¦¬ê³  ê¸°ë‹¤ë¦¬ë˜ ìº£íƒ€ì›Œê°€ ì™”ì–´ìš”~~','ë‚´ë…„ì— ì´ì‚¬ê°€ë©´ ë°”ê¿”ì£¼ë¦¬ë¼ ë§ˆìŒ ë¨¹ì—ˆì§€ë§Œ ìœ ì¦ˆê°€ ìš°ë‹¤ë‹¤ í•  ë•Œë§ˆë‹¤ ì‹¬í•˜ê²Œ í”ë“¤ë¦¬ëŠ”ê²Œ ë§ˆìŒì— ê±¸ë ¤ í°ë§˜ë¨¹ê³  ì§€ë¥´ê³  ë§ì•˜ìŠµë‹ˆë‹¤.
+ê¸¸ê³ ê¸´ ê¸°ë‹¤ë¦¼ ëì— ì˜¤ëŠ˜ ë“œë””ì–´ ë„ì°©í–ˆë„¤ìš”. ì¡°ë¦½ì„ ëë‚´ê³  ë³´ë‹ˆ ìƒê° ì´ìƒìœ¼ë¡œ í¬ê¸°ê°€ ì–´ë§ˆì–´ë§ˆ í•©ë‹ˆë‹¤. íŠ¼íŠ¼í•¨ë„ ë§Œì¡±ìŠ¤ëŸ½ë„¤ìš”. ì•„ì§ì€ íƒìƒ‰í•˜ë©´ì„œ ê³„ì† ìš°ëŠ”ë°ã… ã…  ì ì‘ì´ ë˜ë©´ ì°¨ì°¨ ë‚˜ì•„ì§€ê² ì§€ìš”ã… ã… ',to_date('19/09/22','RR/MM/DD'),1
+       ,'jjlee@gmail.com', (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'¾Æ±â °­¾ÆÁö ÀÌ¸§ ÃßÃµ ¹Þ¾Æ¿ä','½ºÆ®¸´ Ãâ½Å ¹Í½º ¾Æ°¡ÀÔ´Ï´Ù ¤»¤»',to_date('19/09/27','RR/MM/DD'),1,'baba1234@gmail.com'
-, (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
-
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'¿ì¸®Áý 1»ì ¾Ö±â º¸°í°¡¼¼¿ä~','³Ñ³ª¸® ±Í¿±´Ù!!!! ÀÌ¸§Àº Åõ½½¸®½ºÀÔ´Ï´Ù
-·¡ºê¶óµµ¸®Æ®¸®¹ö¶ó Ä£È­·Âµµ ÁÁ¾Æ¿ä¤¾¤¾
-Åõ½½¸®½º¾ß »ç¶ûÇØ!',to_date('19/09/27','RR/MM/DD'),1,'iceice@gmail.com', (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
-
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'Ä£Ä¥¶ó Å°¿ì½Ã´Â ºÐ ¾øÀ¸½Å°¡¿ä?','Ä£Ä¥¶ó°¡ Á¦ÀÏ ÁÁ¾ÆÇÏ´Â °£½Ä ¹¹ ÀÖ³ª¿ä? ±Ã±ÝÇÕ´Ï´Ù!
-µ¿¹°º´¿ø¿¡¼­µµ ÆÈ±î¿ä??',to_date('19/09/28','RR/MM/DD'),2,'iceice@gmail.com', (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
+values (CONTENT_SEQ.nextval,'ì•„ê¸° ê°•ì•„ì§€ ì´ë¦„ ì¶”ì²œ ë°›ì•„ìš”','ìŠ¤íŠ¸ë¦¿ ì¶œì‹  ë¯¹ìŠ¤ ì•„ê°€ìž…ë‹ˆë‹¤ ã…‹ã…‹',to_date('19/09/27','RR/MM/DD'),1,'baba1234@gmail.com'
+       , (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'±¹»ê »ç·á´Â À§ÇèÇÑ°¡¿ä?','¾Æ¹«·¡µµ ¼ººÐÀÌ º°·ÎÀÎ°¡¿ä?',to_date('19/09/29','RR/MM/DD'),2,'baba1234@gmail.com', (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
-
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'¹Ý·Áµ¿¹° µ¿¹Ý °¡´É Ä«Æä´Â »ç¶ûÀÔ´Ï´Ù','Áý ±ÙÃ³¿¡ ¹Ý·Áµ¿¹° µ¿¹Ý °¡´ÉÇÑ Ä«Æä°¡ »õ·Î »ý°å½À´Ï´Ù.
-»êÃ¥ÇÏ´Ù º¸ÀÌ±æ·¡ µé¾î°¡ºÃ´õ´Ï ÁÖÀÎºÐÀÌ °­¾ÆÁö °£½Äµµ Á÷Á¢ ¸¸µé¾î¼­ ÆÇ¸Åµµ ÇÏ½Ã´õ¶ó±¸¿ä~~¢¾
-¾ÕÀ¸·Îµµ ÀÚÁÖ °¡¾ß°Ú¾î¿ä',to_date('19/09/30','RR/MM/DD'),1,'iceice@gmail.com', (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
+values (CONTENT_SEQ.nextval,'ìš°ë¦¬ì§‘ 1ì‚´ ì• ê¸° ë³´ê³ ê°€ì„¸ìš”~','ë„˜ë‚˜ë¦¬ ê·€ì—½ë‹¤!!!! ì´ë¦„ì€ íˆ¬ìŠ¬ë¦¬ìŠ¤ìž…ë‹ˆë‹¤
+ëž˜ë¸Œë¼ë„ë¦¬íŠ¸ë¦¬ë²„ë¼ ì¹œí™”ë ¥ë„ ì¢‹ì•„ìš”ã…Žã…Ž
+íˆ¬ìŠ¬ë¦¬ìŠ¤ì•¼ ì‚¬ëž‘í•´!',to_date('19/09/27','RR/MM/DD'),1,'iceice@gmail.com', (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'°í¾çÀÌ ¸öÀÇ º­·è°ú Áøµå±â Á¦°ÅÇÏ´Â ¹æ¹ý',
-'¿ì¸® ‡œ‡œÀÌ°¡ ¸ö¿¡ º­·è°ú Áøµå±â°¡ ³Ê¹« ¸¹Àºµ¥ ¾î¶»°Ô Á¦°ÅÇØ¾ßÇÒÁö ¸ð¸£°Ú¾î¿ä ³Ê¹« °¡·Á¿öÇÏ´Â°Å°°¾Æ¿ä~',to_date('19/09/30','RR/MM/DD'),2,'upwyy123@gmail.com'
-, (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
+values (CONTENT_SEQ.nextval,'ì¹œì¹ ë¼ í‚¤ìš°ì‹œëŠ” ë¶„ ì—†ìœ¼ì‹ ê°€ìš”?','ì¹œì¹ ë¼ê°€ ì œì¼ ì¢‹ì•„í•˜ëŠ” ê°„ì‹ ë­ ìžˆë‚˜ìš”? ê¶ê¸ˆí•©ë‹ˆë‹¤!
+ë™ë¬¼ë³‘ì›ì—ì„œë„ íŒ”ê¹Œìš”??',to_date('19/09/28','RR/MM/DD'),2,'iceice@gmail.com', (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'¸¶Æ®¿¡¼­ ÆÄ´Â °£½ÄÀº ¾ÈÀüÇÑ °Ç°¡¿ä?','Á¾Á¾ »çÁÖ´Âµ¥.. °ÆÁ¤ µÇ³×¿ä...',to_date('19/09/30','RR/MM/DD'),2,'baba1234@gmail.com'
-, (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
-
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'³Ê±¸¸®¶û ¶óÄïÀÌ¶ûÀº ´Ù¸¥°Ç°¡¿ä??','Á¦°¡ ¾ó¸¶Àü¿¡ °¡µð¾ðÁî¿Àºê°¶·°½Ã¸¦ ºÃ´Âµ¥¿ä, °Å±â¿¡ ³ª¿À´Â ·ÎÄÏ¶óÄïÀÌ ³Ê¹« ±Í¿±´õ±º¿ä.
-¶óÄïÀÌ ¹Ì±¹³Ê±¸¸®ÀÌ°í ³Ê±¸¸®°¡ ¿µ¾î·Î ¶óÄïÀÎ°É·Î ¾Ë°íÀÖ´Âµ¥ Á¦°¡¸Â°Ô¾Ë°íÀÖ´Â°Ç°¡¿ä??
-µ¿¹°¹Ú»ç Àß¹ÙÁ¶´Ôµé ¾Ë·ÁÁÖ¼¼¿ä.°©ÀÚ±â ±Ã±ÝÇØÁö³×¿ä',to_date('19/10/01','RR/MM/DD'),2,'iceice@gmail.com'
-, (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
+values (CONTENT_SEQ.nextval,'êµ­ì‚° ì‚¬ë£ŒëŠ” ìœ„í—˜í•œê°€ìš”?','ì•„ë¬´ëž˜ë„ ì„±ë¶„ì´ ë³„ë¡œì¸ê°€ìš”?',to_date('19/09/29','RR/MM/DD'),2,'baba1234@gmail.com', (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'°í¾çÀÌ¿¡°Ô µðÇ»Àú´Â ¸¹ÀÌ ÇØ·Î¿î°¡¿ä?','Æ¯È÷ ½ÃÆ®·¯½º Çâ °è¿­ÀÌ À§ÇèÇÏ´Ù´øµ¥.. ÀÌÀ¯°¡ ¹º°¡¿ä?',to_date('19/10/01','RR/MM/DD'),2
-,'baba1234@gmail.com', (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
+values (CONTENT_SEQ.nextval,'ë°˜ë ¤ë™ë¬¼ ë™ë°˜ ê°€ëŠ¥ ì¹´íŽ˜ëŠ” ì‚¬ëž‘ìž…ë‹ˆë‹¤','ì§‘ ê·¼ì²˜ì— ë°˜ë ¤ë™ë¬¼ ë™ë°˜ ê°€ëŠ¥í•œ ì¹´íŽ˜ê°€ ìƒˆë¡œ ìƒê²¼ìŠµë‹ˆë‹¤.
+ì‚°ì±…í•˜ë‹¤ ë³´ì´ê¸¸ëž˜ ë“¤ì–´ê°€ë´¤ë”ë‹ˆ ì£¼ì¸ë¶„ì´ ê°•ì•„ì§€ ê°„ì‹ë„ ì§ì ‘ ë§Œë“¤ì–´ì„œ íŒë§¤ë„ í•˜ì‹œë”ë¼êµ¬ìš”~~â™¥
+ì•žìœ¼ë¡œë„ ìžì£¼ ê°€ì•¼ê² ì–´ìš”',to_date('19/09/30','RR/MM/DD'),1,'iceice@gmail.com', (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
 
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'°í¾çÀÌ°£½Ä Ãò¸£´ë½Å ´ëÃ¼ÇÒ °£½Ä ÃßÃµÇÕ´Ï´Ù!','''Âé¸£Âé¸£''¶ó´Â Á¦Ç°ÀÔ´Ï´Ù.
-ÀÏº»Á¦Ç° ºÒ¸Å¿îµ¿ ÇÏ´ÂÁßÀÌ¶ó¤Ð¤Ð¤Ì Ä£±¸°¡ ´ëÃ¼Ç°À» Ã£´øµµÁß ¹ß°ßÇÑ °£½ÄÀÔ´Ï´Ù.
-Ãò¸£ ¾Æ´Ï¸é ¾È ¸Ô´ø Ä£±¸³× °í¾çÀÌµµ ¸ÀÀÖ°Ô ¸Ô´Â °É º¸´Ï ¸Àµµ ºñ½ÁÇÑ °Å °°¾Æ¿ä!!!
-¸Àµµ Ä÷¸®Æ¼µµ ÀÏº»Á¦Ç°¿¡ ÁöÁö ¾Ê´Â ±¹»êÇ° ¾Ö¿ëÇÏ·Á±¸¿ä. Àß¹ÙÁ¶ À¯Àú´Ôµéµµ Âé¸£Âé¸£ µå¼Åº¸¼¼¿ä!
-±¤°í ¾Æ´Õ´Ï´Ù¤Ì¤Ì¤Ì¤Ì
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ê³ ì–‘ì´ ëª¸ì˜ ë²¼ë£©ê³¼ ì§„ë“œê¸° ì œê±°í•˜ëŠ” ë°©ë²•',
+        'ìš°ë¦¬ ë‡¸ë‡¸ì´ê°€ ëª¸ì— ë²¼ë£©ê³¼ ì§„ë“œê¸°ê°€ ë„ˆë¬´ ë§Žì€ë° ì–´ë–»ê²Œ ì œê±°í•´ì•¼í• ì§€ ëª¨ë¥´ê² ì–´ìš” ë„ˆë¬´ ê°€ë ¤ì›Œí•˜ëŠ”ê±°ê°™ì•„ìš”~',to_date('19/09/30','RR/MM/DD'),2,'upwyy123@gmail.com'
+           , (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ë§ˆíŠ¸ì—ì„œ íŒŒëŠ” ê°„ì‹ì€ ì•ˆì „í•œ ê±´ê°€ìš”?','ì¢…ì¢… ì‚¬ì£¼ëŠ”ë°.. ê±±ì • ë˜ë„¤ìš”...',to_date('19/09/30','RR/MM/DD'),2,'baba1234@gmail.com'
+       , (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ë„ˆêµ¬ë¦¬ëž‘ ë¼ì¿¤ì´ëž‘ì€ ë‹¤ë¥¸ê±´ê°€ìš”??','ì œê°€ ì–¼ë§ˆì „ì— ê°€ë””ì–¸ì¦ˆì˜¤ë¸Œê°¤ëŸ­ì‹œë¥¼ ë´¤ëŠ”ë°ìš”, ê±°ê¸°ì— ë‚˜ì˜¤ëŠ” ë¡œì¼“ë¼ì¿¤ì´ ë„ˆë¬´ ê·€ì—½ë”êµ°ìš”.
+ë¼ì¿¤ì´ ë¯¸êµ­ë„ˆêµ¬ë¦¬ì´ê³  ë„ˆêµ¬ë¦¬ê°€ ì˜ì–´ë¡œ ë¼ì¿¤ì¸ê±¸ë¡œ ì•Œê³ ìžˆëŠ”ë° ì œê°€ë§žê²Œì•Œê³ ìžˆëŠ”ê±´ê°€ìš”??
+ë™ë¬¼ë°•ì‚¬ ìž˜ë°”ì¡°ë‹˜ë“¤ ì•Œë ¤ì£¼ì„¸ìš”.ê°‘ìžê¸° ê¶ê¸ˆí•´ì§€ë„¤ìš”',to_date('19/10/01','RR/MM/DD'),2,'iceice@gmail.com'
+       , (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ê³ ì–‘ì´ì—ê²Œ ë””í“¨ì €ëŠ” ë§Žì´ í•´ë¡œìš´ê°€ìš”?','íŠ¹ížˆ ì‹œíŠ¸ëŸ¬ìŠ¤ í–¥ ê³„ì—´ì´ ìœ„í—˜í•˜ë‹¤ë˜ë°.. ì´ìœ ê°€ ë­”ê°€ìš”?',to_date('19/10/01','RR/MM/DD'),2
+       ,'baba1234@gmail.com', (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ê³ ì–‘ì´ê°„ì‹ ì¸„ë¥´ëŒ€ì‹  ëŒ€ì²´í•  ê°„ì‹ ì¶”ì²œí•©ë‹ˆë‹¤!','''ì®¸ë¥´ì®¸ë¥´''ë¼ëŠ” ì œí’ˆìž…ë‹ˆë‹¤.
+ì¼ë³¸ì œí’ˆ ë¶ˆë§¤ìš´ë™ í•˜ëŠ”ì¤‘ì´ë¼ã… ã… ã…œ ì¹œêµ¬ê°€ ëŒ€ì²´í’ˆì„ ì°¾ë˜ë„ì¤‘ ë°œê²¬í•œ ê°„ì‹ìž…ë‹ˆë‹¤.
+ì¸„ë¥´ ì•„ë‹ˆë©´ ì•ˆ ë¨¹ë˜ ì¹œêµ¬ë„¤ ê³ ì–‘ì´ë„ ë§›ìžˆê²Œ ë¨¹ëŠ” ê±¸ ë³´ë‹ˆ ë§›ë„ ë¹„ìŠ·í•œ ê±° ê°™ì•„ìš”!!!
+ë§›ë„ í€„ë¦¬í‹°ë„ ì¼ë³¸ì œí’ˆì— ì§€ì§€ ì•ŠëŠ” êµ­ì‚°í’ˆ ì• ìš©í•˜ë ¤êµ¬ìš”. ìž˜ë°”ì¡° ìœ ì €ë‹˜ë“¤ë„ ì®¸ë¥´ì®¸ë¥´ ë“œì…”ë³´ì„¸ìš”!
+ê´‘ê³  ì•„ë‹™ë‹ˆë‹¤ã…œã…œã…œã…œ
 ',to_date('19/10/02','RR/MM/DD'),1,'iceice@gmail.com', (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'È¤½Ã Á¶·ù Áø·áµµ °¡´ÉÇÑ º´¿ø ÀÖÀ»±î¿ä?','ÀúÈñ ÇÒ¸Ó´Ï°¡ Å°¿ì½Ã´Â ´ßÀÌ ¾ÆÇÂ °Í °°¾Æ¼­¿ä.',to_date('19/10/03','RR/MM/DD'),2
-,'baba1234@gmail.com', (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
+values (CONTENT_SEQ.nextval,'í˜¹ì‹œ ì¡°ë¥˜ ì§„ë£Œë„ ê°€ëŠ¥í•œ ë³‘ì› ìžˆì„ê¹Œìš”?','ì €í¬ í• ë¨¸ë‹ˆê°€ í‚¤ìš°ì‹œëŠ” ë‹­ì´ ì•„í”ˆ ê²ƒ ê°™ì•„ì„œìš”.',to_date('19/10/03','RR/MM/DD'),2
+       ,'baba1234@gmail.com', (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'°­¾ÆÁöµé Æò±Õ ¸î ½Ã°£ Á¤µµ ³î¾ÆÁÖ´Â °Ô ÁÁ³ª¿ä?','ÃëÁØ ´ëÇÐ»ýÀÌ°í Áý¿¡¼­ °­¾ÆÁö¸¦ µ¿»ý°ú Àú¸¸ µ¹º¸´Â ÆíÀÌ¶ó ¹Ì¾ÈÇÏ°Ôµµ ³îÀÌ½Ã°£ÀÌ ¸¹Áö ¾Ê¾Æ¿ä¤Ð¤Ð
-Æò¼Ò¿¡ »à»àÀÌ³ª ³ëÁî¿öÅ© 30ºÐ¾¿ 2¹ø, ¹ã¿¡ »êÃ¥ 20~30ºÐ ÇÏ°í ÀÖ½À´Ï´Ù. ³î¾ÆÁÖ´Â ¹æ¹ýÀÌ³ª ½Ã°£ µî ÀÚ¼¼È÷ ¾Ë·ÁÁÖ½Ã¸é Á¤¸» °¨»çÇÏ°Ú½À´Ï´Ù',to_date('19/10/03','RR/MM/DD'),2
-,'jjlee@gmail.com', (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
-
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'¿ì¸®Áý Åõ½½¸®½º¶û ¼öº¯°ø¿ø ´Ù³à¿Ô½À´Ï´Ù','¹Û¿¡ ³ª°¡±â ÁÁÀº ³¯ÀÌ¶ó Åõ½½¸®½º°¡ »êÃ¥°¡ÀÚ°í ³­¸®¿¡¿ä ¿äÁò¤¾¤¾
-±ÙÃ³ ¼öº¯°ø¿ø¿¡ ³ª°¡¼­ »êÃ¥ÇÏ´Âµ¥ ¾ó¸¶³ª ÁÁ¾ÆÇÏ´øÁö¤¾¤¾
-»êÃ¥³ª¿Â ¸Û¸ÛÀÌµéµµ ¸¹°í ÀÚÁÖ °¡¾ß°Ú½À´Ï´Ù!',to_date('19/10/03','RR/MM/DD'),1,'iceice@gmail.com'
-, (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
+values (CONTENT_SEQ.nextval,'ê°•ì•„ì§€ë“¤ í‰ê·  ëª‡ ì‹œê°„ ì •ë„ ë†€ì•„ì£¼ëŠ” ê²Œ ì¢‹ë‚˜ìš”?','ì·¨ì¤€ ëŒ€í•™ìƒì´ê³  ì§‘ì—ì„œ ê°•ì•„ì§€ë¥¼ ë™ìƒê³¼ ì €ë§Œ ëŒë³´ëŠ” íŽ¸ì´ë¼ ë¯¸ì•ˆí•˜ê²Œë„ ë†€ì´ì‹œê°„ì´ ë§Žì§€ ì•Šì•„ìš”ã… ã… 
+í‰ì†Œì— ì‚‘ì‚‘ì´ë‚˜ ë…¸ì¦ˆì›Œí¬ 30ë¶„ì”© 2ë²ˆ, ë°¤ì— ì‚°ì±… 20~30ë¶„ í•˜ê³  ìžˆìŠµë‹ˆë‹¤. ë†€ì•„ì£¼ëŠ” ë°©ë²•ì´ë‚˜ ì‹œê°„ ë“± ìžì„¸ížˆ ì•Œë ¤ì£¼ì‹œë©´ ì •ë§ ê°ì‚¬í•˜ê² ìŠµë‹ˆë‹¤',to_date('19/10/03','RR/MM/DD'),2
+       ,'jjlee@gmail.com', (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'±æ³ÉÀÌ¸¦ °©ÀÚ±â ¸¶ÁÖÄ¡°Ô µÈ´Ù¸é, ¾î¶² °É Áà¾ß ÇÒ±î¿ä?','ÆíÀÇÁ¡¿¡¼­ ÆÄ´Â Äµµµ ±¦ÂúÀº°¡¿ä...',to_date('19/10/04','RR/MM/DD'),2
-,'baba1234@gmail.com', (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
-
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'°­¾ÆÁö°¡ ³Ê¹« ¸öÀ» ±Ü¾î¿ä','°­¾ÆÁö°¡ Àú¹øÁÖºÎÅÍ ¸öÀ» ³Ê¹« ±Ü´Âµ¥ º´¿ø¿¡ µ¥·Á°¡¾ß ÇÒ±î¿ä?',to_date('19/10/04','RR/MM/DD'),2,'doglover@daum.net'
-, (select name from zalbazo_user where user_email = 'doglover@daum.net'));
-
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'¾ÆÀÌ¸¦ ºÐ¾çº¸³Â¾î¿ä','³Ê¹«³Ê¹« ÇãÀüÇÏ³×¿ä
-Àß¹ÙÁ¶ È¸¿ø´ÔµéÀº ÀÌ·± »óÈ²À» ¾î¶»°Ô ±Øº¹ÇÏ½Ã³ª¿ä?',to_date('19/10/05','RR/MM/DD'),1,'ilikecat@gmail.com', (select name from zalbazo_user where user_email = 'ilikecat@gmail.com'));
-
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'°í¾çÀÌ°¡ ÁÁ¾ÆÇÏ´Â À½½ÄÀº?','°ð ¾Æ´Â »ç¶÷ÇÑÅ× °í¾çÀÌ¸¦ ¹Þ°Ô µÇ´Âµ¥
-°í¾çÀÌ »ç·á¸¸ Ã¬°ÜÁÖ¸é µÇ³ª¿ä? °£½Äµµ µû·Î Ã¬°ÜÁà¾ß ÇÏ³ª¿ä?',to_date('19/10/05','RR/MM/DD'),2,'ilikecat@gmail.com', (select name from zalbazo_user where user_email = 'ilikecat@gmail.com'));
+values (CONTENT_SEQ.nextval,'ìš°ë¦¬ì§‘ íˆ¬ìŠ¬ë¦¬ìŠ¤ëž‘ ìˆ˜ë³€ê³µì› ë‹¤ë…€ì™”ìŠµë‹ˆë‹¤','ë°–ì— ë‚˜ê°€ê¸° ì¢‹ì€ ë‚ ì´ë¼ íˆ¬ìŠ¬ë¦¬ìŠ¤ê°€ ì‚°ì±…ê°€ìžê³  ë‚œë¦¬ì—ìš” ìš”ì¦˜ã…Žã…Ž
+ê·¼ì²˜ ìˆ˜ë³€ê³µì›ì— ë‚˜ê°€ì„œ ì‚°ì±…í•˜ëŠ”ë° ì–¼ë§ˆë‚˜ ì¢‹ì•„í•˜ë˜ì§€ã…Žã…Ž
+ì‚°ì±…ë‚˜ì˜¨ ë©ë©ì´ë“¤ë„ ë§Žê³  ìžì£¼ ê°€ì•¼ê² ìŠµë‹ˆë‹¤!',to_date('19/10/03','RR/MM/DD'),1,'iceice@gmail.com'
+       , (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'Áß¼ºÈ­ ¼ö¼ú~~!~!','Á¦°¡ ¿Ð¿ÐÀÌ Áß¼ºÈ­ ¼ö¼úÀ» ½ÃÅ°·Á°íÇÏ´Âµ¥ ¾îµð ±¦ÂúÀº º´¿ø ÃßÃµÇØÁÖ½Ç¼öÀÖ³ª¿ä?? ±×¸®°í ºñ¿ëÀº ¾ó¸¶Á¤µµ ÇÒÁö ±Ã±ÝÇØ¿ä ¤Ð~',to_date('19/10/07','RR/MM/DD'),2
-,'upwyy123@gmail.com', (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
-
-
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'¿Õ°ü¾Þ¹« Å°¿ì°í ½ÍÀºµ¥ ¸¹ÀÌ ºñ½Ñ°¡¿ä?','³²µé°ú ´Ù¸¥ µ¿¹°À» Å°¿öº¸°í ½Í¾î¼­ ¿Õ°ü¾Þ¹«¿¡ °ü½ÉÀÌ »ý°å´Âµ¥
-¸¹ÀÌ ºñ½Ñ°¡¿ä? ±×¸®°í ¾îµð¼­ µ¥·Á¿Í¾ß ÇÏ³ª¿ä? ',to_date('19/10/07','RR/MM/DD'),2,'bird1234@daum.net', (select name from zalbazo_user where user_email = 'bird1234@daum.net'));
+values (CONTENT_SEQ.nextval,'ê¸¸ëƒ¥ì´ë¥¼ ê°‘ìžê¸° ë§ˆì£¼ì¹˜ê²Œ ëœë‹¤ë©´, ì–´ë–¤ ê±¸ ì¤˜ì•¼ í• ê¹Œìš”?','íŽ¸ì˜ì ì—ì„œ íŒŒëŠ” ìº”ë„ ê´œì°®ì€ê°€ìš”...',to_date('19/10/04','RR/MM/DD'),2
+       ,'baba1234@gmail.com', (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'°ßÁÖ ¿©·¯ºÐµé ÀÌ·± °æ¿ì ÀÖÀ¸½Å°¡¿ä?','9»ì Æ÷¸Þ¿Í »ýÈ°ÇÏ°í ÀÖ½À´Ï´Ù. ÀÌ¹ø ½½°³°ñ Å»±¸ ¼ö¼úÇÏ°í Åð¿ø ÈÄ »ç·á¸¦ ÁÖ´Âµ¥ ÀüÇô ¸ÔÁö ¾Ê½À´Ï´Ù. »ç·á »ùÇÃ ¼ö½Ê°³¸¦ °¡Á®¿Í
-±âÈ£¼º Å×½ºÆ®¸¦ Çß´Âµ¥ ½À½Ä »ç·á¸¸ ¸Ô´õ±º¿ä..Æç¸®ÄíÄ¡³ª?? °è¼Ó ½À½Ä »ç·á¸¦ ±Þ¿©ÇØ¾ß ÇÏ´ÂÁö?? ½À½Ä »ç·á¸¦ ±Þ¿©ÇÒ ¶§ ÁÖÀÇÁ¡ ÀÌ¶óµçÁö.. ¾Ë·ÁÁÖ¼¼¿ä!',to_date('19/10/07','RR/MM/DD'),2
-,'jjlee@gmail.com', (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
-
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'°ð ¿Õ°ü¾Þ¹«¸¦ ¸¸³ª¿ä','Á¤¸» ¾î·Æ°Ô ¾î·Æ°Ô µ¥·Á¿À³×¿ä,,
-ÀÌÁ¦ °ð ¸¸³ª´Âµ¥ ³Ê¹« ±â´ëµÇ¿ä!
-¾ÕÀ¸·Î ÀÚÁÖ ¼Ò½Ä ¿Ã¸®°Ú½À´Ï´Ù.',to_date('19/10/08','RR/MM/DD'),1,'bird1234@daum.net', (select name from zalbazo_user where user_email = 'bird1234@daum.net'));
+values (CONTENT_SEQ.nextval,'ê°•ì•„ì§€ê°€ ë„ˆë¬´ ëª¸ì„ ê¸ì–´ìš”','ê°•ì•„ì§€ê°€ ì €ë²ˆì£¼ë¶€í„° ëª¸ì„ ë„ˆë¬´ ê¸ëŠ”ë° ë³‘ì›ì— ë°ë ¤ê°€ì•¼ í• ê¹Œìš”?',to_date('19/10/04','RR/MM/DD'),2,'doglover@daum.net'
+       , (select name from zalbazo_user where user_email = 'doglover@daum.net'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'Á¦°¡ ¾ÆÀÌµéÀ» Àß Å°¿ï¼öÀÖÀ»±î¿ä??','¾ÆÁ÷ Ãë¾÷µµ ¾ÈÇß´Âµ¥ °­¾ÆÁö¿Í °í¾çÀÌ¸¦ Å°¿ì°íÀÖ½À´Ï´Ù... 
-Á¦°¡ ´É·Âµµ ¾ÈµÇ¸é¼­ ¾ÖµéÀ» Å°¿ì°íÀÖ´Â°Ô ¾Æ´ÑÁö ¹®µæ »ý°¢ÀÌ µå´Â±º¿ä.',to_date('19/10/08','RR/MM/DD'),1,'upwyy123@gmail.com'
-, (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
+values (CONTENT_SEQ.nextval,'ì•„ì´ë¥¼ ë¶„ì–‘ë³´ëƒˆì–´ìš”','ë„ˆë¬´ë„ˆë¬´ í—ˆì „í•˜ë„¤ìš”
+ìž˜ë°”ì¡° íšŒì›ë‹˜ë“¤ì€ ì´ëŸ° ìƒí™©ì„ ì–´ë–»ê²Œ ê·¹ë³µí•˜ì‹œë‚˜ìš”?',to_date('19/10/05','RR/MM/DD'),1,'ilikecat@gmail.com', (select name from zalbazo_user where user_email = 'ilikecat@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'³ë°ß °­¾ÆÁö »ç·á ÃßÃµÇÕ´Ï´Ù~','·Î¾âÄ³´Ñ¿¡¼­ °¥¾ÆÅÀ¾î¿ä~ Á¤º¸ ¿øÇÏ½Ã´Â ºÐÀº ´ñ±Û!',to_date('19/10/08','RR/MM/DD'),1
-,'baba1234@gmail.com', (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
+values (CONTENT_SEQ.nextval,'ê³ ì–‘ì´ê°€ ì¢‹ì•„í•˜ëŠ” ìŒì‹ì€?','ê³§ ì•„ëŠ” ì‚¬ëžŒí•œí…Œ ê³ ì–‘ì´ë¥¼ ë°›ê²Œ ë˜ëŠ”ë°
+ê³ ì–‘ì´ ì‚¬ë£Œë§Œ ì±™ê²¨ì£¼ë©´ ë˜ë‚˜ìš”? ê°„ì‹ë„ ë”°ë¡œ ì±™ê²¨ì¤˜ì•¼ í•˜ë‚˜ìš”?',to_date('19/10/05','RR/MM/DD'),2,'ilikecat@gmail.com', (select name from zalbazo_user where user_email = 'ilikecat@gmail.com'));
 
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'ºñ±ÛÀÌ Á¤¸» ¼Ò¹®¸¸Å­ Áö¶ö°ßÀÎ°¡¿ä?','»ý±ä°Ô ³Ê¹« Á¦ ½ºÅ¸ÀÏÀÌ¶ó¼­ Å°¿ì°í ½ÍÀºµ¥
-¸¶´çµµ ¾ø´Â ÁýÀÎµ¥ Á» °ÆÁ¤µÇ±ä ÇÏ³×¿ä.
-Á¤¸» ¼Ò¹®¸¸Å­ Áö¶ö°ßÀÎ°¡¿ä? ',to_date('19/10/10','RR/MM/DD'),2,'puppylover@naver.com', (select name from zalbazo_user where user_email = 'puppylover@naver.com'));
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ì¤‘ì„±í™” ìˆ˜ìˆ ~~!~!','ì œê°€ ì™ˆì™ˆì´ ì¤‘ì„±í™” ìˆ˜ìˆ ì„ ì‹œí‚¤ë ¤ê³ í•˜ëŠ”ë° ì–´ë”” ê´œì°®ì€ ë³‘ì› ì¶”ì²œí•´ì£¼ì‹¤ìˆ˜ìžˆë‚˜ìš”?? ê·¸ë¦¬ê³  ë¹„ìš©ì€ ì–¼ë§ˆì •ë„ í• ì§€ ê¶ê¸ˆí•´ìš” ã… ~',to_date('19/10/07','RR/MM/DD'),2
+       ,'upwyy123@gmail.com', (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
 
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'¶óÄïÇÏ°í ¼ö´ÞÁß¿¡ ¹¹°¡ ´õ Å°¿ì±â ½±³ª¿ä?','¶óÄïÇÏ°í ¼ö´ÞÁß¿¡ Áý¿¡¼­ Å°¿ì±â ´õ ½¬¿î, ½±°Ô ¸»ÇØ È°µ¿¼ºÀÌ Á»´õ Àû°í »ç¶÷À» Àß µû¸£´Â µ¿¹°Àº ¹¹¿¡¿ä?
-±¤°í »çÀýÇÕ´Ï´Ù!',to_date('19/10/10','RR/MM/DD'),2,'iceice@gmail.com', (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
 
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'¼­ÃÊ±¸ º´¿ø ÃßÃµÇØ¿ä!','ÃÖ±Ù¿¡ ¿ì¸® ½Ç¹ö°¡ ¾ÆÆÄ¼­ ¾Æ¹« º´¿øÀÌ³ª µ¥·Á°¬´Âµ¥
-³Ê¹« Ä£ÀýÇÏ°í ½Ç·Âµµ ÁÁ¾Æ¼­ ÃßÃµÇÏ°í ½Í¾î¿ä!
-¼­ÃÊ±¸¿¡ À§Ä¡ÇÑ ÁøÁøµ¿¹°º´¿øÀÌ±¸¿ä,, º´¿ø °Ë»öÇÏ¸é ³ª¿Ã°Å¿¡¿ä!
-½Ã¼³µµ ±ú²ýÇÏ°í ¼­ºñ½ºµµ ³Ê¹« ÁÁ¾Ò¾î¿ä~
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ì™•ê´€ì•µë¬´ í‚¤ìš°ê³  ì‹¶ì€ë° ë§Žì´ ë¹„ì‹¼ê°€ìš”?','ë‚¨ë“¤ê³¼ ë‹¤ë¥¸ ë™ë¬¼ì„ í‚¤ì›Œë³´ê³  ì‹¶ì–´ì„œ ì™•ê´€ì•µë¬´ì— ê´€ì‹¬ì´ ìƒê²¼ëŠ”ë°
+ë§Žì´ ë¹„ì‹¼ê°€ìš”? ê·¸ë¦¬ê³  ì–´ë””ì„œ ë°ë ¤ì™€ì•¼ í•˜ë‚˜ìš”? ',to_date('19/10/07','RR/MM/DD'),2,'bird1234@daum.net', (select name from zalbazo_user where user_email = 'bird1234@daum.net'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ê²¬ì£¼ ì—¬ëŸ¬ë¶„ë“¤ ì´ëŸ° ê²½ìš° ìžˆìœ¼ì‹ ê°€ìš”?','9ì‚´ í¬ë©”ì™€ ìƒí™œí•˜ê³  ìžˆìŠµë‹ˆë‹¤. ì´ë²ˆ ìŠ¬ê°œê³¨ íƒˆêµ¬ ìˆ˜ìˆ í•˜ê³  í‡´ì› í›„ ì‚¬ë£Œë¥¼ ì£¼ëŠ”ë° ì „í˜€ ë¨¹ì§€ ì•ŠìŠµë‹ˆë‹¤. ì‚¬ë£Œ ìƒ˜í”Œ ìˆ˜ì‹­ê°œë¥¼ ê°€ì ¸ì™€
+ê¸°í˜¸ì„± í…ŒìŠ¤íŠ¸ë¥¼ í–ˆëŠ”ë° ìŠµì‹ ì‚¬ë£Œë§Œ ë¨¹ë”êµ°ìš”..íŽ ë¦¬ì¿ ì¹˜ë‚˜?? ê³„ì† ìŠµì‹ ì‚¬ë£Œë¥¼ ê¸‰ì—¬í•´ì•¼ í•˜ëŠ”ì§€?? ìŠµì‹ ì‚¬ë£Œë¥¼ ê¸‰ì—¬í•  ë•Œ ì£¼ì˜ì  ì´ë¼ë“ ì§€.. ì•Œë ¤ì£¼ì„¸ìš”!',to_date('19/10/07','RR/MM/DD'),2
+       ,'jjlee@gmail.com', (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ê³§ ì™•ê´€ì•µë¬´ë¥¼ ë§Œë‚˜ìš”','ì •ë§ ì–´ë µê²Œ ì–´ë µê²Œ ë°ë ¤ì˜¤ë„¤ìš”,,
+ì´ì œ ê³§ ë§Œë‚˜ëŠ”ë° ë„ˆë¬´ ê¸°ëŒ€ë˜ìš”!
+ì•žìœ¼ë¡œ ìžì£¼ ì†Œì‹ ì˜¬ë¦¬ê² ìŠµë‹ˆë‹¤.',to_date('19/10/08','RR/MM/DD'),1,'bird1234@daum.net', (select name from zalbazo_user where user_email = 'bird1234@daum.net'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ì œê°€ ì•„ì´ë“¤ì„ ìž˜ í‚¤ìš¸ìˆ˜ìžˆì„ê¹Œìš”??','ì•„ì§ ì·¨ì—…ë„ ì•ˆí–ˆëŠ”ë° ê°•ì•„ì§€ì™€ ê³ ì–‘ì´ë¥¼ í‚¤ìš°ê³ ìžˆìŠµë‹ˆë‹¤...
+ì œê°€ ëŠ¥ë ¥ë„ ì•ˆë˜ë©´ì„œ ì• ë“¤ì„ í‚¤ìš°ê³ ìžˆëŠ”ê²Œ ì•„ë‹Œì§€ ë¬¸ë“ ìƒê°ì´ ë“œëŠ”êµ°ìš”.',to_date('19/10/08','RR/MM/DD'),1,'upwyy123@gmail.com'
+       , (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ë…¸ê²¬ ê°•ì•„ì§€ ì‚¬ë£Œ ì¶”ì²œí•©ë‹ˆë‹¤~','ë¡œì–„ìºë‹Œì—ì„œ ê°ˆì•„íƒ”ì–´ìš”~ ì •ë³´ ì›í•˜ì‹œëŠ” ë¶„ì€ ëŒ“ê¸€!',to_date('19/10/08','RR/MM/DD'),1
+       ,'baba1234@gmail.com', (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ë¹„ê¸€ì´ ì •ë§ ì†Œë¬¸ë§Œí¼ ì§€ëž„ê²¬ì¸ê°€ìš”?','ìƒê¸´ê²Œ ë„ˆë¬´ ì œ ìŠ¤íƒ€ì¼ì´ë¼ì„œ í‚¤ìš°ê³  ì‹¶ì€ë°
+ë§ˆë‹¹ë„ ì—†ëŠ” ì§‘ì¸ë° ì¢€ ê±±ì •ë˜ê¸´ í•˜ë„¤ìš”.
+ì •ë§ ì†Œë¬¸ë§Œí¼ ì§€ëž„ê²¬ì¸ê°€ìš”? ',to_date('19/10/10','RR/MM/DD'),2,'puppylover@naver.com', (select name from zalbazo_user where user_email = 'puppylover@naver.com'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ë¼ì¿¤í•˜ê³  ìˆ˜ë‹¬ì¤‘ì— ë­ê°€ ë” í‚¤ìš°ê¸° ì‰½ë‚˜ìš”?','ë¼ì¿¤í•˜ê³  ìˆ˜ë‹¬ì¤‘ì— ì§‘ì—ì„œ í‚¤ìš°ê¸° ë” ì‰¬ìš´, ì‰½ê²Œ ë§í•´ í™œë™ì„±ì´ ì¢€ë” ì ê³  ì‚¬ëžŒì„ ìž˜ ë”°ë¥´ëŠ” ë™ë¬¼ì€ ë­ì—ìš”?
+ê´‘ê³  ì‚¬ì ˆí•©ë‹ˆë‹¤!',to_date('19/10/10','RR/MM/DD'),2,'iceice@gmail.com', (select name from zalbazo_user where user_email = 'iceice@gmail.com'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ì„œì´ˆêµ¬ ë³‘ì› ì¶”ì²œí•´ìš”!','ìµœê·¼ì— ìš°ë¦¬ ì‹¤ë²„ê°€ ì•„íŒŒì„œ ì•„ë¬´ ë³‘ì›ì´ë‚˜ ë°ë ¤ê°”ëŠ”ë°
+ë„ˆë¬´ ì¹œì ˆí•˜ê³  ì‹¤ë ¥ë„ ì¢‹ì•„ì„œ ì¶”ì²œí•˜ê³  ì‹¶ì–´ìš”!
+ì„œì´ˆêµ¬ì— ìœ„ì¹˜í•œ ì§„ì§„ë™ë¬¼ë³‘ì›ì´êµ¬ìš”,, ë³‘ì› ê²€ìƒ‰í•˜ë©´ ë‚˜ì˜¬ê±°ì—ìš”!
+ì‹œì„¤ë„ ê¹¨ë—í•˜ê³  ì„œë¹„ìŠ¤ë„ ë„ˆë¬´ ì¢‹ì•˜ì–´ìš”~
 ',to_date('19/10/11','RR/MM/DD'),1,'puppylover@naver.com', (select name from zalbazo_user where user_email = 'puppylover@naver.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'¿Í ÀÌ°Ç ÁøÂ¥ ²ÜÅÛ ÁøÂ¥ÁøÂ¥ ¾Èº¸¸é ÈÄÈ¸','¾ÖµéÀÌ ÁøÂ¥ ³­¸®ÀÔ´Ï´Ù ÆíÇÏ°Ô ¹ä¸ÔÀÏ¼öÀÖ¾î¿ä',to_date('19/10/11','RR/MM/DD'),1
-,'upwyy123@gmail.com', (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
-
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name) 
-values (CONTENT_SEQ.nextval,'ÆÐ·µ Àß Ä¡·áÇÏ´Â º´¿ø ÃßÃµÇØÁÖ¼¼¿ä','ÆÐ·µÀ» Ãë±Þ ¾ÈÇÏ´Â º´¿øÀÌ ¸¹³×¿ä
-ÆÐ·µ Ä¡·á °¡´ÉÇÑ ÁÁÀº º´¿ø ÃßÃµ ºÎÅ¹µå¸³´Ï´Ù.',to_date('19/10/12','RR/MM/DD'),2,'nakta@daum.net', (select name from zalbazo_user where user_email = 'nakta@daum.net'));
+values (CONTENT_SEQ.nextval,'ì™€ ì´ê±´ ì§„ì§œ ê¿€í…œ ì§„ì§œì§„ì§œ ì•ˆë³´ë©´ í›„íšŒ','ì• ë“¤ì´ ì§„ì§œ ë‚œë¦¬ìž…ë‹ˆë‹¤ íŽ¸í•˜ê²Œ ë°¥ë¨¹ì¼ìˆ˜ìžˆì–´ìš”',to_date('19/10/11','RR/MM/DD'),1
+       ,'upwyy123@gmail.com', (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'°­¾ÆÁö ½É¸® ¾Æ½Ã´Â ºÐ °è½Ê´Ï±î??','¿ì¸® ¾Æ·ÕÀÌ´Â Ç×»ó Á¦ ¿·¿¡ ¿Í¼­ µîµ¹¸®°í ¾É¾ÆÀÖ¾î¿ä »ßÄ£°Ç ¾Æ´Ï¿¡¿ä. ²À ¿·¿¡ ºÙ¾î¼­ Àú·¸°Ô ¾É¾ÆÀÖ´Âµ¥
-¿Ö ±×·±Áö ¾Æ½Ã´Â ºÐ °è¼¼¿ä?',to_date('19/10/13','RR/MM/DD'),2,'jjlee@gmail.com', (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
+values (CONTENT_SEQ.nextval,'íŒ¨ëŸ¿ ìž˜ ì¹˜ë£Œí•˜ëŠ” ë³‘ì› ì¶”ì²œí•´ì£¼ì„¸ìš”','íŒ¨ëŸ¿ì„ ì·¨ê¸‰ ì•ˆí•˜ëŠ” ë³‘ì›ì´ ë§Žë„¤ìš”
+íŒ¨ëŸ¿ ì¹˜ë£Œ ê°€ëŠ¥í•œ ì¢‹ì€ ë³‘ì› ì¶”ì²œ ë¶€íƒë“œë¦½ë‹ˆë‹¤.',to_date('19/10/12','RR/MM/DD'),2,'nakta@daum.net', (select name from zalbazo_user where user_email = 'nakta@daum.net'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'ÄÚ¼ô ¾Æ±â ±æ³ÉÀÌ ÀÓº¸ÁßÀÔ´Ï´Ù.','³Ê¹«³Ê¹« ±Í¿©¿îµ¥ µ¥·Á°¡½Ç ºÐ? ¤¾¤¾',to_date('19/10/13','RR/MM/DD'),1
-,'baba1234@gmail.com', (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
+values (CONTENT_SEQ.nextval,'ê°•ì•„ì§€ ì‹¬ë¦¬ ì•„ì‹œëŠ” ë¶„ ê³„ì‹­ë‹ˆê¹Œ??','ìš°ë¦¬ ì•„ë¡±ì´ëŠ” í•­ìƒ ì œ ì˜†ì— ì™€ì„œ ë“±ëŒë¦¬ê³  ì•‰ì•„ìžˆì–´ìš” ì‚ì¹œê±´ ì•„ë‹ˆì—ìš”. ê¼­ ì˜†ì— ë¶™ì–´ì„œ ì €ë ‡ê²Œ ì•‰ì•„ìžˆëŠ”ë°
+ì™œ ê·¸ëŸ°ì§€ ì•„ì‹œëŠ” ë¶„ ê³„ì„¸ìš”?',to_date('19/10/13','RR/MM/DD'),2,'jjlee@gmail.com', (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'¿¡ÈÞ °­¾ÆÁö ¹èº¯ÈÆ·Ã µµ¿ÍÁÖ¼¼¿ä','¿Ð¿ÐÀÌ°¡ ´©±¼´à¾Ò´ÂÁö ÁøÂ¥ ¶ËÀ» ¾Æ¹«°÷¿¡¼­³ª ½ÎÁö¸£°í ´Ù³à¿ä. ¿äÁò±×°Í¶§¹®¿¡ ½ºÆ®·¹½º°¡ ÀÌ¸¸Àú¸¸ÀÌ ¾Æ´Ï³×¿ä ¹èº¯ÈÆ·Ã ¾î¶»°Ô ½ÃÄÑ¾ßÇÒ±î¿ä?? 
-Ã³À½¿£ ±Í¿©¿ü´Âµ¥ Á¡Á¡ ¾â¹Ó³×¿ä',to_date('19/10/13','RR/MM/DD'),2,'upwyy123@gmail.com', (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
+values (CONTENT_SEQ.nextval,'ì½”ìˆ ì•„ê¸° ê¸¸ëƒ¥ì´ ìž„ë³´ì¤‘ìž…ë‹ˆë‹¤.','ë„ˆë¬´ë„ˆë¬´ ê·€ì—¬ìš´ë° ë°ë ¤ê°€ì‹¤ ë¶„? ã…Žã…Ž',to_date('19/10/13','RR/MM/DD'),1
+       ,'baba1234@gmail.com', (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'Àß¹ÙÁ¶ ÁÁ³×¿ä¤¾ °Ë»öµµ ÀßµÇ°í','´öºÐ¿¡ ¿¹¾àµµ °£ÆíÇÏ°Ô ÇÒ ¼ö ÀÖ°Ô µÆ³×¿ä',to_date('19/10/14','RR/MM/DD'),1,'baba1234@gmail.com'
-, (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
+values (CONTENT_SEQ.nextval,'ì—íœ´ ê°•ì•„ì§€ ë°°ë³€í›ˆë ¨ ë„ì™€ì£¼ì„¸ìš”','ì™ˆì™ˆì´ê°€ ëˆ„êµ´ë‹®ì•˜ëŠ”ì§€ ì§„ì§œ ë˜¥ì„ ì•„ë¬´ê³³ì—ì„œë‚˜ ì‹¸ì§€ë¥´ê³  ë‹¤ë…€ìš”. ìš”ì¦˜ê·¸ê²ƒë•Œë¬¸ì— ìŠ¤íŠ¸ë ˆìŠ¤ê°€ ì´ë§Œì €ë§Œì´ ì•„ë‹ˆë„¤ìš” ë°°ë³€í›ˆë ¨ ì–´ë–»ê²Œ ì‹œì¼œì•¼í• ê¹Œìš”??
+ì²˜ìŒì—” ê·€ì—¬ì› ëŠ”ë° ì ì  ì–„ë°‰ë„¤ìš”',to_date('19/10/13','RR/MM/DD'),2,'upwyy123@gmail.com', (select name from zalbazo_user where user_email = 'upwyy123@gmail.com'));
 
 Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
-values (CONTENT_SEQ.nextval,'ÀúÈñ ³ÉÀÌ´Â Ä¹ÆÄÇª ÇÊ·¿ ±âÈ£¼º ´ë¹ÚÀÌ¿¡¿ä¤»¤»','¿À´Ã Ä¹ÆÄÇª ÇÊ·¿ ÇÏ³ª ±î¼­ Áá´Âµ¥.. 
-ÀÌºê´Â ¾Æ¹«°Å³ª °¡¸®Áö ¾Ê°í ¸Ô´Â ¾ÆÀÌÀÎ°É °¨¾ÈÇØµµ È¯ÀåÇÏ°í ¸Ô´õ¶ó±¸¿ä¤»¤» ´ã´Þ¿¡´Â ¹«Á¶°Ç Ä¹ÆÄÇª ÇÊ·¿ »ç¼­ Àï¿©¾ß°Ú½À´Ï´Ù',to_date('19/10/15','RR/MM/DD')
-,1,'jjlee@gmail.com', (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
+values (CONTENT_SEQ.nextval,'ìž˜ë°”ì¡° ì¢‹ë„¤ìš”ã…Ž ê²€ìƒ‰ë„ ìž˜ë˜ê³ ','ë•ë¶„ì— ì˜ˆì•½ë„ ê°„íŽ¸í•˜ê²Œ í•  ìˆ˜ ìžˆê²Œ ëë„¤ìš”',to_date('19/10/14','RR/MM/DD'),1,'baba1234@gmail.com'
+       , (select name from zalbazo_user where user_email = 'baba1234@gmail.com'));
 
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL,name) 
-values (CONTENT_SEQ.nextval,'µ¿¹°ÀÚÀ¯¿¬´ë ±ÛµéÀ» º¸´Ï ¸¶À½ÀÌ ¾ÆÇÁ³×¿ä¤Ð¤Ð','¿ÀÀü¿¡ µ¿¹°ÀÚÀ¯¿¬´ë¿¡¼­ ¿Ã¸° À¯±â°ß ½ÇÅÂ ±ÛÀ» ÀÐ¾ú´Âµ¥ ¸¶À½ÀÌ ¾ÆÇÁ³×¿ä¤Ð¤Ð¤Ð
-Àú·¸°Ô Ãµ»ç°°Àº ¾ÆÀÌµéÀ» ¹ö¸®´Ù´Ï µ¿¹° À¯±âÇÏ´Â »ç¶÷µéÀº Á¤¸» Ãµ¹ú ¹Þ¾Æ¾ßÇØ¿ä',to_date('19/10/16','RR/MM/DD'),1,'iceice@gmail.com','¾ÆÀÌ½ºº£¾î');
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL, name)
+values (CONTENT_SEQ.nextval,'ì €í¬ ëƒ¥ì´ëŠ” ìº£íŒŒí‘¸ í•„ë › ê¸°í˜¸ì„± ëŒ€ë°•ì´ì—ìš”ã…‹ã…‹','ì˜¤ëŠ˜ ìº£íŒŒí‘¸ í•„ë › í•˜ë‚˜ ê¹Œì„œ ì¤¬ëŠ”ë°..
+ì´ë¸ŒëŠ” ì•„ë¬´ê±°ë‚˜ ê°€ë¦¬ì§€ ì•Šê³  ë¨¹ëŠ” ì•„ì´ì¸ê±¸ ê°ì•ˆí•´ë„ í™˜ìž¥í•˜ê³  ë¨¹ë”ë¼êµ¬ìš”ã…‹ã…‹ ë‹´ë‹¬ì—ëŠ” ë¬´ì¡°ê±´ ìº£íŒŒí‘¸ í•„ë › ì‚¬ì„œ ìŸì—¬ì•¼ê² ìŠµë‹ˆë‹¤',to_date('19/10/15','RR/MM/DD')
+       ,1,'jjlee@gmail.com', (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
+
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL,name)
+values (CONTENT_SEQ.nextval,'ë™ë¬¼ìžìœ ì—°ëŒ€ ê¸€ë“¤ì„ ë³´ë‹ˆ ë§ˆìŒì´ ì•„í”„ë„¤ìš”ã… ã… ','ì˜¤ì „ì— ë™ë¬¼ìžìœ ì—°ëŒ€ì—ì„œ ì˜¬ë¦° ìœ ê¸°ê²¬ ì‹¤íƒœ ê¸€ì„ ì½ì—ˆëŠ”ë° ë§ˆìŒì´ ì•„í”„ë„¤ìš”ã… ã… ã… 
+ì €ë ‡ê²Œ ì²œì‚¬ê°™ì€ ì•„ì´ë“¤ì„ ë²„ë¦¬ë‹¤ë‹ˆ ë™ë¬¼ ìœ ê¸°í•˜ëŠ” ì‚¬ëžŒë“¤ì€ ì •ë§ ì²œë²Œ ë°›ì•„ì•¼í•´ìš”',to_date('19/10/16','RR/MM/DD'),1,'iceice@gmail.com','ì•„ì´ìŠ¤ë² ì–´');
 
 Insert into ZALBAZO.CONTENT(CONTENT_ID, TITLE, BODY, CREATED_DATE,CATEGORY_ID,USER_EMAIL,name)
-values (CONTENT_SEQ.nextval,'°­¾ÆÁö »êÃ¥ ÈÆ·Ã ¹æ¹ý µµ¿ÍÁÖ¼¼¿ä','°­¾ÆÁö°¡ ¸ñÁÙÀ» ³Ê¹« ºÒÆíÇØ ÇÏ³×¿ä. ¸ñÁÙ¿¡ ÀÍ¼÷ÇÏ°Ô »êÃ¥ ½ÃÅ³ ¼ö ÀÖ´Â ¹æ¹ýÀÌ ÀÖÀ»±î¿ä?',to_date('19/10/18','RR/MM/DD'),2,'jjlee@gmail.com',
-(select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
+values (CONTENT_SEQ.nextval,'ê°•ì•„ì§€ ì‚°ì±… í›ˆë ¨ ë°©ë²• ë„ì™€ì£¼ì„¸ìš”','ê°•ì•„ì§€ê°€ ëª©ì¤„ì„ ë„ˆë¬´ ë¶ˆíŽ¸í•´ í•˜ë„¤ìš”. ëª©ì¤„ì— ìµìˆ™í•˜ê²Œ ì‚°ì±… ì‹œí‚¬ ìˆ˜ ìžˆëŠ” ë°©ë²•ì´ ìžˆì„ê¹Œìš”?',to_date('19/10/18','RR/MM/DD'),2,'jjlee@gmail.com',
+        (select name from zalbazo_user where user_email = 'jjlee@gmail.com'));
 
-Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL,name) 
-values (CONTENT_SEQ.nextval,'°­¾ÆÁöµé Æò±Õ ¸î ½Ã°£ Á¤µµ ³î¾ÆÁÖ´Â °Ô ÁÁ³ª¿ä?','¿ÀÀü¿¡ µ¿¹°ÀÚÀ¯¿¬´ë¿¡¼­ ¿Ã¸° À¯±â°ß ½ÇÅÂ ±ÛÀ» ÀÐ¾ú´Âµ¥ ¸¶À½ÀÌ ¾ÆÇÁ³×¿ä¤Ð¤Ð¤Ð
-Àú·¸°Ô Ãµ»ç°°Àº ¾ÆÀÌµéÀ» ¹ö¸®´Ù´Ï µ¿¹° À¯±âÇÏ´Â »ç¶÷µéÀº Á¤¸» Ãµ¹ú ¹Þ¾Æ¾ßÇØ¿ä',to_date('19/10/08','RR/MM/DD'),2,'scienceos@daum.net',(select name from zalbazo_user where user_email = 'scienceos@daum.net'));
+Insert into ZALBAZO.CONTENT (CONTENT_ID,TITLE,BODY,CREATED_DATE,CATEGORY_ID,USER_EMAIL,name)
+values (CONTENT_SEQ.nextval,'ê°•ì•„ì§€ë“¤ í‰ê·  ëª‡ ì‹œê°„ ì •ë„ ë†€ì•„ì£¼ëŠ” ê²Œ ì¢‹ë‚˜ìš”?','ì˜¤ì „ì— ë™ë¬¼ìžìœ ì—°ëŒ€ì—ì„œ ì˜¬ë¦° ìœ ê¸°ê²¬ ì‹¤íƒœ ê¸€ì„ ì½ì—ˆëŠ”ë° ë§ˆìŒì´ ì•„í”„ë„¤ìš”ã… ã… ã… 
+ì €ë ‡ê²Œ ì²œì‚¬ê°™ì€ ì•„ì´ë“¤ì„ ë²„ë¦¬ë‹¤ë‹ˆ ë™ë¬¼ ìœ ê¸°í•˜ëŠ” ì‚¬ëžŒë“¤ì€ ì •ë§ ì²œë²Œ ë°›ì•„ì•¼í•´ìš”',to_date('19/10/08','RR/MM/DD'),2,'scienceos@daum.net',(select name from zalbazo_user where user_email = 'scienceos@daum.net'));
 
 
 

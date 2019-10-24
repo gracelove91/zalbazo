@@ -16,10 +16,10 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th scope="col" class="mobile" style="width:60px; text-align:center;">번호</th>
+                        <th scope="col" class="mobile" style="width:80px; text-align:center;">번호</th>
                         <th scope="col" class="mobile" style="text-align:center;">제목</th>
-                        <th scope="col" class="mobile" style="width:80px; text-align:center;">작성자</th>
-                        <th scope="col" class="mobile" style="width:120px; text-align:center;">날짜</th>
+                        <th scope="col" class="mobile" style="width:150px; text-align:center;">작성자</th>
+                        <th scope="col" class="mobile" style="width:130px; text-align:center;">날짜</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -36,7 +36,7 @@
                             </td>
 
                             <td class="mobile" style="text-align:center;">
-                                <c:out value="${content.userEmail}"/>
+                                <c:out value="${content.name}"/>
                             </td>
                             <td class="mobile" style="text-align:center;">
                                 <fmt:formatDate value="${content.createdDate}" pattern="yyyy-MM-dd"/>
@@ -63,18 +63,17 @@
                     </div>
                 </div>
 
-                <div style="max-width: 1080px;">
-                    <button id='regBtn' type="button" type="button" class="btn btn-primary float-right"
-                            data-dismiss="modal" href="/jisikdong/register">글쓰기
-                    </button>
+                <div style="max-width: 100%;">
+                    <button id='regBtn' type="button" type="button" class="btn btn-primary pull-right"
+                            data-dismiss="modal" href="/jisikdong/register">글쓰기</button>
                 </div>
 
                 <!-- 검색 -->
                 <div class='row'>
-                    <div class="col-lg-12 text-center">
+                    <div class="col-lg-12">
                         <form id='searchForm' action="/jisikdong/list" method='get'>
                             <select name='type'>
-                                <option value=""<c:out value="${pageMaker.cri.type == null ? 'selected' : '' }"/>>--
+                                <option value=""<c:out value="${pageMaker.cri.type == null ? 'selected' : '' }"/>>키워드를 선택하세요
                                 </option>
                                 <option value="T"<c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : '' }"/>>제목
                                 </option>
@@ -141,6 +140,7 @@
 <!-- 제이쿼리 자바스크립트 추가하기 -->
 <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/user/userFunction.js"></script>
 
 <script type="text/javascript">
 
@@ -179,10 +179,21 @@
             $("#myModal").modal("show");
         }
 
+        
         $("#regBtn").on("click", function () {
-            self.location = "/jisikdong/register";
+        	userInfoService.getUser(function(data) {
+        		if(data.role === 'hospital') {
+        			alert('일반유저만 작성 가능합니다.');
+        		} else {
+		            self.location = "/jisikdong/register";
+        		}
+        	}, function(error) {
+	              self.location = "/login";
+        		  console.log('로그인 안했긔');
+        	});
         });
 
+        
         var searchForm = $("#searchForm");
         $("#searchForm button").on("click", function (e) {
 

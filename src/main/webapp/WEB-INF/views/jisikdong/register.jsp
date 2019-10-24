@@ -77,6 +77,8 @@
                                value="${useremail}">
                         <input type="hidden" class="form-control" id="role" name="role" readonly="readonly"
                                value="${role}">
+                        <input type="hidden" class="form-control" id="name" name="name" readonly="readonly"
+                               value="${name}">
                     </div>
                     <div class="form-group">
                         <label>제목</label>

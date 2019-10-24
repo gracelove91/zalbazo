@@ -11,6 +11,6 @@ public interface ReserveMapper {
     Reserve read(String email);
     List<ReserveMapper> getList(Long hospitalId);
     int delete(Long reserveId);
-    List<String> readTime(@Param("date")String date,@Param("hospitalId")String hospitalId);
+    List<String> readTime(@Param("date") String date, @Param("hospitalId") String hospitalId);
    
 }

@@ -71,9 +71,11 @@
 </c:forEach>
 
     </ul>
-  
-<button class="btn btn-primary" type ="submit"" style='float: right')>예약하기</button>
+  <div style="padding-right:100px;"> 
+	<button class="btn btn-primary float-right" type ="submit">예약하기</button>
+  </div>
 </form>
+<br><br><br><br><br>
 </div><!--(./COntainer")-->
 
 <script type="text/javascript">

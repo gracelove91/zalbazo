@@ -102,4 +102,5 @@ var adminService = (function() {
 		getUser : getUser,
 		getHos : getHos
 	}
+	
 })();

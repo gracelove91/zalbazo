@@ -4,7 +4,6 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!-- Footer Area Starts -->
 <footer class="footer-area">
-    <hr>
 <%--&lt;%&ndash;    <div class="footer-widget">&ndash;%&gt;--%>
 <%--        <div class="container">--%>
 <%--            <div class="row">--%>
@@ -48,7 +47,7 @@
 <%--            </div>--%>
 <%--&lt;%&ndash;        </div>&ndash;%&gt;--%>
 <%--    </div>--%>
-    <div class="footer-copyright">
+    <!-- <div class="footer-copyright">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-6">
@@ -73,7 +72,7 @@
         </div>
         <br><br>
 
-    </div>
+    </div> -->
 </footer>
 <%--<!-- Footer Area End -->--%>
 

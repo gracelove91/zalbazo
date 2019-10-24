@@ -42,6 +42,14 @@
 		    <div class="tab-content" id="v-pills-tabContent">
 		    
 		      <div class="tab-pane fade show active" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+		      <div class="col" id='userview' style ="text-align: right;">
+			     <form> 
+			        <input type='text' id='searchuserEmail' name='userEmail' value=''>
+			        <button type = 'button' id='userbtn' class = 'btn btn-md btn-primary'>검색</button>&nbsp;
+			        <img class="refreshUser" src='/resources/img/refresh.png' style="width:25px; cursor:pointer;"> 
+			     </form>
+		      </div>
+		      
 			  	<div class="container-fluid">          
 				  <table class="table table-striped">
 				    <thead>
@@ -61,6 +69,14 @@
 			   </div>
 		     
 		      <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+		       <div class="col" id='hosview' style ="text-align: right;">
+
+		      <form> 
+			     <input type='text' id='searchhosEmail' name='userEmail' value=''>
+			     <button type = 'button' id='hosbtn' class = 'btn btn-md btn-primary'>검색</button>&nbsp;
+			     <img class="refreshHos" src='/resources/img/refresh.png' style="width:25px; cursor:pointer;"> 
+			  </form>
+		      </div>
 				<div class="container-fluid">          
 				  <table class="table table-striped">
 				    <thead>
@@ -117,6 +133,8 @@
 $(document).ready(function() {
 	var msgSpace = $(".msg");
 	
+	
+
 	
 	msgSpace.on("click", ".userBtn", function (e) {
 	    var mgroup = $(this).attr("data-cno");
@@ -180,7 +198,7 @@ $(document).ready(function() {
     		                str += "  <div class='media border-0 p-3 col-sm-7'>";
     		                str += "    <img src='/resources/img/animal/animal"+random+".png' class='mr-3 mt-2' style='width:60px; padding:5px;'>";
     		                str += "    <div class='media-body'>";
-    		                str += "      <h4>" + list[i].userEmail + "<small><i>&nbsp;&nbsp;&nbsp; Posted on " +messageService.displayTime(list[i].createdDate)+ " ";
+    		                str += "      <h4>" + list[i].name+"("+list[i].userEmail+")" + "<small><i>&nbsp;&nbsp;&nbsp; Posted on " +messageService.displayTime(list[i].createdDate)+ " ";
     		                str += "	   </i></small></h4>";
 			                str += "      <p>"+ list[i].body + "</p>";      
 			                str += "    </div>";
@@ -192,7 +210,7 @@ $(document).ready(function() {
 			                str += "  <div class='col-sm-6'></div>";
 			                str += "  <div class='media border-0 p-3 col-sm-6'>";
 			                str += "    <div class='media-body'>";
-			                str += "      <h4>" + list[j].name + "<small><i>&nbsp;&nbsp;&nbsp;Posted on " +messageService.displayTime(list[j].createdDate)+ "</i></small></h4>";
+			                str += "      <h4>" + list[i].name+"("+list[i].userEmail+")" + "<small><i>&nbsp;&nbsp;&nbsp;Posted on " +messageService.displayTime(list[j].createdDate)+ "</i></small></h4>";
 			                str += "      <p>"+ list[j].body + "</p>";      
 			                str += "    </div>";
 			                str += "    <img src='/resources/img/baba.png' class='mr-2 mt-2' style='width:60px; padding-left:10px;'>";
@@ -211,7 +229,7 @@ $(document).ready(function() {
 		                str += "  <div class='media border-0 p-3 col-sm-7'>";
 		                str += "    <img src='/resources/img/animal/animal"+random+".png' class='mr-3 mt-2' style='width:60px; padding:5px;'>";
 		                str += "    <div class='media-body'>";
-		                str += "      <h4>" + list[i].userEmail + "<small><i>&nbsp;&nbsp;&nbsp; Posted on " +messageService.displayTime(list[i].createdDate)+ " ";
+		                str += "      <h4>" + list[i].name+"("+list[i].userEmail+")" + "<small><i>&nbsp;&nbsp;&nbsp; Posted on " +messageService.displayTime(list[i].createdDate)+ " ";
 		                str += "	   </i></small></h4>";
 		                str += "      <p>"+ list[i].body + "</p>";
 		                str += "    </div>";

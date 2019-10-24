@@ -18,5 +18,5 @@ public interface AdminMapper {
 	public User getUser(String userEmail);
 	
 	public User getHos(String userEmail);
-
+	
 }

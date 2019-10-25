@@ -82,15 +82,15 @@ input.checkbox:checked + label.input-label.radio::before {
                     <hr>
                     <div class="wrap">
   <input type="checkbox" id="select0" value="1" name="label" class="checkbox">
-  <label for="select0" class="input-label checkbox">24시</label>
+  <label for="select0" class="input-label checkbox"><i class="material-icons"> local_convenience_store </i> 24시</label>
   <input type="checkbox" id="select1" value="2" name="label" class="checkbox">
-  <label for="select1" class="input-label checkbox">미용</label>
+  <label for="select1" class="input-label checkbox"><i class="material-icons"> local_florist </i> 미용</label>
   <input type="checkbox" id="select2" value="3" name="label" class="checkbox">
-  <label for="select2" class="input-label checkbox">주차</label>
+  <label for="select2" class="input-label checkbox"><i class="material-icons"> local_parking </i> 주차</label>
   <input type="checkbox" id="select3" value="4" name="label" class="checkbox">
-  <label for="select3" class="input-label checkbox">특수동물</label>
+  <label for="select3" class="input-label checkbox"><i class="material-icons"> emoji_nature </i> 특수동물</label>
   <input type="checkbox" id="select4" value="5" name="label" class="checkbox">
-  <label for="select4" class="input-label checkbox">수술전문</label>
+  <label for="select4" class="input-label checkbox"><i class="material-icons"> check_circle </i> 수술전문</label>
 </div>
 <input type="hidden" id="length" name="length" value="">
 <div class="row">

@@ -136,7 +136,7 @@ $(document).ready(function() {
 			str += "	<img src='/resources/img/baba.png' class='mr-3 mt-3 rounded-circle' style='width:50px'>";
 			str += "		<div class='media-body'>";
 			str += "			<h4><i style='color:gold; font-weight:bold'>"+star+"</i>"+' '+list[i].starPoint+"</h4>";
-			str += "				<small><i style='font-weight:bold'>"+list[i].userEmail+"</i>&nbsp;&nbsp;<i>"+ myContentService.displayTime(list[i].createdDate) +"</i></small>";
+			str += "				<small><i style='font-weight:bold'>"+list[i].userEmail+"</i>&nbsp;<i>"+ myContentService.displayTime(list[i].createdDate) +"</i></small>";
 			str += "     				<a href='/hospital/get?hospitalId=" + list[i].hospitalId + "'><p>"+list[i].body+"</p></a></div></li>"; 
 		}
 		

@@ -33,7 +33,8 @@ th mobile{
 	<br>
     <h2>${name}님의 마이페이지</h2>
     <input type='hidden' class="email" id="userEmail" value="${useremail}">
-    <p>환영합니다!</p>
+    <input type='hidden' class="name" id="name" value="${name}">
+    <p class="gotoHos"></p>
     </div>
 </div>
 

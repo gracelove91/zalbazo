@@ -3,7 +3,10 @@ $(document).ready(function(){
 	var adminBtn = $(".adminBtn");
 
 	var userEmail = $(".email").val();
+	var name = $(".name").val();
 	var message = $("textarea[name='toAdmin']");
+	
+	console.log(name);
 	
 	var msgSpace = $(".msg");
 	
@@ -12,6 +15,8 @@ $(document).ready(function(){
     function showMessageList() {
     	
     	messageService.getUserList(userEmail, function(list) {
+    		
+    		console.log(list);
     		
             var str = "";
 
@@ -113,7 +118,8 @@ $(document).ready(function(){
 		
 		var msg = {
 			body : message.val(),
-			userEmail : userEmail
+			userEmail : userEmail,
+			name : name
 		};
 		
 		messageService.send(msg, function(result){

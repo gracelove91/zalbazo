@@ -3,14 +3,22 @@ $(document).ready(function(){
 	var userEmail = $(".email").val();
 	var hospitalGet = $(".hospitalGet");
 	
+	var gotoHos = $(".gotoHos");
+	
 	var str = "";
 
 	console.log(userEmail);
 	
+	var str2 = "";
+	
 	infoService.get(userEmail, function(data){
 		
 		var no = data.name;
-		console.log(no);
+		var HI = data.hospitalId;
+		
+		str2 += "<a href='/hospital/get?hospitalId="+ HI +"'>내 병원 가기</a>";
+		
+		gotoHos.html(str2);
 		
 		str += "<div class='form-group'>";
 		str += "   <label class='font-weight-bold'>병원명</label>";

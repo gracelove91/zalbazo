@@ -5,8 +5,8 @@
 
 	<insert id="send">
        insert all
-       into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL)
-       values (CONTENT_SEQ.nextval, #{body}, sysdate, 5, #{userEmail})
+       into content (CONTENT_ID, BODY, CREATED_DATE, CATEGORY_ID, USER_EMAIL, NAME)
+       values (CONTENT_SEQ.nextval, #{body}, sysdate, 5, #{userEmail}, #{name})
        into message (MESSAGE_ID, CONTENT_ID, TYPE, M_GROUP, USER_EMAIL)
        values (MESSAGE_SEQ.nextval, CONTENT_SEQ.currval, 'send', CONTENT_SEQ.currval, #{userEmail})
        select * from dual

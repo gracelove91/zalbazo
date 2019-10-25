@@ -69,7 +69,7 @@
 
             <div id="main" class="col-md-8">
                 <div class="page-header mt-3">
-                    <h2>커뮤 글 쓰기</h2>
+                    <h2>커뮤니티 글 쓰기</h2>
                 </div>
                 <p class="lead">게시글을 작성합니다.</p>
                 <hr>
@@ -82,6 +82,10 @@
                                value="${useremail}">
                         <input type="hidden" class="form-control" id="role" name="role" readonly="readonly"
                                value="${role}">
+                        
+                        <input type="hidden" class="form-control" id="name" name="name" readonly="readonly"
+                               value="${name}">
+                        
                     </div>
                     <div class="form-group">
                         <label>제목</label>

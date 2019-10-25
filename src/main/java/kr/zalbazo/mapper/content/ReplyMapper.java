@@ -18,8 +18,8 @@ public interface ReplyMapper {
 	public int update(ReplyVO userEmail);
 	
 	public List<ReplyVO> getListWithPaging(
-			@Param("cri") Criteria cri,
-			@Param("contentId") Long contentId);
+            @Param("cri") Criteria cri,
+            @Param("contentId") Long contentId);
 	
 	public int getCountByContentId(Long contentId);
 }

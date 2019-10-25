@@ -49,5 +49,16 @@ public class AdminServiceImpl implements AdminService {
 		return adminMapper.getHos(userEmail);
 	}
 
+	@Override
+	public User getsearchUser(String userEmail) {
+
+		return adminMapper.getUser(userEmail);
+	}
+	@Override
+	public User getsearchHos(String userEmail) {
+		
+		return adminMapper.getHos(userEmail);
+	}
+
     
 }
